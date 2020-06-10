@@ -1,0 +1,28 @@
+{
+  "name": "reddit_response",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "npx knex migrate:latest",
+    "start": "npx ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/router": "^9.0.1",
+    "@types/koa": "^2.11.3",
+    "@types/node": "^14.0.13",
+    "@types/uuid": "^8.0.0",
+    "husky": "^4.2.5",
+    "knex": "^0.21.1",
+    "koa": "^2.12.0",
+    "pg": "^8.2.1",
+    "sqlite3": "^4.2.0",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.9.5",
+    "uuid": "^8.1.0"
+  }
+}
