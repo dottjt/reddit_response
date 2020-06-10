@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://www.reddit.com/r/NoFap/
+// @match        https://www.reddit.com/r/NoFap/new/
 // @grant        none
 // ==/UserScript==
 
