@@ -5,6 +5,10 @@ export async function up(knex: Knex): Promise<any> {
     table.uuid('id').notNullable().unique().primary();
     table.uuid('users_from_id').references('users.id');
     table.uuid('users_to_id').references('users.id');
+    table.string('message_title');
+    table.string('message_text');
+    table.string('message_type'); // and respond to the different types of responses. 
+    table.string('send_date');
     table.timestamps(true, true);
   });
 }

@@ -4,7 +4,7 @@ export async function up(knex: Knex): Promise<any> {
   knex.schema.createTable('users', function(table) {
     table.uuid('id').notNullable().unique().primary();
     table.string('username').unique();
-    table.boolean('previouslyContacted').defaultTo(false);
+    table.boolean('isHostile');
   });
 }
 
