@@ -4,6 +4,7 @@ export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable('users', function(table) {
     table.string('username').notNullable().unique().primary();
     table.boolean('isHostile');
+    table.boolean('isHistoric');
 
     table.timestamps(true, true);
   });

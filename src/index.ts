@@ -12,7 +12,7 @@ const main = () => {
   const router = new Router();
 
   router.post('/checkUsernames', checkUsernames);
-  router.get('/populateHistoricMessage', populateHistoricMessage);
+  router.post('/populateHistoricMessage', populateHistoricMessage);
 
   app
     .use(bodyParser())

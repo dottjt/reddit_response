@@ -12,10 +12,10 @@ const populateHistoricMessage = async (ctx: Context, next: Next) => {
   const messages: PopulateHistoricMessagePayload[] = body.data.messages;
 
   for (const message of messages) {
-    await addHistoricSentMessage(message);
+    await addHistoricReceivedMessage(message);
   }
 
-  ctx.body = { data: { message: 'sent messages successfully added' } };
+  ctx.body = { data: { message: 'received messages successfully added' } };
 }
 
 export default populateHistoricMessage;

@@ -25,4 +25,9 @@ export interface Message {
   send_date: string;
 }
 
-
+export interface PopulateHistoricMessagePayload {
+  subject: string;
+  recipient: string;
+  message: string;
+  date: string;
+}

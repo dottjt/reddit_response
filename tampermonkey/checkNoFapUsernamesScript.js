@@ -72,6 +72,7 @@
       const json = await response.json();
       return json;
     } catch(error) {
+      console.log('Server not started.')
       throw new Error(`fetchCheckUsernameResult - ${error}`);
     }
   }

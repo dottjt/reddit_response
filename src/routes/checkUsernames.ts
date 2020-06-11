@@ -1,7 +1,10 @@
 import { Context, Next } from 'koa';
 import { validateUser } from '../util/db';
 
-import { User, UserInformation, Message } from '../util/types';
+import {
+  User,
+  Message
+} from '../util/types';
 
 const checkUsernamesRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
@@ -14,7 +17,7 @@ const checkUsernamesRoute = async (ctx: Context, next: Next) => {
   const usersList: User[] = [];
 
   for (const username of usernames) {
-    const user = await validateUser(username);
+    const user = await validateUser(username, false);
     usersList.push(user);
   }
 

@@ -1,15 +1,20 @@
 import { v4 as uuidv4 } from 'uuid';
 import knex from './knex';
 
-import { UserInformation, User, Message } from './types';
+import {
+  User,
+  Message,
+
+  PopulateHistoricMessagePayload
+} from './types';
 
 import { calculateUserStatistics } from './util';
 
-export const validateUser = async (username: string): Promise<User> => {
+export const validateUser = async (username: string, isHistoric: boolean): Promise<User> => {
   const usernameExists =
     await knex('users').where({ username }).first('username');
   if (!usernameExists) {
-    await knex('users').insert({ username });
+    await knex('users').insert({ username, isHistoric });
     const newUser: User = await getFullUser(username);
     return newUser;
   } else {
@@ -43,11 +48,29 @@ export const getFullUser = async (username: string): Promise<User> => {
 
     sentCount,
     receivedCount,
-  }
+  };
 
   return compiledUser;
-}
+};
 
-export const addMessage = async (message: Message): Promise<void> => {
+export const addHistoricSentMessage = async (message: PopulateHistoricMessagePayload): Promise<void> => {
+  await validateUser(message.recipient, true);
 
+  const doesMessageExist = await knex('messages').where({
+    username_receiving: message.recipient, send_date: message.date
+  }).first('id');
+
+  if (!doesMessageExist) {
+    await knex('messages').insert({
+      id: uuidv4(),
+      username_sending: 'NeverFapDeluxe',
+      username_receiving: message.recipient,
+      subject: message.subject,
+      text: message.message,
+      type: 'NA',
+      send_date: message.date,
+    });
+  } else {
+    console.log('message exists');
+  }
 }
