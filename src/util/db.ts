@@ -8,7 +8,10 @@ import {
   PopulateHistoricMessagePayload
 } from './types';
 
-import { calculateUserStatistics } from './util';
+import {
+  calculateUserStatistics,
+  toMelbourneDateString
+} from './util';
 
 export const validateUser = async (username: string, isHistoric: boolean): Promise<User> => {
   const usernameExists =
@@ -67,8 +70,9 @@ export const addHistoricSentMessage = async (message: PopulateHistoricMessagePay
       username_receiving: message.recipient,
       subject: message.subject,
       text: message.message,
+      isHistoric: true,
       type: 'NA',
-      send_date: message.date,
+      send_date: toMelbourneDateString(new Date(message.date)),
     });
   } else {
     console.log('message exists');
@@ -89,10 +93,26 @@ export const addHistoricReceivedMessage = async (message: PopulateHistoricMessag
       username_receiving: 'NeverFapDeluxe',
       subject: message.subject,
       text: message.message,
+      isHistoric: true,
       type: 'NA',
-      send_date: message.date,
+      send_date: toMelbourneDateString(new Date(message.date)),
     });
   } else {
     console.log('message exists');
   }
+}
+
+export const addNewMessage = async (to: string, subject: string, message: string): Promise<void> => {
+  await validateUser(to, false);
+
+  await knex('messages').insert({
+    id: uuidv4(),
+    username_sending: 'NeverFapDeluxe',
+    username_receiving: to,
+    subject: subject,
+    text: message,
+    isHistoric: false,
+    type: 'NA', // TODO will need to create this correlation
+    send_date: toMelbourneDateString(new Date()),
+  });
 }

@@ -9,6 +9,7 @@ export async function up(knex: Knex): Promise<any> {
     table.text('text');
     table.string('type'); // and respond to the different types of responses.
     table.string('send_date');
+    table.boolean('isHistoric');
     table.timestamps(true, true);
   });
 }

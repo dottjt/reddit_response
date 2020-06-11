@@ -26,6 +26,21 @@
     return node;
   }
 
+  const starterMessage = () => {
+
+  }
+
+  const createMessageLinkNode = (text, color, username, message) => {
+    const node = document.createElement('span');
+    node.href = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&hello=cake`;
+    node.style.fontSize = '20px';
+    var textnode = document.createTextNode(text + ' ');         // Create a text node
+    node.appendChild(textnode);
+
+    return node;
+
+  }
+
   const scrollToSpecifiedDate = (dateString) => new Promise(resolve => {
     let interval;
 
@@ -95,6 +110,10 @@
         tag.appendChild(createNode(dbUser.username, dbUser.userColor));
         tag.appendChild(createNode(`Type: ${dbUser.userType}`, dbUser.userColor));
         tag.appendChild(createNode(`Sent: ${dbUser.sentCount}`, 'blue'));
+
+        createMessageLinkNode('basic', 'purple', dbUser.username, message);
+
+        // TODO Create <a links to user/message /> which opens opens to a new tab
       }
     });
   }
