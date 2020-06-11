@@ -3,7 +3,7 @@ import { } from '../util/db';
 
 import { User, UserInformation, Message } from '../util/types';
 
-const populateHistoricMessage = (db) => async (ctx: Context, next: Next) => {
+const populateHistoricMessage = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
   const username = body?.data?.username;
   const messageDate = body?.data?.messageDate;

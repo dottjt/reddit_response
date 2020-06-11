@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "migrate": "npx knex migrate:latest",
-    "start": "npx ts-node ./src/index.ts"
+    "start": "npx ts-node ./src/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+
+    "reset": "npx knex migrate:rollback && npx knex migrate:latest",
+    "rollback": "npx knex migrate:rollback",
+    "migrate": "npx knex migrate:latest"
   },
   "keywords": [],
   "author": "",

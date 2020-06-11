@@ -1,16 +1,28 @@
 // DB TYPES
 
 export interface User {
+  // Database Fields
   username: string;
+  isHostile: string;
+
+  userType: string;
+  userColor: string;
+
+  lastSentMessage: Message;
+  lastReceivedMessage: Message;
+
+  sentCount: number;
+  receivedCount: number;
 }
 
 export interface Message {
-  from: User;
-  to: User;
+  id: string;
+  username_sending: string;
+  username_receiving: string;
+  subject: string;
+  text: string;
+  type: string;
+  send_date: string;
 }
 
-// DB TYPES
 
-export interface UserInformation {
-  username: string;
-}
