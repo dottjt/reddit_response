@@ -41,7 +41,7 @@
 
   const uploadMessages = async (dataPayload) => {
     try {
-      const response = await fetch('http://localhost:3333/populateHistoricMessage',
+      const response = await fetch('http://localhost:3333/populateHistoricSentMessages',
       {
         method: 'POST',
         mode: 'cors',
@@ -61,22 +61,19 @@
     }
   }
 
-  const clickNextButton = () => {
-    iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-  }
-
   if (iFrame && !window.location.search.includes('count')) {
     if (!window.location.search.includes('true')) {
-      console.log('hey');
       iFrame.addEventListener("load", async function() {
         const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
         await getPageMessages(pageMessages);
-        // clickNextButton();
+
+        iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
       });
     }
   } else {
     const pageMessages = document.querySelectorAll('.message');
     await getPageMessages(pageMessages);
-    // clickNextButton();
+
+    document.querySelector('.next-button').children[0].click();
   }
 })();

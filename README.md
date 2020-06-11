@@ -1,5 +1,10 @@
 ## Reddit Marketing Automation
 
+### Required Plugins and Dependencies
+- Tampermonkey plugin installed
+- 
+
+
 <!-- REDDIT MARKETING AUTOMATION -->
 So, I think I had an idea for a database.
 

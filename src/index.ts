@@ -5,14 +5,16 @@ import bodyParser from 'koa-body';
 import logger from 'koa-logger';
 
 import checkUsernames from './routes/checkUsernames';
-import populateHistoricMessage from './routes/populateHistoricMessage';
+import populateHistoricSentMessages from './routes/populateHistoricSentMessages';
+import populateHistoricReceivedMessages from './routes/populateHistoricReceivedMessages';
 
 const main = () => {
   const app = new Koa();
   const router = new Router();
 
   router.post('/checkUsernames', checkUsernames);
-  router.post('/populateHistoricMessage', populateHistoricMessage);
+  router.post('/populateHistoricSentMessages', populateHistoricSentMessages);
+  router.post('/populateHistoricReceivedMessages', populateHistoricReceivedMessages);
 
   app
     .use(bodyParser())

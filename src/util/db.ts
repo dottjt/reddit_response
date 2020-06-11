@@ -74,3 +74,25 @@ export const addHistoricSentMessage = async (message: PopulateHistoricMessagePay
     console.log('message exists');
   }
 }
+
+export const addHistoricReceivedMessage = async (message: PopulateHistoricMessagePayload): Promise<void> => {
+  await validateUser(message.recipient, true);
+
+  const doesMessageExist = await knex('messages').where({
+    username_sending: message.recipient, send_date: message.date
+  }).first('id');
+
+  if (!doesMessageExist) {
+    await knex('messages').insert({
+      id: uuidv4(),
+      username_sending: message.recipient,
+      username_receiving: 'NeverFapDeluxe',
+      subject: message.subject,
+      text: message.message,
+      type: 'NA',
+      send_date: message.date,
+    });
+  } else {
+    console.log('message exists');
+  }
+}

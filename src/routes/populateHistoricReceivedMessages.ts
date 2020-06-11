@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import { addHistoricSentMessage } from '../util/db';
+import { addHistoricReceivedMessage } from '../util/db';
 
 import {
   // User,
@@ -7,7 +7,7 @@ import {
   PopulateHistoricMessagePayload
 } from '../util/types';
 
-const populateHistoricMessage = async (ctx: Context, next: Next) => {
+const populateHistoricReceivedMessages = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
   const messages: PopulateHistoricMessagePayload[] = body.data.messages;
 
@@ -18,4 +18,4 @@ const populateHistoricMessage = async (ctx: Context, next: Next) => {
   ctx.body = { data: { message: 'received messages successfully added' } };
 }
 
-export default populateHistoricMessage;
+export default populateHistoricReceivedMessages;

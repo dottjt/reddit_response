@@ -3,7 +3,6 @@ import { validateUser } from '../util/db';
 
 import {
   User,
-  Message
 } from '../util/types';
 
 const checkUsernamesRoute = async (ctx: Context, next: Next) => {
