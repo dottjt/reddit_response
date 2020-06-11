@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Reddit NoFap Check Usernames
+// @name         Reddit Message Compose
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -35,10 +35,9 @@
     }
   }
 
-  const checkIfFieldsAreFull = async (document) => {
-      const toInput = document.querySelector('input[name=to]').value;
-      const subjectInput = document.querySelector('input[name=subject]').value;
-      const messageInput = document.querySelector('input[name=message]').value;
+  const checkIfFieldsAreFull = async (toInput, subjectInput, messageInput) => {
+
+      console.log(toInput, subjectInput, messageInput)
 
       if (toInput && subjectInput && messageInput) {
         await sendNewMessage({
@@ -49,19 +48,25 @@
 
       // https://stackoverflow.com/questions/17415579/how-to-iso-8601-format-a-date-with-timezone-offset-in-javascript
 
-        document.querySelector('#send').click();
+        // document.querySelector('#send').click();
+        console.log('message sent to server');
       } else {
         console.log('not automated message');
       }
   };
 
-  if (iFrame && !window.location.search.includes('count')) {
+  if (iFrame && !window.location.search.includes('embedded')) {
     iFrame.addEventListener("load", async function() {
-      const document = iFrame.contentWindow.document;
+      console.log(window.location)
+      console.log('let us send the message!')
 
-      await checkIfFieldsAreFull(document);
+      const toInput = iFrame.contentWindow.document.querySelector('input[name=to]').value;
+      const subjectInput = iFrame.contentWindow.document.querySelector('input[name=subject]').value;
+      const messageInput = iFrame.contentWindow.document.querySelectorAll('textarea[name=text]')[1].value;
+
+      await checkIfFieldsAreFull(toInput, subjectInput, messageInput);
+
+      console.log('script complete');
     });
   }
-
-  console.log('script complete');
 })();

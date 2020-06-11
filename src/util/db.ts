@@ -102,7 +102,7 @@ export const addHistoricReceivedMessage = async (message: PopulateHistoricMessag
   }
 }
 
-export const addNewMessage = async (to: string, subject: string, message: string): Promise<void> => {
+export const addNewMessage = async (to: string, subject: string, message: string, type: string): Promise<void> => {
   await validateUser(to, false);
 
   await knex('messages').insert({
@@ -112,7 +112,7 @@ export const addNewMessage = async (to: string, subject: string, message: string
     subject: subject,
     text: message,
     isHistoric: false,
-    type: 'NA', // TODO will need to create this correlation
+    type,
     send_date: toMelbourneDateString(new Date()),
   });
 }

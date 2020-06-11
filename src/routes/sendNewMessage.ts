@@ -12,7 +12,7 @@ const sendNewMessage = async (ctx: Context, next: Next) => {
   const subject = body?.data?.subject;
   const message = body?.data?.message;
 
-  await addNewMessage(to, subject, message);
+  await addNewMessage(to, subject, message, 'NEW/NA');
 
   ctx.body = { data: { message: 'succes!' } };
 }
