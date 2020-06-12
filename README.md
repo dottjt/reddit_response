@@ -37,3 +37,6 @@ But essentially here is how I imagine it would work.
 ## ENV
 
 ENV=PROD
+
+// important
+https://stackoverflow.com/questions/49509874/how-to-update-tampermonkey-script-to-a-local-file-programmatically

@@ -6,11 +6,12 @@
   "scripts": {
     "start": "NODE_ENV=prod npx ts-node ./src/index.ts",
     "migrate": "NODE_ENV=prod npx knex migrate:latest",
-
     "start-dev": "NODE_ENV=dev ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "reset-dev": "NODE_ENV=dev npx knex migrate:rollback && npx knex migrate:latest",
     "rollback-dev": "NODE_ENV=dev npx knex migrate:rollback",
-    "migrate-dev": "NODE_ENV=dev npx knex migrate:latest"
+    "migrate-dev": "NODE_ENV=dev npx knex migrate:latest",
+    "bundle": "node ./tampermonkey/custom_bundler.js",
+    "bundle-dev": "nodemon ./tampermonkey/custom_bundler.js"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,9 @@
     "@types/koa": "^2.11.3",
     "@types/node": "^14.0.13",
     "@types/uuid": "^8.0.0",
+    "chokidar": "^3.4.0",
     "dotenv": "^8.2.0",
+    "fs-extra": "^9.0.1",
     "husky": "^4.2.5",
     "knex": "^0.21.1",
     "koa": "^2.12.0",
@@ -33,5 +36,8 @@
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.9.5",
     "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

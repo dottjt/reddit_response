@@ -1,47 +1,26 @@
 // ==UserScript==
-// @name         Reddit NoFap Check Usernames
+// @name         Reddit NoFap New Script
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
+// @match        https://www.reddit.com/r/NoFap/new
 // @match        https://www.reddit.com/r/NoFap/new/
+// @require      file:///Users/julius.reade/Code/PER/reddit_response/tampermonkey/scripts/noFapNewSubreddit.js
 // @grant        none
 // ==/UserScript==
 
 (async function() {
   'use strict';
 
+  import 'responses/start.js' // {  }
+  import 'util/httpResponses.js' // { fetchCheckUsernameResultHTTP }
+  import 'util/createNodes.js' // { createNode, createMessageLinkNode }
+
   const TIMEFRAME = '1 hour ago';
   // const TIMEFRAME = '2 hours ago';
   // const TIMEFRAME = '1 day ago';
   // const TIMEFRAME = '2 days ago';
-
-  const createNode = (text, color) => {
-    const node = document.createElement('span');
-    node.style.color = color || 'black';
-    node.style.fontSize = '20px';
-    var textnode = document.createTextNode(text + ' ');         // Create a text node
-    node.appendChild(textnode);
-
-    return node;
-  }
-
-  const starterMessage = () => {
-
-  }
-
-  
-
-  const createMessageLinkNode = (text, color, username, message) => {
-    const node = document.createElement('span');
-    node.href = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&hello=cake`;
-    node.style.fontSize = '20px';
-    var textnode = document.createTextNode(text + ' ');         // Create a text node
-    node.appendChild(textnode);
-
-    return node;
-
-  }
 
   const scrollToSpecifiedDate = (dateString) => new Promise(resolve => {
     let interval;
@@ -55,9 +34,9 @@
         const doesTextContainDate = timeStampElement.innerText.includes(dateString);
 
         if (doesTextContainDate) {
-          console.log('found date');
+          console.log('Complete: date reached');
           clearInterval(interval);
-          resolve('found date');
+          resolve('Complete: date reached');
         } else {
           timeStampElement.remove();
         }
@@ -70,28 +49,6 @@
     const filteredATags = [...allATags].filter(tag => tag.innerText.includes('u/'));
     const usernames = filteredATags.map(tag => tag.innerText.split('/')[1]);
     return usernames;
-  }
-
-  const fetchCheckUsernameResult = async (usernameArray) => {
-    try {
-      const response = await fetch('http://localhost:3333/checkUsernames',
-      {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify({ data: { usernames: usernameArray } }) // body data type must match "Content-Type" header
-      })
-
-      const json = await response.json();
-      return json;
-    } catch(error) {
-      console.log('Server not started.')
-      throw new Error(`fetchCheckUsernameResult - ${error}`);
-    }
   }
 
   const populateWebpageInformation = (users) => {
@@ -113,19 +70,19 @@
         tag.appendChild(createNode(`Type: ${dbUser.userType}`, dbUser.userColor));
         tag.appendChild(createNode(`Sent: ${dbUser.sentCount}`, 'blue'));
 
+        // TODO: maybe there is something else aside from TAG.
         createMessageLinkNode('basic', 'purple', dbUser.username, message);
 
-        // TODO Create <a links to user/message /> which opens opens to a new tab
       }
     });
   }
-
+  console.log('START: start script');
   await scrollToSpecifiedDate(TIMEFRAME);
   const textUsernames = getAllUsernames();
 
-  const usernamesResponse = await fetchCheckUsernameResult(textUsernames);
+  const usernamesResponse = await fetchCheckUsernameResultHTTP(textUsernames);
   const users = usernamesResponse.data.users;
   populateWebpageInformation(users);
 
-  console.log('script complete');
+  console.log('END: script complete');
 })();

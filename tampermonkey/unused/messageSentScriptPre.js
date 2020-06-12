@@ -12,6 +12,8 @@
 (async function() {
   'use strict';
 
+  import 'util/httpResponses.js' // { uploadMessagesHTTP }
+
   const iFrame = document.querySelector('iframe');
 
   const getPageMessages = async (pageMessages) => {
@@ -36,29 +38,7 @@
 
     const filteredMessageList = messageList.filter(message => message.date || message.recipient === '[deleted]');
     console.log('filteredMessageList', filteredMessageList);
-    await uploadMessages({ messages: filteredMessageList });
-  }
-
-  const uploadMessages = async (dataPayload) => {
-    try {
-      const response = await fetch('http://localhost:3333/populateHistoricSentMessages',
-      {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify({ data: dataPayload }) // body data type must match "Content-Type" header
-      });
-
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.log('please start server');
-      throw new Error(`uploadMessages - ${error}`);
-    }
+    await uploadMessagesHTTP({ messages: filteredMessageList });
   }
 
   if (iFrame && !window.location.search.includes('count')) {

@@ -1,16 +1,20 @@
 // ==UserScript==
-// @name         Add Messages View
+// @name         Reddit Message Inbox Script
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://www.reddit.com/message/messages/
-// @match        https://www.reddit.com/message/messages/?*
+// @match        https://www.reddit.com/message/inbox
+// @match        https://www.reddit.com/message/inbox/
+// @match        https://www.reddit.com/message/inbox/?*
+// @require      file:///Users/julius.reade/Code/PER/reddit_response/tampermonkey/scripts/messageInboxScript.js
 // @grant        none
 // ==/UserScript==
 
 (async function() {
   'use strict';
+
+  import 'util/httpResponses.js' // { uploadMessagesHTTP }
 
   const iFrame = document.querySelector('iframe');
 
@@ -56,45 +60,27 @@
       !message.subjectReplyToTitle.includes("Snoosletter")
     );
     console.log('filteredMessageList', filteredMessageList);
-    await uploadMessages({ messages: filteredMessageList });
-  }
-
-  const uploadMessages = async (dataPayload) => {
-    try {
-      const response = await fetch('http://localhost:3333/populateHistoricReceivedMessages',
-      {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify({ data: dataPayload }) // body data type must match "Content-Type" header
-      });
-
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.log('please start server');
-      throw new Error(`uploadMessages - ${error}`);
-    }
+    await uploadMessagesHTTP({ messages: filteredMessageList });
   }
 
   if (iFrame && !window.location.search.includes('count')) {
     if (!window.location.search.includes('true')) {
+      console.log('START: preparing page');
 
       iFrame.addEventListener("load", async function() {
         const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
         await getPageMessages(pageMessages);
 
-        iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
+        console.log('END: next page');
+        // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
       });
     }
   } else {
+    console.log('START: preparing page');
     const pageMessages = document.querySelectorAll('.message');
     await getPageMessages(pageMessages);
 
-    document.querySelector('.next-button').children[0].click();
+    console.log('END: next page');
+    // document.querySelector('.next-button').children[0].click();
   }
 })();
