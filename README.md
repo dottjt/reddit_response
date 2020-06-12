@@ -2,7 +2,7 @@
 
 ### Required Plugins and Dependencies
 - Tampermonkey plugin installed
-- 
+-
 
 
 <!-- REDDIT MARKETING AUTOMATION -->
@@ -32,3 +32,8 @@ But essentially here is how I imagine it would work.
 - Get all usernames
 - Check them against the database.
 
+// get all snippets from the past. YUS.
+
+## ENV
+
+ENV=PROD

@@ -1,13 +1,18 @@
 // Update with your config settings.
 
 module.exports = {
-  development: {
+  dev: {
     client: "sqlite3",
     connection: {
-      filename: "./db/database.sqlite"
+      filename: "./db/dev_reddit_database.sqlite"
     }
   },
-
+  prod: {
+    client: "sqlite3",
+    connection: {
+      filename: "./db/prod_reddit_database.sqlite"
+    }
+  },
   // staging: {
   //   client: "postgresql",
   //   connection: {

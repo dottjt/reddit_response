@@ -30,6 +30,8 @@
 
   }
 
+  
+
   const createMessageLinkNode = (text, color, username, message) => {
     const node = document.createElement('span');
     node.href = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&hello=cake`;

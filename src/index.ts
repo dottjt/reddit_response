@@ -1,3 +1,6 @@
+import { config } from 'dotenv';
+config();
+
 import Koa from 'koa';
 import Router from '@koa/router';
 import cors from '@koa/cors';
