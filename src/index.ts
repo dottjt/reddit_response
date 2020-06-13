@@ -7,10 +7,10 @@ import cors from '@koa/cors';
 import bodyParser from 'koa-body';
 import logger from 'koa-logger';
 
-import checkUsernames from './routes/checkUsernames';
-import populateHistoricSentMessages from './routes/populateHistoricSentMessages';
-import populateHistoricReceivedMessages from './routes/populateHistoricReceivedMessages';
-import sendNewMessage from './routes/sendNewMessage';
+import checkUsernamesRoute from './routes/checkUsernamesRoute';
+import populateHistoricSentMessagesRoute from './routes/populateHistoricSentMessagesRoute';
+import populateHistoricReceivedMessagesRoute from './routes/populateHistoricReceivedMessagesRoute';
+import sendNewMessageRoute from './routes/sendNewMessageRoute';
 
 import customBundler from './tampermonkey/customBundler';
 
@@ -20,10 +20,10 @@ const main = () => {
 
   customBundler();
 
-  router.post('/checkUsernames', checkUsernames);
-  router.post('/populateHistoricSentMessages', populateHistoricSentMessages);
-  router.post('/populateHistoricReceivedMessages', populateHistoricReceivedMessages);
-  router.post('/sendNewMessage', sendNewMessage);
+  router.post('/checkUsernames', checkUsernamesRoute);
+  router.post('/populateHistoricSentMessages', populateHistoricSentMessagesRoute);
+  router.post('/populateHistoricReceivedMessages', populateHistoricReceivedMessagesRoute);
+  router.post('/sendNewMessage', sendNewMessageRoute);
 
   app
     .use(bodyParser())

@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=produdction npx ts-node ./src/index.ts",
-    "migrate": "NODE_ENV=produdction npx knex migrate:latest",
-    "start-dev": "NODE_ENV=development ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "reset-dev": "NODE_ENV=development npx knex migrate:rollback && npx knex migrate:latest",
-    "rollback-dev": "NODE_ENV=development npx knex migrate:rollback",
-    "migrate-dev": "NODE_ENV=development npx knex migrate:latest",
+    "migrate": "NODE_ENV=produdction npx knex --knexfile ./knexfile.ts migrate:latest",
+    "reset-prod": "NODE_ENV=production npx knex --knexfile ./knexfile.ts migrate:rollback && npx knex --knexfile ./knexfile.ts migrate:latest && npx knex --knexfile ./knexfile.ts seed:run",
+    "start-dev": "NODE_ENV=development npm run reset-dev && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "reset-dev": "NODE_ENV=development npx knex --knexfile ./knexfile.ts migrate:rollback && npx knex --knexfile ./knexfile.ts migrate:latest && npx knex --knexfile ./knexfile.ts seed:run",
+    "rollback-dev": "NODE_ENV=development npx knex --knexfile ./knexfile.ts migrate:rollback",
+    "migrate-dev": "NODE_ENV=development npx knex --knexfile ./knexfile.ts migrate:latest",
     "bundle": "ts-node ./src/tampermonkey/custom_bundler.js",
     "bundle-dev": "ts-node-dev --respawn --transpileOnly ./src/tampermonkey/custom_bundler.js"
   },

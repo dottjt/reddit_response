@@ -60,9 +60,6 @@
 
       if (dbUser) {
         appendUserInformation(tag, dbUser)
-        
-        // type 'encouragement'
-        // type 'advice'
       }
     });
   }

@@ -14,6 +14,109 @@
 (async function() {
   'use strict';
 
+  // <content>Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
+
+const middleWrittenGuide = (
+`Well, I&apos;ve written a guide to the whole process of overcoming porn addiction if you&apos;re interested? (don&apos;t worry, it&apos;s 100% completely free, just trying to help as many people out as possible)
+
+It explains everything from healthy coping mechanisms, to developing control over your emotions, as well as setting healthy expectations throughout your journey.
+
+https://neverfapdeluxe.com/
+
+The homepage is quite comprehensive. I&apos;ve put a lot of effort into it and it covers 90% of what you need to know. It then leads to the /guide which explains even more about awareness, meditation etc.
+
+Also happy to have you join our #accountability channel on Discord once you&apos;ve become familiar with the material.
+`
+);
+ // { }
+  const createNode = (text, color) => {
+  const node = document.createElement('span');
+  node.style.color = color || 'black';
+  node.style.fontSize = '20px';
+  var textnode = document.createTextNode(text + ' ');         // Create a text node
+  node.appendChild(textnode);
+
+  return node;
+}
+
+const createStartMessageLinkNode = (name, color, username, message, key) => {
+  const node = document.createElement('a');
+  const url = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&type=${name}`;
+  node.href = url;
+
+  node.style.color = color || 'black';
+  node.style.fontSize = '16px';
+
+  node.style.marginTop = '0.3rem';
+  node.style.marginBottom = '0.3rem';
+  node.style.marginLeft = '0.3rem';
+  node.style.marginRight = '0.3rem';
+
+  node.target = "_blank"
+  var textnode = document.createTextNode(name + ' ');         // Create a text node
+  node.appendChild(textnode);
+
+  return node;
+}
+
+const createMiddleMessageLinkNode = (name, color, username, message, key) => {
+  const node = document.createElement('div');
+
+  node.style.color = color || 'black';
+  node.style.fontSize = '16px';
+
+  node.style.marginTop = '0.3rem';
+  node.style.marginBottom = '0.3rem';
+  node.style.marginLeft = '0.3rem';
+  node.style.marginRight = '0.3rem';
+
+  node.target = "_blank"
+  var textnode = document.createTextNode(name + ' ');         // Create a text node
+  node.appendChild(textnode);
+
+  return node;
+}
+
+const appendUserInformation = (tag, dbUser) => {
+  tag.innerText = '';
+
+  tag.style.marginTop = '1rem';
+  tag.style.marginBottom = '1rem';
+  tag.style.marginLeft = '1rem';
+  tag.style.marginRight = '1rem';
+
+  tag.appendChild(createNode(dbUser.username, dbUser.userColor));
+  tag.appendChild(createNode(`Type: ${dbUser.userType}`, dbUser.userColor));
+  tag.appendChild(createNode(`Sent: ${dbUser.sentCount}`, 'blue'));
+
+  const lastSentTextcontainer = document.createElement('div');
+  var textnode = document.createTextNode(dbUser.lastSentMessage); // Create a text node
+  lastSentTextcontainer.appendChild(textnode);
+
+  const container = document.createElement('div');
+  container.style.marginTop = '1rem';
+  container.style.marginBottom = '1rem';
+  container.style.cursor = 'default';
+
+  container.appendChild(createStartMessageLinkNode('customMessage', 'purple', dbUser.username, ''));
+  container.appendChild(createStartMessageLinkNode('struggleBasics', 'purple', dbUser.username, struggleBasics));
+  container.appendChild(createStartMessageLinkNode('biggestDifference', 'purple', dbUser.username, biggestDifference));
+  container.appendChild(createStartMessageLinkNode('relapseReason', 'purple', dbUser.username, relapseReason));
+  container.appendChild(createStartMessageLinkNode('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner));
+
+  tag.parentNode.insertBefore(lastSentTextcontainer, container);
+  tag.parentNode.insertBefore(container, tag);
+};
+
+// NOTE: This is not possible, because there are hundreds of these on a page and only one key.
+
+// document.addEventListener('keypress', function(event) {
+//   if (event.key === key) {
+//     window.open(url, '_blank');
+//     window.focus();
+//   }
+// })
+ // { }
   const sendNewMessageHTTP = async (dataPayload) => {
   try {
     const response = await fetch('http://localhost:3333/sendNewMessage',
@@ -127,13 +230,63 @@ const fetchCheckUsernameResultHTTP = async (usernameArray) => {
     await uploadMessagesHTTP({ messages: filteredMessageList });
   }
 
+  const getReplyLink = (entry) => {
+    switch (entry.children.length) {
+      case 5: {
+        const entryLinks = entry.children[3];
+        return entryLinks.children[7];
+      }
+      case 4: {
+        const entryLinks = entry.children[2];
+        return entryLinks.children[5];
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  const populatePageMessages = async (pageMessages) => {
+    [...pageMessages].map(containerDiv => {
+      const entry = containerDiv.children[4];
+      const replyLink = getReplyLink(entry)
+
+      if (replyLink) {
+        const replyALink = replyLink.children[0];
+        console.log(replyALink);
+
+        replyALink.click();
+      }
+    });
+  };
+
+  const populateMessagePanel = async (pageMessages) => {
+    [...pageMessages].map(containerDiv => {
+      const child = containerDiv.children[5];
+
+      const messagePanel = document.createElement('div');
+      messagePanel.appendChild(createMiddleMessageLinkNode())
+
+      child.parentNode.insertBefore(, child);
+
+      if (replyLink) {
+        const replyALink = replyLink.children[0];
+        console.log(replyALink);
+
+        replyALink.click();
+      }
+    });
+  };
+
   if (iFrame && !window.location.search.includes('count')) {
     if (!window.location.search.includes('true')) {
       console.log('START: preparing page');
 
       iFrame.addEventListener("load", async function() {
         const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
-        await getPageMessages(pageMessages);
+        // await getPageMessages(pageMessages);
+        await populatePageMessages(pageMessages);
+        await populateMessagePanel(pageMessages);
 
         console.log('END: next page');
         // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
@@ -142,7 +295,9 @@ const fetchCheckUsernameResultHTTP = async (usernameArray) => {
   } else {
     console.log('START: preparing page');
     const pageMessages = document.querySelectorAll('.message');
-    await getPageMessages(pageMessages);
+    // await getPageMessages(pageMessages);
+    await populatePageMessages(pageMessages);
+    await populateMessagePanel(pageMessages);
 
     console.log('END: next page');
     // document.querySelector('.next-button').children[0].click();

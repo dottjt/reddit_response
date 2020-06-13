@@ -13,11 +13,11 @@ import {
   toMelbourneDateString
 } from './util';
 
-export const validateUser = async (username: string, isHistoric: boolean): Promise<User> => {
+export const validateUser = async (username: string, is_historic: boolean): Promise<User> => {
   const usernameExists =
     await knex('users').where({ username }).first('username');
   if (!usernameExists) {
-    await knex('users').insert({ username, isHistoric });
+    await knex('users').insert({ username, is_historic });
     const newUser: User = await getFullUser(username);
     return newUser;
   } else {
@@ -34,6 +34,8 @@ export const getFullUser = async (username: string): Promise<User> => {
   const lastSentMessage = await knex('messages').where({ username_receiving: username }).first('*');
   const lastReceivedMessage = await knex('messages').where({ username_receiving: username }).first('*');
 
+  const typesSent = await knex('messages').where({ username_receiving: username, username_sent: 'NeverFapDeluxe' }).select('type');
+
   const sentCount = Number(sentMessagesCount[0]["count(`id`)"]);
   const receivedCount = Number(receivedMessagesCount[0]["count(`id`)"]);
 
@@ -41,7 +43,7 @@ export const getFullUser = async (username: string): Promise<User> => {
 
   const compiledUser = {
     username: user.username,
-    isHostile: user.username,
+    is_hostile: user.username,
 
     userType: calculatedUser.userType,
     userColor: calculatedUser.userColor,
@@ -51,6 +53,8 @@ export const getFullUser = async (username: string): Promise<User> => {
 
     sentCount,
     receivedCount,
+
+    typesSent,
   };
 
   return compiledUser;
@@ -70,8 +74,8 @@ export const addHistoricSentMessage = async (message: PopulateHistoricMessagePay
       username_receiving: message.recipient,
       subject: message.subject,
       text: message.message,
-      isHistoric: true,
-      type: 'NA',
+      is_historic: true,
+      type: 'historic',
       send_date: toMelbourneDateString(new Date(message.date)),
     });
   } else {
@@ -93,8 +97,8 @@ export const addHistoricReceivedMessage = async (message: PopulateHistoricMessag
       username_receiving: 'NeverFapDeluxe',
       subject: message.subject,
       text: message.message,
-      isHistoric: true,
-      type: 'NA',
+      is_historic: true,
+      type: 'historic',
       send_date: toMelbourneDateString(new Date(message.date)),
     });
   } else {
@@ -111,7 +115,7 @@ export const addNewMessage = async (to: string, subject: string, message: string
     username_receiving: to,
     subject: subject,
     text: message,
-    isHistoric: false,
+    is_historic: false,
     type,
     send_date: toMelbourneDateString(new Date()),
   });

@@ -19,7 +19,7 @@ export const calculateUserStatistics = (user: User, sentCount: number, receivedC
     userColor = 'blue';
   };
 
-  if (user?.isHostile) {
+  if (user?.is_hostile) {
     userType = 'HOSTILE';
     userColor = 'red';
   }

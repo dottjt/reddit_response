@@ -14,6 +14,8 @@
 (async function() {
   'use strict';
 
+  import 'responses/middle.js' // { }
+  import 'util/createNodes.js' // { }
   import 'util/httpResponses.js' // { uploadMessagesHTTP }
 
   const iFrame = document.querySelector('iframe');
@@ -63,13 +65,63 @@
     await uploadMessagesHTTP({ messages: filteredMessageList });
   }
 
+  const getReplyLink = (entry) => {
+    switch (entry.children.length) {
+      case 5: {
+        const entryLinks = entry.children[3];
+        return entryLinks.children[7];
+      }
+      case 4: {
+        const entryLinks = entry.children[2];
+        return entryLinks.children[5];
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  const populatePageMessages = async (pageMessages) => {
+    [...pageMessages].map(containerDiv => {
+      const entry = containerDiv.children[4];
+      const replyLink = getReplyLink(entry)
+
+      if (replyLink) {
+        const replyALink = replyLink.children[0];
+        console.log(replyALink);
+
+        replyALink.click();
+      }
+    });
+  };
+
+  const populateMessagePanel = async (pageMessages) => {
+    [...pageMessages].map(containerDiv => {
+      const child = containerDiv.children[5];
+
+      const messagePanel = document.createElement('div');
+      messagePanel.appendChild(createMiddleMessageLinkNode())
+
+      child.parentNode.insertBefore(, child);
+
+      if (replyLink) {
+        const replyALink = replyLink.children[0];
+        console.log(replyALink);
+
+        replyALink.click();
+      }
+    });
+  };
+
   if (iFrame && !window.location.search.includes('count')) {
     if (!window.location.search.includes('true')) {
       console.log('START: preparing page');
 
       iFrame.addEventListener("load", async function() {
         const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
-        await getPageMessages(pageMessages);
+        // await getPageMessages(pageMessages);
+        await populatePageMessages(pageMessages);
+        await populateMessagePanel(pageMessages);
 
         console.log('END: next page');
         // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
@@ -78,7 +130,9 @@
   } else {
     console.log('START: preparing page');
     const pageMessages = document.querySelectorAll('.message');
-    await getPageMessages(pageMessages);
+    // await getPageMessages(pageMessages);
+    await populatePageMessages(pageMessages);
+    await populateMessagePanel(pageMessages);
 
     console.log('END: next page');
     // document.querySelector('.next-button').children[0].click();

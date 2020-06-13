@@ -16,14 +16,34 @@
 
   const iFrame = document.querySelector('iframe');
 
-  const checkIfFieldsAreFull = async (toInput, subjectInput, messageInput) => {
-      console.log(toInput, subjectInput, messageInput)
+  const getType = (searchString) => {
+    if (searchString.includes('&')) {
+      const arrayWithType = searchString.split('&').filter(item => item.includes('type='));
+      if (arrayWithType.length === 1) {
+        const type = arrayWithType[0].split('=')[1];
+        return type;
+      }
+    }
+    return 'CUSTOM';
+  }
+
+  const randomMessageDelay = () => new Promise(resolve => {
+    const delay = Math.floor(Math.random() * 6000) + 1000;
+    setTimeout(function() {
+      resolve();
+    }, delay);
+  });
+
+  const checkIfFieldsAreFull = async (toInput, subjectInput, messageInput, type) => {
+      console.log(toInput, subjectInput, messageInput, type)
 
       if (toInput && subjectInput && messageInput) {
+        await randomMessageDelay();
         await sendNewMessageHTTP({
           to: toInput,
           subject: subjectInput,
           message: messageInput,
+          type,
         });
 
         // document.querySelector('#send').click();
@@ -40,8 +60,9 @@
       const toInput = iFrame.contentWindow.document.querySelector('input[name=to]').value;
       const subjectInput = iFrame.contentWindow.document.querySelector('input[name=subject]').value;
       const messageInput = iFrame.contentWindow.document.querySelectorAll('textarea[name=text]')[1].value;
+      const type = getType(window.location.search);
 
-      await checkIfFieldsAreFull(toInput, subjectInput, messageInput);
+      await checkIfFieldsAreFull(toInput, subjectInput, messageInput, type);
 
       console.log('END: script complete');
     });

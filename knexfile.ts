@@ -1,3 +1,6 @@
+import { config } from 'dotenv';
+config();
+
 // Update with your config settings.
 
 module.exports = {

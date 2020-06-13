@@ -11,12 +11,13 @@
 // @grant        none
 // ==/UserScript==
 
-// TODO, THIS IS TO BE DONE, BUT IT WILL BE DONE STILL :)
-
 (async function() {
   'use strict';
 
   import 'util/httpResponses.js' // { uploadMessagesHTTP }
+
+  // TODO, THIS IS TO BE DONE, BUT IT WILL BE DONE STILL :)
+  // even this has a limit to the number of posts it can retrieve. HOWEVER, it is certainly better than nothing.
 
   const iFrame = document.querySelector('iframe');
 

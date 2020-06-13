@@ -3,7 +3,7 @@
 export interface User {
   // Database Fields
   username: string;
-  isHostile: string;
+  is_hostile: string;
 
   userType: string;
   userColor: string;
@@ -13,6 +13,8 @@ export interface User {
 
   sentCount: number;
   receivedCount: number;
+
+  typesSent: string[];
 }
 
 export interface Message {
@@ -30,4 +32,10 @@ export interface PopulateHistoricMessagePayload {
   recipient: string;
   message: string;
   date: string;
+}
+
+
+export enum MessageType {
+  Historic = "historic",
+
 }

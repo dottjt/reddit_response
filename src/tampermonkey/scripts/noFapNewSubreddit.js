@@ -59,12 +59,12 @@ Happy to be your accountability partner! My name is Julius. I also run an accoun
 `
 );
 
-const relapse = () => (
-  `Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
+const relapse = (
+`Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
 
-  If you're struggling with recovery, it might mean that you don't have the basics down. Recovery should relatively effortless, otherwise what's the point in being porn free if you feel like crap all the time?
+If you're struggling with recovery, it might mean that you don't have the basics down. Recovery should relatively effortless, otherwise what's the point in being porn free if you feel like crap all the time?
 
-  I&apos;m sorry to hear you relapsed. How are you currently coping?`
+I&apos;m sorry to hear you relapsed. How are you currently coping?`
 );
  // { startStruggleBasics }
   const sendNewMessageHTTP = async (dataPayload) => {
@@ -142,26 +142,41 @@ const fetchCheckUsernameResultHTTP = async (usernameArray) => {
   return node;
 }
 
-const createMessageLinkNode = (text, color, username, message, key) => {
+const createStartMessageLinkNode = (name, color, username, message, key) => {
   const node = document.createElement('a');
-  const url = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&hello=cake`;
+  const url = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&type=${name}`;
   node.href = url;
 
   node.style.color = color || 'black';
   node.style.fontSize = '16px';
 
+  node.style.marginTop = '0.3rem';
+  node.style.marginBottom = '0.3rem';
+  node.style.marginLeft = '0.3rem';
+  node.style.marginRight = '0.3rem';
+
   node.target = "_blank"
-  var textnode = document.createTextNode(text + ' ');         // Create a text node
+  var textnode = document.createTextNode(name + ' ');         // Create a text node
   node.appendChild(textnode);
 
-  // NOTE: This is not possible, because there are hundreds of these on a page and only one key.
+  return node;
+}
 
-  // document.addEventListener('keypress', function(event) {
-  //   if (event.key === key) {
-  //     window.open(url, '_blank');
-  //     window.focus();
-  //   }
-  // })
+const createMiddleMessageLinkNode = (name, color, username, message, key) => {
+  const node = document.createElement('div');
+
+  node.style.color = color || 'black';
+  node.style.fontSize = '16px';
+
+  node.style.marginTop = '0.3rem';
+  node.style.marginBottom = '0.3rem';
+  node.style.marginLeft = '0.3rem';
+  node.style.marginRight = '0.3rem';
+
+  node.target = "_blank"
+  var textnode = document.createTextNode(name + ' ');         // Create a text node
+  node.appendChild(textnode);
+
   return node;
 }
 
@@ -186,15 +201,24 @@ const appendUserInformation = (tag, dbUser) => {
   container.style.marginBottom = '1rem';
   container.style.cursor = 'default';
 
-  container.appendChild(createMessageLinkNode('emptyMessage', 'purple', dbUser.username, ''));
-  container.appendChild(createMessageLinkNode('struggleBasics', 'purple', dbUser.username, struggleBasics));
-  container.appendChild(createMessageLinkNode('biggestDifference', 'purple', dbUser.username, biggestDifference));
-  container.appendChild(createMessageLinkNode('relapseReason', 'purple', dbUser.username, relapseReason));
-  container.appendChild(createMessageLinkNode('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner));
+  container.appendChild(createStartMessageLinkNode('customMessage', 'purple', dbUser.username, ''));
+  container.appendChild(createStartMessageLinkNode('struggleBasics', 'purple', dbUser.username, struggleBasics));
+  container.appendChild(createStartMessageLinkNode('biggestDifference', 'purple', dbUser.username, biggestDifference));
+  container.appendChild(createStartMessageLinkNode('relapseReason', 'purple', dbUser.username, relapseReason));
+  container.appendChild(createStartMessageLinkNode('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner));
 
   tag.parentNode.insertBefore(lastSentTextcontainer, container);
   tag.parentNode.insertBefore(container, tag);
 };
+
+// NOTE: This is not possible, because there are hundreds of these on a page and only one key.
+
+// document.addEventListener('keypress', function(event) {
+//   if (event.key === key) {
+//     window.open(url, '_blank');
+//     window.focus();
+//   }
+// })
  // { createNode, createMessageLinkNode }
 
   const TIMEFRAME = '1 hour ago';
@@ -240,9 +264,6 @@ const appendUserInformation = (tag, dbUser) => {
 
       if (dbUser) {
         appendUserInformation(tag, dbUser)
-        
-        // type 'encouragement'
-        // type 'advice'
       }
     });
   }

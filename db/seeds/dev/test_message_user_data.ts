@@ -1,14 +1,21 @@
-import * as Knex from "knex";
+import * as Knex from 'knex';
 
 export async function seed(knex: Knex): Promise<any> {
-  // Deletes ALL existing entries
-  return knex("users").del()
+  return knex('users').del()
     .then(() => {
-      // Inserts seed entries
-      return knex("users").insert([
-        { username: 'NeverFapDeluxe', isHostile: false, isHistoric: false },
-        { username: 'NeverFapDeluxe', isHostile: false, isHistoric: false },
-        { username: 'NeverFapDeluxe', isHostile: false, isHistoric: false }
+      return knex('messages').del()
+    }).then(() => {
+      return knex('users').insert([
+        { username: 'NeverFapDeluxe', is_hostile: false, is_historic: false },
+        { username: 'RandomUser1', is_hostile: false, is_historic: false },
+        { username: 'RandomUser2', is_hostile: false, is_historic: false }
+      ]);
+    }).then(() => {
+      return knex('messages').insert([
+
+        { username: 'NeverFapDeluxe', is_hostile: false, is_historic: false },
+        { username: 'RandomUser1', is_hostile: false, is_historic: false },
+        { username: 'RandomUser2', is_hostile: false, is_historic: false }
       ]);
     });
 };
