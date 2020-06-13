@@ -6,13 +6,12 @@
 // @author       You
 // @match        https://www.reddit.com/message/compose/?*
 // @grant        none
-// @require      file:///Users/julius.reade/Code/PER/reddit_response/tampermonkey/scripts/messageComposeScript.js
+// @require      file:///Users/julius.reade/Code/PER/reddit_response/src/tampermonkey/scripts/messageComposeScript.js
 // ==/UserScript==
 
 (async function() {
   'use strict';
 
-  import 'responses/guide.js' // { guideLong }
   import 'util/httpResponses.js' // { sendNewMessageHTTP }
 
   const iFrame = document.querySelector('iframe');

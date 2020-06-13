@@ -6,14 +6,14 @@
 // @author       You
 // @match        https://www.reddit.com/r/NoFap/new
 // @match        https://www.reddit.com/r/NoFap/new/
-// @require      file:///Users/julius.reade/Code/PER/reddit_response/tampermonkey/scripts/noFapNewSubreddit.js
+// @require      file:///Users/julius.reade/Code/PER/reddit_response/src/tampermonkey/scripts/noFapNewSubreddit.js
 // @grant        none
 // ==/UserScript==
 
 (async function() {
   'use strict';
 
-  import 'responses/start.js' // {  }
+  import 'responses/start.js' // { startStruggleBasics }
   import 'util/httpResponses.js' // { fetchCheckUsernameResultHTTP }
   import 'util/createNodes.js' // { createNode, createMessageLinkNode }
 
@@ -59,24 +59,15 @@
       const dbUser = users.find(user => user.username === tagUsername);
 
       if (dbUser) {
-        tag.innerText = '';
-
-        tag.style.marginTop = '1rem';
-        tag.style.marginBottom = '1rem';
-        tag.style.marginLeft = '1rem';
-        tag.style.marginRight = '1rem';
-
-        tag.appendChild(createNode(dbUser.username, dbUser.userColor));
-        tag.appendChild(createNode(`Type: ${dbUser.userType}`, dbUser.userColor));
-        tag.appendChild(createNode(`Sent: ${dbUser.sentCount}`, 'blue'));
-
-        // TODO: maybe there is something else aside from TAG.
-        createMessageLinkNode('basic', 'purple', dbUser.username, message);
-
+        appendUserInformation(tag, dbUser)
+        
+        // type 'encouragement'
+        // type 'advice'
       }
     });
   }
   console.log('START: start script');
+
   await scrollToSpecifiedDate(TIMEFRAME);
   const textUsernames = getAllUsernames();
 

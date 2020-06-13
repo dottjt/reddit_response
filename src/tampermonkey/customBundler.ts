@@ -77,4 +77,5 @@ const main = () => {
 // import 'responses/guide.js';
 // it takes from
 
-main();
+
+export default main;

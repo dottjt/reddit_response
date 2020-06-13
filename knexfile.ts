@@ -1,13 +1,16 @@
 // Update with your config settings.
 
 module.exports = {
-  dev: {
+  development: {
     client: "sqlite3",
     connection: {
       filename: "./db/dev_reddit_database.sqlite"
+    },
+    seeds: {
+      directory: './db/seeds/dev'
     }
   },
-  prod: {
+  produdction: {
     client: "sqlite3",
     connection: {
       filename: "./db/prod_reddit_database.sqlite"
