@@ -1,5 +1,6 @@
-import { config } from 'dotenv';
-config();
+// import { config } from 'dotenv';
+// config();
+require('dotenv').config();
 
 // Update with your config settings.
 
@@ -13,7 +14,7 @@ module.exports = {
       directory: './db/seeds/dev'
     }
   },
-  produdction: {
+  production: {
     client: "sqlite3",
     connection: {
       filename: "./db/prod_reddit_database.sqlite"
