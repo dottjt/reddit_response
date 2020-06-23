@@ -68,6 +68,7 @@ const appendUserInformation = (tag, dbUser) => {
   container.style.cursor = 'default';
 
   container.appendChild(createStartMessageLinkNode('customMessage', 'purple', dbUser.username, ''));
+  container.appendChild(createStartMessageLinkNode('straightToGuide', 'purple', dbUser.username, straightToGuide));
   container.appendChild(createStartMessageLinkNode('startAdvice', 'purple', dbUser.username, startAdvice));
   container.appendChild(createStartMessageLinkNode('generalAdvice', 'purple', dbUser.username, generalAdvice));
   container.appendChild(createStartMessageLinkNode('mentalhealthNotExerciseAdvice', 'purple', dbUser.username, mentalhealthNotExerciseAdvice));

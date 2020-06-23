@@ -24,6 +24,13 @@ Do you do much for your mental health? Like meditate, and stuff?
 `
 );
 
+const straightToGuide = (
+`${opener}
+
+If you're looking for advice, I've written a guide to overcoming porn addiction if you're interested?
+`
+)
+
 const generalAdvice = (
 `${opener}
 
@@ -245,6 +252,7 @@ const appendUserInformation = (tag, dbUser) => {
   container.style.cursor = 'default';
 
   container.appendChild(createStartMessageLinkNode('customMessage', 'purple', dbUser.username, ''));
+  container.appendChild(createStartMessageLinkNode('straightToGuide', 'purple', dbUser.username, straightToGuide));
   container.appendChild(createStartMessageLinkNode('startAdvice', 'purple', dbUser.username, startAdvice));
   container.appendChild(createStartMessageLinkNode('generalAdvice', 'purple', dbUser.username, generalAdvice));
   container.appendChild(createStartMessageLinkNode('mentalhealthNotExerciseAdvice', 'purple', dbUser.username, mentalhealthNotExerciseAdvice));

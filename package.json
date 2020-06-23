@@ -11,8 +11,8 @@
     "reset-dev": "NODE_ENV=development npx knex --knexfile ./knexfile.ts --env development migrate:rollback && npx knex --knexfile ./knexfile.ts --env development migrate:latest && npx knex --knexfile ./knexfile.ts --env development seed:run",
     "rollback-dev": "NODE_ENV=development npx knex --knexfile ./knexfile.ts --env development migrate:rollback",
     "migrate-dev": "NODE_ENV=development npx knex --knexfile ./knexfile.ts --env development migrate:latest",
-    "bundle": "ts-node ./src/tampermonkey/custom_bundler.js",
-    "bundle-dev": "ts-node-dev --respawn --transpileOnly ./src/tampermonkey/custom_bundler.js"
+    "bundle": "ts-node ./src/tampermonkey/customBundler.ts",
+    "bundle-dev": "ts-node-dev --respawn --transpileOnly ./src/tampermonkey/customBundler.ts"
   },
   "keywords": [],
   "author": "",
