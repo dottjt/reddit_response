@@ -1,36 +1,4 @@
-import { User, Message } from '../types';
-
-export const calculateUserStatistics = (user: User, sentCount: number, receivedCount: number): { userType: string, userColor: string } => {
-  let userType;
-  let userColor;
-
-  if (sentCount === 0 && receivedCount === 0) {
-    userType = 'Fresh User!';
-    userColor = 'green';
-  };
-
-  if (sentCount > 0 && receivedCount === 0) {
-    userType = 'User not responded to you.';
-    userColor = 'purple';
-  };
-
-  if (sentCount > 0 && receivedCount > 0) {
-    userType = 'User already corresponded with.';
-    userColor = 'blue';
-  };
-
-  if (user?.is_hostile) {
-    userType = 'HOSTILE';
-    userColor = 'red';
-  }
-
-  return {
-    userType,
-    userColor
-  }
-};
-
-const toISOTimezoneString = (date) => {
+const toISOTimezoneString = (date: Date): string => {
   var tzo = - date.getTimezoneOffset(),
       dif = tzo >= 0 ? '+' : '-',
       pad = function(num) {
@@ -47,7 +15,7 @@ const toISOTimezoneString = (date) => {
       ':' + pad(tzo % 60);
 }
 
-export const toMelbourneDateString = (date) => {
+export const toMelbourneDateString = (date: Date): string => {
   const aestTime = date.toLocaleString("en-US", {timeZone: "Australia/Melbourne"});
   const timeZoneDate = toISOTimezoneString(new Date(aestTime));
 

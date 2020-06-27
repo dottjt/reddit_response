@@ -2,19 +2,10 @@
 
 export interface User {
   // Database Fields
+  id: string;
   username: string;
-  is_hostile: string;
-
-  userType: string;
-  userColor: string;
-
-  lastSentMessage: Message;
-  lastReceivedMessage: Message;
-
-  sentCount: number;
-  receivedCount: number;
-
-  typesSent: string[];
+  is_hostile?: boolean;
+  is_historic?: boolean;
 }
 
 export interface Message {
@@ -34,8 +25,7 @@ export interface PopulateHistoricMessagePayload {
   date: string;
 }
 
-
 export enum MessageType {
-  Historic = "historic",
-
+  Historic = "Historic",
+  NonHistoric = "NonHistoric"
 }

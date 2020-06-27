@@ -1,22 +1,20 @@
 import { Context, Next } from 'koa';
-import { validateUser } from '../util/db/validateUser';
+import validateUser from '../util/db/validateUser';
 
-import {
-  User,
-} from '../types';
+import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 
 const checkUsernamesRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
-  const usernames = body?.data?.usernames;
+  const usernames: string[] | undefined = body?.data?.usernames;
   if (!usernames) {
     throw new Error('da fuq, no usernames were sent to the server');
   }
 
   console.log(usernames);
-  const usersList: User[] = [];
+  const usersList: CompiledFullUserObject[] = [];
 
   for (const username of usernames) {
-    const user = await validateUser(username, false);
+    const user: CompiledFullUserObject = await validateUser(username, false);
     usersList.push(user);
   }
 

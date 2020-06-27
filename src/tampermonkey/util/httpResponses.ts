@@ -1,3 +1,5 @@
+import { CompiledFullUserObject } from "../../types/tamperMonkeyTypes";
+
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',
   mode: 'cors',
@@ -9,16 +11,32 @@ const HTTPPOSToptions = (data): any => ({
   body: JSON.stringify({ data }) // body data type must match "Content-Type" header
 });
 
-export const sendPostRequest = async (dataPayload: any, urlEndpoint: string): Promise<{ data: any }> => {
+const sendPostRequest = async (dataPayload: any, urlEndpoint: string): Promise<{ data: any }> => {
   try {
     const response = await fetch(
       `http://localhost:3333${urlEndpoint}`,
       HTTPPOSToptions(dataPayload)
     );
-    const json = await response.json();
-    return json;
+    const JSONResponse = await response.json();
+    return JSONResponse;
   } catch(error) {
     console.log('Server not started.');
     throw new Error(`${urlEndpoint} - ${error}`);
   }
 }
+
+export const checkUsernamesFetch =
+  async (dataPayload: { usernames: string[] }):
+    Promise<CompiledFullUserObject[]> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/checkUsernames');
+      return JSONResponse.data.users;
+    };
+
+
+export const populateReceivedMessages =
+  async (dataPayload: { usernames: string[] }):
+    Promise<CompiledFullUserObject[]> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/populateReceivedMessages');
+      return JSONResponse.data.users;
+    };
+

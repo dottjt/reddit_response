@@ -51,7 +51,7 @@ const iFrame = document.querySelector('iframe');
 //   console.log('filteredMessageList', filteredMessageList);
 //   await uploadMessagesHTTP({ messages: filteredMessageList });
 
-// await sendPostRequest(dataPayload, '/populateNonHistoricReceivedMessages');
+// await sendPostRequest(dataPayload, '/populateReceivedMessages');
 
 // }
 

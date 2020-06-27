@@ -1,11 +1,11 @@
 import { Context, Next } from 'koa';
-import { addReceivedMessage } from '../util/db/validateUser';
+import addReceivedMessage from '../util/db/validateUser';
 
 import {
   // User,
   // Message,
   PopulateHistoricMessagePayload
-} from '../types';
+} from '../types/serverTypes';
 
 const populateHistoricReceivedMessages = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;

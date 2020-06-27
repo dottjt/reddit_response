@@ -1,13 +1,13 @@
 import { Context, Next } from 'koa';
-import { addReceivedMessage } from '../util/db/validateUser';
+import addReceivedMessage from '../util/db/validateUser';
 
 import {
   // User,
   // Message,
   PopulateHistoricMessagePayload
-} from '../types';
+} from '../types/serverTypes';
 
-const populateReceivedInboxMessages = async (ctx: Context, next: Next) => {
+const populateReceivedMessagesRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
   const messages: PopulateHistoricMessagePayload[] = body.data.messages;
 
@@ -18,4 +18,4 @@ const populateReceivedInboxMessages = async (ctx: Context, next: Next) => {
   ctx.body = { data: { message: 'received messages successfully added' } };
 }
 
-export default populateReceivedInboxMessages;
+export default populateReceivedMessagesRoute;

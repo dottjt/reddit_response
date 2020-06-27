@@ -1,27 +1,20 @@
 import { v4 as uuidv4 } from 'uuid';
 import knex from '../knex';
 
-import {
-  User,
-  Message,
+import { User, Message } from '../../types/serverTypes';
 
-  PopulateHistoricMessagePayload
-} from '../../types';
+import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 
-import {
-  calculateUserStatistics,
-  toMelbourneDateString
-} from '../util';
+const getFullUser = async (username: string): Promise<CompiledFullUserObject> => {
+  const user: User | undefined = await knex<User>('users').where({ username }).first('*');
+  const sentMessagesCount = await knex<Message>('messages').where({ username_sending: username }).count('id');
+  const receivedMessagesCount = await knex<Message>('messages').where({ username_receiving: username }).count('id');
 
-const getFullUser = async (username: string): Promise<User> => {
-  const user = await knex('users').where({ username }).first('*');
-  const sentMessagesCount = await knex('messages').where({ username_sending: username }).count('id');
-  const receivedMessagesCount = await knex('messages').where({ username_receiving: username }).count('id');
+  const lastSentMessage: Message | undefined = await knex<Message>('messages').where({ username_receiving: username }).first('*');
+  const lastReceivedMessage: Message | undefined = await knex<Message>('messages').where({ username_receiving: username }).first('*');
 
-  const lastSentMessage = await knex('messages').where({ username_receiving: username }).first('*');
-  const lastReceivedMessage = await knex('messages').where({ username_receiving: username }).first('*');
-
-  const typesSent = await knex('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).select('type');
+  // TODO Test this. and figure out what this would actually be.
+  const messageTypesSent: string[] | undefined = await knex<Message>('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).select('type');
 
   // TODO: Retrieve User Notes and send it to the client.
 
@@ -30,7 +23,7 @@ const getFullUser = async (username: string): Promise<User> => {
 
   const calculatedUser = calculateUserStatistics(user, sentCount, receivedCount);
 
-  const compiledUser = {
+  return {
     username: user.username,
     is_hostile: user.username,
 
@@ -43,10 +36,43 @@ const getFullUser = async (username: string): Promise<User> => {
     sentCount,
     receivedCount,
 
-    typesSent,
+    messageTypesSent,
+  };
+};
+
+type CalculateUserStatisticsProps = {
+  userType: string;
+  userColor: string;
+}
+
+const calculateUserStatistics = (user: User, sentCount: number, receivedCount: number): CalculateUserStatisticsProps => {
+  let userType;
+  let userColor;
+
+  if (sentCount === 0 && receivedCount === 0) {
+    userType = 'Fresh User!';
+    userColor = 'green';
   };
 
-  return compiledUser;
+  if (sentCount > 0 && receivedCount === 0) {
+    userType = 'User not responded to you.';
+    userColor = 'purple';
+  };
+
+  if (sentCount > 0 && receivedCount > 0) {
+    userType = 'User already corresponded with.';
+    userColor = 'blue';
+  };
+
+  if (user?.is_hostile) {
+    userType = 'HOSTILE';
+    userColor = 'red';
+  }
+
+  return {
+    userType,
+    userColor
+  }
 };
 
 export default getFullUser;

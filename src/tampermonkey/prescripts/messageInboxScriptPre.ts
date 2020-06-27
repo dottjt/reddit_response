@@ -1,4 +1,4 @@
-import { sendPostRequest } from '../util/httpResponses.js';
+import { populateReceivedMessages } from '../util/httpResponses.js';
 
 'use strict';
 
@@ -47,7 +47,7 @@ const getPageMessages = async (pageMessages) => {
   );
   console.log('filteredMessageList', filteredMessageList);
   const dataPayload = { messages: filteredMessageList };
-  await sendPostRequest(dataPayload, '/populateNonHistoricReceivedMessages');
+  await populateReceivedMessages(dataPayload, '/populateReceivedMessages');
 }
 
 const getReplyLink = (entry) => {

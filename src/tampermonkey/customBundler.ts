@@ -25,7 +25,7 @@ const compileScript = async () => {
         plugins: [
           typescript({ module: 'CommonJS' }), //
           resolve(),
-          commonjs({ extensions: ['.js', '.ts'] })
+          commonjs({ extensions: ['.js', '.ts', '.tsx'] })
         ]
       });
 

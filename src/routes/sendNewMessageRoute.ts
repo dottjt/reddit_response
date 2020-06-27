@@ -3,7 +3,7 @@ import { addNewMessage } from '../util/db/validateUser';
 
 import {
   User,
-} from '../types';
+} from '../types/serverTypes';
 
 const sendNewMessage = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
