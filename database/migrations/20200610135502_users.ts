@@ -2,7 +2,8 @@ import * as Knex from "knex";
 
 export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable('users', function(table) {
-    table.string('username').notNullable().unique().primary();
+    table.uuid('id').notNullable().unique().primary();
+    table.string('username').notNullable();
     table.boolean('is_hostile');
     table.boolean('is_historic');
 

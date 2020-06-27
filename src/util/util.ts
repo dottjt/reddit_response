@@ -1,4 +1,4 @@
-import { User, Message } from '../util/types';
+import { User, Message } from '../types';
 
 export const calculateUserStatistics = (user: User, sentCount: number, receivedCount: number): { userType: string, userColor: string } => {
   let userType;

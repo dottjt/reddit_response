@@ -1,5 +1,14 @@
 ## Reddit Marketing Automation
 
+
+## Test Plan.
+
+- Start with new users.
+- Check that
+
+
+
+
 ### Required Plugins and Dependencies
 - Tampermonkey plugin installed
 -

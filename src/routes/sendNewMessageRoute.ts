@@ -1,9 +1,9 @@
 import { Context, Next } from 'koa';
-import { addNewMessage } from '../util/db';
+import { addNewMessage } from '../util/db/validateUser';
 
 import {
   User,
-} from '../util/types';
+} from '../types';
 
 const sendNewMessage = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;

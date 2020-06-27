@@ -1,6 +1,10 @@
-const chokidar = require('chokidar');
-const fse = require('fs-extra');
-const path = require('path');
+import * as rollup from 'rollup';
+import chokidar from 'chokidar';
+import fse from 'fs-extra';
+import path from 'path';
+import typescript from '@rollup/plugin-typescript';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 
 const WATCH_PRE_SCRIPT_DIRECTORY = path.resolve(__dirname, 'prescripts');
 const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, 'responses');
@@ -8,67 +12,42 @@ const WATCH_UTIL_DIRECTORY = path.resolve(__dirname, 'util');
 
 const OUTPUT_SCRIPT_DIRECTORY = path.resolve(__dirname, 'scripts');
 
-const supplantPreScriptFile = async (preScriptContents, importStatementsArray) => {
-  try {
-    let finalPreScriptContents = preScriptContents;
-
-    for (const importStatement of importStatementsArray) {
-      const importFileName = importStatement.split("'")[1].trim();
-
-      const importFileNamePath = path.resolve(__dirname, importFileName);
-      const importFileContents = await fse.readFile(importFileNamePath);
-      const importFileContentsReadable = importFileContents.toString();
-
-      finalPreScriptContents = finalPreScriptContents.replace(importStatement, importFileContentsReadable);
-    }
-    return finalPreScriptContents;
-  } catch (error) {
-    throw new Error(`supplantPreScriptFile - ${error}`);
-  }
-}
-
-const outputScriptFile = (preScript, finalPreScriptContents) => {
-  const scriptFileName = preScript.split('.')[0].slice(0,-3) + '.js';
-  const outputFileFinal = path.resolve(__dirname, OUTPUT_SCRIPT_DIRECTORY, scriptFileName);
-  fse.outputFile(outputFileFinal, finalPreScriptContents);
-}
+const outputScriptFileName = (preScript: string): string => preScript.split('.')[0].slice(0,-3);  //+ '.js';
 
 const compileScript = async () => {
   try {
     const preScriptDirList = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
     for (const preScript of preScriptDirList) {
-      const preScriptFile = path.resolve(__dirname, 'prescripts', preScript);
-      const preScriptContents = await fse.readFile(preScriptFile);
-      const preScriptContentsReadable = preScriptContents.toString();
+      const plainName = outputScriptFileName(preScript);
 
-      const importStatementsRegex = new RegExp(/import\s*["']([\w/]+)([\w\.]+)['"]/g);
-      const importStatementsArray = preScriptContentsReadable.match(importStatementsRegex);
-      console.log(importStatementsArray)
+      const bundle = await rollup.rollup({
+        input: path.resolve(__dirname, 'prescripts', preScript),
+        plugins: [
+          typescript({ module: 'CommonJS' }), //
+          resolve(),
+          commonjs({ extensions: ['.js', '.ts'] })
+        ]
+      });
 
-      if (importStatementsArray) {
-        const finalPreScriptContents = await supplantPreScriptFile(preScriptContentsReadable, importStatementsArray);
-
-        outputScriptFile(preScript, finalPreScriptContents);
-      }
-
-      if (!importStatementsArray) {
-        console.log(`no imports for ${preScript}`);
-        outputScriptFile(preScript, preScriptContentsReadable);
-      }
+      await bundle.write({
+        format: 'iife',
+        // name: `${plainName}.js`,
+        file: path.resolve(__dirname, 'scripts', `${plainName}.js`),
+      });
     }
   } catch (error) {
     throw new Error(`compileScript - ${error}`);
   }
 };
 
-const main = () => {
+const main = async () => {
   // initial run
-  compileScript();
+  await compileScript();
 
   // further changes
-  chokidar.watch([WATCH_PRE_SCRIPT_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY]).on('change', (event, path) => {
+  chokidar.watch([WATCH_PRE_SCRIPT_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY]).on('change', async (event, path) => {
     console.log('change observed');
-    compileScript();
+    await compileScript();
   });
 };
 
@@ -76,6 +55,5 @@ const main = () => {
 // this is how the import statements will look like.
 // import 'responses/guide.js';
 // it takes from
-
 
 export default main;

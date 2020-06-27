@@ -1,23 +1,30 @@
 import { v4 as uuidv4 } from 'uuid';
-import knex from './knex';
+import knex from '../knex';
 
 import {
   User,
   Message,
 
   PopulateHistoricMessagePayload
-} from './types';
+} from '../../types';
 
 import {
   calculateUserStatistics,
   toMelbourneDateString
-} from './util';
+} from '../util';
+
+export const addNewUserNote = async (username: string, userNote: string): Promise<void> => {
+  await validateUser(username, false);
+  // TODO Create this function.
+
+   await knex('users').where({ username }).first('username');
+};
 
 export const validateUser = async (username: string, is_historic: boolean): Promise<User> => {
   const usernameExists =
     await knex('users').where({ username }).first('username');
   if (!usernameExists) {
-    await knex('users').insert({ username, is_historic });
+      await knex('users').insert({ id: uuidv4(), username, is_historic });
     const newUser: User = await getFullUser(username);
     return newUser;
   } else {
@@ -34,7 +41,9 @@ export const getFullUser = async (username: string): Promise<User> => {
   const lastSentMessage = await knex('messages').where({ username_receiving: username }).first('*');
   const lastReceivedMessage = await knex('messages').where({ username_receiving: username }).first('*');
 
-  const typesSent = await knex('messages').where({ username_receiving: username, username_sent: 'NeverFapDeluxe' }).select('type');
+  const typesSent = await knex('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).select('type');
+
+  // TODO: Retrieve User Notes and send it to the client.
 
   const sentCount = Number(sentMessagesCount[0]["count(`id`)"]);
   const receivedCount = Number(receivedMessagesCount[0]["count(`id`)"]);
@@ -83,8 +92,8 @@ export const addHistoricSentMessage = async (message: PopulateHistoricMessagePay
   }
 }
 
-export const addHistoricReceivedMessage = async (message: PopulateHistoricMessagePayload): Promise<void> => {
-  await validateUser(message.recipient, true);
+export const addReceivedMessage = async (message: PopulateHistoricMessagePayload, isHistoric: boolean): Promise<void> => {
+  await validateUser(message.recipient, isHistoric);
 
   const doesMessageExist = await knex('messages').where({
     username_sending: message.recipient, send_date: message.date
@@ -97,7 +106,7 @@ export const addHistoricReceivedMessage = async (message: PopulateHistoricMessag
       username_receiving: 'NeverFapDeluxe',
       subject: message.subject,
       text: message.message,
-      is_historic: true,
+      is_historic: isHistoric,
       type: 'historic',
       send_date: toMelbourneDateString(new Date(message.date)),
     });

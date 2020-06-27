@@ -1,24 +1,27 @@
-// import { config } from 'dotenv';
-// config();
-require('dotenv').config();
+import { config } from 'dotenv';
+config();
 
-// Update with your config settings.
+import path from 'path';
+// require('dotenv').config();
 
 module.exports = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./db/dev_reddit_database.sqlite"
+      filename: path.resolve(__dirname, 'databases', 'dev_reddit_database.sqlite')
     },
     seeds: {
-      directory: './db/seeds/dev'
+      directory: path.resolve(__dirname, 'seeds', 'dev')
     }
   },
   production: {
     client: "sqlite3",
     connection: {
-      filename: "./db/prod_reddit_database.sqlite"
-    }
+      filename: path.resolve(__dirname, 'databases', 'prod_reddit_database.sqlite')
+    },
+    // seeds: {
+    //   directory: path.resolve(__dirname, 'seeds', 'prod')
+    // }
   },
   // staging: {
   //   client: "postgresql",

@@ -1,9 +1,9 @@
 import { Context, Next } from 'koa';
-import { validateUser } from '../util/db';
+import { validateUser } from '../util/db/validateUser';
 
 import {
   User,
-} from '../util/types';
+} from '../types';
 
 const checkUsernamesRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;

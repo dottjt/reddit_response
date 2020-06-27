@@ -1,308 +1,446 @@
-// ==UserScript==
-// @name         Reddit Message Inbox Script
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        https://www.reddit.com/message/inbox
-// @match        https://www.reddit.com/message/inbox/
-// @match        https://www.reddit.com/message/inbox/?*
-// @require      file:///Users/julius.reade/Code/PER/reddit_response/src/tampermonkey/scripts/messageInboxScript.js
-// @grant        none
-// ==/UserScript==
+(function () {
+	'use strict';
 
-(async function() {
-  'use strict';
+	function unwrapExports (x) {
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	}
 
-  // <content>Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
+	function createCommonjsModule(fn, basedir, module) {
+		return module = {
+		  path: basedir,
+		  exports: {},
+		  require: function (path, base) {
+	      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+	    }
+		}, fn(module, module.exports), module.exports;
+	}
 
-const middleWrittenGuide = (
-`If you'd like to learn more I've written a guide to the whole process of overcoming porn addiction. The homepage should cover 90% of how NeverFap Deluxe works, and a lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.
+	function getCjsExportFromNamespace (n) {
+		return n && n['default'] || n;
+	}
 
-https://neverfapdeluxe.com/
+	function commonjsRequire () {
+		throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+	}
 
-Also happy to have you join the #accountability program on Discord once you&apos;ve become familiar with the material. Our bot tracks your days and progress.
-`
-)
- // { }
-  const createNode = (text, color) => {
-  const node = document.createElement('span');
-  node.style.color = color || 'black';
-  node.style.fontSize = '20px';
-  var textnode = document.createTextNode(text + ' ');         // Create a text node
-  node.appendChild(textnode);
+	/*! *****************************************************************************
+	Copyright (c) Microsoft Corporation.
 
-  return node;
-}
+	Permission to use, copy, modify, and/or distribute this software for any
+	purpose with or without fee is hereby granted.
 
-const createStartMessageLinkNode = (name, color, username, message, key) => {
-  const node = document.createElement('a');
-  const url = `https://www.reddit.com/message/compose/?to=${username}&subject=Hey&message=${message}&type=${name}`;
-  node.href = url;
+	THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+	REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+	INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+	LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+	OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+	PERFORMANCE OF THIS SOFTWARE.
+	***************************************************************************** */
+	/* global Reflect, Promise */
 
-  node.style.color = color || 'black';
-  node.style.fontSize = '16px';
+	var extendStatics = function(d, b) {
+	    extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return extendStatics(d, b);
+	};
 
-  node.style.marginTop = '0.3rem';
-  node.style.marginBottom = '0.3rem';
-  node.style.marginLeft = '0.3rem';
-  node.style.marginRight = '0.3rem';
+	function __extends(d, b) {
+	    extendStatics(d, b);
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	}
 
-  node.target = "_blank"
-  var textnode = document.createTextNode(name + ' ');         // Create a text node
-  node.appendChild(textnode);
+	var __assign = function() {
+	    __assign = Object.assign || function __assign(t) {
+	        for (var s, i = 1, n = arguments.length; i < n; i++) {
+	            s = arguments[i];
+	            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+	        }
+	        return t;
+	    };
+	    return __assign.apply(this, arguments);
+	};
 
-  return node;
-}
+	function __rest(s, e) {
+	    var t = {};
+	    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+	        t[p] = s[p];
+	    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+	        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+	            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+	                t[p[i]] = s[p[i]];
+	        }
+	    return t;
+	}
 
-const createMiddleMessageLinkNode = (name, color, username, message, key) => {
-  const node = document.createElement('div');
+	function __decorate(decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	}
 
-  node.style.color = color || 'black';
-  node.style.fontSize = '16px';
+	function __param(paramIndex, decorator) {
+	    return function (target, key) { decorator(target, key, paramIndex); }
+	}
 
-  node.style.marginTop = '0.3rem';
-  node.style.marginBottom = '0.3rem';
-  node.style.marginLeft = '0.3rem';
-  node.style.marginRight = '0.3rem';
+	function __metadata(metadataKey, metadataValue) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+	}
 
-  node.target = "_blank"
-  var textnode = document.createTextNode(name + ' ');         // Create a text node
-  node.appendChild(textnode);
+	function __awaiter(thisArg, _arguments, P, generator) {
+	    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+	    return new (P || (P = Promise))(function (resolve, reject) {
+	        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+	        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+	        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+	        step((generator = generator.apply(thisArg, _arguments || [])).next());
+	    });
+	}
 
-  return node;
-}
+	function __generator(thisArg, body) {
+	    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+	    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+	    function verb(n) { return function (v) { return step([n, v]); }; }
+	    function step(op) {
+	        if (f) throw new TypeError("Generator is already executing.");
+	        while (_) try {
+	            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+	            if (y = 0, t) op = [op[0] & 2, t.value];
+	            switch (op[0]) {
+	                case 0: case 1: t = op; break;
+	                case 4: _.label++; return { value: op[1], done: false };
+	                case 5: _.label++; y = op[1]; op = [0]; continue;
+	                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+	                default:
+	                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+	                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+	                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+	                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+	                    if (t[2]) _.ops.pop();
+	                    _.trys.pop(); continue;
+	            }
+	            op = body.call(thisArg, _);
+	        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+	        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+	    }
+	}
 
-const appendUserInformation = (tag, dbUser) => {
-  tag.innerText = '';
+	var __createBinding = Object.create ? (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+	}) : (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    o[k2] = m[k];
+	});
 
-  tag.style.marginTop = '1rem';
-  tag.style.marginBottom = '1rem';
-  tag.style.marginLeft = '1rem';
-  tag.style.marginRight = '1rem';
+	function __exportStar(m, exports) {
+	    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+	}
 
-  tag.appendChild(createNode(dbUser.username, dbUser.userColor));
-  tag.appendChild(createNode(`Type: ${dbUser.userType}`, dbUser.userColor));
-  tag.appendChild(createNode(`Sent: ${dbUser.sentCount}`, 'blue'));
+	function __values(o) {
+	    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+	    if (m) return m.call(o);
+	    if (o && typeof o.length === "number") return {
+	        next: function () {
+	            if (o && i >= o.length) o = void 0;
+	            return { value: o && o[i++], done: !o };
+	        }
+	    };
+	    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+	}
 
-  const lastSentTextcontainer = document.createElement('div');
-  var textnode = document.createTextNode(dbUser.lastSentMessage); // Create a text node
-  lastSentTextcontainer.appendChild(textnode);
+	function __read(o, n) {
+	    var m = typeof Symbol === "function" && o[Symbol.iterator];
+	    if (!m) return o;
+	    var i = m.call(o), r, ar = [], e;
+	    try {
+	        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+	    }
+	    catch (error) { e = { error: error }; }
+	    finally {
+	        try {
+	            if (r && !r.done && (m = i["return"])) m.call(i);
+	        }
+	        finally { if (e) throw e.error; }
+	    }
+	    return ar;
+	}
 
-  const container = document.createElement('div');
-  container.style.marginTop = '1rem';
-  container.style.marginBottom = '1rem';
-  container.style.cursor = 'default';
+	function __spread() {
+	    for (var ar = [], i = 0; i < arguments.length; i++)
+	        ar = ar.concat(__read(arguments[i]));
+	    return ar;
+	}
 
-  container.appendChild(createStartMessageLinkNode('customMessage', 'purple', dbUser.username, ''));
-  container.appendChild(createStartMessageLinkNode('straightToGuide', 'purple', dbUser.username, straightToGuide));
-  container.appendChild(createStartMessageLinkNode('startAdvice', 'purple', dbUser.username, startAdvice));
-  container.appendChild(createStartMessageLinkNode('generalAdvice', 'purple', dbUser.username, generalAdvice));
-  container.appendChild(createStartMessageLinkNode('mentalhealthNotExerciseAdvice', 'purple', dbUser.username, mentalhealthNotExerciseAdvice));
-  container.appendChild(createStartMessageLinkNode('amIAddictedAdvice', 'purple', dbUser.username, amIAddictedAdvice));
-  container.appendChild(createStartMessageLinkNode('flatlineAdvice', 'purple', dbUser.username, flatlineAdvice));
-  container.appendChild(createStartMessageLinkNode('struggleBasics', 'purple', dbUser.username, struggleBasics));
-  container.appendChild(createStartMessageLinkNode('biggestDifference', 'purple', dbUser.username, biggestDifference));
-  container.appendChild(createStartMessageLinkNode('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse));
-  container.appendChild(createStartMessageLinkNode('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner));
-  container.appendChild(createStartMessageLinkNode('sorryToHearYouRelapsed', 'purple', dbUser.username, sorryToHearYouRelapsed));
+	function __spreadArrays() {
+	    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+	    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+	        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+	            r[k] = a[j];
+	    return r;
+	}
+	function __await(v) {
+	    return this instanceof __await ? (this.v = v, this) : new __await(v);
+	}
 
-  tag.parentNode.insertBefore(lastSentTextcontainer, container);
-  tag.parentNode.insertBefore(container, tag);
-};
+	function __asyncGenerator(thisArg, _arguments, generator) {
+	    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+	    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+	    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+	    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+	    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+	    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+	    function fulfill(value) { resume("next", value); }
+	    function reject(value) { resume("throw", value); }
+	    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+	}
 
-// NOTE: This is not possible, because there are hundreds of these on a page and only one key.
+	function __asyncDelegator(o) {
+	    var i, p;
+	    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+	    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+	}
 
-// document.addEventListener('keypress', function(event) {
-//   if (event.key === key) {
-//     window.open(url, '_blank');
-//     window.focus();
-//   }
-// })
- // { }
-  const sendNewMessageHTTP = async (dataPayload) => {
-  try {
-    const response = await fetch('http://localhost:3333/sendNewMessage',
-    {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify({ data: dataPayload }) // body data type must match "Content-Type" header
-    })
+	function __asyncValues(o) {
+	    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+	    var m = o[Symbol.asyncIterator], i;
+	    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+	    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+	    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+	}
 
-    const json = await response.json();
-    return json;
-  } catch(error) {
-    console.log('Server not started.')
-    throw new Error(`sendNewMessageHTTP - ${error}`);
-  }
-}
+	function __makeTemplateObject(cooked, raw) {
+	    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+	    return cooked;
+	}
+	var __setModuleDefault = Object.create ? (function(o, v) {
+	    Object.defineProperty(o, "default", { enumerable: true, value: v });
+	}) : function(o, v) {
+	    o["default"] = v;
+	};
 
-const uploadMessagesHTTP = async (dataPayload) => {
-  try {
-    const response = await fetch('http://localhost:3333/populateHistoricReceivedMessages',
-    {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify({ data: dataPayload }) // body data type must match "Content-Type" header
-    });
+	function __importStar(mod) {
+	    if (mod && mod.__esModule) return mod;
+	    var result = {};
+	    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+	    __setModuleDefault(result, mod);
+	    return result;
+	}
 
-    const json = await response.json();
-    console.log(json);
-  } catch (error) {
-    console.log('please start server');
-    throw new Error(`uploadMessagesHTTP - ${error}`);
-  }
-}
+	function __importDefault(mod) {
+	    return (mod && mod.__esModule) ? mod : { default: mod };
+	}
 
-const fetchCheckUsernameResultHTTP = async (usernameArray) => {
-  try {
-    const response = await fetch('http://localhost:3333/checkUsernames',
-    {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify({ data: { usernames: usernameArray } }) // body data type must match "Content-Type" header
-    })
+	function __classPrivateFieldGet(receiver, privateMap) {
+	    if (!privateMap.has(receiver)) {
+	        throw new TypeError("attempted to get private field on non-instance");
+	    }
+	    return privateMap.get(receiver);
+	}
 
-    const json = await response.json();
-    return json;
-  } catch(error) {
-    console.log('Server not started.')
-    throw new Error(`fetchCheckUsernameResultHTTP - ${error}`);
-  }
-} // { uploadMessagesHTTP }
+	function __classPrivateFieldSet(receiver, privateMap, value) {
+	    if (!privateMap.has(receiver)) {
+	        throw new TypeError("attempted to set private field on non-instance");
+	    }
+	    privateMap.set(receiver, value);
+	    return value;
+	}
 
-  const iFrame = document.querySelector('iframe');
+	var tslib_es6 = /*#__PURE__*/Object.freeze({
+		__proto__: null,
+		__extends: __extends,
+		get __assign () { return __assign; },
+		__rest: __rest,
+		__decorate: __decorate,
+		__param: __param,
+		__metadata: __metadata,
+		__awaiter: __awaiter,
+		__generator: __generator,
+		__createBinding: __createBinding,
+		__exportStar: __exportStar,
+		__values: __values,
+		__read: __read,
+		__spread: __spread,
+		__spreadArrays: __spreadArrays,
+		__await: __await,
+		__asyncGenerator: __asyncGenerator,
+		__asyncDelegator: __asyncDelegator,
+		__asyncValues: __asyncValues,
+		__makeTemplateObject: __makeTemplateObject,
+		__importStar: __importStar,
+		__importDefault: __importDefault,
+		__classPrivateFieldGet: __classPrivateFieldGet,
+		__classPrivateFieldSet: __classPrivateFieldSet
+	});
 
-  const getPageMessages = async (pageMessages) => {
-    const messageList = [...pageMessages].map(containerDiv => {
-      const subjectTag = containerDiv.children[1];
-      const subjectReplyToTitle = subjectTag.children[0].innerText;
+	var tslib_1 = getCjsExportFromNamespace(tslib_es6);
 
-      let subject;
-      if (subjectTag.children.length === 1 && !subjectReplyToTitle.includes('re:')) {
-        subject = subjectReplyToTitle;
-      } else {
-        subject = subjectReplyToTitle + ' (no subject/reply)';
-      }
-      if (subjectTag.children.length === 2) {
-        subject = subjectTag.children[1].innerText;
-      }
+	var httpResponses = createCommonjsModule(function (module, exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.sendPostRequest = void 0;
 
-      const entry = containerDiv.children[4];
-      const headerTag = entry.children[0].children[1];
-      const recipient = headerTag.children[0].innerText;
-      const dateTag = headerTag.children[1];
-      const date = dateTag.attributes.length === 3 ? dateTag.attributes[1].nodeValue : undefined;
+	var HTTPPOSToptions = function (data) { return ({
+	    method: 'POST',
+	    mode: 'cors',
+	    credentials: 'same-origin',
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    referrerPolicy: 'no-referrer',
+	    body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
+	}); };
+	exports.sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var response, json, error_1;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0:
+	                _a.trys.push([0, 3, , 4]);
+	                return [4 /*yield*/, fetch("http://localhost:3333" + urlEndpoint, HTTPPOSToptions(dataPayload))];
+	            case 1:
+	                response = _a.sent();
+	                return [4 /*yield*/, response.json()];
+	            case 2:
+	                json = _a.sent();
+	                return [2 /*return*/, json];
+	            case 3:
+	                error_1 = _a.sent();
+	                console.log('Server not started.');
+	                throw new Error(urlEndpoint + " - " + error_1);
+	            case 4: return [2 /*return*/];
+	        }
+	    });
+	}); };
 
-      const message = entry.children[1].children[0].innerText;
+	});
 
-      return {
-        subject,
-        subjectReplyToTitle,
-        recipient,
-        message,
-        date,
-      }
-    });
+	var httpResponses$1 = /*@__PURE__*/unwrapExports(httpResponses);
 
-    const filteredMessageList = messageList.filter(
-      message => message.date &&
-      !message.subjectReplyToTitle.includes("Tips to") &&
-      !message.subjectReplyToTitle.includes("Tips for") &&
-      !message.subjectReplyToTitle.includes("comment reply") &&
-      !message.subjectReplyToTitle.includes("post reply") &&
-      !message.subjectReplyToTitle.includes("Welcome to") &&
-      !message.subjectReplyToTitle.includes("Snoosletter")
-    );
-    console.log('filteredMessageList', filteredMessageList);
-    await uploadMessagesHTTP({ messages: filteredMessageList });
-  }
+	const iFrame = document.querySelector('iframe');
 
-  const getReplyLink = (entry) => {
-    switch (entry.children.length) {
-      case 5: {
-        const entryLinks = entry.children[3];
-        return entryLinks.children[7];
-      }
-      case 4: {
-        const entryLinks = entry.children[2];
-        return entryLinks.children[5];
-      }
-      default: {
-        return null;
-      }
-    }
-  }
+	const getPageMessages = async (pageMessages) => {
+	  const messageList = [...pageMessages].map(containerDiv => {
+	    const subjectTag = containerDiv.children[1];
+	    const subjectReplyToTitle = subjectTag.children[0].innerText;
 
-  const populatePageMessages = async (pageMessages) => {
-    [...pageMessages].map(containerDiv => {
-      const entry = containerDiv.children[4];
-      const replyLink = getReplyLink(entry)
+	    let subject;
+	    if (subjectTag.children.length === 1 && !subjectReplyToTitle.includes('re:')) {
+	      subject = subjectReplyToTitle;
+	    } else {
+	      subject = subjectReplyToTitle + ' (no subject/reply)';
+	    }
+	    if (subjectTag.children.length === 2) {
+	      subject = subjectTag.children[1].innerText;
+	    }
 
-      if (replyLink) {
-        const replyALink = replyLink.children[0];
-        console.log(replyALink);
+	    const entry = containerDiv.children[4];
+	    const headerTag = entry.children[0].children[1];
+	    const recipient = headerTag.children[0].innerText;
+	    const dateTag = headerTag.children[1];
+	    const date = dateTag.attributes.length === 3 ? dateTag.attributes[1].nodeValue : undefined;
 
-        replyALink.click();
-      }
-    });
-  };
+	    const message = entry.children[1].children[0].innerText;
 
-  const populateMessagePanel = async (pageMessages) => {
-    [...pageMessages].map(containerDiv => {
-      const child = containerDiv.children[5];
+	    return {
+	      subject,
+	      subjectReplyToTitle,
+	      recipient,
+	      message,
+	      date,
+	    }
+	  });
 
-      const messagePanel = document.createElement('div');
-      messagePanel.appendChild(createMiddleMessageLinkNode())
+	  const filteredMessageList = messageList.filter(
+	    message => message.date &&
+	    !message.subjectReplyToTitle.includes("Tips to") &&
+	    !message.subjectReplyToTitle.includes("Tips for") &&
+	    !message.subjectReplyToTitle.includes("comment reply") &&
+	    !message.subjectReplyToTitle.includes("post reply") &&
+	    !message.subjectReplyToTitle.includes("Welcome to") &&
+	    !message.subjectReplyToTitle.includes("Snoosletter")
+	  );
+	  console.log('filteredMessageList', filteredMessageList);
+	  const dataPayload = { messages: filteredMessageList };
+	  await httpResponses$1.sendPostRequest(dataPayload, '/populateNonHistoricReceivedMessages');
+	};
 
-      child.parentNode.insertBefore(, child);
+	const getReplyLink = (entry) => {
+	  switch (entry.children.length) {
+	    case 5: {
+	      const entryLinks = entry.children[3];
+	      return entryLinks.children[7];
+	    }
+	    case 4: {
+	      const entryLinks = entry.children[2];
+	      return entryLinks.children[5];
+	    }
+	    default: {
+	      return null;
+	    }
+	  }
+	};
 
-      if (replyLink) {
-        const replyALink = replyLink.children[0];
-        console.log(replyALink);
+	const populatePageMessages = async (pageMessages) => {
+	  [...pageMessages].map(containerDiv => {
+	    const entry = containerDiv.children[4];
+	    const replyLink = getReplyLink(entry);
 
-        replyALink.click();
-      }
-    });
-  };
+	    if (replyLink) {
+	      const replyALink = replyLink.children[0];
+	      console.log(replyALink);
 
-  if (iFrame && !window.location.search.includes('count')) {
-    if (!window.location.search.includes('true')) {
-      console.log('START: preparing page');
+	      replyALink.click();
+	    }
+	  });
+	};
 
-      iFrame.addEventListener("load", async function() {
-        const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
-        // await getPageMessages(pageMessages);
-        await populatePageMessages(pageMessages);
-        await populateMessagePanel(pageMessages);
+	// const populateMessagePanel = async (pageMessages) => {
+	//   [...pageMessages].map(containerDiv => {
+	//     const child = containerDiv.children[5];
 
-        console.log('END: next page');
-        // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-      });
-    }
-  } else {
-    console.log('START: preparing page');
-    const pageMessages = document.querySelectorAll('.message');
-    // await getPageMessages(pageMessages);
-    await populatePageMessages(pageMessages);
-    await populateMessagePanel(pageMessages);
+	//     const messagePanel = document.createElement('div');
+	//     messagePanel.appendChild(createMiddleMessageLinkNode())
 
-    console.log('END: next page');
-    // document.querySelector('.next-button').children[0].click();
-  }
-})();
+	//     child.parentNode.insertBefore(, child);
+
+	//     if (replyLink) {
+	//       const replyALink = replyLink.children[0];
+	//       console.log(replyALink);
+
+	//       replyALink.click();
+	//     }
+	//   });
+	// };
+
+	const main = async () => {
+	  const mainLogic = async () => {
+	    console.log('START: preparing page');
+
+	    const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
+	    await getPageMessages(pageMessages);
+	    await populatePageMessages(pageMessages);
+	    // await populateMessagePanel(pageMessages);
+
+	    window.scrollTo(0,0);
+
+	    // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
+	    // document.querySelector('.next-button').children[0].click();
+	    console.log('END: next page');
+	  };
+
+	  if (iFrame && !window.location.search.includes('count')) {
+	    if (!window.location.search.includes('true')) {
+	      iFrame.addEventListener("load", async function() {
+	        await mainLogic();
+	      });
+	    }
+	  } else {
+	    await mainLogic();
+	  }
+	};
+
+	main();
+
+}());
