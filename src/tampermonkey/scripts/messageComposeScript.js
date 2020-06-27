@@ -16,6 +16,10 @@ this.messageComposeScript.js = (function () {
 		}, fn(module, module.exports), module.exports;
 	}
 
+	function getCjsExportFromNamespace (n) {
+		return n && n['default'] || n;
+	}
+
 	function commonjsRequire () {
 		throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
 	}
@@ -273,6 +277,8 @@ this.messageComposeScript.js = (function () {
 		__classPrivateFieldSet: __classPrivateFieldSet
 	});
 
+	var tslib_1 = getCjsExportFromNamespace(tslib_es6);
+
 	var httpResponses = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
@@ -287,9 +293,9 @@ this.messageComposeScript.js = (function () {
 	    referrerPolicy: 'no-referrer',
 	    body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
 	}); };
-	var sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	var sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var response, JSONResponse, error_1;
-	    return tslib_es6.__generator(this, function (_a) {
+	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0:
 	                _a.trys.push([0, 3, , 4]);
@@ -308,9 +314,9 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
-	exports.checkUsernamesFetch = function (dataPayload) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	exports.checkUsernamesFetch = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var JSONResponse;
-	    return tslib_es6.__generator(this, function (_a) {
+	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/checkUsernames')];
 	            case 1:
@@ -319,9 +325,9 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
-	exports.populateReceivedMessages = function (dataPayload) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	exports.populateReceivedMessages = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var JSONResponse;
-	    return tslib_es6.__generator(this, function (_a) {
+	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessages')];
 	            case 1:
@@ -330,9 +336,9 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
-	exports.sendNewMessage = function (dataPayload) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	exports.sendNewMessage = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var JSONResponse;
-	    return tslib_es6.__generator(this, function (_a) {
+	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage')];
 	            case 1:
@@ -357,7 +363,7 @@ this.messageComposeScript.js = (function () {
 	            return type;
 	        }
 	    }
-	    return 'CUSTOM';
+	    return 'reply';
 	};
 	exports.randomMessageDelay = function () { return new Promise(function (resolve) {
 	    var delay = Math.floor(Math.random() * 6000) + 1000;
@@ -387,7 +393,7 @@ this.messageComposeScript.js = (function () {
 	}); };
 	exports.getAllNoFapNewUsernames = function () {
 	    var allATags = document.querySelectorAll('a');
-	    var filteredATags = tslib_es6.__spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
+	    var filteredATags = tslib_1.__spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
 	    var usernames = filteredATags.map(function (tag) { return tag.innerText.split('/')[1]; });
 	    return usernames;
 	};
@@ -410,10 +416,10 @@ this.messageComposeScript.js = (function () {
 	var iFrame = document.querySelector('iframe');
 	var checkIfFieldsAreFull = function (_a) {
 	    var toInput = _a.toInput, subjectInput = _a.subjectInput, messageInput = _a.messageInput, type = _a.type;
-	    return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	    return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	        var dataPayload;
 	        var _b, _c, _d;
-	        return tslib_es6.__generator(this, function (_e) {
+	        return tslib_1.__generator(this, function (_e) {
 	            switch (_e.label) {
 	                case 0:
 	                    console.log(toInput, subjectInput, messageInput, type);
@@ -446,10 +452,10 @@ this.messageComposeScript.js = (function () {
 	        });
 	    });
 	};
-	var main = function () { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	var main = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var toInput, subjectInput, messageInput, type;
 	    var _a, _b, _c, _d, _e, _f;
-	    return tslib_es6.__generator(this, function (_g) {
+	    return tslib_1.__generator(this, function (_g) {
 	        switch (_g.label) {
 	            case 0:
 	                console.log('START: preparing message');
@@ -469,8 +475,8 @@ this.messageComposeScript.js = (function () {
 	}); };
 	if (iFrame && !window.location.search.includes('embedded')) {
 	    iFrame.addEventListener("load", function () {
-	        return tslib_es6.__awaiter(this, void 0, void 0, function () {
-	            return tslib_es6.__generator(this, function (_a) {
+	        return tslib_1.__awaiter(this, void 0, void 0, function () {
+	            return tslib_1.__generator(this, function (_a) {
 	                setTimeout(function () {
 	                    main(); //
 	                }, 1500);

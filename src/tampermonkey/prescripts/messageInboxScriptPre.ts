@@ -1,5 +1,6 @@
 import { populateReceivedMessages } from '../util/httpResponses.js';
-import { PopulateReceivedMessagesPayload } from '../../types/tamperMonkeyTypes.js';
+import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload } from '../../types/tamperMonkeyTypes.js';
+import { sendNewMessage } from '../util/httpResponses';
 
 'use strict';
 
@@ -88,23 +89,34 @@ const getReplyLink = (entry) => {
     }
   }
 }
-// const populateMessagePanel = async (pageMessages) => {
-//   [...pageMessages].map(containerDiv => {
-//     const child = containerDiv.children[5];
 
-//     const messagePanel = document.createElement('div');
-//     messagePanel.appendChild(createMiddleMessageLinkNode())
+const sendNewMessageLogic = async (containerDiv) => {
+  const textArea = containerDiv.querySelector('textarea');
+  const author = containerDiv.querySelector('.author');
+  const subject = containerDiv.querySelector('.subject-text');
+  const dataPayload: SendNewMessageSendPayload = {
+    username_sending: 'NeverFapDeluxe',
+    username_receiving: author.innerText,
+    subject: subject.innerText,
+    message: textArea.value,
+    send_date: new Date().toString(),
+    type: 'reply',
+  };
 
-//     child.parentNode.insertBefore(, child);
+  console.log(dataPayload);
+  await sendNewMessage(dataPayload);
+};
 
-//     if (replyLink) {
-//       const replyALink = replyLink.children[0];
-//       console.log(replyALink);
-
-//       replyALink.click();
-//     }
-//   });
-// };
+const sendNewMessageEventListener = async (pageMessages) => {
+  [...pageMessages].forEach(containerDiv => {
+    const saveButton = containerDiv.querySelector('.save');
+    if (saveButton) {
+      saveButton.addEventListener('click', async () => {
+        await sendNewMessageLogic(containerDiv);
+      });
+    }
+  });
+}
 
 const main = async () => {
   const mainLogic = async () => {
@@ -114,11 +126,10 @@ const main = async () => {
     if (pageMessages) {
       await getPageMessages(pageMessages);
       await populatePageMessages(pageMessages);
-      // await populateMessagePanel(pageMessages);
+      await sendNewMessageEventListener(pageMessages);
 
-      window.scrollTo(0,0);
+      iFrame?.contentWindow?.scrollTo(0,0);
       // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-      // document.querySelector('.next-button').children[0].click();
       console.log('END: next page');
     }
   }

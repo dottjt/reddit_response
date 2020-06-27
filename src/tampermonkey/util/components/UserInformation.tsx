@@ -60,6 +60,15 @@ const UserInformation = ({ dbUser }): React.FC<UserInformationProps> => {
   console.log(startAdvice)
   return (
     <div>
+      <div>
+        {dbUser.lastSentMessage && (
+          <p>{dbUser.lastSentMessage}</p>
+        )}
+        {dbUser.lastReceivedMessage && (
+          <p>{dbUser.lastReceivedMessage}</p>
+        )}
+      </div>
+
       <div className='reade-user-information-top'>
         <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor }}>{dbUser.username}</span>
         <span>|</span>

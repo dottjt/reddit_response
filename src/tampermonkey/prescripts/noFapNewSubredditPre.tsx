@@ -18,6 +18,7 @@ import UserInformation from '../util/components/UserInformation';
 
 addGlobalStyle(mainCss);
 
+// const TIMEFRAME = 'NA';
 const TIMEFRAME = '1 hour ago';
 // const TIMEFRAME = '2 hours ago';
 // const TIMEFRAME = '1 day ago';
@@ -57,4 +58,8 @@ const main = async () => {
   console.log('END: script complete');
 };
 
-main();
+// @ts-ignore
+if (TIMEFRAME !== 'NA') {
+  main();
+}
+

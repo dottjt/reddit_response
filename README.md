@@ -1,4 +1,23 @@
-## Reddit Marketing Automation
+# Reddit Marketing Automation
+
+## OUTLINE
+
+Reddit Response Plan
+(finding users and sending initial messages)
+https://www.reddit.com/r/NoFap/new - Where users are found and messages come through
+  - It should go through all the messages up until a certain specified point. (DONE)
+  - It should add all those usernames up until then into the database. (DONE)
+  - Click message and it should open https://www.reddit.com/message/compose/ (DONE)
+
+(sending messages)
+https://www.reddit.com/message/compose/
+  - It should automatically send message to database when clicked from https://www.reddit.com/r/NoFap/new (DONE)
+  - If manual, it should send it as well when (DONE)
+
+https://www.reddit.com/message/inbox
+  - It should traverse through all the messages and add them to the database. (DONE)
+  - It should add messages to the database that are sent by the user. (TODO)
+
 
 
 ## Test Plan.

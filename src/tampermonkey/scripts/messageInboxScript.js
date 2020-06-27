@@ -375,9 +375,11 @@ this.messageInboxScript.js = (function () {
 	    return {
 	        subject: subject,
 	        subjectReplyToTitle: subjectReplyToTitle,
-	        recipient: recipient,
+	        username_receiving: 'NeverFapDeluxe',
+	        username_sending: recipient,
 	        message: message,
 	        date: date,
+	        type: 'user_response'
 	    };
 	})); };
 	var getPageMessages = function (pageMessages) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
@@ -431,19 +433,50 @@ this.messageInboxScript.js = (function () {
 	        }
 	    }
 	};
-	// const populateMessagePanel = async (pageMessages) => {
-	//   [...pageMessages].map(containerDiv => {
-	//     const child = containerDiv.children[5];
-	//     const messagePanel = document.createElement('div');
-	//     messagePanel.appendChild(createMiddleMessageLinkNode())
-	//     child.parentNode.insertBefore(, child);
-	//     if (replyLink) {
-	//       const replyALink = replyLink.children[0];
-	//       console.log(replyALink);
-	//       replyALink.click();
-	//     }
-	//   });
-	// };
+	var sendNewMessageLogic = function (containerDiv) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var textArea, author, subject, dataPayload;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0:
+	                textArea = containerDiv.querySelector('textarea');
+	                author = containerDiv.querySelector('.author');
+	                subject = containerDiv.querySelector('.subject-text');
+	                dataPayload = {
+	                    username_sending: 'NeverFapDeluxe',
+	                    username_receiving: author.innerText,
+	                    subject: subject.innerText,
+	                    message: textArea.value,
+	                    send_date: new Date().toString(),
+	                    type: 'reply',
+	                };
+	                console.log(dataPayload);
+	                return [4 /*yield*/, httpResponses.sendNewMessage(dataPayload)];
+	            case 1:
+	                _a.sent();
+	                return [2 /*return*/];
+	        }
+	    });
+	}); };
+	var sendNewMessageEventListener = function (pageMessages) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    return tslib_1.__generator(this, function (_a) {
+	        tslib_1.__spreadArrays(pageMessages).forEach(function (containerDiv) {
+	            var saveButton = containerDiv.querySelector('.save');
+	            if (saveButton) {
+	                saveButton.addEventListener('click', function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	                    return tslib_1.__generator(this, function (_a) {
+	                        switch (_a.label) {
+	                            case 0: return [4 /*yield*/, sendNewMessageLogic(containerDiv)];
+	                            case 1:
+	                                _a.sent();
+	                                return [2 /*return*/];
+	                        }
+	                    });
+	                }); });
+	            }
+	        });
+	        return [2 /*return*/];
+	    });
+	}); };
 	var main = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var mainLogic;
 	    return tslib_1.__generator(this, function (_a) {
@@ -451,26 +484,27 @@ this.messageInboxScript.js = (function () {
 	            case 0:
 	                mainLogic = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	                    var pageMessages;
-	                    var _a;
-	                    return tslib_1.__generator(this, function (_b) {
-	                        switch (_b.label) {
+	                    var _a, _b;
+	                    return tslib_1.__generator(this, function (_c) {
+	                        switch (_c.label) {
 	                            case 0:
 	                                console.log('START: preparing page');
 	                                pageMessages = (_a = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.document.querySelectorAll('.message');
-	                                if (!pageMessages) return [3 /*break*/, 3];
+	                                if (!pageMessages) return [3 /*break*/, 4];
 	                                return [4 /*yield*/, getPageMessages(pageMessages)];
 	                            case 1:
-	                                _b.sent();
+	                                _c.sent();
 	                                return [4 /*yield*/, populatePageMessages(pageMessages)];
 	                            case 2:
-	                                _b.sent();
-	                                // await populateMessagePanel(pageMessages);
-	                                window.scrollTo(0, 0);
+	                                _c.sent();
+	                                return [4 /*yield*/, sendNewMessageEventListener(pageMessages)];
+	                            case 3:
+	                                _c.sent();
+	                                (_b = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _b === void 0 ? void 0 : _b.scrollTo(0, 0);
 	                                // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-	                                // document.querySelector('.next-button').children[0].click();
 	                                console.log('END: next page');
-	                                _b.label = 3;
-	                            case 3: return [2 /*return*/];
+	                                _c.label = 4;
+	                            case 4: return [2 /*return*/];
 	                        }
 	                    });
 	                }); };

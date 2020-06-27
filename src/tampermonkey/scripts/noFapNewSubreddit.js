@@ -852,7 +852,7 @@ this.noFapNewSubreddit.js = (function () {
 	            return type;
 	        }
 	    }
-	    return 'CUSTOM';
+	    return 'reply';
 	};
 	exports.randomMessageDelay = function () { return new Promise(function (resolve) {
 	    var delay = Math.floor(Math.random() * 6000) + 1000;
@@ -2776,6 +2776,11 @@ this.noFapNewSubreddit.js = (function () {
 	  clickable: false
 	}), _defineProperty(_class2, "supportedWrappers", ["div", "span"]), _defineProperty(_class2, "displayName", "ReactTooltip"), _temp)) || _class) || _class) || _class) || _class) || _class) || _class) || _class;
 
+	var index_es = /*#__PURE__*/Object.freeze({
+		__proto__: null,
+		'default': ReactTooltip
+	});
+
 	var start = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.sorryToHearYouRelapsed = exports.accountabilityPartner = exports.noReasonToRelapse = exports.biggestDifference = exports.struggleBasics = exports.flatlineAdvice = exports.amIAddictedAdvice = exports.mentalhealthNotExerciseAdvice = exports.generalAdvice = exports.straightToGuide = exports.startAdvice = void 0;
@@ -2796,11 +2801,13 @@ this.noFapNewSubreddit.js = (function () {
 
 	});
 
+	var require$$1 = getCjsExportFromNamespace(index_es);
+
 	var UserInformation_1 = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 
 	var react_1 = tslib_1.__importDefault(react);
-	var react_tooltip_1 = tslib_1.__importDefault(ReactTooltip);
+	var react_tooltip_1 = tslib_1.__importDefault(require$$1);
 
 	var createStartMessageLink = function (messageType, color, toUsername, messageText) {
 	    var url = "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + messageText + "&type=" + messageType;
@@ -2823,6 +2830,9 @@ this.noFapNewSubreddit.js = (function () {
 	    var dbUser = _a.dbUser;
 	    console.log(start.startAdvice);
 	    return (react_1.default.createElement("div", null,
+	        react_1.default.createElement("div", null,
+	            dbUser.lastSentMessage,
+	            react_1.default.createElement("p", null, "lastSentMessage")),
 	        react_1.default.createElement("div", { className: 'reade-user-information-top' },
 	            react_1.default.createElement("span", { style: { fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor } }, dbUser.username),
 	            react_1.default.createElement("span", null, "|"),
@@ -2864,6 +2874,7 @@ this.noFapNewSubreddit.js = (function () {
 	var mainCss_1$1 = tslib_1.__importDefault(mainCss_1);
 	var UserInformation_1$1 = tslib_1.__importDefault(UserInformation_1);
 	commonUtils.addGlobalStyle(mainCss_1$1.default);
+	// const TIMEFRAME = 'NA';
 	var TIMEFRAME = '1 hour ago';
 	// const TIMEFRAME = '2 hours ago';
 	// const TIMEFRAME = '1 day ago';
@@ -2904,7 +2915,10 @@ this.noFapNewSubreddit.js = (function () {
 	        }
 	    });
 	}); };
-	main();
+	// @ts-ignore
+	{
+	    main();
+	}
 
 	});
 

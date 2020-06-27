@@ -50,3 +50,21 @@
 
 //   return node;
 // }
+
+// const populateMessagePanel = async (pageMessages) => {
+//   [...pageMessages].map(containerDiv => {
+//     const child = containerDiv.children[5];
+
+//     const messagePanel = document.createElement('div');
+//     messagePanel.appendChild(createMiddleMessageLinkNode())
+
+//     child.parentNode.insertBefore(, child);
+
+//     if (replyLink) {
+//       const replyALink = replyLink.children[0];
+//       console.log(replyALink);
+
+//       replyALink.click();
+//     }
+//   });
+// };

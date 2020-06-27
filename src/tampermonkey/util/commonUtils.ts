@@ -8,7 +8,7 @@ export const getTypeQueryString = (searchString: string): string => {
       return type;
     }
   }
-  return 'CUSTOM';
+  return 'reply';
 }
 
 export const randomMessageDelay = (): Promise<void> => new Promise(resolve => {
