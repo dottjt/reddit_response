@@ -1,4 +1,5 @@
-(function () {
+this.messageInboxScript = this.messageInboxScript || {};
+this.messageInboxScript.js = (function () {
 	'use strict';
 
 	function unwrapExports (x) {
@@ -280,7 +281,7 @@
 
 	var httpResponses = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.sendPostRequest = void 0;
+	exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
 
 	var HTTPPOSToptions = function (data) { return ({
 	    method: 'POST',
@@ -292,8 +293,8 @@
 	    referrerPolicy: 'no-referrer',
 	    body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
 	}); };
-	exports.sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-	    var response, json, error_1;
+	var sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var response, JSONResponse, error_1;
 	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0:
@@ -303,8 +304,8 @@
 	                response = _a.sent();
 	                return [4 /*yield*/, response.json()];
 	            case 2:
-	                json = _a.sent();
-	                return [2 /*return*/, json];
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse];
 	            case 3:
 	                error_1 = _a.sent();
 	                console.log('Server not started.');
@@ -313,134 +314,196 @@
 	        }
 	    });
 	}); };
+	exports.checkUsernamesFetch = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/checkUsernames')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.users];
+	        }
+	    });
+	}); };
+	exports.populateReceivedMessages = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessages')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.message]; // basically a success message.
+	        }
+	    });
+	}); };
+	exports.sendNewMessage = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.users];
+	        }
+	    });
+	}); };
 
 	});
 
-	var httpResponses$1 = /*@__PURE__*/unwrapExports(httpResponses);
-
-	const iFrame = document.querySelector('iframe');
-
-	const getPageMessages = async (pageMessages) => {
-	  const messageList = [...pageMessages].map(containerDiv => {
-	    const subjectTag = containerDiv.children[1];
-	    const subjectReplyToTitle = subjectTag.children[0].innerText;
-
-	    let subject;
+	var messageInboxScriptPre = createCommonjsModule(function (module, exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var iFrame = document.querySelector('iframe');
+	var generateMessageList = function (pageMessages) { return (tslib_1.__spreadArrays(pageMessages).map(function (containerDiv) {
+	    var subjectTag = containerDiv.children[1];
+	    var subjectReplyToTitle = subjectTag.children[0].innerText;
+	    var subject;
 	    if (subjectTag.children.length === 1 && !subjectReplyToTitle.includes('re:')) {
-	      subject = subjectReplyToTitle;
-	    } else {
-	      subject = subjectReplyToTitle + ' (no subject/reply)';
+	        subject = subjectReplyToTitle;
+	    }
+	    else {
+	        subject = subjectReplyToTitle + ' (no subject/reply)';
 	    }
 	    if (subjectTag.children.length === 2) {
-	      subject = subjectTag.children[1].innerText;
+	        subject = subjectTag.children[1].innerText;
 	    }
-
-	    const entry = containerDiv.children[4];
-	    const headerTag = entry.children[0].children[1];
-	    const recipient = headerTag.children[0].innerText;
-	    const dateTag = headerTag.children[1];
-	    const date = dateTag.attributes.length === 3 ? dateTag.attributes[1].nodeValue : undefined;
-
-	    const message = entry.children[1].children[0].innerText;
-
+	    var entry = containerDiv.children[4];
+	    var headerTag = entry.children[0].children[1];
+	    var recipient = headerTag.children[0].innerText;
+	    var dateTag = headerTag.children[1];
+	    var date = dateTag.attributes.length === 3 ? dateTag.attributes[1].nodeValue : undefined;
+	    var message = entry.children[1].children[0].innerText;
 	    return {
-	      subject,
-	      subjectReplyToTitle,
-	      recipient,
-	      message,
-	      date,
+	        subject: subject,
+	        subjectReplyToTitle: subjectReplyToTitle,
+	        recipient: recipient,
+	        message: message,
+	        date: date,
+	    };
+	})); };
+	var getPageMessages = function (pageMessages) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var messageList, filteredMessageList, dataPayload;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0:
+	                messageList = generateMessageList(pageMessages);
+	                filteredMessageList = messageList.filter(function (message) { return message.date &&
+	                    !message.subjectReplyToTitle.includes("Tips to") &&
+	                    !message.subjectReplyToTitle.includes("Tips for") &&
+	                    !message.subjectReplyToTitle.includes("comment reply") &&
+	                    !message.subjectReplyToTitle.includes("post reply") &&
+	                    !message.subjectReplyToTitle.includes("Welcome to") &&
+	                    !message.subjectReplyToTitle.includes("Snoosletter"); });
+	                console.log('filteredMessageList', filteredMessageList);
+	                dataPayload = { messages: filteredMessageList };
+	                return [4 /*yield*/, httpResponses.populateReceivedMessages(dataPayload)];
+	            case 1:
+	                _a.sent();
+	                return [2 /*return*/];
+	        }
+	    });
+	}); };
+	var getReplyLink = function (entry) {
+	    switch (entry.children.length) {
+	        case 5: {
+	            var entryLinks = entry.children[3];
+	            return entryLinks.children[7];
+	        }
+	        case 4: {
+	            var entryLinks = entry.children[2];
+	            return entryLinks.children[5];
+	        }
+	        default: {
+	            return null;
+	        }
 	    }
-	  });
-
-	  const filteredMessageList = messageList.filter(
-	    message => message.date &&
-	    !message.subjectReplyToTitle.includes("Tips to") &&
-	    !message.subjectReplyToTitle.includes("Tips for") &&
-	    !message.subjectReplyToTitle.includes("comment reply") &&
-	    !message.subjectReplyToTitle.includes("post reply") &&
-	    !message.subjectReplyToTitle.includes("Welcome to") &&
-	    !message.subjectReplyToTitle.includes("Snoosletter")
-	  );
-	  console.log('filteredMessageList', filteredMessageList);
-	  const dataPayload = { messages: filteredMessageList };
-	  await httpResponses$1.sendPostRequest(dataPayload, '/populateNonHistoricReceivedMessages');
 	};
-
-	const getReplyLink = (entry) => {
-	  switch (entry.children.length) {
-	    case 5: {
-	      const entryLinks = entry.children[3];
-	      return entryLinks.children[7];
-	    }
-	    case 4: {
-	      const entryLinks = entry.children[2];
-	      return entryLinks.children[5];
-	    }
-	    default: {
-	      return null;
-	    }
-	  }
-	};
-
-	const populatePageMessages = async (pageMessages) => {
-	  [...pageMessages].map(containerDiv => {
-	    const entry = containerDiv.children[4];
-	    const replyLink = getReplyLink(entry);
-
-	    if (replyLink) {
-	      const replyALink = replyLink.children[0];
-	      console.log(replyALink);
-
-	      replyALink.click();
-	    }
-	  });
-	};
-
+	var populatePageMessages = function (pageMessages) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    return tslib_1.__generator(this, function (_a) {
+	        tslib_1.__spreadArrays(pageMessages).map(function (containerDiv) {
+	            var entry = containerDiv.children[4];
+	            var replyLink = getReplyLink(entry);
+	            if (replyLink) {
+	                var replyALink = replyLink.children[0];
+	                console.log(replyALink);
+	                replyALink.click();
+	            }
+	        });
+	        return [2 /*return*/];
+	    });
+	}); };
 	// const populateMessagePanel = async (pageMessages) => {
 	//   [...pageMessages].map(containerDiv => {
 	//     const child = containerDiv.children[5];
-
 	//     const messagePanel = document.createElement('div');
 	//     messagePanel.appendChild(createMiddleMessageLinkNode())
-
 	//     child.parentNode.insertBefore(, child);
-
 	//     if (replyLink) {
 	//       const replyALink = replyLink.children[0];
 	//       console.log(replyALink);
-
 	//       replyALink.click();
 	//     }
 	//   });
 	// };
-
-	const main = async () => {
-	  const mainLogic = async () => {
-	    console.log('START: preparing page');
-
-	    const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
-	    await getPageMessages(pageMessages);
-	    await populatePageMessages(pageMessages);
-	    // await populateMessagePanel(pageMessages);
-
-	    window.scrollTo(0,0);
-
-	    // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-	    // document.querySelector('.next-button').children[0].click();
-	    console.log('END: next page');
-	  };
-
-	  if (iFrame && !window.location.search.includes('count')) {
-	    if (!window.location.search.includes('true')) {
-	      iFrame.addEventListener("load", async function() {
-	        await mainLogic();
-	      });
-	    }
-	  } else {
-	    await mainLogic();
-	  }
-	};
-
+	var main = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var mainLogic;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0:
+	                mainLogic = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	                    var pageMessages;
+	                    var _a;
+	                    return tslib_1.__generator(this, function (_b) {
+	                        switch (_b.label) {
+	                            case 0:
+	                                console.log('START: preparing page');
+	                                pageMessages = (_a = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.document.querySelectorAll('.message');
+	                                if (!pageMessages) return [3 /*break*/, 3];
+	                                return [4 /*yield*/, getPageMessages(pageMessages)];
+	                            case 1:
+	                                _b.sent();
+	                                return [4 /*yield*/, populatePageMessages(pageMessages)];
+	                            case 2:
+	                                _b.sent();
+	                                // await populateMessagePanel(pageMessages);
+	                                window.scrollTo(0, 0);
+	                                // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
+	                                // document.querySelector('.next-button').children[0].click();
+	                                console.log('END: next page');
+	                                _b.label = 3;
+	                            case 3: return [2 /*return*/];
+	                        }
+	                    });
+	                }); };
+	                if (!(iFrame && !window.location.search.includes('count'))) return [3 /*break*/, 1];
+	                if (!window.location.search.includes('true')) {
+	                    iFrame.addEventListener("load", function () {
+	                        return tslib_1.__awaiter(this, void 0, void 0, function () {
+	                            return tslib_1.__generator(this, function (_a) {
+	                                switch (_a.label) {
+	                                    case 0: return [4 /*yield*/, mainLogic()];
+	                                    case 1:
+	                                        _a.sent();
+	                                        return [2 /*return*/];
+	                                }
+	                            });
+	                        });
+	                    });
+	                }
+	                return [3 /*break*/, 3];
+	            case 1: return [4 /*yield*/, mainLogic()];
+	            case 2:
+	                _a.sent();
+	                _a.label = 3;
+	            case 3: return [2 /*return*/];
+	        }
+	    });
+	}); };
 	main();
+
+	});
+
+	var messageInboxScriptPre$1 = /*@__PURE__*/unwrapExports(messageInboxScriptPre);
+
+	return messageInboxScriptPre$1;
 
 }());

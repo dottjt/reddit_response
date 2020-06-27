@@ -3,8 +3,11 @@ import chokidar from 'chokidar';
 import fse from 'fs-extra';
 import path from 'path';
 import typescript from '@rollup/plugin-typescript';
-import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import replace from '@rollup/plugin-replace';
+import jsx from 'acorn-jsx';
+
 
 const WATCH_PRE_SCRIPT_DIRECTORY = path.resolve(__dirname, 'prescripts');
 const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, 'responses');
@@ -22,8 +25,14 @@ const compileScript = async () => {
 
       const bundle = await rollup.rollup({
         input: path.resolve(__dirname, 'prescripts', preScript),
+        acornInjectPlugins: [jsx()],
         plugins: [
-          typescript({ module: 'CommonJS' }), //
+          replace({
+            'process.env.NODE_ENV': JSON.stringify( 'production' )
+          }),
+          typescript({
+            tsconfig: path.resolve(__dirname, '..', '..', 'tsconfig.json'),
+          }),
           resolve(),
           commonjs({ extensions: ['.js', '.ts', '.tsx'] })
         ]
@@ -31,9 +40,11 @@ const compileScript = async () => {
 
       await bundle.write({
         format: 'iife',
-        // name: `${plainName}.js`,
+        name: `${plainName}.js`,
         file: path.resolve(__dirname, 'scripts', `${plainName}.js`),
       });
+
+      console.log(`Rollup done: ${plainName}`)
     }
   } catch (error) {
     throw new Error(`compileScript - ${error}`);

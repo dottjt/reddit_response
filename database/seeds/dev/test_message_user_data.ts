@@ -22,7 +22,6 @@ export async function seed(knex: Knex): Promise<any> {
           text: 'Hey',
           type: 'HeyType',
           send_date: '',
-          is_historic: false,
         }
       ]);
     });

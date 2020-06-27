@@ -1,11 +1,12 @@
 import { populateReceivedMessages } from '../util/httpResponses.js';
+import { PopulateReceivedMessagesPayload } from '../../types/tamperMonkeyTypes.js';
 
 'use strict';
 
 const iFrame = document.querySelector('iframe');
 
-const getPageMessages = async (pageMessages) => {
-  const messageList = [...pageMessages].map(containerDiv => {
+const generateMessageList = (pageMessages): PopulateReceivedMessagesPayload[] => (
+  [...pageMessages].map(containerDiv => {
     const subjectTag = containerDiv.children[1];
     const subjectReplyToTitle = subjectTag.children[0].innerText;
 
@@ -34,9 +35,13 @@ const getPageMessages = async (pageMessages) => {
       message,
       date,
     }
-  });
+  })
+);
 
-  const filteredMessageList = messageList.filter(
+const getPageMessages = async (pageMessages: NodeListOf<Element>) => {
+  const messageList: PopulateReceivedMessagesPayload[] = generateMessageList(pageMessages);
+
+  const filteredMessageList: PopulateReceivedMessagesPayload[] = messageList.filter(
     message => message.date &&
     !message.subjectReplyToTitle.includes("Tips to") &&
     !message.subjectReplyToTitle.includes("Tips for") &&
@@ -45,9 +50,11 @@ const getPageMessages = async (pageMessages) => {
     !message.subjectReplyToTitle.includes("Welcome to") &&
     !message.subjectReplyToTitle.includes("Snoosletter")
   );
+
   console.log('filteredMessageList', filteredMessageList);
-  const dataPayload = { messages: filteredMessageList };
-  await populateReceivedMessages(dataPayload, '/populateReceivedMessages');
+
+  const dataPayload: { messages: PopulateReceivedMessagesPayload[] } = { messages: filteredMessageList };
+  await populateReceivedMessages(dataPayload);
 }
 
 const getReplyLink = (entry) => {
@@ -102,16 +109,17 @@ const main = async () => {
   const mainLogic = async () => {
     console.log('START: preparing page');
 
-    const pageMessages = iFrame.contentWindow.document.querySelectorAll('.message');
-    await getPageMessages(pageMessages);
-    await populatePageMessages(pageMessages);
-    // await populateMessagePanel(pageMessages);
+    const pageMessages = iFrame?.contentWindow?.document.querySelectorAll('.message');
+    if (pageMessages) {
+      await getPageMessages(pageMessages);
+      await populatePageMessages(pageMessages);
+      // await populateMessagePanel(pageMessages);
 
-    window.scrollTo(0,0);
-
-    // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-    // document.querySelector('.next-button').children[0].click();
-    console.log('END: next page');
+      window.scrollTo(0,0);
+      // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
+      // document.querySelector('.next-button').children[0].click();
+      console.log('END: next page');
+    }
   }
 
   if (iFrame && !window.location.search.includes('count')) {

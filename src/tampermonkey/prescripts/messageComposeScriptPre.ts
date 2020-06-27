@@ -1,18 +1,35 @@
-import { sendPostRequest } from '../util/httpResponses';
+import { sendNewMessage } from '../util/httpResponses';
 import { getTypeQueryString, randomMessageDelay } from '../util/commonUtils';
+import { SendNewMessageSendPayload } from '../../types/tamperMonkeyTypes';
 
 'use strict';
 
 const iFrame = document.querySelector('iframe');
 
-const checkIfFieldsAreFull = async (toInput, subjectInput, messageInput, type) => {
+type CheckIfFieldsAreFullProps = {
+  toInput: string | undefined;
+  subjectInput: string | undefined;
+  messageInput: string | undefined;
+  type: string | undefined;
+}
+
+const checkIfFieldsAreFull = async ({
+  toInput, subjectInput, messageInput, type
+}: CheckIfFieldsAreFullProps): Promise<void> => {
   console.log(toInput, subjectInput, messageInput, type)
 
-  if (toInput && subjectInput && messageInput) {
+  if (toInput && subjectInput && messageInput && type) {
     await randomMessageDelay();
 
-    const dataPayload = { to: toInput, subject: subjectInput, message: messageInput, type };
-    await sendPostRequest(dataPayload, '/sendNewMessage');
+    const dataPayload: SendNewMessageSendPayload = {
+      username_sending: 'NeverFapDeluxe',
+      username_receiving: toInput,
+      subject: subjectInput,
+      message: messageInput,
+      send_date: new Date().toString(),
+      type
+    };
+    await sendNewMessage(dataPayload);
 
     // document.querySelector('#send').click();
     console.log('message sent to server');
@@ -25,12 +42,14 @@ if (iFrame && !window.location.search.includes('embedded')) {
   iFrame.addEventListener("load", async function() {
     console.log('START: preparing message');
 
-    const toInput = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelector('input[name=to]')).value;
-    const subjectInput = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelector('input[name=subject]')).value;
-    const messageInput = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
-    const type = getTypeQueryString(window.location.search);
+    const toInput: string | undefined = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelector('input[name=to]')).value;
+    const subjectInput: string | undefined = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelector('input[name=subject]')).value;
+    const messageInput: string | undefined = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
+    const type: string | undefined = getTypeQueryString(window.location.search);
 
-    await checkIfFieldsAreFull(toInput, subjectInput, messageInput, type);
+    await checkIfFieldsAreFull({
+      toInput, subjectInput, messageInput, type
+    });
 
     console.log('END: script complete');
   });

@@ -10,7 +10,6 @@ const checkUsernamesRoute = async (ctx: Context, next: Next) => {
     throw new Error('da fuq, no usernames were sent to the server');
   }
 
-  console.log(usernames);
   const usersList: CompiledFullUserObject[] = [];
 
   for (const username of usernames) {

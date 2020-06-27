@@ -10,10 +10,9 @@ const validateUser = async (username: string, is_historic: boolean): Promise<Com
   try {
     const usernameExists: User | undefined = await knex<User>('users').where({ username }).first('username');
     if (!usernameExists) {
-      const returnedUsername: string = await knex<User>('users').returning('username').insert({ id: uuidv4(), username, is_historic });
-      // TODO Test this, don't know what returnedUsername actually returns
-      console.log('returnedUsername', returnedUsername);
-      const newUser: CompiledFullUserObject = await getFullUser(returnedUsername);
+      await knex<User>('users').insert({ id: uuidv4(), username, is_historic });
+
+      const newUser: CompiledFullUserObject = await getFullUser(username);
       return newUser;
     } else {
       const existingUser = await getFullUser(username);

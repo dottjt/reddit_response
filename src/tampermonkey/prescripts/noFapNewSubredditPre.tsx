@@ -1,6 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { checkUsernamesFetch } from '../util/httpResponses';
-import { appendUserInformation } from '../util/createNodes';
 
 import {
   scrollToSpecifiedDate,
@@ -8,6 +9,8 @@ import {
 } from '../util/commonUtils';
 
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
+
+import UserInformation from '../util/components/UserInformation';
 
 'use strict';
 
@@ -26,8 +29,15 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
     const dbUser: CompiledFullUserObject | undefined = users.find(user => user.username === tagUsername);
 
     if (dbUser) {
-      tag.id = `${tagUsername}-${index}`;
-      appendUserInformation(tag, dbUser);
+      const rootId = `${tagUsername}-${index}`;
+      const root = document.createElement('div');
+      root.id = rootId;
+      tag.parentNode.insertBefore(root, tag);
+      tag.remove();
+
+      const domContainer = document.querySelector(`#${rootId}`);
+
+      ReactDOM.render(<UserInformation dbUser={dbUser} />, domContainer);
     }
   });
 }
@@ -35,7 +45,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
 const main = async () => {
   console.log('START: start script');
 
-  await scrollToSpecifiedDate(TIMEFRAME);
+  await scrollToSpecifiedDate(TIMEFRAME); 
   const dataPayload: { usernames: string[] } = { usernames: getAllNoFapNewUsernames() };
   const users: CompiledFullUserObject[] = await checkUsernamesFetch(dataPayload);
   populateWebpageInformation(users);

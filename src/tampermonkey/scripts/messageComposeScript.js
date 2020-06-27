@@ -1,4 +1,5 @@
-(function () {
+this.messageComposeScript = this.messageComposeScript || {};
+this.messageComposeScript.js = (function () {
 	'use strict';
 
 	function unwrapExports (x) {
@@ -280,7 +281,7 @@
 
 	var httpResponses = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.sendPostRequest = void 0;
+	exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
 
 	var HTTPPOSToptions = function (data) { return ({
 	    method: 'POST',
@@ -292,8 +293,8 @@
 	    referrerPolicy: 'no-referrer',
 	    body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
 	}); };
-	exports.sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-	    var response, json, error_1;
+	var sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var response, JSONResponse, error_1;
 	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0:
@@ -303,8 +304,8 @@
 	                response = _a.sent();
 	                return [4 /*yield*/, response.json()];
 	            case 2:
-	                json = _a.sent();
-	                return [2 /*return*/, json];
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse];
 	            case 3:
 	                error_1 = _a.sent();
 	                console.log('Server not started.');
@@ -313,15 +314,48 @@
 	        }
 	    });
 	}); };
+	exports.checkUsernamesFetch = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/checkUsernames')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.users];
+	        }
+	    });
+	}); };
+	exports.populateReceivedMessages = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessages')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.message]; // basically a success message.
+	        }
+	    });
+	}); };
+	exports.sendNewMessage = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.users];
+	        }
+	    });
+	}); };
 
 	});
 
-	var messageComposeScriptPre = createCommonjsModule(function (module, exports) {
+	var commonUtils = createCommonjsModule(function (module, exports) {
+	// message compose
 	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTypeQueryString = void 0;
 
-
-	var iFrame = document.querySelector('iframe');
-	var getType = function (searchString) {
+	exports.getTypeQueryString = function (searchString) {
 	    if (searchString.includes('&')) {
 	        var arrayWithType = searchString.split('&').filter(function (item) { return item.includes('type='); });
 	        if (arrayWithType.length === 1) {
@@ -331,36 +365,78 @@
 	    }
 	    return 'CUSTOM';
 	};
-	var randomMessageDelay = function () { return new Promise(function (resolve) {
+	exports.randomMessageDelay = function () { return new Promise(function (resolve) {
 	    var delay = Math.floor(Math.random() * 6000) + 1000;
 	    setTimeout(function () {
 	        resolve();
 	    }, delay);
 	}); };
-	var checkIfFieldsAreFull = function (toInput, subjectInput, messageInput, type) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-	    var dataPayload;
-	    return tslib_1.__generator(this, function (_a) {
-	        switch (_a.label) {
-	            case 0:
-	                console.log(toInput, subjectInput, messageInput, type);
-	                if (!(toInput && subjectInput && messageInput)) return [3 /*break*/, 3];
-	                return [4 /*yield*/, randomMessageDelay()];
-	            case 1:
-	                _a.sent();
-	                dataPayload = { to: toInput, subject: subjectInput, message: messageInput, type: type };
-	                return [4 /*yield*/, httpResponses.sendPostRequest(dataPayload, '/sendNewMessage')];
-	            case 2:
-	                _a.sent();
-	                // document.querySelector('#send').click();
-	                console.log('message sent to server');
-	                return [3 /*break*/, 4];
-	            case 3:
-	                console.log('some fields empty');
-	                _a.label = 4;
-	            case 4: return [2 /*return*/];
+	// nofap new subreddit
+	exports.scrollToSpecifiedDate = function (dateString) { return new Promise(function (resolve) {
+	    var interval;
+	    interval = setInterval(function () {
+	        window.scrollTo(0, document.body.scrollHeight);
+	        var allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
+	        for (var _i = 0, _a = allTimeStamps; _i < _a.length; _i++) {
+	            var timeStampElement = _a[_i];
+	            var doesTextContainDate = timeStampElement.innerText.includes(dateString);
+	            if (doesTextContainDate) {
+	                console.log('Complete: date reached');
+	                clearInterval(interval);
+	                resolve('Complete: date reached');
+	            }
+	            else {
+	                timeStampElement.remove();
+	            }
 	        }
-	    });
+	    }, 500);
 	}); };
+	exports.getAllNoFapNewUsernames = function () {
+	    var allATags = document.querySelectorAll('a');
+	    var filteredATags = tslib_1.__spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
+	    var usernames = filteredATags.map(function (tag) { return tag.innerText.split('/')[1]; });
+	    return usernames;
+	};
+
+	});
+
+	var messageComposeScriptPre = createCommonjsModule(function (module, exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var iFrame = document.querySelector('iframe');
+	var checkIfFieldsAreFull = function (_a) {
+	    var toInput = _a.toInput, subjectInput = _a.subjectInput, messageInput = _a.messageInput, type = _a.type;
+	    return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	        var dataPayload;
+	        return tslib_1.__generator(this, function (_b) {
+	            switch (_b.label) {
+	                case 0:
+	                    console.log(toInput, subjectInput, messageInput, type);
+	                    if (!(toInput && subjectInput && messageInput && type)) return [3 /*break*/, 3];
+	                    return [4 /*yield*/, commonUtils.randomMessageDelay()];
+	                case 1:
+	                    _b.sent();
+	                    dataPayload = {
+	                        username_sending: 'NeverFapDeluxe',
+	                        username_receiving: toInput,
+	                        subject: subjectInput,
+	                        message: messageInput,
+	                        send_date: new Date().toString(),
+	                        type: type
+	                    };
+	                    return [4 /*yield*/, httpResponses.sendNewMessage(dataPayload)];
+	                case 2:
+	                    _b.sent();
+	                    // document.querySelector('#send').click();
+	                    console.log('message sent to server');
+	                    return [3 /*break*/, 4];
+	                case 3:
+	                    console.log('some fields empty');
+	                    _b.label = 4;
+	                case 4: return [2 /*return*/];
+	            }
+	        });
+	    });
+	};
 	if (iFrame && !window.location.search.includes('embedded')) {
 	    iFrame.addEventListener("load", function () {
 	        var _a, _b, _c, _d, _e, _f;
@@ -373,8 +449,10 @@
 	                        toInput = ((_b = (_a = iFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.document) === null || _b === void 0 ? void 0 : _b.querySelector('input[name=to]')).value;
 	                        subjectInput = ((_d = (_c = iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document) === null || _d === void 0 ? void 0 : _d.querySelector('input[name=subject]')).value;
 	                        messageInput = ((_f = (_e = iFrame.contentWindow) === null || _e === void 0 ? void 0 : _e.document) === null || _f === void 0 ? void 0 : _f.querySelectorAll('textarea[name=text]')[1]).value;
-	                        type = getType(window.location.search);
-	                        return [4 /*yield*/, checkIfFieldsAreFull(toInput, subjectInput, messageInput, type)];
+	                        type = commonUtils.getTypeQueryString(window.location.search);
+	                        return [4 /*yield*/, checkIfFieldsAreFull({
+	                                toInput: toInput, subjectInput: subjectInput, messageInput: messageInput, type: type
+	                            })];
 	                    case 1:
 	                        _g.sent();
 	                        console.log('END: script complete');

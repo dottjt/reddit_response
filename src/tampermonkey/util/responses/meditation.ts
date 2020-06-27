@@ -1,4 +1,4 @@
-const meditationBenefits = (
+export const meditationBenefits = (
 `Yeah, meditation was what made the biggest difference for me. In fact, within 5 minutes of meditation was when I knew I would never relapse again and here I am at 200+ days. What&apos;s hard is convincing people to do it though, myself included. I resisted for years, but the moment I started doing it, I felt like such an idiot for being so stubborn haha.
 
 Have you checked out my website before? It explains quite a lot of this stuff, you might find it useful.
@@ -6,7 +6,7 @@ Have you checked out my website before? It explains quite a lot of this stuff, y
 https://neverfapdeluxe.com/`
 );
 
-const meditationConsistency = (
+export const meditationConsistency = (
 `Yeah, meditation isn&apos;t effective if it&apos;s not consistent. It&apos;s a bit like dieting. You can&apos;t just diet for a week, and then splurge afterwards. It&apos;s about creating that lifestyle of balance and developing a mental health routine which allows you to develop control over your mind. So definitely it&apos;s something you should be doing daily.
 
 You may possibly be doing it wrong as well, I know I was for years without realising it. Like, are you doing it with your eyes closed? Because you&apos;re not supposed it.
@@ -16,7 +16,7 @@ Have you checked out my website before? It explains quite a lot of this stuff, y
 https://neverfapdeluxe.com/`
 )
 
-const meditationHowTo = (
+export const meditationHowTo = (
 `
 Ultimately meditation is about learning to become aware of your senses. So for example, sitting there and noticing your emotions and physical sensations, as well as observing your surroundings in a non-judgemental way.
 
@@ -41,7 +41,7 @@ https://neverfapdeluxe.com/
 The homepage is quite comprehensive. I&apos;ve put a lot of effort into it and it covers 90% of what you need to know. It then leads to the /guide which explains even more about awareness, meditation etc.`
 );
 
-const meditationHowToShort = (
+export const meditationHowToShort = (
 `Well, this article explains the basic technique of what it is:
 
 https://neverfapdeluxe.com/practices/observe-your-senses
@@ -51,7 +51,7 @@ Otherwise, I&apos;ve also started recording some guided meditations which you mi
 https://soundcloud.com/neverfapdeluxe`
 );
 
-const meditationAdvice = (
+export const meditationAdvice = (
 `Just in regards to meditation, you might find this really helpful. It’s an article I wrote on the subject which explains it a little further:
 
 https://neverfapdeluxe.com/articles/the-importance-of-meditation-for-porn-addiction/
@@ -72,7 +72,7 @@ The problem is that once you have an urge, it&apos;s generally too late. Only by
 `
 );
 
-const meditationAdvice2 = (
+export const meditationAdvice2 = (
 `Meditation is basically the difference between making it a few weeks, to making it a few years. Essentially, if you don&apos;t have control over your emotions by remaining calm, then it’s hard to say that you’re ultimately in control of anything.
 
 Put it this way, I learnt more in the 2 weeks I spent meditating than in the other five years I spent doing everything else. I cannot recommend it enough, and here I am 4 months into NoFap and honestly, feeling invulnerable everyday.
@@ -92,7 +92,7 @@ I also have a subreddit if you&apos;re interested in keeping up-to-date with dev
 Feel free to ask if you have any questions! I&apos;m more than happy to help!`
 );
 
-const meditationPractice = (
+export const meditationPractice = (
 `What&apos;s going to help is if you calm down.
 
 Only by calming down can you take take back control over your emotions, and act effectively, as opposed to struggling as you currently are. I understand that it&apos;s difficult, but you&apos;re making it difficult for yourself by choosing to react and not simply let go.
@@ -112,7 +112,7 @@ Of course, chances are that you are PMOing because you never had control over yo
 
 
 
-const meditationBiggestDifference = (
+export const meditationBiggestDifference = (
 `Hey, I saw your post on r/NoFap.
 
 Definitely meditation was what made the biggest difference for me. In fact, within 5 minutes of meditation was when I knew I would never relapse again and here I am at 250+ days. What&apos;s hard is convincing people to do it though, myself included. I resisted for years, but the moment I started doing it, I felt like such an idiot for being so stubborn haha.

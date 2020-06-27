@@ -1,6 +1,6 @@
 // message compose
 
-export const getTypeQueryString = (searchString) => {
+export const getTypeQueryString = (searchString: string): string => {
   if (searchString.includes('&')) {
     const arrayWithType = searchString.split('&').filter(item => item.includes('type='));
     if (arrayWithType.length === 1) {
@@ -11,7 +11,7 @@ export const getTypeQueryString = (searchString) => {
   return 'CUSTOM';
 }
 
-export const randomMessageDelay = () => new Promise(resolve => {
+export const randomMessageDelay = (): Promise<void> => new Promise(resolve => {
   const delay = Math.floor(Math.random() * 6000) + 1000;
   setTimeout(function() {
     resolve();
@@ -20,7 +20,7 @@ export const randomMessageDelay = () => new Promise(resolve => {
 
 // nofap new subreddit
 
-export const scrollToSpecifiedDate = (dateString) => new Promise(resolve => {
+export const scrollToSpecifiedDate = (dateString: string): Promise<string> => new Promise(resolve => {
   let interval;
 
   interval = setInterval(() => {
@@ -42,9 +42,8 @@ export const scrollToSpecifiedDate = (dateString) => new Promise(resolve => {
   }, 500);
 });
 
-
-export const getAllNoFapNewUsernames = () => {
-  const allATags = document.querySelectorAll('a');
+export const getAllNoFapNewUsernames = (): string[] => {
+  const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
   const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/'));
   const usernames = filteredATags.map(tag => tag.innerText.split('/')[1]);
   return usernames;
