@@ -900,6 +900,13 @@ this.noFapNewSubreddit.js = (function () {
 
 	});
 
+	var mainCss_1 = createCommonjsModule(function (module, exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var mainCss = "\n.reade-user-information-top {\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n}\n\n.react-tool-tip-custom {\n  width: 450px;\n}\n";
+	exports.default = mainCss;
+
+	});
+
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
@@ -2769,11 +2776,6 @@ this.noFapNewSubreddit.js = (function () {
 	  clickable: false
 	}), _defineProperty(_class2, "supportedWrappers", ["div", "span"]), _defineProperty(_class2, "displayName", "ReactTooltip"), _temp)) || _class) || _class) || _class) || _class) || _class) || _class) || _class;
 
-	var index_es = /*#__PURE__*/Object.freeze({
-		__proto__: null,
-		'default': ReactTooltip
-	});
-
 	var start = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.sorryToHearYouRelapsed = exports.accountabilityPartner = exports.noReasonToRelapse = exports.biggestDifference = exports.struggleBasics = exports.flatlineAdvice = exports.amIAddictedAdvice = exports.mentalhealthNotExerciseAdvice = exports.generalAdvice = exports.straightToGuide = exports.startAdvice = void 0;
@@ -2794,13 +2796,11 @@ this.noFapNewSubreddit.js = (function () {
 
 	});
 
-	var require$$1 = getCjsExportFromNamespace(index_es);
-
 	var UserInformation_1 = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 
 	var react_1 = tslib_1.__importDefault(react);
-	var react_tooltip_1 = tslib_1.__importDefault(require$$1);
+	var react_tooltip_1 = tslib_1.__importDefault(ReactTooltip);
 
 	var createStartMessageLink = function (messageType, color, toUsername, messageText) {
 	    var url = "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + messageText + "&type=" + messageType;
@@ -2817,18 +2817,20 @@ this.noFapNewSubreddit.js = (function () {
 	    return (react_1.default.createElement(react_1.default.Fragment, null,
 	        react_1.default.createElement("a", { "data-tip": true, "data-for": dataTipId, style: style, href: url, target: '_blank' }, messageType),
 	        react_1.default.createElement(react_tooltip_1.default, { className: 'react-tool-tip-custom', id: dataTipId, type: 'error' },
-	            react_1.default.createElement("span", null, messageText))));
+	            react_1.default.createElement("span", null, messageText.split("\n").map(function (i, key) { return (react_1.default.createElement("div", { key: key, style: { marginBottom: '0.6rem' } }, i)); })))));
 	};
 	var UserInformation = function (_a) {
 	    var dbUser = _a.dbUser;
 	    console.log(start.startAdvice);
 	    return (react_1.default.createElement("div", null,
 	        react_1.default.createElement("div", { className: 'reade-user-information-top' },
-	            react_1.default.createElement("span", { style: { fontSize: '20px', marginRight: '0.4rem', color: dbUser.userColor } }, dbUser.username),
-	            react_1.default.createElement("span", { style: { fontSize: '20px', marginRight: '0.4rem', color: dbUser.userColor } },
+	            react_1.default.createElement("span", { style: { fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor } }, dbUser.username),
+	            react_1.default.createElement("span", null, "|"),
+	            react_1.default.createElement("span", { style: { fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor } },
 	                "Type: ",
 	                dbUser.userType),
-	            react_1.default.createElement("span", { style: { fontSize: '20px', marginRight: '0.4rem', color: 'blue' } },
+	            react_1.default.createElement("span", null, "|"),
+	            react_1.default.createElement("span", { style: { fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: 'blue' } },
 	                "Sent: ",
 	                dbUser.sentCount),
 	            react_1.default.createElement("p", null, dbUser.messageTypesSent.map(function (item) { return react_1.default.createElement("span", null, item); }))),
@@ -2859,8 +2861,9 @@ this.noFapNewSubreddit.js = (function () {
 	var react_dom_1 = tslib_1.__importDefault(reactDom);
 
 
+	var mainCss_1$1 = tslib_1.__importDefault(mainCss_1);
 	var UserInformation_1$1 = tslib_1.__importDefault(UserInformation_1);
-	commonUtils.addGlobalStyle("\n.reade-user-information-top {\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n}\n\n.react-tool-tip-custom {\n  width: '450px';\n}\n");
+	commonUtils.addGlobalStyle(mainCss_1$1.default);
 	var TIMEFRAME = '1 hour ago';
 	// const TIMEFRAME = '2 hours ago';
 	// const TIMEFRAME = '1 day ago';

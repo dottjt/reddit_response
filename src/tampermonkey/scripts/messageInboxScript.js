@@ -402,6 +402,20 @@ this.messageInboxScript.js = (function () {
 	        }
 	    });
 	}); };
+	var populatePageMessages = function (pageMessages) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    return tslib_1.__generator(this, function (_a) {
+	        tslib_1.__spreadArrays(pageMessages).map(function (containerDiv) {
+	            var entry = containerDiv.children[4];
+	            var replyLink = getReplyLink(entry);
+	            if (replyLink) {
+	                var replyALink = replyLink.children[0];
+	                console.log(replyALink);
+	                replyALink.click();
+	            }
+	        });
+	        return [2 /*return*/];
+	    });
+	}); };
 	var getReplyLink = function (entry) {
 	    switch (entry.children.length) {
 	        case 5: {
@@ -417,20 +431,6 @@ this.messageInboxScript.js = (function () {
 	        }
 	    }
 	};
-	var populatePageMessages = function (pageMessages) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-	    return tslib_1.__generator(this, function (_a) {
-	        tslib_1.__spreadArrays(pageMessages).map(function (containerDiv) {
-	            var entry = containerDiv.children[4];
-	            var replyLink = getReplyLink(entry);
-	            if (replyLink) {
-	                var replyALink = replyLink.children[0];
-	                console.log(replyALink);
-	                replyALink.click();
-	            }
-	        });
-	        return [2 /*return*/];
-	    });
-	}); };
 	// const populateMessagePanel = async (pageMessages) => {
 	//   [...pageMessages].map(containerDiv => {
 	//     const child = containerDiv.children[5];

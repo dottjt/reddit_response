@@ -4,7 +4,6 @@
     var getItems = function (document) {
         var items = document.querySelectorAll('.itemWrapper');
         var reversedItems = __spreadArrays(items).reverse();
-        // const itemsAdded = [];
         for (var _i = 0, reversedItems_1 = reversedItems; _i < reversedItems_1.length; _i++) {
             var item = reversedItems_1[_i];
             var title = item.querySelector('.title').children[0].innerText;
@@ -15,11 +14,6 @@
             console.log(title);
             console.log(episodeLink);
             console.log(shareLink);
-            // itemsAdded.push({
-            //   title,
-            //   episodeLink,
-            //   shareLink,
-            // })
         }
     };
     var main = function () { return __awaiter(void 0, void 0, void 0, function () {

@@ -43,7 +43,10 @@ const createStartMessageLink = (
         {messageType}
       </a>
       <ReactTooltip className='react-tool-tip-custom' id={dataTipId} type='error'>
-        <span>{messageText}</span>
+        <span>{messageText.split("\n").map((i,key) => (
+          <div key={key} style={{ marginBottom: '0.6rem' }}>{i}</div>
+        ))}</span>
+
       </ReactTooltip>
     </>
   );
@@ -58,9 +61,11 @@ const UserInformation = ({ dbUser }): React.FC<UserInformationProps> => {
   return (
     <div>
       <div className='reade-user-information-top'>
-        <span style={{ fontSize: '20px', marginRight: '0.4rem', color: dbUser.userColor }}>{dbUser.username}</span>
-        <span style={{ fontSize: '20px', marginRight: '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType}</span>
-        <span style={{ fontSize: '20px', marginRight: '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
+        <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor }}>{dbUser.username}</span>
+        <span>|</span>
+        <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType}</span>
+        <span>|</span>
+        <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
         <p>{dbUser.messageTypesSent.map((item: string) => <span>{item}</span>)}</p>
       </div>
 

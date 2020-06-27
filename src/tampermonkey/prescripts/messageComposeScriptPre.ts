@@ -31,27 +31,37 @@ const checkIfFieldsAreFull = async ({
     };
     await sendNewMessage(dataPayload);
 
-    // document.querySelector('#send').click();
+    (iFrame?.contentWindow?.document.querySelector('#send') as HTMLElement).click();
     console.log('message sent to server');
   } else {
-    console.log('some fields empty');
+    console.log('some fields empty - set event listener');
+    iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
+      main(); //
+    });
   }
 };
 
+const main = async () => {
+  console.log('START: preparing message');
+
+  const toInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=to]')).value;
+  const subjectInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=subject]')).value;
+  const messageInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
+  const type: string | undefined = getTypeQueryString(window.location.search);
+
+  await checkIfFieldsAreFull({
+    toInput, subjectInput, messageInput, type
+  });
+
+  console.log('END: script complete');
+}
+
+
 if (iFrame && !window.location.search.includes('embedded')) {
   iFrame.addEventListener("load", async function() {
-    console.log('START: preparing message');
-
-    const toInput: string | undefined = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelector('input[name=to]')).value;
-    const subjectInput: string | undefined = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelector('input[name=subject]')).value;
-    const messageInput: string | undefined = (<HTMLInputElement>iFrame.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
-    const type: string | undefined = getTypeQueryString(window.location.search);
-
-    await checkIfFieldsAreFull({
-      toInput, subjectInput, messageInput, type
-    });
-
-    console.log('END: script complete');
+    setTimeout(function() {
+      main(); //
+    }, 1500);
   });
 }
 

@@ -16,10 +16,6 @@ this.messageComposeScript.js = (function () {
 		}, fn(module, module.exports), module.exports;
 	}
 
-	function getCjsExportFromNamespace (n) {
-		return n && n['default'] || n;
-	}
-
 	function commonjsRequire () {
 		throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
 	}
@@ -277,8 +273,6 @@ this.messageComposeScript.js = (function () {
 		__classPrivateFieldSet: __classPrivateFieldSet
 	});
 
-	var tslib_1 = getCjsExportFromNamespace(tslib_es6);
-
 	var httpResponses = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
@@ -293,9 +287,9 @@ this.messageComposeScript.js = (function () {
 	    referrerPolicy: 'no-referrer',
 	    body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
 	}); };
-	var sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	var sendPostRequest = function (dataPayload, urlEndpoint) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
 	    var response, JSONResponse, error_1;
-	    return tslib_1.__generator(this, function (_a) {
+	    return tslib_es6.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0:
 	                _a.trys.push([0, 3, , 4]);
@@ -314,9 +308,9 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
-	exports.checkUsernamesFetch = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	exports.checkUsernamesFetch = function (dataPayload) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
 	    var JSONResponse;
-	    return tslib_1.__generator(this, function (_a) {
+	    return tslib_es6.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/checkUsernames')];
 	            case 1:
@@ -325,9 +319,9 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
-	exports.populateReceivedMessages = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	exports.populateReceivedMessages = function (dataPayload) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
 	    var JSONResponse;
-	    return tslib_1.__generator(this, function (_a) {
+	    return tslib_es6.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessages')];
 	            case 1:
@@ -336,9 +330,9 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
-	exports.sendNewMessage = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	exports.sendNewMessage = function (dataPayload) { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
 	    var JSONResponse;
-	    return tslib_1.__generator(this, function (_a) {
+	    return tslib_es6.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage')];
 	            case 1:
@@ -393,7 +387,7 @@ this.messageComposeScript.js = (function () {
 	}); };
 	exports.getAllNoFapNewUsernames = function () {
 	    var allATags = document.querySelectorAll('a');
-	    var filteredATags = tslib_1.__spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
+	    var filteredATags = tslib_es6.__spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
 	    var usernames = filteredATags.map(function (tag) { return tag.innerText.split('/')[1]; });
 	    return usernames;
 	};
@@ -416,16 +410,17 @@ this.messageComposeScript.js = (function () {
 	var iFrame = document.querySelector('iframe');
 	var checkIfFieldsAreFull = function (_a) {
 	    var toInput = _a.toInput, subjectInput = _a.subjectInput, messageInput = _a.messageInput, type = _a.type;
-	    return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
 	        var dataPayload;
-	        return tslib_1.__generator(this, function (_b) {
-	            switch (_b.label) {
+	        var _b, _c, _d;
+	        return tslib_es6.__generator(this, function (_e) {
+	            switch (_e.label) {
 	                case 0:
 	                    console.log(toInput, subjectInput, messageInput, type);
 	                    if (!(toInput && subjectInput && messageInput && type)) return [3 /*break*/, 3];
 	                    return [4 /*yield*/, commonUtils.randomMessageDelay()];
 	                case 1:
-	                    _b.sent();
+	                    _e.sent();
 	                    dataPayload = {
 	                        username_sending: 'NeverFapDeluxe',
 	                        username_receiving: toInput,
@@ -436,39 +431,50 @@ this.messageComposeScript.js = (function () {
 	                    };
 	                    return [4 /*yield*/, httpResponses.sendNewMessage(dataPayload)];
 	                case 2:
-	                    _b.sent();
-	                    // document.querySelector('#send').click();
+	                    _e.sent();
+	                    ((_b = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _b === void 0 ? void 0 : _b.document.querySelector('#send')).click();
 	                    console.log('message sent to server');
 	                    return [3 /*break*/, 4];
 	                case 3:
-	                    console.log('some fields empty');
-	                    _b.label = 4;
+	                    console.log('some fields empty - set event listener');
+	                    (_d = (_c = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document.querySelector('#send')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function () {
+	                        main(); //
+	                    });
+	                    _e.label = 4;
 	                case 4: return [2 /*return*/];
 	            }
 	        });
 	    });
 	};
+	var main = function () { return tslib_es6.__awaiter(void 0, void 0, void 0, function () {
+	    var toInput, subjectInput, messageInput, type;
+	    var _a, _b, _c, _d, _e, _f;
+	    return tslib_es6.__generator(this, function (_g) {
+	        switch (_g.label) {
+	            case 0:
+	                console.log('START: preparing message');
+	                toInput = ((_b = (_a = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.document) === null || _b === void 0 ? void 0 : _b.querySelector('input[name=to]')).value;
+	                subjectInput = ((_d = (_c = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document) === null || _d === void 0 ? void 0 : _d.querySelector('input[name=subject]')).value;
+	                messageInput = ((_f = (_e = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _e === void 0 ? void 0 : _e.document) === null || _f === void 0 ? void 0 : _f.querySelectorAll('textarea[name=text]')[1]).value;
+	                type = commonUtils.getTypeQueryString(window.location.search);
+	                return [4 /*yield*/, checkIfFieldsAreFull({
+	                        toInput: toInput, subjectInput: subjectInput, messageInput: messageInput, type: type
+	                    })];
+	            case 1:
+	                _g.sent();
+	                console.log('END: script complete');
+	                return [2 /*return*/];
+	        }
+	    });
+	}); };
 	if (iFrame && !window.location.search.includes('embedded')) {
 	    iFrame.addEventListener("load", function () {
-	        var _a, _b, _c, _d, _e, _f;
-	        return tslib_1.__awaiter(this, void 0, void 0, function () {
-	            var toInput, subjectInput, messageInput, type;
-	            return tslib_1.__generator(this, function (_g) {
-	                switch (_g.label) {
-	                    case 0:
-	                        console.log('START: preparing message');
-	                        toInput = ((_b = (_a = iFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.document) === null || _b === void 0 ? void 0 : _b.querySelector('input[name=to]')).value;
-	                        subjectInput = ((_d = (_c = iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document) === null || _d === void 0 ? void 0 : _d.querySelector('input[name=subject]')).value;
-	                        messageInput = ((_f = (_e = iFrame.contentWindow) === null || _e === void 0 ? void 0 : _e.document) === null || _f === void 0 ? void 0 : _f.querySelectorAll('textarea[name=text]')[1]).value;
-	                        type = commonUtils.getTypeQueryString(window.location.search);
-	                        return [4 /*yield*/, checkIfFieldsAreFull({
-	                                toInput: toInput, subjectInput: subjectInput, messageInput: messageInput, type: type
-	                            })];
-	                    case 1:
-	                        _g.sent();
-	                        console.log('END: script complete');
-	                        return [2 /*return*/];
-	                }
+	        return tslib_es6.__awaiter(this, void 0, void 0, function () {
+	            return tslib_es6.__generator(this, function (_a) {
+	                setTimeout(function () {
+	                    main(); //
+	                }, 1500);
+	                return [2 /*return*/];
 	            });
 	        });
 	    });

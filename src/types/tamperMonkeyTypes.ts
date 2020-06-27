@@ -28,7 +28,9 @@ export type SendNewMessageSendPayload = {
 export type PopulateReceivedMessagesPayload = {
   subject: string;
   subjectReplyToTitle: string;
-  recipient: string;
+  username_receiving: string;
+  username_sending: string;
   message: string;
   date: string;
+  type: string;
 }

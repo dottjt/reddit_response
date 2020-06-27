@@ -31,9 +31,11 @@ const generateMessageList = (pageMessages): PopulateReceivedMessagesPayload[] =>
     return {
       subject,
       subjectReplyToTitle,
-      recipient,
+      username_receiving: 'NeverFapDeluxe',
+      username_sending: recipient,
       message,
       date,
+      type: 'user_response'
     }
   })
 );
@@ -57,6 +59,20 @@ const getPageMessages = async (pageMessages: NodeListOf<Element>) => {
   await populateReceivedMessages(dataPayload);
 }
 
+const populatePageMessages = async (pageMessages) => {
+  [...pageMessages].map(containerDiv => {
+    const entry = containerDiv.children[4];
+    const replyLink = getReplyLink(entry)
+
+    if (replyLink) {
+      const replyALink = replyLink.children[0];
+      console.log(replyALink);
+
+      replyALink.click();
+    }
+  });
+};
+
 const getReplyLink = (entry) => {
   switch (entry.children.length) {
     case 5: {
@@ -72,21 +88,6 @@ const getReplyLink = (entry) => {
     }
   }
 }
-
-const populatePageMessages = async (pageMessages) => {
-  [...pageMessages].map(containerDiv => {
-    const entry = containerDiv.children[4];
-    const replyLink = getReplyLink(entry)
-
-    if (replyLink) {
-      const replyALink = replyLink.children[0];
-      console.log(replyALink);
-
-      replyALink.click();
-    }
-  });
-};
-
 // const populateMessagePanel = async (pageMessages) => {
 //   [...pageMessages].map(containerDiv => {
 //     const child = containerDiv.children[5];

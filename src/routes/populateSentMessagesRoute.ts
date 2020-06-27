@@ -4,7 +4,7 @@ import addNewMessage from '../util/db/addNewMessage';
 import {
   // User,
   // Message,
-  PopulateHistoricMessagePayload
+  
 } from '../types/serverTypes';
 
 const populateHistoricSentMessages = async (ctx: Context, next: Next) => {
