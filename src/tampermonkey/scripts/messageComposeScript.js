@@ -353,7 +353,7 @@ this.messageComposeScript.js = (function () {
 	var commonUtils = createCommonjsModule(function (module, exports) {
 	// message compose
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTypeQueryString = void 0;
+	exports.addGlobalStyle = exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTypeQueryString = void 0;
 
 	exports.getTypeQueryString = function (searchString) {
 	    if (searchString.includes('&')) {
@@ -396,6 +396,17 @@ this.messageComposeScript.js = (function () {
 	    var filteredATags = tslib_1.__spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
 	    var usernames = filteredATags.map(function (tag) { return tag.innerText.split('/')[1]; });
 	    return usernames;
+	};
+	exports.addGlobalStyle = function (css) {
+	    var head, style;
+	    head = document.getElementsByTagName('head')[0];
+	    if (!head) {
+	        return;
+	    }
+	    style = document.createElement('style');
+	    style.type = 'text/css';
+	    style.innerHTML = css.replace(/;/g, ' !important;');
+	    head.appendChild(style);
 	};
 
 	});

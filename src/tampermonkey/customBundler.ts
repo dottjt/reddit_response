@@ -6,6 +6,7 @@ import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss'
 import jsx from 'acorn-jsx';
 
 
@@ -17,6 +18,7 @@ const OUTPUT_SCRIPT_DIRECTORY = path.resolve(__dirname, 'scripts');
 
 const outputScriptFileName = (preScript: string): string => preScript.split('.')[0].slice(0,-3);  //+ '.js';
 
+
 const compileScript = async () => {
   try {
     const preScriptDirList = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
@@ -25,16 +27,25 @@ const compileScript = async () => {
 
       const bundle = await rollup.rollup({
         input: path.resolve(__dirname, 'prescripts', preScript),
+        // external: [ 'crypto' ], // tells Rollup 'I know what I'm doing here'
         acornInjectPlugins: [jsx()],
         plugins: [
+          resolve({
+            browser: true
+          }),
           replace({
             'process.env.NODE_ENV': JSON.stringify( 'production' )
           }),
           typescript({
             tsconfig: path.resolve(__dirname, '..', '..', 'tsconfig.json'),
           }),
-          resolve(),
-          commonjs({ extensions: ['.js', '.ts', '.tsx'] })
+          commonjs({
+            extensions: ['.js', '.ts', '.tsx']
+          }),
+          // postcss({
+          //   modules: true,
+          //   plugins: []
+          // })
         ]
       });
 

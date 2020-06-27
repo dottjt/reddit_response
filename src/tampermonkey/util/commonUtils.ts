@@ -48,3 +48,13 @@ export const getAllNoFapNewUsernames = (): string[] => {
   const usernames = filteredATags.map(tag => tag.innerText.split('/')[1]);
   return usernames;
 }
+
+export const addGlobalStyle = (css: string): void => {
+  var head, style;
+  head = document.getElementsByTagName('head')[0];
+  if (!head) { return; }
+  style = document.createElement('style');
+  style.type = 'text/css';
+  style.innerHTML = css.replace(/;/g, ' !important;');
+  head.appendChild(style);
+}

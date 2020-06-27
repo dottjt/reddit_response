@@ -6,13 +6,17 @@ import { checkUsernamesFetch } from '../util/httpResponses';
 import {
   scrollToSpecifiedDate,
   getAllNoFapNewUsernames,
+  addGlobalStyle,
 } from '../util/commonUtils';
+import mainCss from '../util/mainCss';
 
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 
 import UserInformation from '../util/components/UserInformation';
 
 'use strict';
+
+addGlobalStyle(mainCss);
 
 const TIMEFRAME = '1 hour ago';
 // const TIMEFRAME = '2 hours ago';
@@ -45,7 +49,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
 const main = async () => {
   console.log('START: start script');
 
-  await scrollToSpecifiedDate(TIMEFRAME); 
+  await scrollToSpecifiedDate(TIMEFRAME);
   const dataPayload: { usernames: string[] } = { usernames: getAllNoFapNewUsernames() };
   const users: CompiledFullUserObject[] = await checkUsernamesFetch(dataPayload);
   populateWebpageInformation(users);
