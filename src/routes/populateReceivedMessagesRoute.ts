@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import addNewMessage from '../util/db/addNewMessage';
+import addNewMessage from '../db/addNewMessage';
 
 import {
 

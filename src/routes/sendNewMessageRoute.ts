@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import addNewMessage from '../util/db/addNewMessage';
+import addNewMessage from '../db/addNewMessage';
 
 import { User } from '../types/serverTypes';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
@@ -15,6 +15,8 @@ const sendNewMessage = async (ctx: Context, next: Next) => {
     const send_date = data.send_date;
     const message = data.message;
     const type = data.type;
+
+    console.log(`sendNewMessage - ${username_receiving} - ${type} - ${message}`)
 
     await addNewMessage({
       username_sending,

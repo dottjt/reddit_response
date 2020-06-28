@@ -47,3 +47,11 @@ export const sendNewMessage =
       return JSONResponse.data.users;
     };
 
+export const latestUnreadMessagesInformation =
+  async (dataPayload: { username: string }):
+    Promise<CompiledFullUserObject> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/latestUnreadMessagesInformation');
+      return JSONResponse.data.user;
+    };
+
+

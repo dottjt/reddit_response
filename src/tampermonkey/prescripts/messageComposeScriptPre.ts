@@ -1,5 +1,5 @@
 import { sendNewMessage } from '../util/httpResponses';
-import { getTypeQueryString, randomMessageDelay } from '../util/commonUtils';
+import { getTypeQueryString, randomMessageDelay, getTimerQueryString } from '../util/commonUtils';
 import { SendNewMessageSendPayload } from '../../types/tamperMonkeyTypes';
 
 'use strict';
@@ -11,15 +11,16 @@ type CheckIfFieldsAreFullProps = {
   subjectInput: string | undefined;
   messageInput: string | undefined;
   type: string | undefined;
+  timer: string | undefined;
 }
 
 const checkIfFieldsAreFull = async ({
-  toInput, subjectInput, messageInput, type
+  toInput, subjectInput, messageInput, type, timer
 }: CheckIfFieldsAreFullProps): Promise<void> => {
-  console.log(toInput, subjectInput, messageInput, type)
+  console.log(toInput, subjectInput, messageInput, type, timer)
 
-  if (toInput && subjectInput && messageInput && type) {
-    await randomMessageDelay();
+  if (toInput && subjectInput && messageInput && type && timer) {
+    await randomMessageDelay(timer);
 
     const dataPayload: SendNewMessageSendPayload = {
       username_sending: 'NeverFapDeluxe',
@@ -35,9 +36,11 @@ const checkIfFieldsAreFull = async ({
     console.log('message sent to server');
   } else {
     console.log('some fields empty - set event listener');
-    iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
-      main(); //
-    });
+    if (type !== 'custom') {
+      iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
+        main(); //
+      });
+    }
   }
 };
 
@@ -48,9 +51,10 @@ const main = async () => {
   const subjectInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=subject]')).value;
   const messageInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
   const type: string | undefined = getTypeQueryString(window.location.search);
+  const timer: string | undefined = getTimerQueryString(window.location.search);
 
   await checkIfFieldsAreFull({
-    toInput, subjectInput, messageInput, type
+    toInput, subjectInput, messageInput, type, timer
   });
 
   console.log('END: script complete');

@@ -16,17 +16,25 @@ https://www.reddit.com/message/compose/
 
 https://www.reddit.com/message/inbox
   - It should traverse through all the messages and add them to the database. (DONE)
-  - It should add messages to the database that are sent by the user. (TODO)
-
-
+  - It should add messages to the database that are sent by the user. (DONE)
 
 ## Test Plan.
 
 - Start with new users.
 - Check that
 
+## Improvements
 
-
+- Maybe instead of checking time, it should instead check the username. Of course, the issue with that is if the user deletes their thing, then it's pointless.
+- For message/unread show the latest post of that particular user
+- Draw out the delay. I think I need to use localStorage to keep a timer which continually draws out the amount ot time inbetween delay
+- custom message still sends, need to figure that out
+- in compose message, stop opening it automatically. it doesn't make sense
+- Do you create a think for messages/messages? perhaps, because I can't currently see what I sent in unread, although that will change.
+- localstorage in order to store the second volume, it is set on 15 second intervals, so that the messages sent aren't rushed. Tooooo cool bby.
+- Storing middle messages
+- Checks if that particular user is part of a subreddit.
+- Is it possible to check if a user is in your subreddit?
 
 ### Required Plugins and Dependencies
 - Tampermonkey plugin installed

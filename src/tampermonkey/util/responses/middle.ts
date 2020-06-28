@@ -17,3 +17,7 @@ https://neverfapdeluxe.com/
 Also happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.
 `
 )
+
+
+
+// All good! I also have a subreddit if you're interested in getting updates. r/NeverFapDeluxe

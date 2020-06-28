@@ -281,7 +281,7 @@ this.messageComposeScript.js = (function () {
 
 	var httpResponses = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
+	exports.latestUnreadMessagesInformation = exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
 
 	var HTTPPOSToptions = function (data) { return ({
 	    method: 'POST',
@@ -347,13 +347,24 @@ this.messageComposeScript.js = (function () {
 	        }
 	    });
 	}); };
+	exports.latestUnreadMessagesInformation = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/latestUnreadMessagesInformation')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.user];
+	        }
+	    });
+	}); };
 
 	});
 
 	var commonUtils = createCommonjsModule(function (module, exports) {
 	// message compose
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.addGlobalStyle = exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTypeQueryString = void 0;
+	exports.openReplyLink = exports.addGlobalStyle = exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTimerQueryString = exports.getTypeQueryString = void 0;
 
 	exports.getTypeQueryString = function (searchString) {
 	    if (searchString.includes('&')) {
@@ -365,9 +376,23 @@ this.messageComposeScript.js = (function () {
 	    }
 	    return 'reply';
 	};
-	exports.randomMessageDelay = function () { return new Promise(function (resolve) {
-	    var delay = Math.floor(Math.random() * 6000) + 1000;
+	exports.getTimerQueryString = function (searchString) {
+	    if (searchString.includes('&')) {
+	        var arrayWithTimer = searchString.split('&').filter(function (item) { return item.includes('timer='); });
+	        if (arrayWithTimer.length === 1) {
+	            var type = arrayWithTimer[0].split('=')[1];
+	            return type;
+	        }
+	    }
+	};
+	exports.randomMessageDelay = function (timer) { return new Promise(function (resolve) {
+	    var delay = Math.floor(Math.random() * 6000) + 1000 + Number(timer);
 	    setTimeout(function () {
+	        var delayCounter = delay;
+	        setInterval(function () {
+	            console.log(delayCounter);
+	            delayCounter -= 1000;
+	        }, 1000);
 	        resolve();
 	    }, delay);
 	}); };
@@ -408,6 +433,35 @@ this.messageComposeScript.js = (function () {
 	    style.innerHTML = css.replace(/;/g, ' !important;');
 	    head.appendChild(style);
 	};
+	// was for messageInboxScriptPre.ts
+	exports.openReplyLink = function (containerDiv) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var entry, replyLink, replyALink;
+	    return tslib_1.__generator(this, function (_a) {
+	        entry = containerDiv.children[4];
+	        replyLink = getReplyLink(entry);
+	        if (replyLink) {
+	            replyALink = replyLink.children[0];
+	            console.log(replyALink);
+	            replyALink.click();
+	        }
+	        return [2 /*return*/];
+	    });
+	}); };
+	var getReplyLink = function (entry) {
+	    switch (entry.children.length) {
+	        case 5: {
+	            var entryLinks = entry.children[3];
+	            return entryLinks.children[7];
+	        }
+	        case 4: {
+	            var entryLinks = entry.children[2];
+	            return entryLinks.children[5];
+	        }
+	        default: {
+	            return null;
+	        }
+	    }
+	};
 
 	});
 
@@ -415,16 +469,16 @@ this.messageComposeScript.js = (function () {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var iFrame = document.querySelector('iframe');
 	var checkIfFieldsAreFull = function (_a) {
-	    var toInput = _a.toInput, subjectInput = _a.subjectInput, messageInput = _a.messageInput, type = _a.type;
+	    var toInput = _a.toInput, subjectInput = _a.subjectInput, messageInput = _a.messageInput, type = _a.type, timer = _a.timer;
 	    return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	        var dataPayload;
 	        var _b, _c, _d;
 	        return tslib_1.__generator(this, function (_e) {
 	            switch (_e.label) {
 	                case 0:
-	                    console.log(toInput, subjectInput, messageInput, type);
-	                    if (!(toInput && subjectInput && messageInput && type)) return [3 /*break*/, 3];
-	                    return [4 /*yield*/, commonUtils.randomMessageDelay()];
+	                    console.log(toInput, subjectInput, messageInput, type, timer);
+	                    if (!(toInput && subjectInput && messageInput && type && timer)) return [3 /*break*/, 3];
+	                    return [4 /*yield*/, commonUtils.randomMessageDelay(timer)];
 	                case 1:
 	                    _e.sent();
 	                    dataPayload = {
@@ -443,9 +497,11 @@ this.messageComposeScript.js = (function () {
 	                    return [3 /*break*/, 4];
 	                case 3:
 	                    console.log('some fields empty - set event listener');
-	                    (_d = (_c = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document.querySelector('#send')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function () {
-	                        main(); //
-	                    });
+	                    if (type !== 'custom') {
+	                        (_d = (_c = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document.querySelector('#send')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function () {
+	                            main(); //
+	                        });
+	                    }
 	                    _e.label = 4;
 	                case 4: return [2 /*return*/];
 	            }
@@ -453,7 +509,7 @@ this.messageComposeScript.js = (function () {
 	    });
 	};
 	var main = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-	    var toInput, subjectInput, messageInput, type;
+	    var toInput, subjectInput, messageInput, type, timer;
 	    var _a, _b, _c, _d, _e, _f;
 	    return tslib_1.__generator(this, function (_g) {
 	        switch (_g.label) {
@@ -463,8 +519,9 @@ this.messageComposeScript.js = (function () {
 	                subjectInput = ((_d = (_c = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _c === void 0 ? void 0 : _c.document) === null || _d === void 0 ? void 0 : _d.querySelector('input[name=subject]')).value;
 	                messageInput = ((_f = (_e = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _e === void 0 ? void 0 : _e.document) === null || _f === void 0 ? void 0 : _f.querySelectorAll('textarea[name=text]')[1]).value;
 	                type = commonUtils.getTypeQueryString(window.location.search);
+	                timer = commonUtils.getTimerQueryString(window.location.search);
 	                return [4 /*yield*/, checkIfFieldsAreFull({
-	                        toInput: toInput, subjectInput: subjectInput, messageInput: messageInput, type: type
+	                        toInput: toInput, subjectInput: subjectInput, messageInput: messageInput, type: type, timer: timer
 	                    })];
 	            case 1:
 	                _g.sent();

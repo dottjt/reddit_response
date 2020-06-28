@@ -13,11 +13,11 @@ import jsx from 'acorn-jsx';
 const WATCH_PRE_SCRIPT_DIRECTORY = path.resolve(__dirname, 'prescripts');
 const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, 'responses');
 const WATCH_UTIL_DIRECTORY = path.resolve(__dirname, 'util');
+const WATCH_COMPONENTS_DIRECTORY = path.resolve(__dirname, '..', 'components');
 
 const OUTPUT_SCRIPT_DIRECTORY = path.resolve(__dirname, 'scripts');
 
 const outputScriptFileName = (preScript: string): string => preScript.split('.')[0].slice(0,-3);  //+ '.js';
-
 
 const compileScript = async () => {
   try {
@@ -40,7 +40,8 @@ const compileScript = async () => {
             tsconfig: path.resolve(__dirname, '..', '..', 'tsconfig.json'),
           }),
           commonjs({
-            extensions: ['.js', '.ts', '.tsx']
+            extensions: ['.js', '.ts', '.tsx'],
+            // include: [ 'node_modules/**' ]
           }),
           // postcss({
           //   modules: true,
@@ -57,6 +58,7 @@ const compileScript = async () => {
 
       console.log(`Rollup done: ${plainName}`)
     }
+    console.log('Rollup all done.')
   } catch (error) {
     throw new Error(`compileScript - ${error}`);
   }
@@ -67,7 +69,7 @@ const main = async () => {
   await compileScript();
 
   // further changes
-  chokidar.watch([WATCH_PRE_SCRIPT_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY]).on('change', async (event, path) => {
+  chokidar.watch([WATCH_PRE_SCRIPT_DIRECTORY, WATCH_COMPONENTS_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY]).on('change', async (event, path) => {
     console.log('change observed');
     await compileScript();
   });

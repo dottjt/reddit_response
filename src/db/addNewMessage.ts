@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
-import knex from '../knex';
+import knex from '../util/knex';
 
-import { User, Message } from '../../types/serverTypes';
+import { User, Message } from '../types/serverTypes';
 
-import { toMelbourneDateString } from '../util';
+import { toMelbourneDateString } from '../util/util';
 
 import validateUser from './validateUser';
 
@@ -25,10 +25,13 @@ const addNewMessage = async ({
   type,
 }: AddNewMessageProps): Promise<void> => {
   await validateUser(username_receiving, false);
+  console.log(username_receiving, username_sending, send_date);
 
   const doesMessageExist = await knex<Message>('messages').where({
-    username_receiving, send_date
+    username_receiving, username_sending, send_date: toMelbourneDateString(new Date(send_date))
   }).first('id');
+
+  console.log('doesMessageExist', doesMessageExist);
 
   if (!doesMessageExist) {
     await knex<Message>('messages').insert({
@@ -38,7 +41,7 @@ const addNewMessage = async ({
       subject: subject,
       text: message,
       type,
-      send_date: toMelbourneDateString(new Date()),
+      send_date: toMelbourneDateString(new Date(send_date)),
     });
   }
 }

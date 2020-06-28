@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import {
@@ -13,9 +13,23 @@ import {
   noReasonToRelapse,
   accountabilityPartner,
   sorryToHearYouRelapsed,
-} from '../responses/start';
+} from '../tampermonkey/util/responses/start';
 
-import { CompiledFullUserObject } from '../../../types/tamperMonkeyTypes';
+import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
+
+const increaseDelayTimer = () => {
+  const delayTimer = window.localStorage.getItem('delayTimer');
+  const delayTimerNumber = Number(delayTimer) + 10000;
+
+  window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
+}
+
+const openNewLink = (prelimUrl) => {
+  const delayTimer = window.localStorage.getItem('delayTimer');
+  increaseDelayTimer();
+  const url = `${prelimUrl}&timer=${delayTimer}`;
+  window.open(prelimUrl, '_blank');
+}
 
 const createStartMessageLink = (
   messageType: string,
@@ -23,7 +37,7 @@ const createStartMessageLink = (
   toUsername: string,
   messageText: string,
 ): React.Element => {
-  const url = `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${messageText}&type=${messageType}`;
+  const prelimUrl = `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${encodeURIComponent(messageText)}&type=${messageType}`;
 
   const style = {
     color: color || 'black',
@@ -39,7 +53,7 @@ const createStartMessageLink = (
 
   return (
     <>
-      <a data-tip data-for={dataTipId} style={style} href={url} target='_blank'>
+      <a data-tip data-for={dataTipId} style={style} onClick={() => openNewLink(prelimUrl)} target='_blank'> {/* href={url} */}
         {messageType}
       </a>
       <ReactTooltip className='react-tool-tip-custom' id={dataTipId} type='error'>
@@ -56,17 +70,19 @@ type UserInformationProps = {
   dbUser: CompiledFullUserObject;
 }
 
-const UserInformation = ({ dbUser }): React.FC<UserInformationProps> => {
-  console.log(startAdvice)
+const UserInformation = ({ dbUser }: UserInformationProps): React.FC<UserInformationProps> => {
+  console.log(dbUser?.messageTypesSent);
   return (
     <div>
       <div>
-        {dbUser.lastSentMessage && (
-          <p>{dbUser.lastSentMessage}</p>
-        )}
-        {dbUser.lastReceivedMessage && (
-          <p>{dbUser.lastReceivedMessage}</p>
-        )}
+        <b style={{ fontWeight: 900 }}>NFD Sent</b>
+        {dbUser.lastSentMessage ? (
+          <p style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{dbUser.lastSentMessage.text}</p>
+        ) : 'NA'}
+        <b style={{ fontWeight: 900 }}>{dbUser.username} Sent</b>
+        {dbUser.lastReceivedMessage ? (
+          <p style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{dbUser.lastReceivedMessage.text}</p>
+        ) : 'NA'}
       </div>
 
       <div className='reade-user-information-top'>
@@ -75,7 +91,7 @@ const UserInformation = ({ dbUser }): React.FC<UserInformationProps> => {
         <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType}</span>
         <span>|</span>
         <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
-        <p>{dbUser.messageTypesSent.map((item: string) => <span>{item}</span>)}</p>
+        <p>{dbUser && dbUser.messageTypesSent?.map((item: any) => <span style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{item.type}</span>)}</p>
       </div>
 
       {/* flexWrap: 'wrap',  */}

@@ -26,6 +26,7 @@ export type SendNewMessageSendPayload = {
 }
 
 export type PopulateReceivedMessagesPayload = {
+  containerDiv?: Element;
   subject: string;
   subjectReplyToTitle: string;
   username_receiving: string;

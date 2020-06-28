@@ -6,8 +6,9 @@
   "scripts": {
     "-- -- -- -- START SCRIPTS -- -- -- -- ": "--",
     "start:dev": "NODE_ENV=development npm run knex:reset:dev && NODE_ENV=development npx ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "start:prod": "NODE_ENV=production npm run knex:migrate:prod && NODE_ENV=production npx ts-node ./src/index.ts",
+    "start:prod": "NODE_ENV=production npm run knex:migrate:prod && NODE_ENV=production npx ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "-- -- -- -- DATABASE SCRIPTS DEV -- -- -- -- ": "--",
+    "knex:copy-prod": "cp",
     "knex:reset:dev": "NODE_ENV=development npm run knex:rollback:dev && npm run knex:migrate:dev && npx knex --knexfile ./database/knexfile.ts seed:run",
     "knex:rollback:dev": "NODE_ENV=development npx knex --knexfile ./database/knexfile.ts migrate:rollback --all",
     "knex:migrate:dev": "NODE_ENV=development npx knex --knexfile ./database/knexfile.ts migrate:latest",

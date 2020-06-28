@@ -1,12 +1,16 @@
-import { populateReceivedMessages } from '../util/httpResponses.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { populateReceivedMessages, latestUnreadMessagesInformation } from '../util/httpResponses.js';
 import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload } from '../../types/tamperMonkeyTypes.js';
 import { sendNewMessage } from '../util/httpResponses';
+import ReplyUserInformation from '../../components/ReplyUserInformation.js';
 
 'use strict';
 
 const iFrame = document.querySelector('iframe');
 
-const generateMessageList = (pageMessages): PopulateReceivedMessagesPayload[] => (
+const generateRelevantMessageListInformation = (pageMessages): PopulateReceivedMessagesPayload[] => (
   [...pageMessages].map(containerDiv => {
     const subjectTag = containerDiv.children[1];
     const subjectReplyToTitle = subjectTag.children[0].innerText;
@@ -30,6 +34,7 @@ const generateMessageList = (pageMessages): PopulateReceivedMessagesPayload[] =>
     const message = entry.children[1].children[0].innerText;
 
     return {
+      containerDiv,
       subject,
       subjectReplyToTitle,
       username_receiving: 'NeverFapDeluxe',
@@ -41,8 +46,8 @@ const generateMessageList = (pageMessages): PopulateReceivedMessagesPayload[] =>
   })
 );
 
-const getPageMessages = async (pageMessages: NodeListOf<Element>) => {
-  const messageList: PopulateReceivedMessagesPayload[] = generateMessageList(pageMessages);
+const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>) => {
+  const messageList: PopulateReceivedMessagesPayload[] = generateRelevantMessageListInformation(pageMessages);
 
   const filteredMessageList: PopulateReceivedMessagesPayload[] = messageList.filter(
     message => message.date &&
@@ -54,40 +59,33 @@ const getPageMessages = async (pageMessages: NodeListOf<Element>) => {
     !message.subjectReplyToTitle.includes("Snoosletter")
   );
 
+  let counter = 0;
+  for (const item of filteredMessageList) {
+    const rootId = `r${item.username_sending}-${counter}`;
+    const root = document.createElement('div');
+    root.id = rootId;
+    counter += 1;
+
+    if (item.containerDiv) { // r5ageof6paths-0
+      item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
+
+      setTimeout(function(){ console.log('')}, 600);
+
+      const domContainer = iFrame?.contentWindow?.document.querySelector(`#${rootId}`);
+
+      console.log(domContainer);
+      console.log(`#${rootId}`);
+
+      const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
+
+      ReactDOM.render(<ReplyUserInformation dbUser={dbUser} previousMessageInformation={item} containerDiv={item.containerDiv} />, domContainer);
+    }
+  }
+
   console.log('filteredMessageList', filteredMessageList);
 
   const dataPayload: { messages: PopulateReceivedMessagesPayload[] } = { messages: filteredMessageList };
   await populateReceivedMessages(dataPayload);
-}
-
-const populatePageMessages = async (pageMessages) => {
-  [...pageMessages].map(containerDiv => {
-    const entry = containerDiv.children[4];
-    const replyLink = getReplyLink(entry)
-
-    if (replyLink) {
-      const replyALink = replyLink.children[0];
-      console.log(replyALink);
-
-      replyALink.click();
-    }
-  });
-};
-
-const getReplyLink = (entry) => {
-  switch (entry.children.length) {
-    case 5: {
-      const entryLinks = entry.children[3];
-      return entryLinks.children[7];
-    }
-    case 4: {
-      const entryLinks = entry.children[2];
-      return entryLinks.children[5];
-    }
-    default: {
-      return null;
-    }
-  }
 }
 
 const sendNewMessageLogic = async (containerDiv) => {
@@ -104,7 +102,7 @@ const sendNewMessageLogic = async (containerDiv) => {
   };
 
   console.log(dataPayload);
-  await sendNewMessage(dataPayload);
+  // await sendNewMessage(dataPayload);
 };
 
 const sendNewMessageEventListener = async (pageMessages) => {
@@ -118,14 +116,15 @@ const sendNewMessageEventListener = async (pageMessages) => {
   });
 }
 
+// TODO Latest message from
+
 const main = async () => {
   const mainLogic = async () => {
     console.log('START: preparing page');
 
     const pageMessages = iFrame?.contentWindow?.document.querySelectorAll('.message');
     if (pageMessages) {
-      await getPageMessages(pageMessages);
-      await populatePageMessages(pageMessages);
+      await saveNewUnreadPageMessages(pageMessages);
       await sendNewMessageEventListener(pageMessages);
 
       iFrame?.contentWindow?.scrollTo(0,0);

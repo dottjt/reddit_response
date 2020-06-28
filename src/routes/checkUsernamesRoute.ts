@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import validateUser from '../util/db/validateUser';
+import validateUser from '../db/validateUser';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 

@@ -11,9 +11,24 @@ export const getTypeQueryString = (searchString: string): string => {
   return 'reply';
 }
 
-export const randomMessageDelay = (): Promise<void> => new Promise(resolve => {
-  const delay = Math.floor(Math.random() * 6000) + 1000;
+export const getTimerQueryString = (searchString: string): string | undefined => {
+  if (searchString.includes('&')) {
+    const arrayWithTimer = searchString.split('&').filter(item => item.includes('timer='));
+    if (arrayWithTimer.length === 1) {
+      const type = arrayWithTimer[0].split('=')[1];
+      return type;
+    }
+  }
+}
+
+export const randomMessageDelay = (timer: string): Promise<void> => new Promise(resolve => {
+  const delay = Math.floor(Math.random() * 6000) + 1000 + Number(timer);
   setTimeout(function() {
+    let delayCounter = delay;
+    setInterval(function() {
+      console.log(delayCounter);
+      delayCounter -= 1000;
+    }, 1000)
     resolve();
   }, delay);
 });
@@ -57,4 +72,35 @@ export const addGlobalStyle = (css: string): void => {
   style.type = 'text/css';
   style.innerHTML = css.replace(/;/g, ' !important;');
   head.appendChild(style);
+}
+
+
+// was for messageInboxScriptPre.ts
+
+export const openReplyLink = async (containerDiv) => {
+  const entry = containerDiv.children[4];
+  const replyLink = getReplyLink(entry)
+
+  if (replyLink) {
+    const replyALink = replyLink.children[0];
+    console.log(replyALink);
+
+    replyALink.click();
+  }
+};
+
+const getReplyLink = (entry) => {
+  switch (entry.children.length) {
+    case 5: {
+      const entryLinks = entry.children[3];
+      return entryLinks.children[7];
+    }
+    case 4: {
+      const entryLinks = entry.children[2];
+      return entryLinks.children[5];
+    }
+    default: {
+      return null;
+    }
+  }
 }

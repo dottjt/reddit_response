@@ -770,7 +770,7 @@ this.noFapNewSubreddit.js = (function () {
 
 	var httpResponses = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
+	exports.latestUnreadMessagesInformation = exports.sendNewMessage = exports.populateReceivedMessages = exports.checkUsernamesFetch = void 0;
 
 	var HTTPPOSToptions = function (data) { return ({
 	    method: 'POST',
@@ -836,13 +836,24 @@ this.noFapNewSubreddit.js = (function () {
 	        }
 	    });
 	}); };
+	exports.latestUnreadMessagesInformation = function (dataPayload) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var JSONResponse;
+	    return tslib_1.__generator(this, function (_a) {
+	        switch (_a.label) {
+	            case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/latestUnreadMessagesInformation')];
+	            case 1:
+	                JSONResponse = _a.sent();
+	                return [2 /*return*/, JSONResponse.data.user];
+	        }
+	    });
+	}); };
 
 	});
 
 	var commonUtils = createCommonjsModule(function (module, exports) {
 	// message compose
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.addGlobalStyle = exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTypeQueryString = void 0;
+	exports.openReplyLink = exports.addGlobalStyle = exports.getAllNoFapNewUsernames = exports.scrollToSpecifiedDate = exports.randomMessageDelay = exports.getTimerQueryString = exports.getTypeQueryString = void 0;
 
 	exports.getTypeQueryString = function (searchString) {
 	    if (searchString.includes('&')) {
@@ -854,9 +865,23 @@ this.noFapNewSubreddit.js = (function () {
 	    }
 	    return 'reply';
 	};
-	exports.randomMessageDelay = function () { return new Promise(function (resolve) {
-	    var delay = Math.floor(Math.random() * 6000) + 1000;
+	exports.getTimerQueryString = function (searchString) {
+	    if (searchString.includes('&')) {
+	        var arrayWithTimer = searchString.split('&').filter(function (item) { return item.includes('timer='); });
+	        if (arrayWithTimer.length === 1) {
+	            var type = arrayWithTimer[0].split('=')[1];
+	            return type;
+	        }
+	    }
+	};
+	exports.randomMessageDelay = function (timer) { return new Promise(function (resolve) {
+	    var delay = Math.floor(Math.random() * 6000) + 1000 + Number(timer);
 	    setTimeout(function () {
+	        var delayCounter = delay;
+	        setInterval(function () {
+	            console.log(delayCounter);
+	            delayCounter -= 1000;
+	        }, 1000);
 	        resolve();
 	    }, delay);
 	}); };
@@ -896,6 +921,35 @@ this.noFapNewSubreddit.js = (function () {
 	    style.type = 'text/css';
 	    style.innerHTML = css.replace(/;/g, ' !important;');
 	    head.appendChild(style);
+	};
+	// was for messageInboxScriptPre.ts
+	exports.openReplyLink = function (containerDiv) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+	    var entry, replyLink, replyALink;
+	    return tslib_1.__generator(this, function (_a) {
+	        entry = containerDiv.children[4];
+	        replyLink = getReplyLink(entry);
+	        if (replyLink) {
+	            replyALink = replyLink.children[0];
+	            console.log(replyALink);
+	            replyALink.click();
+	        }
+	        return [2 /*return*/];
+	    });
+	}); };
+	var getReplyLink = function (entry) {
+	    switch (entry.children.length) {
+	        case 5: {
+	            var entryLinks = entry.children[3];
+	            return entryLinks.children[7];
+	        }
+	        case 4: {
+	            var entryLinks = entry.children[2];
+	            return entryLinks.children[5];
+	        }
+	        default: {
+	            return null;
+	        }
+	    }
 	};
 
 	});
@@ -2782,20 +2836,26 @@ this.noFapNewSubreddit.js = (function () {
 	});
 
 	var start = createCommonjsModule(function (module, exports) {
+	// is it bad to fap without porn?
+	// what benefits have you noticed?
+	// is peeking relapse?
+	// how to stop wet dreams?
+	// advice for boyfriend from girlfriend.
+	// edging and reseting counter.
+	// relapse when thinking about ex. 
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.sorryToHearYouRelapsed = exports.accountabilityPartner = exports.noReasonToRelapse = exports.biggestDifference = exports.struggleBasics = exports.flatlineAdvice = exports.amIAddictedAdvice = exports.mentalhealthNotExerciseAdvice = exports.generalAdvice = exports.straightToGuide = exports.startAdvice = void 0;
-	var opener = 'Hey, I saw your post on r/NoFap.';
-	exports.startAdvice = (opener + " It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.\n\nDo you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
-	exports.straightToGuide = (opener + "\n\nIf you're looking for some advice, I've written a guide to the whole process of overcoming porn addiction. The homepage should cover 90% of how NeverFap Deluxe works. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n");
-	exports.generalAdvice = (opener + "\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.\n\nDo you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
-	exports.mentalhealthNotExerciseAdvice = (opener + "\n\nI think you'll find that recovery is about focusing on your mental health, not so much about your physical health. Although physical activity can help tremendously, it doesn't address the heart of the problem which is not having control over your mind.\n\nOtherwise, you end up using exercise as a form of distraction and that's no different to procrastinating. I've written a guide on overcoming porn addiction which explains this in detail, if you're interested.\n");
-	exports.amIAddictedAdvice = (opener + "\n\nEssentially, you're no longer addicted when you have zero desire to do it. As in, never again. Up until then, you're still very much addicted. In most cases, if you can get past 90 days then it demonstrates that you're no longer addicted, but I would also say it's just a general guide.\n\nUltimately it's about working on your mental health everyday. Keep that up and you'll get there, but it involves a lot of practice and remembering to meditate daily. I've written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
-	exports.flatlineAdvice = (opener + "\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
-	exports.struggleBasics = (opener + "\n\nI'm sorry to hear you're struggling. Based on what you described it sounds like you don't have the fundamentals down. Like, if you're worried about distracting yourself, blocking porn or counting streaks, then it sounds like you're merely focusing on the symptoms. Not the cause, which is having poor mental health.\n\nUltimately what's important is having balance and having mental health. Once you get those things down recovery becomes a lot easier, because you're no longer fighting yourself and your feelings.\n\nWhat kind of things do you do for your mental health each day? Do you meditate or practice awareness exercises? I've written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
-	exports.biggestDifference = (opener + "\n\nDefinitely meditation was what made the biggest difference for me. In fact, within 5 minutes of meditation was when I knew I would never relapse again.\n\nSo for me, I basically do 10 minutes of meditation each day and I would say that's enough for you to get started. I've written a guide explaining why, if you're interested.\n");
-	exports.noReasonToRelapse = (opener + "\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.\n\nThere is no such thing as reasonable when it comes to addiction. I've written a guide explaining why, if you're interested.\n");
-	exports.accountabilityPartner = (opener + "\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n");
-	exports.sorryToHearYouRelapsed = (opener + " I'm sorry to hear you relapsed. Were you focusing on your mental health in order to help you deal with your feelings and emotions?\n\nIf you're struggling with recovery, then it might help to revisit the basics. I've written a guide explaining the fundamentals, if you're interested.\n");
+	exports.startAdvice = ("Hey, I saw your post on r/NoFap. It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.\n\nDo you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
+	exports.straightToGuide = ("Hey, I saw your post on r/NoFap.\n\nIf you're looking for some advice, I've written a guide to the whole process of overcoming porn addiction. The homepage should cover 90% of how NeverFap Deluxe works. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n");
+	exports.generalAdvice = ("Hey, I saw your post on r/NoFap.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.\n\nDo you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
+	exports.mentalhealthNotExerciseAdvice = ("Hey, I saw your post on r/NoFap.\n\nI think you'll find that recovery is about focusing on your mental health, not so much about your physical health. Although physical activity can help tremendously, it doesn't address the heart of the problem which is not having control over your mind.\n\nOtherwise, you end up using exercise as a form of distraction and that's no different to procrastinating. I've written a guide on overcoming porn addiction which explains this in detail, if you're interested.\n");
+	exports.amIAddictedAdvice = ("Hey, I saw your post on r/NoFap.\n\nEssentially, you're no longer addicted when you have zero desire to do it. As in, never again. Up until then, you're still very much addicted. In most cases, if you can get past 90 days then it demonstrates that you're no longer addicted, but I would also say it's just a general guide.\n\nUltimately it's about working on your mental health everyday. Keep that up and you'll get there, but it involves a lot of practice and remembering to meditate daily. I've written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
+	exports.flatlineAdvice = ("Hey, I saw your post on r/NoFap.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
+	exports.struggleBasics = ("Hey, I saw your post on r/NoFap.\n\nI'm sorry to hear you're struggling. Based on what you described it sounds like you don't have the fundamentals down. Like, if you're worried about distracting yourself, blocking porn or counting streaks, then it sounds like you're merely focusing on the symptoms. Not the cause, which is having poor mental health.\n\nUltimately what's important is having balance and having mental health. Once you get those things down recovery becomes a lot easier, because you're no longer fighting yourself and your feelings.\n\nWhat kind of things do you do for your mental health each day? Do you meditate or practice awareness exercises? I've written a guide on overcoming porn addiction which explains this stuff, if you're interested.\n");
+	exports.biggestDifference = ("Hey, I saw your post on r/NoFap.\n\nDefinitely meditation was what made the biggest difference for me. In fact, within 5 minutes of meditation was when I knew I would never relapse again.\n\nSo for me, I basically do 10 minutes of meditation each day and I would say that's enough for you to get started. I've written a guide explaining why, if you're interested.\n");
+	exports.noReasonToRelapse = ("Hey, I saw your post on r/NoFap.\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.\n\nThere is no such thing as reasonable when it comes to addiction. I've written a guide explaining why, if you're interested.\n");
+	exports.accountabilityPartner = ("Hey, I saw your post on r/NoFap.\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n");
+	exports.sorryToHearYouRelapsed = ("Hey, I saw your post on r/NoFap. I'm sorry to hear you relapsed. Were you focusing on your mental health in order to help you deal with your feelings and emotions?\n\nIf you're struggling with recovery, then it might help to revisit the basics. I've written a guide explaining the fundamentals, if you're interested.\n");
 	// and here I am at 250+ days. What's hard is convincing people to do it though, myself included. I resisted for years, but the moment I started doing it, I felt like such an idiot for being so stubborn haha.
 	// Meditation also isn't effective if it's not consistent. It's a bit like dieting. You can't just diet for a week, and then splurge afterwards. It's about creating that lifestyle of balance and developing a mental health routine which allows you to develop control over your mind. So definitely it's something you should be doing daily.
 
@@ -2809,8 +2869,18 @@ this.noFapNewSubreddit.js = (function () {
 	var react_1 = tslib_1.__importDefault(react);
 	var react_tooltip_1 = tslib_1.__importDefault(require$$1);
 
+	var increaseDelayTimer = function () {
+	    var delayTimer = window.localStorage.getItem('delayTimer');
+	    var delayTimerNumber = Number(delayTimer) + 10000;
+	    window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
+	};
+	var openNewLink = function (prelimUrl) {
+	    var delayTimer = window.localStorage.getItem('delayTimer');
+	    increaseDelayTimer();
+	    window.open(prelimUrl, '_blank');
+	};
 	var createStartMessageLink = function (messageType, color, toUsername, messageText) {
-	    var url = "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + messageText + "&type=" + messageType;
+	    var prelimUrl = "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
 	    var style = {
 	        color: color || 'black',
 	        marginTop: '0.2rem',
@@ -2822,17 +2892,24 @@ this.noFapNewSubreddit.js = (function () {
 	    };
 	    var dataTipId = messageType + "-" + toUsername;
 	    return (react_1.default.createElement(react_1.default.Fragment, null,
-	        react_1.default.createElement("a", { "data-tip": true, "data-for": dataTipId, style: style, href: url, target: '_blank' }, messageType),
+	        react_1.default.createElement("a", { "data-tip": true, "data-for": dataTipId, style: style, onClick: function () { return openNewLink(prelimUrl); }, target: '_blank' },
+	            " ",
+	            messageType),
 	        react_1.default.createElement(react_tooltip_1.default, { className: 'react-tool-tip-custom', id: dataTipId, type: 'error' },
 	            react_1.default.createElement("span", null, messageText.split("\n").map(function (i, key) { return (react_1.default.createElement("div", { key: key, style: { marginBottom: '0.6rem' } }, i)); })))));
 	};
 	var UserInformation = function (_a) {
+	    var _b;
 	    var dbUser = _a.dbUser;
-	    console.log(start.startAdvice);
+	    console.log(dbUser === null || dbUser === void 0 ? void 0 : dbUser.messageTypesSent);
 	    return (react_1.default.createElement("div", null,
 	        react_1.default.createElement("div", null,
-	            dbUser.lastSentMessage,
-	            react_1.default.createElement("p", null, "lastSentMessage")),
+	            react_1.default.createElement("b", { style: { fontWeight: 900 } }, "NFD Sent"),
+	            dbUser.lastSentMessage ? (react_1.default.createElement("p", { style: { paddingTop: '0.2rem', paddingBottom: '0.2rem' } }, dbUser.lastSentMessage.text)) : 'NA',
+	            react_1.default.createElement("b", { style: { fontWeight: 900 } },
+	                dbUser.username,
+	                " Sent"),
+	            dbUser.lastReceivedMessage ? (react_1.default.createElement("p", { style: { paddingTop: '0.2rem', paddingBottom: '0.2rem' } }, dbUser.lastReceivedMessage.text)) : 'NA'),
 	        react_1.default.createElement("div", { className: 'reade-user-information-top' },
 	            react_1.default.createElement("span", { style: { fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor } }, dbUser.username),
 	            react_1.default.createElement("span", null, "|"),
@@ -2843,7 +2920,7 @@ this.noFapNewSubreddit.js = (function () {
 	            react_1.default.createElement("span", { style: { fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: 'blue' } },
 	                "Sent: ",
 	                dbUser.sentCount),
-	            react_1.default.createElement("p", null, dbUser.messageTypesSent.map(function (item) { return react_1.default.createElement("span", null, item); }))),
+	            react_1.default.createElement("p", null, dbUser && ((_b = dbUser.messageTypesSent) === null || _b === void 0 ? void 0 : _b.map(function (item) { return react_1.default.createElement("span", { style: { paddingTop: '0.2rem', paddingBottom: '0.2rem' } }, item.type); })))),
 	        react_1.default.createElement("div", { style: { display: 'flex', justifyContent: 'space-between' }, className: 'reade-user-information-messages' },
 	            react_1.default.createElement("div", { style: { display: 'flex', flexDirection: 'column' } },
 	                createStartMessageLink('custom', 'purple', dbUser.username, ''),
@@ -2876,7 +2953,7 @@ this.noFapNewSubreddit.js = (function () {
 	commonUtils.addGlobalStyle(mainCss_1$1.default);
 	// const TIMEFRAME = 'NA';
 	var TIMEFRAME = '1 hour ago';
-	// const TIMEFRAME = '2 hours ago';
+	// const TIMEFRAME = '4 hours ago';
 	// const TIMEFRAME = '1 day ago';
 	// const TIMEFRAME = '2 days ago';
 	var populateWebpageInformation = function (users) {
@@ -2886,7 +2963,7 @@ this.noFapNewSubreddit.js = (function () {
 	        var tagUsername = tag.innerText.split('/')[1];
 	        var dbUser = users.find(function (user) { return user.username === tagUsername; });
 	        if (dbUser) {
-	            var rootId = tagUsername + "-" + index;
+	            var rootId = "r" + tagUsername + "-" + index;
 	            var root = document.createElement('div');
 	            root.id = rootId;
 	            tag.parentNode.insertBefore(root, tag);
@@ -2896,12 +2973,25 @@ this.noFapNewSubreddit.js = (function () {
 	        }
 	    });
 	};
+	var setLocalDelayTimer = function () {
+	    window.localStorage.setItem('delayTimer', '10000');
+	    setInterval(function () {
+	        var delayTimer = window.localStorage.getItem('delayTimer');
+	        var delayTimerNumber = Number(delayTimer);
+	        console.log('delayTimerNumber', delayTimerNumber);
+	        if (delayTimerNumber > 10000) {
+	            var delayTimerNumberLessOne = delayTimerNumber - 1000;
+	            window.localStorage.setItem('delayTimer', delayTimerNumberLessOne.toString());
+	        }
+	    }, 1000);
+	};
 	var main = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
 	    var dataPayload, users;
 	    return tslib_1.__generator(this, function (_a) {
 	        switch (_a.label) {
 	            case 0:
 	                console.log('START: start script');
+	                setLocalDelayTimer();
 	                return [4 /*yield*/, commonUtils.scrollToSpecifiedDate(TIMEFRAME)];
 	            case 1:
 	                _a.sent();

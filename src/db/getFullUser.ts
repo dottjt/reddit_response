@@ -1,17 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
-import knex from '../knex';
+import knex from '../util/knex';
 
-import { User, Message } from '../../types/serverTypes';
+import { User, Message } from '../types/serverTypes';
 
-import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
+import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 
 const getFullUser = async (username: string): Promise<CompiledFullUserObject> => {
-  const user: User | undefined = await knex<User>('users').where({ username }).first('*');
+  const user: User = await knex<User>('users').where({ username }).first('*');
+  
   const sentMessagesCount = await knex<Message>('messages').where({ username_sending: username }).count('id');
   const receivedMessagesCount = await knex<Message>('messages').where({ username_receiving: username }).count('id');
 
-  const lastSentMessage: Message | undefined = await knex<Message>('messages').where({ username_receiving: username }).first('*');
-  const lastReceivedMessage: Message | undefined = await knex<Message>('messages').where({ username_receiving: username }).first('*');
+  const lastSentMessage: Message | undefined = await knex<Message>('messages').where({ username_sending: 'NeverFapDeluxe', username_receiving: username }).orderBy('created_at', 'desc').first('*');
+  const lastReceivedMessage: Message | undefined = await knex<Message>('messages').where({ username_sending: username, username_receiving: 'NeverFapDeluxe' }).orderBy('created_at', 'desc').first('*');
 
   // TODO Test this. and figure out what this would actually be.
   const messageTypesSent: string[] | undefined = await knex<Message>('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).select('type');

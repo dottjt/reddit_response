@@ -12,7 +12,7 @@ import mainCss from '../util/mainCss';
 
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 
-import UserInformation from '../util/components/UserInformation';
+import UserInformation from '../../components/UserInformation';
 
 'use strict';
 
@@ -20,7 +20,7 @@ addGlobalStyle(mainCss);
 
 // const TIMEFRAME = 'NA';
 const TIMEFRAME = '1 hour ago';
-// const TIMEFRAME = '2 hours ago';
+// const TIMEFRAME = '4 hours ago';
 // const TIMEFRAME = '1 day ago';
 // const TIMEFRAME = '2 days ago';
 
@@ -34,7 +34,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
     const dbUser: CompiledFullUserObject | undefined = users.find(user => user.username === tagUsername);
 
     if (dbUser) {
-      const rootId = `${tagUsername}-${index}`;
+      const rootId = `r${tagUsername}-${index}`;
       const root = document.createElement('div');
       root.id = rootId;
       tag.parentNode.insertBefore(root, tag);
@@ -47,8 +47,25 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
   });
 }
 
+const setLocalDelayTimer = () => {
+  window.localStorage.setItem('delayTimer', '10000');
+
+  setInterval(function() {
+    const delayTimer = window.localStorage.getItem('delayTimer');
+    const delayTimerNumber = Number(delayTimer);
+    console.log('delayTimerNumber', delayTimerNumber);
+
+    if (delayTimerNumber > 10000) {
+      const delayTimerNumberLessOne = delayTimerNumber - 1000;
+      window.localStorage.setItem('delayTimer', delayTimerNumberLessOne.toString());
+    }
+  }, 1000);
+}
+
 const main = async () => {
   console.log('START: start script');
+
+  setLocalDelayTimer();
 
   await scrollToSpecifiedDate(TIMEFRAME);
   const dataPayload: { usernames: string[] } = { usernames: getAllNoFapNewUsernames() };
