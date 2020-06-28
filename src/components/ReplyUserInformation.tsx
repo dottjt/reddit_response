@@ -32,7 +32,6 @@ const populateMessageAndSend = async (
         send_date: new Date().toString(),
         type: messageType,
       }
-      console.log('dataPayload', dataPayload);
       await sendNewMessage(dataPayload);
 
       // submitButton?.click();
@@ -92,14 +91,14 @@ const ReplyUserInformation = ({ dbUser, containerDiv, previousMessageInformation
   return (
     <div>
       <div>
-        <b style={{ fontWeight: 900 }}>NFD Sent</b>
+        <p><b style={{ fontWeight: 900 }}>NFD Sent</b></p>
         {dbUser.lastSentMessage ? (
           <p style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{dbUser.lastSentMessage.text}</p>
-        ) : 'NA'}
-        <b style={{ fontWeight: 900 }}>{dbUser.username} Sent</b>
+        ) : <p>NA</p>}
+        <p><b style={{ fontWeight: 900 }}>{dbUser.username} Sent</b></p>
         {dbUser.lastReceivedMessage ? (
           <p style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{dbUser.lastReceivedMessage.text}</p>
-        ) : 'NA'}
+        ) : <p>NA</p>}
       </div>
 
       <div className='reade-user-information-top'>

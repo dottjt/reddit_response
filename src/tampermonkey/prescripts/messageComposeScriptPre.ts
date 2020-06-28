@@ -17,7 +17,7 @@ type CheckIfFieldsAreFullProps = {
 const checkIfFieldsAreFull = async ({
   toInput, subjectInput, messageInput, type, timer
 }: CheckIfFieldsAreFullProps): Promise<void> => {
-  console.log(toInput, subjectInput, messageInput, type, timer)
+  console.log(toInput, subjectInput, messageInput, type, timer);
 
   if (toInput && subjectInput && messageInput && type && timer) {
     await randomMessageDelay(timer);

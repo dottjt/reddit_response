@@ -2975,11 +2975,12 @@ this.noFapNewSubreddit.js = (function () {
 	};
 	var setLocalDelayTimer = function () {
 	    window.localStorage.setItem('delayTimer', '10000');
+	    console.log('delayTimerNumber', '10000');
 	    setInterval(function () {
 	        var delayTimer = window.localStorage.getItem('delayTimer');
 	        var delayTimerNumber = Number(delayTimer);
-	        console.log('delayTimerNumber', delayTimerNumber);
 	        if (delayTimerNumber > 10000) {
+	            console.log('delayTimerNumber', delayTimerNumber);
 	            var delayTimerNumberLessOne = delayTimerNumber - 1000;
 	            window.localStorage.setItem('delayTimer', delayTimerNumberLessOne.toString());
 	        }

@@ -25,13 +25,10 @@ const addNewMessage = async ({
   type,
 }: AddNewMessageProps): Promise<void> => {
   await validateUser(username_receiving, false);
-  console.log(username_receiving, username_sending, send_date);
 
   const doesMessageExist = await knex<Message>('messages').where({
     username_receiving, username_sending, send_date: toMelbourneDateString(new Date(send_date))
   }).first('id');
-
-  console.log('doesMessageExist', doesMessageExist);
 
   if (!doesMessageExist) {
     await knex<Message>('messages').insert({

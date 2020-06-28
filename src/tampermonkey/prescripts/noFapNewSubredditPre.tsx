@@ -50,12 +50,15 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
 const setLocalDelayTimer = () => {
   window.localStorage.setItem('delayTimer', '10000');
 
+  console.log('delayTimerNumber', '10000');
+
   setInterval(function() {
     const delayTimer = window.localStorage.getItem('delayTimer');
     const delayTimerNumber = Number(delayTimer);
-    console.log('delayTimerNumber', delayTimerNumber);
 
     if (delayTimerNumber > 10000) {
+      console.log('delayTimerNumber', delayTimerNumber);
+
       const delayTimerNumberLessOne = delayTimerNumber - 1000;
       window.localStorage.setItem('delayTimer', delayTimerNumberLessOne.toString());
     }

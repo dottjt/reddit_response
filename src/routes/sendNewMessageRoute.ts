@@ -1,7 +1,6 @@
 import { Context, Next } from 'koa';
 import addNewMessage from '../db/addNewMessage';
 
-import { User } from '../types/serverTypes';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 
 const sendNewMessage = async (ctx: Context, next: Next) => {

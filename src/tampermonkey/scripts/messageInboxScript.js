@@ -2719,11 +2719,6 @@ this.messageInboxScript.js = (function () {
 	  clickable: false
 	}), _defineProperty(_class2, "supportedWrappers", ["div", "span"]), _defineProperty(_class2, "displayName", "ReactTooltip"), _temp)) || _class) || _class) || _class) || _class) || _class) || _class) || _class;
 
-	var index_es = /*#__PURE__*/Object.freeze({
-		__proto__: null,
-		'default': ReactTooltip
-	});
-
 	var commonUtils = createCommonjsModule(function (module, exports) {
 	// message compose
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -2838,13 +2833,11 @@ this.messageInboxScript.js = (function () {
 
 	});
 
-	var require$$1 = getCjsExportFromNamespace(index_es);
-
 	var ReplyUserInformation_1 = createCommonjsModule(function (module, exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
 
 	var react_1 = tslib_1.__importDefault(react);
-	var react_tooltip_1 = tslib_1.__importDefault(require$$1);
+	var react_tooltip_1 = tslib_1.__importDefault(ReactTooltip);
 
 
 
@@ -2867,7 +2860,6 @@ this.messageInboxScript.js = (function () {
 	                    send_date: new Date().toString(),
 	                    type: messageType,
 	                };
-	                console.log('dataPayload', dataPayload);
 	                return [4 /*yield*/, httpResponses.sendNewMessage(dataPayload)];
 	            case 1:
 	                _a.sent();
@@ -2996,10 +2988,8 @@ this.messageInboxScript.js = (function () {
 	                counter += 1;
 	                if (!item.containerDiv) return [3 /*break*/, 3];
 	                (_a = item.containerDiv.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(root, item.containerDiv);
-	                setTimeout(function () { console.log(''); }, 600);
+	                setTimeout(function () { console.log(''); }, 800);
 	                domContainer = (_b = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _b === void 0 ? void 0 : _b.document.querySelector("#" + rootId);
-	                console.log(domContainer);
-	                console.log("#" + rootId);
 	                return [4 /*yield*/, httpResponses.latestUnreadMessagesInformation({ username: item.username_sending })];
 	            case 2:
 	                dbUser = _c.sent();
@@ -3032,7 +3022,6 @@ this.messageInboxScript.js = (function () {
 	            send_date: new Date().toString(),
 	            type: 'reply',
 	        };
-	        console.log(dataPayload);
 	        return [2 /*return*/];
 	    });
 	}); };

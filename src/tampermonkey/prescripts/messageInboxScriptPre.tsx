@@ -69,12 +69,9 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>) => {
     if (item.containerDiv) { // r5ageof6paths-0
       item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
 
-      setTimeout(function(){ console.log('')}, 600);
+      setTimeout(function(){ console.log('')}, 800);
 
       const domContainer = iFrame?.contentWindow?.document.querySelector(`#${rootId}`);
-
-      console.log(domContainer);
-      console.log(`#${rootId}`);
 
       const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
 
@@ -101,7 +98,6 @@ const sendNewMessageLogic = async (containerDiv) => {
     type: 'reply',
   };
 
-  console.log(dataPayload);
   // await sendNewMessage(dataPayload);
 };
 
