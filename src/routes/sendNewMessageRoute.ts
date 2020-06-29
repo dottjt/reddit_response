@@ -3,7 +3,7 @@ import addNewMessage from '../db/addNewMessage';
 
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 
-const sendNewMessage = async (ctx: Context, next: Next) => {
+const sendNewMessageRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
   const data: SendNewMessageSendPayload | undefined = body?.data;
 
@@ -15,7 +15,7 @@ const sendNewMessage = async (ctx: Context, next: Next) => {
     const message = data.message;
     const type = data.type;
 
-    console.log(`sendNewMessage - ${username_receiving} - ${type} - ${message}`)
+    console.log(`sendNewMessageRoute - ${username_receiving} - ${type} - ${message}`)
 
     await addNewMessage({
       username_sending,
@@ -26,8 +26,8 @@ const sendNewMessage = async (ctx: Context, next: Next) => {
       type,
     });
 
-    ctx.body = { data: { message: 'succes!' } };
+    ctx.body = { data: { message: 'success!' } };
   }
 }
 
-export default sendNewMessage;
+export default sendNewMessageRoute;

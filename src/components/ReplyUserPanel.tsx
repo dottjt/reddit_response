@@ -2,12 +2,14 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../types/tamperMonkeyTypes';
-import { openReplyLink } from '../tampermonkey/util/commonUtils';
-import { sendNewMessage } from '../tampermonkey/util/httpResponses';
+import { openReplyLink } from '../util/commonUtils';
+import { sendNewMessage } from '../util/httpResponses';
 import {
   middleWrittenGuide,
-  middleWrittenGuideTwo
-} from '../tampermonkey/util/responses/middle';
+  middleWrittenGuideTwo,
+  joinSubreddit
+} from '../util/responses/middle';
+import { PreviousMessageInformation, UserInformation, SendUserNoteForm, UserIsHostileButton } from './ComponentsUtil';
 
 const populateMessageAndSend = async (
   messageText: string,
@@ -46,7 +48,7 @@ const createReplyMessageLink = (
   messageText: string,
   containerDiv: Element,
   previousMessageInformation: PopulateReceivedMessagesPayload,
-): React.Element => {
+): React.FC => {
   const style = {
     color: color || 'black',
     marginTop: '0.2rem',
@@ -81,40 +83,26 @@ const createReplyMessageLink = (
   );
 }
 
-type ReplyUserInformationProps = {
+type ReplyUserPanelProps = {
   dbUser: CompiledFullUserObject;
   previousMessageInformation: PopulateReceivedMessagesPayload;
   containerDiv: Element;
 }
 
-const ReplyUserInformation = ({ dbUser, containerDiv, previousMessageInformation }: ReplyUserInformationProps): React.FC<ReplyUserInformationProps> => {
+const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: ReplyUserPanelProps): React.FC<ReplyUserPanelProps> => {
   return (
     <div>
-      <div>
-        <p><b style={{ fontWeight: 900 }}>NFD Sent</b></p>
-        {dbUser.lastSentMessage ? (
-          <p style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{dbUser.lastSentMessage.text}</p>
-        ) : <p>NA</p>}
-        <p><b style={{ fontWeight: 900 }}>{dbUser.username} Sent</b></p>
-        {dbUser.lastReceivedMessage ? (
-          <p style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{dbUser.lastReceivedMessage.text}</p>
-        ) : <p>NA</p>}
-      </div>
-
-      <div className='reade-user-information-top'>
-        <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor }}>{dbUser.username}</span>
-        <span>|</span>
-        <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType}</span>
-        <span>|</span>
-        <span style={{ fontSize: '20px', marginLeft: '0.4rem', marginRight: '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
-        <p>{dbUser && dbUser.messageTypesSent?.map((item: any) => <span style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{item.type}</span>)}</p>
-      </div>
+      <PreviousMessageInformation dbUser={dbUser} />
+      <UserInformation dbUser={dbUser} />
+      <UserIsHostileButton username={dbUser.username} />
+      <SendUserNoteForm username={dbUser.username} />
 
       {/* TODO I need one column to send it immediately, the other not to.  */}
       <div style={{ display: 'flex', justifyContent: 'space-between' }} className='reade-user-information-messages'>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation)}
+          {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation)}
         </div>
         {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation)}
@@ -125,4 +113,4 @@ const ReplyUserInformation = ({ dbUser, containerDiv, previousMessageInformation
   );
 }
 
-export default ReplyUserInformation;
+export default ReplyUserPanel;

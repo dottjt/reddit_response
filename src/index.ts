@@ -12,20 +12,20 @@ import populateHistoricSentMessagesRoute from './routes/populateSentMessagesRout
 import populateReceivedMessagesRoute from './routes/populateReceivedMessagesRoute';
 import latestUnreadMessagesInformationRoute from './routes/latestUnreadMessagesInformationRoute';
 import sendNewMessageRoute from './routes/sendNewMessageRoute';
-
-import customBundler from './tampermonkey/customBundler';
+import sendUserNoteRoute from './routes/sendUserNoteRoute';
+import markUserHostileRoute from './routes/markUserHostileRoute';
 
 const main = () => {
   const app = new Koa();
   const router = new Router();
-
-  customBundler();
 
   router.post('/checkUsernames', checkUsernamesRoute);
   router.post('/populateHistoricSentMessages', populateHistoricSentMessagesRoute);
   router.post('/populateReceivedMessages', populateReceivedMessagesRoute);
   router.post('/latestUnreadMessagesInformation', latestUnreadMessagesInformationRoute);
   router.post('/sendNewMessage', sendNewMessageRoute);
+  router.post('/sendNewUserNote', sendUserNoteRoute);
+  router.post('/markUserHostile', markUserHostileRoute);
 
   app
     .use(bodyParser())

@@ -1,15 +1,14 @@
-import { v4 as uuidv4 } from 'uuid';
 import knex from '../util/knex';
 
-import { User, Message } from '../types/serverTypes';
+import { User, Message, UserType } from '../types/serverTypes';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 
 const getFullUser = async (username: string): Promise<CompiledFullUserObject> => {
   const user: User = await knex<User>('users').where({ username }).first('*');
-  
-  const sentMessagesCount = await knex<Message>('messages').where({ username_sending: username }).count('id');
-  const receivedMessagesCount = await knex<Message>('messages').where({ username_receiving: username }).count('id');
+
+  const sentMessagesCount = await knex<Message>('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).count('id');
+  const receivedMessagesCount = await knex<Message>('messages').where({ username_sending: username, username_receiving: 'NeverFapDeluxe' }).count('id');
 
   const lastSentMessage: Message | undefined = await knex<Message>('messages').where({ username_sending: 'NeverFapDeluxe', username_receiving: username }).orderBy('created_at', 'desc').first('*');
   const lastReceivedMessage: Message | undefined = await knex<Message>('messages').where({ username_sending: username, username_receiving: 'NeverFapDeluxe' }).orderBy('created_at', 'desc').first('*');
@@ -42,7 +41,7 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
 };
 
 type CalculateUserStatisticsProps = {
-  userType: string;
+  userType: UserType;
   userColor: string;
 }
 
@@ -51,22 +50,22 @@ const calculateUserStatistics = (user: User, sentCount: number, receivedCount: n
   let userColor;
 
   if (sentCount === 0 && receivedCount === 0) {
-    userType = 'Fresh User!';
+    userType = UserType.FreshUser;
     userColor = 'green';
   };
 
   if (sentCount > 0 && receivedCount === 0) {
-    userType = 'User not responded to you.';
-    userColor = 'purple';
+    userType = UserType.UserNotRespondedBack;
+    userColor = 'orange';
   };
 
   if (sentCount > 0 && receivedCount > 0) {
-    userType = 'User already corresponded with.';
-    userColor = 'blue';
+    userType = UserType.UserRespondedBack;
+    userColor = 'yellow';
   };
 
   if (user?.is_hostile) {
-    userType = 'HOSTILE';
+    userType = UserType.UserHostile;
     userColor = 'red';
   }
 

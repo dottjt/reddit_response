@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { populateReceivedMessages, latestUnreadMessagesInformation } from '../util/httpResponses.js';
-import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload } from '../../types/tamperMonkeyTypes.js';
+import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload } from '../types/tamperMonkeyTypes.js';
 import { sendNewMessage } from '../util/httpResponses';
-import ReplyUserInformation from '../../components/ReplyUserInformation.js';
+import ReplyUserPanel from '../components/ReplyUserPanel';
 
 'use strict';
 
@@ -75,7 +75,7 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>) => {
 
       const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
 
-      ReactDOM.render(<ReplyUserInformation dbUser={dbUser} previousMessageInformation={item} containerDiv={item.containerDiv} />, domContainer);
+      ReactDOM.render(<ReplyUserPanel dbUser={dbUser} previousMessageInformation={item} containerDiv={item.containerDiv} />, domContainer);
     }
   }
 

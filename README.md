@@ -23,23 +23,38 @@ https://www.reddit.com/message/inbox
 - Start with new users.
 - Check that
 
+## Thoughts
+- Send strategy simply appends 5 seconds each time. Does it make sense? Not sure, but it's all I have atm and isn't that bad.
+
 ## Improvements
 
-- Maybe instead of checking time, it should instead check the username. Of course, the issue with that is if the user deletes their thing, then it's pointless.
-- For message/unread show the latest post of that particular user
-- Draw out the delay. I think I need to use localStorage to keep a timer which continually draws out the amount ot time inbetween delay
+- Turn types into strings.
+- Track original post as part of the message.
+- Have option on user to see if user has been chatted to, yet.
+- Look into using preact to make it more performant.
+- display usernote
+- Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things.
+- change react inbox message order, to add fetched users first, then populate user information so it's not outdated.
+- Figure out how to change userType etc. once message is sent, so I'm not in the dark once I've sent a message in nofap new subreddit.
+- Fix react tooltip UserReply bug.
+
+## DONE
+
 - custom message still sends, need to figure that out
-- in compose message, stop opening it automatically. it doesn't make sense
-- Do you create a think for messages/messages? perhaps, because I can't currently see what I sent in unread, although that will change.
-- localstorage in order to store the second volume, it is set on 15 second intervals, so that the messages sent aren't rushed. Tooooo cool bby.
 - Storing middle messages
-- Checks if that particular user is part of a subreddit.
-- Is it possible to check if a user is in your subreddit?
+- For message/unread show the latest post of that particular user
+- I need an option to go up to a username, as well. Not just TimeFRAME
+- remove most messages from userpanel
+- is hostile button
+- user note needs to disappear
+- Is it possible to check if a user is in your subreddit? (It is not possible)
+- Do you create a think for messages/messages? perhaps, because I can't currently see what I sent in unread, although that will change. (no need atm, at all)
+- Okay, I need to have two terminals, one with the custom bundlr, another with the actual server. They affect each other.
+
 
 ### Required Plugins and Dependencies
 - Tampermonkey plugin installed
 -
-
 
 <!-- REDDIT MARKETING AUTOMATION -->
 So, I think I had an idea for a database.

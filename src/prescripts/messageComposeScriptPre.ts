@@ -1,6 +1,6 @@
 import { sendNewMessage } from '../util/httpResponses';
 import { getTypeQueryString, randomMessageDelay, getTimerQueryString } from '../util/commonUtils';
-import { SendNewMessageSendPayload } from '../../types/tamperMonkeyTypes';
+import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 
 'use strict';
 
@@ -36,11 +36,9 @@ const checkIfFieldsAreFull = async ({
     console.log('message sent to server');
   } else {
     console.log('some fields empty - set event listener');
-    if (type !== 'custom') {
-      iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
-        main(); //
-      });
-    }
+    iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
+      main(); 
+    });
   }
 };
 

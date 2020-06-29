@@ -6,13 +6,16 @@ import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
-import postcss from 'rollup-plugin-postcss'
+// import postcss from 'rollup-plugin-postcss'
+import { terser } from 'rollup-plugin-terser';
 import jsx from 'acorn-jsx';
 
+import throttle from 'lodash.throttle';
 
-const WATCH_PRE_SCRIPT_DIRECTORY = path.resolve(__dirname, 'prescripts');
-const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, 'responses');
-const WATCH_UTIL_DIRECTORY = path.resolve(__dirname, 'util');
+
+const WATCH_PRE_SCRIPT_DIRECTORY = path.resolve(__dirname, '..', 'prescripts');
+const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, '..', 'util', 'responses');
+const WATCH_UTIL_DIRECTORY = path.resolve(__dirname, '..', 'util');
 const WATCH_COMPONENTS_DIRECTORY = path.resolve(__dirname, '..', 'components');
 
 const OUTPUT_SCRIPT_DIRECTORY = path.resolve(__dirname, 'scripts');
@@ -22,27 +25,29 @@ const outputScriptFileName = (preScript: string): string => preScript.split('.')
 const compileScript = async () => {
   try {
     const preScriptDirList = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
+
     for (const preScript of preScriptDirList) {
       const plainName = outputScriptFileName(preScript);
 
       const bundle = await rollup.rollup({
-        input: path.resolve(__dirname, 'prescripts', preScript),
+        input: path.resolve(__dirname, '..', 'prescripts', preScript),
         // external: [ 'crypto' ], // tells Rollup 'I know what I'm doing here'
         acornInjectPlugins: [jsx()],
         plugins: [
           resolve({
             browser: true
           }),
-          replace({
-            'process.env.NODE_ENV': JSON.stringify( 'production' )
-          }),
           typescript({
             tsconfig: path.resolve(__dirname, '..', '..', 'tsconfig.json'),
+          }),
+          replace({
+            'process.env.NODE_ENV': JSON.stringify( 'production' )
           }),
           commonjs({
             extensions: ['.js', '.ts', '.tsx'],
             // include: [ 'node_modules/**' ]
           }),
+          terser()
           // postcss({
           //   modules: true,
           //   plugins: []
@@ -68,11 +73,20 @@ const main = async () => {
   // initial run
   await compileScript();
 
-  // further changes
-  chokidar.watch([WATCH_PRE_SCRIPT_DIRECTORY, WATCH_COMPONENTS_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY]).on('change', async (event, path) => {
+  const chokidarHandler = async (event, path) => {
     console.log('change observed');
     await compileScript();
-  });
+  }
+
+  // further changes
+  chokidar.watch(
+    [
+      WATCH_PRE_SCRIPT_DIRECTORY,
+      WATCH_COMPONENTS_DIRECTORY,
+      WATCH_RESPONSES_DIRECTORY,
+      WATCH_UTIL_DIRECTORY
+    ]
+  ).on('change', throttle(chokidarHandler, 2000));
 };
 
 // QUICK REFERENCE

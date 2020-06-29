@@ -7,7 +7,7 @@ https://neverfapdeluxe.com/
 
 Also happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.
 `
-)
+);
 
 export const middleWrittenGuideTwo = (
 `The homepage should cover 90% of how NeverFap Deluxe works. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.
@@ -16,8 +16,10 @@ https://neverfapdeluxe.com/
 
 Also happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.
 `
-)
+);
 
-
+export const joinSubreddit = (
+`No worries! I also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe`
+);
 
 // All good! I also have a subreddit if you're interested in getting updates. r/NeverFapDeluxe

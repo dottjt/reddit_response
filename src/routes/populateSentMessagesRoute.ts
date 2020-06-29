@@ -7,7 +7,7 @@ import {
 
 } from '../types/serverTypes';
 
-const populateHistoricSentMessages = async (ctx: Context, next: Next) => {
+const populateHistoricSentMessagesRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
   // const messages: PopulateHistoricMessagePayload[] = body.data.messages;
 
@@ -26,4 +26,4 @@ const populateHistoricSentMessages = async (ctx: Context, next: Next) => {
   ctx.body = { data: { message: 'sent messages successfully added' } };
 }
 
-export default populateHistoricSentMessages;
+export default populateHistoricSentMessagesRoute;

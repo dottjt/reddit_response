@@ -35,27 +35,17 @@ export const randomMessageDelay = (timer: string): Promise<void> => new Promise(
 
 // nofap new subreddit
 
-export const scrollToSpecifiedDate = (dateString: string): Promise<string> => new Promise(resolve => {
-  let interval;
-
-  interval = setInterval(() => {
-    window.scrollTo(0,document.body.scrollHeight);
-
-    const allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
-
-    for (const timeStampElement of allTimeStamps as any) {
-      const doesTextContainDate = timeStampElement.innerText.includes(dateString);
-
-      if (doesTextContainDate) {
-        console.log('Complete: date reached');
-        clearInterval(interval);
-        resolve('Complete: date reached');
-      } else {
-        timeStampElement.remove();
-      }
+const scrollReachLogic = (resolve: any, doesTextContainXXX: boolean, interval: any, timeStampElement: any) => {
+  if (doesTextContainXXX) {
+    console.log('Found scroll username/date.');
+    clearInterval(interval);
+    resolve('Found scroll username/date.');
+  } else {
+    if (timeStampElement) {
+      timeStampElement.remove();
     }
-  }, 500);
-});
+  }
+}
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
@@ -63,6 +53,45 @@ export const getAllNoFapNewUsernames = (): string[] => {
   const usernames = filteredATags.map(tag => tag.innerText.split('/')[1]);
   return usernames;
 }
+
+export const scrollToSpecifiedDate = (dateString: string, usernameString: string): Promise<string> => new Promise(resolve => {
+  let interval;
+
+  interval = setInterval(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+
+    if (dateString !== 'NA') {
+      console.log('scrollToSpecifiedDate - run')
+      const allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
+
+      for (const timeStampElement of allTimeStamps as any) {
+        const doesTextContainXXX = timeStampElement.innerText.includes(dateString);
+
+        if (doesTextContainXXX) {
+          console.log('Found scroll date.');
+          clearInterval(interval);
+          resolve('Found scroll date.');
+        } else {
+          if (timeStampElement) {
+            timeStampElement.remove();
+          }
+        }
+      }
+    } else {
+      console.log('scrollToSpecifiedUsername - run')
+      const usernames = getAllNoFapNewUsernames();
+
+      for (const username of usernames as string[]) {
+        const doesTextContainXXX = username === usernameString;
+        if (doesTextContainXXX) {
+          console.log('Found scroll username.');
+          clearInterval(interval);
+          resolve('Found scroll username.');
+        }
+      }
+    }
+  }, 700);
+});
 
 export const addGlobalStyle = (css: string): void => {
   var head, style;
@@ -73,7 +102,6 @@ export const addGlobalStyle = (css: string): void => {
   style.innerHTML = css.replace(/;/g, ' !important;');
   head.appendChild(style);
 }
-
 
 // was for messageInboxScriptPre.ts
 
@@ -104,3 +132,26 @@ const getReplyLink = (entry) => {
     }
   }
 }
+
+
+
+// const setIntervalFunction = (interval) => {
+//   return setInterval(function() {
+//     const delayTimer = window.localStorage.getItem('delayTimer');
+//     const delayTimerNumber = Number(delayTimer);
+
+//     if (delayTimerNumber > 10000) {
+//       console.log('delayTimerNumber', delayTimerNumber);
+
+//       const delayTimerNumberLessOne = delayTimerNumber - 1000;
+//       window.localStorage.setItem('delayTimer', delayTimerNumberLessOne.toString());
+
+//       clearInterval(interval);
+//       interval = setInterval(interval);
+//     }
+//   }, 2000);
+// }
+
+// let interval;
+
+// interval = setIntervalFunction(interval);

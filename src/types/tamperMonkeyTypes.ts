@@ -16,6 +16,11 @@ export type CompiledFullUserObject = {
   messageTypesSent?: string[];
 }
 
+export type SendUserNotePayload = {
+  username: string;
+  message: string;
+}
+
 export type SendNewMessageSendPayload = {
   username_sending: string;
   username_receiving: string;

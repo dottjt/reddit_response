@@ -1,4 +1,4 @@
-import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload } from "../../types/tamperMonkeyTypes";
+import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload, SendUserNotePayload } from "../types/tamperMonkeyTypes";
 
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',
@@ -45,6 +45,21 @@ export const sendNewMessage =
     Promise<CompiledFullUserObject[]> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/sendNewMessage');
       return JSONResponse.data.users;
+    };
+
+export const sendNewUserNote =
+  async (dataPayload: SendUserNotePayload):
+    Promise<string> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/sendNewUserNote');
+      return JSONResponse.data.message;
+    };
+
+// TODO add it as a functionality.
+export const markUserHostile =
+  async (dataPayload: { username: string }):
+    Promise<string> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/markUserHostile');
+      return JSONResponse.data.message;
     };
 
 export const latestUnreadMessagesInformation =

@@ -1,6 +1,6 @@
 // DB TYPES
 
-export interface User {
+export type User = {
   // Database Fields
   id: string;
   username: string;
@@ -8,7 +8,20 @@ export interface User {
   is_historic?: boolean;
 }
 
-export interface Message {
+export enum UserType {
+  FreshUser="Fresh User",
+  UserNotRespondedBack="User Not Responded Back",
+  UserRespondedBack="User Responded Back",
+  UserHostile="Hostile User",
+}
+
+export type UserNote = {
+  id: string;
+  username: string;
+  message: string;
+}
+
+export type Message = {
   id: string;
   username_sending: string;
   username_receiving: string;
