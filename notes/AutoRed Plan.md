@@ -1,6 +1,6 @@
 AutoRed Plan
 
-	•	Register autored.com 
+	•	Register autored.com
 	•	Register social media accounts
 	•	Understand and work with the Reddit API
 
@@ -19,4 +19,4 @@ Create Chrome Extension
 
 
 
-Test 
+Test

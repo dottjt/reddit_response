@@ -1,5 +1,4 @@
-import React from 'react';
-// import ReactTooltip from 'react-tooltip';
+import { createElement } from 'inferno-create-element';
 
 import {
   straightToGuide,
@@ -23,7 +22,7 @@ import { PreviousMessageInformation, UserInformation, UserIsHostileButton } from
 
 const increaseDelayTimer = () => {
   const delayTimer = window.localStorage.getItem('delayTimer') as string;
-  const delayTimerNumber = parseInt(delayTimer) + 5000;
+  const delayTimerNumber = parseInt(delayTimer) + 9000;
   window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
 }
 
@@ -39,29 +38,29 @@ const createStartMessageLink = (
   color: string,
   toUsername: string,
   messageText: string,
-): React.FC => {
+) => {
   const prelimUrl = `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${encodeURIComponent(messageText)}&type=${messageType}`;
   const dataTipId = `${messageType}-${toUsername}`;
 
   return (
-    <>
+    <div>
       <a data-tip data-for={dataTipId} style={{
         color: color || 'black',
-        marginTop: '0.2rem',
-        marginBottom: '0.2rem',
-        marginLeft: '0.3rem',
-        marginRight: '0.3rem',
-        fontSize: '12px',
+        'margin-top': '0.2rem',
+        'margin-bottom': '0.2rem',
+        'margin-left': '0.3rem',
+        'margin-right': '0.3rem',
+        'font-size': '12px',
         display: 'inline-block',
-      }} onClick={() => openNewLink(prelimUrl)}>
+      }} onclick={() => openNewLink(prelimUrl)}>
         {messageType}
       </a>
       {/* <ReactTooltip className='react-tool-tip-custom' id={dataTipId} type='error'>
-        <span>{messageText.split("\n").map((i,key) => (
+        <span>{messageText.split('\n').map((i,key) => (
           <div key={key} style={{ marginBottom: '0.6rem' }}>{i}</div>
         ))}</span>
       </ReactTooltip> */}
-    </>
+    </div>
   );
 }
 
@@ -69,7 +68,7 @@ type UserPanelProps = {
   dbUser: CompiledFullUserObject;
 }
 
-const UserPanel = ({ dbUser }: UserPanelProps): React.FC<UserPanelProps> => {
+const UserPanel = ({ dbUser }: UserPanelProps) => {
   return (
     <div>
       {dbUser.userType !== UserType.FreshUser && (
@@ -78,12 +77,14 @@ const UserPanel = ({ dbUser }: UserPanelProps): React.FC<UserPanelProps> => {
       <UserIsHostileButton username={dbUser.username} />
       <UserInformation dbUser={dbUser} />
 
-      <div style={{ display: 'flex', justifyContent: 'space-between' }} className='reade-user-information-messages'>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
+        <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink('custom', 'purple', dbUser.username, '')}
           {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide)}
           {createStartMessageLink('advice:start', 'purple', dbUser.username, startAdvice)}
           {createStartMessageLink('advice:general', 'purple', dbUser.username, generalAdvice)}
+        </div>
+        <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink('struggle:basics', 'purple', dbUser.username, struggleBasics)}
           {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse)}
           {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner)}

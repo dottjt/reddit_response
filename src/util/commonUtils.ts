@@ -22,30 +22,9 @@ export const getTimerQueryString = (searchString: string): string | undefined =>
 }
 
 export const randomMessageDelay = (timer: string): Promise<void> => new Promise(resolve => {
-  const delay = Math.floor(Math.random() * 6000) + 1000 + Number(timer);
-  setTimeout(function() {
-    let delayCounter = delay;
-    setInterval(function() {
-      console.log(delayCounter);
-      delayCounter -= 1000;
-    }, 1000)
-    resolve();
-  }, delay);
+  const delay = 1000 + Number(timer);
+  setTimeout(function() { resolve() }, delay);
 });
-
-// nofap new subreddit
-
-const scrollReachLogic = (resolve: any, doesTextContainXXX: boolean, interval: any, timeStampElement: any) => {
-  if (doesTextContainXXX) {
-    console.log('Found scroll username/date.');
-    clearInterval(interval);
-    resolve('Found scroll username/date.');
-  } else {
-    if (timeStampElement) {
-      timeStampElement.remove();
-    }
-  }
-}
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');

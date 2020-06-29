@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'inferno';
+import { createElement } from 'inferno-create-element';
 
 import { checkUsernamesFetch } from '../util/httpResponses';
 
@@ -38,7 +38,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
 
       const domContainer = document.querySelector(`#${rootId}`);
 
-      ReactDOM.render(<UserPanel dbUser={dbUser} />, domContainer);
+      render(<UserPanel dbUser={dbUser} />, domContainer);
       console.log(`${index} rendered of ${totalCount}.`)
     }
   });

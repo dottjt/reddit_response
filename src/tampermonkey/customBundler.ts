@@ -2,7 +2,8 @@ import * as rollup from 'rollup';
 import chokidar from 'chokidar';
 import fse from 'fs-extra';
 import path from 'path';
-import typescript from '@rollup/plugin-typescript';
+// import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
@@ -11,7 +12,7 @@ import { terser } from 'rollup-plugin-terser';
 import jsx from 'acorn-jsx';
 
 import throttle from 'lodash.throttle';
-
+import transformInferno from 'ts-transform-inferno';
 
 const WATCH_PRE_SCRIPT_DIRECTORY = path.resolve(__dirname, '..', 'prescripts');
 const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, '..', 'util', 'responses');
@@ -19,6 +20,11 @@ const WATCH_UTIL_DIRECTORY = path.resolve(__dirname, '..', 'util');
 const WATCH_COMPONENTS_DIRECTORY = path.resolve(__dirname, '..', 'components');
 
 const OUTPUT_SCRIPT_DIRECTORY = path.resolve(__dirname, 'scripts');
+
+const tsTransformer = () => ({
+  before: [transformInferno()],
+  after: [],
+})
 
 const outputScriptFileName = (preScript: string): string => preScript.split('.')[0].slice(0,-3);  //+ '.js';
 
@@ -35,17 +41,18 @@ const compileScript = async () => {
         acornInjectPlugins: [jsx()],
         plugins: [
           resolve({
-            browser: true
+            browser: true,
           }),
           typescript({
             tsconfig: path.resolve(__dirname, '..', '..', 'tsconfig.json'),
+            transformers: [tsTransformer],
+            tsconfigOverride: { compilerOptions : { module: "es2015" } }
           }),
           replace({
             'process.env.NODE_ENV': JSON.stringify( 'production' )
           }),
           commonjs({
             extensions: ['.js', '.ts', '.tsx'],
-            // include: [ 'node_modules/**' ]
           }),
           terser()
           // postcss({

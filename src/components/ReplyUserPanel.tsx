@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactTooltip from 'react-tooltip';
+import { createElement } from 'inferno-create-element';
 
 import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../types/tamperMonkeyTypes';
 import { openReplyLink } from '../util/commonUtils';
@@ -16,7 +15,8 @@ const populateMessageAndSend = async (
   previousMessageInformation: PopulateReceivedMessagesPayload,
   containerDiv: Element,
   toUsername: string,
-  messageType: string
+  messageType: string,
+  sendImmediate: boolean
 ) => {
   openReplyLink(containerDiv);
   const textArea = containerDiv.querySelector('textarea');
@@ -34,9 +34,13 @@ const populateMessageAndSend = async (
         send_date: new Date().toString(),
         type: messageType,
       }
-      await sendNewMessage(dataPayload);
 
-      // submitButton?.click();
+      await sendNewMessage(dataPayload);
+      if (sendImmediate) {
+        submitButton?.click();
+      }
+
+      // TODO: So instead of sending the message straight away once the reply link has been opened, it should wait for the submitButton?.click() THEN go and send it. Otherwise the messages aren't correct
     }
   }
 }
@@ -48,38 +52,40 @@ const createReplyMessageLink = (
   messageText: string,
   containerDiv: Element,
   previousMessageInformation: PopulateReceivedMessagesPayload,
-): React.FC => {
+  sendImmediate: boolean,
+) => {
   const style = {
     color: color || 'black',
-    marginTop: '0.2rem',
-    marginBottom: '0.2rem',
-    marginLeft: '0.3rem',
-    marginRight: '0.3rem',
-    fontSize: '12px',
+    'margin-top': '0.2rem',
+    'margin-bottom': '0.2rem',
+    'margin-left': '0.3rem',
+    'margin-right': '0.3rem',
+    'font-size': '12px',
     display: 'inline-block',
   };
 
   const dataTipId = `${messageType}-${toUsername}`;
 
   return (
-    <>
-      <a data-tip data-for={dataTipId} style={style} onClick={async () => {
+    <div>
+      <a data-tip data-for={dataTipId} style={style} onclick={async () => {
         await populateMessageAndSend(
           messageText,
           previousMessageInformation,
           containerDiv,
           toUsername,
-          messageType
+          messageType,
+          sendImmediate
         )
       }} target='_blank'>
         {messageType}
       </a>
-      <ReactTooltip className='react-tool-tip-custom' id={dataTipId} type='error'>
+      {/* <ReactTooltip className='react-tool-tip-custom' id={dataTipId} type='error'>
         <span>{messageText.split("\n").map((i,key) => (
           <div key={key} style={{ marginBottom: '0.6rem' }}>{i}</div>
         ))}</span>
-      </ReactTooltip>
-    </>
+      </ReactTooltip> */}
+    </div>
   );
 }
 
@@ -89,25 +95,29 @@ type ReplyUserPanelProps = {
   containerDiv: Element;
 }
 
-const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: ReplyUserPanelProps): React.FC<ReplyUserPanelProps> => {
+const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: ReplyUserPanelProps) => {
   return (
     <div>
       <PreviousMessageInformation dbUser={dbUser} />
       <UserInformation dbUser={dbUser} />
-      <UserIsHostileButton username={dbUser.username} />
-      <SendUserNoteForm username={dbUser.username} />
+      <div style={{ display: 'flex' }}>
+        <UserIsHostileButton username={dbUser.username} />
+        <SendUserNoteForm username={dbUser.username} />
+      </div>
 
-      {/* TODO I need one column to send it immediately, the other not to.  */}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }} className='reade-user-information-messages'>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation)}
-          {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation)}
-          {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation)}
+      <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
+        <div style={{ display: 'flex', 'flex-direction': 'column' }}>
+          <h4>Send</h4>
+          {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, false)}
         </div>
-        {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation)}
-          {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation)}
-        </div> */}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <h4>Send Immediate</h4>
+          {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, true)}
+        </div>
       </div>
     </div>
   );

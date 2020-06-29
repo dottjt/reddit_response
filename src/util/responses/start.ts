@@ -28,7 +28,8 @@
 // low sex drive?
 // does it get easier over time?
 // okay to masturbate without porn? 2 (jerking off every now and then. )
-
+// did I just relapse?
+// how do you feel long term (after 1 month/week etc.)
 
 
 export const startAdvice = (

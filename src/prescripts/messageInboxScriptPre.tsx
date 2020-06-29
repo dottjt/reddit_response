@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'inferno';
+import { createElement } from 'inferno-create-element';
 
 import { populateReceivedMessages, latestUnreadMessagesInformation } from '../util/httpResponses.js';
 import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload } from '../types/tamperMonkeyTypes.js';
@@ -75,7 +75,12 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>) => {
 
       const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
 
-      ReactDOM.render(<ReplyUserPanel dbUser={dbUser} previousMessageInformation={item} containerDiv={item.containerDiv} />, domContainer);
+      if (domContainer) {
+        render(<ReplyUserPanel
+          dbUser={dbUser}
+          previousMessageInformation={item}
+          containerDiv={item.containerDiv} />, domContainer);
+      }
     }
   }
 

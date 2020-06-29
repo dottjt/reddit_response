@@ -10,7 +10,7 @@
 //   }
 // }
 
-// const createOneFieldForm = (buttonClickSubmit) => {
+// const createOneFieldForm = (buttonclickSubmit) => {
 //   var formElement = document.createElement("form");
 //   formElement.setAttribute('method',"post");
 //   formElement.setAttribute('action',"http://localhost:3333/sendUserNote");
@@ -25,7 +25,7 @@
 //   submitButton.setAttribute('value', 'Send Note');
 //   submitButton.style.border = '1px solid black';
 
-//   submitButton.addEventListener('click', buttonClickSubmit);
+//   submitButton.addEventListener('click', buttonclickSubmit);
 
 //   formElement.appendChild(inputUserNote);
 //   formElement.appendChild(submitButton);
