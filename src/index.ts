@@ -14,6 +14,7 @@ import latestUnreadMessagesInformationRoute from './routes/latestUnreadMessagesI
 import sendNewMessageRoute from './routes/sendNewMessageRoute';
 import sendUserNoteRoute from './routes/sendUserNoteRoute';
 import markUserHostileRoute from './routes/markUserHostileRoute';
+import setMarkerRoute from './routes/setMarkerRoute';
 
 const main = () => {
   const app = new Koa();
@@ -26,6 +27,7 @@ const main = () => {
   router.post('/sendNewMessage', sendNewMessageRoute);
   router.post('/sendNewUserNote', sendUserNoteRoute);
   router.post('/markUserHostile', markUserHostileRoute);
+  router.post('/setMarker', setMarkerRoute);
 
   app
     .use(bodyParser())

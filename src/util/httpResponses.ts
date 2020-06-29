@@ -69,4 +69,10 @@ export const latestUnreadMessagesInformation =
       return JSONResponse.data.user;
     };
 
+export const setMarker =
+  async (dataPayload: { username: string }):
+    Promise<CompiledFullUserObject> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/setMarker');
+      return JSONResponse.data.user;
+    };
 

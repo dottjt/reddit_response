@@ -38,7 +38,9 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
 
       const domContainer = document.querySelector(`#${rootId}`);
 
-      render(<UserPanel dbUser={dbUser} />, domContainer);
+      render(<UserPanel
+        dbUser={dbUser}
+        markerUsername={USERNAME}/>, domContainer);
       console.log(`${index} rendered of ${totalCount}.`)
     }
   });

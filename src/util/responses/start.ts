@@ -27,10 +27,10 @@
 // does this count as relapse?
 // low sex drive?
 // does it get easier over time?
-// okay to masturbate without porn? 2 (jerking off every now and then. )
+// okay to masturbate without porn? 3 (jerking off every now and then. )
 // did I just relapse?
 // how do you feel long term (after 1 month/week etc.)
-
+// does peeking count as relapse?
 
 export const startAdvice = (
 `Hey, I saw your post on r/NoFap. It's great to see you've started!

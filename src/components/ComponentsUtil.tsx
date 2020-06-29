@@ -1,7 +1,7 @@
 import { createElement } from 'inferno-create-element';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
-import { sendNewUserNote, markUserHostile } from '../util/httpResponses';
+import { sendNewUserNote, markUserHostile, setMarker } from '../util/httpResponses';
 import { Component } from 'inferno';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
@@ -17,9 +17,11 @@ export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUse
   </div>
 );
 
-export const UserInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
+export const UserInformation = ({ dbUser, markerUsername }: { dbUser: CompiledFullUserObject, markerUsername: string }) => (
   <div style={{ 'margin-top': '1rem', 'margin-bottom': '1rem' }} >
-    <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>{dbUser.username} |</span>
+    <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>
+      {dbUser.username} {markerUsername && markerUsername === dbUser.username ? '(Marker)' : ''} |
+    </span>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType} |</span>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
     {/* FUTURE: Display user note, not a huge deal */}
@@ -38,7 +40,11 @@ export class SendUserNoteForm extends Component<{ username: string }, { message:
   render() {
     return (
       <div>
-        <input value={this.state?.message} onChange={e => this.setState({ message: e.target.value })}/>
+        <input
+          value={this.state?.message}
+          onChange={e => this.setState({ message: e.target.value })}
+          style={{ 'margin-right': '1rem' }}
+        />
         <button onclick={async () => {
           await sendNewUserNote({ username: this.props.username, message: this.state?.message as string });
           this.setState({ message: '' });
@@ -50,15 +56,26 @@ export class SendUserNoteForm extends Component<{ username: string }, { message:
   }
 };
 
-export const UserIsHostileButton = ({ username }: { username: string })  => {
+export const MarkUserHostileButton = ({ username }: { username: string })  => {
   return (
-    <button style={{
-      border: '1px solid black'
-    }}
-    onclick={async () => {
-      await markUserHostile({ username });
-    }}>
+    <button
+      style={{ border: '1px solid black' }}
+      onclick={async () => {
+        await markUserHostile({ username });
+      }}>
       Mark User Hostile
+    </button>
+  )
+}
+
+export const SetMarkerButton = ({ username }: { username: string })  => {
+  return (
+    <button
+      style={{ border: '1px solid black' }}
+      onclick={async () => {
+        await setMarker({ username });
+      }}>
+      Set Marker
     </button>
   )
 }

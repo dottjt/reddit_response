@@ -7,17 +7,17 @@ import {
   struggleBasics,
   noReasonToRelapse,
   accountabilityPartner,
+  flatlineAdvice,
 
   // mentalhealthNotExerciseAdvice,
   // amIAddictedAdvice,
-  // flatlineAdvice,
   // biggestDifference,
   // sorryToHearYouRelapsed,
 } from '../util/responses/start';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { UserType } from '../types/serverTypes';
-import { PreviousMessageInformation, UserInformation, UserIsHostileButton } from './ComponentsUtil';
+import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton } from './ComponentsUtil';
 // import ReactTooltip from 'react-tooltip';
 
 const increaseDelayTimer = () => {
@@ -44,7 +44,7 @@ const createStartMessageLink = (
 
   return (
     <div>
-      <a data-tip data-for={dataTipId} style={{
+      <a style={{
         color: color || 'black',
         'margin-top': '0.2rem',
         'margin-bottom': '0.2rem',
@@ -66,18 +66,22 @@ const createStartMessageLink = (
 
 type UserPanelProps = {
   dbUser: CompiledFullUserObject;
+  markerUsername: string;
 }
 
-const UserPanel = ({ dbUser }: UserPanelProps) => {
+const UserPanel = ({ dbUser, markerUsername }: UserPanelProps) => {
   return (
     <div>
       {dbUser.userType !== UserType.FreshUser && (
         <PreviousMessageInformation dbUser={dbUser} />
       )}
-      <UserIsHostileButton username={dbUser.username} />
-      <UserInformation dbUser={dbUser} />
+      <div style={{ display: 'flex' }}>
+        <SetMarkerButton username={dbUser.username}/>
+        <MarkUserHostileButton username={dbUser.username} />
+      </div>
+      <UserInformation dbUser={dbUser} markerUsername={markerUsername} />
 
-      <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
+      <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink('custom', 'purple', dbUser.username, '')}
           {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide)}
@@ -88,6 +92,8 @@ const UserPanel = ({ dbUser }: UserPanelProps) => {
           {createStartMessageLink('struggle:basics', 'purple', dbUser.username, struggleBasics)}
           {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse)}
           {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner)}
+          {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice)}
+
         </div>
       </div>
     </div>

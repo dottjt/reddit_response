@@ -8,7 +8,7 @@ import {
   middleWrittenGuideTwo,
   joinSubreddit
 } from '../util/responses/middle';
-import { PreviousMessageInformation, UserInformation, SendUserNoteForm, UserIsHostileButton } from './ComponentsUtil';
+import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton } from './ComponentsUtil';
 
 const populateMessageAndSend = async (
   messageText: string,
@@ -24,24 +24,36 @@ const populateMessageAndSend = async (
 
   if (textArea && submitButton) {
     textArea.value = messageText;
-    if (textArea.value.length > 0) {
 
+    if (sendImmediate) {
       const dataPayload = {
         username_sending: 'NeverFapDeluxe',
         username_receiving: toUsername,
         subject: previousMessageInformation.subjectReplyToTitle,
-        message: messageText,
+        message: textArea.value,
         send_date: new Date().toString(),
         type: messageType,
       }
-
       await sendNewMessage(dataPayload);
-      if (sendImmediate) {
-        submitButton?.click();
-      }
-
-      // TODO: So instead of sending the message straight away once the reply link has been opened, it should wait for the submitButton?.click() THEN go and send it. Otherwise the messages aren't correct
+      submitButton.click();
+    } else {
+      submitButton.addEventListener('click', async () => {
+        const textArea = containerDiv.querySelector('textarea');
+        if (textArea) {
+          const dataPayload = {
+            username_sending: 'NeverFapDeluxe',
+            username_receiving: toUsername,
+            subject: previousMessageInformation.subjectReplyToTitle,
+            message: textArea.value,
+            send_date: new Date().toString(),
+            type: messageType,
+          }
+          await sendNewMessage(dataPayload);
+        }
+      });
     }
+  } else {
+    console.log('cannot find textArea or submitButton')
   }
 }
 
@@ -101,18 +113,19 @@ const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: Re
       <PreviousMessageInformation dbUser={dbUser} />
       <UserInformation dbUser={dbUser} />
       <div style={{ display: 'flex' }}>
-        <UserIsHostileButton username={dbUser.username} />
         <SendUserNoteForm username={dbUser.username} />
+        <MarkUserHostileButton username={dbUser.username} />
       </div>
 
-      <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
+      <div style={{ display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           <h4>Send</h4>
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink('customReply', 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           <h4>Send Immediate</h4>
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, true)}

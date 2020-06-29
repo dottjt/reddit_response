@@ -5,13 +5,16 @@
 
 ## Improvements
 
+- It doesn't always retrieve the latest post. (That's because it's not saving that post. )
 - Track original post as part of the message.
 - Have option on user to see if user has been chatted to, yet.
 - Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things.
 - self-update message send status on user once
+- Contact the Reddit API to see
 
 ## DONE
 
+- Button make Username the marker, so I don't have to do it myself.
 - custom message still sends, need to figure that out
 - Storing middle messages
 - For message/unread show the latest post of that particular user
