@@ -17,12 +17,12 @@ import {
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { UserType } from '../types/serverTypes';
-import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton } from './ComponentsUtil';
+import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton, MarkUserChattedButton } from './ComponentsUtil';
 // import ReactTooltip from 'react-tooltip';
 
 const increaseDelayTimer = () => {
   const delayTimer = window.localStorage.getItem('delayTimer') as string;
-  const delayTimerNumber = parseInt(delayTimer) + 9000;
+  const delayTimerNumber = parseInt(delayTimer) + 11000;
   window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
 }
 
@@ -76,7 +76,8 @@ const UserPanel = ({ dbUser, markerUsername }: UserPanelProps) => {
         <PreviousMessageInformation dbUser={dbUser} />
       )}
       <div style={{ display: 'flex' }}>
-        <SetMarkerButton username={dbUser.username}/>
+        <SetMarkerButton username={dbUser.username} />
+        <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
       </div>
       <UserInformation dbUser={dbUser} markerUsername={markerUsername} />

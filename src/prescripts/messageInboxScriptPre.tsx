@@ -46,7 +46,7 @@ const generateRelevantMessageListInformation = (pageMessages): PopulateReceivedM
   })
 );
 
-const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>) => {
+const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, documentSub) => {
   const messageList: PopulateReceivedMessagesPayload[] = generateRelevantMessageListInformation(pageMessages);
 
   const filteredMessageList: PopulateReceivedMessagesPayload[] = messageList.filter(
@@ -71,7 +71,7 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>) => {
 
       setTimeout(function(){ console.log('')}, 800);
 
-      const domContainer = iFrame?.contentWindow?.document.querySelector(`#${rootId}`);
+      const domContainer = documentSub.querySelector(`#${rootId}`);
 
       const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
 
@@ -120,28 +120,34 @@ const sendNewMessageEventListener = async (pageMessages) => {
 // TODO Latest message from
 
 const main = async () => {
-  const mainLogic = async () => {
+  const mainLogic = async (documentSub, windowSub) => {
     console.log('START: preparing page');
 
-    const pageMessages = iFrame?.contentWindow?.document.querySelectorAll('.message');
+    const pageMessages = documentSub.querySelectorAll('.message');
     if (pageMessages) {
-      await saveNewUnreadPageMessages(pageMessages);
+      await saveNewUnreadPageMessages(pageMessages, documentSub);
       await sendNewMessageEventListener(pageMessages);
 
-      iFrame?.contentWindow?.scrollTo(0,0);
+      windowSub.scrollTo(0,0);
       // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
       console.log('END: next page');
     }
   }
 
+  console.log('1');
   if (iFrame && !window.location.search.includes('count')) {
+    console.log('2');
     if (!window.location.search.includes('true')) {
+      console.log('3');
+
       iFrame.addEventListener("load", async function() {
-        await mainLogic();
+        await mainLogic(iFrame?.contentWindow?.document, iFrame?.contentWindow);
       });
     }
   } else {
-    await mainLogic();
+    console.log('4');
+    // console.log('check', iFrame?.contentWindow?.document)
+    await mainLogic(document, window);
   }
 }
 

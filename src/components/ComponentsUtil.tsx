@@ -1,7 +1,7 @@
 import { createElement } from 'inferno-create-element';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
-import { sendNewUserNote, markUserHostile, setMarker } from '../util/httpResponses';
+import { sendNewUserNote, markUserHostile, setMarker, markUserChatted } from '../util/httpResponses';
 import { Component } from 'inferno';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
@@ -17,7 +17,7 @@ export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUse
   </div>
 );
 
-export const UserInformation = ({ dbUser, markerUsername }: { dbUser: CompiledFullUserObject, markerUsername: string }) => (
+export const UserInformation = ({ dbUser, markerUsername }: { dbUser: CompiledFullUserObject, markerUsername?: string }) => (
   <div style={{ 'margin-top': '1rem', 'margin-bottom': '1rem' }} >
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>
       {dbUser.username} {markerUsername && markerUsername === dbUser.username ? '(Marker)' : ''} |
@@ -68,10 +68,22 @@ export const MarkUserHostileButton = ({ username }: { username: string })  => {
   )
 }
 
+export const MarkUserChattedButton = ({ username }: { username: string })  => {
+  return (
+    <button
+      style={{ border: '1px solid black','margin-right': '0.4rem' }}
+      onclick={async () => {
+        await markUserChatted({ username });
+      }}>
+      Mark User Chatted
+    </button>
+  )
+}
+
 export const SetMarkerButton = ({ username }: { username: string })  => {
   return (
     <button
-      style={{ border: '1px solid black' }}
+      style={{ border: '1px solid black','margin-right': '0.4rem' }}
       onclick={async () => {
         await setMarker({ username });
       }}>

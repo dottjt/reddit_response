@@ -6,6 +6,7 @@ export type User = {
   username: string;
   is_hostile?: boolean;
   is_historic?: boolean;
+  user_chat_function_utilised?: boolean;
 }
 
 export enum UserType {

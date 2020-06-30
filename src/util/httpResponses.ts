@@ -54,11 +54,17 @@ export const sendNewUserNote =
       return JSONResponse.data.message;
     };
 
-// TODO add it as a functionality.
 export const markUserHostile =
   async (dataPayload: { username: string }):
     Promise<string> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/markUserHostile');
+      return JSONResponse.data.message;
+    };
+
+export const markUserChatted =
+  async (dataPayload: {}):
+    Promise<string> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/markUserChatted');
       return JSONResponse.data.message;
     };
 

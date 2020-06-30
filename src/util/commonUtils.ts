@@ -112,6 +112,11 @@ const getReplyLink = (entry) => {
   }
 }
 
+export const closeTabAfterThreeSecondDelay = () => {
+  setTimeout(function() {
+    window.open('https://reddit.com/', '_self')?.close();
+  }, 3000);
+};
 
 
 // const setIntervalFunction = (interval) => {

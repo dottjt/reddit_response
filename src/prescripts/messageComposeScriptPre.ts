@@ -1,5 +1,10 @@
 import { sendNewMessage } from '../util/httpResponses';
-import { getTypeQueryString, randomMessageDelay, getTimerQueryString } from '../util/commonUtils';
+import {
+  getTypeQueryString,
+  randomMessageDelay,
+  getTimerQueryString,
+  closeTabAfterThreeSecondDelay
+} from '../util/commonUtils';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 
 'use strict';
@@ -19,6 +24,7 @@ const checkIfFieldsAreFull = async ({
 }: CheckIfFieldsAreFullProps): Promise<void> => {
   console.log(toInput, subjectInput, messageInput, type, timer);
 
+  // TODO So it seems that if I want to send any ol' message it won't track it, because it won't have any of the above in it.
   if (toInput && subjectInput && messageInput && type && timer) {
     await randomMessageDelay(timer);
 
@@ -33,11 +39,14 @@ const checkIfFieldsAreFull = async ({
     await sendNewMessage(dataPayload);
 
     (iFrame?.contentWindow?.document.querySelector('#send') as HTMLElement).click();
+
+    closeTabAfterThreeSecondDelay();
+
     console.log('message sent to server');
   } else {
     console.log('some fields empty - set event listener');
     iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
-      main(); 
+      main();
     });
   }
 };

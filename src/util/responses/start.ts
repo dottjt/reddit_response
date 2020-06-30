@@ -61,6 +61,7 @@ Do you do much for your mental health? Like meditate, and stuff? I've also writt
 `
 );
 
+// this is 
 export const mentalhealthNotExerciseAdvice = (
 `Hey, I saw your post on r/NoFap.
 

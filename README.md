@@ -5,12 +5,14 @@
 
 ## Improvements
 
-- It doesn't always retrieve the latest post. (That's because it's not saving that post. )
+- NA
+
+## Nice To Have
+
 - Track original post as part of the message.
 - Have option on user to see if user has been chatted to, yet.
 - Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things.
 - self-update message send status on user once
-- Contact the Reddit API to see
 
 ## DONE
 
@@ -26,10 +28,12 @@
 - Do you create a think for messages/messages? perhaps, because I can't currently see what I sent in unread, although that will change. (no need atm, at all)
 - Okay, I need to have two terminals, one with the custom bundlr, another with the actual server. They affect each other.
 - Turn types into strings. (not a huge deal atm)
+- Auto close message tabs
 
 ### Required Plugins and Dependencies
 - Tampermonkey plugin installed
--
+- Insert all the Banners into TamperMonkey
+- Ensure the server is running.
 
 
 ## OUTLINE
