@@ -25,7 +25,8 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
 
   return {
     username: user.username,
-    is_hostile: user.username,
+    is_hostile: user.is_hostile,
+    user_chat_function_utilised: user.user_chat_function_utilised,
 
     userType: calculatedUser.userType,
     userColor: calculatedUser.userColor,

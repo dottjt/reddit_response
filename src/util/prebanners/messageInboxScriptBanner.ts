@@ -7,6 +7,9 @@
 // @match        https://www.reddit.com/message/inbox
 // @match        https://www.reddit.com/message/inbox/
 // @match        https://www.reddit.com/message/inbox/?*
+// @match        https://www.reddit.com/message/unread
+// @match        https://www.reddit.com/message/unread/
+// @match        https://www.reddit.com/message/unread/?*
 // @require      file:///Users/julius.reade/Code/PER/reddit_response/src/tampermonkey/scripts/messageInboxScript.js
 // @grant        none
 // ==/UserScript==

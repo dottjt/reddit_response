@@ -6,9 +6,11 @@ import { sendNewMessage } from '../util/httpResponses';
 import {
   middleWrittenGuide,
   middleWrittenGuideTwo,
-  joinSubreddit
+  joinSubreddit,
+  allSorted,
+  hardTime
 } from '../util/responses/middle';
-import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton } from './ComponentsUtil';
+import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton } from './ComponentsUtil';
 
 const populateMessageAndSend = async (
   messageText: string,
@@ -114,6 +116,7 @@ const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: Re
       <UserInformation dbUser={dbUser} />
       <div style={{ display: 'flex' }}>
         <SendUserNoteForm username={dbUser.username} />
+        <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
       </div>
 
@@ -123,6 +126,7 @@ const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: Re
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('customReply', 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
@@ -130,6 +134,7 @@ const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: Re
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink('allSorted', 'purple', dbUser.username, allSorted, containerDiv, previousMessageInformation, true)}
         </div>
       </div>
     </div>

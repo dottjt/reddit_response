@@ -1,5 +1,8 @@
 // message compose
 
+import { checkServerRunning } from './httpResponses';
+import { ConfigType } from './config';
+
 export const getTypeQueryString = (searchString: string): string => {
   if (searchString.includes('&')) {
     const arrayWithType = searchString.split('&').filter(item => item.includes('type='));
@@ -33,7 +36,7 @@ export const getAllNoFapNewUsernames = (): string[] => {
   return usernames;
 }
 
-export const scrollToSpecifiedDate = (dateString: string, usernameString: string): Promise<string> => new Promise(resolve => {
+export const scrollToSpecifiedDate = (dateString: string, usernameConfig: ConfigType): Promise<string> => new Promise(resolve => {
   let interval;
 
   interval = setInterval(() => {
@@ -61,7 +64,7 @@ export const scrollToSpecifiedDate = (dateString: string, usernameString: string
       const usernames = getAllNoFapNewUsernames();
 
       for (const username of usernames as string[]) {
-        const doesTextContainXXX = username === usernameString;
+        const doesTextContainXXX = username === usernameConfig.usernameValue;
         if (doesTextContainXXX) {
           console.log('Found scroll username.');
           clearInterval(interval);
@@ -112,12 +115,32 @@ const getReplyLink = (entry) => {
   }
 }
 
-export const closeTabAfterThreeSecondDelay = () => {
+export const closeTabAfterDelay = (delay: number, window: any): Promise<void> => new Promise((resolve, reject) => {
   setTimeout(function() {
+    console.log(`closing tab in ${delay}.`);
     window.open('https://reddit.com/', '_self')?.close();
-  }, 3000);
+    resolve();
+  }, delay);
+});
+
+export const scrollToMarker = () => {
+  setTimeout(function() { console.log('delay, bby'); }, 800)
+  const lastUserMarkerElement = document.querySelector('#last-user-reade')
+  console.log(lastUserMarkerElement)
+  if (lastUserMarkerElement) {
+    const y = lastUserMarkerElement.getBoundingClientRect().top + window.scrollY - 350;
+    console.log(y);
+    window.scroll({
+      top: y,
+      behavior: 'smooth'
+    });
+  }
 };
 
+export const isServerRunning = async () => {
+  const message = await checkServerRunning();
+  console.log('serverRunning', message);
+}
 
 // const setIntervalFunction = (interval) => {
 //   return setInterval(function() {

@@ -18,8 +18,16 @@ Also happy to have you join the #accountability program on Discord once you've b
 `
 );
 
+export const hardTime = (
+  `Yeah, you're going to have a hard time approaching addiction without focusing on your mental health, given addiction is a mental health problem, but the guide goes into this in detail.`
+  );
+
 export const joinSubreddit = (
 `No worries! I also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe`
+);
+
+export const allSorted = (
+`That's fantastic to hear, it sounds like you're all sorted :)`
 );
 
 // All good! I also have a subreddit if you're interested in getting updates. r/NeverFapDeluxe

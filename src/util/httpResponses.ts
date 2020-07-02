@@ -1,4 +1,5 @@
 import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload, SendUserNotePayload } from "../types/tamperMonkeyTypes";
+import { UsernameType, ConfigType } from './config';
 
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',
@@ -76,9 +77,17 @@ export const latestUnreadMessagesInformation =
     };
 
 export const setMarker =
-  async (dataPayload: { username: string }):
+  async (dataPayload: { username: string, usernameConfig: ConfigType }):
     Promise<CompiledFullUserObject> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/setMarker');
-      return JSONResponse.data.user;
+      return JSONResponse.data.message;
+    };
+
+
+export const checkServerRunning =
+  async ():
+    Promise<CompiledFullUserObject> => {
+      const JSONResponse = await sendPostRequest({}, '/checkServerRunning');
+      return JSONResponse.data.isRunning;
     };
 

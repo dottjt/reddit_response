@@ -7,19 +7,28 @@ import {
   scrollToSpecifiedDate,
   getAllNoFapNewUsernames,
   addGlobalStyle,
+  scrollToMarker,
+  isServerRunning,
 } from '../util/commonUtils';
 import mainCss from '../util/mainCss';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 
 import UserPanel from '../components/UserPanel';
-import { TIMEFRAME, USERNAME } from '../util/config'
+import {
+  TIMEFRAME,
+  R_NOFAP_USERNAME,
+  R_PORN_FREE_USERNAME,
+  R_NOFAP_CHRISTIANS_USERNAME,
+  R_NOFAP_TEENS_USERNAME,
+  R_SEMEN_RETENTION_USERNAME, R_MUSLIM_NOFAP_USERNAME, UsernameType, ConfigType,
+} from '../util/config'
 
 'use strict';
 
 addGlobalStyle(mainCss);
 
-const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
+const populateWebpageInformation = (users: CompiledFullUserObject[], usernameConfig: ConfigType) => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
   const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/'));
 
@@ -40,24 +49,78 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
 
       render(<UserPanel
         dbUser={dbUser}
-        markerUsername={USERNAME}/>, domContainer);
+        usernameConfig={usernameConfig}/>, domContainer);
       console.log(`${index} rendered of ${totalCount}.`)
     }
   });
 }
 
+const getUsernameMarker = (location): ConfigType => {
+  if (location.pathname.toLowerCase().includes('/nofap/new')) {
+    return {
+      usernameValue: R_NOFAP_USERNAME,
+      usernameType: UsernameType.rNofapUsername
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/pornfree/new')) {
+    return {
+      usernameValue: R_PORN_FREE_USERNAME,
+      usernameType: UsernameType.rPornFreeUsername
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {
+    return {
+      usernameValue: R_NOFAP_CHRISTIANS_USERNAME,
+      usernameType: UsernameType.rNofapChristiansUsername
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/nofapteens/new')) {
+    return {
+      usernameValue: R_NOFAP_TEENS_USERNAME,
+      usernameType: UsernameType.rNofapTeensUsername
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/semenretention/new')) {
+    return {
+      usernameValue: R_SEMEN_RETENTION_USERNAME,
+      usernameType: UsernameType.rSemenRetentionUsername
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/muslimnofap/new')) {
+    return {
+      usernameValue: R_MUSLIM_NOFAP_USERNAME,
+      usernameType: UsernameType.rMuslimNofapUsername
+    }
+  }
+
+  return {
+    usernameValue: '',
+    usernameType: UsernameType.rNofapUsername
+  };
+}
+
 const main = async () => {
   console.log('START: start script');
 
+  await isServerRunning();
+
+  const usernameConfig = getUsernameMarker(location);
+
   window.localStorage.setItem('delayTimer', '10000');
 
-  console.log('timeframe: ', TIMEFRAME, 'username: ',  USERNAME);
-  await scrollToSpecifiedDate(TIMEFRAME, USERNAME);
-  const dataPayload: { usernames: string[] } = { usernames: getAllNoFapNewUsernames() };
-  const users: CompiledFullUserObject[] = await checkUsernamesFetch(dataPayload);
-  populateWebpageInformation(users);
+  if (usernameConfig.usernameValue !== '') {
+    console.log('timeframe: ', TIMEFRAME, 'username: ', usernameConfig.usernameValue);
 
-  console.log('END: script complete');
+    await scrollToSpecifiedDate(TIMEFRAME, usernameConfig);
+    const dataPayload: { usernames: string[] } = { usernames: getAllNoFapNewUsernames() };
+    const users: CompiledFullUserObject[] = await checkUsernamesFetch(dataPayload);
+    populateWebpageInformation(users, usernameConfig);
+    scrollToMarker();
+
+    console.log('END: script complete');
+  } else {
+    console.log('You did not set the username marker or it has never been set.')
+  }
 };
 
 main();

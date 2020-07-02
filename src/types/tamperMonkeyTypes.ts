@@ -1,8 +1,10 @@
 import { Message } from "./serverTypes";
+import { UsernameType, ConfigType } from '../util/config';
 
 export type CompiledFullUserObject = {
   username: string;
-  is_hostile: string;
+  is_hostile?: boolean;
+  user_chat_function_utilised?: boolean;
 
   userType: string;
   userColor: string;
@@ -19,6 +21,11 @@ export type CompiledFullUserObject = {
 export type SendUserNotePayload = {
   username: string;
   message: string;
+}
+
+export type SetMarkerPayload = {
+  username: string;
+  usernameConfig: ConfigType;
 }
 
 export type SendNewMessageSendPayload = {

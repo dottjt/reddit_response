@@ -4,6 +4,7 @@ import {
   straightToGuide,
   startAdvice,
   generalAdvice,
+  relapseAdvice,
   struggleBasics,
   noReasonToRelapse,
   accountabilityPartner,
@@ -18,18 +19,23 @@ import {
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { UserType } from '../types/serverTypes';
 import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton, MarkUserChattedButton } from './ComponentsUtil';
+import { ConfigType } from '../util/config';
 // import ReactTooltip from 'react-tooltip';
 
 const increaseDelayTimer = () => {
   const delayTimer = window.localStorage.getItem('delayTimer') as string;
-  const delayTimerNumber = parseInt(delayTimer) + 11000;
+  const delayTimerNumber = parseInt(delayTimer) + 15000;
   window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
 }
 
-const openNewLink = (prelimUrl) => {
-  const delayTimer = window.localStorage.getItem('delayTimer');
-  const url = `${prelimUrl}&timer=${delayTimer}`; //
-  increaseDelayTimer();
+const openNewLink = (prelimUrl: string, messageType: string) => {
+  let url = `${prelimUrl}`;
+  if (messageType !== 'custom') {
+    const delayTimer = window.localStorage.getItem('delayTimer');
+    url = url + `&timer=${delayTimer}`;
+    increaseDelayTimer();
+  }
+
   window.open(url, '_blank');
 }
 
@@ -40,7 +46,6 @@ const createStartMessageLink = (
   messageText: string,
 ) => {
   const prelimUrl = `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${encodeURIComponent(messageText)}&type=${messageType}`;
-  const dataTipId = `${messageType}-${toUsername}`;
 
   return (
     <div>
@@ -52,7 +57,7 @@ const createStartMessageLink = (
         'margin-right': '0.3rem',
         'font-size': '12px',
         display: 'inline-block',
-      }} onclick={() => openNewLink(prelimUrl)}>
+      }} onclick={() => openNewLink(prelimUrl, messageType)}>
         {messageType}
       </a>
       {/* <ReactTooltip className='react-tool-tip-custom' id={dataTipId} type='error'>
@@ -66,21 +71,21 @@ const createStartMessageLink = (
 
 type UserPanelProps = {
   dbUser: CompiledFullUserObject;
-  markerUsername: string;
+  usernameConfig: ConfigType;
 }
 
-const UserPanel = ({ dbUser, markerUsername }: UserPanelProps) => {
+const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
   return (
     <div>
       {dbUser.userType !== UserType.FreshUser && (
         <PreviousMessageInformation dbUser={dbUser} />
       )}
       <div style={{ display: 'flex' }}>
-        <SetMarkerButton username={dbUser.username} />
+        <SetMarkerButton username={dbUser.username} usernameConfig={usernameConfig} />
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
       </div>
-      <UserInformation dbUser={dbUser} markerUsername={markerUsername} />
+      <UserInformation dbUser={dbUser} usernameConfig={usernameConfig} />
 
       <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
@@ -88,13 +93,13 @@ const UserPanel = ({ dbUser, markerUsername }: UserPanelProps) => {
           {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide)}
           {createStartMessageLink('advice:start', 'purple', dbUser.username, startAdvice)}
           {createStartMessageLink('advice:general', 'purple', dbUser.username, generalAdvice)}
+          {createStartMessageLink('advice:relapse', 'purple', dbUser.username, relapseAdvice)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink('struggle:basics', 'purple', dbUser.username, struggleBasics)}
           {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse)}
           {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner)}
           {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice)}
-
         </div>
       </div>
     </div>

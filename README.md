@@ -5,7 +5,9 @@
 
 ## Improvements
 
-- NA
+- create a function to turn the whole page white if the server isn't running. So always hit the server first.
+- If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again.
+- Fix custom messages. How to send one while tracking it, need to rewrite the thing. 
 
 ## Nice To Have
 
@@ -13,6 +15,7 @@
 - Have option on user to see if user has been chatted to, yet.
 - Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things.
 - self-update message send status on user once
+- Track the last message you sent, so I don't get lost if there is more than 25 unread.
 
 ## DONE
 

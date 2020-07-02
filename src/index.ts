@@ -7,6 +7,7 @@ import cors from '@koa/cors';
 import bodyParser from 'koa-body';
 import logger from 'koa-logger';
 
+import checkServerRunningRoute from './routes/checkServerRunningRoute';
 import checkUsernamesRoute from './routes/checkUsernamesRoute';
 import populateHistoricSentMessagesRoute from './routes/populateSentMessagesRoute';
 import populateReceivedMessagesRoute from './routes/populateReceivedMessagesRoute';
@@ -21,6 +22,7 @@ const main = () => {
   const app = new Koa();
   const router = new Router();
 
+  router.post('/checkServerRunning', checkServerRunningRoute);
   router.post('/checkUsernames', checkUsernamesRoute);
   router.post('/populateHistoricSentMessages', populateHistoricSentMessagesRoute);
   router.post('/populateReceivedMessages', populateReceivedMessagesRoute);

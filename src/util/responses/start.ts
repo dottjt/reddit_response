@@ -32,15 +32,6 @@
 // how do you feel long term (after 1 month/week etc.)
 // does peeking count as relapse?
 
-export const startAdvice = (
-`Hey, I saw your post on r/NoFap. It's great to see you've started!
-
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
-
-Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.
-`
-);
-
 export const straightToGuide = (
 `Hey, I saw your post on r/NoFap.
 
@@ -50,18 +41,37 @@ https://neverfapdeluxe.com/
 
 Also happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.
 `
-)
+);
+
+export const startAdvice = (
+`Hey, I saw your post on r/NoFap. It's great to see you've started!
+
+The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
+
+Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+`
+);
 
 export const generalAdvice = (
 `Hey, I saw your post on r/NoFap.
 
 The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
 
-Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.
+Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
 `
 );
 
-// this is 
+export const relapseAdvice = (
+`Hey, I saw your post on r/NoFap. I'm sorry to hear you relapsed.
+
+The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
+
+Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+`
+);
+
+
+// this is
 export const mentalhealthNotExerciseAdvice = (
 `Hey, I saw your post on r/NoFap.
 
@@ -77,7 +87,7 @@ export const amIAddictedAdvice = (
 
 Essentially, you're no longer addicted when you have zero desire to do it. As in, never again. Up until then, you're still very much addicted. In most cases, if you can get past 90 days then it demonstrates that you're no longer addicted, but I would also say it's just a general guide.
 
-Ultimately it's about working on your mental health everyday. Keep that up and you'll get there, but it involves a lot of practice and remembering to meditate daily. I've written a guide on overcoming porn addiction which explains this stuff, if you're interested.
+Ultimately it's about working on your mental health everyday. Keep that up and you'll get there, but it involves a lot of practice and remembering to meditate daily. I've written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
 `
 );
 
@@ -86,7 +96,7 @@ export const flatlineAdvice = (
 
 The main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.
 
-What's your mental health routine look like? Do you meditate daily? I've also written a guide on overcoming porn addiction which explains this stuff, if you're interested.
+What's your mental health routine look like? Do you meditate daily? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
 `
 );
 
@@ -97,7 +107,7 @@ I'm sorry to hear you're struggling. Based on what you described it sounds like 
 
 Ultimately what's important is having balance and having mental health. Once you get those things down recovery becomes a lot easier, because you're no longer fighting yourself and your feelings.
 
-What kind of things do you do for your mental health each day? Do you meditate or practice awareness exercises? I've written a guide on overcoming porn addiction which explains this stuff, if you're interested.
+What kind of things do you do for your mental health each day? Do you meditate or practice awareness exercises? I've written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
 `
 );
 

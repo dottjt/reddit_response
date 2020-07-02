@@ -3,6 +3,7 @@ import { createElement } from 'inferno-create-element';
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { sendNewUserNote, markUserHostile, setMarker, markUserChatted } from '../util/httpResponses';
 import { Component } from 'inferno';
+import { UsernameType, ConfigType } from '../util/config';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
   <div>
@@ -17,13 +18,15 @@ export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUse
   </div>
 );
 
-export const UserInformation = ({ dbUser, markerUsername }: { dbUser: CompiledFullUserObject, markerUsername?: string }) => (
+export const UserInformation = ({ dbUser, usernameConfig }: { dbUser: CompiledFullUserObject, usernameConfig?: ConfigType }) => (
   <div style={{ 'margin-top': '1rem', 'margin-bottom': '1rem' }} >
+    {usernameConfig?.usernameValue === dbUser.username ? <h1 id='last-user-reade' style={{ 'font-size': '4.5rem' }}>LASTUSER</h1> : ''}
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>
-      {dbUser.username} {markerUsername && markerUsername === dbUser.username ? '(Marker)' : ''} |
+      {dbUser.username} | {dbUser.user_chat_function_utilised ? <span style={{ color: 'black' }}>(Chatted)</span> : ''}
     </span>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType} |</span>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
+
     {/* FUTURE: Display user note, not a huge deal */}
     {/* {dbUser && dbUser.messageTypesSent?.map((item: any) => <span style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{item.type}</span>)} */}
   </div>
@@ -80,12 +83,12 @@ export const MarkUserChattedButton = ({ username }: { username: string })  => {
   )
 }
 
-export const SetMarkerButton = ({ username }: { username: string })  => {
+export const SetMarkerButton = ({ username, usernameConfig }: { username: string, usernameConfig: ConfigType })  => {
   return (
     <button
       style={{ border: '1px solid black','margin-right': '0.4rem' }}
       onclick={async () => {
-        await setMarker({ username });
+        await setMarker({ username, usernameConfig });
       }}>
       Set Marker
     </button>

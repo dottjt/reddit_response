@@ -62,24 +62,26 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
   let counter = 0;
   for (const item of filteredMessageList) {
     const rootId = `r${item.username_sending}-${counter}`;
-    const root = document.createElement('div');
-    root.id = rootId;
-    counter += 1;
+    if (!rootId.includes('[')) {
+      const root = document.createElement('div');
+      root.id = rootId;
+      counter += 1;
 
-    if (item.containerDiv) { // r5ageof6paths-0
-      item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
+      if (item.containerDiv) { // r5ageof6paths-0
+        item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
 
-      setTimeout(function(){ console.log('')}, 800);
+        setTimeout(function(){ console.log('')}, 800);
 
-      const domContainer = documentSub.querySelector(`#${rootId}`);
+        const domContainer = documentSub.querySelector(`#${rootId}`);
 
-      const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
+        const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
 
-      if (domContainer) {
-        render(<ReplyUserPanel
-          dbUser={dbUser}
-          previousMessageInformation={item}
-          containerDiv={item.containerDiv} />, domContainer);
+        if (domContainer) {
+          render(<ReplyUserPanel
+            dbUser={dbUser}
+            previousMessageInformation={item}
+            containerDiv={item.containerDiv} />, domContainer);
+        }
       }
     }
   }
