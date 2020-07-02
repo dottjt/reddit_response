@@ -11,14 +11,18 @@ export type ConfigType = {
 export enum UsernameType {
   rNofapUsername='rNofapUsername',
   rPornFreeUsername='rPornFreeUsername',
+  rPornAddictionUsername='rPornAddictionUsername',
   rNofapChristiansUsername='rNofapChristiansUsername',
   rNofapTeensUsername='rNofapTeensUsername',
   rSemenRetentionUsername='rSemenRetentionUsername',
   rMuslimNofapUsername='rMuslimNofapUsername',
 }
 
-export const R_NOFAP_USERNAME = 'Synonicz';
+// TODO Add porn addiction
+
+export const R_NOFAP_USERNAME = 'KwonAK';
 export const R_PORN_FREE_USERNAME = '';
+export const R_PORN_ADDICTION_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_TEENS_USERNAME = '';
 export const R_SEMEN_RETENTION_USERNAME = '';

@@ -21,7 +21,7 @@ import {
   R_PORN_FREE_USERNAME,
   R_NOFAP_CHRISTIANS_USERNAME,
   R_NOFAP_TEENS_USERNAME,
-  R_SEMEN_RETENTION_USERNAME, R_MUSLIM_NOFAP_USERNAME, UsernameType, ConfigType,
+  R_SEMEN_RETENTION_USERNAME, R_MUSLIM_NOFAP_USERNAME, UsernameType, ConfigType, R_PORN_ADDICTION_USERNAME,
 } from '../util/config'
 
 'use strict';
@@ -66,6 +66,12 @@ const getUsernameMarker = (location): ConfigType => {
     return {
       usernameValue: R_PORN_FREE_USERNAME,
       usernameType: UsernameType.rPornFreeUsername
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/pornaddiction/new')) {
+    return {
+      usernameValue: R_PORN_ADDICTION_USERNAME,
+      usernameType: UsernameType.rPornAddictionUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {

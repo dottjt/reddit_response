@@ -8,6 +8,8 @@
 // @match        https://www.reddit.com/r/NoFap/new/
 // @match        https://www.reddit.com/r/pornfree/new
 // @match        https://www.reddit.com/r/pornfree/new/
+// @match        https://www.reddit.com/r/PornAddiction/new
+// @match        https://www.reddit.com/r/PornAddiction/new/
 // @match        https://www.reddit.com/r/NoFapChristians/new/
 // @match        https://www.reddit.com/r/NoFapChristians/new/
 // @match        https://www.reddit.com/r/MuslimNoFap/new/

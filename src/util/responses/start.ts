@@ -35,7 +35,7 @@
 export const straightToGuide = (
 `Hey, I saw your post on r/NoFap.
 
-If you're looking for some advice, I've written a guide to the whole process of overcoming porn addiction. The homepage should cover 90% of how NeverFap Deluxe works. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.
+If you're looking for some advice, I've created a website which explains the whole process of overcoming porn addiction. The homepage should cover 90% of how NeverFap Deluxe works. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.
 
 https://neverfapdeluxe.com/
 
@@ -48,7 +48,7 @@ export const startAdvice = (
 
 The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
 
-Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+Do you do much for your mental health? Like meditate, and stuff? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -57,7 +57,7 @@ export const generalAdvice = (
 
 The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
 
-Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+Do you do much for your mental health? Like meditate, and stuff? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -66,7 +66,7 @@ export const relapseAdvice = (
 
 The main thing with recovery is to focus on your mental health. Fundamentally, it's about learning to develop control over your mind so you can have the awareness to change your behaviours. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is why having a daily mental health routine is so important.
 
-Do you do much for your mental health? Like meditate, and stuff? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+Do you do much for your mental health? Like meditate, and stuff? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -77,7 +77,7 @@ export const mentalhealthNotExerciseAdvice = (
 
 I think you'll find that recovery is about focusing on your mental health, not so much about your physical health. Although physical activity can help tremendously, it doesn't address the heart of the problem which is not having control over your mind.
 
-Otherwise, you end up using exercise as a form of distraction and that's no different to procrastinating. I've written a guide on overcoming porn addiction which explains this in detail, if you're interested.
+Otherwise, you end up using exercise as a form of distraction and that's no different to procrastinating. I've created a website which explains overcoming porn addiction which explains this in detail, if you're interested.
 `
 );
 
@@ -87,7 +87,7 @@ export const amIAddictedAdvice = (
 
 Essentially, you're no longer addicted when you have zero desire to do it. As in, never again. Up until then, you're still very much addicted. In most cases, if you can get past 90 days then it demonstrates that you're no longer addicted, but I would also say it's just a general guide.
 
-Ultimately it's about working on your mental health everyday. Keep that up and you'll get there, but it involves a lot of practice and remembering to meditate daily. I've written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+Ultimately it's about working on your mental health everyday. Keep that up and you'll get there, but it involves a lot of practice and remembering to meditate daily. I've created a website which explains overcoming porn addiction which explains this stuff in detail, if you're interested.
 `
 );
 
@@ -96,7 +96,7 @@ export const flatlineAdvice = (
 
 The main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.
 
-What's your mental health routine look like? Do you meditate daily? I've also written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+What's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -107,7 +107,7 @@ I'm sorry to hear you're struggling. Based on what you described it sounds like 
 
 Ultimately what's important is having balance and having mental health. Once you get those things down recovery becomes a lot easier, because you're no longer fighting yourself and your feelings.
 
-What kind of things do you do for your mental health each day? Do you meditate or practice awareness exercises? I've written a guide on overcoming porn addiction which explains this stuff in detail, if you're interested.
+What kind of things do you do for your mental health each day? Do you meditate or practice awareness exercises? I've created a website which explains overcoming porn addiction which explains this stuff in detail, if you're interested.
 `
 );
 
@@ -116,7 +116,7 @@ export const biggestDifference = (
 
 Definitely meditation was what made the biggest difference for me. In fact, within 5 minutes of meditation was when I knew I would never relapse again.
 
-So for me, I basically do 10 minutes of meditation each day and I would say that's enough for you to get started. I've written a guide explaining why, if you're interested.
+So for me, I basically do 10 minutes of meditation each day and I would say that's enough for you to get started. I've created a website which explains why, if you're interested.
 `
 );
 
@@ -125,7 +125,7 @@ export const noReasonToRelapse = (
 
 There is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.
 
-There is no such thing as reasonable when it comes to addiction. I've written a guide explaining why, if you're interested.
+There is no such thing as reasonable when it comes to addiction. I've created a website which explains why, if you're interested.
 `
 );
 
@@ -139,7 +139,7 @@ Happy to be your accountability partner! My name is Julius. I also run an accoun
 export const sorryToHearYouRelapsed = (
 `Hey, I saw your post on r/NoFap. I'm sorry to hear you relapsed. Were you focusing on your mental health in order to help you deal with your feelings and emotions?
 
-If you're struggling with recovery, then it might help to revisit the basics. I've written a guide explaining the fundamentals, if you're interested.
+If you're struggling with recovery, then it might help to revisit the basics. I've created a website which explains the fundamentals, if you're interested.
 `
 );
 

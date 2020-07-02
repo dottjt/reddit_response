@@ -11,19 +11,22 @@ const chooseCorrectUsernameString = (usernameType: UsernameType): string => {
       return 'R_NOFAP_USERNAME';
     }
     case UsernameType.rPornFreeUsername: {
-      return 'R_NOFAP_CHRISTIANS_USERNAME';
+      return 'R_PORN_FREE_USERNAME';
+    }
+    case UsernameType.rPornAddictionUsername: {
+      return 'R_PORN_ADDICTION_USERNAME';
     }
     case UsernameType.rNofapChristiansUsername: {
-      return 'R_NOFAP_TEENS_USERNAME';
+      return 'R_NOFAP_CHRISTIANS_USERNAME';
     }
     case UsernameType.rNofapTeensUsername: {
-      return 'R_SEMEN_RETENTION_USERNAME';
+      return 'R_NOFAP_TEENS_USERNAME';
     }
     case UsernameType.rSemenRetentionUsername: {
-      return 'R_MUSLIM_NOFAP_USERNAME';
+      return 'R_SEMEN_RETENTION_USERNAME';
     }
     case UsernameType.rMuslimNofapUsername: {
-      return '';
+      return 'R_MUSLIM_NOFAP_USERNAME';
     }
     default:
       return '';
