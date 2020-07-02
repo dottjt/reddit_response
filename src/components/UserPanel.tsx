@@ -90,16 +90,16 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
       <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink('custom', 'purple', dbUser.username, '')}
-          {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide)}
-          {createStartMessageLink('advice:start', 'purple', dbUser.username, startAdvice)}
-          {createStartMessageLink('advice:general', 'purple', dbUser.username, generalAdvice)}
-          {createStartMessageLink('advice:relapse', 'purple', dbUser.username, relapseAdvice)}
+          {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:start', 'purple', dbUser.username, startAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:general', 'purple', dbUser.username, generalAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:relapse', 'purple', dbUser.username, relapseAdvice(usernameConfig.usernameType))}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
-          {createStartMessageLink('struggle:basics', 'purple', dbUser.username, struggleBasics)}
-          {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse)}
-          {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner)}
-          {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice)}
+          {createStartMessageLink('struggle:basics', 'purple', dbUser.username, struggleBasics(usernameConfig.usernameType))}
+          {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse(usernameConfig.usernameType))}
+          {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice(usernameConfig.usernameType))}
         </div>
       </div>
     </div>

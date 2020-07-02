@@ -5,9 +5,7 @@
 
 ## Improvements
 
-- create a function to turn the whole page white if the server isn't running. So always hit the server first.
 - If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again.
-- Fix custom messages. How to send one while tracking it, need to rewrite the thing. 
 
 ## Nice To Have
 
@@ -19,6 +17,8 @@
 
 ## DONE
 
+- Fix custom messages. How to send one while tracking it, need to rewrite the thing.
+- create a function to turn the whole page white if the server isn't running. So always hit the server first.
 - Button make Username the marker, so I don't have to do it myself.
 - custom message still sends, need to figure that out
 - Storing middle messages
