@@ -1,11 +1,17 @@
 # Reddit Marketing Automation
 
+## General Flow
+- Send user a message on the subreddit
+- They get back
+
+
 ## Thoughts
 - Send strategy simply appends 5 seconds each time. Does it make sense? Not sure, but it's all I have atm and isn't that bad.
 
 ## Improvements
 
 - If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again.
+- Check to see if I've already sent that person an opening message. If so, don't send that message.
 
 ## Nice To Have
 

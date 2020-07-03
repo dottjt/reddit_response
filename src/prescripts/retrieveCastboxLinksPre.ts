@@ -1,8 +1,12 @@
 'use strict';
 
-const getItems = (document: Document) => {
+import { updateCastboxLinks } from "../util/httpResponses";
+
+const getItems = async (document: Document) => {
   const items = document.querySelectorAll('.itemWrapper');
   const reversedItems = [...items as any].reverse();
+
+  const itemsAdded: any = [];
 
   for (const item of reversedItems) {
     const title = item.querySelector('.title').children[0].innerText;
@@ -16,15 +20,23 @@ const getItems = (document: Document) => {
     console.log(title);
     console.log(episodeLink);
     console.log(shareLink);
+
+    itemsAdded.push({
+      title,
+      episodeLink,
+      shareLink,
+    });
   }
+
+  await updateCastboxLinks({ castboxLinks: itemsAdded });
 }
 
 const main = async () => {
   console.log('START: start script');
 
   window.addEventListener('load', () => {
-    setTimeout(function() {
-      getItems(document);
+    setTimeout(async function() {
+      await getItems(document);
     }, 1000);
   });
 

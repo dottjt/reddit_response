@@ -12,10 +12,10 @@ const HTTPPOSToptions = (data): any => ({
   body: JSON.stringify({ data }) // body data type must match "Content-Type" header
 });
 
-const sendPostRequest = async (dataPayload: any, urlEndpoint: string): Promise<{ data: any }> => {
+const sendPostRequest = async (dataPayload: any, urlEndpoint: string, port: string): Promise<{ data: any }> => {
   try {
     const response = await fetch(
-      `http://localhost:3333${urlEndpoint}`,
+      `http://localhost:${port}${urlEndpoint}`,
       HTTPPOSToptions(dataPayload)
     );
     const JSONResponse = await response.json();
@@ -29,57 +29,56 @@ const sendPostRequest = async (dataPayload: any, urlEndpoint: string): Promise<{
 export const checkUsernamesFetch =
   async (dataPayload: { usernames: string[] }):
     Promise<CompiledFullUserObject[]> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/checkUsernames');
+      const JSONResponse = await sendPostRequest(dataPayload, '/checkUsernames', '3333');
       return JSONResponse.data.users;
     };
-
 
 export const populateReceivedMessages =
   async (dataPayload: { messages: PopulateReceivedMessagesPayload[] }):
     Promise<string> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/populateReceivedMessages');
+      const JSONResponse = await sendPostRequest(dataPayload, '/populateReceivedMessages', '3333');
       return JSONResponse.data.message; // basically a success message.
     };
 
 export const sendNewMessage =
   async (dataPayload: SendNewMessageSendPayload):
     Promise<CompiledFullUserObject[]> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/sendNewMessage');
+      const JSONResponse = await sendPostRequest(dataPayload, '/sendNewMessage', '3333');
       return JSONResponse.data.users;
     };
 
 export const sendNewUserNote =
   async (dataPayload: SendUserNotePayload):
     Promise<string> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/sendNewUserNote');
+      const JSONResponse = await sendPostRequest(dataPayload, '/sendNewUserNote', '3333');
       return JSONResponse.data.message;
     };
 
 export const markUserHostile =
   async (dataPayload: { username: string }):
     Promise<string> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/markUserHostile');
+      const JSONResponse = await sendPostRequest(dataPayload, '/markUserHostile', '3333');
       return JSONResponse.data.message;
     };
 
 export const markUserChatted =
   async (dataPayload: {}):
     Promise<string> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/markUserChatted');
+      const JSONResponse = await sendPostRequest(dataPayload, '/markUserChatted', '3333');
       return JSONResponse.data.message;
     };
 
 export const latestUnreadMessagesInformation =
   async (dataPayload: { username: string }):
     Promise<CompiledFullUserObject> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/latestUnreadMessagesInformation');
+      const JSONResponse = await sendPostRequest(dataPayload, '/latestUnreadMessagesInformation', '3333');
       return JSONResponse.data.user;
     };
 
 export const setMarker =
   async (dataPayload: { username: string, usernameConfig: ConfigType }):
     Promise<CompiledFullUserObject> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/setMarker');
+      const JSONResponse = await sendPostRequest(dataPayload, '/setMarker', '3333');
       return JSONResponse.data.message;
     };
 
@@ -87,7 +86,14 @@ export const setMarker =
 export const checkServerRunning =
   async ():
     Promise<CompiledFullUserObject> => {
-      const JSONResponse = await sendPostRequest({}, '/checkServerRunning');
+      const JSONResponse = await sendPostRequest({}, '/checkServerRunning', '3333');
       return JSONResponse.data.isRunning;
     };
 
+
+export const updateCastboxLinks =
+  async (dataPayload: { castboxLinks: any }):
+    Promise<CompiledFullUserObject> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/updateCastboxLinks', '3232');
+      return JSONResponse.data.isRunning;
+    };
