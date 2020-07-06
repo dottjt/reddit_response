@@ -17,6 +17,7 @@ import sendUserNoteRoute from './routes/sendUserNoteRoute';
 import markUserHostileRoute from './routes/markUserHostileRoute';
 import markUserChattedRoute from './routes/markUserChattedRoute';
 import setMarkerRoute from './routes/setMarkerRoute';
+import setLastMessageRepliedRoute from './routes/setLastMessageRepliedRoute';
 
 const main = () => {
   const app = new Koa();
@@ -32,6 +33,7 @@ const main = () => {
   router.post('/markUserHostile', markUserHostileRoute);
   router.post('/markUserChatted', markUserChattedRoute);
   router.post('/setMarker', setMarkerRoute);
+  router.post('/setLastMessageReplied', setLastMessageRepliedRoute);
 
   app
     .use(bodyParser())

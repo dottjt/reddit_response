@@ -76,9 +76,13 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
 
         const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
 
+        const numberOfMessagesFromThisUser = filteredMessageList.filter(item => item.username_sending === dbUser.username).length;
+        console.log('numberOfMessagesFromThisUser - ' + dbUser.username, numberOfMessagesFromThisUser);
+
         if (domContainer) {
           render(<ReplyUserPanel
             dbUser={dbUser}
+            numberOfMessagesFromThisUser={numberOfMessagesFromThisUser}
             previousMessageInformation={item}
             containerDiv={item.containerDiv} />, domContainer);
         }

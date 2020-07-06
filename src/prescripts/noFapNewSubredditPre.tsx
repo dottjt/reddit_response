@@ -21,7 +21,7 @@ import {
   R_PORN_FREE_USERNAME,
   R_NOFAP_CHRISTIANS_USERNAME,
   R_NOFAP_TEENS_USERNAME,
-  R_SEMEN_RETENTION_USERNAME, R_MUSLIM_NOFAP_USERNAME, UsernameType, ConfigType, R_PORN_ADDICTION_USERNAME,
+  R_SEMEN_RETENTION_USERNAME, R_MUSLIM_NOFAP_USERNAME, UsernameType, ConfigType, R_PORN_ADDICTION_USERNAME, R_NOFAP_TIMESTAMP, R_PORN_FREE_TIMESTAMP, R_PORN_ADDICTION_TIMESTAMP, R_NOFAP_CHRISTIANS_TIMESTAMP, R_NOFAP_TEENS_TIMESTAMP, R_SEMEN_RETENTION_TIMESTAMP, R_MUSLIM_NOFAP_TIMESTAMP,
 } from '../util/config'
 
 'use strict';
@@ -59,48 +59,56 @@ const getUsernameMarker = (location): ConfigType => {
   if (location.pathname.toLowerCase().includes('/nofap/new')) {
     return {
       usernameValue: R_NOFAP_USERNAME,
+      usernameTimestamp: R_NOFAP_TIMESTAMP,
       usernameType: UsernameType.rNofapUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/pornfree/new')) {
     return {
       usernameValue: R_PORN_FREE_USERNAME,
+      usernameTimestamp: R_PORN_FREE_TIMESTAMP,
       usernameType: UsernameType.rPornFreeUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/pornaddiction/new')) {
     return {
       usernameValue: R_PORN_ADDICTION_USERNAME,
+      usernameTimestamp: R_PORN_ADDICTION_TIMESTAMP,
       usernameType: UsernameType.rPornAddictionUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {
     return {
       usernameValue: R_NOFAP_CHRISTIANS_USERNAME,
+      usernameTimestamp: R_NOFAP_CHRISTIANS_TIMESTAMP,
       usernameType: UsernameType.rNofapChristiansUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/nofapteens/new')) {
     return {
       usernameValue: R_NOFAP_TEENS_USERNAME,
+      usernameTimestamp: R_NOFAP_TEENS_TIMESTAMP,
       usernameType: UsernameType.rNofapTeensUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/semenretention/new')) {
     return {
       usernameValue: R_SEMEN_RETENTION_USERNAME,
+      usernameTimestamp: R_SEMEN_RETENTION_TIMESTAMP,
       usernameType: UsernameType.rSemenRetentionUsername
     }
   }
   if (location.pathname.toLowerCase().includes('/muslimnofap/new')) {
     return {
       usernameValue: R_MUSLIM_NOFAP_USERNAME,
+      usernameTimestamp: R_MUSLIM_NOFAP_TIMESTAMP,
       usernameType: UsernameType.rMuslimNofapUsername
     }
   }
 
   return {
     usernameValue: '',
+    usernameTimestamp: '',
     usernameType: UsernameType.rNofapUsername
   };
 }

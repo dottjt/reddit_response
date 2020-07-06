@@ -7,7 +7,7 @@ import {
   middleWrittenGuide,
   middleWrittenGuideTwo,
   joinSubreddit,
-  allSorted,
+  thatsFantastic,
   hardTime
 } from '../util/responses/middle';
 import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton } from './ComponentsUtil';
@@ -107,13 +107,19 @@ type ReplyUserPanelProps = {
   dbUser: CompiledFullUserObject;
   previousMessageInformation: PopulateReceivedMessagesPayload;
   containerDiv: Element;
+  numberOfMessagesFromThisUser: number;
 }
 
-const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: ReplyUserPanelProps) => {
+const ReplyUserPanel = ({
+  dbUser,
+  containerDiv,
+  previousMessageInformation,
+  numberOfMessagesFromThisUser
+}: ReplyUserPanelProps) => {
   return (
     <div>
+      <UserInformation dbUser={dbUser} numberOfMessagesFromThisUser={numberOfMessagesFromThisUser} />
       <PreviousMessageInformation dbUser={dbUser} />
-      <UserInformation dbUser={dbUser} />
       <div style={{ display: 'flex' }}>
         <SendUserNoteForm username={dbUser.username} />
         <MarkUserChattedButton username={dbUser.username} />
@@ -127,6 +133,7 @@ const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: Re
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink('thatsFantastic', 'purple', dbUser.username, thatsFantastic, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('customReply', 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
@@ -134,7 +141,8 @@ const ReplyUserPanel = ({ dbUser, containerDiv, previousMessageInformation }: Re
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, true)}
-          {createReplyMessageLink('allSorted', 'purple', dbUser.username, allSorted, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink('thatsFantastic', 'purple', dbUser.username, thatsFantastic, containerDiv, previousMessageInformation, true)}
         </div>
       </div>
     </div>

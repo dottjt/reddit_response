@@ -3,12 +3,14 @@ import { createElement } from 'inferno-create-element';
 import {
   straightToGuide,
   startAdvice,
+  startAgainAdvice,
   generalAdvice,
   relapseAdvice,
-  struggleBasics,
+  struggleAdvice,
   noReasonToRelapse,
   accountabilityPartner,
   flatlineAdvice,
+  abstainingHelpAdvice,
 
   // mentalhealthNotExerciseAdvice,
   // amIAddictedAdvice,
@@ -24,7 +26,7 @@ import { ConfigType } from '../util/config';
 
 const increaseDelayTimer = () => {
   const delayTimer = window.localStorage.getItem('delayTimer') as string;
-  const delayTimerNumber = parseInt(delayTimer) + 15000;
+  const delayTimerNumber = parseInt(delayTimer) + 20000;
   window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
 }
 
@@ -90,16 +92,18 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
       <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink('custom', 'purple', dbUser.username, '')}
-          {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide(usernameConfig.usernameType))}
           {createStartMessageLink('advice:start', 'purple', dbUser.username, startAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:startAgain', 'purple', dbUser.username, startAgainAdvice(usernameConfig.usernameType))}
           {createStartMessageLink('advice:general', 'purple', dbUser.username, generalAdvice(usernameConfig.usernameType))}
           {createStartMessageLink('advice:relapse', 'purple', dbUser.username, relapseAdvice(usernameConfig.usernameType))}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
-          {createStartMessageLink('struggle:basics', 'purple', dbUser.username, struggleBasics(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:struggle', 'purple', dbUser.username, struggleAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:abstain', 'purple', dbUser.username, abstainingHelpAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice(usernameConfig.usernameType))}
           {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse(usernameConfig.usernameType))}
           {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide(usernameConfig.usernameType))}
         </div>
       </div>
     </div>
