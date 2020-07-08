@@ -6,6 +6,7 @@ import { sendNewMessage } from '../util/httpResponses';
 import {
   middleWrittenGuide,
   middleWrittenGuideTwo,
+  middleWrittenGuideLinkYou,
   joinSubreddit,
   thatsFantastic,
   hardTime
@@ -124,6 +125,7 @@ const ReplyUserPanel = ({
         <SendUserNoteForm username={dbUser.username} />
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
+
       </div>
 
       <div style={{ display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
@@ -131,6 +133,7 @@ const ReplyUserPanel = ({
           <h4>Send</h4>
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink('middleWrittenGuideLinkYou', 'purple', dbUser.username, middleWrittenGuideLinkYou, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink('thatsFantastic', 'purple', dbUser.username, thatsFantastic, containerDiv, previousMessageInformation, false)}
@@ -140,11 +143,17 @@ const ReplyUserPanel = ({
           <h4>Send Immediate</h4>
           {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink('middleWrittenGuideLinkYou', 'purple', dbUser.username, middleWrittenGuideLinkYou, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink('thatsFantastic', 'purple', dbUser.username, thatsFantastic, containerDiv, previousMessageInformation, true)}
         </div>
       </div>
+
+      <div style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' }}>
+        {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
+      </div>
+
     </div>
   );
 }

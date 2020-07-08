@@ -40,8 +40,6 @@ If you're looking for some advice, I've created a website which explains the who
 https://neverfapdeluxe.com/
 
 Also happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.
-
-
 `
 );
 
@@ -101,6 +99,33 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 
 export const flatlineAdvice = (forum: string): string => (
 `Hey, I saw your post on ${forum}.
+
+The main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.
+
+What's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+`
+);
+
+export const wetdreamAdvice = (forum: string): string => (
+`Hey, I saw your post on ${forum}. While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.
+
+The main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.
+
+What's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+`
+);
+
+export const pornBlockersAdvice = (forum: string): string => (
+`Hey, I saw your post on ${forum}. Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.
+
+The main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.
+
+What's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+`
+);
+
+export const isWatchingPornRelapseAdvice = (forum: string): string => (
+`Hey, I saw your post on ${forum}. Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.
 
 The main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.
 

@@ -21,7 +21,7 @@ export enum UsernameType {
 
 // TODO Add porn addiction
 
-export const R_NOFAP_USERNAME = 'Oranha1';
+export const R_NOFAP_USERNAME = 'LeifErikss';
 export const R_NOFAP_TIMESTAMP = '';
 export const R_PORN_FREE_USERNAME = '';
 export const R_PORN_FREE_TIMESTAMP = '';

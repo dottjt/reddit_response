@@ -26,7 +26,6 @@ type UserInformationProps = {
 }
 
 export const UserInformation = ({
-  numberOfMessagesFromThisUser,
   dbUser,
   usernameConfig,
 }: UserInformationProps) => (
@@ -34,9 +33,6 @@ export const UserInformation = ({
     {usernameConfig?.usernameValue === dbUser.username ? <h1 id='last-user-reade' style={{ 'font-size': '4.5rem' }}>LASTUSER</h1> : ''}
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>
       {dbUser.username} | {dbUser.user_chat_function_utilised ? <span style={{ color: 'black' }}>(Chatted)</span> : ''}
-    </span>
-    <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' }}>
-      {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
     </span>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor }}>Type: {dbUser.userType} |</span>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>

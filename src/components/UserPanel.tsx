@@ -12,6 +12,9 @@ import {
   flatlineAdvice,
   abstainingHelpAdvice,
 
+  wetdreamAdvice,
+  pornBlockersAdvice,
+  isWatchingPornRelapseAdvice,
   // mentalhealthNotExerciseAdvice,
   // amIAddictedAdvice,
   // biggestDifference,
@@ -101,6 +104,10 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
           {createStartMessageLink('advice:struggle', 'purple', dbUser.username, struggleAdvice(usernameConfig.usernameType))}
           {createStartMessageLink('advice:abstain', 'purple', dbUser.username, abstainingHelpAdvice(usernameConfig.usernameType))}
           {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:wetdreamAdvice', 'purple', dbUser.username, wetdreamAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:pornBlockersAdvice', 'purple', dbUser.username, pornBlockersAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink('advice:isWatchingPornRelapseAdvice', 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig.usernameType))}
+
           {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse(usernameConfig.usernameType))}
           {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner(usernameConfig.usernameType))}
           {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide(usernameConfig.usernameType))}

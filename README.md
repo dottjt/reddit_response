@@ -1,5 +1,16 @@
 # Reddit Marketing Automation
 
+This is my Reddit Markting solution.
+
+Although there are a heap of features I can build into it, I would consider it mature in terms of what it aims to achieve. To build those features would be a waste of time in my opinion, compared to the other stuff I could work on.
+
+## How To Run
+
+- You need to use Chrome, because Firefox does not support using files from your local hard disk.
+- You need to add the userscript banners to tampermonkey. `src/util/prebanners`
+- You need to always have the server running so that it can intercept the messages. `npm run start:prod`
+- It's nice to have the UI bundler running as well at the same time, so it can change those scripts when you change the source code `npm run bundle:dev`
+
 ## General Flow
 - Send user a message on the subreddit
 - They get back
@@ -13,20 +24,20 @@
 - If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again.
 - Check to see if I've already sent that person an opening message. If so, don't send that message.
 - Also, save the date (user chatted.)
-- When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it.
 - Maybe for other subreddits, I actually just do the latest 10 users?
 
 ## Nice To Have
 
 - Track original post as part of the message.
-- Have option on user to see if user has been chatted to, yet.
-- Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things.
+- Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things. (this would be really smart, I figure. But it's not really necessary.)
 - self-update message send status on user once
 - Track the last message you sent, so I don't get lost if there is more than 25 unread.
-- start message wet dreams
+- When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it. (this is not possible, unless if you're okay with `1 hour ago`)
 
 ## DONE
 
+- start message wet dreams
+- Have option on user to see if user has been chatted to, yet.
 - Displays the number of messages from that person the reply page.
 - Change some of the reply messages to include fantastic responses, as well as other responses. .
 - Talk about self-control in the start message.

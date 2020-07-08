@@ -30,7 +30,7 @@ addGlobalStyle(mainCss);
 
 const populateWebpageInformation = (users: CompiledFullUserObject[], usernameConfig: ConfigType) => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
-  const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/'));
+  const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/') && !tag.innerText.includes(' '));
 
   const totalCount = filteredATags.length;
   filteredATags.forEach((tag, index) => {
