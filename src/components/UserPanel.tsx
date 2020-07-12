@@ -15,6 +15,7 @@ import {
   wetdreamAdvice,
   pornBlockersAdvice,
   isWatchingPornRelapseAdvice,
+  ageAdvice,
   // mentalhealthNotExerciseAdvice,
   // amIAddictedAdvice,
   // biggestDifference,
@@ -22,35 +23,19 @@ import {
 } from '../util/responses/start';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
-import { UserType } from '../types/serverTypes';
+import { UserType, SendMessageType } from '../types/serverTypes';
 import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton, MarkUserChattedButton } from './ComponentsUtil';
 import { ConfigType } from '../util/config';
+import { openNewLink, generatePrelimUrl } from '../util/sendMessageUtils';
 // import ReactTooltip from 'react-tooltip';
 
-const increaseDelayTimer = () => {
-  const delayTimer = window.localStorage.getItem('delayTimer') as string;
-  const delayTimerNumber = parseInt(delayTimer) + 20000;
-  window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
-}
-
-const openNewLink = (prelimUrl: string, messageType: string) => {
-  let url = `${prelimUrl}`;
-  if (messageType !== 'custom') {
-    const delayTimer = window.localStorage.getItem('delayTimer');
-    url = url + `&timer=${delayTimer}`;
-    increaseDelayTimer();
-  }
-
-  window.open(url, '_blank');
-}
-
 const createStartMessageLink = (
-  messageType: string,
+  messageType: SendMessageType,
   color: string,
   toUsername: string,
   messageText: string,
 ) => {
-  const prelimUrl = `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${encodeURIComponent(messageText)}&type=${messageType}`;
+  const prelimUrl = generatePrelimUrl(toUsername, messageText, messageType);
 
   return (
     <div>
@@ -94,23 +79,24 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
 
       <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
-          {createStartMessageLink('custom', 'purple', dbUser.username, '')}
-          {createStartMessageLink('advice:start', 'purple', dbUser.username, startAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:startAgain', 'purple', dbUser.username, startAgainAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:general', 'purple', dbUser.username, generalAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:relapse', 'purple', dbUser.username, relapseAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink(SendMessageType.StartCustom, 'purple', dbUser.username, '')}
+          {createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig.forumType))}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
-          {createStartMessageLink('advice:struggle', 'purple', dbUser.username, struggleAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:abstain', 'purple', dbUser.username, abstainingHelpAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:flatline', 'purple', dbUser.username, flatlineAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:wetdreamAdvice', 'purple', dbUser.username, wetdreamAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:pornBlockersAdvice', 'purple', dbUser.username, pornBlockersAdvice(usernameConfig.usernameType))}
-          {createStartMessageLink('advice:isWatchingPornRelapseAdvice', 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig.usernameType))}
+          {createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceAbstain, 'purple', dbUser.username, abstainingHelpAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceFlatline, 'purple', dbUser.username, flatlineAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig.forumType))}
 
-          {createStartMessageLink('noReasonToRelapse', 'purple', dbUser.username, noReasonToRelapse(usernameConfig.usernameType))}
-          {createStartMessageLink('accountabilityPartner', 'purple', dbUser.username, accountabilityPartner(usernameConfig.usernameType))}
-          {createStartMessageLink('straightToGuide', 'purple', dbUser.username, straightToGuide(usernameConfig.usernameType))}
+          {createStartMessageLink(SendMessageType.StartNoReasonToRelapse, 'purple', dbUser.username, noReasonToRelapse(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartStraightToGuide, 'purple', dbUser.username, straightToGuide(usernameConfig.forumType))}
         </div>
       </div>
     </div>

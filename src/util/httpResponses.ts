@@ -1,5 +1,5 @@
 import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload, SendUserNotePayload } from "../types/tamperMonkeyTypes";
-import { UsernameType, ConfigType } from './config';
+import { ForumType, ConfigType } from './config';
 
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',

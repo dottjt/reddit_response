@@ -2,9 +2,13 @@ import { render } from 'inferno';
 import { createElement } from 'inferno-create-element';
 
 import { populateReceivedMessages, latestUnreadMessagesInformation } from '../util/httpResponses.js';
-import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload } from '../types/tamperMonkeyTypes.js';
-import { sendNewMessage } from '../util/httpResponses';
+import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload, CompiledFullUserObject } from '../types/tamperMonkeyTypes.js';
+// import { sendNewMessage } from '../util/httpResponses';
 import ReplyUserPanel from '../components/ReplyUserPanel';
+import { SendMessageType } from '../types/serverTypes.js';
+import { filterRedditInboxMessages } from '../util/noFapFilterUtils.js';
+import { populateMessageAndSend } from '../util/sendMessageUtils.js';
+// import { populateMessageAndSend } from '../util/sendMessageUtils.js';
 
 'use strict';
 
@@ -41,7 +45,7 @@ const generateRelevantMessageListInformation = (pageMessages): PopulateReceivedM
       username_sending: recipient,
       message,
       date,
-      type: 'user_response'
+      type: SendMessageType.MiddleCustom
     }
   })
 );
@@ -61,39 +65,68 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
 
   let counter = 0;
   for (const item of filteredMessageList) {
-    const rootId = `r${item.username_sending}-${counter}`;
-    if (!rootId.includes('[')) {
-      const root = document.createElement('div');
-      root.id = rootId;
-      counter += 1;
+  // probably need localhost delay for this so it's not all at once.
 
-      if (item.containerDiv) { // r5ageof6paths-0
-        item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
+    const dbUser: CompiledFullUserObject = await latestUnreadMessagesInformation({ username: item.username_sending });
 
-        setTimeout(function(){ console.log('')}, 800);
+    const {
+      messageText,
+      messageType,
+    } = filterRedditInboxMessages(item, dbUser);
 
-        const domContainer = documentSub.querySelector(`#${rootId}`);
+    if (messageText && messageType && item.containerDiv) {
+      const replyDelay = localStorage.getItem('replyDelay');
+      const replyDelayNumber = Number(replyDelay);
+      localStorage.setItem('replyDelay', (replyDelayNumber + 3500).toString());
+      setTimeout(function() { console.log(`Delay: ${replyDelayNumber}`) }, replyDelayNumber);
 
-        const dbUser = await latestUnreadMessagesInformation({ username: item.username_sending });
+      console.log(`send automatically - ${dbUser.username} ${messageType}`);
 
-        const numberOfMessagesFromThisUser = filteredMessageList.filter(item => item.username_sending === dbUser.username).length;
-        console.log('numberOfMessagesFromThisUser - ' + dbUser.username, numberOfMessagesFromThisUser);
+      await populateMessageAndSend(
+        messageText,
+        item,
+        item.containerDiv,
+        dbUser.username,
+        messageType,
+        true,
+      )
+    }
 
-        if (domContainer) {
-          render(<ReplyUserPanel
-            dbUser={dbUser}
-            numberOfMessagesFromThisUser={numberOfMessagesFromThisUser}
-            previousMessageInformation={item}
-            containerDiv={item.containerDiv} />, domContainer);
+    if (!messageText) {
+      console.log(`no match - ${dbUser.username}`)
+      const rootId = `r${item.username_sending}-${counter}`;
+      if (!rootId.includes('[')) {
+        const root = document.createElement('div');
+        root.id = rootId;
+        counter += 1;
+
+        if (item.containerDiv) { // r5ageof6paths-0
+          item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
+
+          setTimeout(function(){}, 800);
+
+          const domContainer = documentSub.querySelector(`#${rootId}`);
+
+          const numberOfMessagesFromThisUser = filteredMessageList.filter(item => item.username_sending === dbUser.username).length;
+
+          if (domContainer) {
+            render(<ReplyUserPanel
+              dbUser={dbUser}
+              numberOfMessagesFromThisUser={numberOfMessagesFromThisUser}
+              previousMessageInformation={item}
+              containerDiv={item.containerDiv} />, domContainer);
+          }
         }
       }
     }
   }
 
-  console.log('filteredMessageList', filteredMessageList);
+  // console.log('filteredMessageList', filteredMessageList);
 
   const dataPayload: { messages: PopulateReceivedMessagesPayload[] } = { messages: filteredMessageList };
   await populateReceivedMessages(dataPayload);
+
+  console.log(document.querySelectorAll('#cake'));
 }
 
 const sendNewMessageLogic = async (containerDiv) => {
@@ -106,7 +139,7 @@ const sendNewMessageLogic = async (containerDiv) => {
     subject: subject.innerText,
     message: textArea.value,
     send_date: new Date().toString(),
-    type: 'reply',
+    type: SendMessageType.UserReply,
   };
 
   // await sendNewMessage(dataPayload);
@@ -129,15 +162,19 @@ const main = async () => {
   const mainLogic = async (documentSub, windowSub) => {
     console.log('START: preparing page');
 
-    const pageMessages = documentSub.querySelectorAll('.message');
-    if (pageMessages) {
-      await saveNewUnreadPageMessages(pageMessages, documentSub);
-      await sendNewMessageEventListener(pageMessages);
+    localStorage.setItem('replyDelay', '1100');
 
-      windowSub.scrollTo(0,0);
-      // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
-      console.log('END: next page');
-    }
+    setTimeout(async function() {
+      const pageMessages = documentSub.querySelectorAll('.message');
+      if (pageMessages) {
+        await saveNewUnreadPageMessages(pageMessages, documentSub);
+        await sendNewMessageEventListener(pageMessages);
+
+        windowSub.scrollTo(0,0);
+        // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
+        console.log('END: next page');
+      }
+    }, 1500);
   }
 
   console.log('1');

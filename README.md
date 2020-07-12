@@ -21,10 +21,56 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
+- It would make sense to check if a website OR a subreddit has already been sent to the user before
+- chokidar only compile file that has been changed, not all files.
+
+- Remove users who are yellow and orange :)
+- automatically send message based on post flair
+
+Thank you! Feel free to share these resources if you find them useful :)
+
+- automatic reply - if it says link me then just send it automatically.
+- also highlight key words like website etc. in thehir response. .md containers.
+
+- you would still probably have to set these messages on a timer, maybe? But make it a small one, and a different local_storage thing.
+
+
+// in reply, check what the last message type was, if is start and if in their message (.md) contains send link. then automatically send them a message. Easy. \
+
+
+// why we get urges
+
+### Never send a message aka delete
+
+// tracker / nofap tracker
+Day 2 above. (maybe ignore this rule for now until I can validate it.)
+journal check in flair
+
+### Is it a relapse
+
+I masturbated for about 5 seconds and then stopped, no porn. Is this a relapse?
+
+
+## flatline
+
+flatline + help
+
+
+## ambiguous
+// advice?
+//
+
+## edging
+
+## benefits of noFap
+
 - If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again.
 - Check to see if I've already sent that person an opening message. If so, don't send that message.
 - Also, save the date (user chatted.)
 - Maybe for other subreddits, I actually just do the latest 10 users?
+
+- create verifiable typescript types for messageTypes.
+
 
 ## Nice To Have
 

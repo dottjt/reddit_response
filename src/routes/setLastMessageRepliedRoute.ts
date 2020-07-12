@@ -3,7 +3,7 @@ import fse from 'fs-extra';
 import path from 'path';
 
 import { SetMarkerPayload } from '../types/tamperMonkeyTypes';
-import { UsernameType, ConfigType } from '../util/config';
+import { ForumType, ConfigType } from '../util/config';
 
 const setLastMessageRepliedRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;

@@ -1,12 +1,12 @@
-import { Message } from "./serverTypes";
-import { UsernameType, ConfigType } from '../util/config';
+import { Message, UserType, SendMessageType } from "./serverTypes";
+import { ConfigType } from '../util/config';
 
 export type CompiledFullUserObject = {
   username: string;
   is_hostile?: boolean;
   user_chat_function_utilised?: boolean;
 
-  userType: string;
+  userType: UserType;
   userColor: string;
 
   lastSentMessage?: Message;
@@ -34,7 +34,7 @@ export type SendNewMessageSendPayload = {
   subject: string;
   message: string;
   send_date: string;
-  type: string;
+  type: SendMessageType;
 }
 
 export type PopulateReceivedMessagesPayload = {
@@ -43,7 +43,7 @@ export type PopulateReceivedMessagesPayload = {
   subjectReplyToTitle: string;
   username_receiving: string;
   username_sending: string;
-  message: string;
+  message: SendMessageType;
   date: string;
-  type: string;
+  type: SendMessageType;
 }

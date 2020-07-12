@@ -115,6 +115,15 @@ What's your mental health routine look like? Do you meditate daily? I've also cr
 `
 );
 
+export const ageAdvice = (forum: string): string => (
+`Hey, I saw your post on ${forum}. If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.
+
+The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice. Which is where having a daily mental health routine comes in, and is so important.
+
+Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+`
+);
+
 export const pornBlockersAdvice = (forum: string): string => (
 `Hey, I saw your post on ${forum}. Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.
 

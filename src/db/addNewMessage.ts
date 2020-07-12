@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import knex from '../util/knex';
 
-import { User, Message } from '../types/serverTypes';
+import { Message, SendMessageType } from '../types/serverTypes';
 
 import { toMelbourneDateString } from '../util/util';
 
@@ -13,7 +13,7 @@ type AddNewMessageProps = {
   subject: string;
   message: string;
   send_date: string;
-  type: string;
+  type: SendMessageType;
 }
 
 const addNewMessage = async ({

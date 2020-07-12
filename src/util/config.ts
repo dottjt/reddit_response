@@ -5,23 +5,23 @@
 export type ConfigType = {
   usernameValue: string;
   usernameTimestamp: string;
-  usernameType: UsernameType;
+  forumType: ForumType;
 }
 
 // export const USERNAME = 'NA';
-export enum UsernameType {
-  rNofapUsername='r/NoFap',
-  rPornFreeUsername='r/pornfree',
-  rPornAddictionUsername='r/PornAddiction',
-  rNofapChristiansUsername='r/NoFapChristians',
-  rNofapTeensUsername='r/NoFapTeens',
-  rSemenRetentionUsername='r/Semenretention',
-  rMuslimNofapUsername='r/MuslimNoFap',
+export enum ForumType {
+  rNofapForum='r/NoFap',
+  rPornFreeForum='r/pornfree',
+  rPornAddictionForum='r/PornAddiction',
+  rNofapChristiansForum='r/NoFapChristians',
+  rNofapTeensForum='r/NoFapTeens',
+  rSemenRetentionForum='r/Semenretention',
+  rMuslimNofapForum='r/MuslimNoFap',
 }
 
 // TODO Add porn addiction
 
-export const R_NOFAP_USERNAME = 'LeifErikss';
+export const R_NOFAP_USERNAME = 'roe-jogan31';
 export const R_NOFAP_TIMESTAMP = '';
 export const R_PORN_FREE_USERNAME = '';
 export const R_PORN_FREE_TIMESTAMP = '';

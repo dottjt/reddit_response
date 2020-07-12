@@ -1,67 +1,24 @@
 import { createElement } from 'inferno-create-element';
 
 import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../types/tamperMonkeyTypes';
-import { openReplyLink } from '../util/commonUtils';
-import { sendNewMessage } from '../util/httpResponses';
 import {
   middleWrittenGuide,
-  middleWrittenGuideTwo,
-  middleWrittenGuideLinkYou,
-  joinSubreddit,
-  thatsFantastic,
-  hardTime
+  middleGuideNoWorries,
+  middleGuideLinkYou,
 } from '../util/responses/middle';
+
+import {
+  finalJoinSubreddit,
+  finalFantastic,
+  finalHardTime
+} from '../util/responses/final';
+
 import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton } from './ComponentsUtil';
-
-const populateMessageAndSend = async (
-  messageText: string,
-  previousMessageInformation: PopulateReceivedMessagesPayload,
-  containerDiv: Element,
-  toUsername: string,
-  messageType: string,
-  sendImmediate: boolean
-) => {
-  openReplyLink(containerDiv);
-  const textArea = containerDiv.querySelector('textarea');
-  const submitButton = containerDiv.querySelector('.save') as HTMLInputElement;
-
-  if (textArea && submitButton) {
-    textArea.value = messageText;
-
-    if (sendImmediate) {
-      const dataPayload = {
-        username_sending: 'NeverFapDeluxe',
-        username_receiving: toUsername,
-        subject: previousMessageInformation.subjectReplyToTitle,
-        message: textArea.value,
-        send_date: new Date().toString(),
-        type: messageType,
-      }
-      await sendNewMessage(dataPayload);
-      submitButton.click();
-    } else {
-      submitButton.addEventListener('click', async () => {
-        const textArea = containerDiv.querySelector('textarea');
-        if (textArea) {
-          const dataPayload = {
-            username_sending: 'NeverFapDeluxe',
-            username_receiving: toUsername,
-            subject: previousMessageInformation.subjectReplyToTitle,
-            message: textArea.value,
-            send_date: new Date().toString(),
-            type: messageType,
-          }
-          await sendNewMessage(dataPayload);
-        }
-      });
-    }
-  } else {
-    console.log('cannot find textArea or submitButton')
-  }
-}
+import { SendMessageType } from '../types/serverTypes';
+import { populateMessageAndSend } from '../util/sendMessageUtils';
 
 const createReplyMessageLink = (
-  messageType: string,
+  messageType: SendMessageType,
   color: string,
   toUsername: string,
   messageText: string,
@@ -128,25 +85,25 @@ const ReplyUserPanel = ({
 
       </div>
 
-      <div style={{ display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
+      <div id='cake' style={{ display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           <h4>Send</h4>
-          {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink('middleWrittenGuideLinkYou', 'purple', dbUser.username, middleWrittenGuideLinkYou, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink('thatsFantastic', 'purple', dbUser.username, thatsFantastic, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink('customReply', 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.MiddleCustom, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           <h4>Send Immediate</h4>
-          {createReplyMessageLink('middleWrittenGuide', 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
-          {createReplyMessageLink('middleWrittenGuideTwo', 'purple', dbUser.username, middleWrittenGuideTwo, containerDiv, previousMessageInformation, true)}
-          {createReplyMessageLink('middleWrittenGuideLinkYou', 'purple', dbUser.username, middleWrittenGuideLinkYou, containerDiv, previousMessageInformation, true)}
-          {createReplyMessageLink('joinSubreddit', 'purple', dbUser.username, joinSubreddit, containerDiv, previousMessageInformation, true)}
-          {createReplyMessageLink('hardTime', 'purple', dbUser.username, hardTime, containerDiv, previousMessageInformation, true)}
-          {createReplyMessageLink('thatsFantastic', 'purple', dbUser.username, thatsFantastic, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true)}
         </div>
       </div>
 

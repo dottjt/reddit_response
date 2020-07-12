@@ -3,7 +3,7 @@ import { createElement } from 'inferno-create-element';
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { sendNewUserNote, markUserHostile, setMarker, markUserChatted } from '../util/httpResponses';
 import { Component } from 'inferno';
-import { UsernameType, ConfigType } from '../util/config';
+import { ForumType, ConfigType } from '../util/config';
 import { timeSince } from '../util/commonUtils';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (

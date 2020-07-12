@@ -6,6 +6,7 @@ import {
   closeTabAfterDelay
 } from '../util/commonUtils';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
+import { SendMessageType } from '../types/serverTypes';
 
 'use strict';
 
@@ -15,7 +16,7 @@ type SendMessageProps = {
   toInput: string | undefined;
   subjectInput: string | undefined;
   messageInput: string | undefined;
-  type: string | undefined;
+  type: SendMessageType | undefined;
   timer: string | undefined;
 }
 
@@ -63,7 +64,7 @@ const main = async () => {
   const toInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=to]')).value;
   const subjectInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=subject]')).value;
   const messageInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
-  const type: string | undefined = getTypeQueryString(window.location.search);
+  const type: SendMessageType | undefined = getTypeQueryString(window.location.search) as SendMessageType;
   const timer: string | undefined = getTimerQueryString(window.location.search);
 
   if (toInput && subjectInput && messageInput && type && timer) {
