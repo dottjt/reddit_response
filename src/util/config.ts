@@ -21,7 +21,7 @@ export enum ForumType {
 
 // TODO Add porn addiction
 
-export const R_NOFAP_USERNAME = 'roe-jogan31';
+export const R_NOFAP_USERNAME = 'jamezdeo97';
 export const R_NOFAP_TIMESTAMP = '';
 export const R_PORN_FREE_USERNAME = '';
 export const R_PORN_FREE_TIMESTAMP = '';

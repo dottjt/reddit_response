@@ -174,7 +174,7 @@ const main = async () => {
         // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
         console.log('END: next page');
       }
-    }, 1500);
+    }, 400);
   }
 
   console.log('1');

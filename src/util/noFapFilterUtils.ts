@@ -26,7 +26,7 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
     || new RegExp(/achieved my goal/i).test(titleText)
     || new RegExp(/haven't relapsed/i).test(titleText)
     || new RegExp(/king/i).test(titleText)
-    || new RegExp(/pied/i).test(titleText)
+    || new RegExp(/(pied|peid)/i).test(titleText)
     || new RegExp(/hair/i).test(titleText)
     || new RegExp(/(virgin|virginity)/i).test(titleText)
     || new RegExp(/skin/i).test(titleText)
@@ -51,7 +51,7 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
     || new RegExp(/\d+ (week|day).* complete/i).test(titleText)
     || new RegExp(/^\d+th day/i).test(titleText)
     || new RegExp(/^\d+ days/i).test(titleText)
-    || new RegExp(/^\d+ weeks/i).test(titleText)
+    || new RegExp(/^\d+ (weeks|week)/i).test(titleText)
     || new RegExp(/app/i).test(titleText) // look into
     || new RegExp(/sex/i).test(titleText) // look into this
     || new RegExp(/relapse?/i).test(titleText) // look into this.
@@ -91,6 +91,7 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
     || new RegExp(/first (step|day)/i).test(titleText)
     || new RegExp(/(starting|started) (now|today)/i).test(titleText)
     || new RegExp(/(starting|started) .* (streak|first|run)/i).test(titleText)
+    || new RegExp(/starting, again/i).test(titleText)
     || new RegExp(/(journey) (start|begins)/i).test(titleText)
     || new RegExp(/start (of a|my) journey/i).test(titleText)
     || new RegExp(/New to NoFap/i).test(titleText)
@@ -204,7 +205,8 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
   }
 
   // Does the urge to masturbate get easier?
-
+  // edging
+  // is it a relapse?
 
   return {
     shouldDeleteElementImmediately: false,

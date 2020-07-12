@@ -28,9 +28,9 @@ const tsTransformer = () => ({
 
 const outputScriptFileName = (preScript: string): string => preScript.split('.')[0].slice(0,-3);  //+ '.js';
 
-const compileScript = async () => {
+const compileScript = async (preScriptDirList) => {
   try {
-    const preScriptDirList = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
+    // const preScriptDirList = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
 
     for (const preScript of preScriptDirList) {
       const plainName = outputScriptFileName(preScript);
@@ -78,22 +78,32 @@ const compileScript = async () => {
 
 const main = async () => {
   // initial run
-  await compileScript();
 
-  const chokidarHandler = async (event, path) => {
+  const dir = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
+
+  await compileScript(dir);
+
+  const chokidarHandler = async (dirArray, event, path) => {
     console.log('change observed');
-    await compileScript();
+    await compileScript(dirArray);
   }
 
+  const messageComposeScriptPre = path.resolve(__dirname, '..', 'prescripts', 'messageComposeScriptPre.ts');
+  const messageInboxScriptPre = path.resolve(__dirname, '..', 'prescripts', 'messageInboxScriptPre.tsx');
+  const noFapNewSubredditPre = path.resolve(__dirname, '..', 'prescripts', 'noFapNewSubredditPre.tsx');
+  const retrieveCastboxLinksPre = path.resolve(__dirname, '..', 'prescripts', 'retrieveCastboxLinksPre.ts');
+
+  // WATCH_PRE_SCRIPT_DIRECTORY,
+
   // further changes
-  chokidar.watch(
-    [
-      WATCH_PRE_SCRIPT_DIRECTORY,
-      WATCH_COMPONENTS_DIRECTORY,
-      WATCH_RESPONSES_DIRECTORY,
-      WATCH_UTIL_DIRECTORY
-    ]
-  ).on('change', throttle(chokidarHandler, 2000));
+  chokidar.watch([ messageComposeScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageComposeScriptPre.ts'], event, path), 2000));
+  chokidar.watch([ messageInboxScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageInboxScriptPre.tsx'], event, path), 2000));
+  chokidar.watch([ noFapNewSubredditPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapNewSubredditPre.tsx'], event, path), 2000));
+  chokidar.watch([ retrieveCastboxLinksPre ]).on('change', throttle((event, path) => chokidarHandler(['retrieveCastboxLinksPre.ts'], event, path), 2000));
+  chokidar.watch([ WATCH_COMPONENTS_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY ]).on('change', throttle((event, path) => chokidarHandler(dir, event, path), 2000));
+
+  // make a few different ones
+
 };
 
 // QUICK REFERENCE

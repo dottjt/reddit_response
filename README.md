@@ -15,30 +15,13 @@ Although there are a heap of features I can build into it, I would consider it m
 - Send user a message on the subreddit
 - They get back
 
-
 ## Thoughts
 - Send strategy simply appends 5 seconds each time. Does it make sense? Not sure, but it's all I have atm and isn't that bad.
 
 ## Improvements
 
 - It would make sense to check if a website OR a subreddit has already been sent to the user before
-- chokidar only compile file that has been changed, not all files.
-
-- Remove users who are yellow and orange :)
-- automatically send message based on post flair
-
-Thank you! Feel free to share these resources if you find them useful :)
-
-- automatic reply - if it says link me then just send it automatically.
-- also highlight key words like website etc. in thehir response. .md containers.
-
-- you would still probably have to set these messages on a timer, maybe? But make it a small one, and a different local_storage thing.
-
-
-// in reply, check what the last message type was, if is start and if in their message (.md) contains send link. then automatically send them a message. Easy. \
-
-
-// why we get urges
+- Thank you! Feel free to share these resources if you find them useful :)
 
 ### Never send a message aka delete
 
@@ -46,21 +29,6 @@ Thank you! Feel free to share these resources if you find them useful :)
 Day 2 above. (maybe ignore this rule for now until I can validate it.)
 journal check in flair
 
-### Is it a relapse
-
-I masturbated for about 5 seconds and then stopped, no porn. Is this a relapse?
-
-
-## flatline
-
-flatline + help
-
-
-## ambiguous
-// advice?
-//
-
-## edging
 
 ## benefits of noFap
 
@@ -74,6 +42,7 @@ flatline + help
 
 ## Nice To Have
 
+- chokidar only compile file that has been changed, not all files.
 - Track original post as part of the message.
 - Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things. (this would be really smart, I figure. But it's not really necessary.)
 - self-update message send status on user once
@@ -82,6 +51,10 @@ flatline + help
 
 ## DONE
 
+- also highlight key words like website etc. in thehir response. .md containers. (not doing, because it's sending the message automatically)
+- automatically send message based on post flair
+- automatic reply - if it says link me then just send it automatically.
+- Remove users who are yellow and orange :)
 - start message wet dreams
 - Have option on user to see if user has been chatted to, yet.
 - Displays the number of messages from that person the reply page.
