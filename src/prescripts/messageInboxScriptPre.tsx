@@ -74,22 +74,23 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
       messageType,
     } = filterRedditInboxMessages(item, dbUser);
 
-    if (messageText && messageType && item.containerDiv) {
+    if (messageText && messageType) {
       const replyDelay = localStorage.getItem('replyDelay');
       const replyDelayNumber = Number(replyDelay);
       localStorage.setItem('replyDelay', (replyDelayNumber + 3500).toString());
-      setTimeout(function() { console.log(`Delay: ${replyDelayNumber}`) }, replyDelayNumber);
-
-      console.log(`send automatically - ${dbUser.username} ${messageType}`);
-
-      await populateMessageAndSend(
-        messageText,
-        item,
-        item.containerDiv,
-        dbUser.username,
-        messageType,
-        true,
-      )
+      setTimeout(async function() {
+        console.log(`send automatically - ${dbUser.username} - ${messageType} - delay: ${replyDelayNumber}`);
+        if (item.containerDiv) {
+          await populateMessageAndSend(
+            messageText,
+            item,
+            item.containerDiv,
+            dbUser.username,
+            messageType,
+            true,
+          );
+        }
+      }, replyDelayNumber);
     }
 
     if (!messageText) {

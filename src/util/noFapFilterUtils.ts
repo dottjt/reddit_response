@@ -57,6 +57,8 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
     || new RegExp(/relapse?/i).test(titleText) // look into this.
     // || new RegExp(/update from/i).test(titleText)
 
+    // TODO: Maybe these days are actually in the wrong order and should be after all the other items.
+
     // Journal Check-In
 
     // new RegExp(/a/).test(titleText) ||
@@ -225,6 +227,8 @@ export const filterRedditInboxMessages = (
 } => {
   const lastMessage: Message | undefined = compiledUser.lastSentMessage;
 
+  console.log('lastMessage?.type', compiledUser.username, lastMessage?.type);
+
   if (lastMessage?.type.includes('start')) {
 
     // No Worries
@@ -275,7 +279,7 @@ export const filterRedditInboxMessages = (
     ) {
       return {
         messageText: finalJoinSubreddit,
-        messageType: SendMessageType.MiddleGuideLinkYou,
+        messageType: SendMessageType.FinalJoinSubreddit,
       }
     }
   }

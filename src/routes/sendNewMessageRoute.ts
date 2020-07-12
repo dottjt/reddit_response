@@ -2,6 +2,7 @@ import { Context, Next } from 'koa';
 import addNewMessage from '../db/addNewMessage';
 
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
+import updateUserSentLinks from '../db/updateUserSentLinks';
 
 const sendNewMessageRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
@@ -25,6 +26,13 @@ const sendNewMessageRoute = async (ctx: Context, next: Next) => {
       send_date,
       type,
     });
+
+    if (username_sending === 'NeverFapDeluxe') {
+      await updateUserSentLinks({
+        username_receiving,
+        message
+      })
+    }
 
     ctx.body = { data: { message: 'success!' } };
   }
