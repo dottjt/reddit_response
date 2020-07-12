@@ -77,7 +77,7 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
     if (messageText && messageType) {
       const replyDelay = localStorage.getItem('replyDelay');
       const replyDelayNumber = Number(replyDelay);
-      localStorage.setItem('replyDelay', (replyDelayNumber + 3500).toString());
+      localStorage.setItem('replyDelay', (replyDelayNumber + 1100).toString());
       setTimeout(async function() {
         console.log(`send automatically - ${dbUser.username} - ${messageType} - delay: ${replyDelayNumber}`);
         if (item.containerDiv) {

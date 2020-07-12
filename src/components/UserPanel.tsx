@@ -82,8 +82,8 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
           {createStartMessageLink(SendMessageType.StartCustom, 'purple', dbUser.username, '')}
           {createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig.forumType))}
           {createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig.forumType))}
           {createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig.forumType))}
           {createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig.forumType))}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>

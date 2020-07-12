@@ -9,7 +9,7 @@ import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../type
 import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAdvice } from './responses/start';
 import { ConfigType } from './config';
 import { middleGuideNoWorries, middleGuideLinkYou } from './responses/middle';
-import { finalJoinSubreddit } from '../util/responses/final';
+import { finalJoinSubreddit, finalFantastic } from '../util/responses/final';
 
 
 export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string): {
@@ -21,37 +21,51 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
   // TO REMOVE
   if (
     new RegExp(/profile/i).test(titleText)
+    || new RegExp(/"/i).test(titleText)
+    || new RegExp(/success/i).test(titleText)
+    || new RegExp(/pro tip/i).test(titleText)
+    || new RegExp(/double digit/i).test(titleText)
+    || new RegExp(/longest streak/i).test(titleText) // look into
+    || new RegExp(/become the/i).test(titleText)
+    || new RegExp(/replaced PMO/i).test(titleText)
+    || new RegExp(/diary/i).test(titleText)
+    || new RegExp(/(a reminder|remember this)/i).test(titleText)
+    || new RegExp(/a theory/i).test(titleText)
     || new RegExp(/relapsed intentionally/i).test(titleText)
-    || new RegExp(/attract women/i).test(titleText)
+    || new RegExp(/found something that/i).test(titleText)
+    || new RegExp(/(women|girls)/i).test(titleText)
+    || new RegExp(/relationship/i).test(titleText) // look into
     || new RegExp(/achieved my goal/i).test(titleText)
+    || new RegExp(/(insta|instagram)/i).test(titleText)
+    || new RegExp(/hunger/i).test(titleText)
+    || new RegExp(/is ?(.*) worth/i).test(titleText)
+    || new RegExp(/morning wood/i).test(titleText)
     || new RegExp(/haven't relapsed/i).test(titleText)
     || new RegExp(/king/i).test(titleText)
-    || new RegExp(/(pied|peid)/i).test(titleText)
+    || new RegExp(/(previous|my) record/i).test(titleText)
+    || new RegExp(/(pied|peid|in bed|get it up|shrink)/i).test(titleText)
     || new RegExp(/hair/i).test(titleText)
+    || new RegExp(/genitals/i).test(titleText)
     || new RegExp(/(virgin|virginity)/i).test(titleText)
     || new RegExp(/skin/i).test(titleText)
     || new RegExp(/learnt/i).test(titleText)
     || new RegExp(/the key is/i).test(titleText)
     || new RegExp(/breakthrough/i).test(titleText)
+    || new RegExp(/come this far/i).test(titleText)
     || new RegExp(/monk/i).test(titleText)
+    // || new RegExp(/(don't|dont) fall/i).test(titleText)
     || new RegExp(/read this if you/i).test(titleText)
     || new RegExp(/blue balls/i).test(titleText)
-    || new RegExp(/counter/i).test(titleText)
-    || new RegExp(/tracker/i).test(titleText)
+    || new RegExp(/(tracker|counting|counter)/i).test(titleText)
     || new RegExp(/(going|growing) strong/i).test(titleText)
     || new RegExp(/erectile dysfunction/i).test(titleText)
     || new RegExp(/should I go/i).test(titleText)
     || new RegExp(/my benefits/i).test(titleText)
+    // || new RegExp(/the ?(.*) benefit ?(.*) nofap/i).test(titleText)
     || new RegExp(/placebo/i).test(titleText)
     || new RegExp(/penis/i).test(titleText)
     || new RegExp(/accountability post/i).test(titleText)
-    || new RegExp(/^day \d+$/i).test(titleText) // look into this
-    || new RegExp(/^day \d+.$/i).test(titleText) // look into this
-    || new RegExp(/^day \d+ complete/i).test(titleText)
-    || new RegExp(/\d+ (week|day).* complete/i).test(titleText)
-    || new RegExp(/^\d+th day/i).test(titleText)
-    || new RegExp(/^\d+ days/i).test(titleText)
-    || new RegExp(/^\d+ (weeks|week)/i).test(titleText)
+    || new RegExp(/(don't|dont) give up/i).test(titleText)
     || new RegExp(/app/i).test(titleText) // look into
     || new RegExp(/sex/i).test(titleText) // look into this
     || new RegExp(/relapse?/i).test(titleText) // look into this.
@@ -89,7 +103,7 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
   if (
     new RegExp(/starting .* journey/i).test(titleText)
     || new RegExp(/starting .* challenge/i).test(titleText)
-    || new RegExp(/starting ?(.*) now/i).test(titleText)
+    || new RegExp(/(quitting|quiting|starting) ?(.*) (now|today)/i).test(titleText)
     || new RegExp(/first (step|day)/i).test(titleText)
     || new RegExp(/(starting|started) (now|today)/i).test(titleText)
     || new RegExp(/(starting|started) .* (streak|first|run)/i).test(titleText)
@@ -98,9 +112,11 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
     || new RegExp(/start (of a|my) journey/i).test(titleText)
     || new RegExp(/New to NoFap/i).test(titleText)
     || new RegExp(/new here starting/i).test(titleText)
-    || new RegExp(/I'm new here/i).test(titleText)
+    || new RegExp(/(I'm|im) done with this ?(.*) feeling/i).test(titleText)
+    || new RegExp(/(I'm|im) new here/i).test(titleText)
     || new RegExp(/Day 1 Started/i).test(titleText)
     || new RegExp(/officially day 1/i).test(titleText)
+    || new RegExp(/try to do this NoFap/i).test(titleText)
     || new RegExp(/(Let's|lets) do this/i).test(titleText)
     || new RegExp(/day 1 of (no fap|reboot|re boot)/i).test(titleText)
     || new RegExp(/new beginning/i).test(titleText)
@@ -123,8 +139,9 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
 
   // Started Again
   if (
-    new RegExp(/(begin|let's do this) again/i).test(titleText) ||
-    new RegExp(/gonna try again/i).test(titleText)
+    new RegExp(/(begin|let's do this) again/i).test(titleText)
+    || new RegExp(/gonna try again/i).test(titleText)
+    || new RegExp(/one last try/i).test(titleText)
   ) {
     return {
       shouldDeleteElementImmediately: false,
@@ -167,10 +184,10 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
   if (
     flairText === 'Relapse Report'
     || new RegExp(/failed first attempt/i).test(titleText)
-    || new RegExp(/(I|just) relapsed/i).test(titleText)
+    || new RegExp(/(I|just) ?(have) relapsed/i).test(titleText)
     || new RegExp(/relapsed (today|after)/i).test(titleText)
     || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
-    || new RegExp(/(broke my) ?(.*) (streak)/i).test(titleText)
+    || new RegExp(/(broke my|lost my) ?(.*) (streak)/i).test(titleText)
     || new RegExp(/^relapsed\.$/i).test(titleText)
     || new RegExp(/^relapsed$/i).test(titleText)
     // relapsed (will have to look into this)
@@ -198,6 +215,7 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
   if (
     new RegExp(/seeking a partner/i).test(titleText)
     || new RegExp(/accountability partner/i).test(titleText)
+    || new RegExp(/need (AP|accountability partner)/i).test(titleText)
   ) {
     return {
       shouldDeleteElementImmediately: false,
@@ -209,6 +227,26 @@ export const filterNewNoFapMessages = (dbUser: CompiledFullUserObject, usernameC
   // Does the urge to masturbate get easier?
   // edging
   // is it a relapse?
+
+  // Final Delete
+  if (
+    new RegExp(/^(day|week) \d+$/i).test(titleText) // look into this
+    || new RegExp(/^(day|week) \d+.$/i).test(titleText) // look into this
+    || new RegExp(/^(day|week) \d+ complete/i).test(titleText)
+    || new RegExp(/\d+ (week|day).* complete/i).test(titleText)
+    || new RegExp(/^\d+th day/i).test(titleText)
+    || new RegExp(/beginning of week/i).test(titleText) // look into this
+    || new RegExp(/^\d+ days$/i).test(titleText)
+    || new RegExp(/^\d+ (weeks|week)$/i).test(titleText)
+
+    // month
+  ) {
+    return {
+      shouldDeleteElementImmediately: true,
+      sendMessageType: undefined,
+      prelimUrl: undefined
+    }
+  }
 
   return {
     shouldDeleteElementImmediately: false,
@@ -239,17 +277,19 @@ export const filterRedditInboxMessages = (
       || new RegExp(/definetly interested/i).test(messagePayload.message)
       || new RegExp(/link to ur web/i).test(messagePayload.message)
       || new RegExp(/url for this website/i).test(messagePayload.message)
-      || new RegExp(/(I'm|I am) interested/i).test(messagePayload.message)
+      || new RegExp(/(I'm|I am) (interested|interesting)/i).test(messagePayload.message)
       || new RegExp(/send me the (link|website)/i).test(messagePayload.message)
       || new RegExp(/give your (site|website) a visit/i).test(messagePayload.message)
       || new RegExp(/yes please/i).test(messagePayload.message)
       || new RegExp(/name of your website/i).test(messagePayload.message)
+      || new RegExp(/like to see (it|that)/i).test(messagePayload.message)
+      || new RegExp(/send it over/i).test(messagePayload.message)
       || new RegExp(/interested (to know about|with) the website/i).test(messagePayload.message)
       || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (your|the) website/i).test(messagePayload.message)
       || new RegExp(/love to check it out/i).test(messagePayload.message)
       || new RegExp(/please send it/i).test(messagePayload.message)
       || new RegExp(/love if you sent the website/i).test(messagePayload.message)
-      || new RegExp(/love to (check|read) (that|the) website/i).test(messagePayload.message)
+      || new RegExp(/love to (check|read|get) (that|the) (website|link)/i).test(messagePayload.message)
       || new RegExp(/That would be great/i).test(messagePayload.message)
     ) {
       return {
@@ -262,27 +302,48 @@ export const filterRedditInboxMessages = (
     if (
       new RegExp(/(what's|what is) the website/i).test(messagePayload.message)
       || new RegExp(/name of your website/i).test(messagePayload.message)
-      || new RegExp(/what is your website/i).test(messagePayload.message)
+      || new RegExp(/(what is|whats|what's) (your|the) website/i).test(messagePayload.message)
     ) {
       return {
         messageText: middleGuideLinkYou,
         messageType: SendMessageType.MiddleGuideLinkYou,
       }
     }
+
+    // That's fantastic
+    // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
+    // I will have to careful check that it DOES NOT contain certain things.
+    // if (
+    //   new RegExp(/have started doing meditation/i).test(messagePayload.message)
+    //   || new RegExp(/i ?(.*) meditate ?(for 10 minutes|.*) daily/i).test(messagePayload.message) // will need to actually test this.
+    //   || new RegExp(/(what is|whats|what's) (your|the) website/i).test(messagePayload.message)
+    // ) {
+    //   return {
+    //     messageText: finalFantastic,
+    //     messageType: SendMessageType.FinalFantastic,
+    //   }
+    // }
   }
 
-  if (lastMessage?.type.includes('middle')) {
-    // Join Subreddit
-    if (
-      new RegExp(/thank you/i).test(messagePayload.message)
-      || new RegExp(/(I'll|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
-    ) {
-      return {
-        messageText: finalJoinSubreddit,
-        messageType: SendMessageType.FinalJoinSubreddit,
-      }
-    }
-  }
+  // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
+  // therefore, this also need to know that the recieved messages from that used is exactly two
+  // of course this breaks if the user sends two messages, so I'll have to look into this.
+  // in addition it should check time last message was sent by ME and last message sent by them. if they are within a similar time span, then perhaps don't send it.
+
+  // the other flaw in this system is that it should check all messages sent by the user on this page and count them as one, not just one separately. It shouldn't count them like that, it's broken.
+
+  // if (lastMessage?.type.includes('middle')) {
+  //   // Join Subreddit
+  //   if (
+  //     new RegExp(/(thank you|thanks)/i).test(messagePayload.message)
+  //     || new RegExp(/(I'll|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
+  //   ) {
+  //     return {
+  //       messageText: finalJoinSubreddit,
+  //       messageType: SendMessageType.FinalJoinSubreddit,
+  //     }
+  //   }
+  // }
 
   return {
     messageText: undefined,

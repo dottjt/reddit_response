@@ -22,6 +22,7 @@ Although there are a heap of features I can build into it, I would consider it m
 
 - It would make sense to check if a website OR a subreddit has already been sent to the user before
 - Thank you! Feel free to share these resources if you find them useful :)
+- If a user appears again in the subreddit, then FLAG that user's post saying that it's been seen before. I'm assuming that the list is chronological from top to bottom, but it also may not be.
 
 ### Never send a message aka delete
 
@@ -39,6 +40,7 @@ journal check in flair
 
 - create verifiable typescript types for messageTypes.
 
+- Track the last message you sent, so I don't get lost if there is more than 25 unread. (IMPORTANT)
 
 ## Nice To Have
 
@@ -46,8 +48,8 @@ journal check in flair
 - Track original post as part of the message.
 - Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things. (this would be really smart, I figure. But it's not really necessary.)
 - self-update message send status on user once
-- Track the last message you sent, so I don't get lost if there is more than 25 unread.
 - When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it. (this is not possible, unless if you're okay with `1 hour ago`)
+
 
 ## DONE
 
