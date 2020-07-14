@@ -146,6 +146,7 @@ const ReplyUserPanel = ({
         <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'black' }}>DONE</p>
       )}
 
+      {userRemainingMessages}
       {userRemainingMessages && (
         <div>
           {userRemainingMessages.map(message => {

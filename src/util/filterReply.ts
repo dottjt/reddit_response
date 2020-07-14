@@ -34,7 +34,8 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/^yes$/i).test(messagePayload.message)
 
 export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
-  new RegExp(/(what's|what is|whats) the (link|website)/i).test(messagePayload.message)
+  new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/name of (ur|your) website/i).test(messagePayload.message)
-  || new RegExp(/(what is|whats|what's|called) (ur|your|the) website/i).test(messagePayload.message)
-  || new RegExp(/Tell me ?(about|the name of)? (ur|your) website/i).test(messagePayload.message)
+  || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+  || new RegExp(/Tell me ?(about|the name of)? (ur|your) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+  || new RegExp(/What site have you/i).test(messagePayload.message)
