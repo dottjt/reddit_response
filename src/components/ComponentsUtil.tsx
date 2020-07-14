@@ -3,7 +3,7 @@ import { createElement } from 'inferno-create-element';
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { sendNewUserNote, markUserHostile, setMarker, markUserChatted, setLastInboxMessageUsername } from '../util/httpResponses';
 import { Component } from 'inferno';
-import { ForumType, ConfigType } from '../util/config';
+import { ConfigType } from '../util/config';
 import { timeSince } from '../util/commonUtils';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
@@ -80,7 +80,7 @@ export class SendUserNoteForm extends Component<{ username: string }, { message:
 export const MarkUserHostileButton = ({ username }: { username: string })  => {
   return (
     <button
-      style={{ border: '1px solid black' }}
+      style={{ border: '1px solid black', 'margin-right': '0.4rem' }}
       onclick={async () => {
         await markUserHostile({ username });
       }}>
