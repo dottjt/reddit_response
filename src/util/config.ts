@@ -19,13 +19,13 @@ export enum ForumType {
   rMuslimNofapForum='r/MuslimNoFap',
 }
 
-export const INBOX_LAST_MESSAGE_USER = '-BBerke-';
+export const INBOX_LAST_MESSAGE_USER = 'oglocsir';
 
-export const R_NOFAP_USERNAME = 'benryl';
+export const R_NOFAP_USERNAME = 'NoCardiologist3903';
 export const R_NOFAP_TIMESTAMP = '';
-export const R_PORN_FREE_USERNAME = 'findingasupportgroup';
+export const R_PORN_FREE_USERNAME = 'slightlyangrydodo';
 export const R_PORN_FREE_TIMESTAMP = '';
-export const R_PORN_ADDICTION_USERNAME = 'datboy1da';
+export const R_PORN_ADDICTION_USERNAME = 'Confident-Mango-3556';
 export const R_PORN_ADDICTION_TIMESTAMP = '';
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';

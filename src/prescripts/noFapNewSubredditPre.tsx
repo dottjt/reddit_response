@@ -24,7 +24,7 @@ import {
   R_SEMEN_RETENTION_USERNAME, R_MUSLIM_NOFAP_USERNAME, ForumType, ConfigType, R_PORN_ADDICTION_USERNAME, R_NOFAP_TIMESTAMP, R_PORN_FREE_TIMESTAMP, R_PORN_ADDICTION_TIMESTAMP, R_NOFAP_CHRISTIANS_TIMESTAMP, R_NOFAP_TEENS_TIMESTAMP, R_SEMEN_RETENTION_TIMESTAMP, R_MUSLIM_NOFAP_TIMESTAMP,
 } from '../util/config'
 import { UserType, SendMessageType } from '../types/serverTypes';
-import { filterNewNoFapMessages } from '../util/noFapFilterUtils';
+import { filterNewNoFapMessages } from '../util/filterIndex';
 import { notEqual } from 'assert';
 import { generatePrelimUrlWithTimer, openNewLink } from '../util/sendMessageUtils';
 // import { openNewLink } from '../util/sendMessageUtils';

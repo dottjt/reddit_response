@@ -37,6 +37,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   // I would like to see your website
   // Yeah i’m interested
   // Drop the link
+  // It would be super cool
 
 export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/(what's|what is|whats) the (link|website)/i).test(messagePayload.message)

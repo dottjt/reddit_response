@@ -2,10 +2,9 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   new RegExp(/profile/i).test(titleText)
     || new RegExp(/("|“|')/i).test(titleText)
     || new RegExp(/gift/i).test(titleText)
-    || new RegExp(/(success|celebrate)/i).test(titleText)
-    || new RegExp(/boner/i).test(titleText)
+    || new RegExp(/(celebrate)/i).test(titleText)
+    || new RegExp(/(boner|morning wood)/i).test(titleText)
     || new RegExp(/double digit/i).test(titleText)
-    || new RegExp(/completed \d+ (days|weeks)/i).test(titleText)
     || new RegExp(/diary/i).test(titleText)
     || new RegExp(/(a reminder|remember this)/i).test(titleText)
     || new RegExp(/(cancer|prostatitis)/i).test(titleText)
@@ -17,22 +16,21 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // || new RegExp(/a theory/i).test(titleText)
     // || new RegExp(/today i reached/i).test(titleText)
     // || new RegExp(/almost there/i).test(titleText)
-    || new RegExp(/(weeks|days) porn free/i).test(titleText)
+    // || new RegExp(/(weeks|days) porn free/i).test(titleText)
+    // || new RegExp(/learnt/i).test(titleText)
     || new RegExp(/relapsed intentionally/i).test(titleText)
     || new RegExp(/found something that/i).test(titleText)
     || new RegExp(/(women|girl)/i).test(titleText)
-    || new RegExp(/relationship/i).test(titleText) // look into
     || new RegExp(/achieved my goal/i).test(titleText)
     || new RegExp(/(insta|instagram)/i).test(titleText)
     || new RegExp(/hunger/i).test(titleText)
-    || new RegExp(/morning wood/i).test(titleText)
     || new RegExp(/king/i).test(titleText)
-    || new RegExp(/(previous|my) record/i).test(titleText)
+    || new RegExp(/previous record/i).test(titleText)
     || new RegExp(/(pied|peid|in bed|get it up|shrink)/i).test(titleText)
     || new RegExp(/(hair|skin|acne)/i).test(titleText)
-    || new RegExp(/learnt/i).test(titleText)
     || new RegExp(/the key is/i).test(titleText)
     || new RegExp(/monk/i).test(titleText)
+    || new RegExp(/(grip|syndrome)/i).test(titleText)
     || new RegExp(/(virgin|virginity)/i).test(titleText)
     // || new RegExp(/haven't relapsed/i).test(titleText)
     // || new RegExp(/is ?(.*) worth/i).test(titleText)
@@ -40,14 +38,15 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // || new RegExp(/breakthrough/i).test(titleText)
     // || new RegExp(/(don't|dont) fall/i).test(titleText)
     || new RegExp(/read this if you/i).test(titleText)
-    || new RegExp(/blue balls/i).test(titleText)
+    || new RegExp(/weed/i).test(titleText)
     || new RegExp(/(weekly|daily) journal/i).test(titleText)
     || new RegExp(/(tracker|counting|counter)/i).test(titleText)
     || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
     || new RegExp(/my benefits/i).test(titleText)
     || new RegExp(/placebo/i).test(titleText)
-    || new RegExp(/(penis|pelvic|genitals)/i).test(titleText)
+    || new RegExp(/(balls|penis|pelvic|genitals)/i).test(titleText)
     || new RegExp(/accountability post/i).test(titleText)
+    || new RegExp(/counts as relapse/i).test(titleText) // look into this.
     || new RegExp(/app/i).test(titleText) // look into
     || new RegExp(/sex/i).test(titleText) // look into this
     || new RegExp(/journal entry/i).test(titleText) // look into this.
@@ -84,6 +83,7 @@ export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
   || new RegExp(/^\d+ (weeks|week)$/i).test(titleText)
   || new RegExp(/(one|two|three|four|five) weeks in/i).test(titleText)
   || new RegExp(/^\d+ (week|weeks) in/i).test(titleText)
+  // || new RegExp(/completed \d+ (days|weeks)/i).test(titleText)
 
   // month
 
@@ -98,10 +98,9 @@ export const toStartedAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/(journey) (start|begins)/i).test(titleText)
     || new RegExp(/(start|beginning) (of a|my) journey/i).test(titleText)
     || new RegExp(/New to NoFap/i).test(titleText)
-    || new RegExp(/new here starting/i).test(titleText)
+    || new RegExp(/new here/i).test(titleText)
     || new RegExp(/starting NoFap/i).test(titleText)
     || new RegExp(/(I'm|im) done with this ?(.*) feeling/i).test(titleText)
-    || new RegExp(/(I'm|im) new here/i).test(titleText)
     || new RegExp(/Day 1 Started/i).test(titleText)
     || new RegExp(/officially day 1/i).test(titleText)
     // || new RegExp(/my first post/i).test(titleText) // potentially inaccurate
@@ -119,6 +118,7 @@ export const toStartedAdvice = (titleText: string, flairText: string): boolean =
     // Need Help + Flair New Never Fapper
     // Need help + Flair motivate me
     // Let's do this
+    // new here
 
 export const toStartedAgainAdvice = (titleText: string, flairText: string): boolean =>
   new RegExp(/(begin|let's do this) again/i).test(titleText)

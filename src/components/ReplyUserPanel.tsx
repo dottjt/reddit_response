@@ -130,11 +130,12 @@ const ReplyUserPanel = ({
         {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
       </div>
 
-      {previousMessageInformation.type}
-      {previousMessageInformation.type.includes('final')}
+      {dbUser?.lastSentMessage?.type.includes('middle') && (
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'orange', 'color': 'white' }}>MIDDLE SENT</p>
+      )}
 
-      {previousMessageInformation.type.includes('final') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'blue' }}>FINAL</p>
+      {dbUser?.lastSentMessage?.type.includes('final') && (
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'white' }}>FINAL SENT</p>
       )}
     </div>
   );

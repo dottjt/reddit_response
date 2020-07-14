@@ -6,7 +6,7 @@ import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload, CompiledFul
 // import { sendNewMessage } from '../util/httpResponses';
 import ReplyUserPanel from '../components/ReplyUserPanel';
 import { SendMessageType } from '../types/serverTypes.js';
-import { filterRedditInboxMessages } from '../util/noFapFilterUtils.js';
+import { filterRedditInboxMessages } from '../util/filterIndex.js';
 import { populateMessageAndSend } from '../util/sendMessageUtils.js';
 import { INBOX_LAST_MESSAGE_USER } from '../util/config.js';
 // import { populateMessageAndSend } from '../util/sendMessageUtils.js';

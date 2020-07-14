@@ -108,7 +108,7 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
           <h4>Follow</h4>
           {createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig.forumType))}
           {createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.FollowStruggleAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig.forumType))}
         </div>
       </div>
     </div>

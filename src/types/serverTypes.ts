@@ -21,6 +21,7 @@ export type User = {
 export enum UserType {
   FreshUser="Fresh User",
   UserNotRespondedBack="User Not Responded Back",
+  FollowMessageSent="User Follow Message Sent",
   UserRespondedBack="User Responded Back",
   UserHostile="Hostile User",
 }

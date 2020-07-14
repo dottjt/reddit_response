@@ -4,10 +4,10 @@ import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../type
 import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAdvice } from './responses/start';
 import { ConfigType } from './config';
 import { middleGuideNoWorries, middleGuideLinkYou } from './responses/middle';
-import { finalJoinSubreddit, finalFantastic } from '../util/responses/final';
+import { finalJoinSubreddit, finalFantastic } from './responses/final';
 
-import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner } from './noFapFilterSend';
-import { toNoWorriesGuide, toLinkYouGuide } from './noFapFilterReply';
+import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner } from './filterSend';
+import { toNoWorriesGuide, toLinkYouGuide } from './filterReply';
 import { followRelapseAdvice } from './responses/follow';
 
 
@@ -53,13 +53,22 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
       }
     }
 
-    // I need to do some testing with this to see what kinds of posts I'm seeing. 
-    // If you don't find anything related, remove them.
-    // return {
-    //   shouldDeleteElementImmediately: true,
-    //   sendMessageType: undefined,
-    //   prelimUrl: undefined
-    // }
+    const lessThanOneDayAgo = (date: Date): boolean => {
+      const DAY = 24*60*60*1000;
+      const aDayAgo = Date.now() - DAY;
+
+      return date.getTime() > aDayAgo;
+    }
+
+    const messageSendDate = compiledUser?.lastSentMessage?.send_date;
+
+    if (messageSendDate && lessThanOneDayAgo(new Date(messageSendDate))) {
+      return {
+        shouldDeleteElementImmediately: true,
+        sendMessageType: undefined,
+        prelimUrl: undefined
+      }
+    }
   }
 
 
@@ -130,6 +139,41 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
     // is it a relapse?
     // masturbation without porn.
     // cold showers
+    // once a day
+    // is it bad to fap without porn? - 2
+    // biggest difference once you recover? / benefits - 5 // why shouldn't I fap? // how has nofap changer your life?
+    // what benefits have you noticed? - 1
+    // is peeking relapse? - 1
+    // how to stop wet dreams? - 1
+    // advice for boyfriend from girlfriend. - 1
+    // edging and reseting counter. - 1
+    // relapse when thinking about ex. - 1
+    // recommend NFD podcast - 1
+    // how long is too long - 1
+    // benefits for hard mode vs no porn - 2
+    // advice cannot fall asleep because need to masturbate. - 1
+    // is it okay to masturbate because teen/not getting any - 1
+    // is it relapse if I have sex with my girlfriend.
+    // semen leakage is it bad? - 1
+    // is sadness and demotivation normal during reboot?
+    // how much is set back from relapsing?
+    // is it okay to ejaculate during sex?
+    // aren't flatlines good?
+    // what is the point of nofap if you can't have sex?
+    // how do I show the days I haven't ejaculated?
+    // smoking weed to help with porn addiction.
+    // what should I be experiencing ?
+    // did I lose progress?
+    // did you get morning wood again?
+    // will dating app make it worse?
+    // does this count as relapse?
+    // low sex drive?
+    // does it get easier over time?
+    // okay to masturbate without porn? 3 (jerking off every now and then. )
+    // did I just relapse?
+    // how do you feel long term (after 1 month/week etc.)
+    // does peeking count as relapse?
+
   }
 
 

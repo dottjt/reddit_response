@@ -38,8 +38,12 @@ export const UserInformation = ({
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' }}>Sent: {dbUser.sentCount}</span>
     <br/>
     <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' }}>
-      {dbUser.lastReceivedMessage && `${timeSince(new Date(dbUser.lastReceivedMessage.send_date))} since last message.`}
+      {dbUser.lastReceivedMessage && `${timeSince(new Date(dbUser.lastReceivedMessage.send_date))} since last received message.`}
     </span>
+    <span style={{ 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' }}>
+      {dbUser.lastSentMessage && `${timeSince(new Date(dbUser.lastSentMessage.send_date))} since last sent message.`}
+    </span>
+
 
     {/* FUTURE: Display user note, not a huge deal */}
     {/* {dbUser && dbUser.messageTypesSent?.map((item: any) => <span style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}>{item.type}</span>)} */}
