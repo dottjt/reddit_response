@@ -9,6 +9,10 @@ I also have a subreddit if you're interested in joining the community and follow
 `
 );
 
+export const finalShareResources = (
+  `Thank you! Feel free to share these resources if you find them useful :D`
+);
+
 export const finalHardTime = (
 `Yeah, you might have a hard time addressing your addiction without maintaining a consistent mental health routine. Especially given addiction is a mental health problem at it's core.
 

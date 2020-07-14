@@ -36,6 +36,8 @@ addGlobalStyle(mainCss);
 const populateWebpageInformation = (users: CompiledFullUserObject[], usernameConfig: ConfigType) => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
   const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/') && !tag.innerText.includes(' '));
+  // TODO So the problem with this is that this may be within the title of a post, so I need to figure this out.
+  // inspired by u/arstarst asrt srat
 
   const automateContainer = document.createElement('div');
   automateContainer.id = 'reade-automate-container';
@@ -45,6 +47,8 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
   firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(automateContainer, firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
 
   const automateContainerACTUAL = document.querySelector('#reade-automate-container');
+
+  let alreadyPrelimUrlUsernameList: string[] = [];
 
   filteredATags.forEach((tag, index) => {
     const tagUsername: string = tag.innerText.split('/')[1];
@@ -61,6 +65,15 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
       } = filterNewNoFapMessages(dbUser, usernameConfig, flairText, titleText);
 
       if (index !== 0) {
+
+        console.log(dbUser.username);
+        console.log(dbUser.userType);
+
+        if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
+          tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
+          return;
+        }
+
         if (
           dbUser.userType === UserType.UserHostile ||
           dbUser.userType === UserType.UserNotRespondedBack ||
@@ -69,7 +82,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
           tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
           return;
         }
-
+        console.log('continue');
         if (shouldDeleteElementImmediately) {
           tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
           // console.log('shouldDeleteElementImmediately yes!');
@@ -78,6 +91,8 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
 
         if (prelimUrl) {
           tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
+
+          alreadyPrelimUrlUsernameList.push(dbUser.username);
 
           const node = document.createElement("a");
           const textnode = document.createTextNode(`${dbUser.username} - ${sendMessageType}`);
@@ -106,11 +121,14 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
         tag.remove();
 
         const domContainer = document.querySelector(`#${rootId}`);
-
-        render(<UserPanel
-          dbUser={dbUser}
-          usernameConfig={usernameConfig}/>, domContainer);
-        // console.log(`${index} rendered of ${totalCount}.`)
+        console.log(rootId);
+        console.log(domContainer);
+        if (domContainer) {
+          render(<UserPanel
+            dbUser={dbUser}
+            usernameConfig={usernameConfig}/>, domContainer);
+          // console.log(`${index} rendered of ${totalCount}.`)
+        }
       }
     }
   });

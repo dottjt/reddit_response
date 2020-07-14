@@ -5,7 +5,7 @@ import { sendNewMessage } from './httpResponses';
 
 const increaseDelayTimer = () => {
   const delayTimer = window.localStorage.getItem('delayTimer') as string;
-  const delayTimerNumber = parseInt(delayTimer) + 26000;
+  const delayTimerNumber = parseInt(delayTimer) + 25000;
   window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
 }
 

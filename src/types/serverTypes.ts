@@ -26,7 +26,6 @@ export type UserNote = {
 
 // TODO Use in UserPanel
 export enum SendMessageType {
-  StartCustom = 'start:custom',
   StartAdviceStart = 'start:advice:start',
   StartAdviceStartAgain = 'start:advice:startAgain',
   StartAdviceGeneral = 'start:advice:general',
@@ -38,11 +37,14 @@ export enum SendMessageType {
   StartAdviceWetdreamAdvice = 'start:advice:wetdreamAdvice',
   StartAdvicePornBlockersAdvice = 'start:advice:pornBlockersAdvice',
   StartAdviceIsWatchingPornRelapseAdvice = 'start:advice:isWatchingPornRelapseAdvice',
-  StartNoReasonToRelapse = 'start:advice:noReasonToRelapse',
+  StartNoReasonToRelapseAdvice = 'start:advice:noReasonToRelapse',
   StartAccountabilityPartner = 'start:accountability:accountabilityPartner',
-  StartStraightToGuide = 'start:advice:straightToGuide',
+  // StartStraightToGuide = 'start:advice:straightToGuide',
+  StartPartnerAdvice = 'start::advice:partner',
+  StartMasturbateWithoutPornAdvice = 'start::advice:masturbateWithoutPorn',
+  StartBiggestBenefitPostAddictionAdvice = 'start::advice:biggestBenefitPostAddiction',
+  StartDealingWithUrgesAdvice = 'start::advice:dealingWithUrges',
 
-  MiddleCustom = 'middle:custom',
   MiddleGuideIfYouWouldLikeToLearnMore = 'middle:guide:learnmore',
   MiddleGuideNoWorries = 'middle:guide:noworries',
   MiddleGuideLinkYou = 'middle:guide:linkyou',
@@ -50,8 +52,11 @@ export enum SendMessageType {
   FinalHardTime = 'final:disagree:hardTime',
   FinalFantastic = 'final:agree:fantastic',
   FinalJoinSubreddit = 'final:join:subreddit',
+  FinalShareResources = 'final:share:resources',
 
-  UserReply = 'user:reply:custom',
+  UserReplySend = 'user:reply:custom',
+  NFDCustomSend = 'nfd:custom:send',
+
   NA = 'NA'
 };
 

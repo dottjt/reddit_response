@@ -10,7 +10,8 @@ import {
 import {
   finalJoinSubreddit,
   finalFantastic,
-  finalHardTime
+  finalHardTime,
+  finalShareResources
 } from '../util/responses/final';
 
 import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton } from './ComponentsUtil';
@@ -77,13 +78,12 @@ const ReplyUserPanel = ({
   return (
     <div>
       <UserInformation dbUser={dbUser} numberOfMessagesFromThisUser={numberOfMessagesFromThisUser} />
-      <PreviousMessageInformation dbUser={dbUser} />
       <div style={{ display: 'flex' }}>
         <SendUserNoteForm username={dbUser.username} />
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
-
       </div>
+      <PreviousMessageInformation dbUser={dbUser} />
 
       <div id='cake' style={{ display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
@@ -94,7 +94,8 @@ const ReplyUserPanel = ({
           {createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false)}
-          {createReplyMessageLink(SendMessageType.MiddleCustom, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           <h4>Send Immediate</h4>
@@ -104,6 +105,9 @@ const ReplyUserPanel = ({
           {createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)}
+
+
         </div>
       </div>
 

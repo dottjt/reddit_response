@@ -45,7 +45,7 @@ const generateRelevantMessageListInformation = (pageMessages): PopulateReceivedM
       username_sending: recipient,
       message,
       date,
-      type: SendMessageType.MiddleCustom
+      type: SendMessageType.NFDCustomSend
     }
   })
 );
@@ -140,7 +140,7 @@ const sendNewMessageLogic = async (containerDiv) => {
     subject: subject.innerText,
     message: textArea.value,
     send_date: new Date().toString(),
-    type: SendMessageType.UserReply,
+    type: SendMessageType.UserReplySend,
   };
 
   // await sendNewMessage(dataPayload);
