@@ -74,15 +74,6 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
           return;
         }
 
-        if (
-          dbUser.userType === UserType.UserHostile ||
-          dbUser.userType === UserType.UserNotRespondedBack ||
-          dbUser.userType === UserType.UserRespondedBack) {
-          // console.log('unproductive UserType removed!');
-          tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
-          return;
-        }
-        console.log('continue');
         if (shouldDeleteElementImmediately) {
           tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
           // console.log('shouldDeleteElementImmediately yes!');

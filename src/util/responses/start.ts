@@ -175,7 +175,7 @@ Just having the mental clarity that I have now is alone worth it for me. It's li
 );
 
 export const dealingWithUrgesAdvice = (forum: string): string => (
-`Hey, I saw your post on ${forum}. Sorry to hear you're struggling with urges. If they're a huge issue for you then it likely means that you don't have the fundamentals down.
+`Hey, I saw your post on ${forum}. Sorry to hear you're struggling with urges. If they're a huge issue for you then it might mean that you don't have the fundamentals down.
 
 Ultimately recovery should be relatively struggle free, otherwise are you really recovering at all? I find the main thing with recovery is to focus on your mental health. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind.
 

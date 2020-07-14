@@ -30,6 +30,7 @@ import { UserType, SendMessageType } from '../types/serverTypes';
 import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton, MarkUserChattedButton } from './ComponentsUtil';
 import { ConfigType } from '../util/config';
 import { openNewLink, generatePrelimUrl } from '../util/sendMessageUtils';
+import { followRelapseAdvice, followMeditationAdvice, followStruggleAdvice } from '../util/responses/follow';
 // import ReactTooltip from 'react-tooltip';
 
 const createStartMessageLink = (
@@ -104,6 +105,10 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
 
           {createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig.forumType))}
           {createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig.forumType))}
+          <h4>Follow</h4>
+          {createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig.forumType))}
         </div>
       </div>
     </div>

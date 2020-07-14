@@ -1,4 +1,4 @@
-import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload, SendUserNotePayload } from "../types/tamperMonkeyTypes";
+import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload } from "../types/tamperMonkeyTypes";
 import { ForumType, ConfigType } from './config';
 
 const HTTPPOSToptions = (data): any => ({
@@ -76,12 +76,18 @@ export const latestUnreadMessagesInformation =
     };
 
 export const setMarker =
-  async (dataPayload: { username: string, usernameConfig: ConfigType }):
-    Promise<CompiledFullUserObject> => {
+  async (dataPayload: SetMarkerPayload):
+    Promise<string> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/setMarker', '3333');
       return JSONResponse.data.message;
     };
 
+export const setLastInboxMessageUsername =
+  async (dataPayload: SetLastMessageInboxUsernamePayload):
+    Promise<string> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/setLastInboxMessageUsername', '3333');
+      return JSONResponse.data.message;
+    };
 
 export const checkServerRunning =
   async ():

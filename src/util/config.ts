@@ -19,13 +19,13 @@ export enum ForumType {
   rMuslimNofapForum='r/MuslimNoFap',
 }
 
-// TODO Add porn addiction
+export const INBOX_LAST_MESSAGE_USER = '-BBerke-';
 
-export const R_NOFAP_USERNAME = 'Piddleass4128';
+export const R_NOFAP_USERNAME = 'benryl';
 export const R_NOFAP_TIMESTAMP = '';
-export const R_PORN_FREE_USERNAME = 'Faarthunaq_II';
+export const R_PORN_FREE_USERNAME = 'findingasupportgroup';
 export const R_PORN_FREE_TIMESTAMP = '';
-export const R_PORN_ADDICTION_USERNAME = 'Michael-Hevor';
+export const R_PORN_ADDICTION_USERNAME = 'datboy1da';
 export const R_PORN_ADDICTION_TIMESTAMP = '';
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';

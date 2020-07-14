@@ -11,43 +11,27 @@ Although there are a heap of features I can build into it, I would consider it m
 - You need to always have the server running so that it can intercept the messages. `npm run start:prod`
 - It's nice to have the UI bundler running as well at the same time, so it can change those scripts when you change the source code `npm run bundle:dev`
 
-## General Flow
-- Send user a message on the subreddit
-- They get back
-
-## Thoughts
-- Send strategy simply appends 5 seconds each time. Does it make sense? Not sure, but it's all I have atm and isn't that bad.
-
 ## Improvements
 
-- It would make sense to check if a website OR a subreddit has already been sent to the user before
-
-### Never send a message aka delete
-
-// tracker / nofap tracker
-Day 2 above. (maybe ignore this rule for now until I can validate it.)
-journal check in flair
-
-## benefits of noFap
-
-- custom shouldn't be middle. It should be entirely separate. correct unique:custom
-- If a user appears again in the subreddit, then FLAG that user's post saying that it's been seen before. I'm assuming that the list is chronological from top to bottom, but it also may not be. (it now actually deletes it. Not sure if it's the best approach, but it's better than nothing I suppose)
-- If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again.
-- Check to see if I've already sent that person an opening message. If so, don't send that message.
-- Also, save the date (user chatted.)
-- Maybe for other subreddits, I actually just do the latest 10 users?
-
-- Track the last message you sent, so I don't get lost if there is more than 25 unread. (IMPORTANT)
+- Think of follow up strategies. For example, you send them a start message. Then they relapse. Send a follow up message instead. 
 
 ## Nice To Have
 
+- Send strategy simply appends 5 seconds each time. Does it make sense? Not sure, but it's all I have atm and isn't that bad.
 - Track original post as part of the message.
 - Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things. (this would be really smart, I figure. But it's not really necessary.)
 - self-update message send status on user once
 - When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it. (this is not possible, unless if you're okay with `1 hour ago`)
+- Maybe for other subreddits, I actually just do the latest 10 users? (just makes sense to input a username into the config file, although this sounds like a lot of work. Well, it's not actually, but CBF)
+- If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again. (no longer valid because I don't show the user, but maybe in future)
+- Also, save the date (user chatted) (no longer relevant since I don't show users I've already messaged)
 
 ## DONE
 
+- Track the last message you sent, so I don't get lost if there is more than 25 unread. (IMPORTANT)
+- If a user appears again in the subreddit, then FLAG that user's post saying that it's been seen before. I'm assuming that the list is chronological from top to bottom, but it also may not be. (it now actually deletes it. Not sure if it's the best approach, but it's better than nothing I suppose)
+- It would make sense to check if a website OR a subreddit has already been sent to the user before
+- custom shouldn't be middle. It should be entirely separate. correct unique:custom
 - create verifiable typescript types for messageTypes.
 - chokidar only compile file that has been changed, not all files.
 - import TrackVisibility from 'react-on-screen'; (so I can use the keyboard to do this, woudl be neat, actually not sure if this is possible because) (I don't think this is via because you can't open a new tab without clicking)
@@ -136,3 +120,40 @@ ENV=PROD
 
 // important
 https://stackoverflow.com/questions/49509874/how-to-update-tampermonkey-script-to-a-local-file-programmatically
+
+
+### SQL NOTES
+
+// TODO: I think these have been updated, but I really need to confirm.
+
+website_homepage_link_sent
+subreddit_link_sent
+discord_link_sent
+podcast_link_sent
+
+// NOTE: This works well.
+UPDATE users
+SET website_homepage_link_sent = 1
+WHERE EXISTS (SELECT *
+                  FROM messages
+                  WHERE (messages.username_receiving = users.username)
+                  AND (messages.text LIKE "%https://neverfapdeluxe%"));
+
+UPDATE users
+SET podcast_link_sent = 1
+WHERE EXISTS (SELECT *
+                  FROM messages
+                  WHERE (messages.username_receiving = users.username)
+                  AND (messages.text LIKE "%https://castbox.fm%"));
+
+
+
+UPDATE Table_1
+SET Field3 = (SELECT Field3
+              FROM Table_2
+              WHERE (Table_1.Field1 = Table_2.Field1)
+                AND (Table_1.Field2 = Table_2.Field2))
+WHERE EXISTS (SELECT *
+              FROM Table_2
+              WHERE (Table_1.Field1 = Table_2.Field1)
+                AND (Table_1.Field2 = Table_2.Field2));

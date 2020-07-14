@@ -27,6 +27,11 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
     username: user.username,
     is_hostile: user.is_hostile,
     user_chat_function_utilised: user.user_chat_function_utilised,
+    
+    website_homepage_link_sent: user?.website_homepage_link_sent,
+    subreddit_link_sent: user?.subreddit_link_sent,
+    discord_link_sent: user?.discord_link_sent,
+    podcast_link_sent: user?.podcast_link_sent,
 
     userType: calculatedUser.userType,
     userColor: calculatedUser.userColor,

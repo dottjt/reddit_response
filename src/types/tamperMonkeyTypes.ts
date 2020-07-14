@@ -6,6 +6,11 @@ export type CompiledFullUserObject = {
   is_hostile?: boolean;
   user_chat_function_utilised?: boolean;
 
+  website_homepage_link_sent?: boolean;
+  subreddit_link_sent?: boolean;
+  discord_link_sent?: boolean;
+  podcast_link_sent?: boolean;
+
   userType: UserType;
   userColor: string;
 
@@ -26,6 +31,11 @@ export type SendUserNotePayload = {
 export type SetMarkerPayload = {
   username: string;
   usernameConfig: ConfigType;
+}
+
+export type SetLastMessageInboxUsernamePayload = {
+  username: string;
+  message: string;
 }
 
 export type SendNewMessageSendPayload = {

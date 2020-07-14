@@ -1,14 +1,29 @@
-import { v4 as uuidv4 } from 'uuid';
 import knex from '../util/knex';
 
 import { User } from '../types/serverTypes';
 
 const decideWhichLinksHaveBeenSent = (fullUserLinksSent: any, message: string) => {
   if (message.includes('https://neverfapdeluxe.com')) {
-
+    fullUserLinksSent.website_homepage_link_sent = true;
   }
 
-  return
+  if (message.includes('r/NeverFapDeluxe')) {
+    fullUserLinksSent.subreddit_link_sent = true;
+  }
+
+  if (message.includes('https://discord')) {
+    fullUserLinksSent.discord_link_sent = true;
+  }
+
+  if (
+    message.includes('https://castbox.fm')
+    || message.includes('https://podcasts.apple.com')
+    || message.includes('https://open.spotify.com')
+  ) {
+    fullUserLinksSent.podcast_link_sent = true;
+  }
+
+  return fullUserLinksSent;
 }
 
 type UpdateUserSentLinksProps = {
@@ -31,13 +46,13 @@ const updateUserSentLinks = async ({
   ]);
 
   if (fullUserLinksSent) {
-    console.log('fullUserLinksSent', fullUserLinksSent);
-    // const updateObject = decideWhichLinksHaveBeenSent(fullUserLinksSent, message)
+    const updateObject = decideWhichLinksHaveBeenSent(fullUserLinksSent, message)
+    console.log('fullUserLinksSentObject', updateObject);
 
-    // await knex<User>('users').where({
-    //   username: username_receiving
-    // })
-    // .update(updateObject);
+    await knex<User>('users').where({
+      username: username_receiving
+    })
+    .update(updateObject);
   }
 }
 

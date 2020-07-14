@@ -5,6 +5,7 @@ import {
   middleWrittenGuide,
   middleGuideNoWorries,
   middleGuideLinkYou,
+  middleGuideMeditationAdvice,
 } from '../util/responses/middle';
 
 import {
@@ -14,7 +15,7 @@ import {
   finalShareResources
 } from '../util/responses/final';
 
-import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton } from './ComponentsUtil';
+import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton, SetLastInboxMessageUsernameButton } from './ComponentsUtil';
 import { SendMessageType } from '../types/serverTypes';
 import { populateMessageAndSend } from '../util/sendMessageUtils';
 
@@ -67,21 +68,32 @@ type ReplyUserPanelProps = {
   previousMessageInformation: PopulateReceivedMessagesPayload;
   containerDiv: Element;
   numberOfMessagesFromThisUser: number;
+  isUserLastMessagedUser: boolean;
+  userRemainingMessages: string[];
+  userReplyMessage: string;
 }
 
 const ReplyUserPanel = ({
   dbUser,
   containerDiv,
   previousMessageInformation,
-  numberOfMessagesFromThisUser
+  numberOfMessagesFromThisUser,
+  isUserLastMessagedUser,
+  userRemainingMessages,
+  userReplyMessage
 }: ReplyUserPanelProps) => {
   return (
     <div>
+      {isUserLastMessagedUser && (
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' }}>Last Messaged User</p>
+      )}
+
       <UserInformation dbUser={dbUser} numberOfMessagesFromThisUser={numberOfMessagesFromThisUser} />
       <div style={{ display: 'flex' }}>
         <SendUserNoteForm username={dbUser.username} />
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
+        <SetLastInboxMessageUsernameButton username={dbUser.username} message='' />
       </div>
       <PreviousMessageInformation dbUser={dbUser} />
 
@@ -91,10 +103,13 @@ const ReplyUserPanel = ({
           {createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)}
+          <h4 style={{ 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' }}>Final</h4>
           {createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false)}
           {createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false)}
+          <h4 style={{ 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' }}>Custom</h4>
           {createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
@@ -102,12 +117,12 @@ const ReplyUserPanel = ({
           {createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true)}
+          {createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)}
+          <h4 style={{ 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' }}>Final Immediate</h4>
           {createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true)}
           {createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)}
-
-
         </div>
       </div>
 
@@ -115,6 +130,12 @@ const ReplyUserPanel = ({
         {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
       </div>
 
+      {previousMessageInformation.type}
+      {previousMessageInformation.type.includes('final')}
+
+      {previousMessageInformation.type.includes('final') && (
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'blue' }}>FINAL</p>
+      )}
     </div>
   );
 }

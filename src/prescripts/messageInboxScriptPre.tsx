@@ -1,13 +1,14 @@
 import { render } from 'inferno';
 import { createElement } from 'inferno-create-element';
 
-import { populateReceivedMessages, latestUnreadMessagesInformation } from '../util/httpResponses.js';
+import { populateReceivedMessages, latestUnreadMessagesInformation, setLastInboxMessageUsername } from '../util/httpResponses.js';
 import { PopulateReceivedMessagesPayload, SendNewMessageSendPayload, CompiledFullUserObject } from '../types/tamperMonkeyTypes.js';
 // import { sendNewMessage } from '../util/httpResponses';
 import ReplyUserPanel from '../components/ReplyUserPanel';
 import { SendMessageType } from '../types/serverTypes.js';
 import { filterRedditInboxMessages } from '../util/noFapFilterUtils.js';
 import { populateMessageAndSend } from '../util/sendMessageUtils.js';
+import { INBOX_LAST_MESSAGE_USER } from '../util/config.js';
 // import { populateMessageAndSend } from '../util/sendMessageUtils.js';
 
 'use strict';
@@ -63,18 +64,26 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
     !message.subjectReplyToTitle.includes("Snoosletter")
   );
 
+  // let alreadySentList: string[] = [];
   let counter = 0;
-  for (const item of filteredMessageList) {
-  // probably need localhost delay for this so it's not all at once.
 
+  for (const item of filteredMessageList) {
     const dbUser: CompiledFullUserObject = await latestUnreadMessagesInformation({ username: item.username_sending });
+    const isUserLastMessagedUser = INBOX_LAST_MESSAGE_USER === dbUser.username;
+
+    const userRemainingMessages: string[] = filteredMessageList
+      .filter(messageItem => messageItem.username_sending === dbUser.username && messageItem.message !== item.message)
+      .map(messageItem => messageItem.message);
+    // remove all the others that aren't already there.
 
     const {
       messageText,
       messageType,
     } = filterRedditInboxMessages(item, dbUser);
 
-    if (messageText && messageType) {
+    if (messageText && messageType) { // !alreadySentList.includes(dbUser.username)
+      // alreadySentList.push(dbUser.username);
+
       const replyDelay = localStorage.getItem('replyDelay');
       const replyDelayNumber = Number(replyDelay);
       localStorage.setItem('replyDelay', (replyDelayNumber + 1100).toString());
@@ -104,8 +113,6 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
         if (item.containerDiv) { // r5ageof6paths-0
           item.containerDiv.parentNode?.insertBefore(root, item.containerDiv);
 
-          setTimeout(function(){}, 800);
-
           const domContainer = documentSub.querySelector(`#${rootId}`);
 
           const numberOfMessagesFromThisUser = filteredMessageList.filter(item => item.username_sending === dbUser.username).length;
@@ -115,6 +122,9 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
               dbUser={dbUser}
               numberOfMessagesFromThisUser={numberOfMessagesFromThisUser}
               previousMessageInformation={item}
+              userRemainingMessages={userRemainingMessages}
+              isUserLastMessagedUser={isUserLastMessagedUser}
+              userReplyMessage='' // TODO
               containerDiv={item.containerDiv} />, domContainer);
           }
         }
@@ -122,12 +132,8 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
     }
   }
 
-  // console.log('filteredMessageList', filteredMessageList);
-
   const dataPayload: { messages: PopulateReceivedMessagesPayload[] } = { messages: filteredMessageList };
   await populateReceivedMessages(dataPayload);
-
-  console.log(document.querySelectorAll('#cake'));
 }
 
 const sendNewMessageLogic = async (containerDiv) => {

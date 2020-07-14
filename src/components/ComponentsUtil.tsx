@@ -1,7 +1,7 @@
 import { createElement } from 'inferno-create-element';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
-import { sendNewUserNote, markUserHostile, setMarker, markUserChatted } from '../util/httpResponses';
+import { sendNewUserNote, markUserHostile, setMarker, markUserChatted, setLastInboxMessageUsername } from '../util/httpResponses';
 import { Component } from 'inferno';
 import { ForumType, ConfigType } from '../util/config';
 import { timeSince } from '../util/commonUtils';
@@ -105,6 +105,18 @@ export const SetMarkerButton = ({ username, usernameConfig }: { username: string
         await setMarker({ username, usernameConfig });
       }}>
       Set Marker
+    </button>
+  )
+}
+
+export const SetLastInboxMessageUsernameButton = ({ username, message }: { username: string, message: string })  => {
+  return (
+    <button
+      style={{ border: '1px solid black','margin-right': '0.4rem' }}
+      onclick={async () => {
+        await setLastInboxMessageUsername({ username, message });
+      }}>
+      Set Last Inbox Message
     </button>
   )
 }

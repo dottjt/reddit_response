@@ -2,6 +2,13 @@
 
 import { ForumType } from '../util/config'
 
+type LinkSentObject = {
+  website_homepage_link_sent?: boolean;
+  subreddit_link_sent?: boolean;
+  discord_link_sent?: boolean;
+  podcast_link_sent?: boolean;
+}
+
 export type User = {
   // Database Fields
   id: string;
@@ -9,7 +16,7 @@ export type User = {
   is_hostile?: boolean;
   is_historic?: boolean;
   user_chat_function_utilised?: boolean;
-}
+} & LinkSentObject;
 
 export enum UserType {
   FreshUser="Fresh User",
@@ -48,11 +55,16 @@ export enum SendMessageType {
   MiddleGuideIfYouWouldLikeToLearnMore = 'middle:guide:learnmore',
   MiddleGuideNoWorries = 'middle:guide:noworries',
   MiddleGuideLinkYou = 'middle:guide:linkyou',
+  MiddleGuideMeditationAdvice = 'middle:guide:meditationAdvice',
 
   FinalHardTime = 'final:disagree:hardTime',
   FinalFantastic = 'final:agree:fantastic',
   FinalJoinSubreddit = 'final:join:subreddit',
   FinalShareResources = 'final:share:resources',
+
+  FollowRelapseAdvice = 'follow:advice:relapse',
+  FollowMeditationAdvice = 'follow:advice:meditation',
+  FollowStruggleAdvice = 'follow:advice:struggle',
 
   UserReplySend = 'user:reply:custom',
   NFDCustomSend = 'nfd:custom:send',
