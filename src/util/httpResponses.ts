@@ -1,5 +1,4 @@
-import { CompiledFullUserObject, SendNewMessageSendPayload, PopulateReceivedMessagesPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload } from "../types/tamperMonkeyTypes";
-import { ForumType, ConfigType } from './config';
+import { CompiledFullUserObject, SendNewMessageSendPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload, PopulateReceivedMessagesPayloadEXTREME } from "../types/tamperMonkeyTypes";
 
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',
@@ -34,7 +33,7 @@ export const checkUsernamesFetch =
     };
 
 export const populateReceivedMessages =
-  async (dataPayload: { messages: PopulateReceivedMessagesPayload[] }):
+  async (dataPayload: { messages: PopulateReceivedMessagesPayloadEXTREME[] }):
     Promise<string> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/populateReceivedMessages', '3333');
       return JSONResponse.data.message; // basically a success message.

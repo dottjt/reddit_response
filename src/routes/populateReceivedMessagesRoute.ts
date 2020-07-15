@@ -4,11 +4,11 @@ import addNewMessage from '../db/addNewMessage';
 import {
 
 } from '../types/serverTypes';
-import { PopulateReceivedMessagesPayload } from '../types/tamperMonkeyTypes';
+import { PopulateReceivedMessagesPayloadEXTREME } from '../types/tamperMonkeyTypes';
 
 const populateReceivedMessagesRoute = async (ctx: Context, next: Next) => {
   const body = ctx.request.body;
-  const messages: PopulateReceivedMessagesPayload[] = body?.data?.messages;
+  const messages: PopulateReceivedMessagesPayloadEXTREME[] = body?.data?.messages;
 
   if (messages) {
     for (const item of messages) {

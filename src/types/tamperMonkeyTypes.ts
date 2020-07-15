@@ -48,7 +48,7 @@ export type SendNewMessageSendPayload = {
 }
 
 export type PopulateReceivedMessagesPayload = {
-  containerDiv?: Element;
+  containerDiv: Element;
   subject: string;
   subjectReplyToTitle: string;
   username_receiving: string;
@@ -57,3 +57,11 @@ export type PopulateReceivedMessagesPayload = {
   date: string;
   type: SendMessageType;
 }
+
+export type PopulateReceivedMessagesPayloadEXTREME = {
+  compiledUser: CompiledFullUserObject;
+  isUserLastMessagedUser: boolean;
+  userRemainingMessages: string[];
+  numberOfMessagesFromThisUser: number;
+  userReplyMessage: string;
+} & PopulateReceivedMessagesPayload;

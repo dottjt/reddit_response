@@ -1,7 +1,10 @@
 // message compose
 
-import { checkServerRunning } from './httpResponses';
-import { ConfigType } from './config';
+import { checkServerRunning, latestUnreadMessagesInformation } from './httpResponses';
+import { ConfigType, INBOX_LAST_MESSAGE_USER } from './config';
+import { PopulateReceivedMessagesPayload, PopulateReceivedMessagesPayloadEXTREME, CompiledFullUserObject } from '../types/tamperMonkeyTypes';
+import { SendMessageType } from '../types/serverTypes';
+import { populateMessageAndSend } from './sendMessageUtils';
 
 export const getTypeQueryString = (searchString: string): string => {
   if (searchString.includes('&')) {

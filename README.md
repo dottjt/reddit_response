@@ -13,15 +13,22 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
-- Did I just relapse or not?
+- Clean up and modularise codebase, it's a bit of a mess atm from the amount of work that's gone into it. Like, a huge mess.
+- Did I just relapse or not? MESSAGE
+
 - So the problem is that I need to be able to track user message types as well.
 - so user:start:reply
 - so user:middle:reply
-- so user:final:reply  - then I can sufficiently track when to send reply messages automatically. Not just simply that they replied. 
+- so user:final:reply  - then I can sufficiently track when to send reply messages automatically. Not just simply that they replied.
+
+- (because the problem is that because it only tracks my last message, I can't accurately gauge old messages.)
+
+- print the list of all the titles which were deleted.
+- print the post title under the a-link, so I can validate them.
+- make all those a links at the top inferno renders.
 
 ## Nice To Have
 
-- Clean up and modularise codebase, it's a bit of a mess atm from the amount of work that's gone into it.
 - Track original post as part of the message.
 - Also, save the date (user chatted)
 
