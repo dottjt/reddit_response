@@ -21,9 +21,9 @@ export enum ForumType {
 
 export const INBOX_LAST_MESSAGE_USER = 'oglocsir';
 
-export const R_NOFAP_USERNAME = 'Piddleass4128';
+export const R_NOFAP_USERNAME = '4_better_life';
 export const R_NOFAP_TIMESTAMP = '';
-export const R_PORN_FREE_USERNAME = 'slightlyangrydodo';
+export const R_PORN_FREE_USERNAME = 'prawnsguacamole';
 export const R_PORN_FREE_TIMESTAMP = '';
 export const R_PORN_ADDICTION_USERNAME = 'Confident-Mango-3556';
 export const R_PORN_ADDICTION_TIMESTAMP = '';

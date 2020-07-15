@@ -13,21 +13,26 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
-- Think of follow up strategies. For example, you send them a start message. Then they relapse. Send a follow up message instead. 
+- Did I just relapse or not?
+- So the problem is that I need to be able to track user message types as well.
+- so user:start:reply
+- so user:middle:reply
+- so user:final:reply  - then I can sufficiently track when to send reply messages automatically. Not just simply that they replied. 
 
 ## Nice To Have
 
-- Send strategy simply appends 5 seconds each time. Does it make sense? Not sure, but it's all I have atm and isn't that bad.
+- Clean up and modularise codebase, it's a bit of a mess atm from the amount of work that's gone into it.
 - Track original post as part of the message.
-- Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things. (this would be really smart, I figure. But it's not really necessary.)
-- self-update message send status on user once
-- When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it. (this is not possible, unless if you're okay with `1 hour ago`)
-- Maybe for other subreddits, I actually just do the latest 10 users? (just makes sense to input a username into the config file, although this sounds like a lot of work. Well, it's not actually, but CBF)
-- If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again. (no longer valid because I don't show the user, but maybe in future)
-- Also, save the date (user chatted) (no longer relevant since I don't show users I've already messaged)
+- Also, save the date (user chatted)
 
 ## DONE
 
+- If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again. (no longer valid because I don't show the user, but maybe in future) - I do this, yes.
+- Maybe for other subreddits, I actually just do the latest 10 users? (just makes sense to input a username into the config file, although this sounds like a lot of work. Well, it's not actually, but CBF) (I just ad it)
+- When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it. (this is not possible, unless if you're okay with `1 hour ago`) (didn't bother, pointless)
+- self-update message send status on user once (it simply deletes the 2nd message)
+- Flag to see if they've been sent a link or subreddit or yeah. I guess this would check the message being sent and will check for these things. (this would be really smart, I figure. But it's not really necessary.)
+- Think of follow up strategies. For example, you send them a start message. Then they relapse. Send a follow up message instead.
 - Track the last message you sent, so I don't get lost if there is more than 25 unread. (IMPORTANT)
 - If a user appears again in the subreddit, then FLAG that user's post saying that it's been seen before. I'm assuming that the list is chronological from top to bottom, but it also may not be. (it now actually deletes it. Not sure if it's the best approach, but it's better than nothing I suppose)
 - It would make sense to check if a website OR a subreddit has already been sent to the user before
@@ -124,12 +129,14 @@ https://stackoverflow.com/questions/49509874/how-to-update-tampermonkey-script-t
 
 ### SQL NOTES
 
-// TODO: I think these have been updated, but I really need to confirm.
+// since it's not efficient to get it all within the one query, what you can do instead is to get a list of all messages of x type and retrieve the username, then update all those usernames.
 
 website_homepage_link_sent
 subreddit_link_sent
 discord_link_sent
 podcast_link_sent
+
+select username_receiving from messages where messages.text LIKE "%https://neverfapdeluxe%";
 
 // NOTE: This works well.
 UPDATE users

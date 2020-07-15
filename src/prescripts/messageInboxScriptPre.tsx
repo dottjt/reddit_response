@@ -38,6 +38,9 @@ const generateRelevantMessageListInformation = (pageMessages): PopulateReceivedM
 
     const message = entry.children[1].children[0].innerText;
 
+    // TODO the type needs to be dependent upon the last message sent by NeverFapDeluxe
+    // so if it was middle, it would be user:reply:middle etc. 
+
     return {
       containerDiv,
       subject,
@@ -46,7 +49,7 @@ const generateRelevantMessageListInformation = (pageMessages): PopulateReceivedM
       username_sending: recipient,
       message,
       date,
-      type: SendMessageType.NFDCustomSend
+      type: SendMessageType.UserReplyCustom
     }
   })
 );
@@ -76,7 +79,6 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
       .map(messageItem => messageItem.message);
     // remove all the others that aren't already there.
 
-    console.log('userRemainingMessages', userRemainingMessages);
     const {
       messageText,
       messageType,
@@ -117,6 +119,8 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
           const domContainer = documentSub.querySelector(`#${rootId}`);
 
           const numberOfMessagesFromThisUser = filteredMessageList.filter(item => item.username_sending === dbUser.username).length;
+          const userReplyMessage = (item?.containerDiv?.querySelector('.md')?.children[0] as HTMLElement)?.innerText;
+          console.log('userReplyMessage', userReplyMessage);
 
           if (domContainer) {
             render(<ReplyUserPanel
@@ -125,7 +129,7 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
               previousMessageInformation={item}
               userRemainingMessages={userRemainingMessages}
               isUserLastMessagedUser={isUserLastMessagedUser}
-              userReplyMessage='' // TODO
+              userReplyMessage={userReplyMessage}
               containerDiv={item.containerDiv} />, domContainer);
           }
         }
@@ -147,7 +151,7 @@ const sendNewMessageLogic = async (containerDiv) => {
     subject: subject.innerText,
     message: textArea.value,
     send_date: new Date().toString(),
-    type: SendMessageType.UserReplySend,
+    type: SendMessageType.NFDCustomSend,
   };
 
   // await sendNewMessage(dataPayload);
@@ -163,8 +167,6 @@ const sendNewMessageEventListener = async (pageMessages) => {
     }
   });
 }
-
-// TODO Latest message from
 
 const main = async () => {
   const mainLogic = async (documentSub, windowSub) => {

@@ -36,8 +36,6 @@ addGlobalStyle(mainCss);
 const populateWebpageInformation = (users: CompiledFullUserObject[], usernameConfig: ConfigType) => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
   const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/') && !tag.innerText.includes(' '));
-  // TODO So the problem with this is that this may be within the title of a post, so I need to figure this out.
-  // inspired by u/arstarst asrt srat
 
   const automateContainer = document.createElement('div');
   automateContainer.id = 'reade-automate-container';

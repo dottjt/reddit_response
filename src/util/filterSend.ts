@@ -21,6 +21,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/relapsed intentionally/i).test(titleText)
     || new RegExp(/found something that/i).test(titleText)
     || new RegExp(/(women|girl)/i).test(titleText)
+    || new RegExp(/(premature|ejaculation|precum|cum)/i).test(titleText)
     || new RegExp(/achieved my goal/i).test(titleText)
     || new RegExp(/(insta|instagram)/i).test(titleText)
     || new RegExp(/hunger/i).test(titleText)
@@ -61,8 +62,6 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // || new RegExp(/confessed .* to my/i).test(titleText) // look into this.
     // || new RegExp(/pro tip/i).test(titleText)
     // || new RegExp(/update from/i).test(titleText)
-
-    // TODO: Maybe these days are actually in the wrong order and should be after all the other items.
 
     // it's okay to fap
     // picture/quote
@@ -152,7 +151,7 @@ export const toRelapseAdvice = (titleText: string, flairText: string): boolean =
   flairText === 'Relapse Report'
   || new RegExp(/failed first attempt/i).test(titleText)
   || new RegExp(/(I|just) ?(have)? relapsed/i).test(titleText)
-  || new RegExp(/relapsed after/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts. 
+  || new RegExp(/relapsed after/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
   || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
   || new RegExp(/(broke my|lost my) ?(.*) (streak)/i).test(titleText)
   || new RegExp(/^relapsed\.$/i).test(titleText)

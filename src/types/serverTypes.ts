@@ -32,7 +32,6 @@ export type UserNote = {
   message: string;
 }
 
-// TODO Use in UserPanel
 export enum SendMessageType {
   StartAdviceStart = 'start:advice:start',
   StartAdviceStartAgain = 'start:advice:startAgain',
@@ -66,8 +65,14 @@ export enum SendMessageType {
   FollowRelapseAdvice = 'follow:advice:relapse',
   FollowMeditationAdvice = 'follow:advice:meditation',
   FollowStruggleAdvice = 'follow:advice:struggle',
+  FollowNotSmoothlyAdvice = 'follow:advice:notSmoothly',
 
-  UserReplySend = 'user:reply:custom',
+  UserReplyCustom = 'user:reply:custom',
+  UserReplyStart = 'user:reply:start',
+  UserReplyMiddle = 'user:reply:middle',
+  UserReplyFinal = 'user:reply:final',
+  UserReplyFollow = 'user:reply:follow',
+
   NFDCustomSend = 'nfd:custom:send',
 
   NA = 'NA'

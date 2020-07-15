@@ -2,7 +2,7 @@
 
 // import 'util/httpResponses.js' // { uploadMessagesHTTP }
 
-// TODO, THIS IS TO BE DONE, BUT IT WILL BE DONE STILL :)
+// NOTE: This is no longer required because 
 // even this has a limit to the number of posts it can retrieve. HOWEVER, it is certainly better than nothing.
 
 const iFrame = document.querySelector('iframe');

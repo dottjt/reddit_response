@@ -26,10 +26,6 @@ const sendMessage = async ({
   console.log(toInput, subjectInput, messageInput, type, timer);
 
   if (toInput && subjectInput && messageInput && type) {
-    // TODO this is in a different iFrame, so I have literally no idea what I can do.
-    // const status = iFrame?.contentWindow?.document.querySelector('.status');
-    // if (status.inner)
-
     (iFrame?.contentWindow?.document.querySelector('#send') as HTMLElement).click();
 
     const dataPayload: SendNewMessageSendPayload = {

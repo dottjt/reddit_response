@@ -32,6 +32,7 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
   if (
     compiledUser.userType === UserType.UserHostile
     || compiledUser.userType === UserType.UserRespondedBack
+    || compiledUser.userType === UserType.FollowMessageSent
   ) {
     return {
       shouldDeleteElementImmediately: true,
@@ -257,10 +258,6 @@ export const filterRedditInboxMessages = (
     // }
   }
 
-
-
-
-
   // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
   // therefore, this also need to know that the recieved messages from that used is exactly two
   // of course this breaks if the user sends two messages, so I'll have to look into this.
@@ -272,7 +269,7 @@ export const filterRedditInboxMessages = (
   //   // Join Subreddit
   //   if (
   //     new RegExp(/(thank you|thanks)/i).test(messagePayload.message)
-  //     || new RegExp(/(I'll|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
+  //     || new RegExp(/(I'll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
   //   ) {
   //     return {
   //       messageText: finalJoinSubreddit,

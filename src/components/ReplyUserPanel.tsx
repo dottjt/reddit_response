@@ -139,7 +139,7 @@ const ReplyUserPanel = ({
       </div>
 
       {dbUser?.lastSentMessage?.type.includes('start') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'white' }}>SEND MIDDLE</p>
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'black' }}>SEND MIDDLE</p>
       )}
 
       {dbUser?.lastSentMessage?.type.includes('middle') && (
@@ -157,7 +157,7 @@ const ReplyUserPanel = ({
       {userRemainingMessages && (
         <div>
           {userRemainingMessages.map(message => (
-            <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem' }}>
+            <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' }}>
               {message}
             </p>
           ))}
