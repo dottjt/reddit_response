@@ -57,30 +57,53 @@ export const filterReplyMessageList = (messageList) => messageList.filter(
   !message.subjectReplyToTitle.includes("Snoosletter")
 );
 
+const retrieveUserResponseType = (NFDResponseTypeString: string): SendMessageType => {
+  switch (NFDResponseTypeString) {
+    case 'start': return SendMessageType.UserReplyStart;
+    case 'middle': return SendMessageType.UserReplyMiddle;
+    case 'final': return SendMessageType.UserReplyFinal;
+    case 'follow': return SendMessageType.UserReplyFollow;
+    default: return SendMessageType.UserReplyCustom;
+  }
+}
+
 export const compileReplyMessageList = async (filteredMessageList: PopulateReceivedMessagesPayload[]): Promise<PopulateReceivedMessagesPayloadEXTREME[]> => {
   let finalMessageList: PopulateReceivedMessagesPayloadEXTREME[] = [];
+
+  console.log('filteredMessageList', filteredMessageList);
 
   for (const item of filteredMessageList) {
     const compiledUser: CompiledFullUserObject = await latestUnreadMessagesInformation({ username: item.username_sending });
     const isUserLastMessagedUser: boolean = INBOX_LAST_MESSAGE_USER === compiledUser.username;
 
-    // TODO it would be cool to figure out if this message is above or below the other message, would probably have to use a reduce function for this.
-    const userRemainingMessages: string[] = filteredMessageList
-      .filter(messageItem => messageItem.username_sending === compiledUser.username && messageItem.message !== item.message)
-      .map(messageItem => messageItem.message);
+    // const otherUserMessages: string[] = filteredMessageList
+    //   .filter(messageItem => messageItem.username_sending === compiledUser.username && messageItem.message !== item.message)
+    //   .map(messageItem => messageItem.message);
 
-    // TODO the type needs to be dependent upon the last message sent by NeverFapDeluxe
-    // so if it was middle, it would be user:reply:middle etc.
+    const otherUserMessages: { message: string, order: string }[] = filteredMessageList
+      .filter(messageItem => messageItem.username_sending === compiledUser.username && messageItem.message !== item.message)
+      .reduce((acc, messageItem, index) => {
+        const itemIndex: number = filteredMessageList.findIndex(item => item.message === messageItem.message);
+        const order: string = itemIndex > index ? 'below' : 'above';
+
+        return acc.concat({
+          order,
+          message: messageItem.message
+        })
+      }, [] as { message: string, order: string }[]);
+
+    const NFDResponseTypeString: string = compiledUser?.lastSentMessage?.type?.split(':')[0] as string; // i.e. start, middle, final, follow
+    const userResponseType: SendMessageType = retrieveUserResponseType(NFDResponseTypeString);
 
     const numberOfMessagesFromThisUser: number = filteredMessageList.filter(item => item.username_sending === compiledUser.username).length;
     const userReplyMessage: string = (item?.containerDiv?.querySelector('.md')?.children[0] as HTMLElement)?.innerText;
 
     finalMessageList.push({
       ...item,
-      // type: TODO
+      type: userResponseType,
       compiledUser,
       isUserLastMessagedUser,
-      userRemainingMessages,
+      otherUserMessages,
       numberOfMessagesFromThisUser,
       userReplyMessage,
     })
@@ -113,7 +136,7 @@ export const renderReplyUserPanel = (
   counter: number
 ) => {
   console.log(`no match - ${item.compiledUser.username}`);
-  
+
   const rootId = `r${item.username_sending}-${counter}`;
   if (!rootId.includes('[')) {
     const root = document.createElement('div');
@@ -126,7 +149,7 @@ export const renderReplyUserPanel = (
       render(<ReplyUserPanel
         dbUser={item.compiledUser}
         previousMessageInformation={item}
-        userRemainingMessages={item.userRemainingMessages}
+        otherUserMessages={item.otherUserMessages}
         numberOfMessagesFromThisUser={item.numberOfMessagesFromThisUser}
         isUserLastMessagedUser={item.isUserLastMessagedUser}
         userReplyMessage={item.userReplyMessage}
@@ -166,3 +189,28 @@ export const renderReplyUserPanel = (
 // }
 
 // await sendNewMessageEventListener(pageMessages);
+
+
+
+// was for messageInboxScriptPre.ts
+
+// const setIntervalFunction = (interval) => {
+//   return setInterval(function() {
+//     const delayTimer = window.localStorage.getItem('delayTimer');
+//     const delayTimerNumber = Number(delayTimer);
+
+//     if (delayTimerNumber > 10000) {
+//       console.log('delayTimerNumber', delayTimerNumber);
+
+//       const delayTimerNumberLessOne = delayTimerNumber - 1000;
+//       window.localStorage.setItem('delayTimer', delayTimerNumberLessOne.toString());
+
+//       clearInterval(interval);
+//       interval = setInterval(interval);
+//     }
+//   }, 2000);
+// }
+
+// let interval;
+
+// interval = setIntervalFunction(interval);

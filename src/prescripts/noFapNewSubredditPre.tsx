@@ -9,7 +9,7 @@ import {
   addGlobalStyle,
   scrollToMarker,
   isServerRunning,
-} from '../util/commonUtils';
+} from '../util/noFapNewSubredditUtils';
 import mainCss from '../util/unused/mainCss';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';

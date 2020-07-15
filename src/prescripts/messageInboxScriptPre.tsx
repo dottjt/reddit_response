@@ -21,14 +21,15 @@ const saveNewUnreadPageMessages = async (
   const finalMessageList: PopulateReceivedMessagesPayloadEXTREME[] = await compileReplyMessageList(filteredMessageList);
 
   let counter = 0;
+
   for (const item of finalMessageList) {
     const { messageText, messageType } = filterRedditInboxMessages(item, item.compiledUser);
-    console.log('result', item.compiledUser.username, messageText, messageType);
+
     if (messageText && messageType) {
       await messageInboxAutomatedMessageSend(item, messageText, messageType);
     }
 
-    if (!messageText) {
+    if (!messageText && !messageType) {
       counter += 1;
       renderReplyUserPanel(item, documentSub, counter);
     }

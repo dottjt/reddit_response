@@ -69,7 +69,7 @@ type ReplyUserPanelProps = {
   containerDiv: Element;
   numberOfMessagesFromThisUser: number;
   isUserLastMessagedUser: boolean;
-  userRemainingMessages: string[];
+  otherUserMessages: { message: string; order: string }[];
   userReplyMessage: string;
 }
 
@@ -79,7 +79,7 @@ const ReplyUserPanel = ({
   previousMessageInformation,
   numberOfMessagesFromThisUser,
   isUserLastMessagedUser,
-  userRemainingMessages,
+  otherUserMessages,
   userReplyMessage
 }: ReplyUserPanelProps) => {
   return (
@@ -154,11 +154,11 @@ const ReplyUserPanel = ({
         <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'purple', 'color': 'white' }}>FOLLOW: SEND MIDDLE</p>
       )}
 
-      {userRemainingMessages && (
+      {otherUserMessages.length > 0 && (
         <div>
-          {userRemainingMessages.map(message => (
+          {otherUserMessages.map(message => (
             <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' }}>
-              {message}
+              {message.message} | {message.order}
             </p>
           ))}
         </div>

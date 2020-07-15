@@ -61,7 +61,7 @@ export type PopulateReceivedMessagesPayload = {
 export type PopulateReceivedMessagesPayloadEXTREME = {
   compiledUser: CompiledFullUserObject;
   isUserLastMessagedUser: boolean;
-  userRemainingMessages: string[];
+  otherUserMessages: { message: string; order: string }[];
   numberOfMessagesFromThisUser: number;
   userReplyMessage: string;
 } & PopulateReceivedMessagesPayload;

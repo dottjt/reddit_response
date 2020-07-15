@@ -1,7 +1,34 @@
 import { SendMessageType } from '../types/serverTypes';
 import { PopulateReceivedMessagesPayload } from '../types/tamperMonkeyTypes';
-import { openReplyLink } from './commonUtils';
 import { sendNewMessage } from './httpResponses';
+
+export const openReplyLink = async (containerDiv) => {
+  const entry = containerDiv.children[4];
+  const replyLink = getReplyLink(entry)
+
+  if (replyLink) {
+    const replyALink = replyLink.children[0];
+    console.log(replyALink);
+
+    replyALink.click();
+  }
+};
+
+const getReplyLink = (entry) => {
+  switch (entry.children.length) {
+    case 5: {
+      const entryLinks = entry.children[3];
+      return entryLinks.children[7];
+    }
+    case 4: {
+      const entryLinks = entry.children[2];
+      return entryLinks.children[5];
+    }
+    default: {
+      return null;
+    }
+  }
+}
 
 const increaseDelayTimer = () => {
   const delayTimer = window.localStorage.getItem('delayTimer') as string;
