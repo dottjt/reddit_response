@@ -152,7 +152,7 @@ export const toRelapseAdvice = (titleText: string, flairText: string): boolean =
   flairText === 'Relapse Report'
   || new RegExp(/failed first attempt/i).test(titleText)
   || new RegExp(/(I|just) ?(have)? relapsed/i).test(titleText)
-  || new RegExp(/relapsed (today|after)/i).test(titleText)
+  || new RegExp(/relapsed after/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts. 
   || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
   || new RegExp(/(broke my|lost my) ?(.*) (streak)/i).test(titleText)
   || new RegExp(/^relapsed\.$/i).test(titleText)

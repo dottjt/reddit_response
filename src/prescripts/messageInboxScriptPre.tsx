@@ -76,6 +76,7 @@ const saveNewUnreadPageMessages = async (pageMessages: NodeListOf<Element>, docu
       .map(messageItem => messageItem.message);
     // remove all the others that aren't already there.
 
+    console.log('userRemainingMessages', userRemainingMessages);
     const {
       messageText,
       messageType,

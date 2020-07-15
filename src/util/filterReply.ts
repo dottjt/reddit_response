@@ -8,7 +8,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/link would be (great|awesome)/i).test(messagePayload.message)
   || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
   || new RegExp(/website sounds .* interesting/i).test(messagePayload.message)
-  || new RegExp(/(definetly|definitely|totally|im|I am|I'm) ?(be)? interested/i).test(messagePayload.message)
+  || new RegExp(/(definetly|definitely|totally|I am|I'm|im|I'd|id) ?(be)? interested/i).test(messagePayload.message)
   || new RegExp(/link ?(me)? to ur (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/url for this (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/(I'm|I am|I'd be) ?(certainly)? ?(super)? (interested|interessted|interesting)/i).test(messagePayload.message)

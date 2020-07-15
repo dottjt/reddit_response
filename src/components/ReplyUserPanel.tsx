@@ -138,22 +138,29 @@ const ReplyUserPanel = ({
         {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
       </div>
 
+      {dbUser?.lastSentMessage?.type.includes('start') && (
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'white' }}>SEND MIDDLE</p>
+      )}
+
       {dbUser?.lastSentMessage?.type.includes('middle') && (
         <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'orange', 'color': 'black' }}>SEND FINAL</p>
       )}
 
       {dbUser?.lastSentMessage?.type.includes('final') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'black' }}>DONE</p>
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'red', 'color': 'black' }}>DONE</p>
       )}
 
-      {userRemainingMessages}
+      {dbUser?.lastSentMessage?.type.includes('follow') && (
+        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'purple', 'color': 'white' }}>FOLLOW: SEND MIDDLE</p>
+      )}
+
       {userRemainingMessages && (
         <div>
-          {userRemainingMessages.map(message => {
+          {userRemainingMessages.map(message => (
             <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem' }}>
               {message}
             </p>
-          })}
+          ))}
         </div>
       )}
     </div>
