@@ -23,7 +23,9 @@ const saveNewUnreadPageMessages = async (
   let counter = 0;
 
   for (const item of finalMessageList) {
-    const { messageText, messageType } = filterRedditInboxMessages(item, item.compiledUser);
+    const moreThanOneMessage: boolean = finalMessageList.filter(msgItem => msgItem.username_sending === item.username_sending).length > 1;
+
+    const { messageText, messageType } = filterRedditInboxMessages(item, moreThanOneMessage);
 
     if (messageText && messageType) {
       await messageInboxAutomatedMessageSend(item, messageText, messageType);

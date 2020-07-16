@@ -25,7 +25,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/please send it/i).test(messagePayload.message)
   || new RegExp(/if you sent ?(me)? the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/(check|read|get|see|visit|hear about|look into) ?(of)? ?(that|the|about|ur|your)? (any|it|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+  || new RegExp(/(check|read|get|see|visit|hear about|know about|look into) ?(of)? ?(that|the|about|ur|your)? (any|it|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/(it|That) would be (super|great|cool)/i).test(messagePayload.message)
   || new RegExp(/you could share/i).test(messagePayload.message)
   || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
@@ -34,6 +34,8 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/(can|could) you ?(please)? link/i).test(messagePayload.message)
   || new RegExp(/^sure$/i).test(messagePayload.message)
   || new RegExp(/^yes$/i).test(messagePayload.message)
+  || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
+
 
 export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
@@ -44,8 +46,8 @@ export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload):
 
 export const toHardTime = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/I (don’t|don't) do much for my mental health/i).test(messagePayload.message)
+  || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
 // i don’t but i’d like to
-
 
 export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/(ty|thank you|thanks)/i).test(messagePayload.message)

@@ -1,18 +1,20 @@
 import { SendMessageType, Message, UserType } from '../../types/serverTypes';
-import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../../types/tamperMonkeyTypes';
+import { CompiledFullUserObject, PopulateReceivedMessagesPayloadEXTREME } from '../../types/tamperMonkeyTypes';
 import { middleGuideNoWorries, middleGuideLinkYou } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
 import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit } from './messageInboxFilterLogic';
 
 export const filterRedditInboxMessages = (
-  messagePayload: PopulateReceivedMessagesPayload,
-  compiledUser: CompiledFullUserObject
+  messagePayload: PopulateReceivedMessagesPayloadEXTREME,
+  moreThanOneMessage: boolean
 ): {
   messageText: string | undefined;
   messageType: SendMessageType | undefined;
 } => {
+  const compiledUser: CompiledFullUserObject = messagePayload.compiledUser;
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
+
 
   if (compiledUser.userType === UserType.UserHostile) {
     return {
@@ -79,7 +81,11 @@ export const filterRedditInboxMessages = (
   // in addition it should check time last message was sent by ME and last message sent by them. if they are within a similar time span, then perhaps don't send it.
 
   // the other flaw in this system is that it should check all messages sent by the user on this page and count them as one, not just one separately. It shouldn't count them like that, it's broken.
+
+  // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
+  // basically only triggers poorly if
   if (
+    !moreThanOneMessage &&
     messagePayload.type === SendMessageType.UserReplyMiddle &&
     lastSentMessage?.type.includes('middle')
     ) {

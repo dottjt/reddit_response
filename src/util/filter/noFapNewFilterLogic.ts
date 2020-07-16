@@ -50,7 +50,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
     || new RegExp(/my benefits/i).test(titleText)
     || new RegExp(/placebo/i).test(titleText)
-    || new RegExp(/(balls|penis|pelvic|genitals)/i).test(titleText)
+    || new RegExp(/(balls|penis|pelvic|genital|testicle)/i).test(titleText)
     || new RegExp(/accountability post/i).test(titleText)
     || new RegExp(/illusion/i).test(titleText)
     || new RegExp(/counts as relapse/i).test(titleText) // look into this.
