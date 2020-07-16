@@ -13,27 +13,22 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
-- Clean up and modularise codebase, it's a bit of a mess atm from the amount of work that's gone into it. Like, a huge mess.
 - Did I just relapse or not? MESSAGE
-
-- So the problem is that I need to be able to track user message types as well.
-- so user:start:reply
-- so user:middle:reply
-- so user:final:reply  - then I can sufficiently track when to send reply messages automatically. Not just simply that they replied.
-
-- (because the problem is that because it only tracks my last message, I can't accurately gauge old messages.)
-
-- print the list of all the titles which were deleted.
-- print the post title under the a-link, so I can validate them.
-- make all those a links at the top inferno renders.
 
 ## Nice To Have
 
+- fix up the inferno renders at the top, they're a bit of a mess, ya'll.
 - Track original post as part of the message.
 - Also, save the date (user chatted)
 
 ## DONE
 
+- in replyFilter configure it so that user:start:reply can allow me to send users the right messages
+- print the list of all the titles which were deleted.
+- print the post title under the a-link, so I can validate them.
+- make all those a links at the top inferno renders.
+- Clean up and modularise codebase, it's a bit of a mess atm from the amount of work that's gone into it. Like, a huge mess.
+- track user message types
 - If a user hasn't responded, try and get the amount of time since you last spoke to them displayed, so you can know if it's safe to message them again. (no longer valid because I don't show the user, but maybe in future) - I do this, yes.
 - Maybe for other subreddits, I actually just do the latest 10 users? (just makes sense to input a username into the config file, although this sounds like a lot of work. Well, it's not actually, but CBF) (I just ad it)
 - When saving the username, it should also save the date of the post, so as backup it can check for any post after that date and mark it. (this is not possible, unless if you're okay with `1 hour ago`) (didn't bother, pointless)

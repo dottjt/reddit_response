@@ -21,7 +21,7 @@ export enum ForumType {
 
 export const INBOX_LAST_MESSAGE_USER = 'oglocsir';
 
-export const R_NOFAP_USERNAME = 'tk8015';
+export const R_NOFAP_USERNAME = 'NoFapWarriorr';
 export const R_NOFAP_TIMESTAMP = '';
 export const R_PORN_FREE_USERNAME = 'prawnsguacamole';
 export const R_PORN_FREE_TIMESTAMP = '';
@@ -52,3 +52,62 @@ export const TIMEFRAME = 'NA';
 // export const TIMEFRAME = '13 hours ago';
 // export const TIMEFRAME = '14 hours ago';
 // export const TIMEFRAME = '15 hours ago';
+
+
+export const getUsernameMarker = (location): ConfigType => {
+  if (location.pathname.toLowerCase().includes('/nofap/new')) {
+    return {
+      usernameValue: R_NOFAP_USERNAME,
+      usernameTimestamp: R_NOFAP_TIMESTAMP,
+      forumType: ForumType.rNofapForum
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/pornfree/new')) {
+    return {
+      usernameValue: R_PORN_FREE_USERNAME,
+      usernameTimestamp: R_PORN_FREE_TIMESTAMP,
+      forumType: ForumType.rPornFreeForum
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/pornaddiction/new')) {
+    return {
+      usernameValue: R_PORN_ADDICTION_USERNAME,
+      usernameTimestamp: R_PORN_ADDICTION_TIMESTAMP,
+      forumType: ForumType.rPornAddictionForum
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {
+    return {
+      usernameValue: R_NOFAP_CHRISTIANS_USERNAME,
+      usernameTimestamp: R_NOFAP_CHRISTIANS_TIMESTAMP,
+      forumType: ForumType.rNofapChristiansForum
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/nofapteens/new')) {
+    return {
+      usernameValue: R_NOFAP_TEENS_USERNAME,
+      usernameTimestamp: R_NOFAP_TEENS_TIMESTAMP,
+      forumType: ForumType.rNofapTeensForum
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/semenretention/new')) {
+    return {
+      usernameValue: R_SEMEN_RETENTION_USERNAME,
+      usernameTimestamp: R_SEMEN_RETENTION_TIMESTAMP,
+      forumType: ForumType.rSemenRetentionForum
+    }
+  }
+  if (location.pathname.toLowerCase().includes('/muslimnofap/new')) {
+    return {
+      usernameValue: R_MUSLIM_NOFAP_USERNAME,
+      usernameTimestamp: R_MUSLIM_NOFAP_TIMESTAMP,
+      forumType: ForumType.rMuslimNofapForum
+    }
+  }
+
+  return {
+    usernameValue: '',
+    usernameTimestamp: '',
+    forumType: ForumType.rNofapForum
+  };
+}

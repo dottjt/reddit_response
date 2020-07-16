@@ -1,11 +1,29 @@
-import { ConfigType } from './config';
+import { render } from 'inferno';
+import { createElement } from 'inferno-create-element';
+
 import { checkServerRunning } from './httpResponses';
+
+import {
+  ConfigType,
+} from '../util/config'
+import { SendMessageType } from '../types/serverTypes';
+import { openNewLink } from './sendMessageUtils';
+import UserPanel from '../components/UserPanel';
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
   const filteredATags = [...allATags as any].filter(tag => tag.innerText.includes('u/'));
   const usernames = filteredATags.map(tag => tag.innerText.split('/')[1]);
   return usernames;
+}
+
+export const createPrelimContainer = (filteredATags): void => {
+  const prelimContainer = document.createElement('div');
+  prelimContainer.id = 'reade-automate-container';
+  const firstElementContainer = filteredATags[0];
+
+  // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
+  firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(prelimContainer, firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
 }
 
 export const scrollToSpecifiedDate = (dateString: string, usernameConfig: ConfigType): Promise<string> => new Promise(resolve => {
@@ -74,4 +92,52 @@ export const addGlobalStyle = (css: string): void => {
   style.type = 'text/css';
   style.innerHTML = css.replace(/;/g, ' !important;');
   head.appendChild(style);
+}
+
+export const createPrelimLink = ({
+  dbUser,
+  titleText,
+  flairText,
+  aLinkHref,
+  prelimUrl,
+  index,
+  sendMessageType,
+  prelimContainer
+}) => {
+  const nodeContainer = document.createElement('div');
+  nodeContainer.id = `r${dbUser.username}-${index}`;
+
+  render(
+    <div>
+      <a
+        style={{ display: 'block', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }}
+        onclick={() => openNewLink(prelimUrl, SendMessageType.NA)}
+      >
+        <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
+        <span style={{ 'margin-bottom': '0.5rem' }}>{titleText}</span>
+        <p>{flairText}</p>
+      </a>
+      <a data-click-id='body' href={`${aLinkHref}`}>Show Post</a>
+    </div>, nodeContainer
+  );
+
+  prelimContainer?.appendChild(nodeContainer);
+}
+
+export const renderUserPanel = ({
+  tag, tagUsername, index, dbUser, usernameConfig
+}) => {
+  const rootId = `r${tagUsername}-${index}`;
+  const root = document.createElement('div');
+  root.id = rootId;
+  tag.parentNode.insertBefore(root, tag);
+  tag.remove();
+
+  const domContainer = document.querySelector(`#${rootId}`);
+  if (domContainer) {
+    render(<UserPanel
+      dbUser={dbUser}
+      usernameConfig={usernameConfig}/>, domContainer);
+  }
+
 }

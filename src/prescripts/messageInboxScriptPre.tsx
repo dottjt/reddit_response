@@ -1,6 +1,6 @@
 import { populateReceivedMessages } from '../util/httpResponses.js';
 import { PopulateReceivedMessagesPayload, PopulateReceivedMessagesPayloadEXTREME } from '../types/tamperMonkeyTypes.js';
-import { filterRedditInboxMessages } from '../util/filter/filterIndex.js';
+import { filterRedditInboxMessages } from '../util/filter/messageInboxFilter.js';
 import {
   filterReplyMessageList,
   generateReplyMessageList,
