@@ -75,7 +75,6 @@ export const compileReplyMessageList = async (filteredMessageList: PopulateRecei
   for (const item of filteredMessageList) {
     const compiledUser: CompiledFullUserObject = await latestUnreadMessagesInformation({ username: item.username_sending });
     const isUserLastMessagedUser: boolean = INBOX_LAST_MESSAGE_USER === compiledUser.username;
-
     // const otherUserMessages: string[] = filteredMessageList
     //   .filter(messageItem => messageItem.username_sending === compiledUser.username && messageItem.message !== item.message)
     //   .map(messageItem => messageItem.message);
@@ -83,8 +82,9 @@ export const compileReplyMessageList = async (filteredMessageList: PopulateRecei
     const otherUserMessages: { message: string, order: string }[] = filteredMessageList
       .filter(messageItem => messageItem.username_sending === compiledUser.username && messageItem.message !== item.message)
       .reduce((acc, messageItem, index) => {
-        const itemIndex: number = filteredMessageList.findIndex(item => item.message === messageItem.message);
-        const order: string = itemIndex > index ? 'below' : 'above';
+        const itemIndex: number = filteredMessageList.findIndex(innerItem => innerItem.message === item.message);
+        const filterItemIndex: number = filteredMessageList.findIndex(innerItem => innerItem.message === messageItem.message);
+        const order: string = itemIndex < filterItemIndex ? 'below' : 'above';
 
         return acc.concat({
           order,

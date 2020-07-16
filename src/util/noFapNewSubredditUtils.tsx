@@ -114,8 +114,8 @@ export const createPrelimLink = ({
         onclick={() => openNewLink(prelimUrl, SendMessageType.NA)}
       >
         <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
-        <span style={{ 'margin-bottom': '0.5rem' }}>{titleText}</span>
-        <p>{flairText}</p>
+        <span>{titleText}</span>
+        <p style={{ 'margin-top': '0.5rem' }}>{flairText}</p>
       </a>
       <a data-click-id='body' href={`${aLinkHref}`}>Show Post</a>
     </div>, nodeContainer

@@ -1,9 +1,9 @@
 import { SendMessageType, Message, UserType } from '../../types/serverTypes';
 import { CompiledFullUserObject, PopulateReceivedMessagesPayloadEXTREME } from '../../types/tamperMonkeyTypes';
-import { middleGuideNoWorries, middleGuideLinkYou } from '../responses/middle';
+import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit } from './messageInboxFilterLogic';
+import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide } from './messageInboxFilterLogic';
 
 export const filterRedditInboxMessages = (
   messagePayload: PopulateReceivedMessagesPayloadEXTREME,
@@ -50,16 +50,20 @@ export const filterRedditInboxMessages = (
         }
       }
 
-      // tips on meditating?
-      // TODO Will have to create the thing for this as well.
+      // Meditation
+      if (toMeditateGuide(messagePayload)) {
+        return {
+          messageText: middleGuideMeditationAdvice,
+          messageType: SendMessageType.MiddleGuideMeditationAdvice,
+        }
+      }
 
       // That's fantastic
       // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
       // I will have to careful check that it DOES NOT contain certain things.
       // if (
-      //   new RegExp(/have started doing meditation/i).test(messagePayload.message)
-      //   || new RegExp(/i ?(.*) meditate ?(for 10 minutes|.*) daily/i).test(messagePayload.message) // will need to actually test this.
-      //   || new RegExp(/(what is|whats|what's) (your|the) website/i).test(messagePayload.message)
+      //   new RegExp(//i).test(messagePayload.message)
+      //   || new RegExp(//i).test(messagePayload.message) // will need to actually test this.
       // ) {
       //   return {
       //     messageText: finalFantastic,

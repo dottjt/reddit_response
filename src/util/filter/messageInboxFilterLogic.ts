@@ -25,7 +25,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/please send it/i).test(messagePayload.message)
   || new RegExp(/if you sent ?(me)? the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/(check|read|get|see|visit|hear about|know about|look into) ?(of)? ?(that|the|about|ur|your)? (any|it|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+  || new RegExp(/(check|read|get|see|visit|hear about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/(it|That) would be (super|great|cool)/i).test(messagePayload.message)
   || new RegExp(/you could share/i).test(messagePayload.message)
   || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
@@ -36,6 +36,8 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/^yes$/i).test(messagePayload.message)
   || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
 
+// TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
+// Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
 
 export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
@@ -44,8 +46,13 @@ export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload):
   || new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/What site have you/i).test(messagePayload.message)
 
+export const toMeditateGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+  new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
+  || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
+  // tips on meditating?
+
 export const toHardTime = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
-  new RegExp(/I (don’t|don't) do much for my mental health/i).test(messagePayload.message)
+  new RegExp(/I (don’t|dont|don't) do (anything|much) for my mental health/i).test(messagePayload.message)
   || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
 // i don’t but i’d like to
 
@@ -57,4 +64,3 @@ export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload)
   || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
   || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
   || new RegExp(/for sharing/i).test(messagePayload.message)
-

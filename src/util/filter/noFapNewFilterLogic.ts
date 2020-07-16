@@ -1,5 +1,6 @@
 export const toRemoveInitial = (titleText: string, flairText: string): boolean =>
-  new RegExp(/profile/i).test(titleText)
+  flairText === 'Success Story'
+  || new RegExp(/profile/i).test(titleText)
     // || new RegExp(/("|“|')/i).test(titleText) // never do this, ever. breaks everything
     || new RegExp(/gift/i).test(titleText)
     || new RegExp(/(celebrate)/i).test(titleText)
@@ -8,6 +9,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/diary/i).test(titleText)
     || new RegExp(/(tik tok|tiktok)/i).test(titleText)
     || new RegExp(/moral/i).test(titleText)
+    || new RegExp(/anal/i).test(titleText)
     || new RegExp(/(a reminder|remember this)/i).test(titleText)
     || new RegExp(/(cancer|prostatitis)/i).test(titleText)
     // || new RegExp(/(week|days) strong/i).test(titleText)
@@ -119,7 +121,7 @@ export const toStartedAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/officially day 1/i).test(titleText)
     // || new RegExp(/my first post/i).test(titleText) // potentially inaccurate
     || new RegExp(/try to do this NoFap/i).test(titleText)
-    || new RegExp(/trying to start/i).test(titleText)
+    || new RegExp(/(wanna|want|trying) to start/i).test(titleText)
     || new RegExp(/start of the journey/i).test(titleText)
     || new RegExp(/(Let's|lets) do this/i).test(titleText)
     || new RegExp(/day 1 of (no fap|reboot|re boot)/i).test(titleText)
@@ -162,11 +164,11 @@ export const toGeneralAdvice = (titleText: string, flairText: string): boolean =
     // I am Trying Nofap From Last 1.5 years But I keep Failing, is there any Improvement i can do?
     // Advice
 
+    // flairText === 'Relapse Report'
 export const toRelapseAdvice = (titleText: string, flairText: string): boolean =>
-  flairText === 'Relapse Report'
-  || new RegExp(/failed first attempt/i).test(titleText)
+  new RegExp(/failed first attempt/i).test(titleText)
   || new RegExp(/(I|just) ?(have)? (relapsed|failed)/i).test(titleText)
-  || new RegExp(/relapsed after/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
+  || new RegExp(/relapsed (after|on day)/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
   || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
   || new RegExp(/(broke my|lost my) ?(.*) (streak)/i).test(titleText)
   || new RegExp(/^relapsed\.$/i).test(titleText)
