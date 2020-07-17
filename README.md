@@ -14,9 +14,13 @@ Although there are a heap of features I can build into it, I would consider it m
 ## Improvements
 
 - Did I just relapse or not? MESSAGE
+- in the above/below message, it would be nice to know if the message has been sent inboxMessage
+- Should show DONE if they have EVER received a final message. Period. 
 
 ## Nice To Have
 
+
+- Whether a message was sent automatically by the bot or not.
 - fix up the inferno renders at the top, they're a bit of a mess, ya'll.
 - Track original post as part of the message.
 - Also, save the date (user chatted)

@@ -5,7 +5,7 @@ import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAd
 import { ConfigType } from '../config';
 import { finalJoinSubreddit, finalFantastic } from '../responses/final';
 
-import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner } from './noFapNewFilterLogic';
+import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner, toRemoveFinal } from './noFapNewFilterLogic';
 import { followRelapseAdvice } from '../responses/follow';
 
 
@@ -19,7 +19,7 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
 
   // TO REMOVE
   if (toRemoveInitial(titleText, flairText)) {
-    console.log(`Deleted: ${titleText}`);
+    console.log(`Deleted: ${flairText} - ${titleText}`);
     return {
       shouldDeleteElementImmediately: true,
       sendMessageType: undefined,
@@ -178,13 +178,13 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
 
 
   // Final Delete
-  // if (toRemoveFinal(titleText, flairText)) {
-  //   return {
-  //     shouldDeleteElementImmediately: true,
-  //     sendMessageType: undefined,
-  //     prelimUrl: undefined
-  //   }
-  // }
+  if (toRemoveFinal(titleText, flairText)) {
+    return {
+      shouldDeleteElementImmediately: true,
+      sendMessageType: undefined,
+      prelimUrl: undefined
+    }
+  }
 
   return {
     shouldDeleteElementImmediately: false,

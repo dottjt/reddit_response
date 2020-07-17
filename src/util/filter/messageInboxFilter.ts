@@ -14,7 +14,7 @@ export const filterRedditInboxMessages = (
 } => {
   const compiledUser: CompiledFullUserObject = messagePayload.compiledUser;
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
-
+  const lastReceivedMessage: Message | undefined = compiledUser.lastReceivedMessage;
 
   if (compiledUser.userType === UserType.UserHostile) {
     return {
@@ -30,7 +30,7 @@ export const filterRedditInboxMessages = (
     }
   }
 
-  if (
+  if ( // if I've sent a start message, and they've returned a start message.
     (lastSentMessage?.type.includes('start') || lastSentMessage?.type.includes('follow')) &&
     (messagePayload.type === SendMessageType.UserReplyStart || messagePayload.type === SendMessageType.UserReplyFollow)
     ) {
@@ -88,11 +88,16 @@ export const filterRedditInboxMessages = (
 
   // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
   // basically only triggers poorly if
+
+  //
   if (
     !moreThanOneMessage &&
     messagePayload.type === SendMessageType.UserReplyMiddle &&
+    lastReceivedMessage?.type === SendMessageType.UserReplyMiddle &&
     lastSentMessage?.type.includes('middle')
     ) {
+      // TODO I Think there's a bug here.
+      console.log(messagePayload.compiledUser.username, messagePayload.type, lastSentMessage?.type);
       // Join Subreddit
       if (toJoinSubreddit(messagePayload)) {
         return {

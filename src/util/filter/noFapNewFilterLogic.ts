@@ -10,8 +10,11 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/(tik tok|tiktok)/i).test(titleText)
     || new RegExp(/moral/i).test(titleText)
     || new RegExp(/anal/i).test(titleText)
+    || new RegExp(/motivational thought/i).test(titleText)
     || new RegExp(/(a reminder|remember this)/i).test(titleText)
-    || new RegExp(/(cancer|prostatitis)/i).test(titleText)
+    || new RegExp(/(Don't|Don't|dont) mind me/i).test(titleText)
+    || new RegExp(/(cancer|prostatitis|erection)/i).test(titleText)
+    || new RegExp(/a study/i).test(titleText)
     // || new RegExp(/(week|days) strong/i).test(titleText)
     // || new RegExp(/passed (day|week)/i).test(titleText)
     // || new RegExp(/become the/i).test(titleText)
@@ -23,7 +26,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // || new RegExp(/(weeks|days) porn free/i).test(titleText)
     // || new RegExp(/learnt/i).test(titleText)
 
-    || new RegExp(/^(Don't|Don't|dont|) give up$/i).test(titleText)
+    || new RegExp(/^(Don't|Don't|dont) give up$/i).test(titleText)
     || new RegExp(/relapsed intentionally/i).test(titleText)
     || new RegExp(/found something that/i).test(titleText)
     // || new RegExp(/(women|girl)/i).test(titleText) // can't because there are good cases for this.
@@ -52,16 +55,18 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
     || new RegExp(/my benefits/i).test(titleText)
     || new RegExp(/placebo/i).test(titleText)
-    || new RegExp(/(balls|penis|pelvic|genital|testicle)/i).test(titleText)
+    || new RegExp(/(balls|penis|pelvic|genital|testic)/i).test(titleText)
     || new RegExp(/accountability post/i).test(titleText)
     || new RegExp(/illusion/i).test(titleText)
     || new RegExp(/counts as relapse/i).test(titleText) // look into this.
     // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
-    || new RegExp(/sex/i).test(titleText) // look into this
+    // || new RegExp(/sex/i).test(titleText) // look into this (can't do this because of sexual urges)
     || new RegExp(/journal entry/i).test(titleText) // look into this.
     || new RegExp(/(mum|dad)/i).test(titleText) // look into this.
     || new RegExp(/benefits till now/i).test(titleText)
     || new RegExp(/harmful effect/i).test(titleText)
+    || new RegExp(/interesting dream/i).test(titleText)
+    || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
     // || new RegExp(/girlfriend/i).test(titleText) // look into this
 
     // || new RegExp(/should I go/i).test(titleText)
@@ -75,6 +80,11 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // || new RegExp(/pro tip/i).test(titleText)
     // || new RegExp(/update from/i).test(titleText)
 
+    //
+    // I almost caved
+    // NoFap helps with my Breakup
+    // first day after relapse
+
     // no urges
     // is this normal?
 
@@ -85,12 +95,16 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // the key is to
     // harmful effects
 
+    // edgeCASES
+      // What does your sex life looks like after you successfully quit porn?
+      // Deleted: Motivate Me - I’ve been heavily masturbating since my early teens and have smoked weed regularly for the past year...
+      // userscript.html?name=Reddit%20NoFap%20New%20Script.user.js&id=cd407b2d-ccbc-47ff-8aa0-1e9a382be0ab:16 Deleted: Question - Can’t focus on task at hand due to sexual urges. What are the options?
+
+
 export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
-  new RegExp(/completed/i).test(titleText) // look into this
-  || new RegExp(/^(day|week) \d+$/i).test(titleText) // look into this
-  // || new RegExp(/^(day|week) \d+.$/i).test(titleText) // look into this
-  || new RegExp(/^(day|week) \d+ (complete|done)/i).test(titleText)
+  new RegExp(/^(day|week) \d+ (complete|done)/i).test(titleText)
   || new RegExp(/\d+ (week|day).* (complete|done)/i).test(titleText)
+  || new RegExp(/(1st|first) (week|month) complete/i).test(titleText)
   // || new RegExp(/^\d+th day/i).test(titleText)
   // || new RegExp(/beginning of week/i).test(titleText) // look into this
   // || new RegExp(/dreams/i).test(titleText) // look into this
@@ -98,7 +112,11 @@ export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
   // || new RegExp(/^\d+ (weeks|week)$/i).test(titleText)
   // || new RegExp(/(one|two|three|four|five) weeks in/i).test(titleText)
   // || new RegExp(/^\d+ (week|weeks) in/i).test(titleText)
-  || new RegExp(/completed \d+ (days|weeks)/i).test(titleText)
+  // || new RegExp(/completed \d+ (days|weeks)/i).test(titleText)
+
+
+  // month free
+  // 30 day check-in
 // one week.
 // 100 days (can mean in the sense of challenge, so no. I need to combine with flairs such as victory to ensure that it has the right context.)
   // month
@@ -118,6 +136,7 @@ export const toStartedAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/starting NoFap/i).test(titleText)
     || new RegExp(/(I'm|im) done with this ?(.*) feeling/i).test(titleText)
     || new RegExp(/Day 1 Started/i).test(titleText)
+    || new RegExp(/^Day 1$/i).test(titleText)
     || new RegExp(/officially day 1/i).test(titleText)
     // || new RegExp(/my first post/i).test(titleText) // potentially inaccurate
     || new RegExp(/try to do this NoFap/i).test(titleText)
@@ -129,6 +148,7 @@ export const toStartedAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/stopping for good/i).test(titleText)
     || new RegExp(/(just) (begun|started)/i).test(titleText)
 
+    // decided to quit .* today
     // Day 1
     // Need Help + Flair New Never Fapper
     // Need help + Flair motivate me
@@ -159,6 +179,10 @@ export const toGeneralAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/how to get past .* (week|days|day)/i).test(titleText)
     || new RegExp(/Trying Nofap .* years/i).test(titleText)
     || new RegExp(/I keep failing/i).test(titleText)
+    || new RegExp(/Relapsed at \d+ days/i).test(titleText)
+    || new RegExp(/Relapsed at day \d+/i).test(titleText)
+
+
     // || new RegExp(/urges keep coming/i).test(titleText)
 
     // I am Trying Nofap From Last 1.5 years But I keep Failing, is there any Improvement i can do?
@@ -173,11 +197,14 @@ export const toRelapseAdvice = (titleText: string, flairText: string): boolean =
   || new RegExp(/(broke my|lost my) ?(.*) (streak)/i).test(titleText)
   || new RegExp(/^relapsed\.$/i).test(titleText)
   || new RegExp(/^relapsed$/i).test(titleText)
+  || new RegExp(/^relapsed today/i).test(titleText)
+  || new RegExp(/relapsing after a/i).test(titleText)
+  || new RegExp(/relapsed \d+ times today/i).test(titleText)
   // relapsed (will have to look into this)
 
 export const toWetDreamAdvice = (titleText: string, flairText: string): boolean =>
   new RegExp(/wet dream advice/i).test(titleText)
-  || new RegExp(/just had a wet dream/i).test(titleText)
+  || new RegExp(/had a wet dream/i).test(titleText)
 
 export const toAccountabilityPartner = (titleText: string, flairText: string): boolean =>
   new RegExp(/seeking a partner/i).test(titleText)

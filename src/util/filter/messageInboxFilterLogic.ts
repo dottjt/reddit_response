@@ -22,10 +22,10 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/like to see (it|that)/i).test(messagePayload.message)
   || new RegExp(/send it over/i).test(messagePayload.message)
   || new RegExp(/(interested|interesting) (to know about|with|in|in viewing) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+  || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/please send it/i).test(messagePayload.message)
   || new RegExp(/if you sent ?(me)? the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/(check|read|get|see|visit|hear about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+  || new RegExp(/(check|read|get|see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/(it|That) would be (super|great|cool)/i).test(messagePayload.message)
   || new RegExp(/you could share/i).test(messagePayload.message)
   || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
@@ -35,7 +35,9 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/^sure$/i).test(messagePayload.message)
   || new RegExp(/^yes$/i).test(messagePayload.message)
   || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
+  || new RegExp(/comfortable with sharing it/i).test(messagePayload.message)
 
+  // article
 // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
 // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
 
@@ -45,6 +47,7 @@ export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload):
   || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/What site have you/i).test(messagePayload.message)
+  // Where can I find this resource?
 
 export const toMeditateGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
