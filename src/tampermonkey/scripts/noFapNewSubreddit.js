@@ -1,5 +1,7 @@
-!function(){"use strict";
-/*! *****************************************************************************
+(function () {
+    'use strict';
+
+    /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -12,4 +14,3120 @@
     LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
     OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
     PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */var e=function(t,n){return(e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(t,n)};function t(e,t,n,o){return new(n||(n=Promise))((function(r,i){function a(e){try{l(o.next(e))}catch(e){i(e)}}function s(e){try{l(o.throw(e))}catch(e){i(e)}}function l(e){var t;e.done?r(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(a,s)}l((o=o.apply(e,t||[])).next())}))}function n(e,t){var n,o,r,i,a={label:0,sent:function(){if(1&r[0])throw r[1];return r[1]},trys:[],ops:[]};return i={next:s(0),throw:s(1),return:s(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function s(i){return function(s){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,o&&(r=2&i[0]?o.return:i[0]?o.throw||((r=o.return)&&r.call(o),0):o.next)&&!(r=r.call(o,i[1])).done)return r;switch(o=0,r&&(i=[2&i[0],r.value]),i[0]){case 0:case 1:r=i;break;case 4:return a.label++,{value:i[1],done:!1};case 5:a.label++,o=i[1],i=[0];continue;case 7:i=a.ops.pop(),a.trys.pop();continue;default:if(!(r=a.trys,(r=r.length>0&&r[r.length-1])||6!==i[0]&&2!==i[0])){a=0;continue}if(3===i[0]&&(!r||i[1]>r[0]&&i[1]<r[3])){a.label=i[1];break}if(6===i[0]&&a.label<r[1]){a.label=r[1],r=i;break}if(r&&a.label<r[2]){a.label=r[2],a.ops.push(i);break}r[2]&&a.ops.pop(),a.trys.pop();continue}i=t.call(e,a)}catch(e){i=[6,e],o=0}finally{n=r=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,s])}}}function o(){for(var e=0,t=0,n=arguments.length;t<n;t++)e+=arguments[t].length;var o=Array(e),r=0;for(t=0;t<n;t++)for(var i=arguments[t],a=0,s=i.length;a<s;a++,r++)o[r]=i[a];return o}var r=function(e,o,r){return t(void 0,void 0,void 0,(function(){var t;return n(this,(function(n){switch(n.label){case 0:return n.trys.push([0,3,,4]),[4,fetch("http://localhost:"+r+o,(i=e,{method:"POST",mode:"cors",credentials:"same-origin",headers:{"Content-Type":"application/json"},referrerPolicy:"no-referrer",body:JSON.stringify({data:i})}))];case 1:return[4,n.sent().json()];case 2:return[2,n.sent()];case 3:throw t=n.sent(),console.log("Server not started."),new Error(o+" - "+t);case 4:return[2]}var i}))}))},i=Array.isArray;function a(e){var t=typeof e;return"string"===t||"number"===t}function s(e){return null==e}function l(e){return null===e||!1===e||!0===e||void 0===e}function u(e){return"function"==typeof e}function d(e){return"string"==typeof e}function c(e){return null===e}function p(e,t){var n={};if(e)for(var o in e)n[o]=e[o];if(t)for(var r in t)n[r]=t[r];return n}function f(e){return!c(e)&&"object"==typeof e}var m={};function h(e){return e.substr(2).toLowerCase()}function v(e,t){e.appendChild(t)}function g(e,t,n){c(n)?v(e,t):e.insertBefore(t,n)}function y(e,t){e.removeChild(t)}function w(e){for(var t=0;t<e.length;t++)e[t]()}function b(e,t,n){var o=e.children;return 4&n?o.$LI:8192&n?2===e.childFlags?o:o[t?0:o.length-1]:o}function x(e,t){for(var n;e;){if(2033&(n=e.flags))return e.dom;e=b(e,t,n)}return null}function k(e,t){do{var n=e.flags;if(2033&n)return void y(t,e.dom);var o=e.children;if(4&n&&(e=o.$LI),8&n&&(e=o),8192&n){if(2!==e.childFlags){for(var r=0,i=o.length;r<i;++r)k(o[r],t);return}e=o}}while(e)}function R(e,t,n){do{var o=e.flags;if(2033&o)return void g(t,e.dom,n);var r=e.children;if(4&o&&(e=r.$LI),8&o&&(e=r),8192&o){if(2!==e.childFlags){for(var i=0,a=r.length;i<a;++i)R(r[i],t,n);return}e=r}}while(e)}function E(e,t,n){return e.constructor.getDerivedStateFromProps?p(n,e.constructor.getDerivedStateFromProps(t,n)):n}var S={v:!1},T={componentComparator:null,createVNode:null,renderComplete:null};function N(e,t){e.textContent=t}function I(e,t){return f(e)&&e.event===t.event&&e.data===t.data}function A(e,t){for(var n in t)void 0===e[n]&&(e[n]=t[n]);return e}function F(e,t){return!!u(e)&&(e(t),!0)}function U(e,t,n,o,r,i,a,s){this.childFlags=e,this.children=t,this.className=n,this.dom=null,this.flags=o,this.key=void 0===r?null:r,this.props=void 0===i?null:i,this.ref=void 0===a?null:a,this.type=s}function $(e,t,n,o,r,s,u,p){var f=void 0===r?1:r,m=new U(f,o,n,e,u,s,p,t);return T.createVNode&&T.createVNode(m),0===f&&function(e,t){var n,o=1;if(l(t))n=t;else if(a(t))o=16,n=t;else if(i(t)){for(var r=t.length,s=0;s<r;++s){var u=t[s];if(l(u)||i(u)){n=n||t.slice(0,s),H(t,n,s,"");break}if(a(u))(n=n||t.slice(0,s)).push(P(u,"$"+s));else{var p=u.key,f=(81920&u.flags)>0,m=c(p),h=d(p)&&"$"===p[0];f||m||h?(n=n||t.slice(0,s),(f||h)&&(u=D(u)),(m||h)&&(u.key="$"+s),n.push(u)):n&&n.push(u),u.flags|=65536}}o=0===(n=n||t).length?1:8}else(n=t).flags|=65536,81920&t.flags&&(n=D(t)),o=2;e.children=n,e.childFlags=o}(m,m.children),m}function C(e,t,n,o,r){var i=new U(1,null,null,e=function(e,t){return 12&e?e:t.prototype&&t.prototype.render?4:t.render?32776:8}(e,t),o,function(e,t,n){var o=(32768&e?t.render:t).defaultProps;return s(o)?n:s(n)?p(o,null):A(n,o)}(e,t,n),function(e,t,n){if(4&e)return n;var o=(32768&e?t.render:t).defaultHooks;return s(o)?n:s(n)?o:A(n,o)}(e,t,r),t);return T.createVNode&&T.createVNode(i),i}function P(e,t){return new U(1,s(e)||!0===e||!1===e?"":e,null,16,t,null,null,null)}function M(e,t,n){var o=$(8192,8192,null,e,t,null,n,null);switch(o.childFlags){case 1:o.children=L(),o.childFlags=2;break;case 16:o.children=[P(e)],o.childFlags=4}return o}function D(e){var t=-16385&e.flags,n=e.props;if(14&t&&!c(n)){var o=n;for(var r in n={},o)n[r]=o[r]}return 0==(8192&t)?new U(e.childFlags,e.children,e.className,t,e.key,n,e.ref,e.type):function(e){var t,n=e.children,o=e.childFlags;if(2===o)t=D(n);else if(12&o){t=[];for(var r=0,i=n.length;r<i;++r)t.push(D(n[r]))}return M(t,o,e.key)}(e)}function L(){return P("",null)}function H(e,t,n,o){for(var r=e.length;n<r;n++){var s=e[n];if(!l(s)){var u=o+"$"+n;if(i(s))H(s,t,0,u);else{if(a(s))s=P(s,u);else{var p=s.key,f=d(p)&&"$"===p[0];(81920&s.flags||f)&&(s=D(s)),s.flags|=65536,f?p.substring(0,o.length)!==o&&(s.key=o+p):c(p)?s.key=u:s.key=o+p}t.push(s)}}}}function V(e){return l(e)||a(e)?P(e,null):i(e)?M(e,0,null):16384&e.flags?D(e):e}var B="http://www.w3.org/1999/xlink",W="http://www.w3.org/XML/1998/namespace",O={"xlink:actuate":B,"xlink:arcrole":B,"xlink:href":B,"xlink:role":B,"xlink:show":B,"xlink:title":B,"xlink:type":B,"xml:base":W,"xml:lang":W,"xml:space":W};function j(e){return{onClick:e,onDblClick:e,onFocusIn:e,onFocusOut:e,onKeyDown:e,onKeyPress:e,onKeyUp:e,onMouseDown:e,onMouseMove:e,onMouseUp:e,onTouchEnd:e,onTouchMove:e,onTouchStart:e}}var _=j(0),q=j(null),G=j(!0);function z(e,t){var n=t.$EV;return n||(n=t.$EV=j(null)),n[e]||1==++_[e]&&(q[e]=function(e){var t="onClick"===e||"onDblClick"===e?function(e){return function(t){0===t.button?Y(t,!0,e,Z(t)):t.stopPropagation()}}(e):function(e){return function(t){Y(t,!1,e,Z(t))}}(e);return document.addEventListener(h(e),t),t}(e)),n}function Q(e,t){var n=t.$EV;n&&n[e]&&(0==--_[e]&&(document.removeEventListener(h(e),q[e]),q[e]=null),n[e]=null)}function Y(e,t,n,o){var r=function(e){return u(e.composedPath)?e.composedPath()[0]:e.target}(e);do{if(t&&r.disabled)return;var i=r.$EV;if(i){var a=i[n];if(a&&(o.dom=r,a.event?a.event(a.data,e):a(e),e.cancelBubble))return}r=r.parentNode}while(!c(r))}function X(){this.cancelBubble=!0,this.immediatePropagationStopped||this.stopImmediatePropagation()}function J(){return this.defaultPrevented}function K(){return this.cancelBubble}function Z(e){var t={dom:document};return e.isDefaultPrevented=J,e.isPropagationStopped=K,e.stopPropagation=X,Object.defineProperty(e,"currentTarget",{configurable:!0,get:function(){return t.dom}}),t}function ee(e,t,n){if(e[t]){var o=e[t];o.event?o.event(o.data,n):o(n)}else{var r=t.toLowerCase();e[r]&&e[r](n)}}function te(e,t){var n=function(n){var o=this.$V;if(o){var r=o.props||m,i=o.dom;if(d(e))ee(r,e,n);else for(var a=0;a<e.length;++a)ee(r,e[a],n);if(u(t)){var s=this.$V,l=s.props||m;t(l,i,!1,s)}}};return Object.defineProperty(n,"wrapped",{configurable:!1,enumerable:!1,value:!0,writable:!1}),n}function ne(e,t,n){var o="$"+t,r=e[o];if(r){if(r[1].wrapped)return;e.removeEventListener(r[0],r[1]),e[o]=null}u(n)&&(e.addEventListener(t,n),e[o]=[t,n])}function oe(e){return"checkbox"===e||"radio"===e}var re=te("onInput",se),ie=te(["onClick","onChange"],se);function ae(e){e.stopPropagation()}function se(e,t){var n=e.type,o=e.value,r=e.checked,i=e.multiple,a=e.defaultValue,l=!s(o);n&&n!==t.type&&t.setAttribute("type",n),s(i)||i===t.multiple||(t.multiple=i),s(a)||l||(t.defaultValue=a+""),oe(n)?(l&&(t.value=o),s(r)||(t.checked=r)):l&&t.value!==o?(t.defaultValue=o,t.value=o):s(r)||(t.checked=r)}function le(e,t){if("option"===e.type)!function(e,t){var n=e.props||m,o=e.dom;o.value=n.value,n.value===t||i(t)&&-1!==t.indexOf(n.value)?o.selected=!0:s(t)&&s(n.selected)||(o.selected=n.selected||!1)}(e,t);else{var n=e.children,o=e.flags;if(4&o)le(n.$LI,t);else if(8&o)le(n,t);else if(2===e.childFlags)le(n,t);else if(12&e.childFlags)for(var r=0,a=n.length;r<a;++r)le(n[r],t)}}ae.wrapped=!0;var ue=te("onChange",de);function de(e,t,n,o){var r=Boolean(e.multiple);s(e.multiple)||r===t.multiple||(t.multiple=r);var i=e.selectedIndex;if(-1===i&&(t.selectedIndex=-1),1!==o.childFlags){var a=e.value;"number"==typeof i&&i>-1&&t.options[i]&&(a=t.options[i].value),n&&s(a)&&(a=e.defaultValue),le(o,a)}}var ce,pe,fe=te("onInput",he),me=te("onChange");function he(e,t,n){var o=e.value,r=t.value;if(s(o)){if(n){var i=e.defaultValue;s(i)||i===r||(t.defaultValue=i,t.value=i)}}else r!==o&&(t.defaultValue=o,t.value=o)}function ve(e,t,n,o,r,i){64&e?se(o,n):256&e?de(o,n,r,t):128&e&&he(o,n,r),i&&(n.$V=t)}function ge(e,t,n){64&e?function(e,t){oe(t.type)?(ne(e,"change",ie),ne(e,"click",ae)):ne(e,"input",re)}(t,n):256&e?function(e){ne(e,"change",ue)}(t):128&e&&function(e,t){ne(e,"input",fe),t.onChange&&ne(e,"change",me)}(t,n)}function ye(e){return e.type&&oe(e.type)?!s(e.checked):!s(e.value)}function we(e){e&&!F(e,null)&&e.current&&(e.current=null)}function be(e,t,n){e&&(u(e)||void 0!==e.current)&&n.push((function(){F(e,t)||void 0===e.current||(e.current=t)}))}function xe(e,t){ke(e),k(e,t)}function ke(e){var t,n=e.flags,o=e.children;if(481&n){t=e.ref;var r=e.props;we(t);var i=e.childFlags;if(!c(r))for(var a=Object.keys(r),l=0,d=a.length;l<d;l++){var p=a[l];G[p]&&Q(p,e.dom)}12&i?Re(o):2===i&&ke(o)}else o&&(4&n?(u(o.componentWillUnmount)&&o.componentWillUnmount(),we(e.ref),o.$UN=!0,ke(o.$LI)):8&n?(!s(t=e.ref)&&u(t.onComponentWillUnmount)&&t.onComponentWillUnmount(x(e,!0),e.props||m),ke(o)):1024&n?xe(o,e.ref):8192&n&&12&e.childFlags&&Re(o))}function Re(e){for(var t=0,n=e.length;t<n;++t)ke(e[t])}function Ee(e){e.textContent=""}function Se(e,t,n){Re(n),8192&t.flags?k(t,e):Ee(e)}function Te(e,t,n,o){var r=e&&e.__html||"",i=t&&t.__html||"";r!==i&&(s(i)||function(e,t){var n=document.createElement("i");return n.innerHTML=t,n.innerHTML===e.innerHTML}(o,i)||(c(n)||(12&n.childFlags?Re(n.children):2===n.childFlags&&ke(n.children),n.children=null,n.childFlags=1),o.innerHTML=i))}function Ne(e,t,n,o,r,i,a){switch(e){case"children":case"childrenType":case"className":case"defaultValue":case"key":case"multiple":case"ref":case"selectedIndex":break;case"autoFocus":o.autofocus=!!n;break;case"allowfullscreen":case"autoplay":case"capture":case"checked":case"controls":case"default":case"disabled":case"hidden":case"indeterminate":case"loop":case"muted":case"novalidate":case"open":case"readOnly":case"required":case"reversed":case"scoped":case"seamless":case"selected":o[e]=!!n;break;case"defaultChecked":case"value":case"volume":if(i&&"value"===e)break;var l=s(n)?"":n;o[e]!==l&&(o[e]=l);break;case"style":!function(e,t,n){if(s(t))n.removeAttribute("style");else{var o,r,i=n.style;if(d(t))i.cssText=t;else if(s(e)||d(e))for(o in t)r=t[o],i.setProperty(o,r);else{for(o in t)(r=t[o])!==e[o]&&i.setProperty(o,r);for(o in e)s(t[o])&&i.removeProperty(o)}}}(t,n,o);break;case"dangerouslySetInnerHTML":Te(t,n,a,o);break;default:G[e]?function(e,t,n,o){if(u(n))z(e,o)[e]=n;else if(f(n)){if(I(t,n))return;z(e,o)[e]=n}else Q(e,o)}(e,t,n,o):111===e.charCodeAt(0)&&110===e.charCodeAt(1)?function(e,t,n,o){if(f(n)){if(I(t,n))return;n=function(e){var t=e.event;return function(n){t(e.data,n)}}(n)}ne(o,h(e),n)}(e,t,n,o):s(n)?o.removeAttribute(e):r&&O[e]?o.setAttributeNS(O[e],e,n):o.setAttribute(e,n)}}function Ie(e,t,n){var o=V(e.render(t,e.state,n)),r=n;return u(e.getChildContext)&&(r=p(n,e.getChildContext())),e.$CX=r,o}function Ae(e,t,n,o,r,i){var a=e.flags|=16384;481&a?function(e,t,n,o,r,i){var a=e.flags,l=e.props,u=e.className,d=e.children,p=e.childFlags,f=e.dom=function(e,t){return t?document.createElementNS("http://www.w3.org/2000/svg",e):document.createElement(e)}(e.type,o=o||(32&a)>0);s(u)||""===u||(o?f.setAttribute("class",u):f.className=u);if(16===p)N(f,d);else if(1!==p){var m=o&&"foreignObject"!==e.type;2===p?(16384&d.flags&&(e.children=d=D(d)),Ae(d,f,n,m,null,i)):8!==p&&4!==p||Ue(d,f,n,m,null,i)}c(t)||g(t,f,r);c(l)||function(e,t,n,o,r){var i=!1,a=(448&t)>0;for(var s in a&&(i=ye(n))&&ge(t,o,n),n)Ne(s,null,n[s],o,r,i,null);a&&ve(t,e,o,n,!0,i)}(e,a,l,f,o);be(e.ref,f,i)}(e,t,n,o,r,i):4&a?function(e,t,n,o,r,i){var a=function(e,t,n,o,r,i){var a=new t(n,o),s=a.$N=Boolean(t.getDerivedStateFromProps||a.getSnapshotBeforeUpdate);if(a.$SVG=r,a.$L=i,e.children=a,a.$BS=!1,a.context=o,a.props===m&&(a.props=n),s)a.state=E(a,n,a.state);else if(u(a.componentWillMount)){a.$BR=!0,a.componentWillMount();var l=a.$PS;if(!c(l)){var d=a.state;if(c(d))a.state=l;else for(var p in l)d[p]=l[p];a.$PS=null}a.$BR=!1}return a.$LI=Ie(a,n,o),a}(e,e.type,e.props||m,n,o,i);Ae(a.$LI,t,a.$CX,o,r,i),function(e,t,n){be(e,t,n),u(t.componentDidMount)&&n.push(function(e){return function(){e.componentDidMount()}}(t))}(e.ref,a,i)}(e,t,n,o,r,i):8&a?(function(e,t,n,o,r,i){Ae(e.children=V(function(e,t){return 32768&e.flags?e.type.render(e.props||m,e.ref,t):e.type(e.props||m,t)}(e,n)),t,n,o,r,i)}(e,t,n,o,r,i),function(e,t){var n=e.ref;s(n)||(F(n.onComponentWillMount,e.props||m),u(n.onComponentDidMount)&&t.push(function(e,t){return function(){e.onComponentDidMount(x(t,!0),t.props||m)}}(n,e)))}(e,i)):512&a||16&a?Fe(e,t,r):8192&a?function(e,t,n,o,r,i){var a=e.children,s=e.childFlags;12&s&&0===a.length&&(s=e.childFlags=2,a=e.children=L());2===s?Ae(a,n,r,o,r,i):Ue(a,n,t,o,r,i)}(e,n,t,o,r,i):1024&a&&function(e,t,n,o,r){Ae(e.children,e.ref,t,!1,null,r);var i=L();Fe(i,n,o),e.dom=i.dom}(e,n,t,r,i)}function Fe(e,t,n){var o=e.dom=document.createTextNode(e.children);c(t)||g(t,o,n)}function Ue(e,t,n,o,r,i){for(var a=0;a<e.length;++a){var s=e[a];16384&s.flags&&(e[a]=s=D(s)),Ae(s,t,n,o,r,i)}}function $e(e,t,n,o,r,i,a){var d=t.flags|=16384;e.flags!==d||e.type!==t.type||e.key!==t.key||2048&d?16384&e.flags?function(e,t,n,o,r,i){ke(e),0!=(t.flags&e.flags&2033)?(Ae(t,null,o,r,null,i),function(e,t,n){e.replaceChild(t,n)}(n,t.dom,e.dom)):(Ae(t,n,o,r,x(e,!0),i),k(e,n))}(e,t,n,o,r,a):Ae(t,n,o,r,i,a):481&d?function(e,t,n,o,r,i){var a,l=t.dom=e.dom,u=e.props,d=t.props,c=!1,p=!1;if(o=o||(32&r)>0,u!==d){var f=u||m;if((a=d||m)!==m)for(var h in(c=(448&r)>0)&&(p=ye(a)),a){var v=f[h],g=a[h];v!==g&&Ne(h,v,g,l,o,p,e)}if(f!==m)for(var y in f)s(a[y])&&!s(f[y])&&Ne(y,f[y],null,l,o,p,e)}var w=t.children,b=t.className;e.className!==b&&(s(b)?l.removeAttribute("class"):o?l.setAttribute("class",b):l.className=b);4096&r?function(e,t){e.textContent!==t&&(e.textContent=t)}(l,w):Ce(e.childFlags,t.childFlags,e.children,w,l,n,o&&"foreignObject"!==t.type,null,e,i);c&&ve(r,t,l,a,!1,p);var x=t.ref,k=e.ref;k!==x&&(we(k),be(x,l,i))}(e,t,o,r,d,a):4&d?function(e,t,n,o,r,i,a){var s=t.children=e.children;if(c(s))return;s.$L=a;var l=t.props||m,d=t.ref,f=e.ref,h=s.state;if(!s.$N){if(u(s.componentWillReceiveProps)){if(s.$BR=!0,s.componentWillReceiveProps(l,o),s.$UN)return;s.$BR=!1}c(s.$PS)||(h=p(h,s.$PS),s.$PS=null)}Pe(s,h,l,n,o,r,!1,i,a),f!==d&&(we(f),be(d,s,a))}(e,t,n,o,r,i,a):8&d?function(e,t,n,o,r,i,a){var l=!0,d=t.props||m,c=t.ref,p=e.props,f=!s(c),h=e.children;f&&u(c.onComponentShouldUpdate)&&(l=c.onComponentShouldUpdate(p,d));if(!1!==l){f&&u(c.onComponentWillUpdate)&&c.onComponentWillUpdate(p,d);var v=t.type,g=V(32768&t.flags?v.render(d,c,o):v(d,o));$e(h,g,n,o,r,i,a),t.children=g,f&&u(c.onComponentDidUpdate)&&c.onComponentDidUpdate(p,d)}else t.children=h}(e,t,n,o,r,i,a):16&d?function(e,t){var n=t.children,o=t.dom=e.dom;n!==e.children&&(o.nodeValue=n)}(e,t):512&d?t.dom=e.dom:8192&d?function(e,t,n,o,r,i){var a=e.children,s=t.children,l=e.childFlags,u=t.childFlags,d=null;12&u&&0===s.length&&(u=t.childFlags=2,s=t.children=L());var c=0!=(2&u);if(12&l){var p=a.length;(8&l&&8&u||c||!c&&s.length>p)&&(d=x(a[p-1],!1).nextSibling)}Ce(l,u,a,s,n,o,r,d,e,i)}(e,t,n,o,r,a):function(e,t,n,o){var r=e.ref,i=t.ref,a=t.children;if(Ce(e.childFlags,t.childFlags,e.children,a,r,n,!1,null,e,o),t.dom=e.dom,r!==i&&!l(a)){var s=a.dom;y(r,s),v(i,s)}}(e,t,o,a)}function Ce(e,t,n,o,r,i,a,s,l,u){switch(e){case 2:switch(t){case 2:$e(n,o,r,i,a,s,u);break;case 1:xe(n,r);break;case 16:ke(n),N(r,o);break;default:!function(e,t,n,o,r,i){ke(e),Ue(t,n,o,r,x(e,!0),i),k(e,n)}(n,o,r,i,a,u)}break;case 1:switch(t){case 2:Ae(o,r,i,a,s,u);break;case 1:break;case 16:N(r,o);break;default:Ue(o,r,i,a,s,u)}break;case 16:switch(t){case 16:!function(e,t,n){e!==t&&(""!==e?n.firstChild.nodeValue=t:N(n,t))}(n,o,r);break;case 2:Ee(r),Ae(o,r,i,a,s,u);break;case 1:Ee(r);break;default:Ee(r),Ue(o,r,i,a,s,u)}break;default:switch(t){case 16:Re(n),N(r,o);break;case 2:Se(r,l,n),Ae(o,r,i,a,s,u);break;case 1:Se(r,l,n);break;default:var d=0|n.length,c=0|o.length;0===d?c>0&&Ue(o,r,i,a,s,u):0===c?Se(r,l,n):8===t&&8===e?function(e,t,n,o,r,i,a,s,l,u){var d,c,p=i-1,f=a-1,m=0,h=e[m],v=t[m];e:{for(;h.key===v.key;){if(16384&v.flags&&(t[m]=v=D(v)),$e(h,v,n,o,r,s,u),e[m]=v,++m>p||m>f)break e;h=e[m],v=t[m]}for(h=e[p],v=t[f];h.key===v.key;){if(16384&v.flags&&(t[f]=v=D(v)),$e(h,v,n,o,r,s,u),e[p]=v,p--,f--,m>p||m>f)break e;h=e[p],v=t[f]}}if(m>p){if(m<=f)for(c=(d=f+1)<a?x(t[d],!0):s;m<=f;)16384&(v=t[m]).flags&&(t[m]=v=D(v)),++m,Ae(v,n,o,r,c,u)}else if(m>f)for(;m<=p;)xe(e[m++],n);else!function(e,t,n,o,r,i,a,s,l,u,d,c,p){var f,m,h,v=0,g=s,y=s,w=i-s+1,b=a-s+1,k=new Int32Array(b+1),E=w===o,S=!1,T=0,N=0;if(r<4||(w|b)<32)for(v=g;v<=i;++v)if(f=e[v],N<b){for(s=y;s<=a;s++)if(m=t[s],f.key===m.key){if(k[s-y]=v+1,E)for(E=!1;g<v;)xe(e[g++],l);T>s?S=!0:T=s,16384&m.flags&&(t[s]=m=D(m)),$e(f,m,l,n,u,d,p),++N;break}!E&&s>a&&xe(f,l)}else E||xe(f,l);else{var I={};for(v=y;v<=a;++v)I[t[v].key]=v;for(v=g;v<=i;++v)if(f=e[v],N<b)if(void 0!==(s=I[f.key])){if(E)for(E=!1;v>g;)xe(e[g++],l);k[s-y]=v+1,T>s?S=!0:T=s,16384&(m=t[s]).flags&&(t[s]=m=D(m)),$e(f,m,l,n,u,d,p),++N}else E||xe(f,l);else E||xe(f,l)}if(E)Se(l,c,e),Ue(t,l,n,u,d,p);else if(S){var A=function(e){var t=0,n=0,o=0,r=0,i=0,a=0,s=0,l=e.length;l>Me&&(Me=l,ce=new Int32Array(l),pe=new Int32Array(l));for(;n<l;++n)if(0!==(t=e[n])){if(o=ce[r],e[o]<t){pe[n]=o,ce[++r]=n;continue}for(i=0,a=r;i<a;)e[ce[s=i+a>>1]]<t?i=s+1:a=s;t<e[ce[i]]&&(i>0&&(pe[n]=ce[i-1]),ce[i]=n)}i=r+1;var u=new Int32Array(i);a=ce[i-1];for(;i-- >0;)u[i]=a,a=pe[a],ce[i]=0;return u}(k);for(s=A.length-1,v=b-1;v>=0;v--)0===k[v]?(16384&(m=t[T=v+y]).flags&&(t[T]=m=D(m)),Ae(m,l,n,u,(h=T+1)<r?x(t[h],!0):d,p)):s<0||v!==A[s]?R(m=t[T=v+y],l,(h=T+1)<r?x(t[h],!0):d):s--}else if(N!==b)for(v=b-1;v>=0;v--)0===k[v]&&(16384&(m=t[T=v+y]).flags&&(t[T]=m=D(m)),Ae(m,l,n,u,(h=T+1)<r?x(t[h],!0):d,p))}(e,t,o,i,a,p,f,m,n,r,s,l,u)}(n,o,r,i,a,d,c,s,l,u):function(e,t,n,o,r,i,a,s,l){for(var u,d,c=i>a?a:i,p=0;p<c;++p)u=t[p],d=e[p],16384&u.flags&&(u=t[p]=D(u)),$e(d,u,n,o,r,s,l),e[p]=u;if(i<a)for(p=c;p<a;++p)16384&(u=t[p]).flags&&(u=t[p]=D(u)),Ae(u,n,o,r,s,l);else if(i>a)for(p=c;p<i;++p)xe(e[p],n)}(n,o,r,i,a,d,c,s,u)}}}function Pe(e,t,n,o,r,i,a,s,l){var d=e.state,c=e.props,f=Boolean(e.$N),m=u(e.shouldComponentUpdate);if(f&&(t=E(e,n,t!==d?p(d,t):t)),a||!m||m&&e.shouldComponentUpdate(n,t,r)){!f&&u(e.componentWillUpdate)&&e.componentWillUpdate(n,t,r),e.props=n,e.state=t,e.context=r;var h=null,v=Ie(e,n,r);f&&u(e.getSnapshotBeforeUpdate)&&(h=e.getSnapshotBeforeUpdate(c,d)),$e(e.$LI,v,o,e.$CX,i,s,l),e.$LI=v,u(e.componentDidUpdate)&&function(e,t,n,o,r){r.push((function(){e.componentDidUpdate(t,n,o)}))}(e,c,d,h,l)}else e.props=n,e.state=t,e.context=r}var Me=0;function De(e,t,n,o){void 0===n&&(n=null),void 0===o&&(o=m),function(e,t,n,o){var r=[],i=t.$V;S.v=!0,s(i)?s(e)||(16384&e.flags&&(e=D(e)),Ae(e,t,o,!1,null,r),t.$V=e,i=e):s(e)?(xe(i,t),t.$V=null):(16384&e.flags&&(e=D(e)),$e(i,e,t,o,!1,null,r),i=t.$V=e),w(r),S.v=!1,u(n)&&n(),u(T.renderComplete)&&T.renderComplete(i,t)}(e,t,n,o)}"undefined"!=typeof document&&window.Node&&(Node.prototype.$EV=null,Node.prototype.$V=null);var Le=[],He="undefined"!=typeof Promise?Promise.resolve().then.bind(Promise.resolve()):function(e){window.setTimeout(e,0)},Ve=!1;function Be(e,t,n,o){var r=e.$PS;if(u(t)&&(t=t(r?p(e.state,r):e.state,e.props,e.context)),s(r))e.$PS=t;else for(var i in t)r[i]=t[i];if(e.$BR)u(n)&&e.$L.push(n.bind(e));else{if(!S.v&&0===Le.length)return je(e,o),void(u(n)&&n.call(e));if(-1===Le.indexOf(e)&&Le.push(e),Ve||(Ve=!0,He(Oe)),u(n)){var a=e.$QU;a||(a=e.$QU=[]),a.push(n)}}}function We(e){for(var t=e.$QU,n=0;n<t.length;++n)t[n].call(e);e.$QU=null}function Oe(){var e;for(Ve=!1;e=Le.shift();)e.$UN||(je(e,!1),e.$QU&&We(e))}function je(e,t){if(t||!e.$BR){var n=e.$PS;e.$PS=null;var o=[];S.v=!0,Pe(e,p(e.state,n),e.props,x(e.$LI,!0).parentNode,e.context,e.$SVG,t,null,o),w(o),S.v=!1}else e.state=e.$PS,e.$PS=null}var _e,qe,Ge,ze=function(e,t){this.state=null,this.$BR=!1,this.$BS=!0,this.$PS=null,this.$LI=null,this.$UN=!1,this.$CX=null,this.$QU=null,this.$N=!1,this.$L=null,this.$SVG=!1,this.props=e||m,this.context=t||m};ze.prototype.forceUpdate=function(e){this.$UN||Be(this,{},e,!0)},ze.prototype.setState=function(e,t){this.$UN||this.$BS||Be(this,e,t,!1)},ze.prototype.render=function(e,t,n){return null},function(e){e.FreshUser="Fresh User",e.UserNotRespondedBack="User Not Responded Back",e.FollowMessageSent="User Follow Message Sent",e.UserRespondedBack="User Responded Back",e.UserHostile="Hostile User"}(_e||(_e={})),function(e){e.StartAdviceStart="start:advice:start",e.StartAdviceStartAgain="start:advice:startAgain",e.StartAdviceGeneral="start:advice:general",e.StartAdviceRelapse="start:advice:relapse",e.StartAdviceStruggle="start:advice:struggle",e.StartAdviceAge="start:advice:age",e.StartAdviceAbstain="start:advice:abstain",e.StartAdviceFlatline="start:advice:flatline",e.StartAdviceWetdreamAdvice="start:advice:wetdreamAdvice",e.StartAdvicePornBlockersAdvice="start:advice:pornBlockersAdvice",e.StartAdviceIsWatchingPornRelapseAdvice="start:advice:isWatchingPornRelapseAdvice",e.StartNoReasonToRelapseAdvice="start:advice:noReasonToRelapse",e.StartAccountabilityPartner="start:accountability:accountabilityPartner",e.StartPartnerAdvice="start::advice:partner",e.StartMasturbateWithoutPornAdvice="start::advice:masturbateWithoutPorn",e.StartBiggestBenefitPostAddictionAdvice="start::advice:biggestBenefitPostAddiction",e.StartDealingWithUrgesAdvice="start::advice:dealingWithUrges",e.MiddleGuideIfYouWouldLikeToLearnMore="middle:guide:learnmore",e.MiddleGuideNoWorries="middle:guide:noworries",e.MiddleGuideLinkYou="middle:guide:linkyou",e.MiddleGuideMeditationAdvice="middle:guide:meditationAdvice",e.FinalHardTime="final:disagree:hardTime",e.FinalFantastic="final:agree:fantastic",e.FinalJoinSubreddit="final:join:subreddit",e.FinalShareResources="final:share:resources",e.FollowRelapseAdvice="follow:advice:relapse",e.FollowMeditationAdvice="follow:advice:meditation",e.FollowStruggleAdvice="follow:advice:struggle",e.FollowNotSmoothlyAdvice="follow:advice:notSmoothly",e.UserReplyCustom="user:reply:custom",e.UserReplyStart="user:reply:start",e.UserReplyMiddle="user:reply:middle",e.UserReplyFinal="user:reply:final",e.UserReplyFollow="user:reply:follow",e.NFDCustomSend="nfd:custom:send",e.NA="NA"}(qe||(qe={})),function(e){e.Historic="Historic",e.NonHistoric="NonHistoric"}(Ge||(Ge={}));var Qe,Ye=function(e,t){var n=""+e;"custom"!==t&&(n=n+"&timer="+window.localStorage.getItem("delayTimer"),function(){var e=window.localStorage.getItem("delayTimer"),t=parseInt(e)+26e3;window.localStorage.setItem("delayTimer",t.toString())}());window.open(n,"_blank")},Xe=function(e,t,n){return"https://www.reddit.com/message/compose/?to="+e+"&subject=Hey&message="+encodeURIComponent(t)+"&type="+n},Je=function(e){return"Hey, I saw your post on "+e+". It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},Ke=function(e){return"Hey, I saw your post on "+e+". It's great to see you're starting again!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},Ze=function(e){return"Hey, I saw your post on "+e+".\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},et=function(e){return"Hey, I saw your post on "+e+". I'm sorry to hear you relapsed.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},tt=function(e){return"Hey, I saw your post on "+e+". I'm sorry to hear you're struggling.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},nt=function(e){return"Hey, I saw your post on "+e+".\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},ot=function(e){return"Hey, I saw your post on "+e+". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},rt=function(e){return"Hey, I saw your post on "+e+". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},it=function(e){return"Hey, I saw your post on "+e+". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},at=function(e){return"Hey, I saw your post on "+e+".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.\n\nThere is no such thing as reasonable when it comes to addiction. I've created a website which explains why, if you're interested.\n"},st=function(e){return"Hey, I saw your post on "+e+".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"},lt=function(e){return"Hey, I saw your post on "+e+".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"},ut=function(e){return"Hey, I saw your post on "+e+".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},dt=function(e){return"Hey, I saw your post on "+e+".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},ct=function(e){return"Hey, I saw your post on "+e+". Sorry to hear you're struggling with urges. If they're a huge issue for you then it might mean that you don't have the fundamentals down.\n\nUltimately recovery should be relatively struggle free, otherwise are you really recovering at all? I find the main thing with recovery is to focus on your mental health. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"},pt=function(e){var t=Math.floor(((new Date).getTime()-e.getTime())/1e3),n=Math.floor(t/31536e3);return n>1?n+" years":(n=Math.floor(t/2592e3))>1?n+" months":(n=Math.floor(t/86400))>1?n+" days":(n=Math.floor(t/3600))>1?n+" hours":(n=Math.floor(t/60))>1?n+" minutes":Math.floor(t)+" seconds"},ft=P,mt=$,ht=function(e){var t=e.dbUser;return mt(1,"div",null,[mt(1,"p",null,mt(1,"b",null,"NFD Sent",16,{style:{"font-weight":900}}),2),t.lastSentMessage?mt(1,"p",null,t.lastSentMessage.text,0,{style:{"padding-top":"0.2rem","padding-bottom":"0.2rem"}}):mt(1,"p",null,"NA",16),mt(1,"p",null,mt(1,"b",null,[t.username,ft(" Sent")],0,{style:{"font-weight":900}}),2),t.lastReceivedMessage?mt(1,"p",null,t.lastReceivedMessage.text,0,{style:{"padding-top":"0.2rem","padding-bottom":"0.2rem"}}):mt(1,"p",null,"NA",16)],0)},vt=function(e){var t=e.dbUser,n=e.usernameConfig;return mt(1,"div",null,[(null==n?void 0:n.usernameValue)===t.username?mt(1,"h1",null,"LASTUSER",16,{id:"last-user-reade",style:{"font-size":"4.5rem"}}):"",mt(1,"span",null,[t.username,ft(" | "),t.user_chat_function_utilised?mt(1,"span",null,"(Chatted)",16,{style:{color:"black"}}):""],0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:t.userColor}}),mt(1,"span",null,[ft("Type: "),t.userType,ft(" |")],0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:t.userColor}}),mt(1,"span",null,[ft("Sent: "),t.sentCount],0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"blue"}}),mt(1,"br"),mt(1,"span",null,t.lastReceivedMessage&&pt(new Date(t.lastReceivedMessage.send_date))+" since last received message.",0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"black","margin-top":"0.6rem"}}),mt(1,"span",null,t.lastSentMessage&&pt(new Date(t.lastSentMessage.send_date))+" since last sent message.",0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"black","margin-top":"0.6rem"}})],0,{style:{"margin-top":"1rem","margin-bottom":"1rem"}})},gt=(function(o){function i(e){var t=o.call(this,e)||this;return t.state={message:""},t}(function(t,n){function o(){this.constructor=t}e(t,n),t.prototype=null===n?Object.create(n):(o.prototype=n.prototype,new o)})(i,o),i.prototype.render=function(){var e,o=this;return mt(1,"div",null,[mt(64,"input",null,null,1,{value:null===(e=this.state)||void 0===e?void 0:e.message,onChange:function(e){return o.setState({message:e.target.value})},style:{"margin-right":"1rem"}}),mt(1,"button",null,"Send Note",16,{onclick:function(){return t(o,void 0,void 0,(function(){var e;return n(this,(function(o){switch(o.label){case 0:return[4,(i={username:this.props.username,message:null===(e=this.state)||void 0===e?void 0:e.message},t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,r(i,"/sendNewUserNote","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return o.sent(),this.setState({message:""}),[2]}var i}))}))}})],4)}}(ze),function(e){var o=e.username;return mt(1,"button",null,"Mark User Hostile",16,{style:{border:"1px solid black","margin-right":"0.4rem"},onclick:function(){return t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,(i={username:o},t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,r(i,"/markUserHostile","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return e.sent(),[2]}var i}))}))}})}),yt=function(e){var o=e.username;return mt(1,"button",null,"Mark User Chatted",16,{style:{border:"1px solid black","margin-right":"0.4rem"},onclick:function(){return t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,(i={username:o},t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,r(i,"/markUserChatted","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return e.sent(),[2]}var i}))}))}})},wt=function(e){var o=e.username,i=e.usernameConfig;return mt(1,"button",null,"Set Marker",16,{style:{border:"1px solid black","margin-right":"0.4rem"},onclick:function(){return t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,(a={username:o,usernameConfig:i},t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,r(a,"/setMarker","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return e.sent(),[2]}var a}))}))}})},bt=function(e){return"Hey, I saw your post on "+e+". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested?"},xt=function(e){return"Hey, I saw your post on "+e+". Have you been meditating daily like I suggested?"},kt=function(e){return"Hey, I saw your post on "+e+". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested?"},Rt=function(e){return"Hey, I saw your post on "+e+". I'm sorry things haven't been going smoothly with your recovery.\n\nHave you been meditating daily like I suggested?"},Et=C,St=$,Tt=function(e,t,n,o){var r=Xe(n,o,e);return St(1,"div",null,St(1,"a",null,e,0,{style:{color:t||"black","margin-top":"0.2rem","margin-bottom":"0.2rem","margin-left":"0.3rem","margin-right":"0.3rem","font-size":"12px",display:"inline-block"},onclick:function(){return Ye(r,e)}}),0)},Nt=function(e){var t,n=e.dbUser,o=e.usernameConfig;return St(1,"div",null,[n.userType!==_e.FreshUser&&Et(2,ht,{dbUser:n}),St(1,"div",null,[Et(2,wt,{username:n.username,usernameConfig:o}),Et(2,yt,{username:n.username}),Et(2,gt,{username:n.username})],4,{style:{display:"flex"}}),Et(2,vt,{dbUser:n,usernameConfig:o}),St(1,"div",null,[St(1,"div",null,[Tt(qe.NFDCustomSend,"purple",n.username,""),Tt(qe.StartAdviceStart,"purple",n.username,Je(o.forumType)),Tt(qe.StartAdviceStartAgain,"purple",n.username,Ke(o.forumType)),Tt(qe.StartAdviceGeneral,"purple",n.username,Ze(o.forumType)),Tt(qe.StartAdviceRelapse,"purple",n.username,et(o.forumType)),St(1,"h4",null,"Custom",16),Tt(qe.StartAdviceAge,"purple",n.username,(t=o.forumType,"Hey, I saw your post on "+t+". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n")),Tt(qe.StartDealingWithUrgesAdvice,"purple",n.username,ct(o.forumType)),Tt(qe.StartMasturbateWithoutPornAdvice,"purple",n.username,ut(o.forumType)),Tt(qe.StartBiggestBenefitPostAddictionAdvice,"purple",n.username,dt(o.forumType)),Tt(qe.StartPartnerAdvice,"purple",n.username,lt(o.forumType))],0,{style:{display:"flex","flex-direction":"column"}}),St(1,"div",null,[Tt(qe.StartAdviceStruggle,"purple",n.username,tt(o.forumType)),Tt(qe.StartAdviceFlatline,"purple",n.username,nt(o.forumType)),Tt(qe.StartAdviceWetdreamAdvice,"purple",n.username,ot(o.forumType)),Tt(qe.StartAdvicePornBlockersAdvice,"purple",n.username,rt(o.forumType)),Tt(qe.StartAdviceIsWatchingPornRelapseAdvice,"purple",n.username,it(o.forumType)),Tt(qe.StartNoReasonToRelapseAdvice,"purple",n.username,at(o.forumType)),Tt(qe.StartAccountabilityPartner,"purple",n.username,st(o.forumType)),St(1,"h4",null,"Follow",16),Tt(qe.FollowRelapseAdvice,"purple",n.username,bt(o.forumType)),Tt(qe.FollowMeditationAdvice,"purple",n.username,xt(o.forumType)),Tt(qe.FollowStruggleAdvice,"purple",n.username,kt(o.forumType)),Tt(qe.FollowNotSmoothlyAdvice,"purple",n.username,Rt(o.forumType))],0,{style:{display:"flex","flex-direction":"column"}})],4,{style:{display:"flex","justify-content":"space-between","margin-top":"1rem","margin-bottom":"1rem"}})],0)},It=P,At=C,Ft=$,Ut=function(){return o(document.querySelectorAll("a")).filter((function(e){return e.innerText.includes("u/")})).map((function(e){return e.innerText.split("/")[1]}))},$t=function(e,t){return new Promise((function(n){var o;o=setInterval((function(){if(window.scrollTo(0,document.body.scrollHeight),"NA"!==e){console.log("scrollToSpecifiedDate - run");for(var r=0,i=document.querySelectorAll('a[data-click-id="timestamp"]');r<i.length;r++){var a=i[r];a.innerText.includes(e)?(console.log("Found scroll date."),clearInterval(o),n("Found scroll date.")):a&&a.remove()}}else{console.log("scrollToSpecifiedUsername - run");for(var s=0,l=Ut();s<l.length;s++){l[s]===t.usernameValue&&(console.log("Found scroll username."),clearInterval(o),n("Found scroll username."))}}}),700)}))};!function(e){e.rNofapForum="r/NoFap",e.rPornFreeForum="r/pornfree",e.rPornAddictionForum="r/PornAddiction",e.rNofapChristiansForum="r/NoFapChristians",e.rNofapTeensForum="r/NoFapTeens",e.rSemenRetentionForum="r/Semenretention",e.rMuslimNofapForum="r/MuslimNoFap"}(Qe||(Qe={}));var Ct=function(e,t){return new RegExp(/failed first attempt/i).test(e)||new RegExp(/(I|just) ?(have)? (relapsed|failed)/i).test(e)||new RegExp(/relapsed (after|on day)/i).test(e)||new RegExp(/(failed|lost) (at|on) day/i).test(e)||new RegExp(/(broke my|lost my) ?(.*) (streak)/i).test(e)||new RegExp(/^relapsed\.$/i).test(e)||new RegExp(/^relapsed$/i).test(e)||new RegExp(/^relapsed today/i).test(e)||new RegExp(/relapsing after a/i).test(e)||new RegExp(/relapsed \d+ times today/i).test(e)},Pt=function(e,t,n,o){var r,i,a,s;if(function(e,t){return"Success Story"===t||new RegExp(/profile/i).test(e)||new RegExp(/gift/i).test(e)||new RegExp(/(celebrate)/i).test(e)||new RegExp(/(boner|morning wood)/i).test(e)||new RegExp(/double digit/i).test(e)||new RegExp(/diary/i).test(e)||new RegExp(/(tik tok|tiktok)/i).test(e)||new RegExp(/moral/i).test(e)||new RegExp(/anal/i).test(e)||new RegExp(/motivational thought/i).test(e)||new RegExp(/(a reminder|remember this)/i).test(e)||new RegExp(/(Don't|Don't|dont) mind me/i).test(e)||new RegExp(/(cancer|prostatitis|erection)/i).test(e)||new RegExp(/a study/i).test(e)||new RegExp(/^(Don't|Don't|dont) give up$/i).test(e)||new RegExp(/relapsed intentionally/i).test(e)||new RegExp(/found something that/i).test(e)||new RegExp(/(wim hof|cold shower)/i).test(e)||new RegExp(/(premature|ejaculation|precum|cum)/i).test(e)||new RegExp(/achieved my goal/i).test(e)||new RegExp(/(insta|instagram)/i).test(e)||new RegExp(/hunger/i).test(e)||new RegExp(/(previous record|milestone)/i).test(e)||new RegExp(/(pied|peid|in bed|get it up|shrink)/i).test(e)||new RegExp(/(hair|skin|acne|sperm)/i).test(e)||new RegExp(/the key is/i).test(e)||new RegExp(/monk/i).test(e)||new RegExp(/(grip|syndrome)/i).test(e)||new RegExp(/(virgin|virginity)/i).test(e)||new RegExp(/read this if you/i).test(e)||new RegExp(/weed/i).test(e)||new RegExp(/(weekly|daily) journal/i).test(e)||new RegExp(/(tracker|counting|counter)/i).test(e)||new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(e)||new RegExp(/my benefits/i).test(e)||new RegExp(/placebo/i).test(e)||new RegExp(/(balls|penis|pelvic|genital|testic)/i).test(e)||new RegExp(/accountability post/i).test(e)||new RegExp(/illusion/i).test(e)||new RegExp(/counts as relapse/i).test(e)||new RegExp(/journal entry/i).test(e)||new RegExp(/(mum|dad)/i).test(e)||new RegExp(/benefits till now/i).test(e)||new RegExp(/harmful effect/i).test(e)||new RegExp(/interesting dream/i).test(e)||new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(e)}(o,n))return console.log("Deleted: "+n+" - "+o),{shouldDeleteElementImmediately:!0,sendMessageType:void 0,prelimUrl:void 0};if(e.userType===_e.UserHostile||e.userType===_e.UserRespondedBack||e.userType===_e.FollowMessageSent)return{shouldDeleteElementImmediately:!0,sendMessageType:void 0,prelimUrl:void 0};if(e.userType===_e.UserNotRespondedBack){if((null===(r=null==e?void 0:e.lastSentMessage)||void 0===r?void 0:r.type.includes("start"))&&Ct(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.FollowRelapseAdvice,prelimUrl:Xe(e.username,bt(t.forumType),qe.FollowRelapseAdvice)};var l=null===(i=null==e?void 0:e.lastSentMessage)||void 0===i?void 0:i.send_date;if(l&&(a=new Date(l),s=Date.now()-864e5,a.getTime()>s))return{shouldDeleteElementImmediately:!0,sendMessageType:void 0,prelimUrl:void 0}}if(e.userType===_e.FreshUser){if(function(e,t){return new RegExp(/starting .* journey/i).test(e)||new RegExp(/starting .* challenge/i).test(e)||new RegExp(/(quitting|quiting|starting) ?(.*) (now|today)/i).test(e)||new RegExp(/(first|1st) (step|day)/i).test(e)||new RegExp(/(starting|started|starts) (now|today)/i).test(e)||new RegExp(/(starting|started) .* (streak|first|run)/i).test(e)||new RegExp(/starting, again/i).test(e)||new RegExp(/(journey) (start|begins)/i).test(e)||new RegExp(/(start|beginning) (of a|my) journey/i).test(e)||new RegExp(/New to NoFap/i).test(e)||new RegExp(/new here/i).test(e)||new RegExp(/starting NoFap/i).test(e)||new RegExp(/(I'm|im) done with this ?(.*) feeling/i).test(e)||new RegExp(/Day 1 Started/i).test(e)||new RegExp(/^Day 1$/i).test(e)||new RegExp(/officially day 1/i).test(e)||new RegExp(/try to do this NoFap/i).test(e)||new RegExp(/(wanna|want|trying) to start/i).test(e)||new RegExp(/start of the journey/i).test(e)||new RegExp(/(Let's|lets) do this/i).test(e)||new RegExp(/day 1 of (no fap|reboot|re boot)/i).test(e)||new RegExp(/new beginning/i).test(e)||new RegExp(/stopping for good/i).test(e)||new RegExp(/(just) (begun|started)/i).test(e)}(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.StartAdviceStart,prelimUrl:Xe(e.username,Je(t.forumType),qe.StartAdviceStart)};if(function(e,t){return new RegExp(/(begin|let's do this) again/i).test(e)||new RegExp(/gonna try again/i).test(e)||new RegExp(/one last try/i).test(e)}(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.StartAdviceStartAgain,prelimUrl:Xe(e.username,Ke(t.forumType),qe.StartAdviceStartAgain)};if(function(e,t){return new RegExp(/I need ?(.*) help/i).test(e)||new RegExp(/feel like shit/i).test(e)||new RegExp(/need some guidance/i).test(e)||new RegExp(/how do I avoid relapsing/i).test(e)||new RegExp(/what other steps/i).test(e)||new RegExp(/I (give up|need support|can't stop)/i).test(e)||new RegExp(/It's impossible/i).test(e)||new RegExp(/trying for years/i).test(e)||new RegExp(/still can't do it/i).test(e)||new RegExp(/^please help me(\.|\?)?$/i).test(e)||new RegExp(/can't control help me please/i).test(e)||new RegExp(/It's time to stop/i).test(e)||new RegExp(/Beginner, need some advice/i).test(e)||new RegExp(/need some general advice/i).test(e)||new RegExp(/how to get past .* (week|days|day)/i).test(e)||new RegExp(/Trying Nofap .* years/i).test(e)||new RegExp(/I keep failing/i).test(e)||new RegExp(/Relapsed at \d+ days/i).test(e)||new RegExp(/Relapsed at day \d+/i).test(e)}(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.StartAdviceGeneral,prelimUrl:Xe(e.username,Ze(t.forumType),qe.StartAdviceGeneral)};if(Ct(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.StartAdviceRelapse,prelimUrl:Xe(e.username,et(t.forumType),qe.StartAdviceRelapse)};if(function(e,t){return new RegExp(/wet dream advice/i).test(e)||new RegExp(/had a wet dream/i).test(e)}(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.StartAdviceWetdreamAdvice,prelimUrl:Xe(e.username,ot(t.forumType),qe.StartAdviceWetdreamAdvice)};if(function(e,t){return new RegExp(/seeking a partner/i).test(e)||new RegExp(/accountability partner/i).test(e)||new RegExp(/need (AP|accountability partner)/i).test(e)}(o))return{shouldDeleteElementImmediately:!1,sendMessageType:qe.StartAccountabilityPartner,prelimUrl:Xe(e.username,Je(t.forumType),qe.StartAccountabilityPartner)}}return function(e,t){return new RegExp(/^(day|week) \d+ (complete|done)/i).test(e)||new RegExp(/\d+ (week|day).* (complete|done)/i).test(e)||new RegExp(/(1st|first) (week|month) complete/i).test(e)}(o)?{shouldDeleteElementImmediately:!0,sendMessageType:void 0,prelimUrl:void 0}:{shouldDeleteElementImmediately:!1,sendMessageType:void 0,prelimUrl:void 0}},Mt=function(e,t){var n=o(document.querySelectorAll("a")).filter((function(e){return e.innerText.includes("u/")&&!e.innerText.includes(" ")}));!function(e){var t,n,o,r,i,a,s,l,u,d,c,p,f,m,h,v=document.createElement("div");v.id="reade-automate-container";var g=e[0];null===(l=null===(s=null===(a=null===(i=null===(r=null===(o=null===(n=null===(t=g.parentNode)||void 0===t?void 0:t.parentNode)||void 0===n?void 0:n.parentNode)||void 0===o?void 0:o.parentNode)||void 0===r?void 0:r.parentNode)||void 0===i?void 0:i.parentNode)||void 0===a?void 0:a.parentNode)||void 0===s?void 0:s.parentNode)||void 0===l||l.parentNode.insertBefore(v,null===(h=null===(m=null===(f=null===(p=null===(c=null===(d=null===(u=g.parentNode)||void 0===u?void 0:u.parentNode)||void 0===d?void 0:d.parentNode)||void 0===c?void 0:c.parentNode)||void 0===p?void 0:p.parentNode)||void 0===f?void 0:f.parentNode)||void 0===m?void 0:m.parentNode)||void 0===h?void 0:h.parentNode)}(n);var r=document.querySelector("#reade-automate-container"),i=[];n.forEach((function(n,o){var a,s,l,u,d,c,p,f,m,h,v,g,y,w,b,x,k,R,E,S,T,N,I,A,F,U,$,C,P,M,D,L,H,V,B,W,O,j,_,q,G,z,Q,Y,X,J,K,Z,ee,te,ne,oe,re,ie,ae,se,le,ue=n.innerText.split("/")[1],de=e.find((function(e){return e.username===ue}));if(de){var ce=null===(g=null===(v=null===(h=null===(m=null===(f=null===(p=null===(c=null===(d=null===(u=null===(l=null===(s=null===(a=null==n?void 0:n.parentNode)||void 0===a?void 0:a.parentNode)||void 0===s?void 0:s.parentNode)||void 0===l?void 0:l.parentNode)||void 0===u?void 0:u.parentNode)||void 0===d?void 0:d.parentNode)||void 0===c?void 0:c.children[1])||void 0===p?void 0:p.children[1])||void 0===f?void 0:f.children[1])||void 0===m?void 0:m.children[1])||void 0===h?void 0:h.children[0])||void 0===v?void 0:v.children[0])||void 0===g?void 0:g.innerText,pe=null===(A=null===(I=null===(N=null===(T=null===(S=null===(E=null===(R=null===(k=null===(x=null===(b=null===(w=null===(y=null==n?void 0:n.parentNode)||void 0===y?void 0:y.parentNode)||void 0===w?void 0:w.parentNode)||void 0===b?void 0:b.parentNode)||void 0===x?void 0:x.parentNode)||void 0===k?void 0:k.parentNode)||void 0===R?void 0:R.children[1])||void 0===E?void 0:E.children[1])||void 0===S?void 0:S.children[0])||void 0===T?void 0:T.children[0])||void 0===N?void 0:N.children[0])||void 0===I?void 0:I.children[0])||void 0===A?void 0:A.innerText,fe=null===(H=null===(L=null===(D=null===(M=null===(P=null===(C=null===($=null===(U=null===(F=null==n?void 0:n.parentNode)||void 0===F?void 0:F.parentNode)||void 0===U?void 0:U.parentNode)||void 0===$?void 0:$.parentNode)||void 0===C?void 0:C.parentNode)||void 0===P?void 0:P.parentNode)||void 0===M?void 0:M.children[1])||void 0===D?void 0:D.children[1])||void 0===L?void 0:L.children[0])||void 0===H?void 0:H.children[0].href,me=Pt(de,t,ce,pe),he=me.shouldDeleteElementImmediately,ve=me.sendMessageType,ge=me.prelimUrl;if(0!==o){if(i.includes(de.username))return void(null===(G=null===(q=null===(_=null===(j=null===(O=null===(W=null===(B=null===(V=null==n?void 0:n.parentNode)||void 0===V?void 0:V.parentNode)||void 0===B?void 0:B.parentNode)||void 0===W?void 0:W.parentNode)||void 0===O?void 0:O.parentNode)||void 0===j?void 0:j.parentNode)||void 0===_?void 0:_.parentNode)||void 0===q?void 0:q.parentNode)||void 0===G||G.remove());if(i.push(de.username),he)return void(null===(ee=null===(Z=null===(K=null===(J=null===(X=null===(Y=null===(Q=null===(z=null==n?void 0:n.parentNode)||void 0===z?void 0:z.parentNode)||void 0===Q?void 0:Q.parentNode)||void 0===Y?void 0:Y.parentNode)||void 0===X?void 0:X.parentNode)||void 0===J?void 0:J.parentNode)||void 0===K?void 0:K.parentNode)||void 0===Z?void 0:Z.parentNode)||void 0===ee||ee.remove());if(ge)return null===(le=null===(se=null===(ae=null===(ie=null===(re=null===(oe=null===(ne=null===(te=null==n?void 0:n.parentNode)||void 0===te?void 0:te.parentNode)||void 0===ne?void 0:ne.parentNode)||void 0===oe?void 0:oe.parentNode)||void 0===re?void 0:re.parentNode)||void 0===ie?void 0:ie.parentNode)||void 0===ae?void 0:ae.parentNode)||void 0===se?void 0:se.parentNode)||void 0===le||le.remove(),void function(e){var t=e.dbUser,n=e.titleText,o=e.flairText,r=e.aLinkHref,i=e.prelimUrl,a=e.index,s=e.sendMessageType,l=e.prelimContainer,u=document.createElement("div");u.id="r"+t.username+"-"+a,De(Ft(1,"div",null,[Ft(1,"a",null,[Ft(1,"span",null,[t.username,It(" - "),s],0,{style:{"margin-bottom":"0.5rem","margin-right":"0.5rem",color:"purple"}}),Ft(1,"span",null,n,0),Ft(1,"p",null,o,0,{style:{"margin-top":"0.5rem"}})],4,{style:{display:"block",padding:"1rem","margin-top":"0.6rem","margin-bottom":"0.6rem",cursor:"pointer",border:"1px solid black"},onclick:function(){return Ye(i,qe.NA)}}),Ft(1,"a",null,"Show Post",16,{"data-click-id":"body",href:""+r})],4),u),null==l||l.appendChild(u)}({dbUser:de,titleText:pe,flairText:ce,aLinkHref:fe,prelimUrl:ge,index:o,sendMessageType:ve,prelimContainer:r})}ge&&0!==o||function(e){var t=e.tag,n=e.tagUsername,o=e.index,r=e.dbUser,i=e.usernameConfig,a="r"+n+"-"+o,s=document.createElement("div");s.id=a,t.parentNode.insertBefore(s,t),t.remove();var l=document.querySelector("#"+a);l&&De(At(2,Nt,{dbUser:r,usernameConfig:i}),l)}({tag:n,tagUsername:ue,index:o,dbUser:de,usernameConfig:t})}}))};t(void 0,void 0,void 0,(function(){var e,o;return n(this,(function(i){switch(i.label){case 0:return console.log("START: start script"),[4,t(void 0,void 0,void 0,(function(){var e;return n(this,(function(o){switch(o.label){case 0:return[4,t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,r({},"/checkServerRunning","3333")];case 1:return[2,e.sent().data.isRunning]}}))}))];case 1:return e=o.sent(),console.log("serverRunning",e),[2]}}))}))];case 1:return i.sent(),e=function(e){return e.pathname.toLowerCase().includes("/nofap/new")?{usernameValue:"ZY0Ns",usernameTimestamp:"",forumType:Qe.rNofapForum}:e.pathname.toLowerCase().includes("/pornfree/new")?{usernameValue:"goddamnithurts",usernameTimestamp:"",forumType:Qe.rPornFreeForum}:e.pathname.toLowerCase().includes("/pornaddiction/new")?{usernameValue:"djangomaniac",usernameTimestamp:"",forumType:Qe.rPornAddictionForum}:e.pathname.toLowerCase().includes("/nofapchristians/new")?{usernameValue:"",usernameTimestamp:"",forumType:Qe.rNofapChristiansForum}:e.pathname.toLowerCase().includes("/nofapteens/new")?{usernameValue:"",usernameTimestamp:"",forumType:Qe.rNofapTeensForum}:e.pathname.toLowerCase().includes("/semenretention/new")?{usernameValue:"",usernameTimestamp:"",forumType:Qe.rSemenRetentionForum}:e.pathname.toLowerCase().includes("/muslimnofap/new")?{usernameValue:"",usernameTimestamp:"",forumType:Qe.rMuslimNofapForum}:{usernameValue:"",usernameTimestamp:"",forumType:Qe.rNofapForum}}(location),window.localStorage.setItem("delayTimer","10000"),""===e.usernameValue?[3,4]:(console.log("timeframe: ","NA","username: ",e.usernameValue),[4,$t("NA",e)]);case 2:return i.sent(),[4,(a={usernames:Ut()},t(void 0,void 0,void 0,(function(){return n(this,(function(e){switch(e.label){case 0:return[4,r(a,"/checkUsernames","3333")];case 1:return[2,e.sent().data.users]}}))})))];case 3:return o=i.sent(),Mt(o,e),setTimeout((function(){!function(){setTimeout((function(){console.log("delay, bby")}),800);var e=document.querySelector("#last-user-reade");if(console.log(e),e){var t=e.getBoundingClientRect().top+window.scrollY-350;console.log(t),window.scroll({top:t,behavior:"smooth"})}}()}),1e3),console.log("END: script complete"),[3,5];case 4:console.log("You did not set the username marker or it has never been set."),i.label=5;case 5:return[2]}var a}))}))}();
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    }
+
+    function __generator(thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    }
+
+    function __spreadArrays() {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    }
+
+    var HTTPPOSToptions = function (data) { return ({
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
+    }); };
+    var sendPostRequest = function (dataPayload, urlEndpoint, port) { return __awaiter(void 0, void 0, void 0, function () {
+        var response, JSONResponse, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("http://localhost:" + port + urlEndpoint, HTTPPOSToptions(dataPayload))];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log('Server not started.');
+                    throw new Error(urlEndpoint + " - " + error_1);
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    var checkUsernamesFetch = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/checkUsernames', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.users];
+            }
+        });
+    }); };
+    var sendNewUserNote = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewUserNote', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserHostile = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserHostile', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserChatted = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserChatted', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var setMarker = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/setMarker', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var checkServerRunning = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest({}, '/checkServerRunning', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.isRunning];
+            }
+        });
+    }); };
+
+    var isArray = Array.isArray;
+    function isStringOrNumber(o) {
+        var type = typeof o;
+        return type === 'string' || type === 'number';
+    }
+    function isNullOrUndef(o) {
+        return o === void 0 || o === null;
+    }
+    function isInvalid(o) {
+        return o === null || o === false || o === true || o === void 0;
+    }
+    function isFunction(o) {
+        return typeof o === 'function';
+    }
+    function isString(o) {
+        return typeof o === 'string';
+    }
+    function isNumber(o) {
+        return typeof o === 'number';
+    }
+    function isNull(o) {
+        return o === null;
+    }
+    function isUndefined(o) {
+        return o === void 0;
+    }
+    function combineFrom(first, second) {
+        var out = {};
+        if (first) {
+            for (var key in first) {
+                out[key] = first[key];
+            }
+        }
+        if (second) {
+            for (var key$1 in second) {
+                out[key$1] = second[key$1];
+            }
+        }
+        return out;
+    }
+    // object.event should always be function, otherwise its badly created object.
+    function isLinkEventObject(o) {
+        return !isNull(o) && typeof o === 'object';
+    }
+
+    // We need EMPTY_OBJ defined in one place.
+    // Its used for comparison so we cant inline it into shared
+    var EMPTY_OBJ = {};
+    function normalizeEventName(name) {
+        return name.substr(2).toLowerCase();
+    }
+    function appendChild(parentDOM, dom) {
+        parentDOM.appendChild(dom);
+    }
+    function insertOrAppend(parentDOM, newNode, nextNode) {
+        if (isNull(nextNode)) {
+            appendChild(parentDOM, newNode);
+        }
+        else {
+            parentDOM.insertBefore(newNode, nextNode);
+        }
+    }
+    function documentCreateElement(tag, isSVG) {
+        if (isSVG) {
+            return document.createElementNS('http://www.w3.org/2000/svg', tag);
+        }
+        return document.createElement(tag);
+    }
+    function replaceChild(parentDOM, newDom, lastDom) {
+        parentDOM.replaceChild(newDom, lastDom);
+    }
+    function removeChild(parentDOM, childNode) {
+        parentDOM.removeChild(childNode);
+    }
+    function callAll(arrayFn) {
+        for (var i = 0; i < arrayFn.length; i++) {
+            arrayFn[i]();
+        }
+    }
+    function findChildVNode(vNode, startEdge, flags) {
+        var children = vNode.children;
+        if (flags & 4 /* ComponentClass */) {
+            return children.$LI;
+        }
+        if (flags & 8192 /* Fragment */) {
+            return vNode.childFlags === 2 /* HasVNodeChildren */ ? children : children[startEdge ? 0 : children.length - 1];
+        }
+        return children;
+    }
+    function findDOMfromVNode(vNode, startEdge) {
+        var flags;
+        while (vNode) {
+            flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                return vNode.dom;
+            }
+            vNode = findChildVNode(vNode, startEdge, flags);
+        }
+        return null;
+    }
+    function removeVNodeDOM(vNode, parentDOM) {
+        do {
+            var flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                removeChild(parentDOM, vNode.dom);
+                return;
+            }
+            var children = vNode.children;
+            if (flags & 4 /* ComponentClass */) {
+                vNode = children.$LI;
+            }
+            if (flags & 8 /* ComponentFunction */) {
+                vNode = children;
+            }
+            if (flags & 8192 /* Fragment */) {
+                if (vNode.childFlags === 2 /* HasVNodeChildren */) {
+                    vNode = children;
+                }
+                else {
+                    for (var i = 0, len = children.length; i < len; ++i) {
+                        removeVNodeDOM(children[i], parentDOM);
+                    }
+                    return;
+                }
+            }
+        } while (vNode);
+    }
+    function moveVNodeDOM(vNode, parentDOM, nextNode) {
+        do {
+            var flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                insertOrAppend(parentDOM, vNode.dom, nextNode);
+                return;
+            }
+            var children = vNode.children;
+            if (flags & 4 /* ComponentClass */) {
+                vNode = children.$LI;
+            }
+            if (flags & 8 /* ComponentFunction */) {
+                vNode = children;
+            }
+            if (flags & 8192 /* Fragment */) {
+                if (vNode.childFlags === 2 /* HasVNodeChildren */) {
+                    vNode = children;
+                }
+                else {
+                    for (var i = 0, len = children.length; i < len; ++i) {
+                        moveVNodeDOM(children[i], parentDOM, nextNode);
+                    }
+                    return;
+                }
+            }
+        } while (vNode);
+    }
+    function createDerivedState(instance, nextProps, state) {
+        if (instance.constructor.getDerivedStateFromProps) {
+            return combineFrom(state, instance.constructor.getDerivedStateFromProps(nextProps, state));
+        }
+        return state;
+    }
+    var renderCheck = {
+        v: false
+    };
+    var options = {
+        componentComparator: null,
+        createVNode: null,
+        renderComplete: null
+    };
+    function setTextContent(dom, children) {
+        dom.textContent = children;
+    }
+    // Calling this function assumes, nextValue is linkEvent
+    function isLastValueSameLinkEvent(lastValue, nextValue) {
+        return (isLinkEventObject(lastValue) &&
+            lastValue.event === nextValue.event &&
+            lastValue.data === nextValue.data);
+    }
+    function mergeUnsetProperties(to, from) {
+        for (var propName in from) {
+            if (isUndefined(to[propName])) {
+                to[propName] = from[propName];
+            }
+        }
+        return to;
+    }
+    function safeCall1(method, arg1) {
+        return !!isFunction(method) && (method(arg1), true);
+    }
+
+    var keyPrefix = '$';
+    function V(childFlags, children, className, flags, key, props, ref, type) {
+        this.childFlags = childFlags;
+        this.children = children;
+        this.className = className;
+        this.dom = null;
+        this.flags = flags;
+        this.key = key === void 0 ? null : key;
+        this.props = props === void 0 ? null : props;
+        this.ref = ref === void 0 ? null : ref;
+        this.type = type;
+    }
+    function createVNode(flags, type, className, children, childFlags, props, key, ref) {
+        var childFlag = childFlags === void 0 ? 1 /* HasInvalidChildren */ : childFlags;
+        var vNode = new V(childFlag, children, className, flags, key, props, ref, type);
+        if (options.createVNode) {
+            options.createVNode(vNode);
+        }
+        if (childFlag === 0 /* UnknownChildren */) {
+            normalizeChildren(vNode, vNode.children);
+        }
+        return vNode;
+    }
+    function mergeDefaultHooks(flags, type, ref) {
+        if (flags & 4 /* ComponentClass */) {
+            return ref;
+        }
+        var defaultHooks = (flags & 32768 /* ForwardRef */ ? type.render : type).defaultHooks;
+        if (isNullOrUndef(defaultHooks)) {
+            return ref;
+        }
+        if (isNullOrUndef(ref)) {
+            return defaultHooks;
+        }
+        return mergeUnsetProperties(ref, defaultHooks);
+    }
+    function mergeDefaultProps(flags, type, props) {
+        // set default props
+        var defaultProps = (flags & 32768 /* ForwardRef */ ? type.render : type).defaultProps;
+        if (isNullOrUndef(defaultProps)) {
+            return props;
+        }
+        if (isNullOrUndef(props)) {
+            return combineFrom(defaultProps, null);
+        }
+        return mergeUnsetProperties(props, defaultProps);
+    }
+    function resolveComponentFlags(flags, type) {
+        if (flags & 12 /* ComponentKnown */) {
+            return flags;
+        }
+        if (type.prototype && type.prototype.render) {
+            return 4 /* ComponentClass */;
+        }
+        if (type.render) {
+            return 32776 /* ForwardRefComponent */;
+        }
+        return 8 /* ComponentFunction */;
+    }
+    function createComponentVNode(flags, type, props, key, ref) {
+        flags = resolveComponentFlags(flags, type);
+        var vNode = new V(1 /* HasInvalidChildren */, null, null, flags, key, mergeDefaultProps(flags, type, props), mergeDefaultHooks(flags, type, ref), type);
+        if (options.createVNode) {
+            options.createVNode(vNode);
+        }
+        return vNode;
+    }
+    function createTextVNode(text, key) {
+        return new V(1 /* HasInvalidChildren */, isNullOrUndef(text) || text === true || text === false ? '' : text, null, 16 /* Text */, key, null, null, null);
+    }
+    function createFragment(children, childFlags, key) {
+        var fragment = createVNode(8192 /* Fragment */, 8192 /* Fragment */, null, children, childFlags, null, key, null);
+        switch (fragment.childFlags) {
+            case 1 /* HasInvalidChildren */:
+                fragment.children = createVoidVNode();
+                fragment.childFlags = 2 /* HasVNodeChildren */;
+                break;
+            case 16 /* HasTextChildren */:
+                fragment.children = [createTextVNode(children)];
+                fragment.childFlags = 4 /* HasNonKeyedChildren */;
+                break;
+        }
+        return fragment;
+    }
+    /*
+     * Fragment is different than normal vNode,
+     * because when it needs to be cloned we need to clone its children too
+     * But not normalize, because otherwise those possibly get KEY and re-mount
+     */
+    function cloneFragment(vNodeToClone) {
+        var clonedChildren;
+        var oldChildren = vNodeToClone.children;
+        var childFlags = vNodeToClone.childFlags;
+        if (childFlags === 2 /* HasVNodeChildren */) {
+            clonedChildren = directClone(oldChildren);
+        }
+        else if (childFlags & 12 /* MultipleChildren */) {
+            clonedChildren = [];
+            for (var i = 0, len = oldChildren.length; i < len; ++i) {
+                clonedChildren.push(directClone(oldChildren[i]));
+            }
+        }
+        return createFragment(clonedChildren, childFlags, vNodeToClone.key);
+    }
+    function directClone(vNodeToClone) {
+        var flags = vNodeToClone.flags & -16385 /* ClearInUse */;
+        var props = vNodeToClone.props;
+        if (flags & 14 /* Component */) {
+            if (!isNull(props)) {
+                var propsToClone = props;
+                props = {};
+                for (var key in propsToClone) {
+                    props[key] = propsToClone[key];
+                }
+            }
+        }
+        if ((flags & 8192 /* Fragment */) === 0) {
+            return new V(vNodeToClone.childFlags, vNodeToClone.children, vNodeToClone.className, flags, vNodeToClone.key, props, vNodeToClone.ref, vNodeToClone.type);
+        }
+        return cloneFragment(vNodeToClone);
+    }
+    function createVoidVNode() {
+        return createTextVNode('', null);
+    }
+    function _normalizeVNodes(nodes, result, index, currentKey) {
+        for (var len = nodes.length; index < len; index++) {
+            var n = nodes[index];
+            if (!isInvalid(n)) {
+                var newKey = currentKey + keyPrefix + index;
+                if (isArray(n)) {
+                    _normalizeVNodes(n, result, 0, newKey);
+                }
+                else {
+                    if (isStringOrNumber(n)) {
+                        n = createTextVNode(n, newKey);
+                    }
+                    else {
+                        var oldKey = n.key;
+                        var isPrefixedKey = isString(oldKey) && oldKey[0] === keyPrefix;
+                        if (n.flags & 81920 /* InUseOrNormalized */ || isPrefixedKey) {
+                            n = directClone(n);
+                        }
+                        n.flags |= 65536 /* Normalized */;
+                        if (!isPrefixedKey) {
+                            if (isNull(oldKey)) {
+                                n.key = newKey;
+                            }
+                            else {
+                                n.key = currentKey + oldKey;
+                            }
+                        }
+                        else if (oldKey.substring(0, currentKey.length) !== currentKey) {
+                            n.key = currentKey + oldKey;
+                        }
+                    }
+                    result.push(n);
+                }
+            }
+        }
+    }
+    function normalizeChildren(vNode, children) {
+        var newChildren;
+        var newChildFlags = 1 /* HasInvalidChildren */;
+        // Don't change children to match strict equal (===) true in patching
+        if (isInvalid(children)) {
+            newChildren = children;
+        }
+        else if (isStringOrNumber(children)) {
+            newChildFlags = 16 /* HasTextChildren */;
+            newChildren = children;
+        }
+        else if (isArray(children)) {
+            var len = children.length;
+            for (var i = 0; i < len; ++i) {
+                var n = children[i];
+                if (isInvalid(n) || isArray(n)) {
+                    newChildren = newChildren || children.slice(0, i);
+                    _normalizeVNodes(children, newChildren, i, '');
+                    break;
+                }
+                else if (isStringOrNumber(n)) {
+                    newChildren = newChildren || children.slice(0, i);
+                    newChildren.push(createTextVNode(n, keyPrefix + i));
+                }
+                else {
+                    var key = n.key;
+                    var needsCloning = (n.flags & 81920 /* InUseOrNormalized */) > 0;
+                    var isNullKey = isNull(key);
+                    var isPrefixed = isString(key) && key[0] === keyPrefix;
+                    if (needsCloning || isNullKey || isPrefixed) {
+                        newChildren = newChildren || children.slice(0, i);
+                        if (needsCloning || isPrefixed) {
+                            n = directClone(n);
+                        }
+                        if (isNullKey || isPrefixed) {
+                            n.key = keyPrefix + i;
+                        }
+                        newChildren.push(n);
+                    }
+                    else if (newChildren) {
+                        newChildren.push(n);
+                    }
+                    n.flags |= 65536 /* Normalized */;
+                }
+            }
+            newChildren = newChildren || children;
+            if (newChildren.length === 0) {
+                newChildFlags = 1 /* HasInvalidChildren */;
+            }
+            else {
+                newChildFlags = 8 /* HasKeyedChildren */;
+            }
+        }
+        else {
+            newChildren = children;
+            newChildren.flags |= 65536 /* Normalized */;
+            if (children.flags & 81920 /* InUseOrNormalized */) {
+                newChildren = directClone(children);
+            }
+            newChildFlags = 2 /* HasVNodeChildren */;
+        }
+        vNode.children = newChildren;
+        vNode.childFlags = newChildFlags;
+        return vNode;
+    }
+    function normalizeRoot(input) {
+        if (isInvalid(input) || isStringOrNumber(input)) {
+            return createTextVNode(input, null);
+        }
+        if (isArray(input)) {
+            return createFragment(input, 0 /* UnknownChildren */, null);
+        }
+        return input.flags & 16384 /* InUse */ ? directClone(input) : input;
+    }
+
+    var xlinkNS = 'http://www.w3.org/1999/xlink';
+    var xmlNS = 'http://www.w3.org/XML/1998/namespace';
+    var namespaces = {
+        'xlink:actuate': xlinkNS,
+        'xlink:arcrole': xlinkNS,
+        'xlink:href': xlinkNS,
+        'xlink:role': xlinkNS,
+        'xlink:show': xlinkNS,
+        'xlink:title': xlinkNS,
+        'xlink:type': xlinkNS,
+        'xml:base': xmlNS,
+        'xml:lang': xmlNS,
+        'xml:space': xmlNS
+    };
+
+    function getDelegatedEventObject(v) {
+        return {
+            onClick: v,
+            onDblClick: v,
+            onFocusIn: v,
+            onFocusOut: v,
+            onKeyDown: v,
+            onKeyPress: v,
+            onKeyUp: v,
+            onMouseDown: v,
+            onMouseMove: v,
+            onMouseUp: v,
+            onTouchEnd: v,
+            onTouchMove: v,
+            onTouchStart: v
+        };
+    }
+    var attachedEventCounts = getDelegatedEventObject(0);
+    var attachedEvents = getDelegatedEventObject(null);
+    var syntheticEvents = getDelegatedEventObject(true);
+    function updateOrAddSyntheticEvent(name, dom) {
+        var eventsObject = dom.$EV;
+        if (!eventsObject) {
+            eventsObject = dom.$EV = getDelegatedEventObject(null);
+        }
+        if (!eventsObject[name]) {
+            if (++attachedEventCounts[name] === 1) {
+                attachedEvents[name] = attachEventToDocument(name);
+            }
+        }
+        return eventsObject;
+    }
+    function unmountSyntheticEvent(name, dom) {
+        var eventsObject = dom.$EV;
+        if (eventsObject && eventsObject[name]) {
+            if (--attachedEventCounts[name] === 0) {
+                document.removeEventListener(normalizeEventName(name), attachedEvents[name]);
+                attachedEvents[name] = null;
+            }
+            eventsObject[name] = null;
+        }
+    }
+    function handleSyntheticEvent(name, lastEvent, nextEvent, dom) {
+        if (isFunction(nextEvent)) {
+            updateOrAddSyntheticEvent(name, dom)[name] = nextEvent;
+        }
+        else if (isLinkEventObject(nextEvent)) {
+            if (isLastValueSameLinkEvent(lastEvent, nextEvent)) {
+                return;
+            }
+            updateOrAddSyntheticEvent(name, dom)[name] = nextEvent;
+        }
+        else {
+            unmountSyntheticEvent(name, dom);
+        }
+    }
+    // When browsers fully support event.composedPath we could loop it through instead of using parentNode property
+    function getTargetNode(event) {
+        return isFunction(event.composedPath) ? event.composedPath()[0] : event.target;
+    }
+    function dispatchEvents(event, isClick, name, eventData) {
+        var dom = getTargetNode(event);
+        do {
+            // Html Nodes can be nested fe: span inside button in that scenario browser does not handle disabled attribute on parent,
+            // because the event listener is on document.body
+            // Don't process clicks on disabled elements
+            if (isClick && dom.disabled) {
+                return;
+            }
+            var eventsObject = dom.$EV;
+            if (eventsObject) {
+                var currentEvent = eventsObject[name];
+                if (currentEvent) {
+                    // linkEvent object
+                    eventData.dom = dom;
+                    currentEvent.event ? currentEvent.event(currentEvent.data, event) : currentEvent(event);
+                    if (event.cancelBubble) {
+                        return;
+                    }
+                }
+            }
+            dom = dom.parentNode;
+        } while (!isNull(dom));
+    }
+    function stopPropagation() {
+        this.cancelBubble = true;
+        if (!this.immediatePropagationStopped) {
+            this.stopImmediatePropagation();
+        }
+    }
+    function isDefaultPrevented() {
+        return this.defaultPrevented;
+    }
+    function isPropagationStopped() {
+        return this.cancelBubble;
+    }
+    function extendEventProperties(event) {
+        // Event data needs to be object to save reference to currentTarget getter
+        var eventData = {
+            dom: document
+        };
+        event.isDefaultPrevented = isDefaultPrevented;
+        event.isPropagationStopped = isPropagationStopped;
+        event.stopPropagation = stopPropagation;
+        Object.defineProperty(event, 'currentTarget', {
+            configurable: true,
+            get: function get() {
+                return eventData.dom;
+            }
+        });
+        return eventData;
+    }
+    function rootClickEvent(name) {
+        return function (event) {
+            if (event.button !== 0) {
+                // Firefox incorrectly triggers click event for mid/right mouse buttons.
+                // This bug has been active for 17 years.
+                // https://bugzilla.mozilla.org/show_bug.cgi?id=184051
+                event.stopPropagation();
+                return;
+            }
+            dispatchEvents(event, true, name, extendEventProperties(event));
+        };
+    }
+    function rootEvent(name) {
+        return function (event) {
+            dispatchEvents(event, false, name, extendEventProperties(event));
+        };
+    }
+    function attachEventToDocument(name) {
+        var attachedEvent = name === 'onClick' || name === 'onDblClick' ? rootClickEvent(name) : rootEvent(name);
+        document.addEventListener(normalizeEventName(name), attachedEvent);
+        return attachedEvent;
+    }
+
+    function isSameInnerHTML(dom, innerHTML) {
+        var tempdom = document.createElement('i');
+        tempdom.innerHTML = innerHTML;
+        return tempdom.innerHTML === dom.innerHTML;
+    }
+
+    function triggerEventListener(props, methodName, e) {
+        if (props[methodName]) {
+            var listener = props[methodName];
+            if (listener.event) {
+                listener.event(listener.data, e);
+            }
+            else {
+                listener(e);
+            }
+        }
+        else {
+            var nativeListenerName = methodName.toLowerCase();
+            if (props[nativeListenerName]) {
+                props[nativeListenerName](e);
+            }
+        }
+    }
+    function createWrappedFunction(methodName, applyValue) {
+        var fnMethod = function (e) {
+            var vNode = this.$V;
+            // If vNode is gone by the time event fires, no-op
+            if (!vNode) {
+                return;
+            }
+            var props = vNode.props || EMPTY_OBJ;
+            var dom = vNode.dom;
+            if (isString(methodName)) {
+                triggerEventListener(props, methodName, e);
+            }
+            else {
+                for (var i = 0; i < methodName.length; ++i) {
+                    triggerEventListener(props, methodName[i], e);
+                }
+            }
+            if (isFunction(applyValue)) {
+                var newVNode = this.$V;
+                var newProps = newVNode.props || EMPTY_OBJ;
+                applyValue(newProps, dom, false, newVNode);
+            }
+        };
+        Object.defineProperty(fnMethod, 'wrapped', {
+            configurable: false,
+            enumerable: false,
+            value: true,
+            writable: false
+        });
+        return fnMethod;
+    }
+
+    function attachEvent(dom, eventName, handler) {
+        var previousKey = "$" + eventName;
+        var previousArgs = dom[previousKey];
+        if (previousArgs) {
+            if (previousArgs[1].wrapped) {
+                return;
+            }
+            dom.removeEventListener(previousArgs[0], previousArgs[1]);
+            dom[previousKey] = null;
+        }
+        if (isFunction(handler)) {
+            dom.addEventListener(eventName, handler);
+            dom[previousKey] = [eventName, handler];
+        }
+    }
+
+    function isCheckedType(type) {
+        return type === 'checkbox' || type === 'radio';
+    }
+    var onTextInputChange = createWrappedFunction('onInput', applyValueInput);
+    var wrappedOnChange = createWrappedFunction(['onClick', 'onChange'], applyValueInput);
+    /* tslint:disable-next-line:no-empty */
+    function emptywrapper(event) {
+        event.stopPropagation();
+    }
+    emptywrapper.wrapped = true;
+    function inputEvents(dom, nextPropsOrEmpty) {
+        if (isCheckedType(nextPropsOrEmpty.type)) {
+            attachEvent(dom, 'change', wrappedOnChange);
+            attachEvent(dom, 'click', emptywrapper);
+        }
+        else {
+            attachEvent(dom, 'input', onTextInputChange);
+        }
+    }
+    function applyValueInput(nextPropsOrEmpty, dom) {
+        var type = nextPropsOrEmpty.type;
+        var value = nextPropsOrEmpty.value;
+        var checked = nextPropsOrEmpty.checked;
+        var multiple = nextPropsOrEmpty.multiple;
+        var defaultValue = nextPropsOrEmpty.defaultValue;
+        var hasValue = !isNullOrUndef(value);
+        if (type && type !== dom.type) {
+            dom.setAttribute('type', type);
+        }
+        if (!isNullOrUndef(multiple) && multiple !== dom.multiple) {
+            dom.multiple = multiple;
+        }
+        if (!isNullOrUndef(defaultValue) && !hasValue) {
+            dom.defaultValue = defaultValue + '';
+        }
+        if (isCheckedType(type)) {
+            if (hasValue) {
+                dom.value = value;
+            }
+            if (!isNullOrUndef(checked)) {
+                dom.checked = checked;
+            }
+        }
+        else {
+            if (hasValue && dom.value !== value) {
+                dom.defaultValue = value;
+                dom.value = value;
+            }
+            else if (!isNullOrUndef(checked)) {
+                dom.checked = checked;
+            }
+        }
+    }
+
+    function updateChildOptions(vNode, value) {
+        if (vNode.type === 'option') {
+            updateChildOption(vNode, value);
+        }
+        else {
+            var children = vNode.children;
+            var flags = vNode.flags;
+            if (flags & 4 /* ComponentClass */) {
+                updateChildOptions(children.$LI, value);
+            }
+            else if (flags & 8 /* ComponentFunction */) {
+                updateChildOptions(children, value);
+            }
+            else if (vNode.childFlags === 2 /* HasVNodeChildren */) {
+                updateChildOptions(children, value);
+            }
+            else if (vNode.childFlags & 12 /* MultipleChildren */) {
+                for (var i = 0, len = children.length; i < len; ++i) {
+                    updateChildOptions(children[i], value);
+                }
+            }
+        }
+    }
+    function updateChildOption(vNode, value) {
+        var props = vNode.props || EMPTY_OBJ;
+        var dom = vNode.dom;
+        // we do this as multiple may have changed
+        dom.value = props.value;
+        if (props.value === value || (isArray(value) && value.indexOf(props.value) !== -1)) {
+            dom.selected = true;
+        }
+        else if (!isNullOrUndef(value) || !isNullOrUndef(props.selected)) {
+            dom.selected = props.selected || false;
+        }
+    }
+    var onSelectChange = createWrappedFunction('onChange', applyValueSelect);
+    function selectEvents(dom) {
+        attachEvent(dom, 'change', onSelectChange);
+    }
+    function applyValueSelect(nextPropsOrEmpty, dom, mounting, vNode) {
+        var multiplePropInBoolean = Boolean(nextPropsOrEmpty.multiple);
+        if (!isNullOrUndef(nextPropsOrEmpty.multiple) && multiplePropInBoolean !== dom.multiple) {
+            dom.multiple = multiplePropInBoolean;
+        }
+        var index = nextPropsOrEmpty.selectedIndex;
+        if (index === -1) {
+            dom.selectedIndex = -1;
+        }
+        var childFlags = vNode.childFlags;
+        if (childFlags !== 1 /* HasInvalidChildren */) {
+            var value = nextPropsOrEmpty.value;
+            if (isNumber(index) && index > -1 && dom.options[index]) {
+                value = dom.options[index].value;
+            }
+            if (mounting && isNullOrUndef(value)) {
+                value = nextPropsOrEmpty.defaultValue;
+            }
+            updateChildOptions(vNode, value);
+        }
+    }
+
+    var onTextareaInputChange = createWrappedFunction('onInput', applyValueTextArea);
+    var wrappedOnChange$1 = createWrappedFunction('onChange');
+    function textAreaEvents(dom, nextPropsOrEmpty) {
+        attachEvent(dom, 'input', onTextareaInputChange);
+        if (nextPropsOrEmpty.onChange) {
+            attachEvent(dom, 'change', wrappedOnChange$1);
+        }
+    }
+    function applyValueTextArea(nextPropsOrEmpty, dom, mounting) {
+        var value = nextPropsOrEmpty.value;
+        var domValue = dom.value;
+        if (isNullOrUndef(value)) {
+            if (mounting) {
+                var defaultValue = nextPropsOrEmpty.defaultValue;
+                if (!isNullOrUndef(defaultValue) && defaultValue !== domValue) {
+                    dom.defaultValue = defaultValue;
+                    dom.value = defaultValue;
+                }
+            }
+        }
+        else if (domValue !== value) {
+            /* There is value so keep it controlled */
+            dom.defaultValue = value;
+            dom.value = value;
+        }
+    }
+
+    /**
+     * There is currently no support for switching same input between controlled and nonControlled
+     * If that ever becomes a real issue, then re design controlled elements
+     * Currently user must choose either controlled or non-controlled and stick with that
+     */
+    function processElement(flags, vNode, dom, nextPropsOrEmpty, mounting, isControlled) {
+        if (flags & 64 /* InputElement */) {
+            applyValueInput(nextPropsOrEmpty, dom);
+        }
+        else if (flags & 256 /* SelectElement */) {
+            applyValueSelect(nextPropsOrEmpty, dom, mounting, vNode);
+        }
+        else if (flags & 128 /* TextareaElement */) {
+            applyValueTextArea(nextPropsOrEmpty, dom, mounting);
+        }
+        if (isControlled) {
+            dom.$V = vNode;
+        }
+    }
+    function addFormElementEventHandlers(flags, dom, nextPropsOrEmpty) {
+        if (flags & 64 /* InputElement */) {
+            inputEvents(dom, nextPropsOrEmpty);
+        }
+        else if (flags & 256 /* SelectElement */) {
+            selectEvents(dom);
+        }
+        else if (flags & 128 /* TextareaElement */) {
+            textAreaEvents(dom, nextPropsOrEmpty);
+        }
+    }
+    function isControlledFormElement(nextPropsOrEmpty) {
+        return nextPropsOrEmpty.type && isCheckedType(nextPropsOrEmpty.type) ? !isNullOrUndef(nextPropsOrEmpty.checked) : !isNullOrUndef(nextPropsOrEmpty.value);
+    }
+    function unmountRef(ref) {
+        if (ref) {
+            if (!safeCall1(ref, null) && ref.current) {
+                ref.current = null;
+            }
+        }
+    }
+    function mountRef(ref, value, lifecycle) {
+        if (ref && (isFunction(ref) || ref.current !== void 0)) {
+            lifecycle.push(function () {
+                if (!safeCall1(ref, value) && ref.current !== void 0) {
+                    ref.current = value;
+                }
+            });
+        }
+    }
+
+    function remove(vNode, parentDOM) {
+        unmount(vNode);
+        removeVNodeDOM(vNode, parentDOM);
+    }
+    function unmount(vNode) {
+        var flags = vNode.flags;
+        var children = vNode.children;
+        var ref;
+        if (flags & 481 /* Element */) {
+            ref = vNode.ref;
+            var props = vNode.props;
+            unmountRef(ref);
+            var childFlags = vNode.childFlags;
+            if (!isNull(props)) {
+                var keys = Object.keys(props);
+                for (var i = 0, len = keys.length; i < len; i++) {
+                    var key = keys[i];
+                    if (syntheticEvents[key]) {
+                        unmountSyntheticEvent(key, vNode.dom);
+                    }
+                }
+            }
+            if (childFlags & 12 /* MultipleChildren */) {
+                unmountAllChildren(children);
+            }
+            else if (childFlags === 2 /* HasVNodeChildren */) {
+                unmount(children);
+            }
+        }
+        else if (children) {
+            if (flags & 4 /* ComponentClass */) {
+                if (isFunction(children.componentWillUnmount)) {
+                    children.componentWillUnmount();
+                }
+                unmountRef(vNode.ref);
+                children.$UN = true;
+                unmount(children.$LI);
+            }
+            else if (flags & 8 /* ComponentFunction */) {
+                ref = vNode.ref;
+                if (!isNullOrUndef(ref) && isFunction(ref.onComponentWillUnmount)) {
+                    ref.onComponentWillUnmount(findDOMfromVNode(vNode, true), vNode.props || EMPTY_OBJ);
+                }
+                unmount(children);
+            }
+            else if (flags & 1024 /* Portal */) {
+                remove(children, vNode.ref);
+            }
+            else if (flags & 8192 /* Fragment */) {
+                if (vNode.childFlags & 12 /* MultipleChildren */) {
+                    unmountAllChildren(children);
+                }
+            }
+        }
+    }
+    function unmountAllChildren(children) {
+        for (var i = 0, len = children.length; i < len; ++i) {
+            unmount(children[i]);
+        }
+    }
+    function clearDOM(dom) {
+        // Optimization for clearing dom
+        dom.textContent = '';
+    }
+    function removeAllChildren(dom, vNode, children) {
+        unmountAllChildren(children);
+        if (vNode.flags & 8192 /* Fragment */) {
+            removeVNodeDOM(vNode, dom);
+        }
+        else {
+            clearDOM(dom);
+        }
+    }
+
+    function wrapLinkEvent(nextValue) {
+        // This variable makes sure there is no "this" context in callback
+        var ev = nextValue.event;
+        return function (e) {
+            ev(nextValue.data, e);
+        };
+    }
+    function patchEvent(name, lastValue, nextValue, dom) {
+        if (isLinkEventObject(nextValue)) {
+            if (isLastValueSameLinkEvent(lastValue, nextValue)) {
+                return;
+            }
+            nextValue = wrapLinkEvent(nextValue);
+        }
+        attachEvent(dom, normalizeEventName(name), nextValue);
+    }
+    // We are assuming here that we come from patchProp routine
+    // -nextAttrValue cannot be null or undefined
+    function patchStyle(lastAttrValue, nextAttrValue, dom) {
+        if (isNullOrUndef(nextAttrValue)) {
+            dom.removeAttribute('style');
+            return;
+        }
+        var domStyle = dom.style;
+        var style;
+        var value;
+        if (isString(nextAttrValue)) {
+            domStyle.cssText = nextAttrValue;
+            return;
+        }
+        if (!isNullOrUndef(lastAttrValue) && !isString(lastAttrValue)) {
+            for (style in nextAttrValue) {
+                // do not add a hasOwnProperty check here, it affects performance
+                value = nextAttrValue[style];
+                if (value !== lastAttrValue[style]) {
+                    domStyle.setProperty(style, value);
+                }
+            }
+            for (style in lastAttrValue) {
+                if (isNullOrUndef(nextAttrValue[style])) {
+                    domStyle.removeProperty(style);
+                }
+            }
+        }
+        else {
+            for (style in nextAttrValue) {
+                value = nextAttrValue[style];
+                domStyle.setProperty(style, value);
+            }
+        }
+    }
+    function patchDangerInnerHTML(lastValue, nextValue, lastVNode, dom) {
+        var lastHtml = (lastValue && lastValue.__html) || '';
+        var nextHtml = (nextValue && nextValue.__html) || '';
+        if (lastHtml !== nextHtml) {
+            if (!isNullOrUndef(nextHtml) && !isSameInnerHTML(dom, nextHtml)) {
+                if (!isNull(lastVNode)) {
+                    if (lastVNode.childFlags & 12 /* MultipleChildren */) {
+                        unmountAllChildren(lastVNode.children);
+                    }
+                    else if (lastVNode.childFlags === 2 /* HasVNodeChildren */) {
+                        unmount(lastVNode.children);
+                    }
+                    lastVNode.children = null;
+                    lastVNode.childFlags = 1 /* HasInvalidChildren */;
+                }
+                dom.innerHTML = nextHtml;
+            }
+        }
+    }
+    function patchProp(prop, lastValue, nextValue, dom, isSVG, hasControlledValue, lastVNode) {
+        switch (prop) {
+            case 'children':
+            case 'childrenType':
+            case 'className':
+            case 'defaultValue':
+            case 'key':
+            case 'multiple':
+            case 'ref':
+            case 'selectedIndex':
+                break;
+            case 'autoFocus':
+                dom.autofocus = !!nextValue;
+                break;
+            case 'allowfullscreen':
+            case 'autoplay':
+            case 'capture':
+            case 'checked':
+            case 'controls':
+            case 'default':
+            case 'disabled':
+            case 'hidden':
+            case 'indeterminate':
+            case 'loop':
+            case 'muted':
+            case 'novalidate':
+            case 'open':
+            case 'readOnly':
+            case 'required':
+            case 'reversed':
+            case 'scoped':
+            case 'seamless':
+            case 'selected':
+                dom[prop] = !!nextValue;
+                break;
+            case 'defaultChecked':
+            case 'value':
+            case 'volume':
+                if (hasControlledValue && prop === 'value') {
+                    break;
+                }
+                var value = isNullOrUndef(nextValue) ? '' : nextValue;
+                if (dom[prop] !== value) {
+                    dom[prop] = value;
+                }
+                break;
+            case 'style':
+                patchStyle(lastValue, nextValue, dom);
+                break;
+            case 'dangerouslySetInnerHTML':
+                patchDangerInnerHTML(lastValue, nextValue, lastVNode, dom);
+                break;
+            default:
+                if (syntheticEvents[prop]) {
+                    handleSyntheticEvent(prop, lastValue, nextValue, dom);
+                }
+                else if (prop.charCodeAt(0) === 111 && prop.charCodeAt(1) === 110) {
+                    patchEvent(prop, lastValue, nextValue, dom);
+                }
+                else if (isNullOrUndef(nextValue)) {
+                    dom.removeAttribute(prop);
+                }
+                else if (isSVG && namespaces[prop]) {
+                    // We optimize for isSVG being false
+                    // If we end up in this path we can read property again
+                    dom.setAttributeNS(namespaces[prop], prop, nextValue);
+                }
+                else {
+                    dom.setAttribute(prop, nextValue);
+                }
+                break;
+        }
+    }
+    function mountProps(vNode, flags, props, dom, isSVG) {
+        var hasControlledValue = false;
+        var isFormElement = (flags & 448 /* FormElement */) > 0;
+        if (isFormElement) {
+            hasControlledValue = isControlledFormElement(props);
+            if (hasControlledValue) {
+                addFormElementEventHandlers(flags, dom, props);
+            }
+        }
+        for (var prop in props) {
+            // do not add a hasOwnProperty check here, it affects performance
+            patchProp(prop, null, props[prop], dom, isSVG, hasControlledValue, null);
+        }
+        if (isFormElement) {
+            processElement(flags, vNode, dom, props, true, hasControlledValue);
+        }
+    }
+
+    function renderNewInput(instance, props, context) {
+        var nextInput = normalizeRoot(instance.render(props, instance.state, context));
+        var childContext = context;
+        if (isFunction(instance.getChildContext)) {
+            childContext = combineFrom(context, instance.getChildContext());
+        }
+        instance.$CX = childContext;
+        return nextInput;
+    }
+    function createClassComponentInstance(vNode, Component, props, context, isSVG, lifecycle) {
+        var instance = new Component(props, context);
+        var usesNewAPI = (instance.$N = Boolean(Component.getDerivedStateFromProps || instance.getSnapshotBeforeUpdate));
+        instance.$SVG = isSVG;
+        instance.$L = lifecycle;
+        vNode.children = instance;
+        instance.$BS = false;
+        instance.context = context;
+        if (instance.props === EMPTY_OBJ) {
+            instance.props = props;
+        }
+        if (!usesNewAPI) {
+            if (isFunction(instance.componentWillMount)) {
+                instance.$BR = true;
+                instance.componentWillMount();
+                var pending = instance.$PS;
+                if (!isNull(pending)) {
+                    var state = instance.state;
+                    if (isNull(state)) {
+                        instance.state = pending;
+                    }
+                    else {
+                        for (var key in pending) {
+                            state[key] = pending[key];
+                        }
+                    }
+                    instance.$PS = null;
+                }
+                instance.$BR = false;
+            }
+        }
+        else {
+            instance.state = createDerivedState(instance, props, instance.state);
+        }
+        instance.$LI = renderNewInput(instance, props, context);
+        return instance;
+    }
+
+    function mount(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var flags = (vNode.flags |= 16384 /* InUse */);
+        if (flags & 481 /* Element */) {
+            mountElement(vNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (flags & 4 /* ComponentClass */) {
+            mountClassComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (flags & 8 /* ComponentFunction */) {
+            mountFunctionalComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle);
+            mountFunctionalComponentCallbacks(vNode, lifecycle);
+        }
+        else if (flags & 512 /* Void */ || flags & 16 /* Text */) {
+            mountText(vNode, parentDOM, nextNode);
+        }
+        else if (flags & 8192 /* Fragment */) {
+            mountFragment(vNode, context, parentDOM, isSVG, nextNode, lifecycle);
+        }
+        else if (flags & 1024 /* Portal */) {
+            mountPortal(vNode, context, parentDOM, nextNode, lifecycle);
+        }
+    }
+    function mountPortal(vNode, context, parentDOM, nextNode, lifecycle) {
+        mount(vNode.children, vNode.ref, context, false, null, lifecycle);
+        var placeHolderVNode = createVoidVNode();
+        mountText(placeHolderVNode, parentDOM, nextNode);
+        vNode.dom = placeHolderVNode.dom;
+    }
+    function mountFragment(vNode, context, parentDOM, isSVG, nextNode, lifecycle) {
+        var children = vNode.children;
+        var childFlags = vNode.childFlags;
+        // When fragment is optimized for multiple children, check if there is no children and change flag to invalid
+        // This is the only normalization always done, to keep optimization flags API same for fragments and regular elements
+        if (childFlags & 12 /* MultipleChildren */ && children.length === 0) {
+            childFlags = vNode.childFlags = 2 /* HasVNodeChildren */;
+            children = vNode.children = createVoidVNode();
+        }
+        if (childFlags === 2 /* HasVNodeChildren */) {
+            mount(children, parentDOM, nextNode, isSVG, nextNode, lifecycle);
+        }
+        else {
+            mountArrayChildren(children, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+    }
+    function mountText(vNode, parentDOM, nextNode) {
+        var dom = (vNode.dom = document.createTextNode(vNode.children));
+        if (!isNull(parentDOM)) {
+            insertOrAppend(parentDOM, dom, nextNode);
+        }
+    }
+    function mountElement(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var flags = vNode.flags;
+        var props = vNode.props;
+        var className = vNode.className;
+        var children = vNode.children;
+        var childFlags = vNode.childFlags;
+        var dom = (vNode.dom = documentCreateElement(vNode.type, (isSVG = isSVG || (flags & 32 /* SvgElement */) > 0)));
+        if (!isNullOrUndef(className) && className !== '') {
+            if (isSVG) {
+                dom.setAttribute('class', className);
+            }
+            else {
+                dom.className = className;
+            }
+        }
+        if (childFlags === 16 /* HasTextChildren */) {
+            setTextContent(dom, children);
+        }
+        else if (childFlags !== 1 /* HasInvalidChildren */) {
+            var childrenIsSVG = isSVG && vNode.type !== 'foreignObject';
+            if (childFlags === 2 /* HasVNodeChildren */) {
+                if (children.flags & 16384 /* InUse */) {
+                    vNode.children = children = directClone(children);
+                }
+                mount(children, dom, context, childrenIsSVG, null, lifecycle);
+            }
+            else if (childFlags === 8 /* HasKeyedChildren */ || childFlags === 4 /* HasNonKeyedChildren */) {
+                mountArrayChildren(children, dom, context, childrenIsSVG, null, lifecycle);
+            }
+        }
+        if (!isNull(parentDOM)) {
+            insertOrAppend(parentDOM, dom, nextNode);
+        }
+        if (!isNull(props)) {
+            mountProps(vNode, flags, props, dom, isSVG);
+        }
+        mountRef(vNode.ref, dom, lifecycle);
+    }
+    function mountArrayChildren(children, dom, context, isSVG, nextNode, lifecycle) {
+        for (var i = 0; i < children.length; ++i) {
+            var child = children[i];
+            if (child.flags & 16384 /* InUse */) {
+                children[i] = child = directClone(child);
+            }
+            mount(child, dom, context, isSVG, nextNode, lifecycle);
+        }
+    }
+    function mountClassComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var instance = createClassComponentInstance(vNode, vNode.type, vNode.props || EMPTY_OBJ, context, isSVG, lifecycle);
+        mount(instance.$LI, parentDOM, instance.$CX, isSVG, nextNode, lifecycle);
+        mountClassComponentCallbacks(vNode.ref, instance, lifecycle);
+    }
+    function renderFunctionalComponent(vNode, context) {
+        return vNode.flags & 32768 /* ForwardRef */ ? vNode.type.render(vNode.props || EMPTY_OBJ, vNode.ref, context) : vNode.type(vNode.props || EMPTY_OBJ, context);
+    }
+    function mountFunctionalComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        mount((vNode.children = normalizeRoot(renderFunctionalComponent(vNode, context))), parentDOM, context, isSVG, nextNode, lifecycle);
+    }
+    function createClassMountCallback(instance) {
+        return function () {
+            instance.componentDidMount();
+        };
+    }
+    function mountClassComponentCallbacks(ref, instance, lifecycle) {
+        mountRef(ref, instance, lifecycle);
+        if (isFunction(instance.componentDidMount)) {
+            lifecycle.push(createClassMountCallback(instance));
+        }
+    }
+    function createOnMountCallback(ref, vNode) {
+        return function () {
+            ref.onComponentDidMount(findDOMfromVNode(vNode, true), vNode.props || EMPTY_OBJ);
+        };
+    }
+    function mountFunctionalComponentCallbacks(vNode, lifecycle) {
+        var ref = vNode.ref;
+        if (!isNullOrUndef(ref)) {
+            safeCall1(ref.onComponentWillMount, vNode.props || EMPTY_OBJ);
+            if (isFunction(ref.onComponentDidMount)) {
+                lifecycle.push(createOnMountCallback(ref, vNode));
+            }
+        }
+    }
+
+    function replaceWithNewNode(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle) {
+        unmount(lastVNode);
+        if ((nextVNode.flags & lastVNode.flags & 2033 /* DOMRef */) !== 0) {
+            mount(nextVNode, null, context, isSVG, null, lifecycle);
+            // Single DOM operation, when we have dom references available
+            replaceChild(parentDOM, nextVNode.dom, lastVNode.dom);
+        }
+        else {
+            mount(nextVNode, parentDOM, context, isSVG, findDOMfromVNode(lastVNode, true), lifecycle);
+            removeVNodeDOM(lastVNode, parentDOM);
+        }
+    }
+    function patch(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var nextFlags = (nextVNode.flags |= 16384 /* InUse */);
+        if (lastVNode.flags !== nextFlags || lastVNode.type !== nextVNode.type || lastVNode.key !== nextVNode.key || nextFlags & 2048 /* ReCreate */) {
+            if (lastVNode.flags & 16384 /* InUse */) {
+                replaceWithNewNode(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle);
+            }
+            else {
+                // Last vNode is not in use, it has crashed at application level. Just mount nextVNode and ignore last one
+                mount(nextVNode, parentDOM, context, isSVG, nextNode, lifecycle);
+            }
+        }
+        else if (nextFlags & 481 /* Element */) {
+            patchElement(lastVNode, nextVNode, context, isSVG, nextFlags, lifecycle);
+        }
+        else if (nextFlags & 4 /* ComponentClass */) {
+            patchClassComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (nextFlags & 8 /* ComponentFunction */) {
+            patchFunctionalComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (nextFlags & 16 /* Text */) {
+            patchText(lastVNode, nextVNode);
+        }
+        else if (nextFlags & 512 /* Void */) {
+            nextVNode.dom = lastVNode.dom;
+        }
+        else if (nextFlags & 8192 /* Fragment */) {
+            patchFragment(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle);
+        }
+        else {
+            patchPortal(lastVNode, nextVNode, context, lifecycle);
+        }
+    }
+    function patchSingleTextChild(lastChildren, nextChildren, parentDOM) {
+        if (lastChildren !== nextChildren) {
+            if (lastChildren !== '') {
+                parentDOM.firstChild.nodeValue = nextChildren;
+            }
+            else {
+                setTextContent(parentDOM, nextChildren);
+            }
+        }
+    }
+    function patchContentEditableChildren(dom, nextChildren) {
+        if (dom.textContent !== nextChildren) {
+            dom.textContent = nextChildren;
+        }
+    }
+    function patchFragment(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle) {
+        var lastChildren = lastVNode.children;
+        var nextChildren = nextVNode.children;
+        var lastChildFlags = lastVNode.childFlags;
+        var nextChildFlags = nextVNode.childFlags;
+        var nextNode = null;
+        // When fragment is optimized for multiple children, check if there is no children and change flag to invalid
+        // This is the only normalization always done, to keep optimization flags API same for fragments and regular elements
+        if (nextChildFlags & 12 /* MultipleChildren */ && nextChildren.length === 0) {
+            nextChildFlags = nextVNode.childFlags = 2 /* HasVNodeChildren */;
+            nextChildren = nextVNode.children = createVoidVNode();
+        }
+        var nextIsSingle = (nextChildFlags & 2 /* HasVNodeChildren */) !== 0;
+        if (lastChildFlags & 12 /* MultipleChildren */) {
+            var lastLen = lastChildren.length;
+            // We need to know Fragment's edge node when
+            if (
+            // It uses keyed algorithm
+            (lastChildFlags & 8 /* HasKeyedChildren */ && nextChildFlags & 8 /* HasKeyedChildren */) ||
+                // It transforms from many to single
+                nextIsSingle ||
+                // It will append more nodes
+                (!nextIsSingle && nextChildren.length > lastLen)) {
+                // When fragment has multiple children there is always at least one vNode
+                nextNode = findDOMfromVNode(lastChildren[lastLen - 1], false).nextSibling;
+            }
+        }
+        patchChildren(lastChildFlags, nextChildFlags, lastChildren, nextChildren, parentDOM, context, isSVG, nextNode, lastVNode, lifecycle);
+    }
+    function patchPortal(lastVNode, nextVNode, context, lifecycle) {
+        var lastContainer = lastVNode.ref;
+        var nextContainer = nextVNode.ref;
+        var nextChildren = nextVNode.children;
+        patchChildren(lastVNode.childFlags, nextVNode.childFlags, lastVNode.children, nextChildren, lastContainer, context, false, null, lastVNode, lifecycle);
+        nextVNode.dom = lastVNode.dom;
+        if (lastContainer !== nextContainer && !isInvalid(nextChildren)) {
+            var node = nextChildren.dom;
+            removeChild(lastContainer, node);
+            appendChild(nextContainer, node);
+        }
+    }
+    function patchElement(lastVNode, nextVNode, context, isSVG, nextFlags, lifecycle) {
+        var dom = (nextVNode.dom = lastVNode.dom);
+        var lastProps = lastVNode.props;
+        var nextProps = nextVNode.props;
+        var isFormElement = false;
+        var hasControlledValue = false;
+        var nextPropsOrEmpty;
+        isSVG = isSVG || (nextFlags & 32 /* SvgElement */) > 0;
+        // inlined patchProps  -- starts --
+        if (lastProps !== nextProps) {
+            var lastPropsOrEmpty = lastProps || EMPTY_OBJ;
+            nextPropsOrEmpty = nextProps || EMPTY_OBJ;
+            if (nextPropsOrEmpty !== EMPTY_OBJ) {
+                isFormElement = (nextFlags & 448 /* FormElement */) > 0;
+                if (isFormElement) {
+                    hasControlledValue = isControlledFormElement(nextPropsOrEmpty);
+                }
+                for (var prop in nextPropsOrEmpty) {
+                    var lastValue = lastPropsOrEmpty[prop];
+                    var nextValue = nextPropsOrEmpty[prop];
+                    if (lastValue !== nextValue) {
+                        patchProp(prop, lastValue, nextValue, dom, isSVG, hasControlledValue, lastVNode);
+                    }
+                }
+            }
+            if (lastPropsOrEmpty !== EMPTY_OBJ) {
+                for (var prop$1 in lastPropsOrEmpty) {
+                    if (isNullOrUndef(nextPropsOrEmpty[prop$1]) && !isNullOrUndef(lastPropsOrEmpty[prop$1])) {
+                        patchProp(prop$1, lastPropsOrEmpty[prop$1], null, dom, isSVG, hasControlledValue, lastVNode);
+                    }
+                }
+            }
+        }
+        var nextChildren = nextVNode.children;
+        var nextClassName = nextVNode.className;
+        // inlined patchProps  -- ends --
+        if (lastVNode.className !== nextClassName) {
+            if (isNullOrUndef(nextClassName)) {
+                dom.removeAttribute('class');
+            }
+            else if (isSVG) {
+                dom.setAttribute('class', nextClassName);
+            }
+            else {
+                dom.className = nextClassName;
+            }
+        }
+        if (nextFlags & 4096 /* ContentEditable */) {
+            patchContentEditableChildren(dom, nextChildren);
+        }
+        else {
+            patchChildren(lastVNode.childFlags, nextVNode.childFlags, lastVNode.children, nextChildren, dom, context, isSVG && nextVNode.type !== 'foreignObject', null, lastVNode, lifecycle);
+        }
+        if (isFormElement) {
+            processElement(nextFlags, nextVNode, dom, nextPropsOrEmpty, false, hasControlledValue);
+        }
+        var nextRef = nextVNode.ref;
+        var lastRef = lastVNode.ref;
+        if (lastRef !== nextRef) {
+            unmountRef(lastRef);
+            mountRef(nextRef, dom, lifecycle);
+        }
+    }
+    function replaceOneVNodeWithMultipleVNodes(lastChildren, nextChildren, parentDOM, context, isSVG, lifecycle) {
+        unmount(lastChildren);
+        mountArrayChildren(nextChildren, parentDOM, context, isSVG, findDOMfromVNode(lastChildren, true), lifecycle);
+        removeVNodeDOM(lastChildren, parentDOM);
+    }
+    function patchChildren(lastChildFlags, nextChildFlags, lastChildren, nextChildren, parentDOM, context, isSVG, nextNode, parentVNode, lifecycle) {
+        switch (lastChildFlags) {
+            case 2 /* HasVNodeChildren */:
+                switch (nextChildFlags) {
+                    case 2 /* HasVNodeChildren */:
+                        patch(lastChildren, nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        remove(lastChildren, parentDOM);
+                        break;
+                    case 16 /* HasTextChildren */:
+                        unmount(lastChildren);
+                        setTextContent(parentDOM, nextChildren);
+                        break;
+                    default:
+                        replaceOneVNodeWithMultipleVNodes(lastChildren, nextChildren, parentDOM, context, isSVG, lifecycle);
+                        break;
+                }
+                break;
+            case 1 /* HasInvalidChildren */:
+                switch (nextChildFlags) {
+                    case 2 /* HasVNodeChildren */:
+                        mount(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        break;
+                    case 16 /* HasTextChildren */:
+                        setTextContent(parentDOM, nextChildren);
+                        break;
+                    default:
+                        mountArrayChildren(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                }
+                break;
+            case 16 /* HasTextChildren */:
+                switch (nextChildFlags) {
+                    case 16 /* HasTextChildren */:
+                        patchSingleTextChild(lastChildren, nextChildren, parentDOM);
+                        break;
+                    case 2 /* HasVNodeChildren */:
+                        clearDOM(parentDOM);
+                        mount(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        clearDOM(parentDOM);
+                        break;
+                    default:
+                        clearDOM(parentDOM);
+                        mountArrayChildren(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                }
+                break;
+            default:
+                switch (nextChildFlags) {
+                    case 16 /* HasTextChildren */:
+                        unmountAllChildren(lastChildren);
+                        setTextContent(parentDOM, nextChildren);
+                        break;
+                    case 2 /* HasVNodeChildren */:
+                        removeAllChildren(parentDOM, parentVNode, lastChildren);
+                        mount(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        removeAllChildren(parentDOM, parentVNode, lastChildren);
+                        break;
+                    default:
+                        var lastLength = lastChildren.length | 0;
+                        var nextLength = nextChildren.length | 0;
+                        // Fast path's for both algorithms
+                        if (lastLength === 0) {
+                            if (nextLength > 0) {
+                                mountArrayChildren(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                            }
+                        }
+                        else if (nextLength === 0) {
+                            removeAllChildren(parentDOM, parentVNode, lastChildren);
+                        }
+                        else if (nextChildFlags === 8 /* HasKeyedChildren */ && lastChildFlags === 8 /* HasKeyedChildren */) {
+                            patchKeyedChildren(lastChildren, nextChildren, parentDOM, context, isSVG, lastLength, nextLength, nextNode, parentVNode, lifecycle);
+                        }
+                        else {
+                            patchNonKeyedChildren(lastChildren, nextChildren, parentDOM, context, isSVG, lastLength, nextLength, nextNode, lifecycle);
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+    function createDidUpdate(instance, lastProps, lastState, snapshot, lifecycle) {
+        lifecycle.push(function () {
+            instance.componentDidUpdate(lastProps, lastState, snapshot);
+        });
+    }
+    function updateClassComponent(instance, nextState, nextProps, parentDOM, context, isSVG, force, nextNode, lifecycle) {
+        var lastState = instance.state;
+        var lastProps = instance.props;
+        var usesNewAPI = Boolean(instance.$N);
+        var hasSCU = isFunction(instance.shouldComponentUpdate);
+        if (usesNewAPI) {
+            nextState = createDerivedState(instance, nextProps, nextState !== lastState ? combineFrom(lastState, nextState) : nextState);
+        }
+        if (force || !hasSCU || (hasSCU && instance.shouldComponentUpdate(nextProps, nextState, context))) {
+            if (!usesNewAPI && isFunction(instance.componentWillUpdate)) {
+                instance.componentWillUpdate(nextProps, nextState, context);
+            }
+            instance.props = nextProps;
+            instance.state = nextState;
+            instance.context = context;
+            var snapshot = null;
+            var nextInput = renderNewInput(instance, nextProps, context);
+            if (usesNewAPI && isFunction(instance.getSnapshotBeforeUpdate)) {
+                snapshot = instance.getSnapshotBeforeUpdate(lastProps, lastState);
+            }
+            patch(instance.$LI, nextInput, parentDOM, instance.$CX, isSVG, nextNode, lifecycle);
+            // Dont update Last input, until patch has been succesfully executed
+            instance.$LI = nextInput;
+            if (isFunction(instance.componentDidUpdate)) {
+                createDidUpdate(instance, lastProps, lastState, snapshot, lifecycle);
+            }
+        }
+        else {
+            instance.props = nextProps;
+            instance.state = nextState;
+            instance.context = context;
+        }
+    }
+    function patchClassComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var instance = (nextVNode.children = lastVNode.children);
+        // If Component has crashed, ignore it to stay functional
+        if (isNull(instance)) {
+            return;
+        }
+        instance.$L = lifecycle;
+        var nextProps = nextVNode.props || EMPTY_OBJ;
+        var nextRef = nextVNode.ref;
+        var lastRef = lastVNode.ref;
+        var nextState = instance.state;
+        if (!instance.$N) {
+            if (isFunction(instance.componentWillReceiveProps)) {
+                instance.$BR = true;
+                instance.componentWillReceiveProps(nextProps, context);
+                // If instance component was removed during its own update do nothing.
+                if (instance.$UN) {
+                    return;
+                }
+                instance.$BR = false;
+            }
+            if (!isNull(instance.$PS)) {
+                nextState = combineFrom(nextState, instance.$PS);
+                instance.$PS = null;
+            }
+        }
+        updateClassComponent(instance, nextState, nextProps, parentDOM, context, isSVG, false, nextNode, lifecycle);
+        if (lastRef !== nextRef) {
+            unmountRef(lastRef);
+            mountRef(nextRef, instance, lifecycle);
+        }
+    }
+    function patchFunctionalComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var shouldUpdate = true;
+        var nextProps = nextVNode.props || EMPTY_OBJ;
+        var nextRef = nextVNode.ref;
+        var lastProps = lastVNode.props;
+        var nextHooksDefined = !isNullOrUndef(nextRef);
+        var lastInput = lastVNode.children;
+        if (nextHooksDefined && isFunction(nextRef.onComponentShouldUpdate)) {
+            shouldUpdate = nextRef.onComponentShouldUpdate(lastProps, nextProps);
+        }
+        if (shouldUpdate !== false) {
+            if (nextHooksDefined && isFunction(nextRef.onComponentWillUpdate)) {
+                nextRef.onComponentWillUpdate(lastProps, nextProps);
+            }
+            var type = nextVNode.type;
+            var nextInput = normalizeRoot(nextVNode.flags & 32768 /* ForwardRef */ ? type.render(nextProps, nextRef, context) : type(nextProps, context));
+            patch(lastInput, nextInput, parentDOM, context, isSVG, nextNode, lifecycle);
+            nextVNode.children = nextInput;
+            if (nextHooksDefined && isFunction(nextRef.onComponentDidUpdate)) {
+                nextRef.onComponentDidUpdate(lastProps, nextProps);
+            }
+        }
+        else {
+            nextVNode.children = lastInput;
+        }
+    }
+    function patchText(lastVNode, nextVNode) {
+        var nextText = nextVNode.children;
+        var dom = (nextVNode.dom = lastVNode.dom);
+        if (nextText !== lastVNode.children) {
+            dom.nodeValue = nextText;
+        }
+    }
+    function patchNonKeyedChildren(lastChildren, nextChildren, dom, context, isSVG, lastChildrenLength, nextChildrenLength, nextNode, lifecycle) {
+        var commonLength = lastChildrenLength > nextChildrenLength ? nextChildrenLength : lastChildrenLength;
+        var i = 0;
+        var nextChild;
+        var lastChild;
+        for (; i < commonLength; ++i) {
+            nextChild = nextChildren[i];
+            lastChild = lastChildren[i];
+            if (nextChild.flags & 16384 /* InUse */) {
+                nextChild = nextChildren[i] = directClone(nextChild);
+            }
+            patch(lastChild, nextChild, dom, context, isSVG, nextNode, lifecycle);
+            lastChildren[i] = nextChild;
+        }
+        if (lastChildrenLength < nextChildrenLength) {
+            for (i = commonLength; i < nextChildrenLength; ++i) {
+                nextChild = nextChildren[i];
+                if (nextChild.flags & 16384 /* InUse */) {
+                    nextChild = nextChildren[i] = directClone(nextChild);
+                }
+                mount(nextChild, dom, context, isSVG, nextNode, lifecycle);
+            }
+        }
+        else if (lastChildrenLength > nextChildrenLength) {
+            for (i = commonLength; i < lastChildrenLength; ++i) {
+                remove(lastChildren[i], dom);
+            }
+        }
+    }
+    function patchKeyedChildren(a, b, dom, context, isSVG, aLength, bLength, outerEdge, parentVNode, lifecycle) {
+        var aEnd = aLength - 1;
+        var bEnd = bLength - 1;
+        var j = 0;
+        var aNode = a[j];
+        var bNode = b[j];
+        var nextPos;
+        var nextNode;
+        // Step 1
+        // tslint:disable-next-line
+        outer: {
+            // Sync nodes with the same key at the beginning.
+            while (aNode.key === bNode.key) {
+                if (bNode.flags & 16384 /* InUse */) {
+                    b[j] = bNode = directClone(bNode);
+                }
+                patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                a[j] = bNode;
+                ++j;
+                if (j > aEnd || j > bEnd) {
+                    break outer;
+                }
+                aNode = a[j];
+                bNode = b[j];
+            }
+            aNode = a[aEnd];
+            bNode = b[bEnd];
+            // Sync nodes with the same key at the end.
+            while (aNode.key === bNode.key) {
+                if (bNode.flags & 16384 /* InUse */) {
+                    b[bEnd] = bNode = directClone(bNode);
+                }
+                patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                a[aEnd] = bNode;
+                aEnd--;
+                bEnd--;
+                if (j > aEnd || j > bEnd) {
+                    break outer;
+                }
+                aNode = a[aEnd];
+                bNode = b[bEnd];
+            }
+        }
+        if (j > aEnd) {
+            if (j <= bEnd) {
+                nextPos = bEnd + 1;
+                nextNode = nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge;
+                while (j <= bEnd) {
+                    bNode = b[j];
+                    if (bNode.flags & 16384 /* InUse */) {
+                        b[j] = bNode = directClone(bNode);
+                    }
+                    ++j;
+                    mount(bNode, dom, context, isSVG, nextNode, lifecycle);
+                }
+            }
+        }
+        else if (j > bEnd) {
+            while (j <= aEnd) {
+                remove(a[j++], dom);
+            }
+        }
+        else {
+            patchKeyedChildrenComplex(a, b, context, aLength, bLength, aEnd, bEnd, j, dom, isSVG, outerEdge, parentVNode, lifecycle);
+        }
+    }
+    function patchKeyedChildrenComplex(a, b, context, aLength, bLength, aEnd, bEnd, j, dom, isSVG, outerEdge, parentVNode, lifecycle) {
+        var aNode;
+        var bNode;
+        var nextPos;
+        var i = 0;
+        var aStart = j;
+        var bStart = j;
+        var aLeft = aEnd - j + 1;
+        var bLeft = bEnd - j + 1;
+        var sources = new Int32Array(bLeft + 1);
+        // Keep track if its possible to remove whole DOM using textContent = '';
+        var canRemoveWholeContent = aLeft === aLength;
+        var moved = false;
+        var pos = 0;
+        var patched = 0;
+        // When sizes are small, just loop them through
+        if (bLength < 4 || (aLeft | bLeft) < 32) {
+            for (i = aStart; i <= aEnd; ++i) {
+                aNode = a[i];
+                if (patched < bLeft) {
+                    for (j = bStart; j <= bEnd; j++) {
+                        bNode = b[j];
+                        if (aNode.key === bNode.key) {
+                            sources[j - bStart] = i + 1;
+                            if (canRemoveWholeContent) {
+                                canRemoveWholeContent = false;
+                                while (aStart < i) {
+                                    remove(a[aStart++], dom);
+                                }
+                            }
+                            if (pos > j) {
+                                moved = true;
+                            }
+                            else {
+                                pos = j;
+                            }
+                            if (bNode.flags & 16384 /* InUse */) {
+                                b[j] = bNode = directClone(bNode);
+                            }
+                            patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                            ++patched;
+                            break;
+                        }
+                    }
+                    if (!canRemoveWholeContent && j > bEnd) {
+                        remove(aNode, dom);
+                    }
+                }
+                else if (!canRemoveWholeContent) {
+                    remove(aNode, dom);
+                }
+            }
+        }
+        else {
+            var keyIndex = {};
+            // Map keys by their index
+            for (i = bStart; i <= bEnd; ++i) {
+                keyIndex[b[i].key] = i;
+            }
+            // Try to patch same keys
+            for (i = aStart; i <= aEnd; ++i) {
+                aNode = a[i];
+                if (patched < bLeft) {
+                    j = keyIndex[aNode.key];
+                    if (j !== void 0) {
+                        if (canRemoveWholeContent) {
+                            canRemoveWholeContent = false;
+                            while (i > aStart) {
+                                remove(a[aStart++], dom);
+                            }
+                        }
+                        sources[j - bStart] = i + 1;
+                        if (pos > j) {
+                            moved = true;
+                        }
+                        else {
+                            pos = j;
+                        }
+                        bNode = b[j];
+                        if (bNode.flags & 16384 /* InUse */) {
+                            b[j] = bNode = directClone(bNode);
+                        }
+                        patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                        ++patched;
+                    }
+                    else if (!canRemoveWholeContent) {
+                        remove(aNode, dom);
+                    }
+                }
+                else if (!canRemoveWholeContent) {
+                    remove(aNode, dom);
+                }
+            }
+        }
+        // fast-path: if nothing patched remove all old and add all new
+        if (canRemoveWholeContent) {
+            removeAllChildren(dom, parentVNode, a);
+            mountArrayChildren(b, dom, context, isSVG, outerEdge, lifecycle);
+        }
+        else if (moved) {
+            var seq = lis_algorithm(sources);
+            j = seq.length - 1;
+            for (i = bLeft - 1; i >= 0; i--) {
+                if (sources[i] === 0) {
+                    pos = i + bStart;
+                    bNode = b[pos];
+                    if (bNode.flags & 16384 /* InUse */) {
+                        b[pos] = bNode = directClone(bNode);
+                    }
+                    nextPos = pos + 1;
+                    mount(bNode, dom, context, isSVG, nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge, lifecycle);
+                }
+                else if (j < 0 || i !== seq[j]) {
+                    pos = i + bStart;
+                    bNode = b[pos];
+                    nextPos = pos + 1;
+                    moveVNodeDOM(bNode, dom, nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge);
+                }
+                else {
+                    j--;
+                }
+            }
+        }
+        else if (patched !== bLeft) {
+            // when patched count doesn't match b length we need to insert those new ones
+            // loop backwards so we can use insertBefore
+            for (i = bLeft - 1; i >= 0; i--) {
+                if (sources[i] === 0) {
+                    pos = i + bStart;
+                    bNode = b[pos];
+                    if (bNode.flags & 16384 /* InUse */) {
+                        b[pos] = bNode = directClone(bNode);
+                    }
+                    nextPos = pos + 1;
+                    mount(bNode, dom, context, isSVG, nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge, lifecycle);
+                }
+            }
+        }
+    }
+    var result;
+    var p;
+    var maxLen = 0;
+    // https://en.wikipedia.org/wiki/Longest_increasing_subsequence
+    function lis_algorithm(arr) {
+        var arrI = 0;
+        var i = 0;
+        var j = 0;
+        var k = 0;
+        var u = 0;
+        var v = 0;
+        var c = 0;
+        var len = arr.length;
+        if (len > maxLen) {
+            maxLen = len;
+            result = new Int32Array(len);
+            p = new Int32Array(len);
+        }
+        for (; i < len; ++i) {
+            arrI = arr[i];
+            if (arrI !== 0) {
+                j = result[k];
+                if (arr[j] < arrI) {
+                    p[i] = j;
+                    result[++k] = i;
+                    continue;
+                }
+                u = 0;
+                v = k;
+                while (u < v) {
+                    c = (u + v) >> 1;
+                    if (arr[result[c]] < arrI) {
+                        u = c + 1;
+                    }
+                    else {
+                        v = c;
+                    }
+                }
+                if (arrI < arr[result[u]]) {
+                    if (u > 0) {
+                        p[i] = result[u - 1];
+                    }
+                    result[u] = i;
+                }
+            }
+        }
+        u = k + 1;
+        var seq = new Int32Array(u);
+        v = result[u - 1];
+        while (u-- > 0) {
+            seq[u] = v;
+            v = p[v];
+            result[u] = 0;
+        }
+        return seq;
+    }
+
+    var hasDocumentAvailable = typeof document !== 'undefined';
+    if (hasDocumentAvailable) {
+        /*
+         * Defining $EV and $V properties on Node.prototype
+         * fixes v8 "wrong map" de-optimization
+         */
+        if (window.Node) {
+            Node.prototype.$EV = null;
+            Node.prototype.$V = null;
+        }
+    }
+    function __render(input, parentDOM, callback, context) {
+        var lifecycle = [];
+        var rootInput = parentDOM.$V;
+        renderCheck.v = true;
+        if (isNullOrUndef(rootInput)) {
+            if (!isNullOrUndef(input)) {
+                if (input.flags & 16384 /* InUse */) {
+                    input = directClone(input);
+                }
+                mount(input, parentDOM, context, false, null, lifecycle);
+                parentDOM.$V = input;
+                rootInput = input;
+            }
+        }
+        else {
+            if (isNullOrUndef(input)) {
+                remove(rootInput, parentDOM);
+                parentDOM.$V = null;
+            }
+            else {
+                if (input.flags & 16384 /* InUse */) {
+                    input = directClone(input);
+                }
+                patch(rootInput, input, parentDOM, context, false, null, lifecycle);
+                rootInput = parentDOM.$V = input;
+            }
+        }
+        callAll(lifecycle);
+        renderCheck.v = false;
+        if (isFunction(callback)) {
+            callback();
+        }
+        if (isFunction(options.renderComplete)) {
+            options.renderComplete(rootInput, parentDOM);
+        }
+    }
+    function render(input, parentDOM, callback, context) {
+        if ( callback === void 0 ) callback = null;
+        if ( context === void 0 ) context = EMPTY_OBJ;
+
+        __render(input, parentDOM, callback, context);
+    }
+
+    var QUEUE = [];
+    var nextTick = typeof Promise !== 'undefined'
+        ? Promise.resolve().then.bind(Promise.resolve())
+        : function (a) {
+            window.setTimeout(a, 0);
+        };
+    var microTaskPending = false;
+    function queueStateChanges(component, newState, callback, force) {
+        var pending = component.$PS;
+        if (isFunction(newState)) {
+            newState = newState(pending ? combineFrom(component.state, pending) : component.state, component.props, component.context);
+        }
+        if (isNullOrUndef(pending)) {
+            component.$PS = newState;
+        }
+        else {
+            for (var stateKey in newState) {
+                pending[stateKey] = newState[stateKey];
+            }
+        }
+        if (!component.$BR) {
+            if (!renderCheck.v) {
+                if (QUEUE.length === 0) {
+                    applyState(component, force);
+                    if (isFunction(callback)) {
+                        callback.call(component);
+                    }
+                    return;
+                }
+            }
+            if (QUEUE.indexOf(component) === -1) {
+                QUEUE.push(component);
+            }
+            if (!microTaskPending) {
+                microTaskPending = true;
+                nextTick(rerender);
+            }
+            if (isFunction(callback)) {
+                var QU = component.$QU;
+                if (!QU) {
+                    QU = component.$QU = [];
+                }
+                QU.push(callback);
+            }
+        }
+        else if (isFunction(callback)) {
+            component.$L.push(callback.bind(component));
+        }
+    }
+    function callSetStateCallbacks(component) {
+        var queue = component.$QU;
+        for (var i = 0; i < queue.length; ++i) {
+            queue[i].call(component);
+        }
+        component.$QU = null;
+    }
+    function rerender() {
+        var component;
+        microTaskPending = false;
+        while ((component = QUEUE.shift())) {
+            if (!component.$UN) {
+                applyState(component, false);
+                if (component.$QU) {
+                    callSetStateCallbacks(component);
+                }
+            }
+        }
+    }
+    function applyState(component, force) {
+        if (force || !component.$BR) {
+            var pendingState = component.$PS;
+            component.$PS = null;
+            var lifecycle = [];
+            renderCheck.v = true;
+            updateClassComponent(component, combineFrom(component.state, pendingState), component.props, findDOMfromVNode(component.$LI, true).parentNode, component.context, component.$SVG, force, null, lifecycle);
+            callAll(lifecycle);
+            renderCheck.v = false;
+        }
+        else {
+            component.state = component.$PS;
+            component.$PS = null;
+        }
+    }
+    var Component = function Component(props, context) {
+        // Public
+        this.state = null;
+        // Internal properties
+        this.$BR = false; // BLOCK RENDER
+        this.$BS = true; // BLOCK STATE
+        this.$PS = null; // PENDING STATE (PARTIAL or FULL)
+        this.$LI = null; // LAST INPUT
+        this.$UN = false; // UNMOUNTED
+        this.$CX = null; // CHILDCONTEXT
+        this.$QU = null; // QUEUE
+        this.$N = false; // Uses new lifecycle API Flag
+        this.$L = null; // Current lifecycle of this component
+        this.$SVG = false; // Flag to keep track if component is inside SVG tree
+        this.props = props || EMPTY_OBJ;
+        this.context = context || EMPTY_OBJ; // context should not be mutable
+    };
+    Component.prototype.forceUpdate = function forceUpdate (callback) {
+        if (this.$UN) {
+            return;
+        }
+        // Do not allow double render during force update
+        queueStateChanges(this, {}, callback, true);
+    };
+    Component.prototype.setState = function setState (newState, callback) {
+        if (this.$UN) {
+            return;
+        }
+        if (!this.$BS) {
+            queueStateChanges(this, newState, callback, false);
+        }
+    };
+    Component.prototype.render = function render (_nextProps, _nextState, _nextContext) {
+        return null;
+    };
+
+    var UserType;
+    (function (UserType) {
+        UserType["FreshUser"] = "Fresh User";
+        UserType["UserNotRespondedBack"] = "User Not Responded Back";
+        UserType["FollowMessageSent"] = "User Follow Message Sent";
+        UserType["UserRespondedBack"] = "User Responded Back";
+        UserType["UserHostile"] = "Hostile User";
+    })(UserType || (UserType = {}));
+    var SendMessageType;
+    (function (SendMessageType) {
+        SendMessageType["StartAdviceStart"] = "start:advice:start";
+        SendMessageType["StartAdviceStartAgain"] = "start:advice:startAgain";
+        SendMessageType["StartAdviceGeneral"] = "start:advice:general";
+        SendMessageType["StartAdviceRelapse"] = "start:advice:relapse";
+        SendMessageType["StartAdviceStruggle"] = "start:advice:struggle";
+        SendMessageType["StartAdviceAge"] = "start:advice:age";
+        SendMessageType["StartAdviceAbstain"] = "start:advice:abstain";
+        SendMessageType["StartAdviceFlatline"] = "start:advice:flatline";
+        SendMessageType["StartAdviceWetdreamAdvice"] = "start:advice:wetdreamAdvice";
+        SendMessageType["StartAdvicePornBlockersAdvice"] = "start:advice:pornBlockersAdvice";
+        SendMessageType["StartAdviceIsWatchingPornRelapseAdvice"] = "start:advice:isWatchingPornRelapseAdvice";
+        SendMessageType["StartNoReasonToRelapseAdvice"] = "start:advice:noReasonToRelapse";
+        SendMessageType["StartAccountabilityPartner"] = "start:accountability:accountabilityPartner";
+        // StartStraightToGuide = 'start:advice:straightToGuide',
+        SendMessageType["StartPartnerAdvice"] = "start::advice:partner";
+        SendMessageType["StartMasturbateWithoutPornAdvice"] = "start::advice:masturbateWithoutPorn";
+        SendMessageType["StartBiggestBenefitPostAddictionAdvice"] = "start::advice:biggestBenefitPostAddiction";
+        SendMessageType["StartDealingWithUrgesAdvice"] = "start::advice:dealingWithUrges";
+        SendMessageType["MiddleGuideIfYouWouldLikeToLearnMore"] = "middle:guide:learnmore";
+        SendMessageType["MiddleGuideNoWorries"] = "middle:guide:noworries";
+        SendMessageType["MiddleGuideLinkYou"] = "middle:guide:linkyou";
+        SendMessageType["MiddleGuideMeditationAdvice"] = "middle:guide:meditationAdvice";
+        SendMessageType["FinalHardTime"] = "final:disagree:hardTime";
+        SendMessageType["FinalFantastic"] = "final:agree:fantastic";
+        SendMessageType["FinalJoinSubreddit"] = "final:join:subreddit";
+        SendMessageType["FinalShareResources"] = "final:share:resources";
+        SendMessageType["FollowRelapseAdvice"] = "follow:advice:relapse";
+        SendMessageType["FollowMeditationAdvice"] = "follow:advice:meditation";
+        SendMessageType["FollowStruggleAdvice"] = "follow:advice:struggle";
+        SendMessageType["FollowNotSmoothlyAdvice"] = "follow:advice:notSmoothly";
+        SendMessageType["UserReplyCustom"] = "user:reply:custom";
+        SendMessageType["UserReplyStart"] = "user:reply:start";
+        SendMessageType["UserReplyMiddle"] = "user:reply:middle";
+        SendMessageType["UserReplyFinal"] = "user:reply:final";
+        SendMessageType["UserReplyFollow"] = "user:reply:follow";
+        SendMessageType["NFDCustomSend"] = "nfd:custom:send";
+        SendMessageType["NA"] = "NA";
+    })(SendMessageType || (SendMessageType = {}));
+    var MessageType;
+    (function (MessageType) {
+        MessageType["Historic"] = "Historic";
+        MessageType["NonHistoric"] = "NonHistoric";
+    })(MessageType || (MessageType = {}));
+
+    var increaseDelayTimer = function () {
+        var delayTimer = window.localStorage.getItem('delayTimer');
+        var delayTimerNumber = parseInt(delayTimer) + 26000;
+        window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
+    };
+    var openNewLink = function (prelimUrl, messageType) {
+        var url = "" + prelimUrl;
+        if (messageType !== 'custom') {
+            var delayTimer = window.localStorage.getItem('delayTimer');
+            url = url + ("&timer=" + delayTimer);
+            increaseDelayTimer();
+        }
+        window.open(url, '_blank');
+    };
+    var generatePrelimUrl = function (toUsername, messageText, messageType) { return ("https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + encodeURIComponent(messageText) + "&type=" + messageType); };
+
+    var startAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var startAgainAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". It's great to see you're starting again!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var generalAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var relapseAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". I'm sorry to hear you relapsed.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var struggleAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". I'm sorry to hear you're struggling.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var flatlineAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var wetdreamAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var ageAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.\n\nThere is no such thing as reasonable when it comes to addiction. I've created a website which explains why, if you're interested.\n"); };
+    var accountabilityPartner = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"); };
+    var partnerAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
+    var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var biggestBenefitPostAddictionAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". Sorry to hear you're struggling with urges. If they're a huge issue for you then it might mean that you don't have the fundamentals down.\n\nUltimately recovery should be relatively struggle free, otherwise are you really recovering at all? I find the main thing with recovery is to focus on your mental health. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+
+    var timeSince = function (date) {
+        var seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+        var interval = Math.floor(seconds / 31536000);
+        if (interval > 1) {
+            return interval + " years";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+            return interval + " months";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+            return interval + " days";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+            return interval + " hours";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " minutes";
+        }
+        return Math.floor(seconds) + " seconds";
+    };
+
+    var createTextVNode$1 = createTextVNode;
+    var createVNode$1 = createVNode;
+    var PreviousMessageInformation = function (_a) {
+        var dbUser = _a.dbUser;
+        return (createVNode$1(1, "div", null, [createVNode$1(1, "p", null, createVNode$1(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$1(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16), createVNode$1(1, "p", null, createVNode$1(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$1(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16)], 0));
+    };
+    var UserInformation = function (_a) {
+        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        return (createVNode$1(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$1(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$1(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$1(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$1(1, "br"), createVNode$1(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$1(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
+    };
+    var SendUserNoteForm = /** @class */ (function (_super) {
+        __extends(SendUserNoteForm, _super);
+        function SendUserNoteForm(props) {
+            var _this = _super.call(this, props) || this;
+            _this.state = {
+                message: ''
+            };
+            return _this;
+        }
+        SendUserNoteForm.prototype.render = function () {
+            var _this = this;
+            var _a;
+            return (createVNode$1(1, "div", null, [createVNode$1(64, "input", null, null, 1, { "value": (_a = this.state) === null || _a === void 0 ? void 0 : _a.message, "onChange": function (e) { return _this.setState({ message: e.target.value }); }, "style": { 'margin-right': '1rem' } }), createVNode$1(1, "button", null, "Send Note", 16, { "onclick": function () { return __awaiter(_this, void 0, void 0, function () {
+                        var _a;
+                        return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0: return [4 /*yield*/, sendNewUserNote({ username: this.props.username, message: (_a = this.state) === null || _a === void 0 ? void 0 : _a.message })];
+                                case 1:
+                                    _b.sent();
+                                    this.setState({ message: '' });
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); } })], 4));
+        };
+        return SendUserNoteForm;
+    }(Component));
+    var MarkUserHostileButton = function (_a) {
+        var username = _a.username;
+        return (createVNode$1(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, markUserHostile({ username: username })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+    var MarkUserChattedButton = function (_a) {
+        var username = _a.username;
+        return (createVNode$1(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, markUserChatted({ username: username })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+    var SetMarkerButton = function (_a) {
+        var username = _a.username, usernameConfig = _a.usernameConfig;
+        return (createVNode$1(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, setMarker({ username: username, usernameConfig: usernameConfig })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+
+    var followRelapseAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested?"); };
+    var followMeditationAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". Have you been meditating daily like I suggested?"); };
+    var followStruggleAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested?"); };
+    var followNotSmoothlyAdvice = function (forum) { return ("Hey, I saw your post on " + forum + ". I'm sorry things haven't been going smoothly with your recovery.\n\nHave you been meditating daily like I suggested?"); };
+
+    var createComponentVNode$1 = createComponentVNode;
+    var createVNode$2 = createVNode;
+    // import ReactTooltip from 'react-tooltip';
+    var createStartMessageLink = function (messageType, color, toUsername, messageText) {
+        var prelimUrl = generatePrelimUrl(toUsername, messageText, messageType);
+        return (createVNode$2(1, "div", null, createVNode$2(1, "a", null, messageType, 0, { "style": {
+                color: color || 'black',
+                'margin-top': '0.2rem',
+                'margin-bottom': '0.2rem',
+                'margin-left': '0.3rem',
+                'margin-right': '0.3rem',
+                'font-size': '12px',
+                display: 'inline-block',
+            }, "onclick": function () { return openNewLink(prelimUrl, messageType); } }), 0));
+    };
+    var UserPanel = function (_a) {
+        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig.forumType)), createVNode$2(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartDealingWithUrgesAdvice, 'purple', dbUser.username, dealingWithUrgesAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartMasturbateWithoutPornAdvice, 'purple', dbUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartBiggestBenefitPostAddictionAdvice, 'purple', dbUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartPartnerAdvice, 'purple', dbUser.username, partnerAdvice(usernameConfig.forumType))], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdviceFlatline, 'purple', dbUser.username, flatlineAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig.forumType)), createVNode$2(1, "h4", null, "Follow", 16), createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.FollowStruggleAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig.forumType)), createStartMessageLink(SendMessageType.FollowNotSmoothlyAdvice, 'purple', dbUser.username, followNotSmoothlyAdvice(usernameConfig.forumType))], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "style": { display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' } })], 0));
+    };
+
+    var createTextVNode$2 = createTextVNode;
+    var createComponentVNode$2 = createComponentVNode;
+    var createVNode$3 = createVNode;
+    var getAllNoFapNewUsernames = function () {
+        var allATags = document.querySelectorAll('a');
+        var filteredATags = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
+        var usernames = filteredATags.map(function (tag) { return tag.innerText.split('/')[1]; });
+        return usernames;
+    };
+    var createPrelimContainer = function (filteredATags) {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
+        var prelimContainer = document.createElement('div');
+        prelimContainer.id = 'reade-automate-container';
+        var firstElementContainer = filteredATags[0];
+        // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
+        (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = firstElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.parentNode) === null || _g === void 0 ? void 0 : _g.parentNode) === null || _h === void 0 ? void 0 : _h.parentNode.insertBefore(prelimContainer, (_q = (_p = (_o = (_m = (_l = (_k = (_j = firstElementContainer.parentNode) === null || _j === void 0 ? void 0 : _j.parentNode) === null || _k === void 0 ? void 0 : _k.parentNode) === null || _l === void 0 ? void 0 : _l.parentNode) === null || _m === void 0 ? void 0 : _m.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode);
+    };
+    var scrollToSpecifiedDate = function (dateString, usernameConfig) { return new Promise(function (resolve) {
+        var interval;
+        interval = setInterval(function () {
+            window.scrollTo(0, document.body.scrollHeight);
+            if (dateString !== 'NA') {
+                console.log('scrollToSpecifiedDate - run');
+                var allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
+                for (var _i = 0, _a = allTimeStamps; _i < _a.length; _i++) {
+                    var timeStampElement = _a[_i];
+                    var doesTextContainXXX = timeStampElement.innerText.includes(dateString);
+                    if (doesTextContainXXX) {
+                        console.log('Found scroll date.');
+                        clearInterval(interval);
+                        resolve('Found scroll date.');
+                    }
+                    else {
+                        if (timeStampElement) {
+                            timeStampElement.remove();
+                        }
+                    }
+                }
+            }
+            else {
+                console.log('scrollToSpecifiedUsername - run');
+                var usernames = getAllNoFapNewUsernames();
+                for (var _b = 0, _c = usernames; _b < _c.length; _b++) {
+                    var username = _c[_b];
+                    var doesTextContainXXX = username === usernameConfig.usernameValue;
+                    if (doesTextContainXXX) {
+                        console.log('Found scroll username.');
+                        clearInterval(interval);
+                        resolve('Found scroll username.');
+                    }
+                }
+            }
+        }, 700);
+    }); };
+    var scrollToMarker = function () {
+        setTimeout(function () { console.log('delay, bby'); }, 800);
+        var lastUserMarkerElement = document.querySelector('#last-user-reade');
+        console.log(lastUserMarkerElement);
+        if (lastUserMarkerElement) {
+            var y = lastUserMarkerElement.getBoundingClientRect().top + window.scrollY - 350;
+            console.log(y);
+            window.scroll({
+                top: y,
+                behavior: 'smooth'
+            });
+        }
+    };
+    var isServerRunning = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var message;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, checkServerRunning()];
+                case 1:
+                    message = _a.sent();
+                    console.log('serverRunning', message);
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    var createPrelimLink = function (_a) {
+        var dbUser = _a.dbUser, titleText = _a.titleText, flairText = _a.flairText, aLinkHref = _a.aLinkHref, prelimUrl = _a.prelimUrl, index = _a.index, sendMessageType = _a.sendMessageType, prelimContainer = _a.prelimContainer;
+        var nodeContainer = document.createElement('div');
+        nodeContainer.id = "r" + dbUser.username + "-" + index;
+        render(createVNode$3(1, "div", null, [createVNode$3(1, "a", null, [createVNode$3(1, "span", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), createVNode$3(1, "span", null, titleText, 0), createVNode$3(1, "p", null, flairText, 0, { "style": { 'margin-top': '0.5rem' } })], 4, { "style": { display: 'block', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$3(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
+        prelimContainer === null || prelimContainer === void 0 ? void 0 : prelimContainer.appendChild(nodeContainer);
+    };
+    var renderUserPanel = function (_a) {
+        var tag = _a.tag, tagUsername = _a.tagUsername, index = _a.index, dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        var rootId = "r" + tagUsername + "-" + index;
+        var root = document.createElement('div');
+        root.id = rootId;
+        tag.parentNode.insertBefore(root, tag);
+        tag.remove();
+        var domContainer = document.querySelector("#" + rootId);
+        if (domContainer) {
+            render(createComponentVNode$2(2, UserPanel, { "dbUser": dbUser, "usernameConfig": usernameConfig }), domContainer);
+        }
+    };
+
+    // export const USERNAME = 'NA';
+    var ForumType;
+    (function (ForumType) {
+        ForumType["rNofapForum"] = "r/NoFap";
+        ForumType["rPornFreeForum"] = "r/pornfree";
+        ForumType["rPornAddictionForum"] = "r/PornAddiction";
+        ForumType["rNofapChristiansForum"] = "r/NoFapChristians";
+        ForumType["rNofapTeensForum"] = "r/NoFapTeens";
+        ForumType["rSemenRetentionForum"] = "r/Semenretention";
+        ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
+    })(ForumType || (ForumType = {}));
+    var R_NOFAP_USERNAME = 'Potential-Ad-7966';
+    var R_NOFAP_TIMESTAMP = '';
+    var R_PORN_FREE_USERNAME = 'yoloboy22';
+    var R_PORN_FREE_TIMESTAMP = '';
+    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
+    var R_PORN_ADDICTION_TIMESTAMP = '';
+    var R_NOFAP_CHRISTIANS_USERNAME = '';
+    var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
+    var R_NOFAP_TEENS_USERNAME = '';
+    var R_NOFAP_TEENS_TIMESTAMP = '';
+    var R_SEMEN_RETENTION_USERNAME = '';
+    var R_SEMEN_RETENTION_TIMESTAMP = '';
+    var R_MUSLIM_NOFAP_USERNAME = '';
+    var R_MUSLIM_NOFAP_TIMESTAMP = '';
+    var TIMEFRAME = 'NA';
+    // export const TIMEFRAME = '1 hour ago';
+    // export const TIMEFRAME = '2 hours ago';
+    // export const TIMEFRAME = '3 hours ago';
+    // export const TIMEFRAME = '4 hours ago';
+    // export const TIMEFRAME = '5 hours ago';
+    // export const TIMEFRAME = '6 hours ago';
+    // export const TIMEFRAME = '7 hours ago';
+    // export const TIMEFRAME = '8 hours ago';
+    // export const TIMEFRAME = '9 hours ago';
+    // export const TIMEFRAME = '10 hours ago';
+    // export const TIMEFRAME = '11 hours ago';
+    // export const TIMEFRAME = '12 hours ago';
+    // export const TIMEFRAME = '13 hours ago';
+    // export const TIMEFRAME = '14 hours ago';
+    // export const TIMEFRAME = '15 hours ago';
+    var getUsernameMarker = function (location) {
+        if (location.pathname.toLowerCase().includes('/nofap/new')) {
+            return {
+                usernameValue: R_NOFAP_USERNAME,
+                usernameTimestamp: R_NOFAP_TIMESTAMP,
+                forumType: ForumType.rNofapForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/pornfree/new')) {
+            return {
+                usernameValue: R_PORN_FREE_USERNAME,
+                usernameTimestamp: R_PORN_FREE_TIMESTAMP,
+                forumType: ForumType.rPornFreeForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/pornaddiction/new')) {
+            return {
+                usernameValue: R_PORN_ADDICTION_USERNAME,
+                usernameTimestamp: R_PORN_ADDICTION_TIMESTAMP,
+                forumType: ForumType.rPornAddictionForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {
+            return {
+                usernameValue: R_NOFAP_CHRISTIANS_USERNAME,
+                usernameTimestamp: R_NOFAP_CHRISTIANS_TIMESTAMP,
+                forumType: ForumType.rNofapChristiansForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/nofapteens/new')) {
+            return {
+                usernameValue: R_NOFAP_TEENS_USERNAME,
+                usernameTimestamp: R_NOFAP_TEENS_TIMESTAMP,
+                forumType: ForumType.rNofapTeensForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/semenretention/new')) {
+            return {
+                usernameValue: R_SEMEN_RETENTION_USERNAME,
+                usernameTimestamp: R_SEMEN_RETENTION_TIMESTAMP,
+                forumType: ForumType.rSemenRetentionForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/muslimnofap/new')) {
+            return {
+                usernameValue: R_MUSLIM_NOFAP_USERNAME,
+                usernameTimestamp: R_MUSLIM_NOFAP_TIMESTAMP,
+                forumType: ForumType.rMuslimNofapForum
+            };
+        }
+        return {
+            usernameValue: '',
+            usernameTimestamp: '',
+            forumType: ForumType.rNofapForum
+        };
+    };
+
+    var toRemoveInitialDay = function (titleText, flairText, messageText) {
+        return (new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(titleText)
+            || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
+            || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
+            || new RegExp(/profile/i).test(titleText)
+            || new RegExp(/^day \d+ clean/i).test(titleText)) &&
+            (new RegExp(/^finally$/i).test(messageText)
+                || new RegExp(/^day \d+ clean/i).test(titleText)
+                || new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(messageText)
+                || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
+                || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
+                || new RegExp(/had no urges/i).test(messageText)
+                || new RegExp(/sparta/i).test(messageText));
+    };
+    var toRemoveInitial = function (titleText, flairText) {
+        return flairText === 'Success Story'
+            || new RegExp(/profile/i).test(titleText)
+            // || new RegExp(/("|“|')/i).test(titleText) // never do this, ever. breaks everything
+            || new RegExp(/gift/i).test(titleText)
+            || new RegExp(/i made it/i).test(titleText)
+            || new RegExp(/(celebrate)/i).test(titleText)
+            || new RegExp(/why do you fap\?/i).test(titleText)
+            || new RegExp(/(boner|morning wood)/i).test(titleText)
+            || new RegExp(/double digit/i).test(titleText)
+            || new RegExp(/diary/i).test(titleText)
+            || new RegExp(/(tik tok|tiktok)/i).test(titleText)
+            || new RegExp(/moral/i).test(titleText)
+            || new RegExp(/strange benefit/i).test(titleText)
+            || new RegExp(/not bragging/i).test(titleText)
+            || new RegExp(/(semen|urine|anal)/i).test(titleText)
+            || new RegExp(/motivational thought/i).test(titleText)
+            || new RegExp(/(a reminder|remember this)/i).test(titleText)
+            || new RegExp(/(Don't|Don't|dont) mind me/i).test(titleText)
+            || new RegExp(/(cancer|prostatitis|erection)/i).test(titleText)
+            || new RegExp(/love you guys/i).test(titleText)
+            || new RegExp(/a study/i).test(titleText)
+            // || new RegExp(/(week|days) strong/i).test(titleText)
+            // || new RegExp(/passed (day|week)/i).test(titleText)
+            // || new RegExp(/become the/i).test(titleText)
+            // || new RegExp(/replaced PMO/i).test(titleText)
+            // || new RegExp(/longest streak/i).test(titleText) // look into
+            // || new RegExp(/a theory/i).test(titleText)
+            // || new RegExp(/today i reached/i).test(titleText)
+            // || new RegExp(/almost there/i).test(titleText)
+            // || new RegExp(/(weeks|days) porn free/i).test(titleText)
+            // || new RegExp(/learnt/i).test(titleText)
+            || new RegExp(/^(Don't|Don't|dont) give up$/i).test(titleText)
+            || new RegExp(/relapsed intentionally/i).test(titleText)
+            || new RegExp(/found something that/i).test(titleText)
+            // || new RegExp(/(women|girl)/i).test(titleText) // can't because there are good cases for this.
+            || new RegExp(/(wim hof)/i).test(titleText) // cold shower
+            || new RegExp(/(premature|ejaculation|precum|cum)/i).test(titleText)
+            || new RegExp(/achieved my goal/i).test(titleText)
+            || new RegExp(/(insta|instagram)/i).test(titleText)
+            || new RegExp(/hunger/i).test(titleText)
+            // || new RegExp(/king /i).test(titleText) // because jerking
+            || new RegExp(/(previous record|milestone)/i).test(titleText)
+            || new RegExp(/(pied|peid|in bed|get it up|shrink)/i).test(titleText)
+            || new RegExp(/(hair|skin|acne|sperm)/i).test(titleText)
+            || new RegExp(/the key is/i).test(titleText)
+            || new RegExp(/the key to (everything|NoFap)/i).test(titleText)
+            || new RegExp(/monk/i).test(titleText)
+            || new RegExp(/(grip|syndrome)/i).test(titleText)
+            || new RegExp(/(virgin|virginity)/i).test(titleText)
+            // || new RegExp(/haven't relapsed/i).test(titleText)
+            // || new RegExp(/is ?(.*) worth/i).test(titleText)
+            // || new RegExp(/come this far/i).test(titleText)
+            // || new RegExp(/breakthrough/i).test(titleText)
+            // || new RegExp(/(don't|dont) fall/i).test(titleText)
+            || new RegExp(/read this if you/i).test(titleText)
+            || new RegExp(/weed/i).test(titleText)
+            || new RegExp(/(weekly|daily) journal/i).test(titleText)
+            || new RegExp(/(tracker|counting|counter)/i).test(titleText)
+            || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
+            || new RegExp(/my benefits/i).test(titleText)
+            || new RegExp(/placebo/i).test(titleText)
+            || new RegExp(/(balls|penis|pelvic|genital|testic)/i).test(titleText)
+            || new RegExp(/accountability post/i).test(titleText)
+            || new RegExp(/illusion/i).test(titleText)
+            || new RegExp(/counts as relapse/i).test(titleText) // look into this.
+            // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
+            // || new RegExp(/sex/i).test(titleText) // look into this (can't do this because of sexual urges)
+            || new RegExp(/journal entry/i).test(titleText) // look into this.
+            || new RegExp(/(mum|dad)/i).test(titleText) // look into this.
+            || new RegExp(/benefits till now/i).test(titleText)
+            || new RegExp(/harmful effect/i).test(titleText)
+            || new RegExp(/interesting dream/i).test(titleText)
+            || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText);
+    };
+    // || new RegExp(/girlfriend/i).test(titleText) // look into this
+    // || new RegExp(/should I go/i).test(titleText)
+    // || new RegExp(/(going|growing) strong/i).test(titleText)
+    // || new RegExp(/(don't|dont) give up/i).test(titleText)
+    // || new RegExp(/the ?(.*) benefit ?(.*) nofap/i).test(titleText)
+    // || new RegExp(/relapse\?/i).test(titleText) // look into this.
+    // || new RegExp(/transformation/i).test(titleText) // look into this.
+    // || new RegExp(/longest .* streak/i).test(titleText) // look into this.
+    // || new RegExp(/confessed .* to my/i).test(titleText) // look into this.
+    // || new RegExp(/pro tip/i).test(titleText)
+    // || new RegExp(/update from/i).test(titleText)
+    // tricks ... helped me
+    // news/newspaper
+    // 10th day done
+    //
+    // I almost caved
+    // NoFap helps with my Breakup
+    // first day after relapse
+    // no urges
+    // is this normal?
+    // it's okay to fap
+    // picture/quote
+    // libdo
+    // days complete / d
+    // the key is to
+    // harmful effects
+    // edgeCASES
+    // What does your sex life looks like after you successfully quit porn?
+    // Deleted: Motivate Me - I’ve been heavily masturbating since my early teens and have smoked weed regularly for the past year...
+    // userscript.html?name=Reddit%20NoFap%20New%20Script.user.js&id=cd407b2d-ccbc-47ff-8aa0-1e9a382be0ab:16 Deleted: Question - Can’t focus on task at hand due to sexual urges. What are the options?
+    // Deleted: undefined - guys i am 4 days through and i feel the urge to fap more than ever. any tips other than taking cold showers???
+    var toRemoveFinal = function (titleText, flairText) {
+        return new RegExp(/^(day|week) \d+ (complete|done)/i).test(titleText)
+            || new RegExp(/\d+ (week|day).* (complete|done)/i).test(titleText)
+            || new RegExp(/(1st|first) (week|month) complete/i).test(titleText);
+    };
+    // || new RegExp(/^\d+th day/i).test(titleText)
+    // || new RegExp(/beginning of week/i).test(titleText) // look into this
+    // || new RegExp(/dreams/i).test(titleText) // look into this
+    // || new RegExp(/^\d+ days$/i).test(titleText)
+    // || new RegExp(/^\d+ (weeks|week)$/i).test(titleText)
+    // || new RegExp(/(one|two|three|four|five) weeks in/i).test(titleText)
+    // || new RegExp(/^\d+ (week|weeks) in/i).test(titleText)
+    // || new RegExp(/completed \d+ (days|weeks)/i).test(titleText)
+    // month free
+    // 30 day check-in
+    // one week.
+    // 100 days (can mean in the sense of challenge, so no. I need to combine with flairs such as victory to ensure that it has the right context.)
+    // month
+    // toStartAdvice + flair
+    // New to NoFap + Day 1
+    var toStartedAdvice = function (titleText, flairText) {
+        return new RegExp(/starting .* journey/i).test(titleText)
+            || new RegExp(/starting .* challenge/i).test(titleText)
+            || new RegExp(/(quitting|quiting|starting) ?(.*) (now|today)/i).test(titleText)
+            || new RegExp(/(first|1st) (step|day)/i).test(titleText)
+            || new RegExp(/(starting|started|starts) (now|today)/i).test(titleText)
+            || new RegExp(/(starting|started) .* (streak|first|run)/i).test(titleText)
+            || new RegExp(/starting, again/i).test(titleText)
+            || new RegExp(/(journey) (start|begins)/i).test(titleText)
+            || new RegExp(/(start|beginning) (of a|my) journey/i).test(titleText)
+            || new RegExp(/New to NoFap/i).test(titleText)
+            || new RegExp(/new here/i).test(titleText)
+            || new RegExp(/starting NoFap/i).test(titleText)
+            || new RegExp(/(I'm|im) done with this ?(.*) feeling/i).test(titleText)
+            || new RegExp(/Day 1 Started/i).test(titleText)
+            || new RegExp(/^Day 1$/i).test(titleText)
+            || new RegExp(/officially day 1/i).test(titleText)
+            // || new RegExp(/my first post/i).test(titleText) // potentially inaccurate
+            || new RegExp(/try to do this NoFap/i).test(titleText)
+            || new RegExp(/(wanna|want|trying) to start/i).test(titleText)
+            || new RegExp(/start of the journey/i).test(titleText)
+            || new RegExp(/(Let's|lets) do this/i).test(titleText)
+            || new RegExp(/(it's|its|it is) time to change/i).test(titleText)
+            || new RegExp(/day 1 of (no fap|reboot|re boot)/i).test(titleText)
+            || new RegExp(/new beginning/i).test(titleText)
+            || new RegExp(/stopping for good/i).test(titleText)
+            || new RegExp(/NoFap from today/i).test(titleText)
+            || new RegExp(/started nofap today/i).test(titleText)
+            || new RegExp(/(just) (begun|started)/i).test(titleText);
+    };
+    // decided to quit .* today
+    // Day 1
+    // Need Help + Flair New Never Fapper
+    // Need help + Flair motivate me
+    // Let's do this
+    // new here
+    var toStartedAgainAdvice = function (titleText, flairText) {
+        return new RegExp(/(begin|let's do this) again/i).test(titleText)
+            || new RegExp(/gonna try again/i).test(titleText)
+            || new RegExp(/one last try/i).test(titleText)
+            || new RegExp(/day (1|one) again/i).test(titleText);
+    };
+    var toGeneralAdvice = function (titleText, flairText) {
+        return new RegExp(/I need ?(.*) help/i).test(titleText)
+            || new RegExp(/feel like shit/i).test(titleText)
+            || new RegExp(/need some guidance/i).test(titleText)
+            // || new RegExp(/needing advice/i).test(titleText)
+            || new RegExp(/how do I avoid relapsing/i).test(titleText)
+            || new RegExp(/what other steps/i).test(titleText)
+            || new RegExp(/I (give up|need support|can't stop)/i).test(titleText)
+            || new RegExp(/It's impossible/i).test(titleText)
+            || new RegExp(/trying for years/i).test(titleText)
+            || new RegExp(/still can't do it/i).test(titleText)
+            || new RegExp(/^please help me(\.|\?)?$/i).test(titleText)
+            || new RegExp(/can't control help me please/i).test(titleText)
+            || new RegExp(/It's time to stop/i).test(titleText)
+            || new RegExp(/Beginner, need some advice/i).test(titleText)
+            || new RegExp(/need some general advice/i).test(titleText)
+            || new RegExp(/how to get past .* (week|days|day)/i).test(titleText)
+            || new RegExp(/Trying Nofap .* years/i).test(titleText)
+            || new RegExp(/I keep failing/i).test(titleText);
+    };
+    // || new RegExp(/urges keep coming/i).test(titleText)
+    // I am Trying Nofap From Last 1.5 years But I keep Failing, is there any Improvement i can do?
+    // Advice
+    // flairText === 'Relapse Report'
+    var toRelapseAdvice = function (titleText, flairText) {
+        return flairText === 'Relapse Report'
+            || new RegExp(/failed first attempt/i).test(titleText)
+            || new RegExp(/(I|just) ?(have)? (relapsed|failed)/i).test(titleText)
+            || new RegExp(/(relapse|relapsed) (after|on day|again)/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
+            || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
+            || new RegExp(/(broke my|broke the|lost my) ?(.*) (streak)/i).test(titleText)
+            || new RegExp(/^relapsed\.?$/i).test(titleText)
+            || new RegExp(/^relapse\.?$/i).test(titleText)
+            || new RegExp(/^relapsed today/i).test(titleText)
+            || new RegExp(/^failed\.?$/i).test(titleText)
+            || new RegExp(/relapsing after a/i).test(titleText)
+            || new RegExp(/relapsed \d+ times today/i).test(titleText)
+            // relapsed (will have to look into this)
+            || new RegExp(/(Relapsed|relapse) at \d+ days/i).test(titleText)
+            || new RegExp(/(Relapsed|relapse) at day \d+/i).test(titleText);
+    };
+    // - relapsed
+    var toWetDreamAdvice = function (titleText, flairText) {
+        return new RegExp(/wet dream advice/i).test(titleText)
+            || new RegExp(/had a wet dream/i).test(titleText)
+            || new RegExp(/^wet dreams$/i).test(titleText);
+    };
+    var toAccountabilityPartner = function (titleText, flairText) {
+        return new RegExp(/seeking a partner/i).test(titleText)
+            || new RegExp(/accountability partner/i).test(titleText)
+            || new RegExp(/need (AP|accountability partner)/i).test(titleText);
+    };
+
+    var filterNewNoFapMessages = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
+        var _a, _b;
+        // TO REMOVE
+        if (toRemoveInitial(titleText, flairText)
+            || toRemoveInitialDay(titleText, flairText, messageText)) {
+            console.log("Deleted: " + flairText + " - " + titleText);
+            return {
+                shouldDeleteElementImmediately: true,
+                sendMessageType: undefined,
+                prelimUrl: undefined
+            };
+        }
+        // USER HOSTILE
+        if (compiledUser.userType === UserType.UserHostile
+            || compiledUser.userType === UserType.UserRespondedBack
+            || compiledUser.userType === UserType.FollowMessageSent) {
+            return {
+                shouldDeleteElementImmediately: true,
+                sendMessageType: undefined,
+                prelimUrl: undefined
+            };
+        }
+        // USER NOT RESPONDED
+        if (compiledUser.userType === UserType.UserNotRespondedBack) {
+            // FOLLOW MESSAGES
+            if ((_a = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _a === void 0 ? void 0 : _a.type.includes('start')) {
+                if (toRelapseAdvice(titleText, flairText)) {
+                    return {
+                        shouldDeleteElementImmediately: false,
+                        sendMessageType: SendMessageType.FollowRelapseAdvice,
+                        prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice)
+                    };
+                }
+            }
+            var lessThanOneDayAgo = function (date) {
+                var DAY = 24 * 60 * 60 * 1000;
+                var aDayAgo = Date.now() - DAY;
+                return date.getTime() > aDayAgo;
+            };
+            var messageSendDate = (_b = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.send_date;
+            if (messageSendDate && lessThanOneDayAgo(new Date(messageSendDate))) {
+                return {
+                    shouldDeleteElementImmediately: true,
+                    sendMessageType: undefined,
+                    prelimUrl: undefined
+                };
+            }
+        }
+        // FRESH USER
+        if (compiledUser.userType === UserType.FreshUser) {
+            // TODO
+            // if (flairText === 'New to NoFap') {
+            //   // console.log(`relapse report - ${tagUsername}`);
+            // }
+            // STARTED MESSAGES
+            if (toStartedAdvice(titleText)) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceStart,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart)
+                };
+            }
+            // STARTED AGAIN MESSAGES
+            if (toStartedAgainAdvice(titleText)) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceStartAgain,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain)
+                };
+            }
+            // GENERAL MESSAGES
+            if (toGeneralAdvice(titleText)) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceGeneral,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral)
+                };
+            }
+            // RELAPSE MESSAGES
+            if (toRelapseAdvice(titleText, flairText)) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceRelapse,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse)
+                };
+            }
+            // WET DREAM MESSAGES
+            if (toWetDreamAdvice(titleText)) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceWetdreamAdvice,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice)
+                };
+            }
+            // ACCOUNTABILITY PARTNER MESSAGES
+            if (toAccountabilityPartner(titleText)) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAccountabilityPartner,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner)
+                };
+            }
+            // Does the urge to masturbate get easier?
+            // edging
+            // is it a relapse?
+            // masturbation without porn.
+            // cold showers
+            // once a day
+            // is it bad to fap without porn? - 2
+            // biggest difference once you recover? / benefits - 5 // why shouldn't I fap? // how has nofap changer your life?
+            // what benefits have you noticed? - 1
+            // is peeking relapse? - 1
+            // how to stop wet dreams? - 1
+            // advice for boyfriend from girlfriend. - 1
+            // edging and reseting counter. - 1
+            // relapse when thinking about ex. - 1
+            // recommend NFD podcast - 1
+            // how long is too long - 1
+            // benefits for hard mode vs no porn - 2
+            // advice cannot fall asleep because need to masturbate. - 1
+            // is it okay to masturbate because teen/not getting any - 1
+            // is it relapse if I have sex with my girlfriend.
+            // semen leakage is it bad? - 1
+            // is sadness and demotivation normal during reboot?
+            // how much is set back from relapsing?
+            // is it okay to ejaculate during sex?
+            // aren't flatlines good?
+            // what is the point of nofap if you can't have sex?
+            // how do I show the days I haven't ejaculated?
+            // smoking weed to help with porn addiction.
+            // what should I be experiencing ?
+            // did I lose progress?
+            // did you get morning wood again?
+            // will dating app make it worse?
+            // does this count as relapse?
+            // low sex drive?
+            // does it get easier over time?
+            // okay to masturbate without porn? 3 (jerking off every now and then. )
+            // did I just relapse?
+            // how do you feel long term (after 1 month/week etc.)
+            // does peeking count as relapse?
+        }
+        // Final Delete
+        if (toRemoveFinal(titleText)) {
+            return {
+                shouldDeleteElementImmediately: true,
+                sendMessageType: undefined,
+                prelimUrl: undefined
+            };
+        }
+        return {
+            shouldDeleteElementImmediately: false,
+            sendMessageType: undefined,
+            prelimUrl: undefined
+        };
+    };
+
+    var populateWebpageInformation = function (users, usernameConfig) {
+        var allATags = document.querySelectorAll('a');
+        var filteredATags = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/') && !tag.innerText.includes(' '); });
+        createPrelimContainer(filteredATags);
+        var prelimContainer = document.querySelector('#reade-automate-container');
+        var alreadyPrelimUrlUsernameList = [];
+        filteredATags.forEach(function (tag, index) {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44;
+            var tagUsername = tag.innerText.split('/')[1];
+            var dbUser = users.find(function (user) { return user.username === tagUsername; });
+            if (dbUser) {
+                var flairText = (_m = (_l = (_k = (_j = (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.children[1]) === null || _g === void 0 ? void 0 : _g.children[1]) === null || _h === void 0 ? void 0 : _h.children[1]) === null || _j === void 0 ? void 0 : _j.children[1]) === null || _k === void 0 ? void 0 : _k.children[0]) === null || _l === void 0 ? void 0 : _l.children[0]) === null || _m === void 0 ? void 0 : _m.innerText;
+                var titleText = (_z = (_y = (_x = (_w = (_v = (_u = (_t = (_s = (_r = (_q = (_p = (_o = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode) === null || _r === void 0 ? void 0 : _r.parentNode) === null || _s === void 0 ? void 0 : _s.parentNode) === null || _t === void 0 ? void 0 : _t.children[1]) === null || _u === void 0 ? void 0 : _u.children[1]) === null || _v === void 0 ? void 0 : _v.children[0]) === null || _w === void 0 ? void 0 : _w.children[0]) === null || _x === void 0 ? void 0 : _x.children[0]) === null || _y === void 0 ? void 0 : _y.children[0]) === null || _z === void 0 ? void 0 : _z.innerText;
+                var messageText = ((_11 = (_10 = __spreadArrays(((_9 = (_8 = (_7 = (_6 = (_5 = (_4 = (_3 = (_2 = (_1 = (_0 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _0 === void 0 ? void 0 : _0.parentNode) === null || _1 === void 0 ? void 0 : _1.parentNode) === null || _2 === void 0 ? void 0 : _2.parentNode) === null || _3 === void 0 ? void 0 : _3.parentNode) === null || _4 === void 0 ? void 0 : _4.parentNode) === null || _5 === void 0 ? void 0 : _5.children[1]) === null || _6 === void 0 ? void 0 : _6.children[2]) === null || _7 === void 0 ? void 0 : _7.children[0]) === null || _8 === void 0 ? void 0 : _8.children[0]) === null || _9 === void 0 ? void 0 : _9.children) || [])) === null || _10 === void 0 ? void 0 : _10.map(function (item) { return item === null || item === void 0 ? void 0 : item.innerText; })) === null || _11 === void 0 ? void 0 : _11.join('\n')) || '';
+                var aLinkHref = (_20 = (_19 = (_18 = (_17 = (_16 = (_15 = (_14 = (_13 = (_12 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _12 === void 0 ? void 0 : _12.parentNode) === null || _13 === void 0 ? void 0 : _13.parentNode) === null || _14 === void 0 ? void 0 : _14.parentNode) === null || _15 === void 0 ? void 0 : _15.parentNode) === null || _16 === void 0 ? void 0 : _16.parentNode) === null || _17 === void 0 ? void 0 : _17.children[1]) === null || _18 === void 0 ? void 0 : _18.children[1]) === null || _19 === void 0 ? void 0 : _19.children[0]) === null || _20 === void 0 ? void 0 : _20.children[0].href;
+                var _45 = filterNewNoFapMessages(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _45.shouldDeleteElementImmediately, sendMessageType = _45.sendMessageType, prelimUrl = _45.prelimUrl;
+                if (index !== 0) {
+                    if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
+                        (_28 = (_27 = (_26 = (_25 = (_24 = (_23 = (_22 = (_21 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _21 === void 0 ? void 0 : _21.parentNode) === null || _22 === void 0 ? void 0 : _22.parentNode) === null || _23 === void 0 ? void 0 : _23.parentNode) === null || _24 === void 0 ? void 0 : _24.parentNode) === null || _25 === void 0 ? void 0 : _25.parentNode) === null || _26 === void 0 ? void 0 : _26.parentNode) === null || _27 === void 0 ? void 0 : _27.parentNode) === null || _28 === void 0 ? void 0 : _28.remove();
+                        return;
+                    }
+                    alreadyPrelimUrlUsernameList.push(dbUser.username);
+                    if (shouldDeleteElementImmediately) {
+                        (_36 = (_35 = (_34 = (_33 = (_32 = (_31 = (_30 = (_29 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _29 === void 0 ? void 0 : _29.parentNode) === null || _30 === void 0 ? void 0 : _30.parentNode) === null || _31 === void 0 ? void 0 : _31.parentNode) === null || _32 === void 0 ? void 0 : _32.parentNode) === null || _33 === void 0 ? void 0 : _33.parentNode) === null || _34 === void 0 ? void 0 : _34.parentNode) === null || _35 === void 0 ? void 0 : _35.parentNode) === null || _36 === void 0 ? void 0 : _36.remove();
+                        return;
+                    }
+                    if (prelimUrl) {
+                        (_44 = (_43 = (_42 = (_41 = (_40 = (_39 = (_38 = (_37 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _37 === void 0 ? void 0 : _37.parentNode) === null || _38 === void 0 ? void 0 : _38.parentNode) === null || _39 === void 0 ? void 0 : _39.parentNode) === null || _40 === void 0 ? void 0 : _40.parentNode) === null || _41 === void 0 ? void 0 : _41.parentNode) === null || _42 === void 0 ? void 0 : _42.parentNode) === null || _43 === void 0 ? void 0 : _43.parentNode) === null || _44 === void 0 ? void 0 : _44.remove();
+                        createPrelimLink({
+                            dbUser: dbUser, titleText: titleText, flairText: flairText, aLinkHref: aLinkHref, prelimUrl: prelimUrl, index: index, sendMessageType: sendMessageType, prelimContainer: prelimContainer
+                        });
+                        return;
+                    }
+                }
+                if (!prelimUrl || index === 0) {
+                    renderUserPanel({
+                        tag: tag, tagUsername: tagUsername, index: index, dbUser: dbUser, usernameConfig: usernameConfig
+                    });
+                }
+            }
+        });
+    };
+    var main = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var usernameConfig, users;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log('START: start script');
+                    return [4 /*yield*/, isServerRunning()];
+                case 1:
+                    _a.sent();
+                    usernameConfig = getUsernameMarker(location);
+                    window.localStorage.setItem('delayTimer', '10000');
+                    if (!(usernameConfig.usernameValue !== '')) return [3 /*break*/, 4];
+                    console.log('timeframe: ', TIMEFRAME, 'username: ', usernameConfig.usernameValue);
+                    return [4 /*yield*/, scrollToSpecifiedDate(TIMEFRAME, usernameConfig)];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, checkUsernamesFetch({ usernames: getAllNoFapNewUsernames() })];
+                case 3:
+                    users = _a.sent();
+                    populateWebpageInformation(users, usernameConfig);
+                    setTimeout(function () {
+                        scrollToMarker();
+                    }, 1000);
+                    console.log('END: script complete');
+                    return [3 /*break*/, 5];
+                case 4:
+                    console.log('You did not set the username marker or it has never been set.');
+                    _a.label = 5;
+                case 5: return [2 /*return*/];
+            }
+        });
+    }); };
+    main();
+
+}());

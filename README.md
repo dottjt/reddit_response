@@ -13,9 +13,15 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
-- Did I just relapse or not? MESSAGE
+- Did I just relapse or not? MESSAGE If you have to ask, then generally yes. Although
+- Fetish is irrelevant. MESSAGE
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage
-- Should show DONE if they have EVER received a final message. Period. 
+- Should show DONE if they have EVER received a final message. Period.
+- If done, remove everything so it takes up less space.
+
+- Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
+
+// Send Final is not correct, please align with how it's being done in the filters. It will show purely if it's middle, but the use has only sent a start, which is wrong.
 
 ## Nice To Have
 

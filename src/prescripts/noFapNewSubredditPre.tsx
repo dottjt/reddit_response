@@ -38,13 +38,14 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
     if (dbUser) {
       const flairText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[1]?.children[1]?.children[0]?.children[0]?.innerText;
       const titleText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[0]?.children[0]?.children[0]?.children[0]?.innerText;
+      const messageText = [...tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[2]?.children[0]?.children[0]?.children as any || []]?.map(item => item?.innerText)?.join('\n') || '';
       const aLinkHref = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[0]?.children[0].href;
 
       const {
         shouldDeleteElementImmediately,
         sendMessageType,
         prelimUrl,
-      } = filterNewNoFapMessages(dbUser, usernameConfig, flairText, titleText);
+      } = filterNewNoFapMessages(dbUser, usernameConfig, flairText, titleText, messageText);
 
       if (index !== 0) {
         if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {

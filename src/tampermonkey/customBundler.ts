@@ -8,7 +8,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 // import postcss from 'rollup-plugin-postcss'
-import { terser } from 'rollup-plugin-terser';
+// import { terser } from 'rollup-plugin-terser';
 import jsx from 'acorn-jsx';
 
 import throttle from 'lodash.throttle';
@@ -30,7 +30,6 @@ const outputScriptFileName = (preScript: string): string => preScript.split('.')
 
 const compileScript = async (preScriptDirList) => {
   try {
-    // const preScriptDirList = await fse.readdir(WATCH_PRE_SCRIPT_DIRECTORY);
 
     for (const preScript of preScriptDirList) {
       const plainName = outputScriptFileName(preScript);
@@ -54,7 +53,7 @@ const compileScript = async (preScriptDirList) => {
           commonjs({
             extensions: ['.js', '.ts', '.tsx'],
           }),
-          terser()
+          // terser() // there is no point for this at all.
           // postcss({
           //   modules: true,
           //   plugins: []

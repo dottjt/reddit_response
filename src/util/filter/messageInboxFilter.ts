@@ -3,7 +3,7 @@ import { CompiledFullUserObject, PopulateReceivedMessagesPayloadEXTREME } from '
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide } from './messageInboxFilterLogic';
+import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide, toNotRespond } from './messageInboxRegex';
 
 export const filterRedditInboxMessages = (
   messagePayload: PopulateReceivedMessagesPayloadEXTREME,
@@ -16,14 +16,11 @@ export const filterRedditInboxMessages = (
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
   const lastReceivedMessage: Message | undefined = compiledUser.lastReceivedMessage;
 
-  if (compiledUser.userType === UserType.UserHostile) {
-    return {
-      messageText: undefined,
-      messageType: undefined,
-    }
-  }
-
-  if (new RegExp(/(paid|free)/i).test(messagePayload.message)) {
+  if (
+    compiledUser.userType === UserType.UserHostile
+    || new RegExp(/(paid|free)/i).test(messagePayload.message)
+    || toNotRespond(messagePayload)
+  ) {
     return {
       messageText: undefined,
       messageType: undefined,
@@ -90,10 +87,13 @@ export const filterRedditInboxMessages = (
   // basically only triggers poorly if
 
   //
+
+  console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage?.type, lastSentMessage?.type);
+
   if (
     !moreThanOneMessage &&
     messagePayload.type === SendMessageType.UserReplyMiddle &&
-    lastReceivedMessage?.type === SendMessageType.UserReplyMiddle &&
+    lastReceivedMessage?.type === SendMessageType.UserReplyStart &&
     lastSentMessage?.type.includes('middle')
     ) {
       // TODO I Think there's a bug here.

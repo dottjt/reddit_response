@@ -1,24 +1,25 @@
 import { SendMessageType, UserType } from '../../types/serverTypes';
 import { generatePrelimUrl } from '../sendMessageUtils';
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
-import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAdvice } from '../responses/start';
+import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAdvice, accountabilityPartner } from '../responses/start';
 import { ConfigType } from '../config';
 import { finalJoinSubreddit, finalFantastic } from '../responses/final';
 
-import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner, toRemoveFinal } from './noFapNewFilterLogic';
+import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner, toRemoveFinal, toRemoveInitialDay } from './noFapNewFilterRegex';
 import { followRelapseAdvice } from '../responses/follow';
 
 
-export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string): {
+export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
   shouldDeleteElementImmediately: boolean,
   sendMessageType: SendMessageType | undefined,
   prelimUrl: string | undefined
 } => {
 
-  // TODO: Check message text first for useful keywords, such as  struggle, advice etc.
-
   // TO REMOVE
-  if (toRemoveInitial(titleText, flairText)) {
+  if (
+    toRemoveInitial(titleText, flairText)
+    || toRemoveInitialDay(titleText, flairText, messageText)
+  ) {
     console.log(`Deleted: ${flairText} - ${titleText}`);
     return {
       shouldDeleteElementImmediately: true,
@@ -130,7 +131,7 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAccountabilityPartner,
-        prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner)
+        prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner)
       }
     }
 

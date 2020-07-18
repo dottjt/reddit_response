@@ -1,5 +1,7 @@
-!function(){"use strict";
-/*! *****************************************************************************
+(function () {
+    'use strict';
+
+    /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -12,4 +14,2996 @@
     LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
     OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
     PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */var e=function(t,n){return(e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(t,n)};var t=function(){return(t=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var i in t=arguments[n])Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e}).apply(this,arguments)};function n(e,t,n,r){return new(n||(n=Promise))((function(i,o){function s(e){try{l(r.next(e))}catch(e){o(e)}}function a(e){try{l(r.throw(e))}catch(e){o(e)}}function l(e){var t;e.done?i(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(s,a)}l((r=r.apply(e,t||[])).next())}))}function r(e,t){var n,r,i,o,s={label:0,sent:function(){if(1&i[0])throw i[1];return i[1]},trys:[],ops:[]};return o={next:a(0),throw:a(1),return:a(2)},"function"==typeof Symbol&&(o[Symbol.iterator]=function(){return this}),o;function a(o){return function(a){return function(o){if(n)throw new TypeError("Generator is already executing.");for(;s;)try{if(n=1,r&&(i=2&o[0]?r.return:o[0]?r.throw||((i=r.return)&&i.call(r),0):r.next)&&!(i=i.call(r,o[1])).done)return i;switch(r=0,i&&(o=[2&o[0],i.value]),o[0]){case 0:case 1:i=o;break;case 4:return s.label++,{value:o[1],done:!1};case 5:s.label++,r=o[1],o=[0];continue;case 7:o=s.ops.pop(),s.trys.pop();continue;default:if(!(i=s.trys,(i=i.length>0&&i[i.length-1])||6!==o[0]&&2!==o[0])){s=0;continue}if(3===o[0]&&(!i||o[1]>i[0]&&o[1]<i[3])){s.label=o[1];break}if(6===o[0]&&s.label<i[1]){s.label=i[1],i=o;break}if(i&&s.label<i[2]){s.label=i[2],s.ops.push(o);break}i[2]&&s.ops.pop(),s.trys.pop();continue}o=t.call(e,s)}catch(e){o=[6,e],r=0}finally{n=i=0}if(5&o[0])throw o[1];return{value:o[0]?o[1]:void 0,done:!0}}([o,a])}}}var i,o,s,a=function(e,t,i){return n(void 0,void 0,void 0,(function(){var n;return r(this,(function(r){switch(r.label){case 0:return r.trys.push([0,3,,4]),[4,fetch("http://localhost:"+i+t,(o=e,{method:"POST",mode:"cors",credentials:"same-origin",headers:{"Content-Type":"application/json"},referrerPolicy:"no-referrer",body:JSON.stringify({data:o})}))];case 1:return[4,r.sent().json()];case 2:return[2,r.sent()];case 3:throw n=r.sent(),console.log("Server not started."),new Error(t+" - "+n);case 4:return[2]}var o}))}))},l=function(e){return n(void 0,void 0,void 0,(function(){return r(this,(function(t){switch(t.label){case 0:return[4,a(e,"/sendNewMessage","3333")];case 1:return[2,t.sent().data.users]}}))}))};!function(e){e.FreshUser="Fresh User",e.UserNotRespondedBack="User Not Responded Back",e.FollowMessageSent="User Follow Message Sent",e.UserRespondedBack="User Responded Back",e.UserHostile="Hostile User"}(i||(i={})),function(e){e.StartAdviceStart="start:advice:start",e.StartAdviceStartAgain="start:advice:startAgain",e.StartAdviceGeneral="start:advice:general",e.StartAdviceRelapse="start:advice:relapse",e.StartAdviceStruggle="start:advice:struggle",e.StartAdviceAge="start:advice:age",e.StartAdviceAbstain="start:advice:abstain",e.StartAdviceFlatline="start:advice:flatline",e.StartAdviceWetdreamAdvice="start:advice:wetdreamAdvice",e.StartAdvicePornBlockersAdvice="start:advice:pornBlockersAdvice",e.StartAdviceIsWatchingPornRelapseAdvice="start:advice:isWatchingPornRelapseAdvice",e.StartNoReasonToRelapseAdvice="start:advice:noReasonToRelapse",e.StartAccountabilityPartner="start:accountability:accountabilityPartner",e.StartPartnerAdvice="start::advice:partner",e.StartMasturbateWithoutPornAdvice="start::advice:masturbateWithoutPorn",e.StartBiggestBenefitPostAddictionAdvice="start::advice:biggestBenefitPostAddiction",e.StartDealingWithUrgesAdvice="start::advice:dealingWithUrges",e.MiddleGuideIfYouWouldLikeToLearnMore="middle:guide:learnmore",e.MiddleGuideNoWorries="middle:guide:noworries",e.MiddleGuideLinkYou="middle:guide:linkyou",e.MiddleGuideMeditationAdvice="middle:guide:meditationAdvice",e.FinalHardTime="final:disagree:hardTime",e.FinalFantastic="final:agree:fantastic",e.FinalJoinSubreddit="final:join:subreddit",e.FinalShareResources="final:share:resources",e.FollowRelapseAdvice="follow:advice:relapse",e.FollowMeditationAdvice="follow:advice:meditation",e.FollowStruggleAdvice="follow:advice:struggle",e.FollowNotSmoothlyAdvice="follow:advice:notSmoothly",e.UserReplyCustom="user:reply:custom",e.UserReplyStart="user:reply:start",e.UserReplyMiddle="user:reply:middle",e.UserReplyFinal="user:reply:final",e.UserReplyFollow="user:reply:follow",e.NFDCustomSend="nfd:custom:send",e.NA="NA"}(o||(o={})),function(e){e.Historic="Historic",e.NonHistoric="NonHistoric"}(s||(s={}));var u="If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n",c="No worries! The homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n",d="I'll link you! The homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n",f="Ultimately meditation is about learning to become aware of your senses. So for example, sitting there and noticing your emotions and physical sensations, as well as observing your surroundings in a non-judgemental way.\n\nThis article explains the basics of it:\n\nhttps://neverfapdeluxe.com/practices/observe-your-senses\n\nFeel free to ask if you have any questions! I'm more than happy to help!\n\nThe homepage on the other hand should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n",p="No worries! I also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe",m="That's fantastic to hear! It sounds like you're on the right track.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n",g="Thank you! Feel free to share these resources if you find them useful :D",h="Yeah, you might have a hard time addressing your addiction without maintaining a consistent mental health routine. Especially given addiction is a mental health problem at it's core.\n\nUltimately the important thing is being consistent with your mental health. Usually this means at least 10 minutes meditation each day. So if you can commit to that you'll be fine.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n",v=function(e,t){var n=e.compiledUser,r=n.lastSentMessage,s=n.lastReceivedMessage;if(n.userType===i.UserHostile)return{messageText:void 0,messageType:void 0};if(new RegExp(/(paid|free)/i).test(e.message))return{messageText:void 0,messageType:void 0};if(((null==r?void 0:r.type.includes("start"))||(null==r?void 0:r.type.includes("follow")))&&(e.type===o.UserReplyStart||e.type===o.UserReplyFollow)){if(function(e){return new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post) ?(please)? (a|the|that|ur|your|for the|to ur|to the|to your|with the) (web|website|guide|site|link|address)/i).test(e.message)||new RegExp(/hit me up/i).test(e.message)||new RegExp(/go ahead/i).test(e.message)||new RegExp(/took up/i).test(e.message)||new RegExp(/link would be (great|awesome)/i).test(e.message)||new RegExp(/appreciate viewing your website/i).test(e.message)||new RegExp(/website sounds .* interesting/i).test(e.message)||new RegExp(/(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? interested/i).test(e.message)||new RegExp(/link ?(me)? to ur (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/url for this (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/(I'm|I’m|I am|I'd be) ?(certainly)? ?(super)? (interested|interessted|interesting)/i).test(e.message)||new RegExp(/I’ll check the link if you have it/i).test(e.message)||new RegExp(/send me the (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/(yes|yeah) (for sure|I am)/i).test(e.message)||new RegExp(/give (ur|your) (site|link|website|webite|guide|content|page) a visit/i).test(e.message)||new RegExp(/wanna visit (ur|your) site/i).test(e.message)||new RegExp(/yes please/i).test(e.message)||new RegExp(/name of (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/like to see (it|that)/i).test(e.message)||new RegExp(/send it over/i).test(e.message)||new RegExp(/(interested|interesting) (to know about|with|in|in viewing) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/please send it/i).test(e.message)||new RegExp(/if you sent ?(me)? the (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/(check|read|get|see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/(it|That) would be (super|great|cool)/i).test(e.message)||new RegExp(/you could share/i).test(e.message)||new RegExp(/(id|I'd) love/i).test(e.message)||new RegExp(/tell me more/i).test(e.message)||new RegExp(/share ?(me)? the website/i).test(e.message)||new RegExp(/(can|could) you ?(please)? link/i).test(e.message)||new RegExp(/^sure$/i).test(e.message)||new RegExp(/^yes$/i).test(e.message)||new RegExp(/website sounds like a huge help/i).test(e.message)||new RegExp(/comfortable with sharing it/i).test(e.message)}(e))return{messageText:c,messageType:o.MiddleGuideNoWorries};if(function(e){return new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/name of (ur|your) website/i).test(e.message)||new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(e.message)||new RegExp(/What site have you/i).test(e.message)}(e))return{messageText:d,messageType:o.MiddleGuideLinkYou};if(function(e){return new RegExp(/would love to (mediate|meditate)/i).test(e.message)||new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(e.message)}(e))return{messageText:f,messageType:o.MiddleGuideMeditationAdvice};if(function(e){return new RegExp(/I (don’t|dont|don't) do (anything|much) for my mental health/i).test(e.message)||new RegExp(/do nothing for my mental health/i).test(e.message)}(e))return{messageText:h,messageType:o.FinalHardTime}}return!t&&e.type===o.UserReplyMiddle&&(null==s?void 0:s.type)===o.UserReplyMiddle&&(null==r?void 0:r.type.includes("middle"))&&(console.log(e.compiledUser.username,e.type,null==r?void 0:r.type),function(e){return new RegExp(/(ty|thank you|thanks)/i).test(e.message)||new RegExp(/(I'll|I will) ?(.*) (check|checkout|check it|check out)/i).test(e.message)||new RegExp(/will visit/i).test(e.message)||new RegExp(/visit ?(.*) today/i).test(e.message)||new RegExp(/(wow|cheers)/i).test(e.message)||new RegExp(/I ?(genuinely)? appreciate/i).test(e.message)||new RegExp(/for sharing/i).test(e.message)}(e))?{messageText:p,messageType:o.FinalJoinSubreddit}:{messageText:void 0,messageType:void 0}},y=Array.isArray;function b(e){var t=typeof e;return"string"===t||"number"===t}function w(e){return null==e}function k(e){return null===e||!1===e||!0===e||void 0===e}function x(e){return"function"==typeof e}function S(e){return"string"==typeof e}function R(e){return null===e}function F(e,t){var n={};if(e)for(var r in e)n[r]=e[r];if(t)for(var i in t)n[i]=t[i];return n}function M(e){return!R(e)&&"object"==typeof e}var U={};function T(e){return e.substr(2).toLowerCase()}function N(e,t){e.appendChild(t)}function $(e,t,n){R(n)?N(e,t):e.insertBefore(t,n)}function A(e,t){e.removeChild(t)}function E(e){for(var t=0;t<e.length;t++)e[t]()}function I(e,t,n){var r=e.children;return 4&n?r.$LI:8192&n?2===e.childFlags?r:r[t?0:r.length-1]:r}function D(e,t){for(var n;e;){if(2033&(n=e.flags))return e.dom;e=I(e,t,n)}return null}function C(e,t){do{var n=e.flags;if(2033&n)return void A(t,e.dom);var r=e.children;if(4&n&&(e=r.$LI),8&n&&(e=r),8192&n){if(2!==e.childFlags){for(var i=0,o=r.length;i<o;++i)C(r[i],t);return}e=r}}while(e)}function P(e,t,n){do{var r=e.flags;if(2033&r)return void $(t,e.dom,n);var i=e.children;if(4&r&&(e=i.$LI),8&r&&(e=i),8192&r){if(2!==e.childFlags){for(var o=0,s=i.length;o<s;++o)P(i[o],t,n);return}e=i}}while(e)}function L(e,t,n){return e.constructor.getDerivedStateFromProps?F(n,e.constructor.getDerivedStateFromProps(t,n)):n}var W={v:!1},j={componentComparator:null,createVNode:null,renderComplete:null};function V(e,t){e.textContent=t}function _(e,t){return M(e)&&e.event===t.event&&e.data===t.data}function B(e,t){for(var n in t)void 0===e[n]&&(e[n]=t[n]);return e}function O(e,t){return!!x(e)&&(e(t),!0)}function G(e,t,n,r,i,o,s,a){this.childFlags=e,this.children=t,this.className=n,this.dom=null,this.flags=r,this.key=void 0===i?null:i,this.props=void 0===o?null:o,this.ref=void 0===s?null:s,this.type=a}function H(e,t,n,r,i,o,s,a){var l=void 0===i?1:i,u=new G(l,r,n,e,s,o,a,t);return j.createVNode&&j.createVNode(u),0===l&&function(e,t){var n,r=1;if(k(t))n=t;else if(b(t))r=16,n=t;else if(y(t)){for(var i=t.length,o=0;o<i;++o){var s=t[o];if(k(s)||y(s)){n=n||t.slice(0,o),X(t,n,o,"");break}if(b(s))(n=n||t.slice(0,o)).push(q(s,"$"+o));else{var a=s.key,l=(81920&s.flags)>0,u=R(a),c=S(a)&&"$"===a[0];l||u||c?(n=n||t.slice(0,o),(l||c)&&(s=Q(s)),(u||c)&&(s.key="$"+o),n.push(s)):n&&n.push(s),s.flags|=65536}}r=0===(n=n||t).length?1:8}else(n=t).flags|=65536,81920&t.flags&&(n=Q(t)),r=2;e.children=n,e.childFlags=r}(u,u.children),u}function z(e,t,n,r,i){var o=new G(1,null,null,e=function(e,t){return 12&e?e:t.prototype&&t.prototype.render?4:t.render?32776:8}(e,t),r,function(e,t,n){var r=(32768&e?t.render:t).defaultProps;return w(r)?n:w(n)?F(r,null):B(n,r)}(e,t,n),function(e,t,n){if(4&e)return n;var r=(32768&e?t.render:t).defaultHooks;return w(r)?n:w(n)?r:B(n,r)}(e,t,i),t);return j.createVNode&&j.createVNode(o),o}function q(e,t){return new G(1,w(e)||!0===e||!1===e?"":e,null,16,t,null,null,null)}function Y(e,t,n){var r=H(8192,8192,null,e,t,null,n,null);switch(r.childFlags){case 1:r.children=J(),r.childFlags=2;break;case 16:r.children=[q(e)],r.childFlags=4}return r}function Q(e){var t=-16385&e.flags,n=e.props;if(14&t&&!R(n)){var r=n;for(var i in n={},r)n[i]=r[i]}return 0==(8192&t)?new G(e.childFlags,e.children,e.className,t,e.key,n,e.ref,e.type):function(e){var t,n=e.children,r=e.childFlags;if(2===r)t=Q(n);else if(12&r){t=[];for(var i=0,o=n.length;i<o;++i)t.push(Q(n[i]))}return Y(t,r,e.key)}(e)}function J(){return q("",null)}function X(e,t,n,r){for(var i=e.length;n<i;n++){var o=e[n];if(!k(o)){var s=r+"$"+n;if(y(o))X(o,t,0,s);else{if(b(o))o=q(o,s);else{var a=o.key,l=S(a)&&"$"===a[0];(81920&o.flags||l)&&(o=Q(o)),o.flags|=65536,l?a.substring(0,r.length)!==r&&(o.key=r+a):R(a)?o.key=s:o.key=r+a}t.push(o)}}}}function K(e){return k(e)||b(e)?q(e,null):y(e)?Y(e,0,null):16384&e.flags?Q(e):e}var Z="http://www.w3.org/1999/xlink",ee="http://www.w3.org/XML/1998/namespace",te={"xlink:actuate":Z,"xlink:arcrole":Z,"xlink:href":Z,"xlink:role":Z,"xlink:show":Z,"xlink:title":Z,"xlink:type":Z,"xml:base":ee,"xml:lang":ee,"xml:space":ee};function ne(e){return{onClick:e,onDblClick:e,onFocusIn:e,onFocusOut:e,onKeyDown:e,onKeyPress:e,onKeyUp:e,onMouseDown:e,onMouseMove:e,onMouseUp:e,onTouchEnd:e,onTouchMove:e,onTouchStart:e}}var re=ne(0),ie=ne(null),oe=ne(!0);function se(e,t){var n=t.$EV;return n||(n=t.$EV=ne(null)),n[e]||1==++re[e]&&(ie[e]=function(e){var t="onClick"===e||"onDblClick"===e?function(e){return function(t){0===t.button?le(t,!0,e,fe(t)):t.stopPropagation()}}(e):function(e){return function(t){le(t,!1,e,fe(t))}}(e);return document.addEventListener(T(e),t),t}(e)),n}function ae(e,t){var n=t.$EV;n&&n[e]&&(0==--re[e]&&(document.removeEventListener(T(e),ie[e]),ie[e]=null),n[e]=null)}function le(e,t,n,r){var i=function(e){return x(e.composedPath)?e.composedPath()[0]:e.target}(e);do{if(t&&i.disabled)return;var o=i.$EV;if(o){var s=o[n];if(s&&(r.dom=i,s.event?s.event(s.data,e):s(e),e.cancelBubble))return}i=i.parentNode}while(!R(i))}function ue(){this.cancelBubble=!0,this.immediatePropagationStopped||this.stopImmediatePropagation()}function ce(){return this.defaultPrevented}function de(){return this.cancelBubble}function fe(e){var t={dom:document};return e.isDefaultPrevented=ce,e.isPropagationStopped=de,e.stopPropagation=ue,Object.defineProperty(e,"currentTarget",{configurable:!0,get:function(){return t.dom}}),t}function pe(e,t,n){if(e[t]){var r=e[t];r.event?r.event(r.data,n):r(n)}else{var i=t.toLowerCase();e[i]&&e[i](n)}}function me(e,t){var n=function(n){var r=this.$V;if(r){var i=r.props||U,o=r.dom;if(S(e))pe(i,e,n);else for(var s=0;s<e.length;++s)pe(i,e[s],n);if(x(t)){var a=this.$V,l=a.props||U;t(l,o,!1,a)}}};return Object.defineProperty(n,"wrapped",{configurable:!1,enumerable:!1,value:!0,writable:!1}),n}function ge(e,t,n){var r="$"+t,i=e[r];if(i){if(i[1].wrapped)return;e.removeEventListener(i[0],i[1]),e[r]=null}x(n)&&(e.addEventListener(t,n),e[r]=[t,n])}function he(e){return"checkbox"===e||"radio"===e}var ve=me("onInput",we),ye=me(["onClick","onChange"],we);function be(e){e.stopPropagation()}function we(e,t){var n=e.type,r=e.value,i=e.checked,o=e.multiple,s=e.defaultValue,a=!w(r);n&&n!==t.type&&t.setAttribute("type",n),w(o)||o===t.multiple||(t.multiple=o),w(s)||a||(t.defaultValue=s+""),he(n)?(a&&(t.value=r),w(i)||(t.checked=i)):a&&t.value!==r?(t.defaultValue=r,t.value=r):w(i)||(t.checked=i)}function ke(e,t){if("option"===e.type)!function(e,t){var n=e.props||U,r=e.dom;r.value=n.value,n.value===t||y(t)&&-1!==t.indexOf(n.value)?r.selected=!0:w(t)&&w(n.selected)||(r.selected=n.selected||!1)}(e,t);else{var n=e.children,r=e.flags;if(4&r)ke(n.$LI,t);else if(8&r)ke(n,t);else if(2===e.childFlags)ke(n,t);else if(12&e.childFlags)for(var i=0,o=n.length;i<o;++i)ke(n[i],t)}}be.wrapped=!0;var xe=me("onChange",Se);function Se(e,t,n,r){var i=Boolean(e.multiple);w(e.multiple)||i===t.multiple||(t.multiple=i);var o=e.selectedIndex;if(-1===o&&(t.selectedIndex=-1),1!==r.childFlags){var s=e.value;"number"==typeof o&&o>-1&&t.options[o]&&(s=t.options[o].value),n&&w(s)&&(s=e.defaultValue),ke(r,s)}}var Re,Fe,Me=me("onInput",Te),Ue=me("onChange");function Te(e,t,n){var r=e.value,i=t.value;if(w(r)){if(n){var o=e.defaultValue;w(o)||o===i||(t.defaultValue=o,t.value=o)}}else i!==r&&(t.defaultValue=r,t.value=r)}function Ne(e,t,n,r,i,o){64&e?we(r,n):256&e?Se(r,n,i,t):128&e&&Te(r,n,i),o&&(n.$V=t)}function $e(e,t,n){64&e?function(e,t){he(t.type)?(ge(e,"change",ye),ge(e,"click",be)):ge(e,"input",ve)}(t,n):256&e?function(e){ge(e,"change",xe)}(t):128&e&&function(e,t){ge(e,"input",Me),t.onChange&&ge(e,"change",Ue)}(t,n)}function Ae(e){return e.type&&he(e.type)?!w(e.checked):!w(e.value)}function Ee(e){e&&!O(e,null)&&e.current&&(e.current=null)}function Ie(e,t,n){e&&(x(e)||void 0!==e.current)&&n.push((function(){O(e,t)||void 0===e.current||(e.current=t)}))}function De(e,t){Ce(e),C(e,t)}function Ce(e){var t,n=e.flags,r=e.children;if(481&n){t=e.ref;var i=e.props;Ee(t);var o=e.childFlags;if(!R(i))for(var s=Object.keys(i),a=0,l=s.length;a<l;a++){var u=s[a];oe[u]&&ae(u,e.dom)}12&o?Pe(r):2===o&&Ce(r)}else r&&(4&n?(x(r.componentWillUnmount)&&r.componentWillUnmount(),Ee(e.ref),r.$UN=!0,Ce(r.$LI)):8&n?(!w(t=e.ref)&&x(t.onComponentWillUnmount)&&t.onComponentWillUnmount(D(e,!0),e.props||U),Ce(r)):1024&n?De(r,e.ref):8192&n&&12&e.childFlags&&Pe(r))}function Pe(e){for(var t=0,n=e.length;t<n;++t)Ce(e[t])}function Le(e){e.textContent=""}function We(e,t,n){Pe(n),8192&t.flags?C(t,e):Le(e)}function je(e,t,n,r){var i=e&&e.__html||"",o=t&&t.__html||"";i!==o&&(w(o)||function(e,t){var n=document.createElement("i");return n.innerHTML=t,n.innerHTML===e.innerHTML}(r,o)||(R(n)||(12&n.childFlags?Pe(n.children):2===n.childFlags&&Ce(n.children),n.children=null,n.childFlags=1),r.innerHTML=o))}function Ve(e,t,n,r,i,o,s){switch(e){case"children":case"childrenType":case"className":case"defaultValue":case"key":case"multiple":case"ref":case"selectedIndex":break;case"autoFocus":r.autofocus=!!n;break;case"allowfullscreen":case"autoplay":case"capture":case"checked":case"controls":case"default":case"disabled":case"hidden":case"indeterminate":case"loop":case"muted":case"novalidate":case"open":case"readOnly":case"required":case"reversed":case"scoped":case"seamless":case"selected":r[e]=!!n;break;case"defaultChecked":case"value":case"volume":if(o&&"value"===e)break;var a=w(n)?"":n;r[e]!==a&&(r[e]=a);break;case"style":!function(e,t,n){if(w(t))n.removeAttribute("style");else{var r,i,o=n.style;if(S(t))o.cssText=t;else if(w(e)||S(e))for(r in t)i=t[r],o.setProperty(r,i);else{for(r in t)(i=t[r])!==e[r]&&o.setProperty(r,i);for(r in e)w(t[r])&&o.removeProperty(r)}}}(t,n,r);break;case"dangerouslySetInnerHTML":je(t,n,s,r);break;default:oe[e]?function(e,t,n,r){if(x(n))se(e,r)[e]=n;else if(M(n)){if(_(t,n))return;se(e,r)[e]=n}else ae(e,r)}(e,t,n,r):111===e.charCodeAt(0)&&110===e.charCodeAt(1)?function(e,t,n,r){if(M(n)){if(_(t,n))return;n=function(e){var t=e.event;return function(n){t(e.data,n)}}(n)}ge(r,T(e),n)}(e,t,n,r):w(n)?r.removeAttribute(e):i&&te[e]?r.setAttributeNS(te[e],e,n):r.setAttribute(e,n)}}function _e(e,t,n){var r=K(e.render(t,e.state,n)),i=n;return x(e.getChildContext)&&(i=F(n,e.getChildContext())),e.$CX=i,r}function Be(e,t,n,r,i,o){var s=e.flags|=16384;481&s?function(e,t,n,r,i,o){var s=e.flags,a=e.props,l=e.className,u=e.children,c=e.childFlags,d=e.dom=function(e,t){return t?document.createElementNS("http://www.w3.org/2000/svg",e):document.createElement(e)}(e.type,r=r||(32&s)>0);w(l)||""===l||(r?d.setAttribute("class",l):d.className=l);if(16===c)V(d,u);else if(1!==c){var f=r&&"foreignObject"!==e.type;2===c?(16384&u.flags&&(e.children=u=Q(u)),Be(u,d,n,f,null,o)):8!==c&&4!==c||Ge(u,d,n,f,null,o)}R(t)||$(t,d,i);R(a)||function(e,t,n,r,i){var o=!1,s=(448&t)>0;for(var a in s&&(o=Ae(n))&&$e(t,r,n),n)Ve(a,null,n[a],r,i,o,null);s&&Ne(t,e,r,n,!0,o)}(e,s,a,d,r);Ie(e.ref,d,o)}(e,t,n,r,i,o):4&s?function(e,t,n,r,i,o){var s=function(e,t,n,r,i,o){var s=new t(n,r),a=s.$N=Boolean(t.getDerivedStateFromProps||s.getSnapshotBeforeUpdate);if(s.$SVG=i,s.$L=o,e.children=s,s.$BS=!1,s.context=r,s.props===U&&(s.props=n),a)s.state=L(s,n,s.state);else if(x(s.componentWillMount)){s.$BR=!0,s.componentWillMount();var l=s.$PS;if(!R(l)){var u=s.state;if(R(u))s.state=l;else for(var c in l)u[c]=l[c];s.$PS=null}s.$BR=!1}return s.$LI=_e(s,n,r),s}(e,e.type,e.props||U,n,r,o);Be(s.$LI,t,s.$CX,r,i,o),function(e,t,n){Ie(e,t,n),x(t.componentDidMount)&&n.push(function(e){return function(){e.componentDidMount()}}(t))}(e.ref,s,o)}(e,t,n,r,i,o):8&s?(function(e,t,n,r,i,o){Be(e.children=K(function(e,t){return 32768&e.flags?e.type.render(e.props||U,e.ref,t):e.type(e.props||U,t)}(e,n)),t,n,r,i,o)}(e,t,n,r,i,o),function(e,t){var n=e.ref;w(n)||(O(n.onComponentWillMount,e.props||U),x(n.onComponentDidMount)&&t.push(function(e,t){return function(){e.onComponentDidMount(D(t,!0),t.props||U)}}(n,e)))}(e,o)):512&s||16&s?Oe(e,t,i):8192&s?function(e,t,n,r,i,o){var s=e.children,a=e.childFlags;12&a&&0===s.length&&(a=e.childFlags=2,s=e.children=J());2===a?Be(s,n,i,r,i,o):Ge(s,n,t,r,i,o)}(e,n,t,r,i,o):1024&s&&function(e,t,n,r,i){Be(e.children,e.ref,t,!1,null,i);var o=J();Oe(o,n,r),e.dom=o.dom}(e,n,t,i,o)}function Oe(e,t,n){var r=e.dom=document.createTextNode(e.children);R(t)||$(t,r,n)}function Ge(e,t,n,r,i,o){for(var s=0;s<e.length;++s){var a=e[s];16384&a.flags&&(e[s]=a=Q(a)),Be(a,t,n,r,i,o)}}function He(e,t,n,r,i,o,s){var a=t.flags|=16384;e.flags!==a||e.type!==t.type||e.key!==t.key||2048&a?16384&e.flags?function(e,t,n,r,i,o){Ce(e),0!=(t.flags&e.flags&2033)?(Be(t,null,r,i,null,o),function(e,t,n){e.replaceChild(t,n)}(n,t.dom,e.dom)):(Be(t,n,r,i,D(e,!0),o),C(e,n))}(e,t,n,r,i,s):Be(t,n,r,i,o,s):481&a?function(e,t,n,r,i,o){var s,a=t.dom=e.dom,l=e.props,u=t.props,c=!1,d=!1;if(r=r||(32&i)>0,l!==u){var f=l||U;if((s=u||U)!==U)for(var p in(c=(448&i)>0)&&(d=Ae(s)),s){var m=f[p],g=s[p];m!==g&&Ve(p,m,g,a,r,d,e)}if(f!==U)for(var h in f)w(s[h])&&!w(f[h])&&Ve(h,f[h],null,a,r,d,e)}var v=t.children,y=t.className;e.className!==y&&(w(y)?a.removeAttribute("class"):r?a.setAttribute("class",y):a.className=y);4096&i?function(e,t){e.textContent!==t&&(e.textContent=t)}(a,v):ze(e.childFlags,t.childFlags,e.children,v,a,n,r&&"foreignObject"!==t.type,null,e,o);c&&Ne(i,t,a,s,!1,d);var b=t.ref,k=e.ref;k!==b&&(Ee(k),Ie(b,a,o))}(e,t,r,i,a,s):4&a?function(e,t,n,r,i,o,s){var a=t.children=e.children;if(R(a))return;a.$L=s;var l=t.props||U,u=t.ref,c=e.ref,d=a.state;if(!a.$N){if(x(a.componentWillReceiveProps)){if(a.$BR=!0,a.componentWillReceiveProps(l,r),a.$UN)return;a.$BR=!1}R(a.$PS)||(d=F(d,a.$PS),a.$PS=null)}qe(a,d,l,n,r,i,!1,o,s),c!==u&&(Ee(c),Ie(u,a,s))}(e,t,n,r,i,o,s):8&a?function(e,t,n,r,i,o,s){var a=!0,l=t.props||U,u=t.ref,c=e.props,d=!w(u),f=e.children;d&&x(u.onComponentShouldUpdate)&&(a=u.onComponentShouldUpdate(c,l));if(!1!==a){d&&x(u.onComponentWillUpdate)&&u.onComponentWillUpdate(c,l);var p=t.type,m=K(32768&t.flags?p.render(l,u,r):p(l,r));He(f,m,n,r,i,o,s),t.children=m,d&&x(u.onComponentDidUpdate)&&u.onComponentDidUpdate(c,l)}else t.children=f}(e,t,n,r,i,o,s):16&a?function(e,t){var n=t.children,r=t.dom=e.dom;n!==e.children&&(r.nodeValue=n)}(e,t):512&a?t.dom=e.dom:8192&a?function(e,t,n,r,i,o){var s=e.children,a=t.children,l=e.childFlags,u=t.childFlags,c=null;12&u&&0===a.length&&(u=t.childFlags=2,a=t.children=J());var d=0!=(2&u);if(12&l){var f=s.length;(8&l&&8&u||d||!d&&a.length>f)&&(c=D(s[f-1],!1).nextSibling)}ze(l,u,s,a,n,r,i,c,e,o)}(e,t,n,r,i,s):function(e,t,n,r){var i=e.ref,o=t.ref,s=t.children;if(ze(e.childFlags,t.childFlags,e.children,s,i,n,!1,null,e,r),t.dom=e.dom,i!==o&&!k(s)){var a=s.dom;A(i,a),N(o,a)}}(e,t,r,s)}function ze(e,t,n,r,i,o,s,a,l,u){switch(e){case 2:switch(t){case 2:He(n,r,i,o,s,a,u);break;case 1:De(n,i);break;case 16:Ce(n),V(i,r);break;default:!function(e,t,n,r,i,o){Ce(e),Ge(t,n,r,i,D(e,!0),o),C(e,n)}(n,r,i,o,s,u)}break;case 1:switch(t){case 2:Be(r,i,o,s,a,u);break;case 1:break;case 16:V(i,r);break;default:Ge(r,i,o,s,a,u)}break;case 16:switch(t){case 16:!function(e,t,n){e!==t&&(""!==e?n.firstChild.nodeValue=t:V(n,t))}(n,r,i);break;case 2:Le(i),Be(r,i,o,s,a,u);break;case 1:Le(i);break;default:Le(i),Ge(r,i,o,s,a,u)}break;default:switch(t){case 16:Pe(n),V(i,r);break;case 2:We(i,l,n),Be(r,i,o,s,a,u);break;case 1:We(i,l,n);break;default:var c=0|n.length,d=0|r.length;0===c?d>0&&Ge(r,i,o,s,a,u):0===d?We(i,l,n):8===t&&8===e?function(e,t,n,r,i,o,s,a,l,u){var c,d,f=o-1,p=s-1,m=0,g=e[m],h=t[m];e:{for(;g.key===h.key;){if(16384&h.flags&&(t[m]=h=Q(h)),He(g,h,n,r,i,a,u),e[m]=h,++m>f||m>p)break e;g=e[m],h=t[m]}for(g=e[f],h=t[p];g.key===h.key;){if(16384&h.flags&&(t[p]=h=Q(h)),He(g,h,n,r,i,a,u),e[f]=h,f--,p--,m>f||m>p)break e;g=e[f],h=t[p]}}if(m>f){if(m<=p)for(d=(c=p+1)<s?D(t[c],!0):a;m<=p;)16384&(h=t[m]).flags&&(t[m]=h=Q(h)),++m,Be(h,n,r,i,d,u)}else if(m>p)for(;m<=f;)De(e[m++],n);else!function(e,t,n,r,i,o,s,a,l,u,c,d,f){var p,m,g,h=0,v=a,y=a,b=o-a+1,w=s-a+1,k=new Int32Array(w+1),x=b===r,S=!1,R=0,F=0;if(i<4||(b|w)<32)for(h=v;h<=o;++h)if(p=e[h],F<w){for(a=y;a<=s;a++)if(m=t[a],p.key===m.key){if(k[a-y]=h+1,x)for(x=!1;v<h;)De(e[v++],l);R>a?S=!0:R=a,16384&m.flags&&(t[a]=m=Q(m)),He(p,m,l,n,u,c,f),++F;break}!x&&a>s&&De(p,l)}else x||De(p,l);else{var M={};for(h=y;h<=s;++h)M[t[h].key]=h;for(h=v;h<=o;++h)if(p=e[h],F<w)if(void 0!==(a=M[p.key])){if(x)for(x=!1;h>v;)De(e[v++],l);k[a-y]=h+1,R>a?S=!0:R=a,16384&(m=t[a]).flags&&(t[a]=m=Q(m)),He(p,m,l,n,u,c,f),++F}else x||De(p,l);else x||De(p,l)}if(x)We(l,d,e),Ge(t,l,n,u,c,f);else if(S){var U=function(e){var t=0,n=0,r=0,i=0,o=0,s=0,a=0,l=e.length;l>Ye&&(Ye=l,Re=new Int32Array(l),Fe=new Int32Array(l));for(;n<l;++n)if(0!==(t=e[n])){if(r=Re[i],e[r]<t){Fe[n]=r,Re[++i]=n;continue}for(o=0,s=i;o<s;)e[Re[a=o+s>>1]]<t?o=a+1:s=a;t<e[Re[o]]&&(o>0&&(Fe[n]=Re[o-1]),Re[o]=n)}o=i+1;var u=new Int32Array(o);s=Re[o-1];for(;o-- >0;)u[o]=s,s=Fe[s],Re[o]=0;return u}(k);for(a=U.length-1,h=w-1;h>=0;h--)0===k[h]?(16384&(m=t[R=h+y]).flags&&(t[R]=m=Q(m)),Be(m,l,n,u,(g=R+1)<i?D(t[g],!0):c,f)):a<0||h!==U[a]?P(m=t[R=h+y],l,(g=R+1)<i?D(t[g],!0):c):a--}else if(F!==w)for(h=w-1;h>=0;h--)0===k[h]&&(16384&(m=t[R=h+y]).flags&&(t[R]=m=Q(m)),Be(m,l,n,u,(g=R+1)<i?D(t[g],!0):c,f))}(e,t,r,o,s,f,p,m,n,i,a,l,u)}(n,r,i,o,s,c,d,a,l,u):function(e,t,n,r,i,o,s,a,l){for(var u,c,d=o>s?s:o,f=0;f<d;++f)u=t[f],c=e[f],16384&u.flags&&(u=t[f]=Q(u)),He(c,u,n,r,i,a,l),e[f]=u;if(o<s)for(f=d;f<s;++f)16384&(u=t[f]).flags&&(u=t[f]=Q(u)),Be(u,n,r,i,a,l);else if(o>s)for(f=d;f<o;++f)De(e[f],n)}(n,r,i,o,s,c,d,a,u)}}}function qe(e,t,n,r,i,o,s,a,l){var u=e.state,c=e.props,d=Boolean(e.$N),f=x(e.shouldComponentUpdate);if(d&&(t=L(e,n,t!==u?F(u,t):t)),s||!f||f&&e.shouldComponentUpdate(n,t,i)){!d&&x(e.componentWillUpdate)&&e.componentWillUpdate(n,t,i),e.props=n,e.state=t,e.context=i;var p=null,m=_e(e,n,i);d&&x(e.getSnapshotBeforeUpdate)&&(p=e.getSnapshotBeforeUpdate(c,u)),He(e.$LI,m,r,e.$CX,o,a,l),e.$LI=m,x(e.componentDidUpdate)&&function(e,t,n,r,i){i.push((function(){e.componentDidUpdate(t,n,r)}))}(e,c,u,p,l)}else e.props=n,e.state=t,e.context=i}var Ye=0;function Qe(e,t,n,r){void 0===n&&(n=null),void 0===r&&(r=U),function(e,t,n,r){var i=[],o=t.$V;W.v=!0,w(o)?w(e)||(16384&e.flags&&(e=Q(e)),Be(e,t,r,!1,null,i),t.$V=e,o=e):w(e)?(De(o,t),t.$V=null):(16384&e.flags&&(e=Q(e)),He(o,e,t,r,!1,null,i),o=t.$V=e),E(i),W.v=!1,x(n)&&n(),x(j.renderComplete)&&j.renderComplete(o,t)}(e,t,n,r)}"undefined"!=typeof document&&window.Node&&(Node.prototype.$EV=null,Node.prototype.$V=null);var Je=[],Xe="undefined"!=typeof Promise?Promise.resolve().then.bind(Promise.resolve()):function(e){window.setTimeout(e,0)},Ke=!1;function Ze(e,t,n,r){var i=e.$PS;if(x(t)&&(t=t(i?F(e.state,i):e.state,e.props,e.context)),w(i))e.$PS=t;else for(var o in t)i[o]=t[o];if(e.$BR)x(n)&&e.$L.push(n.bind(e));else{if(!W.v&&0===Je.length)return nt(e,r),void(x(n)&&n.call(e));if(-1===Je.indexOf(e)&&Je.push(e),Ke||(Ke=!0,Xe(tt)),x(n)){var s=e.$QU;s||(s=e.$QU=[]),s.push(n)}}}function et(e){for(var t=e.$QU,n=0;n<t.length;++n)t[n].call(e);e.$QU=null}function tt(){var e;for(Ke=!1;e=Je.shift();)e.$UN||(nt(e,!1),e.$QU&&et(e))}function nt(e,t){if(t||!e.$BR){var n=e.$PS;e.$PS=null;var r=[];W.v=!0,qe(e,F(e.state,n),e.props,D(e.$LI,!0).parentNode,e.context,e.$SVG,t,null,r),E(r),W.v=!1}else e.state=e.$PS,e.$PS=null}var rt,it=function(e,t){this.state=null,this.$BR=!1,this.$BS=!0,this.$PS=null,this.$LI=null,this.$UN=!1,this.$CX=null,this.$QU=null,this.$N=!1,this.$L=null,this.$SVG=!1,this.props=e||U,this.context=t||U};it.prototype.forceUpdate=function(e){this.$UN||Ze(this,{},e,!0)},it.prototype.setState=function(e,t){this.$UN||this.$BS||Ze(this,e,t,!1)},it.prototype.render=function(e,t,n){return null},function(e){e.rNofapForum="r/NoFap",e.rPornFreeForum="r/pornfree",e.rPornAddictionForum="r/PornAddiction",e.rNofapChristiansForum="r/NoFapChristians",e.rNofapTeensForum="r/NoFapTeens",e.rSemenRetentionForum="r/Semenretention",e.rMuslimNofapForum="r/MuslimNoFap"}(rt||(rt={}));var ot=function(e){switch(e.children.length){case 5:return e.children[3].children[7];case 4:return e.children[2].children[5];default:return null}},st=function(e,t,i,o,s,a){return n(void 0,void 0,void 0,(function(){var u,c,d;return r(this,(function(f){switch(f.label){case 0:return function(e){n(void 0,void 0,void 0,(function(){var t,n,i;return r(this,(function(r){return t=e.children[4],(n=ot(t))&&(i=n.children[0],console.log(i),i.click()),[2]}))}))}(i),u=i.querySelector("textarea"),c=i.querySelector(".save"),u&&c?(u.value=e,a?(d={username_sending:"NeverFapDeluxe",username_receiving:o,subject:t.subjectReplyToTitle,message:u.value,send_date:(new Date).toString(),type:s},[4,l(d)]):[3,2]):[3,4];case 1:return f.sent(),c.click(),[3,3];case 2:c.addEventListener("click",(function(){return n(void 0,void 0,void 0,(function(){var e,n;return r(this,(function(r){switch(r.label){case 0:return(e=i.querySelector("textarea"))?(n={username_sending:"NeverFapDeluxe",username_receiving:o,subject:t.subjectReplyToTitle,message:e.value,send_date:(new Date).toString(),type:s},[4,l(n)]):[3,2];case 1:r.sent(),r.label=2;case 2:return[2]}}))}))})),f.label=3;case 3:return[3,5];case 4:console.log("cannot find textArea or submitButton"),f.label=5;case 5:return[2]}}))}))},at=function(e){var t=Math.floor(((new Date).getTime()-e.getTime())/1e3),n=Math.floor(t/31536e3);return n>1?n+" years":(n=Math.floor(t/2592e3))>1?n+" months":(n=Math.floor(t/86400))>1?n+" days":(n=Math.floor(t/3600))>1?n+" hours":(n=Math.floor(t/60))>1?n+" minutes":Math.floor(t)+" seconds"},lt=q,ut=H,ct=function(e){var t=e.dbUser;return ut(1,"div",null,[ut(1,"p",null,ut(1,"b",null,"NFD Sent",16,{style:{"font-weight":900}}),2),t.lastSentMessage?ut(1,"p",null,t.lastSentMessage.text,0,{style:{"padding-top":"0.2rem","padding-bottom":"0.2rem"}}):ut(1,"p",null,"NA",16),ut(1,"p",null,ut(1,"b",null,[t.username,lt(" Sent")],0,{style:{"font-weight":900}}),2),t.lastReceivedMessage?ut(1,"p",null,t.lastReceivedMessage.text,0,{style:{"padding-top":"0.2rem","padding-bottom":"0.2rem"}}):ut(1,"p",null,"NA",16)],0)},dt=function(e){var t=e.dbUser,n=e.usernameConfig;return ut(1,"div",null,[(null==n?void 0:n.usernameValue)===t.username?ut(1,"h1",null,"LASTUSER",16,{id:"last-user-reade",style:{"font-size":"4.5rem"}}):"",ut(1,"span",null,[t.username,lt(" | "),t.user_chat_function_utilised?ut(1,"span",null,"(Chatted)",16,{style:{color:"black"}}):""],0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:t.userColor}}),ut(1,"span",null,[lt("Type: "),t.userType,lt(" |")],0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:t.userColor}}),ut(1,"span",null,[lt("Sent: "),t.sentCount],0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"blue"}}),ut(1,"br"),ut(1,"span",null,t.lastReceivedMessage&&at(new Date(t.lastReceivedMessage.send_date))+" since last received message.",0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"black","margin-top":"0.6rem"}}),ut(1,"span",null,t.lastSentMessage&&at(new Date(t.lastSentMessage.send_date))+" since last sent message.",0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"black","margin-top":"0.6rem"}})],0,{style:{"margin-top":"1rem","margin-bottom":"1rem"}})},ft=function(t){function i(e){var n=t.call(this,e)||this;return n.state={message:""},n}return function(t,n){function r(){this.constructor=t}e(t,n),t.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r)}(i,t),i.prototype.render=function(){var e,t=this;return ut(1,"div",null,[ut(64,"input",null,null,1,{value:null===(e=this.state)||void 0===e?void 0:e.message,onChange:function(e){return t.setState({message:e.target.value})},style:{"margin-right":"1rem"}}),ut(1,"button",null,"Send Note",16,{onclick:function(){return n(t,void 0,void 0,(function(){var e;return r(this,(function(t){switch(t.label){case 0:return[4,(i={username:this.props.username,message:null===(e=this.state)||void 0===e?void 0:e.message},n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,a(i,"/sendNewUserNote","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return t.sent(),this.setState({message:""}),[2]}var i}))}))}})],4)},i}(it),pt=function(e){var t=e.username;return ut(1,"button",null,"Mark User Hostile",16,{style:{border:"1px solid black","margin-right":"0.4rem"},onclick:function(){return n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,(i={username:t},n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,a(i,"/markUserHostile","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return e.sent(),[2]}var i}))}))}})},mt=function(e){var t=e.username;return ut(1,"button",null,"Mark User Chatted",16,{style:{border:"1px solid black","margin-right":"0.4rem"},onclick:function(){return n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,(i={username:t},n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,a(i,"/markUserChatted","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return e.sent(),[2]}var i}))}))}})},gt=function(e){var t=e.username,i=e.message;return ut(1,"button",null,"Set Last Inbox Message",16,{style:{border:"1px solid black","margin-right":"0.4rem"},onclick:function(){return n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,(o={username:t,message:i},n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,a(o,"/setLastInboxMessageUsername","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 1:return e.sent(),[2]}var o}))}))}})},ht=q,vt=z,yt=H,bt=function(e,t,i,o,s,a,l){return yt(1,"div",null,yt(1,"a",null,e,0,{"data-tip":!0,"data-for":e+"-"+i,style:{color:t||"black","margin-top":"0.2rem","margin-bottom":"0.2rem","margin-left":"0.3rem","margin-right":"0.3rem","font-size":"12px",display:"inline-block"},onclick:function(){return n(void 0,void 0,void 0,(function(){return r(this,(function(t){switch(t.label){case 0:return[4,st(o,a,s,i,e,l)];case 1:return t.sent(),[2]}}))}))},target:"_blank"}),0)},wt=function(e){var t,n,r,i,s,a,l=e.dbUser,v=e.containerDiv,y=e.previousMessageInformation,b=e.numberOfMessagesFromThisUser,w=e.isUserLastMessagedUser,k=e.otherUserMessages;e.userReplyMessage;return yt(1,"div",null,[w&&yt(1,"p",null,"Last Messaged User",16,{style:{"font-size":"1rem","padding-top":"1.2rem","padding-bottom":"1.2rem","padding-left":"0.4rem","margin-right":"0.4rem",background:"mediumpurple",color:"white"}}),vt(2,dt,{dbUser:l,numberOfMessagesFromThisUser:b}),yt(1,"div",null,[vt(2,ft,{username:l.username}),vt(2,mt,{username:l.username}),vt(2,pt,{username:l.username}),vt(2,gt,{username:l.username,message:""})],4,{style:{display:"flex"}}),vt(2,ct,{dbUser:l}),yt(1,"div",null,[yt(1,"div",null,[!(null===(t=null==l?void 0:l.lastSentMessage)||void 0===t?void 0:t.type.includes("middle"))&&yt(1,"div",null,[yt(1,"h4",null,"Send",16),bt(o.MiddleGuideIfYouWouldLikeToLearnMore,"purple",l.username,u,v,y,!1),bt(o.MiddleGuideNoWorries,"purple",l.username,c,v,y,!1),bt(o.MiddleGuideLinkYou,"purple",l.username,d,v,y,!1),bt(o.MiddleGuideMeditationAdvice,"purple",l.username,f,v,y,!1)],0),yt(1,"h4",null,"Final",16,{style:{"margin-top":"0.3rem","margin-left":"0.4rem","margin-right":"0.4rem"}}),bt(o.FinalJoinSubreddit,"purple",l.username,p,v,y,!1),bt(o.FinalHardTime,"purple",l.username,h,v,y,!1),bt(o.FinalFantastic,"purple",l.username,m,v,y,!1),bt(o.FinalShareResources,"purple",l.username,g,v,y,!1),yt(1,"h4",null,"Custom",16,{style:{"margin-top":"0.3rem","margin-left":"0.4rem","margin-right":"0.4rem"}}),bt(o.NFDCustomSend,"purple",l.username,"",v,y,!1)],0,{style:{display:"flex","flex-direction":"column"}}),yt(1,"div",null,[!(null===(n=null==l?void 0:l.lastSentMessage)||void 0===n?void 0:n.type.includes("middle"))&&yt(1,"div",null,[yt(1,"h4",null,"Send Immediate",16),bt(o.MiddleGuideIfYouWouldLikeToLearnMore,"purple",l.username,u,v,y,!0),bt(o.MiddleGuideNoWorries,"purple",l.username,c,v,y,!0),bt(o.MiddleGuideLinkYou,"purple",l.username,d,v,y,!0),bt(o.MiddleGuideMeditationAdvice,"purple",l.username,f,v,y,!0)],0),yt(1,"h4",null,"Final Immediate",16,{style:{"margin-top":"0.3rem","margin-left":"0.4rem","margin-right":"0.4rem"}}),bt(o.FinalJoinSubreddit,"purple",l.username,p,v,y,!0),bt(o.FinalHardTime,"purple",l.username,h,v,y,!0),bt(o.FinalFantastic,"purple",l.username,m,v,y,!0),bt(o.FinalShareResources,"purple",l.username,g,v,y,!0)],0,{style:{display:"flex","flex-direction":"column"}})],4,{id:"cake",style:{display:"flex","margin-top":"1rem","margin-bottom":"1rem"}}),yt(1,"div",null,b&&"Message count: "+b,0,{style:{"font-size":"20px","margin-left":"0.4rem","margin-right":"0.4rem",color:"black"}}),(null===(r=null==l?void 0:l.lastSentMessage)||void 0===r?void 0:r.type.includes("start"))&&yt(1,"p",null,"SEND MIDDLE",16,{style:{"font-size":"1rem","padding-top":"1.2rem","padding-bottom":"1.2rem","padding-left":"0.4rem","margin-right":"0.4rem",background:"yellow",color:"black"}}),(null===(i=null==l?void 0:l.lastSentMessage)||void 0===i?void 0:i.type.includes("middle"))&&yt(1,"p",null,"SEND FINAL",16,{style:{"font-size":"1rem","padding-top":"1.2rem","padding-bottom":"1.2rem","padding-left":"0.4rem","margin-right":"0.4rem",background:"orange",color:"black"}}),(null===(s=null==l?void 0:l.lastSentMessage)||void 0===s?void 0:s.type.includes("final"))&&yt(1,"p",null,"DONE",16,{style:{"font-size":"1rem","padding-top":"1.2rem","padding-bottom":"1.2rem","padding-left":"0.4rem","margin-right":"0.4rem",background:"red",color:"black"}}),(null===(a=null==l?void 0:l.lastSentMessage)||void 0===a?void 0:a.type.includes("follow"))&&yt(1,"p",null,"FOLLOW: SEND MIDDLE",16,{style:{"font-size":"1rem","padding-top":"1.2rem","padding-bottom":"1.2rem","padding-left":"0.4rem","margin-right":"0.4rem",background:"purple",color:"white"}}),k.length>0&&yt(1,"div",null,k.map((function(e){return yt(1,"p",null,[e.message,ht(" | "),e.order],0,{style:{"font-size":"1rem","padding-top":"1.2rem","padding-bottom":"1.2rem","padding-left":"0.4rem","margin-right":"0.4rem",border:"1px solid black"}})})),0)],0)},kt=z,xt=function(e){return function(){for(var e=0,t=0,n=arguments.length;t<n;t++)e+=arguments[t].length;var r=Array(e),i=0;for(t=0;t<n;t++)for(var o=arguments[t],s=0,a=o.length;s<a;s++,i++)r[i]=o[s];return r}(e).map((function(e){var t,n=e.children[1],r=n.children[0].innerText;t=1!==n.children.length||r.includes("re:")?r+" (no subject/reply)":r,2===n.children.length&&(t=n.children[1].innerText);var i=e.children[4],s=i.children[0].children[1],a=s.children[0].innerText,l=s.children[1],u=3===l.attributes.length?l.attributes[1].nodeValue:void 0;return{containerDiv:e,subject:t,subjectReplyToTitle:r,username_receiving:"NeverFapDeluxe",username_sending:a,message:i.children[1].children[0].innerText,date:u,type:o.UserReplyCustom}}))},St=function(e){return n(void 0,void 0,void 0,(function(){var i,s,l,u,c,d,f,p,m;return r(this,(function(g){switch(g.label){case 0:i=[],console.log("filteredMessageList",e),s=function(s){var l,u,c,g,h,v,y;return r(this,(function(b){switch(b.label){case 0:return[4,(w={username:s.username_sending},n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,a(w,"/latestUnreadMessagesInformation","3333")];case 1:return[2,e.sent().data.user]}}))})))];case 1:return l=b.sent(),u="arara217"===l.username,c=e.filter((function(e){return e.username_sending===l.username&&e.message!==s.message})).reduce((function(t,n,r){var i=e.findIndex((function(e){return e.message===s.message}))<e.findIndex((function(e){return e.message===n.message}))?"below":"above";return t.concat({order:i,message:n.message})}),[]),g=null===(d=null===(b=null==l?void 0:l.lastSentMessage)||void 0===b?void 0:b.type)||void 0===d?void 0:d.split(":")[0],h=function(e){switch(e){case"start":return o.UserReplyStart;case"middle":return o.UserReplyMiddle;case"final":return o.UserReplyFinal;case"follow":return o.UserReplyFollow;default:return o.UserReplyCustom}}(g),v=e.filter((function(e){return e.username_sending===l.username})).length,y=null===(m=null===(p=null===(f=null==s?void 0:s.containerDiv)||void 0===f?void 0:f.querySelector(".md"))||void 0===p?void 0:p.children[0])||void 0===m?void 0:m.innerText,i.push(t(t({},s),{type:h,compiledUser:l,isUserLastMessagedUser:u,otherUserMessages:c,numberOfMessagesFromThisUser:v,userReplyMessage:y})),[2]}var w}))},l=0,u=e,g.label=1;case 1:return l<u.length?(c=u[l],[5,s(c)]):[3,4];case 2:g.sent(),g.label=3;case 3:return l++,[3,1];case 4:return[2,i]}}))}))},Rt=function(e,t,i){return n(void 0,void 0,void 0,(function(){var o,s;return r(this,(function(a){return o=localStorage.getItem("replyDelay"),s=Number(o),localStorage.setItem("replyDelay",(s+1100).toString()),setTimeout((function(){return n(this,void 0,void 0,(function(){return r(this,(function(n){switch(n.label){case 0:return console.log("send automatically - "+e.compiledUser.username+" - "+i+" - delay: "+s),[4,st(t,e,e.containerDiv,e.compiledUser.username,i,!0)];case 1:return n.sent(),[2]}}))}))}),s),[2]}))}))},Ft=document.querySelector("iframe"),Mt=function(e,t){return n(void 0,void 0,void 0,(function(){var i,o,s,l,u,c,d,f;return r(this,(function(p){switch(p.label){case 0:return i=xt(e),o=function(e){return e.filter((function(e){return e.date&&!e.subjectReplyToTitle.includes("Tips to")&&!e.subjectReplyToTitle.includes("Tips for")&&!e.subjectReplyToTitle.includes("comment reply")&&!e.subjectReplyToTitle.includes("post reply")&&!e.subjectReplyToTitle.includes("Welcome to")&&!e.subjectReplyToTitle.includes("Snoosletter")}))}(i),[4,St(o)];case 1:s=p.sent(),l=0,u=function(e){var n,i,o,a;return r(this,(function(r){switch(r.label){case 0:return n=s.filter((function(t){return t.username_sending===e.username_sending})).length>1,i=v(e,n),o=i.messageText,a=i.messageType,o&&a?[4,Rt(e,o,a)]:[3,2];case 1:r.sent(),r.label=2;case 2:return o||a||function(e,t,n){var r;console.log("no match - "+e.compiledUser.username);var i="r"+e.username_sending+"-"+n;if(!i.includes("[")){var o=document.createElement("div");o.id=i,null===(r=e.containerDiv.parentNode)||void 0===r||r.insertBefore(o,e.containerDiv);var s=t.querySelector("#"+i);s&&Qe(kt(2,wt,{dbUser:e.compiledUser,previousMessageInformation:e,otherUserMessages:e.otherUserMessages,numberOfMessagesFromThisUser:e.numberOfMessagesFromThisUser,isUserLastMessagedUser:e.isUserLastMessagedUser,userReplyMessage:e.userReplyMessage,containerDiv:e.containerDiv}),s)}}(e,t,l+=1),[2]}}))},c=0,d=s,p.label=2;case 2:return c<d.length?(f=d[c],[5,u(f)]):[3,5];case 3:p.sent(),p.label=4;case 4:return c++,[3,2];case 5:return[4,(m={messages:s},n(void 0,void 0,void 0,(function(){return r(this,(function(e){switch(e.label){case 0:return[4,a(m,"/populateReceivedMessages","3333")];case 1:return[2,e.sent().data.message]}}))})))];case 6:return p.sent(),[2]}var m}))}))};n(void 0,void 0,void 0,(function(){var e;return r(this,(function(t){switch(t.label){case 0:return e=function(e,t){return n(void 0,void 0,void 0,(function(){return r(this,(function(i){return console.log("START: preparing page"),localStorage.setItem("replyDelay","1100"),setTimeout((function(){return n(this,void 0,void 0,(function(){var n;return r(this,(function(r){switch(r.label){case 0:return(n=e.querySelectorAll(".message"))?[4,Mt(n,e)]:[3,2];case 1:r.sent(),t.scrollTo(0,0),console.log("END: next page"),r.label=2;case 2:return[2]}}))}))}),400),[2]}))}))},!Ft||window.location.search.includes("count")?[3,1]:(window.location.search.includes("true")||(console.log("In iFrame"),Ft.addEventListener("load",(function(){var t;return n(this,void 0,void 0,(function(){return r(this,(function(n){switch(n.label){case 0:return[4,e(null===(t=null==Ft?void 0:Ft.contentWindow)||void 0===t?void 0:t.document,null==Ft?void 0:Ft.contentWindow)];case 1:return n.sent(),[2]}}))}))}))),[3,3]);case 1:return console.log("Not in iFrame"),[4,e(document,window)];case 2:t.sent(),t.label=3;case 3:return[2]}}))}))}();
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    }
+
+    function __generator(thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    }
+
+    function __spreadArrays() {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    }
+
+    var HTTPPOSToptions = function (data) { return ({
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
+    }); };
+    var sendPostRequest = function (dataPayload, urlEndpoint, port) { return __awaiter(void 0, void 0, void 0, function () {
+        var response, JSONResponse, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("http://localhost:" + port + urlEndpoint, HTTPPOSToptions(dataPayload))];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log('Server not started.');
+                    throw new Error(urlEndpoint + " - " + error_1);
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    var populateReceivedMessages = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessages', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message]; // basically a success message.
+            }
+        });
+    }); };
+    var sendNewMessage = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.users];
+            }
+        });
+    }); };
+    var sendNewUserNote = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewUserNote', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserHostile = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserHostile', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserChatted = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserChatted', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var latestUnreadMessagesInformation = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/latestUnreadMessagesInformation', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.user];
+            }
+        });
+    }); };
+    var setLastInboxMessageUsername = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/setLastInboxMessageUsername', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+
+    var UserType;
+    (function (UserType) {
+        UserType["FreshUser"] = "Fresh User";
+        UserType["UserNotRespondedBack"] = "User Not Responded Back";
+        UserType["FollowMessageSent"] = "User Follow Message Sent";
+        UserType["UserRespondedBack"] = "User Responded Back";
+        UserType["UserHostile"] = "Hostile User";
+    })(UserType || (UserType = {}));
+    var SendMessageType;
+    (function (SendMessageType) {
+        SendMessageType["StartAdviceStart"] = "start:advice:start";
+        SendMessageType["StartAdviceStartAgain"] = "start:advice:startAgain";
+        SendMessageType["StartAdviceGeneral"] = "start:advice:general";
+        SendMessageType["StartAdviceRelapse"] = "start:advice:relapse";
+        SendMessageType["StartAdviceStruggle"] = "start:advice:struggle";
+        SendMessageType["StartAdviceAge"] = "start:advice:age";
+        SendMessageType["StartAdviceAbstain"] = "start:advice:abstain";
+        SendMessageType["StartAdviceFlatline"] = "start:advice:flatline";
+        SendMessageType["StartAdviceWetdreamAdvice"] = "start:advice:wetdreamAdvice";
+        SendMessageType["StartAdvicePornBlockersAdvice"] = "start:advice:pornBlockersAdvice";
+        SendMessageType["StartAdviceIsWatchingPornRelapseAdvice"] = "start:advice:isWatchingPornRelapseAdvice";
+        SendMessageType["StartNoReasonToRelapseAdvice"] = "start:advice:noReasonToRelapse";
+        SendMessageType["StartAccountabilityPartner"] = "start:accountability:accountabilityPartner";
+        // StartStraightToGuide = 'start:advice:straightToGuide',
+        SendMessageType["StartPartnerAdvice"] = "start::advice:partner";
+        SendMessageType["StartMasturbateWithoutPornAdvice"] = "start::advice:masturbateWithoutPorn";
+        SendMessageType["StartBiggestBenefitPostAddictionAdvice"] = "start::advice:biggestBenefitPostAddiction";
+        SendMessageType["StartDealingWithUrgesAdvice"] = "start::advice:dealingWithUrges";
+        SendMessageType["MiddleGuideIfYouWouldLikeToLearnMore"] = "middle:guide:learnmore";
+        SendMessageType["MiddleGuideNoWorries"] = "middle:guide:noworries";
+        SendMessageType["MiddleGuideLinkYou"] = "middle:guide:linkyou";
+        SendMessageType["MiddleGuideMeditationAdvice"] = "middle:guide:meditationAdvice";
+        SendMessageType["FinalHardTime"] = "final:disagree:hardTime";
+        SendMessageType["FinalFantastic"] = "final:agree:fantastic";
+        SendMessageType["FinalJoinSubreddit"] = "final:join:subreddit";
+        SendMessageType["FinalShareResources"] = "final:share:resources";
+        SendMessageType["FollowRelapseAdvice"] = "follow:advice:relapse";
+        SendMessageType["FollowMeditationAdvice"] = "follow:advice:meditation";
+        SendMessageType["FollowStruggleAdvice"] = "follow:advice:struggle";
+        SendMessageType["FollowNotSmoothlyAdvice"] = "follow:advice:notSmoothly";
+        SendMessageType["UserReplyCustom"] = "user:reply:custom";
+        SendMessageType["UserReplyStart"] = "user:reply:start";
+        SendMessageType["UserReplyMiddle"] = "user:reply:middle";
+        SendMessageType["UserReplyFinal"] = "user:reply:final";
+        SendMessageType["UserReplyFollow"] = "user:reply:follow";
+        SendMessageType["NFDCustomSend"] = "nfd:custom:send";
+        SendMessageType["NA"] = "NA";
+    })(SendMessageType || (SendMessageType = {}));
+    var MessageType;
+    (function (MessageType) {
+        MessageType["Historic"] = "Historic";
+        MessageType["NonHistoric"] = "NonHistoric";
+    })(MessageType || (MessageType = {}));
+
+    // <content>Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
+    var middleWrittenGuide = ("If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
+    var middleGuideNoWorries = ("No worries! The homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
+    var middleGuideLinkYou = ("I'll link you! The homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
+    var middleGuideMeditationAdvice = ("Ultimately meditation is about learning to become aware of your senses. So for example, sitting there and noticing your emotions and physical sensations, as well as observing your surroundings in a non-judgemental way.\n\nThis article explains the basics of it:\n\nhttps://neverfapdeluxe.com/practices/observe-your-senses\n\nFeel free to ask if you have any questions! I'm more than happy to help!\n\nThe homepage on the other hand should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
+
+    var finalJoinSubreddit = ("No worries! I also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe");
+    var finalFantastic = ("That's fantastic to hear! It sounds like you're on the right track.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n");
+    var finalShareResources = ("Thank you! Feel free to share these resources if you find them useful :D");
+    var finalHardTime = ("Yeah, you might have a hard time addressing your addiction without maintaining a consistent mental health routine. Especially given addiction is a mental health problem at it's core.\n\nUltimately the important thing is being consistent with your mental health. Usually this means at least 10 minutes meditation each day. So if you can commit to that you'll be fine.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n");
+
+    var toNotRespond = function (messagePayload) {
+        return new RegExp(/no thank/i).test(messagePayload.message)
+            || new RegExp(/(I'm|I’m|I am|im) not interest/i).test(messagePayload.message);
+    };
+    var toNoWorriesGuide = function (messagePayload) {
+        return new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (web|website|guide|site|link|address)/i).test(messagePayload.message)
+            || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
+            || new RegExp(/go ahead/i).test(messagePayload.message)
+            || new RegExp(/took up/i).test(messagePayload.message)
+            || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
+            || new RegExp(/website sounds .* interesting/i).test(messagePayload.message)
+            || new RegExp(/(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i).test(messagePayload.message)
+            || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/url for this (site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/(I'm|I’m|I am|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
+            || new RegExp(/I’ll check the link if you have it/i).test(messagePayload.message)
+            || new RegExp(/(sent|send) me the (site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
+            || new RegExp(/give (ur|your) (site|link|web|guide|content|page) a visit/i).test(messagePayload.message)
+            || new RegExp(/wanna visit (ur|your) site/i).test(messagePayload.message)
+            || new RegExp(/yes please/i).test(messagePayload.message)
+            || new RegExp(/name of (ur|your|the) (site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/like to see (it|that)/i).test(messagePayload.message)
+            || new RegExp(/(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/(send it|do share)/i).test(messagePayload.message)
+            || new RegExp(/if you sent ?(me)? the (site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/(it|that|link) would be (super|awesome|great|cool)/i).test(messagePayload.message)
+            || new RegExp(/you could share/i).test(messagePayload.message)
+            || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
+            || new RegExp(/tell me more/i).test(messagePayload.message)
+            || new RegExp(/share ?(me)? the/i).test(messagePayload.message)
+            || new RegExp(/(can|could) you ?(please)? link/i).test(messagePayload.message)
+            || new RegExp(/^sure$/i).test(messagePayload.message)
+            || new RegExp(/^yes$/i).test(messagePayload.message)
+            || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
+            || new RegExp(/comfortable with sharing it/i).test(messagePayload.message)
+            || new RegExp(/to know more about your website/i).test(messagePayload.message)
+            || new RegExp(/how is your website called/i).test(messagePayload.message)
+            || new RegExp(/i m in./i).test(messagePayload.message)
+            || new RegExp(/(Sure I am|Yeah sure|Sure Bro)/i).test(messagePayload.message)
+            || new RegExp(/will have a look on your website/i).test(messagePayload.message)
+            || new RegExp(/please pass on (the|that) website info/i).test(messagePayload.message)
+            || new RegExp(/feel free to share it/i).test(messagePayload.message)
+            || new RegExp(/any advice you got for me/i).test(messagePayload.message)
+            || new RegExp(/I would really (appreaciate|appreciate) that/i).test(messagePayload.message)
+            || new RegExp(/like to look around at your site/i).test(messagePayload.message)
+            || new RegExp(/the (website|link) would be cool/i).test(messagePayload.message)
+            || new RegExp(/send that my way/i).test(messagePayload.message)
+            || new RegExp(/interested./i).test(messagePayload.message)
+            || new RegExp(/would love to visit/i).test(messagePayload.message)
+            || new RegExp(/nice if you linked the website/i).test(messagePayload.message)
+            || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message);
+    };
+    // I would love to hear your story and any advice you got for me
+    // i'd be ,
+    // article
+    // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
+    // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
+    var toLinkYouGuide = function (messagePayload) {
+        return new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/name of (ur|your) website/i).test(messagePayload.message)
+            || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
+            || new RegExp(/What site have you/i).test(messagePayload.message)
+            || new RegExp(/Where can I find this resource?/i).test(messagePayload.message)
+            || new RegExp(/what is this website?/i).test(messagePayload.message)
+            || new RegExp(/where can i find the website?/i).test(messagePayload.message);
+    };
+    var toMeditateGuide = function (messagePayload) {
+        return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
+            || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
+            || new RegExp(/tips on meditating?/i).test(messagePayload.message)
+            || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
+            || new RegExp(/^How do you meditate?$/i).test(messagePayload.message);
+    };
+    var toHardTime = function (messagePayload) {
+        return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
+            || new RegExp(/do nothing for my mental health/i).test(messagePayload.message);
+    };
+    var toJoinSubreddit = function (messagePayload) {
+        return new RegExp(/(ty|thank you|thanks)/i).test(messagePayload.message)
+            || new RegExp(/(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
+            || new RegExp(/will visit/i).test(messagePayload.message)
+            || new RegExp(/visit ?(.*) today/i).test(messagePayload.message)
+            || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
+            || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
+            || new RegExp(/for sharing/i).test(messagePayload.message);
+    };
+
+    var filterRedditInboxMessages = function (messagePayload, moreThanOneMessage) {
+        var compiledUser = messagePayload.compiledUser;
+        var lastSentMessage = compiledUser.lastSentMessage;
+        var lastReceivedMessage = compiledUser.lastReceivedMessage;
+        if (compiledUser.userType === UserType.UserHostile
+            || new RegExp(/(paid|free)/i).test(messagePayload.message)
+            || toNotRespond(messagePayload)) {
+            return {
+                messageText: undefined,
+                messageType: undefined,
+            };
+        }
+        if ( // if I've sent a start message, and they've returned a start message.
+        ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
+            (messagePayload.type === SendMessageType.UserReplyStart || messagePayload.type === SendMessageType.UserReplyFollow)) {
+            // No Worries
+            if (toNoWorriesGuide(messagePayload)) {
+                return {
+                    messageText: middleGuideNoWorries,
+                    messageType: SendMessageType.MiddleGuideNoWorries,
+                };
+            }
+            // Link You
+            if (toLinkYouGuide(messagePayload)) {
+                return {
+                    messageText: middleGuideLinkYou,
+                    messageType: SendMessageType.MiddleGuideLinkYou,
+                };
+            }
+            // Meditation
+            if (toMeditateGuide(messagePayload)) {
+                return {
+                    messageText: middleGuideMeditationAdvice,
+                    messageType: SendMessageType.MiddleGuideMeditationAdvice,
+                };
+            }
+            // That's fantastic
+            // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
+            // I will have to careful check that it DOES NOT contain certain things.
+            // if (
+            //   new RegExp(//i).test(messagePayload.message)
+            //   || new RegExp(//i).test(messagePayload.message) // will need to actually test this.
+            // ) {
+            //   return {
+            //     messageText: finalFantastic,
+            //     messageType: SendMessageType.FinalFantastic,
+            //   }
+            // }
+            if (toHardTime(messagePayload)) {
+                return {
+                    messageText: finalHardTime,
+                    messageType: SendMessageType.FinalHardTime,
+                };
+            }
+        }
+        // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
+        // therefore, this also need to know that the recieved messages from that used is exactly two
+        // of course this breaks if the user sends two messages, so I'll have to look into this.
+        // in addition it should check time last message was sent by ME and last message sent by them. if they are within a similar time span, then perhaps don't send it.
+        // the other flaw in this system is that it should check all messages sent by the user on this page and count them as one, not just one separately. It shouldn't count them like that, it's broken.
+        // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
+        // basically only triggers poorly if
+        //
+        console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type);
+        if (!moreThanOneMessage &&
+            messagePayload.type === SendMessageType.UserReplyMiddle &&
+            (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type) === SendMessageType.UserReplyStart && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
+            // TODO I Think there's a bug here.
+            console.log(messagePayload.compiledUser.username, messagePayload.type, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type);
+            // Join Subreddit
+            if (toJoinSubreddit(messagePayload)) {
+                return {
+                    messageText: finalJoinSubreddit,
+                    messageType: SendMessageType.FinalJoinSubreddit,
+                };
+            }
+        }
+        // Are you a bot?
+        return {
+            messageText: undefined,
+            messageType: undefined,
+        };
+    };
+
+    var isArray = Array.isArray;
+    function isStringOrNumber(o) {
+        var type = typeof o;
+        return type === 'string' || type === 'number';
+    }
+    function isNullOrUndef(o) {
+        return o === void 0 || o === null;
+    }
+    function isInvalid(o) {
+        return o === null || o === false || o === true || o === void 0;
+    }
+    function isFunction(o) {
+        return typeof o === 'function';
+    }
+    function isString(o) {
+        return typeof o === 'string';
+    }
+    function isNumber(o) {
+        return typeof o === 'number';
+    }
+    function isNull(o) {
+        return o === null;
+    }
+    function isUndefined(o) {
+        return o === void 0;
+    }
+    function combineFrom(first, second) {
+        var out = {};
+        if (first) {
+            for (var key in first) {
+                out[key] = first[key];
+            }
+        }
+        if (second) {
+            for (var key$1 in second) {
+                out[key$1] = second[key$1];
+            }
+        }
+        return out;
+    }
+    // object.event should always be function, otherwise its badly created object.
+    function isLinkEventObject(o) {
+        return !isNull(o) && typeof o === 'object';
+    }
+
+    // We need EMPTY_OBJ defined in one place.
+    // Its used for comparison so we cant inline it into shared
+    var EMPTY_OBJ = {};
+    function normalizeEventName(name) {
+        return name.substr(2).toLowerCase();
+    }
+    function appendChild(parentDOM, dom) {
+        parentDOM.appendChild(dom);
+    }
+    function insertOrAppend(parentDOM, newNode, nextNode) {
+        if (isNull(nextNode)) {
+            appendChild(parentDOM, newNode);
+        }
+        else {
+            parentDOM.insertBefore(newNode, nextNode);
+        }
+    }
+    function documentCreateElement(tag, isSVG) {
+        if (isSVG) {
+            return document.createElementNS('http://www.w3.org/2000/svg', tag);
+        }
+        return document.createElement(tag);
+    }
+    function replaceChild(parentDOM, newDom, lastDom) {
+        parentDOM.replaceChild(newDom, lastDom);
+    }
+    function removeChild(parentDOM, childNode) {
+        parentDOM.removeChild(childNode);
+    }
+    function callAll(arrayFn) {
+        for (var i = 0; i < arrayFn.length; i++) {
+            arrayFn[i]();
+        }
+    }
+    function findChildVNode(vNode, startEdge, flags) {
+        var children = vNode.children;
+        if (flags & 4 /* ComponentClass */) {
+            return children.$LI;
+        }
+        if (flags & 8192 /* Fragment */) {
+            return vNode.childFlags === 2 /* HasVNodeChildren */ ? children : children[startEdge ? 0 : children.length - 1];
+        }
+        return children;
+    }
+    function findDOMfromVNode(vNode, startEdge) {
+        var flags;
+        while (vNode) {
+            flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                return vNode.dom;
+            }
+            vNode = findChildVNode(vNode, startEdge, flags);
+        }
+        return null;
+    }
+    function removeVNodeDOM(vNode, parentDOM) {
+        do {
+            var flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                removeChild(parentDOM, vNode.dom);
+                return;
+            }
+            var children = vNode.children;
+            if (flags & 4 /* ComponentClass */) {
+                vNode = children.$LI;
+            }
+            if (flags & 8 /* ComponentFunction */) {
+                vNode = children;
+            }
+            if (flags & 8192 /* Fragment */) {
+                if (vNode.childFlags === 2 /* HasVNodeChildren */) {
+                    vNode = children;
+                }
+                else {
+                    for (var i = 0, len = children.length; i < len; ++i) {
+                        removeVNodeDOM(children[i], parentDOM);
+                    }
+                    return;
+                }
+            }
+        } while (vNode);
+    }
+    function moveVNodeDOM(vNode, parentDOM, nextNode) {
+        do {
+            var flags = vNode.flags;
+            if (flags & 2033 /* DOMRef */) {
+                insertOrAppend(parentDOM, vNode.dom, nextNode);
+                return;
+            }
+            var children = vNode.children;
+            if (flags & 4 /* ComponentClass */) {
+                vNode = children.$LI;
+            }
+            if (flags & 8 /* ComponentFunction */) {
+                vNode = children;
+            }
+            if (flags & 8192 /* Fragment */) {
+                if (vNode.childFlags === 2 /* HasVNodeChildren */) {
+                    vNode = children;
+                }
+                else {
+                    for (var i = 0, len = children.length; i < len; ++i) {
+                        moveVNodeDOM(children[i], parentDOM, nextNode);
+                    }
+                    return;
+                }
+            }
+        } while (vNode);
+    }
+    function createDerivedState(instance, nextProps, state) {
+        if (instance.constructor.getDerivedStateFromProps) {
+            return combineFrom(state, instance.constructor.getDerivedStateFromProps(nextProps, state));
+        }
+        return state;
+    }
+    var renderCheck = {
+        v: false
+    };
+    var options = {
+        componentComparator: null,
+        createVNode: null,
+        renderComplete: null
+    };
+    function setTextContent(dom, children) {
+        dom.textContent = children;
+    }
+    // Calling this function assumes, nextValue is linkEvent
+    function isLastValueSameLinkEvent(lastValue, nextValue) {
+        return (isLinkEventObject(lastValue) &&
+            lastValue.event === nextValue.event &&
+            lastValue.data === nextValue.data);
+    }
+    function mergeUnsetProperties(to, from) {
+        for (var propName in from) {
+            if (isUndefined(to[propName])) {
+                to[propName] = from[propName];
+            }
+        }
+        return to;
+    }
+    function safeCall1(method, arg1) {
+        return !!isFunction(method) && (method(arg1), true);
+    }
+
+    var keyPrefix = '$';
+    function V(childFlags, children, className, flags, key, props, ref, type) {
+        this.childFlags = childFlags;
+        this.children = children;
+        this.className = className;
+        this.dom = null;
+        this.flags = flags;
+        this.key = key === void 0 ? null : key;
+        this.props = props === void 0 ? null : props;
+        this.ref = ref === void 0 ? null : ref;
+        this.type = type;
+    }
+    function createVNode(flags, type, className, children, childFlags, props, key, ref) {
+        var childFlag = childFlags === void 0 ? 1 /* HasInvalidChildren */ : childFlags;
+        var vNode = new V(childFlag, children, className, flags, key, props, ref, type);
+        if (options.createVNode) {
+            options.createVNode(vNode);
+        }
+        if (childFlag === 0 /* UnknownChildren */) {
+            normalizeChildren(vNode, vNode.children);
+        }
+        return vNode;
+    }
+    function mergeDefaultHooks(flags, type, ref) {
+        if (flags & 4 /* ComponentClass */) {
+            return ref;
+        }
+        var defaultHooks = (flags & 32768 /* ForwardRef */ ? type.render : type).defaultHooks;
+        if (isNullOrUndef(defaultHooks)) {
+            return ref;
+        }
+        if (isNullOrUndef(ref)) {
+            return defaultHooks;
+        }
+        return mergeUnsetProperties(ref, defaultHooks);
+    }
+    function mergeDefaultProps(flags, type, props) {
+        // set default props
+        var defaultProps = (flags & 32768 /* ForwardRef */ ? type.render : type).defaultProps;
+        if (isNullOrUndef(defaultProps)) {
+            return props;
+        }
+        if (isNullOrUndef(props)) {
+            return combineFrom(defaultProps, null);
+        }
+        return mergeUnsetProperties(props, defaultProps);
+    }
+    function resolveComponentFlags(flags, type) {
+        if (flags & 12 /* ComponentKnown */) {
+            return flags;
+        }
+        if (type.prototype && type.prototype.render) {
+            return 4 /* ComponentClass */;
+        }
+        if (type.render) {
+            return 32776 /* ForwardRefComponent */;
+        }
+        return 8 /* ComponentFunction */;
+    }
+    function createComponentVNode(flags, type, props, key, ref) {
+        flags = resolveComponentFlags(flags, type);
+        var vNode = new V(1 /* HasInvalidChildren */, null, null, flags, key, mergeDefaultProps(flags, type, props), mergeDefaultHooks(flags, type, ref), type);
+        if (options.createVNode) {
+            options.createVNode(vNode);
+        }
+        return vNode;
+    }
+    function createTextVNode(text, key) {
+        return new V(1 /* HasInvalidChildren */, isNullOrUndef(text) || text === true || text === false ? '' : text, null, 16 /* Text */, key, null, null, null);
+    }
+    function createFragment(children, childFlags, key) {
+        var fragment = createVNode(8192 /* Fragment */, 8192 /* Fragment */, null, children, childFlags, null, key, null);
+        switch (fragment.childFlags) {
+            case 1 /* HasInvalidChildren */:
+                fragment.children = createVoidVNode();
+                fragment.childFlags = 2 /* HasVNodeChildren */;
+                break;
+            case 16 /* HasTextChildren */:
+                fragment.children = [createTextVNode(children)];
+                fragment.childFlags = 4 /* HasNonKeyedChildren */;
+                break;
+        }
+        return fragment;
+    }
+    /*
+     * Fragment is different than normal vNode,
+     * because when it needs to be cloned we need to clone its children too
+     * But not normalize, because otherwise those possibly get KEY and re-mount
+     */
+    function cloneFragment(vNodeToClone) {
+        var clonedChildren;
+        var oldChildren = vNodeToClone.children;
+        var childFlags = vNodeToClone.childFlags;
+        if (childFlags === 2 /* HasVNodeChildren */) {
+            clonedChildren = directClone(oldChildren);
+        }
+        else if (childFlags & 12 /* MultipleChildren */) {
+            clonedChildren = [];
+            for (var i = 0, len = oldChildren.length; i < len; ++i) {
+                clonedChildren.push(directClone(oldChildren[i]));
+            }
+        }
+        return createFragment(clonedChildren, childFlags, vNodeToClone.key);
+    }
+    function directClone(vNodeToClone) {
+        var flags = vNodeToClone.flags & -16385 /* ClearInUse */;
+        var props = vNodeToClone.props;
+        if (flags & 14 /* Component */) {
+            if (!isNull(props)) {
+                var propsToClone = props;
+                props = {};
+                for (var key in propsToClone) {
+                    props[key] = propsToClone[key];
+                }
+            }
+        }
+        if ((flags & 8192 /* Fragment */) === 0) {
+            return new V(vNodeToClone.childFlags, vNodeToClone.children, vNodeToClone.className, flags, vNodeToClone.key, props, vNodeToClone.ref, vNodeToClone.type);
+        }
+        return cloneFragment(vNodeToClone);
+    }
+    function createVoidVNode() {
+        return createTextVNode('', null);
+    }
+    function _normalizeVNodes(nodes, result, index, currentKey) {
+        for (var len = nodes.length; index < len; index++) {
+            var n = nodes[index];
+            if (!isInvalid(n)) {
+                var newKey = currentKey + keyPrefix + index;
+                if (isArray(n)) {
+                    _normalizeVNodes(n, result, 0, newKey);
+                }
+                else {
+                    if (isStringOrNumber(n)) {
+                        n = createTextVNode(n, newKey);
+                    }
+                    else {
+                        var oldKey = n.key;
+                        var isPrefixedKey = isString(oldKey) && oldKey[0] === keyPrefix;
+                        if (n.flags & 81920 /* InUseOrNormalized */ || isPrefixedKey) {
+                            n = directClone(n);
+                        }
+                        n.flags |= 65536 /* Normalized */;
+                        if (!isPrefixedKey) {
+                            if (isNull(oldKey)) {
+                                n.key = newKey;
+                            }
+                            else {
+                                n.key = currentKey + oldKey;
+                            }
+                        }
+                        else if (oldKey.substring(0, currentKey.length) !== currentKey) {
+                            n.key = currentKey + oldKey;
+                        }
+                    }
+                    result.push(n);
+                }
+            }
+        }
+    }
+    function normalizeChildren(vNode, children) {
+        var newChildren;
+        var newChildFlags = 1 /* HasInvalidChildren */;
+        // Don't change children to match strict equal (===) true in patching
+        if (isInvalid(children)) {
+            newChildren = children;
+        }
+        else if (isStringOrNumber(children)) {
+            newChildFlags = 16 /* HasTextChildren */;
+            newChildren = children;
+        }
+        else if (isArray(children)) {
+            var len = children.length;
+            for (var i = 0; i < len; ++i) {
+                var n = children[i];
+                if (isInvalid(n) || isArray(n)) {
+                    newChildren = newChildren || children.slice(0, i);
+                    _normalizeVNodes(children, newChildren, i, '');
+                    break;
+                }
+                else if (isStringOrNumber(n)) {
+                    newChildren = newChildren || children.slice(0, i);
+                    newChildren.push(createTextVNode(n, keyPrefix + i));
+                }
+                else {
+                    var key = n.key;
+                    var needsCloning = (n.flags & 81920 /* InUseOrNormalized */) > 0;
+                    var isNullKey = isNull(key);
+                    var isPrefixed = isString(key) && key[0] === keyPrefix;
+                    if (needsCloning || isNullKey || isPrefixed) {
+                        newChildren = newChildren || children.slice(0, i);
+                        if (needsCloning || isPrefixed) {
+                            n = directClone(n);
+                        }
+                        if (isNullKey || isPrefixed) {
+                            n.key = keyPrefix + i;
+                        }
+                        newChildren.push(n);
+                    }
+                    else if (newChildren) {
+                        newChildren.push(n);
+                    }
+                    n.flags |= 65536 /* Normalized */;
+                }
+            }
+            newChildren = newChildren || children;
+            if (newChildren.length === 0) {
+                newChildFlags = 1 /* HasInvalidChildren */;
+            }
+            else {
+                newChildFlags = 8 /* HasKeyedChildren */;
+            }
+        }
+        else {
+            newChildren = children;
+            newChildren.flags |= 65536 /* Normalized */;
+            if (children.flags & 81920 /* InUseOrNormalized */) {
+                newChildren = directClone(children);
+            }
+            newChildFlags = 2 /* HasVNodeChildren */;
+        }
+        vNode.children = newChildren;
+        vNode.childFlags = newChildFlags;
+        return vNode;
+    }
+    function normalizeRoot(input) {
+        if (isInvalid(input) || isStringOrNumber(input)) {
+            return createTextVNode(input, null);
+        }
+        if (isArray(input)) {
+            return createFragment(input, 0 /* UnknownChildren */, null);
+        }
+        return input.flags & 16384 /* InUse */ ? directClone(input) : input;
+    }
+
+    var xlinkNS = 'http://www.w3.org/1999/xlink';
+    var xmlNS = 'http://www.w3.org/XML/1998/namespace';
+    var namespaces = {
+        'xlink:actuate': xlinkNS,
+        'xlink:arcrole': xlinkNS,
+        'xlink:href': xlinkNS,
+        'xlink:role': xlinkNS,
+        'xlink:show': xlinkNS,
+        'xlink:title': xlinkNS,
+        'xlink:type': xlinkNS,
+        'xml:base': xmlNS,
+        'xml:lang': xmlNS,
+        'xml:space': xmlNS
+    };
+
+    function getDelegatedEventObject(v) {
+        return {
+            onClick: v,
+            onDblClick: v,
+            onFocusIn: v,
+            onFocusOut: v,
+            onKeyDown: v,
+            onKeyPress: v,
+            onKeyUp: v,
+            onMouseDown: v,
+            onMouseMove: v,
+            onMouseUp: v,
+            onTouchEnd: v,
+            onTouchMove: v,
+            onTouchStart: v
+        };
+    }
+    var attachedEventCounts = getDelegatedEventObject(0);
+    var attachedEvents = getDelegatedEventObject(null);
+    var syntheticEvents = getDelegatedEventObject(true);
+    function updateOrAddSyntheticEvent(name, dom) {
+        var eventsObject = dom.$EV;
+        if (!eventsObject) {
+            eventsObject = dom.$EV = getDelegatedEventObject(null);
+        }
+        if (!eventsObject[name]) {
+            if (++attachedEventCounts[name] === 1) {
+                attachedEvents[name] = attachEventToDocument(name);
+            }
+        }
+        return eventsObject;
+    }
+    function unmountSyntheticEvent(name, dom) {
+        var eventsObject = dom.$EV;
+        if (eventsObject && eventsObject[name]) {
+            if (--attachedEventCounts[name] === 0) {
+                document.removeEventListener(normalizeEventName(name), attachedEvents[name]);
+                attachedEvents[name] = null;
+            }
+            eventsObject[name] = null;
+        }
+    }
+    function handleSyntheticEvent(name, lastEvent, nextEvent, dom) {
+        if (isFunction(nextEvent)) {
+            updateOrAddSyntheticEvent(name, dom)[name] = nextEvent;
+        }
+        else if (isLinkEventObject(nextEvent)) {
+            if (isLastValueSameLinkEvent(lastEvent, nextEvent)) {
+                return;
+            }
+            updateOrAddSyntheticEvent(name, dom)[name] = nextEvent;
+        }
+        else {
+            unmountSyntheticEvent(name, dom);
+        }
+    }
+    // When browsers fully support event.composedPath we could loop it through instead of using parentNode property
+    function getTargetNode(event) {
+        return isFunction(event.composedPath) ? event.composedPath()[0] : event.target;
+    }
+    function dispatchEvents(event, isClick, name, eventData) {
+        var dom = getTargetNode(event);
+        do {
+            // Html Nodes can be nested fe: span inside button in that scenario browser does not handle disabled attribute on parent,
+            // because the event listener is on document.body
+            // Don't process clicks on disabled elements
+            if (isClick && dom.disabled) {
+                return;
+            }
+            var eventsObject = dom.$EV;
+            if (eventsObject) {
+                var currentEvent = eventsObject[name];
+                if (currentEvent) {
+                    // linkEvent object
+                    eventData.dom = dom;
+                    currentEvent.event ? currentEvent.event(currentEvent.data, event) : currentEvent(event);
+                    if (event.cancelBubble) {
+                        return;
+                    }
+                }
+            }
+            dom = dom.parentNode;
+        } while (!isNull(dom));
+    }
+    function stopPropagation() {
+        this.cancelBubble = true;
+        if (!this.immediatePropagationStopped) {
+            this.stopImmediatePropagation();
+        }
+    }
+    function isDefaultPrevented() {
+        return this.defaultPrevented;
+    }
+    function isPropagationStopped() {
+        return this.cancelBubble;
+    }
+    function extendEventProperties(event) {
+        // Event data needs to be object to save reference to currentTarget getter
+        var eventData = {
+            dom: document
+        };
+        event.isDefaultPrevented = isDefaultPrevented;
+        event.isPropagationStopped = isPropagationStopped;
+        event.stopPropagation = stopPropagation;
+        Object.defineProperty(event, 'currentTarget', {
+            configurable: true,
+            get: function get() {
+                return eventData.dom;
+            }
+        });
+        return eventData;
+    }
+    function rootClickEvent(name) {
+        return function (event) {
+            if (event.button !== 0) {
+                // Firefox incorrectly triggers click event for mid/right mouse buttons.
+                // This bug has been active for 17 years.
+                // https://bugzilla.mozilla.org/show_bug.cgi?id=184051
+                event.stopPropagation();
+                return;
+            }
+            dispatchEvents(event, true, name, extendEventProperties(event));
+        };
+    }
+    function rootEvent(name) {
+        return function (event) {
+            dispatchEvents(event, false, name, extendEventProperties(event));
+        };
+    }
+    function attachEventToDocument(name) {
+        var attachedEvent = name === 'onClick' || name === 'onDblClick' ? rootClickEvent(name) : rootEvent(name);
+        document.addEventListener(normalizeEventName(name), attachedEvent);
+        return attachedEvent;
+    }
+
+    function isSameInnerHTML(dom, innerHTML) {
+        var tempdom = document.createElement('i');
+        tempdom.innerHTML = innerHTML;
+        return tempdom.innerHTML === dom.innerHTML;
+    }
+
+    function triggerEventListener(props, methodName, e) {
+        if (props[methodName]) {
+            var listener = props[methodName];
+            if (listener.event) {
+                listener.event(listener.data, e);
+            }
+            else {
+                listener(e);
+            }
+        }
+        else {
+            var nativeListenerName = methodName.toLowerCase();
+            if (props[nativeListenerName]) {
+                props[nativeListenerName](e);
+            }
+        }
+    }
+    function createWrappedFunction(methodName, applyValue) {
+        var fnMethod = function (e) {
+            var vNode = this.$V;
+            // If vNode is gone by the time event fires, no-op
+            if (!vNode) {
+                return;
+            }
+            var props = vNode.props || EMPTY_OBJ;
+            var dom = vNode.dom;
+            if (isString(methodName)) {
+                triggerEventListener(props, methodName, e);
+            }
+            else {
+                for (var i = 0; i < methodName.length; ++i) {
+                    triggerEventListener(props, methodName[i], e);
+                }
+            }
+            if (isFunction(applyValue)) {
+                var newVNode = this.$V;
+                var newProps = newVNode.props || EMPTY_OBJ;
+                applyValue(newProps, dom, false, newVNode);
+            }
+        };
+        Object.defineProperty(fnMethod, 'wrapped', {
+            configurable: false,
+            enumerable: false,
+            value: true,
+            writable: false
+        });
+        return fnMethod;
+    }
+
+    function attachEvent(dom, eventName, handler) {
+        var previousKey = "$" + eventName;
+        var previousArgs = dom[previousKey];
+        if (previousArgs) {
+            if (previousArgs[1].wrapped) {
+                return;
+            }
+            dom.removeEventListener(previousArgs[0], previousArgs[1]);
+            dom[previousKey] = null;
+        }
+        if (isFunction(handler)) {
+            dom.addEventListener(eventName, handler);
+            dom[previousKey] = [eventName, handler];
+        }
+    }
+
+    function isCheckedType(type) {
+        return type === 'checkbox' || type === 'radio';
+    }
+    var onTextInputChange = createWrappedFunction('onInput', applyValueInput);
+    var wrappedOnChange = createWrappedFunction(['onClick', 'onChange'], applyValueInput);
+    /* tslint:disable-next-line:no-empty */
+    function emptywrapper(event) {
+        event.stopPropagation();
+    }
+    emptywrapper.wrapped = true;
+    function inputEvents(dom, nextPropsOrEmpty) {
+        if (isCheckedType(nextPropsOrEmpty.type)) {
+            attachEvent(dom, 'change', wrappedOnChange);
+            attachEvent(dom, 'click', emptywrapper);
+        }
+        else {
+            attachEvent(dom, 'input', onTextInputChange);
+        }
+    }
+    function applyValueInput(nextPropsOrEmpty, dom) {
+        var type = nextPropsOrEmpty.type;
+        var value = nextPropsOrEmpty.value;
+        var checked = nextPropsOrEmpty.checked;
+        var multiple = nextPropsOrEmpty.multiple;
+        var defaultValue = nextPropsOrEmpty.defaultValue;
+        var hasValue = !isNullOrUndef(value);
+        if (type && type !== dom.type) {
+            dom.setAttribute('type', type);
+        }
+        if (!isNullOrUndef(multiple) && multiple !== dom.multiple) {
+            dom.multiple = multiple;
+        }
+        if (!isNullOrUndef(defaultValue) && !hasValue) {
+            dom.defaultValue = defaultValue + '';
+        }
+        if (isCheckedType(type)) {
+            if (hasValue) {
+                dom.value = value;
+            }
+            if (!isNullOrUndef(checked)) {
+                dom.checked = checked;
+            }
+        }
+        else {
+            if (hasValue && dom.value !== value) {
+                dom.defaultValue = value;
+                dom.value = value;
+            }
+            else if (!isNullOrUndef(checked)) {
+                dom.checked = checked;
+            }
+        }
+    }
+
+    function updateChildOptions(vNode, value) {
+        if (vNode.type === 'option') {
+            updateChildOption(vNode, value);
+        }
+        else {
+            var children = vNode.children;
+            var flags = vNode.flags;
+            if (flags & 4 /* ComponentClass */) {
+                updateChildOptions(children.$LI, value);
+            }
+            else if (flags & 8 /* ComponentFunction */) {
+                updateChildOptions(children, value);
+            }
+            else if (vNode.childFlags === 2 /* HasVNodeChildren */) {
+                updateChildOptions(children, value);
+            }
+            else if (vNode.childFlags & 12 /* MultipleChildren */) {
+                for (var i = 0, len = children.length; i < len; ++i) {
+                    updateChildOptions(children[i], value);
+                }
+            }
+        }
+    }
+    function updateChildOption(vNode, value) {
+        var props = vNode.props || EMPTY_OBJ;
+        var dom = vNode.dom;
+        // we do this as multiple may have changed
+        dom.value = props.value;
+        if (props.value === value || (isArray(value) && value.indexOf(props.value) !== -1)) {
+            dom.selected = true;
+        }
+        else if (!isNullOrUndef(value) || !isNullOrUndef(props.selected)) {
+            dom.selected = props.selected || false;
+        }
+    }
+    var onSelectChange = createWrappedFunction('onChange', applyValueSelect);
+    function selectEvents(dom) {
+        attachEvent(dom, 'change', onSelectChange);
+    }
+    function applyValueSelect(nextPropsOrEmpty, dom, mounting, vNode) {
+        var multiplePropInBoolean = Boolean(nextPropsOrEmpty.multiple);
+        if (!isNullOrUndef(nextPropsOrEmpty.multiple) && multiplePropInBoolean !== dom.multiple) {
+            dom.multiple = multiplePropInBoolean;
+        }
+        var index = nextPropsOrEmpty.selectedIndex;
+        if (index === -1) {
+            dom.selectedIndex = -1;
+        }
+        var childFlags = vNode.childFlags;
+        if (childFlags !== 1 /* HasInvalidChildren */) {
+            var value = nextPropsOrEmpty.value;
+            if (isNumber(index) && index > -1 && dom.options[index]) {
+                value = dom.options[index].value;
+            }
+            if (mounting && isNullOrUndef(value)) {
+                value = nextPropsOrEmpty.defaultValue;
+            }
+            updateChildOptions(vNode, value);
+        }
+    }
+
+    var onTextareaInputChange = createWrappedFunction('onInput', applyValueTextArea);
+    var wrappedOnChange$1 = createWrappedFunction('onChange');
+    function textAreaEvents(dom, nextPropsOrEmpty) {
+        attachEvent(dom, 'input', onTextareaInputChange);
+        if (nextPropsOrEmpty.onChange) {
+            attachEvent(dom, 'change', wrappedOnChange$1);
+        }
+    }
+    function applyValueTextArea(nextPropsOrEmpty, dom, mounting) {
+        var value = nextPropsOrEmpty.value;
+        var domValue = dom.value;
+        if (isNullOrUndef(value)) {
+            if (mounting) {
+                var defaultValue = nextPropsOrEmpty.defaultValue;
+                if (!isNullOrUndef(defaultValue) && defaultValue !== domValue) {
+                    dom.defaultValue = defaultValue;
+                    dom.value = defaultValue;
+                }
+            }
+        }
+        else if (domValue !== value) {
+            /* There is value so keep it controlled */
+            dom.defaultValue = value;
+            dom.value = value;
+        }
+    }
+
+    /**
+     * There is currently no support for switching same input between controlled and nonControlled
+     * If that ever becomes a real issue, then re design controlled elements
+     * Currently user must choose either controlled or non-controlled and stick with that
+     */
+    function processElement(flags, vNode, dom, nextPropsOrEmpty, mounting, isControlled) {
+        if (flags & 64 /* InputElement */) {
+            applyValueInput(nextPropsOrEmpty, dom);
+        }
+        else if (flags & 256 /* SelectElement */) {
+            applyValueSelect(nextPropsOrEmpty, dom, mounting, vNode);
+        }
+        else if (flags & 128 /* TextareaElement */) {
+            applyValueTextArea(nextPropsOrEmpty, dom, mounting);
+        }
+        if (isControlled) {
+            dom.$V = vNode;
+        }
+    }
+    function addFormElementEventHandlers(flags, dom, nextPropsOrEmpty) {
+        if (flags & 64 /* InputElement */) {
+            inputEvents(dom, nextPropsOrEmpty);
+        }
+        else if (flags & 256 /* SelectElement */) {
+            selectEvents(dom);
+        }
+        else if (flags & 128 /* TextareaElement */) {
+            textAreaEvents(dom, nextPropsOrEmpty);
+        }
+    }
+    function isControlledFormElement(nextPropsOrEmpty) {
+        return nextPropsOrEmpty.type && isCheckedType(nextPropsOrEmpty.type) ? !isNullOrUndef(nextPropsOrEmpty.checked) : !isNullOrUndef(nextPropsOrEmpty.value);
+    }
+    function unmountRef(ref) {
+        if (ref) {
+            if (!safeCall1(ref, null) && ref.current) {
+                ref.current = null;
+            }
+        }
+    }
+    function mountRef(ref, value, lifecycle) {
+        if (ref && (isFunction(ref) || ref.current !== void 0)) {
+            lifecycle.push(function () {
+                if (!safeCall1(ref, value) && ref.current !== void 0) {
+                    ref.current = value;
+                }
+            });
+        }
+    }
+
+    function remove(vNode, parentDOM) {
+        unmount(vNode);
+        removeVNodeDOM(vNode, parentDOM);
+    }
+    function unmount(vNode) {
+        var flags = vNode.flags;
+        var children = vNode.children;
+        var ref;
+        if (flags & 481 /* Element */) {
+            ref = vNode.ref;
+            var props = vNode.props;
+            unmountRef(ref);
+            var childFlags = vNode.childFlags;
+            if (!isNull(props)) {
+                var keys = Object.keys(props);
+                for (var i = 0, len = keys.length; i < len; i++) {
+                    var key = keys[i];
+                    if (syntheticEvents[key]) {
+                        unmountSyntheticEvent(key, vNode.dom);
+                    }
+                }
+            }
+            if (childFlags & 12 /* MultipleChildren */) {
+                unmountAllChildren(children);
+            }
+            else if (childFlags === 2 /* HasVNodeChildren */) {
+                unmount(children);
+            }
+        }
+        else if (children) {
+            if (flags & 4 /* ComponentClass */) {
+                if (isFunction(children.componentWillUnmount)) {
+                    children.componentWillUnmount();
+                }
+                unmountRef(vNode.ref);
+                children.$UN = true;
+                unmount(children.$LI);
+            }
+            else if (flags & 8 /* ComponentFunction */) {
+                ref = vNode.ref;
+                if (!isNullOrUndef(ref) && isFunction(ref.onComponentWillUnmount)) {
+                    ref.onComponentWillUnmount(findDOMfromVNode(vNode, true), vNode.props || EMPTY_OBJ);
+                }
+                unmount(children);
+            }
+            else if (flags & 1024 /* Portal */) {
+                remove(children, vNode.ref);
+            }
+            else if (flags & 8192 /* Fragment */) {
+                if (vNode.childFlags & 12 /* MultipleChildren */) {
+                    unmountAllChildren(children);
+                }
+            }
+        }
+    }
+    function unmountAllChildren(children) {
+        for (var i = 0, len = children.length; i < len; ++i) {
+            unmount(children[i]);
+        }
+    }
+    function clearDOM(dom) {
+        // Optimization for clearing dom
+        dom.textContent = '';
+    }
+    function removeAllChildren(dom, vNode, children) {
+        unmountAllChildren(children);
+        if (vNode.flags & 8192 /* Fragment */) {
+            removeVNodeDOM(vNode, dom);
+        }
+        else {
+            clearDOM(dom);
+        }
+    }
+
+    function wrapLinkEvent(nextValue) {
+        // This variable makes sure there is no "this" context in callback
+        var ev = nextValue.event;
+        return function (e) {
+            ev(nextValue.data, e);
+        };
+    }
+    function patchEvent(name, lastValue, nextValue, dom) {
+        if (isLinkEventObject(nextValue)) {
+            if (isLastValueSameLinkEvent(lastValue, nextValue)) {
+                return;
+            }
+            nextValue = wrapLinkEvent(nextValue);
+        }
+        attachEvent(dom, normalizeEventName(name), nextValue);
+    }
+    // We are assuming here that we come from patchProp routine
+    // -nextAttrValue cannot be null or undefined
+    function patchStyle(lastAttrValue, nextAttrValue, dom) {
+        if (isNullOrUndef(nextAttrValue)) {
+            dom.removeAttribute('style');
+            return;
+        }
+        var domStyle = dom.style;
+        var style;
+        var value;
+        if (isString(nextAttrValue)) {
+            domStyle.cssText = nextAttrValue;
+            return;
+        }
+        if (!isNullOrUndef(lastAttrValue) && !isString(lastAttrValue)) {
+            for (style in nextAttrValue) {
+                // do not add a hasOwnProperty check here, it affects performance
+                value = nextAttrValue[style];
+                if (value !== lastAttrValue[style]) {
+                    domStyle.setProperty(style, value);
+                }
+            }
+            for (style in lastAttrValue) {
+                if (isNullOrUndef(nextAttrValue[style])) {
+                    domStyle.removeProperty(style);
+                }
+            }
+        }
+        else {
+            for (style in nextAttrValue) {
+                value = nextAttrValue[style];
+                domStyle.setProperty(style, value);
+            }
+        }
+    }
+    function patchDangerInnerHTML(lastValue, nextValue, lastVNode, dom) {
+        var lastHtml = (lastValue && lastValue.__html) || '';
+        var nextHtml = (nextValue && nextValue.__html) || '';
+        if (lastHtml !== nextHtml) {
+            if (!isNullOrUndef(nextHtml) && !isSameInnerHTML(dom, nextHtml)) {
+                if (!isNull(lastVNode)) {
+                    if (lastVNode.childFlags & 12 /* MultipleChildren */) {
+                        unmountAllChildren(lastVNode.children);
+                    }
+                    else if (lastVNode.childFlags === 2 /* HasVNodeChildren */) {
+                        unmount(lastVNode.children);
+                    }
+                    lastVNode.children = null;
+                    lastVNode.childFlags = 1 /* HasInvalidChildren */;
+                }
+                dom.innerHTML = nextHtml;
+            }
+        }
+    }
+    function patchProp(prop, lastValue, nextValue, dom, isSVG, hasControlledValue, lastVNode) {
+        switch (prop) {
+            case 'children':
+            case 'childrenType':
+            case 'className':
+            case 'defaultValue':
+            case 'key':
+            case 'multiple':
+            case 'ref':
+            case 'selectedIndex':
+                break;
+            case 'autoFocus':
+                dom.autofocus = !!nextValue;
+                break;
+            case 'allowfullscreen':
+            case 'autoplay':
+            case 'capture':
+            case 'checked':
+            case 'controls':
+            case 'default':
+            case 'disabled':
+            case 'hidden':
+            case 'indeterminate':
+            case 'loop':
+            case 'muted':
+            case 'novalidate':
+            case 'open':
+            case 'readOnly':
+            case 'required':
+            case 'reversed':
+            case 'scoped':
+            case 'seamless':
+            case 'selected':
+                dom[prop] = !!nextValue;
+                break;
+            case 'defaultChecked':
+            case 'value':
+            case 'volume':
+                if (hasControlledValue && prop === 'value') {
+                    break;
+                }
+                var value = isNullOrUndef(nextValue) ? '' : nextValue;
+                if (dom[prop] !== value) {
+                    dom[prop] = value;
+                }
+                break;
+            case 'style':
+                patchStyle(lastValue, nextValue, dom);
+                break;
+            case 'dangerouslySetInnerHTML':
+                patchDangerInnerHTML(lastValue, nextValue, lastVNode, dom);
+                break;
+            default:
+                if (syntheticEvents[prop]) {
+                    handleSyntheticEvent(prop, lastValue, nextValue, dom);
+                }
+                else if (prop.charCodeAt(0) === 111 && prop.charCodeAt(1) === 110) {
+                    patchEvent(prop, lastValue, nextValue, dom);
+                }
+                else if (isNullOrUndef(nextValue)) {
+                    dom.removeAttribute(prop);
+                }
+                else if (isSVG && namespaces[prop]) {
+                    // We optimize for isSVG being false
+                    // If we end up in this path we can read property again
+                    dom.setAttributeNS(namespaces[prop], prop, nextValue);
+                }
+                else {
+                    dom.setAttribute(prop, nextValue);
+                }
+                break;
+        }
+    }
+    function mountProps(vNode, flags, props, dom, isSVG) {
+        var hasControlledValue = false;
+        var isFormElement = (flags & 448 /* FormElement */) > 0;
+        if (isFormElement) {
+            hasControlledValue = isControlledFormElement(props);
+            if (hasControlledValue) {
+                addFormElementEventHandlers(flags, dom, props);
+            }
+        }
+        for (var prop in props) {
+            // do not add a hasOwnProperty check here, it affects performance
+            patchProp(prop, null, props[prop], dom, isSVG, hasControlledValue, null);
+        }
+        if (isFormElement) {
+            processElement(flags, vNode, dom, props, true, hasControlledValue);
+        }
+    }
+
+    function renderNewInput(instance, props, context) {
+        var nextInput = normalizeRoot(instance.render(props, instance.state, context));
+        var childContext = context;
+        if (isFunction(instance.getChildContext)) {
+            childContext = combineFrom(context, instance.getChildContext());
+        }
+        instance.$CX = childContext;
+        return nextInput;
+    }
+    function createClassComponentInstance(vNode, Component, props, context, isSVG, lifecycle) {
+        var instance = new Component(props, context);
+        var usesNewAPI = (instance.$N = Boolean(Component.getDerivedStateFromProps || instance.getSnapshotBeforeUpdate));
+        instance.$SVG = isSVG;
+        instance.$L = lifecycle;
+        vNode.children = instance;
+        instance.$BS = false;
+        instance.context = context;
+        if (instance.props === EMPTY_OBJ) {
+            instance.props = props;
+        }
+        if (!usesNewAPI) {
+            if (isFunction(instance.componentWillMount)) {
+                instance.$BR = true;
+                instance.componentWillMount();
+                var pending = instance.$PS;
+                if (!isNull(pending)) {
+                    var state = instance.state;
+                    if (isNull(state)) {
+                        instance.state = pending;
+                    }
+                    else {
+                        for (var key in pending) {
+                            state[key] = pending[key];
+                        }
+                    }
+                    instance.$PS = null;
+                }
+                instance.$BR = false;
+            }
+        }
+        else {
+            instance.state = createDerivedState(instance, props, instance.state);
+        }
+        instance.$LI = renderNewInput(instance, props, context);
+        return instance;
+    }
+
+    function mount(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var flags = (vNode.flags |= 16384 /* InUse */);
+        if (flags & 481 /* Element */) {
+            mountElement(vNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (flags & 4 /* ComponentClass */) {
+            mountClassComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (flags & 8 /* ComponentFunction */) {
+            mountFunctionalComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle);
+            mountFunctionalComponentCallbacks(vNode, lifecycle);
+        }
+        else if (flags & 512 /* Void */ || flags & 16 /* Text */) {
+            mountText(vNode, parentDOM, nextNode);
+        }
+        else if (flags & 8192 /* Fragment */) {
+            mountFragment(vNode, context, parentDOM, isSVG, nextNode, lifecycle);
+        }
+        else if (flags & 1024 /* Portal */) {
+            mountPortal(vNode, context, parentDOM, nextNode, lifecycle);
+        }
+    }
+    function mountPortal(vNode, context, parentDOM, nextNode, lifecycle) {
+        mount(vNode.children, vNode.ref, context, false, null, lifecycle);
+        var placeHolderVNode = createVoidVNode();
+        mountText(placeHolderVNode, parentDOM, nextNode);
+        vNode.dom = placeHolderVNode.dom;
+    }
+    function mountFragment(vNode, context, parentDOM, isSVG, nextNode, lifecycle) {
+        var children = vNode.children;
+        var childFlags = vNode.childFlags;
+        // When fragment is optimized for multiple children, check if there is no children and change flag to invalid
+        // This is the only normalization always done, to keep optimization flags API same for fragments and regular elements
+        if (childFlags & 12 /* MultipleChildren */ && children.length === 0) {
+            childFlags = vNode.childFlags = 2 /* HasVNodeChildren */;
+            children = vNode.children = createVoidVNode();
+        }
+        if (childFlags === 2 /* HasVNodeChildren */) {
+            mount(children, parentDOM, nextNode, isSVG, nextNode, lifecycle);
+        }
+        else {
+            mountArrayChildren(children, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+    }
+    function mountText(vNode, parentDOM, nextNode) {
+        var dom = (vNode.dom = document.createTextNode(vNode.children));
+        if (!isNull(parentDOM)) {
+            insertOrAppend(parentDOM, dom, nextNode);
+        }
+    }
+    function mountElement(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var flags = vNode.flags;
+        var props = vNode.props;
+        var className = vNode.className;
+        var children = vNode.children;
+        var childFlags = vNode.childFlags;
+        var dom = (vNode.dom = documentCreateElement(vNode.type, (isSVG = isSVG || (flags & 32 /* SvgElement */) > 0)));
+        if (!isNullOrUndef(className) && className !== '') {
+            if (isSVG) {
+                dom.setAttribute('class', className);
+            }
+            else {
+                dom.className = className;
+            }
+        }
+        if (childFlags === 16 /* HasTextChildren */) {
+            setTextContent(dom, children);
+        }
+        else if (childFlags !== 1 /* HasInvalidChildren */) {
+            var childrenIsSVG = isSVG && vNode.type !== 'foreignObject';
+            if (childFlags === 2 /* HasVNodeChildren */) {
+                if (children.flags & 16384 /* InUse */) {
+                    vNode.children = children = directClone(children);
+                }
+                mount(children, dom, context, childrenIsSVG, null, lifecycle);
+            }
+            else if (childFlags === 8 /* HasKeyedChildren */ || childFlags === 4 /* HasNonKeyedChildren */) {
+                mountArrayChildren(children, dom, context, childrenIsSVG, null, lifecycle);
+            }
+        }
+        if (!isNull(parentDOM)) {
+            insertOrAppend(parentDOM, dom, nextNode);
+        }
+        if (!isNull(props)) {
+            mountProps(vNode, flags, props, dom, isSVG);
+        }
+        mountRef(vNode.ref, dom, lifecycle);
+    }
+    function mountArrayChildren(children, dom, context, isSVG, nextNode, lifecycle) {
+        for (var i = 0; i < children.length; ++i) {
+            var child = children[i];
+            if (child.flags & 16384 /* InUse */) {
+                children[i] = child = directClone(child);
+            }
+            mount(child, dom, context, isSVG, nextNode, lifecycle);
+        }
+    }
+    function mountClassComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var instance = createClassComponentInstance(vNode, vNode.type, vNode.props || EMPTY_OBJ, context, isSVG, lifecycle);
+        mount(instance.$LI, parentDOM, instance.$CX, isSVG, nextNode, lifecycle);
+        mountClassComponentCallbacks(vNode.ref, instance, lifecycle);
+    }
+    function renderFunctionalComponent(vNode, context) {
+        return vNode.flags & 32768 /* ForwardRef */ ? vNode.type.render(vNode.props || EMPTY_OBJ, vNode.ref, context) : vNode.type(vNode.props || EMPTY_OBJ, context);
+    }
+    function mountFunctionalComponent(vNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        mount((vNode.children = normalizeRoot(renderFunctionalComponent(vNode, context))), parentDOM, context, isSVG, nextNode, lifecycle);
+    }
+    function createClassMountCallback(instance) {
+        return function () {
+            instance.componentDidMount();
+        };
+    }
+    function mountClassComponentCallbacks(ref, instance, lifecycle) {
+        mountRef(ref, instance, lifecycle);
+        if (isFunction(instance.componentDidMount)) {
+            lifecycle.push(createClassMountCallback(instance));
+        }
+    }
+    function createOnMountCallback(ref, vNode) {
+        return function () {
+            ref.onComponentDidMount(findDOMfromVNode(vNode, true), vNode.props || EMPTY_OBJ);
+        };
+    }
+    function mountFunctionalComponentCallbacks(vNode, lifecycle) {
+        var ref = vNode.ref;
+        if (!isNullOrUndef(ref)) {
+            safeCall1(ref.onComponentWillMount, vNode.props || EMPTY_OBJ);
+            if (isFunction(ref.onComponentDidMount)) {
+                lifecycle.push(createOnMountCallback(ref, vNode));
+            }
+        }
+    }
+
+    function replaceWithNewNode(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle) {
+        unmount(lastVNode);
+        if ((nextVNode.flags & lastVNode.flags & 2033 /* DOMRef */) !== 0) {
+            mount(nextVNode, null, context, isSVG, null, lifecycle);
+            // Single DOM operation, when we have dom references available
+            replaceChild(parentDOM, nextVNode.dom, lastVNode.dom);
+        }
+        else {
+            mount(nextVNode, parentDOM, context, isSVG, findDOMfromVNode(lastVNode, true), lifecycle);
+            removeVNodeDOM(lastVNode, parentDOM);
+        }
+    }
+    function patch(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var nextFlags = (nextVNode.flags |= 16384 /* InUse */);
+        if (lastVNode.flags !== nextFlags || lastVNode.type !== nextVNode.type || lastVNode.key !== nextVNode.key || nextFlags & 2048 /* ReCreate */) {
+            if (lastVNode.flags & 16384 /* InUse */) {
+                replaceWithNewNode(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle);
+            }
+            else {
+                // Last vNode is not in use, it has crashed at application level. Just mount nextVNode and ignore last one
+                mount(nextVNode, parentDOM, context, isSVG, nextNode, lifecycle);
+            }
+        }
+        else if (nextFlags & 481 /* Element */) {
+            patchElement(lastVNode, nextVNode, context, isSVG, nextFlags, lifecycle);
+        }
+        else if (nextFlags & 4 /* ComponentClass */) {
+            patchClassComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (nextFlags & 8 /* ComponentFunction */) {
+            patchFunctionalComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle);
+        }
+        else if (nextFlags & 16 /* Text */) {
+            patchText(lastVNode, nextVNode);
+        }
+        else if (nextFlags & 512 /* Void */) {
+            nextVNode.dom = lastVNode.dom;
+        }
+        else if (nextFlags & 8192 /* Fragment */) {
+            patchFragment(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle);
+        }
+        else {
+            patchPortal(lastVNode, nextVNode, context, lifecycle);
+        }
+    }
+    function patchSingleTextChild(lastChildren, nextChildren, parentDOM) {
+        if (lastChildren !== nextChildren) {
+            if (lastChildren !== '') {
+                parentDOM.firstChild.nodeValue = nextChildren;
+            }
+            else {
+                setTextContent(parentDOM, nextChildren);
+            }
+        }
+    }
+    function patchContentEditableChildren(dom, nextChildren) {
+        if (dom.textContent !== nextChildren) {
+            dom.textContent = nextChildren;
+        }
+    }
+    function patchFragment(lastVNode, nextVNode, parentDOM, context, isSVG, lifecycle) {
+        var lastChildren = lastVNode.children;
+        var nextChildren = nextVNode.children;
+        var lastChildFlags = lastVNode.childFlags;
+        var nextChildFlags = nextVNode.childFlags;
+        var nextNode = null;
+        // When fragment is optimized for multiple children, check if there is no children and change flag to invalid
+        // This is the only normalization always done, to keep optimization flags API same for fragments and regular elements
+        if (nextChildFlags & 12 /* MultipleChildren */ && nextChildren.length === 0) {
+            nextChildFlags = nextVNode.childFlags = 2 /* HasVNodeChildren */;
+            nextChildren = nextVNode.children = createVoidVNode();
+        }
+        var nextIsSingle = (nextChildFlags & 2 /* HasVNodeChildren */) !== 0;
+        if (lastChildFlags & 12 /* MultipleChildren */) {
+            var lastLen = lastChildren.length;
+            // We need to know Fragment's edge node when
+            if (
+            // It uses keyed algorithm
+            (lastChildFlags & 8 /* HasKeyedChildren */ && nextChildFlags & 8 /* HasKeyedChildren */) ||
+                // It transforms from many to single
+                nextIsSingle ||
+                // It will append more nodes
+                (!nextIsSingle && nextChildren.length > lastLen)) {
+                // When fragment has multiple children there is always at least one vNode
+                nextNode = findDOMfromVNode(lastChildren[lastLen - 1], false).nextSibling;
+            }
+        }
+        patchChildren(lastChildFlags, nextChildFlags, lastChildren, nextChildren, parentDOM, context, isSVG, nextNode, lastVNode, lifecycle);
+    }
+    function patchPortal(lastVNode, nextVNode, context, lifecycle) {
+        var lastContainer = lastVNode.ref;
+        var nextContainer = nextVNode.ref;
+        var nextChildren = nextVNode.children;
+        patchChildren(lastVNode.childFlags, nextVNode.childFlags, lastVNode.children, nextChildren, lastContainer, context, false, null, lastVNode, lifecycle);
+        nextVNode.dom = lastVNode.dom;
+        if (lastContainer !== nextContainer && !isInvalid(nextChildren)) {
+            var node = nextChildren.dom;
+            removeChild(lastContainer, node);
+            appendChild(nextContainer, node);
+        }
+    }
+    function patchElement(lastVNode, nextVNode, context, isSVG, nextFlags, lifecycle) {
+        var dom = (nextVNode.dom = lastVNode.dom);
+        var lastProps = lastVNode.props;
+        var nextProps = nextVNode.props;
+        var isFormElement = false;
+        var hasControlledValue = false;
+        var nextPropsOrEmpty;
+        isSVG = isSVG || (nextFlags & 32 /* SvgElement */) > 0;
+        // inlined patchProps  -- starts --
+        if (lastProps !== nextProps) {
+            var lastPropsOrEmpty = lastProps || EMPTY_OBJ;
+            nextPropsOrEmpty = nextProps || EMPTY_OBJ;
+            if (nextPropsOrEmpty !== EMPTY_OBJ) {
+                isFormElement = (nextFlags & 448 /* FormElement */) > 0;
+                if (isFormElement) {
+                    hasControlledValue = isControlledFormElement(nextPropsOrEmpty);
+                }
+                for (var prop in nextPropsOrEmpty) {
+                    var lastValue = lastPropsOrEmpty[prop];
+                    var nextValue = nextPropsOrEmpty[prop];
+                    if (lastValue !== nextValue) {
+                        patchProp(prop, lastValue, nextValue, dom, isSVG, hasControlledValue, lastVNode);
+                    }
+                }
+            }
+            if (lastPropsOrEmpty !== EMPTY_OBJ) {
+                for (var prop$1 in lastPropsOrEmpty) {
+                    if (isNullOrUndef(nextPropsOrEmpty[prop$1]) && !isNullOrUndef(lastPropsOrEmpty[prop$1])) {
+                        patchProp(prop$1, lastPropsOrEmpty[prop$1], null, dom, isSVG, hasControlledValue, lastVNode);
+                    }
+                }
+            }
+        }
+        var nextChildren = nextVNode.children;
+        var nextClassName = nextVNode.className;
+        // inlined patchProps  -- ends --
+        if (lastVNode.className !== nextClassName) {
+            if (isNullOrUndef(nextClassName)) {
+                dom.removeAttribute('class');
+            }
+            else if (isSVG) {
+                dom.setAttribute('class', nextClassName);
+            }
+            else {
+                dom.className = nextClassName;
+            }
+        }
+        if (nextFlags & 4096 /* ContentEditable */) {
+            patchContentEditableChildren(dom, nextChildren);
+        }
+        else {
+            patchChildren(lastVNode.childFlags, nextVNode.childFlags, lastVNode.children, nextChildren, dom, context, isSVG && nextVNode.type !== 'foreignObject', null, lastVNode, lifecycle);
+        }
+        if (isFormElement) {
+            processElement(nextFlags, nextVNode, dom, nextPropsOrEmpty, false, hasControlledValue);
+        }
+        var nextRef = nextVNode.ref;
+        var lastRef = lastVNode.ref;
+        if (lastRef !== nextRef) {
+            unmountRef(lastRef);
+            mountRef(nextRef, dom, lifecycle);
+        }
+    }
+    function replaceOneVNodeWithMultipleVNodes(lastChildren, nextChildren, parentDOM, context, isSVG, lifecycle) {
+        unmount(lastChildren);
+        mountArrayChildren(nextChildren, parentDOM, context, isSVG, findDOMfromVNode(lastChildren, true), lifecycle);
+        removeVNodeDOM(lastChildren, parentDOM);
+    }
+    function patchChildren(lastChildFlags, nextChildFlags, lastChildren, nextChildren, parentDOM, context, isSVG, nextNode, parentVNode, lifecycle) {
+        switch (lastChildFlags) {
+            case 2 /* HasVNodeChildren */:
+                switch (nextChildFlags) {
+                    case 2 /* HasVNodeChildren */:
+                        patch(lastChildren, nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        remove(lastChildren, parentDOM);
+                        break;
+                    case 16 /* HasTextChildren */:
+                        unmount(lastChildren);
+                        setTextContent(parentDOM, nextChildren);
+                        break;
+                    default:
+                        replaceOneVNodeWithMultipleVNodes(lastChildren, nextChildren, parentDOM, context, isSVG, lifecycle);
+                        break;
+                }
+                break;
+            case 1 /* HasInvalidChildren */:
+                switch (nextChildFlags) {
+                    case 2 /* HasVNodeChildren */:
+                        mount(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        break;
+                    case 16 /* HasTextChildren */:
+                        setTextContent(parentDOM, nextChildren);
+                        break;
+                    default:
+                        mountArrayChildren(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                }
+                break;
+            case 16 /* HasTextChildren */:
+                switch (nextChildFlags) {
+                    case 16 /* HasTextChildren */:
+                        patchSingleTextChild(lastChildren, nextChildren, parentDOM);
+                        break;
+                    case 2 /* HasVNodeChildren */:
+                        clearDOM(parentDOM);
+                        mount(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        clearDOM(parentDOM);
+                        break;
+                    default:
+                        clearDOM(parentDOM);
+                        mountArrayChildren(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                }
+                break;
+            default:
+                switch (nextChildFlags) {
+                    case 16 /* HasTextChildren */:
+                        unmountAllChildren(lastChildren);
+                        setTextContent(parentDOM, nextChildren);
+                        break;
+                    case 2 /* HasVNodeChildren */:
+                        removeAllChildren(parentDOM, parentVNode, lastChildren);
+                        mount(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                        break;
+                    case 1 /* HasInvalidChildren */:
+                        removeAllChildren(parentDOM, parentVNode, lastChildren);
+                        break;
+                    default:
+                        var lastLength = lastChildren.length | 0;
+                        var nextLength = nextChildren.length | 0;
+                        // Fast path's for both algorithms
+                        if (lastLength === 0) {
+                            if (nextLength > 0) {
+                                mountArrayChildren(nextChildren, parentDOM, context, isSVG, nextNode, lifecycle);
+                            }
+                        }
+                        else if (nextLength === 0) {
+                            removeAllChildren(parentDOM, parentVNode, lastChildren);
+                        }
+                        else if (nextChildFlags === 8 /* HasKeyedChildren */ && lastChildFlags === 8 /* HasKeyedChildren */) {
+                            patchKeyedChildren(lastChildren, nextChildren, parentDOM, context, isSVG, lastLength, nextLength, nextNode, parentVNode, lifecycle);
+                        }
+                        else {
+                            patchNonKeyedChildren(lastChildren, nextChildren, parentDOM, context, isSVG, lastLength, nextLength, nextNode, lifecycle);
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+    function createDidUpdate(instance, lastProps, lastState, snapshot, lifecycle) {
+        lifecycle.push(function () {
+            instance.componentDidUpdate(lastProps, lastState, snapshot);
+        });
+    }
+    function updateClassComponent(instance, nextState, nextProps, parentDOM, context, isSVG, force, nextNode, lifecycle) {
+        var lastState = instance.state;
+        var lastProps = instance.props;
+        var usesNewAPI = Boolean(instance.$N);
+        var hasSCU = isFunction(instance.shouldComponentUpdate);
+        if (usesNewAPI) {
+            nextState = createDerivedState(instance, nextProps, nextState !== lastState ? combineFrom(lastState, nextState) : nextState);
+        }
+        if (force || !hasSCU || (hasSCU && instance.shouldComponentUpdate(nextProps, nextState, context))) {
+            if (!usesNewAPI && isFunction(instance.componentWillUpdate)) {
+                instance.componentWillUpdate(nextProps, nextState, context);
+            }
+            instance.props = nextProps;
+            instance.state = nextState;
+            instance.context = context;
+            var snapshot = null;
+            var nextInput = renderNewInput(instance, nextProps, context);
+            if (usesNewAPI && isFunction(instance.getSnapshotBeforeUpdate)) {
+                snapshot = instance.getSnapshotBeforeUpdate(lastProps, lastState);
+            }
+            patch(instance.$LI, nextInput, parentDOM, instance.$CX, isSVG, nextNode, lifecycle);
+            // Dont update Last input, until patch has been succesfully executed
+            instance.$LI = nextInput;
+            if (isFunction(instance.componentDidUpdate)) {
+                createDidUpdate(instance, lastProps, lastState, snapshot, lifecycle);
+            }
+        }
+        else {
+            instance.props = nextProps;
+            instance.state = nextState;
+            instance.context = context;
+        }
+    }
+    function patchClassComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var instance = (nextVNode.children = lastVNode.children);
+        // If Component has crashed, ignore it to stay functional
+        if (isNull(instance)) {
+            return;
+        }
+        instance.$L = lifecycle;
+        var nextProps = nextVNode.props || EMPTY_OBJ;
+        var nextRef = nextVNode.ref;
+        var lastRef = lastVNode.ref;
+        var nextState = instance.state;
+        if (!instance.$N) {
+            if (isFunction(instance.componentWillReceiveProps)) {
+                instance.$BR = true;
+                instance.componentWillReceiveProps(nextProps, context);
+                // If instance component was removed during its own update do nothing.
+                if (instance.$UN) {
+                    return;
+                }
+                instance.$BR = false;
+            }
+            if (!isNull(instance.$PS)) {
+                nextState = combineFrom(nextState, instance.$PS);
+                instance.$PS = null;
+            }
+        }
+        updateClassComponent(instance, nextState, nextProps, parentDOM, context, isSVG, false, nextNode, lifecycle);
+        if (lastRef !== nextRef) {
+            unmountRef(lastRef);
+            mountRef(nextRef, instance, lifecycle);
+        }
+    }
+    function patchFunctionalComponent(lastVNode, nextVNode, parentDOM, context, isSVG, nextNode, lifecycle) {
+        var shouldUpdate = true;
+        var nextProps = nextVNode.props || EMPTY_OBJ;
+        var nextRef = nextVNode.ref;
+        var lastProps = lastVNode.props;
+        var nextHooksDefined = !isNullOrUndef(nextRef);
+        var lastInput = lastVNode.children;
+        if (nextHooksDefined && isFunction(nextRef.onComponentShouldUpdate)) {
+            shouldUpdate = nextRef.onComponentShouldUpdate(lastProps, nextProps);
+        }
+        if (shouldUpdate !== false) {
+            if (nextHooksDefined && isFunction(nextRef.onComponentWillUpdate)) {
+                nextRef.onComponentWillUpdate(lastProps, nextProps);
+            }
+            var type = nextVNode.type;
+            var nextInput = normalizeRoot(nextVNode.flags & 32768 /* ForwardRef */ ? type.render(nextProps, nextRef, context) : type(nextProps, context));
+            patch(lastInput, nextInput, parentDOM, context, isSVG, nextNode, lifecycle);
+            nextVNode.children = nextInput;
+            if (nextHooksDefined && isFunction(nextRef.onComponentDidUpdate)) {
+                nextRef.onComponentDidUpdate(lastProps, nextProps);
+            }
+        }
+        else {
+            nextVNode.children = lastInput;
+        }
+    }
+    function patchText(lastVNode, nextVNode) {
+        var nextText = nextVNode.children;
+        var dom = (nextVNode.dom = lastVNode.dom);
+        if (nextText !== lastVNode.children) {
+            dom.nodeValue = nextText;
+        }
+    }
+    function patchNonKeyedChildren(lastChildren, nextChildren, dom, context, isSVG, lastChildrenLength, nextChildrenLength, nextNode, lifecycle) {
+        var commonLength = lastChildrenLength > nextChildrenLength ? nextChildrenLength : lastChildrenLength;
+        var i = 0;
+        var nextChild;
+        var lastChild;
+        for (; i < commonLength; ++i) {
+            nextChild = nextChildren[i];
+            lastChild = lastChildren[i];
+            if (nextChild.flags & 16384 /* InUse */) {
+                nextChild = nextChildren[i] = directClone(nextChild);
+            }
+            patch(lastChild, nextChild, dom, context, isSVG, nextNode, lifecycle);
+            lastChildren[i] = nextChild;
+        }
+        if (lastChildrenLength < nextChildrenLength) {
+            for (i = commonLength; i < nextChildrenLength; ++i) {
+                nextChild = nextChildren[i];
+                if (nextChild.flags & 16384 /* InUse */) {
+                    nextChild = nextChildren[i] = directClone(nextChild);
+                }
+                mount(nextChild, dom, context, isSVG, nextNode, lifecycle);
+            }
+        }
+        else if (lastChildrenLength > nextChildrenLength) {
+            for (i = commonLength; i < lastChildrenLength; ++i) {
+                remove(lastChildren[i], dom);
+            }
+        }
+    }
+    function patchKeyedChildren(a, b, dom, context, isSVG, aLength, bLength, outerEdge, parentVNode, lifecycle) {
+        var aEnd = aLength - 1;
+        var bEnd = bLength - 1;
+        var j = 0;
+        var aNode = a[j];
+        var bNode = b[j];
+        var nextPos;
+        var nextNode;
+        // Step 1
+        // tslint:disable-next-line
+        outer: {
+            // Sync nodes with the same key at the beginning.
+            while (aNode.key === bNode.key) {
+                if (bNode.flags & 16384 /* InUse */) {
+                    b[j] = bNode = directClone(bNode);
+                }
+                patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                a[j] = bNode;
+                ++j;
+                if (j > aEnd || j > bEnd) {
+                    break outer;
+                }
+                aNode = a[j];
+                bNode = b[j];
+            }
+            aNode = a[aEnd];
+            bNode = b[bEnd];
+            // Sync nodes with the same key at the end.
+            while (aNode.key === bNode.key) {
+                if (bNode.flags & 16384 /* InUse */) {
+                    b[bEnd] = bNode = directClone(bNode);
+                }
+                patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                a[aEnd] = bNode;
+                aEnd--;
+                bEnd--;
+                if (j > aEnd || j > bEnd) {
+                    break outer;
+                }
+                aNode = a[aEnd];
+                bNode = b[bEnd];
+            }
+        }
+        if (j > aEnd) {
+            if (j <= bEnd) {
+                nextPos = bEnd + 1;
+                nextNode = nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge;
+                while (j <= bEnd) {
+                    bNode = b[j];
+                    if (bNode.flags & 16384 /* InUse */) {
+                        b[j] = bNode = directClone(bNode);
+                    }
+                    ++j;
+                    mount(bNode, dom, context, isSVG, nextNode, lifecycle);
+                }
+            }
+        }
+        else if (j > bEnd) {
+            while (j <= aEnd) {
+                remove(a[j++], dom);
+            }
+        }
+        else {
+            patchKeyedChildrenComplex(a, b, context, aLength, bLength, aEnd, bEnd, j, dom, isSVG, outerEdge, parentVNode, lifecycle);
+        }
+    }
+    function patchKeyedChildrenComplex(a, b, context, aLength, bLength, aEnd, bEnd, j, dom, isSVG, outerEdge, parentVNode, lifecycle) {
+        var aNode;
+        var bNode;
+        var nextPos;
+        var i = 0;
+        var aStart = j;
+        var bStart = j;
+        var aLeft = aEnd - j + 1;
+        var bLeft = bEnd - j + 1;
+        var sources = new Int32Array(bLeft + 1);
+        // Keep track if its possible to remove whole DOM using textContent = '';
+        var canRemoveWholeContent = aLeft === aLength;
+        var moved = false;
+        var pos = 0;
+        var patched = 0;
+        // When sizes are small, just loop them through
+        if (bLength < 4 || (aLeft | bLeft) < 32) {
+            for (i = aStart; i <= aEnd; ++i) {
+                aNode = a[i];
+                if (patched < bLeft) {
+                    for (j = bStart; j <= bEnd; j++) {
+                        bNode = b[j];
+                        if (aNode.key === bNode.key) {
+                            sources[j - bStart] = i + 1;
+                            if (canRemoveWholeContent) {
+                                canRemoveWholeContent = false;
+                                while (aStart < i) {
+                                    remove(a[aStart++], dom);
+                                }
+                            }
+                            if (pos > j) {
+                                moved = true;
+                            }
+                            else {
+                                pos = j;
+                            }
+                            if (bNode.flags & 16384 /* InUse */) {
+                                b[j] = bNode = directClone(bNode);
+                            }
+                            patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                            ++patched;
+                            break;
+                        }
+                    }
+                    if (!canRemoveWholeContent && j > bEnd) {
+                        remove(aNode, dom);
+                    }
+                }
+                else if (!canRemoveWholeContent) {
+                    remove(aNode, dom);
+                }
+            }
+        }
+        else {
+            var keyIndex = {};
+            // Map keys by their index
+            for (i = bStart; i <= bEnd; ++i) {
+                keyIndex[b[i].key] = i;
+            }
+            // Try to patch same keys
+            for (i = aStart; i <= aEnd; ++i) {
+                aNode = a[i];
+                if (patched < bLeft) {
+                    j = keyIndex[aNode.key];
+                    if (j !== void 0) {
+                        if (canRemoveWholeContent) {
+                            canRemoveWholeContent = false;
+                            while (i > aStart) {
+                                remove(a[aStart++], dom);
+                            }
+                        }
+                        sources[j - bStart] = i + 1;
+                        if (pos > j) {
+                            moved = true;
+                        }
+                        else {
+                            pos = j;
+                        }
+                        bNode = b[j];
+                        if (bNode.flags & 16384 /* InUse */) {
+                            b[j] = bNode = directClone(bNode);
+                        }
+                        patch(aNode, bNode, dom, context, isSVG, outerEdge, lifecycle);
+                        ++patched;
+                    }
+                    else if (!canRemoveWholeContent) {
+                        remove(aNode, dom);
+                    }
+                }
+                else if (!canRemoveWholeContent) {
+                    remove(aNode, dom);
+                }
+            }
+        }
+        // fast-path: if nothing patched remove all old and add all new
+        if (canRemoveWholeContent) {
+            removeAllChildren(dom, parentVNode, a);
+            mountArrayChildren(b, dom, context, isSVG, outerEdge, lifecycle);
+        }
+        else if (moved) {
+            var seq = lis_algorithm(sources);
+            j = seq.length - 1;
+            for (i = bLeft - 1; i >= 0; i--) {
+                if (sources[i] === 0) {
+                    pos = i + bStart;
+                    bNode = b[pos];
+                    if (bNode.flags & 16384 /* InUse */) {
+                        b[pos] = bNode = directClone(bNode);
+                    }
+                    nextPos = pos + 1;
+                    mount(bNode, dom, context, isSVG, nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge, lifecycle);
+                }
+                else if (j < 0 || i !== seq[j]) {
+                    pos = i + bStart;
+                    bNode = b[pos];
+                    nextPos = pos + 1;
+                    moveVNodeDOM(bNode, dom, nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge);
+                }
+                else {
+                    j--;
+                }
+            }
+        }
+        else if (patched !== bLeft) {
+            // when patched count doesn't match b length we need to insert those new ones
+            // loop backwards so we can use insertBefore
+            for (i = bLeft - 1; i >= 0; i--) {
+                if (sources[i] === 0) {
+                    pos = i + bStart;
+                    bNode = b[pos];
+                    if (bNode.flags & 16384 /* InUse */) {
+                        b[pos] = bNode = directClone(bNode);
+                    }
+                    nextPos = pos + 1;
+                    mount(bNode, dom, context, isSVG, nextPos < bLength ? findDOMfromVNode(b[nextPos], true) : outerEdge, lifecycle);
+                }
+            }
+        }
+    }
+    var result;
+    var p;
+    var maxLen = 0;
+    // https://en.wikipedia.org/wiki/Longest_increasing_subsequence
+    function lis_algorithm(arr) {
+        var arrI = 0;
+        var i = 0;
+        var j = 0;
+        var k = 0;
+        var u = 0;
+        var v = 0;
+        var c = 0;
+        var len = arr.length;
+        if (len > maxLen) {
+            maxLen = len;
+            result = new Int32Array(len);
+            p = new Int32Array(len);
+        }
+        for (; i < len; ++i) {
+            arrI = arr[i];
+            if (arrI !== 0) {
+                j = result[k];
+                if (arr[j] < arrI) {
+                    p[i] = j;
+                    result[++k] = i;
+                    continue;
+                }
+                u = 0;
+                v = k;
+                while (u < v) {
+                    c = (u + v) >> 1;
+                    if (arr[result[c]] < arrI) {
+                        u = c + 1;
+                    }
+                    else {
+                        v = c;
+                    }
+                }
+                if (arrI < arr[result[u]]) {
+                    if (u > 0) {
+                        p[i] = result[u - 1];
+                    }
+                    result[u] = i;
+                }
+            }
+        }
+        u = k + 1;
+        var seq = new Int32Array(u);
+        v = result[u - 1];
+        while (u-- > 0) {
+            seq[u] = v;
+            v = p[v];
+            result[u] = 0;
+        }
+        return seq;
+    }
+
+    var hasDocumentAvailable = typeof document !== 'undefined';
+    if (hasDocumentAvailable) {
+        /*
+         * Defining $EV and $V properties on Node.prototype
+         * fixes v8 "wrong map" de-optimization
+         */
+        if (window.Node) {
+            Node.prototype.$EV = null;
+            Node.prototype.$V = null;
+        }
+    }
+    function __render(input, parentDOM, callback, context) {
+        var lifecycle = [];
+        var rootInput = parentDOM.$V;
+        renderCheck.v = true;
+        if (isNullOrUndef(rootInput)) {
+            if (!isNullOrUndef(input)) {
+                if (input.flags & 16384 /* InUse */) {
+                    input = directClone(input);
+                }
+                mount(input, parentDOM, context, false, null, lifecycle);
+                parentDOM.$V = input;
+                rootInput = input;
+            }
+        }
+        else {
+            if (isNullOrUndef(input)) {
+                remove(rootInput, parentDOM);
+                parentDOM.$V = null;
+            }
+            else {
+                if (input.flags & 16384 /* InUse */) {
+                    input = directClone(input);
+                }
+                patch(rootInput, input, parentDOM, context, false, null, lifecycle);
+                rootInput = parentDOM.$V = input;
+            }
+        }
+        callAll(lifecycle);
+        renderCheck.v = false;
+        if (isFunction(callback)) {
+            callback();
+        }
+        if (isFunction(options.renderComplete)) {
+            options.renderComplete(rootInput, parentDOM);
+        }
+    }
+    function render(input, parentDOM, callback, context) {
+        if ( callback === void 0 ) callback = null;
+        if ( context === void 0 ) context = EMPTY_OBJ;
+
+        __render(input, parentDOM, callback, context);
+    }
+
+    var QUEUE = [];
+    var nextTick = typeof Promise !== 'undefined'
+        ? Promise.resolve().then.bind(Promise.resolve())
+        : function (a) {
+            window.setTimeout(a, 0);
+        };
+    var microTaskPending = false;
+    function queueStateChanges(component, newState, callback, force) {
+        var pending = component.$PS;
+        if (isFunction(newState)) {
+            newState = newState(pending ? combineFrom(component.state, pending) : component.state, component.props, component.context);
+        }
+        if (isNullOrUndef(pending)) {
+            component.$PS = newState;
+        }
+        else {
+            for (var stateKey in newState) {
+                pending[stateKey] = newState[stateKey];
+            }
+        }
+        if (!component.$BR) {
+            if (!renderCheck.v) {
+                if (QUEUE.length === 0) {
+                    applyState(component, force);
+                    if (isFunction(callback)) {
+                        callback.call(component);
+                    }
+                    return;
+                }
+            }
+            if (QUEUE.indexOf(component) === -1) {
+                QUEUE.push(component);
+            }
+            if (!microTaskPending) {
+                microTaskPending = true;
+                nextTick(rerender);
+            }
+            if (isFunction(callback)) {
+                var QU = component.$QU;
+                if (!QU) {
+                    QU = component.$QU = [];
+                }
+                QU.push(callback);
+            }
+        }
+        else if (isFunction(callback)) {
+            component.$L.push(callback.bind(component));
+        }
+    }
+    function callSetStateCallbacks(component) {
+        var queue = component.$QU;
+        for (var i = 0; i < queue.length; ++i) {
+            queue[i].call(component);
+        }
+        component.$QU = null;
+    }
+    function rerender() {
+        var component;
+        microTaskPending = false;
+        while ((component = QUEUE.shift())) {
+            if (!component.$UN) {
+                applyState(component, false);
+                if (component.$QU) {
+                    callSetStateCallbacks(component);
+                }
+            }
+        }
+    }
+    function applyState(component, force) {
+        if (force || !component.$BR) {
+            var pendingState = component.$PS;
+            component.$PS = null;
+            var lifecycle = [];
+            renderCheck.v = true;
+            updateClassComponent(component, combineFrom(component.state, pendingState), component.props, findDOMfromVNode(component.$LI, true).parentNode, component.context, component.$SVG, force, null, lifecycle);
+            callAll(lifecycle);
+            renderCheck.v = false;
+        }
+        else {
+            component.state = component.$PS;
+            component.$PS = null;
+        }
+    }
+    var Component = function Component(props, context) {
+        // Public
+        this.state = null;
+        // Internal properties
+        this.$BR = false; // BLOCK RENDER
+        this.$BS = true; // BLOCK STATE
+        this.$PS = null; // PENDING STATE (PARTIAL or FULL)
+        this.$LI = null; // LAST INPUT
+        this.$UN = false; // UNMOUNTED
+        this.$CX = null; // CHILDCONTEXT
+        this.$QU = null; // QUEUE
+        this.$N = false; // Uses new lifecycle API Flag
+        this.$L = null; // Current lifecycle of this component
+        this.$SVG = false; // Flag to keep track if component is inside SVG tree
+        this.props = props || EMPTY_OBJ;
+        this.context = context || EMPTY_OBJ; // context should not be mutable
+    };
+    Component.prototype.forceUpdate = function forceUpdate (callback) {
+        if (this.$UN) {
+            return;
+        }
+        // Do not allow double render during force update
+        queueStateChanges(this, {}, callback, true);
+    };
+    Component.prototype.setState = function setState (newState, callback) {
+        if (this.$UN) {
+            return;
+        }
+        if (!this.$BS) {
+            queueStateChanges(this, newState, callback, false);
+        }
+    };
+    Component.prototype.render = function render (_nextProps, _nextState, _nextContext) {
+        return null;
+    };
+
+    // export const USERNAME = 'NA';
+    var ForumType;
+    (function (ForumType) {
+        ForumType["rNofapForum"] = "r/NoFap";
+        ForumType["rPornFreeForum"] = "r/pornfree";
+        ForumType["rPornAddictionForum"] = "r/PornAddiction";
+        ForumType["rNofapChristiansForum"] = "r/NoFapChristians";
+        ForumType["rNofapTeensForum"] = "r/NoFapTeens";
+        ForumType["rSemenRetentionForum"] = "r/Semenretention";
+        ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
+    })(ForumType || (ForumType = {}));
+    var INBOX_LAST_MESSAGE_USER = 'vijay_st';
+
+    var openReplyLink = function (containerDiv) { return __awaiter(void 0, void 0, void 0, function () {
+        var entry, replyLink, replyALink;
+        return __generator(this, function (_a) {
+            entry = containerDiv.children[4];
+            replyLink = getReplyLink(entry);
+            if (replyLink) {
+                replyALink = replyLink.children[0];
+                console.log(replyALink);
+                replyALink.click();
+            }
+            return [2 /*return*/];
+        });
+    }); };
+    var getReplyLink = function (entry) {
+        switch (entry.children.length) {
+            case 5: {
+                var entryLinks = entry.children[3];
+                return entryLinks.children[7];
+            }
+            case 4: {
+                var entryLinks = entry.children[2];
+                return entryLinks.children[5];
+            }
+            default: {
+                return null;
+            }
+        }
+    };
+    var populateMessageAndSend = function (messageText, previousMessageInformation, containerDiv, toUsername, messageType, sendImmediate) { return __awaiter(void 0, void 0, void 0, function () {
+        var textArea, submitButton, dataPayload;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    openReplyLink(containerDiv);
+                    textArea = containerDiv.querySelector('textarea');
+                    submitButton = containerDiv.querySelector('.save');
+                    if (!(textArea && submitButton)) return [3 /*break*/, 4];
+                    textArea.value = messageText;
+                    if (!sendImmediate) return [3 /*break*/, 2];
+                    dataPayload = {
+                        username_sending: 'NeverFapDeluxe',
+                        username_receiving: toUsername,
+                        subject: previousMessageInformation.subjectReplyToTitle,
+                        message: textArea.value,
+                        send_date: new Date().toString(),
+                        type: messageType,
+                    };
+                    return [4 /*yield*/, sendNewMessage(dataPayload)];
+                case 1:
+                    _a.sent();
+                    submitButton.click();
+                    return [3 /*break*/, 3];
+                case 2:
+                    submitButton.addEventListener('click', function () { return __awaiter(void 0, void 0, void 0, function () {
+                        var textArea, dataPayload;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    textArea = containerDiv.querySelector('textarea');
+                                    if (!textArea) return [3 /*break*/, 2];
+                                    dataPayload = {
+                                        username_sending: 'NeverFapDeluxe',
+                                        username_receiving: toUsername,
+                                        subject: previousMessageInformation.subjectReplyToTitle,
+                                        message: textArea.value,
+                                        send_date: new Date().toString(),
+                                        type: messageType,
+                                    };
+                                    return [4 /*yield*/, sendNewMessage(dataPayload)];
+                                case 1:
+                                    _a.sent();
+                                    _a.label = 2;
+                                case 2: return [2 /*return*/];
+                            }
+                        });
+                    }); });
+                    _a.label = 3;
+                case 3: return [3 /*break*/, 5];
+                case 4:
+                    console.log('cannot find textArea or submitButton');
+                    _a.label = 5;
+                case 5: return [2 /*return*/];
+            }
+        });
+    }); };
+
+    var timeSince = function (date) {
+        var seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+        var interval = Math.floor(seconds / 31536000);
+        if (interval > 1) {
+            return interval + " years";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+            return interval + " months";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+            return interval + " days";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+            return interval + " hours";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " minutes";
+        }
+        return Math.floor(seconds) + " seconds";
+    };
+
+    var createTextVNode$1 = createTextVNode;
+    var createVNode$1 = createVNode;
+    var PreviousMessageInformation = function (_a) {
+        var dbUser = _a.dbUser;
+        return (createVNode$1(1, "div", null, [createVNode$1(1, "p", null, createVNode$1(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$1(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16), createVNode$1(1, "p", null, createVNode$1(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$1(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16)], 0));
+    };
+    var UserInformation = function (_a) {
+        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        return (createVNode$1(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$1(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$1(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$1(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$1(1, "br"), createVNode$1(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$1(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
+    };
+    var SendUserNoteForm = /** @class */ (function (_super) {
+        __extends(SendUserNoteForm, _super);
+        function SendUserNoteForm(props) {
+            var _this = _super.call(this, props) || this;
+            _this.state = {
+                message: ''
+            };
+            return _this;
+        }
+        SendUserNoteForm.prototype.render = function () {
+            var _this = this;
+            var _a;
+            return (createVNode$1(1, "div", null, [createVNode$1(64, "input", null, null, 1, { "value": (_a = this.state) === null || _a === void 0 ? void 0 : _a.message, "onChange": function (e) { return _this.setState({ message: e.target.value }); }, "style": { 'margin-right': '1rem' } }), createVNode$1(1, "button", null, "Send Note", 16, { "onclick": function () { return __awaiter(_this, void 0, void 0, function () {
+                        var _a;
+                        return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0: return [4 /*yield*/, sendNewUserNote({ username: this.props.username, message: (_a = this.state) === null || _a === void 0 ? void 0 : _a.message })];
+                                case 1:
+                                    _b.sent();
+                                    this.setState({ message: '' });
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); } })], 4));
+        };
+        return SendUserNoteForm;
+    }(Component));
+    var MarkUserHostileButton = function (_a) {
+        var username = _a.username;
+        return (createVNode$1(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, markUserHostile({ username: username })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+    var MarkUserChattedButton = function (_a) {
+        var username = _a.username;
+        return (createVNode$1(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, markUserChatted({ username: username })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+    var SetLastInboxMessageUsernameButton = function (_a) {
+        var username = _a.username, message = _a.message;
+        return (createVNode$1(1, "button", null, "Set Last Inbox Message", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, setLastInboxMessageUsername({ username: username, message: message })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+
+    var createTextVNode$2 = createTextVNode;
+    var createComponentVNode$1 = createComponentVNode;
+    var createVNode$2 = createVNode;
+    var createReplyMessageLink = function (messageType, color, toUsername, messageText, containerDiv, previousMessageInformation, sendImmediate) {
+        var style = {
+            color: color || 'black',
+            'margin-top': '0.2rem',
+            'margin-bottom': '0.2rem',
+            'margin-left': '0.3rem',
+            'margin-right': '0.3rem',
+            'font-size': '12px',
+            display: 'inline-block',
+        };
+        var dataTipId = messageType + "-" + toUsername;
+        return (createVNode$2(1, "div", null, createVNode$2(1, "a", null, messageType, 0, { "data-tip": true, "data-for": dataTipId, "style": style, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, populateMessageAndSend(messageText, previousMessageInformation, containerDiv, toUsername, messageType, sendImmediate)];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); }, "target": "_blank" }), 0));
+    };
+    var ReplyUserPanel = function (_a) {
+        var _b, _c, _d, _e, _f, _g;
+        var dbUser = _a.dbUser, containerDiv = _a.containerDiv, previousMessageInformation = _a.previousMessageInformation, numberOfMessagesFromThisUser = _a.numberOfMessagesFromThisUser, isUserLastMessagedUser = _a.isUserLastMessagedUser, otherUserMessages = _a.otherUserMessages, userReplyMessage = _a.userReplyMessage;
+        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), ((_d = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _d === void 0 ? void 0 : _d.type.includes('start')) && (createVNode$2(1, "p", null, "SEND MIDDLE", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'black' } })),
+            ((_e = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _e === void 0 ? void 0 : _e.type.includes('middle')) && (createVNode$2(1, "p", null, "SEND FINAL", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'orange', 'color': 'black' } })),
+            ((_f = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _f === void 0 ? void 0 : _f.type.includes('final')) && (createVNode$2(1, "p", null, "DONE", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'red', 'color': 'black' } })),
+            ((_g = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _g === void 0 ? void 0 : _g.type.includes('follow')) && (createVNode$2(1, "p", null, "FOLLOW: SEND MIDDLE", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'purple', 'color': 'white' } })),
+            otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
+    };
+
+    var createComponentVNode$2 = createComponentVNode;
+    // messageInboxScriptPre.tsx
+    var generateReplyMessageList = function (pageMessages) { return (__spreadArrays(pageMessages).map(function (containerDiv) {
+        var subjectTag = containerDiv.children[1];
+        var subjectReplyToTitle = subjectTag.children[0].innerText;
+        var subject;
+        if (subjectTag.children.length === 1 && !subjectReplyToTitle.includes('re:')) {
+            subject = subjectReplyToTitle;
+        }
+        else {
+            subject = subjectReplyToTitle + ' (no subject/reply)';
+        }
+        if (subjectTag.children.length === 2) {
+            subject = subjectTag.children[1].innerText;
+        }
+        var entry = containerDiv.children[4];
+        var headerTag = entry.children[0].children[1];
+        var recipient = headerTag.children[0].innerText;
+        var dateTag = headerTag.children[1];
+        var date = dateTag.attributes.length === 3 ? dateTag.attributes[1].nodeValue : undefined;
+        var message = entry.children[1].children[0].innerText;
+        return {
+            containerDiv: containerDiv,
+            subject: subject,
+            subjectReplyToTitle: subjectReplyToTitle,
+            username_receiving: 'NeverFapDeluxe',
+            username_sending: recipient,
+            message: message,
+            date: date,
+            type: SendMessageType.UserReplyCustom // NOTE: This will be overwritten at a later stage.
+        };
+    })); };
+    var filterReplyMessageList = function (messageList) { return messageList.filter(function (message) { return message.date &&
+        !message.subjectReplyToTitle.includes("Tips to") &&
+        !message.subjectReplyToTitle.includes("Tips for") &&
+        !message.subjectReplyToTitle.includes("comment reply") &&
+        !message.subjectReplyToTitle.includes("post reply") &&
+        !message.subjectReplyToTitle.includes("Welcome to") &&
+        !message.subjectReplyToTitle.includes("Snoosletter"); }); };
+    var retrieveUserResponseType = function (NFDResponseTypeString) {
+        switch (NFDResponseTypeString) {
+            case 'start': return SendMessageType.UserReplyStart;
+            case 'middle': return SendMessageType.UserReplyMiddle;
+            case 'final': return SendMessageType.UserReplyFinal;
+            case 'follow': return SendMessageType.UserReplyFollow;
+            default: return SendMessageType.UserReplyCustom;
+        }
+    };
+    var compileReplyMessageList = function (filteredMessageList) { return __awaiter(void 0, void 0, void 0, function () {
+        var finalMessageList, _loop_1, _i, filteredMessageList_1, item;
+        var _b, _c, _d, _e;
+        return __generator(this, function (_f) {
+            switch (_f.label) {
+                case 0:
+                    finalMessageList = [];
+                    console.log('filteredMessageList', filteredMessageList);
+                    _loop_1 = function (item) {
+                        var compiledUser, isUserLastMessagedUser, otherUserMessages, NFDResponseTypeString, userResponseType, numberOfMessagesFromThisUser, userReplyMessage;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, latestUnreadMessagesInformation({ username: item.username_sending })];
+                                case 1:
+                                    compiledUser = _a.sent();
+                                    isUserLastMessagedUser = INBOX_LAST_MESSAGE_USER === compiledUser.username;
+                                    otherUserMessages = filteredMessageList
+                                        .filter(function (messageItem) { return messageItem.username_sending === compiledUser.username && messageItem.message !== item.message; })
+                                        .reduce(function (acc, messageItem, index) {
+                                        var itemIndex = filteredMessageList.findIndex(function (innerItem) { return innerItem.message === item.message; });
+                                        var filterItemIndex = filteredMessageList.findIndex(function (innerItem) { return innerItem.message === messageItem.message; });
+                                        var order = itemIndex < filterItemIndex ? 'below' : 'above';
+                                        return acc.concat({
+                                            order: order,
+                                            message: messageItem.message
+                                        });
+                                    }, []);
+                                    NFDResponseTypeString = (_b = (_a = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _a === void 0 ? void 0 : _a.type) === null || _b === void 0 ? void 0 : _b.split(':')[0];
+                                    userResponseType = retrieveUserResponseType(NFDResponseTypeString);
+                                    numberOfMessagesFromThisUser = filteredMessageList.filter(function (item) { return item.username_sending === compiledUser.username; }).length;
+                                    userReplyMessage = (_e = (_d = (_c = item === null || item === void 0 ? void 0 : item.containerDiv) === null || _c === void 0 ? void 0 : _c.querySelector('.md')) === null || _d === void 0 ? void 0 : _d.children[0]) === null || _e === void 0 ? void 0 : _e.innerText;
+                                    finalMessageList.push(__assign(__assign({}, item), { type: userResponseType, compiledUser: compiledUser,
+                                        isUserLastMessagedUser: isUserLastMessagedUser,
+                                        otherUserMessages: otherUserMessages,
+                                        numberOfMessagesFromThisUser: numberOfMessagesFromThisUser,
+                                        userReplyMessage: userReplyMessage }));
+                                    return [2 /*return*/];
+                            }
+                        });
+                    };
+                    _i = 0, filteredMessageList_1 = filteredMessageList;
+                    _f.label = 1;
+                case 1:
+                    if (!(_i < filteredMessageList_1.length)) return [3 /*break*/, 4];
+                    item = filteredMessageList_1[_i];
+                    return [5 /*yield**/, _loop_1(item)];
+                case 2:
+                    _f.sent();
+                    _f.label = 3;
+                case 3:
+                    _i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/, finalMessageList];
+            }
+        });
+    }); };
+    var messageInboxAutomatedMessageSend = function (item, messageText, messageType) { return __awaiter(void 0, void 0, void 0, function () {
+        var replyDelay, replyDelayNumber;
+        return __generator(this, function (_a) {
+            replyDelay = localStorage.getItem('replyDelay');
+            replyDelayNumber = Number(replyDelay);
+            localStorage.setItem('replyDelay', (replyDelayNumber + 1100).toString());
+            setTimeout(function () {
+                return __awaiter(this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                console.log("send automatically - " + item.compiledUser.username + " - " + messageType + " - delay: " + replyDelayNumber);
+                                return [4 /*yield*/, populateMessageAndSend(messageText, item, item.containerDiv, item.compiledUser.username, messageType, true)];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                });
+            }, replyDelayNumber);
+            return [2 /*return*/];
+        });
+    }); };
+    var renderReplyUserPanel = function (item, documentSub, counter) {
+        var _a;
+        console.log("no match - " + item.compiledUser.username);
+        var rootId = "r" + item.username_sending + "-" + counter;
+        if (!rootId.includes('[')) {
+            var root = document.createElement('div');
+            root.id = rootId;
+            (_a = item.containerDiv.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(root, item.containerDiv);
+            var domContainer = documentSub.querySelector("#" + rootId);
+            if (domContainer) {
+                render(createComponentVNode$2(2, ReplyUserPanel, { "dbUser": item.compiledUser, "previousMessageInformation": item, "otherUserMessages": item.otherUserMessages, "numberOfMessagesFromThisUser": item.numberOfMessagesFromThisUser, "isUserLastMessagedUser": item.isUserLastMessagedUser, "userReplyMessage": item.userReplyMessage, "containerDiv": item.containerDiv }), domContainer);
+            }
+        }
+    };
+
+    var iFrame = document.querySelector('iframe');
+    var saveNewUnreadPageMessages = function (pageMessages, documentSub) { return __awaiter(void 0, void 0, void 0, function () {
+        var messageList, filteredMessageList, finalMessageList, counter, _loop_1, _i, finalMessageList_1, item;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    messageList = generateReplyMessageList(pageMessages);
+                    filteredMessageList = filterReplyMessageList(messageList);
+                    return [4 /*yield*/, compileReplyMessageList(filteredMessageList)];
+                case 1:
+                    finalMessageList = _a.sent();
+                    counter = 0;
+                    _loop_1 = function (item) {
+                        var moreThanOneMessage, _a, messageText, messageType;
+                        return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0:
+                                    moreThanOneMessage = finalMessageList.filter(function (msgItem) { return msgItem.username_sending === item.username_sending; }).length > 1;
+                                    _a = filterRedditInboxMessages(item, moreThanOneMessage), messageText = _a.messageText, messageType = _a.messageType;
+                                    if (!(messageText && messageType)) return [3 /*break*/, 2];
+                                    return [4 /*yield*/, messageInboxAutomatedMessageSend(item, messageText, messageType)];
+                                case 1:
+                                    _b.sent();
+                                    _b.label = 2;
+                                case 2:
+                                    if (!messageText && !messageType) {
+                                        counter += 1;
+                                        renderReplyUserPanel(item, documentSub, counter);
+                                    }
+                                    return [2 /*return*/];
+                            }
+                        });
+                    };
+                    _i = 0, finalMessageList_1 = finalMessageList;
+                    _a.label = 2;
+                case 2:
+                    if (!(_i < finalMessageList_1.length)) return [3 /*break*/, 5];
+                    item = finalMessageList_1[_i];
+                    return [5 /*yield**/, _loop_1(item)];
+                case 3:
+                    _a.sent();
+                    _a.label = 4;
+                case 4:
+                    _i++;
+                    return [3 /*break*/, 2];
+                case 5: return [4 /*yield*/, populateReceivedMessages({ messages: finalMessageList })];
+                case 6:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    var main = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var mainLogic;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    mainLogic = function (documentSub, windowSub) { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            console.log('START: preparing page');
+                            localStorage.setItem('replyDelay', '1100');
+                            setTimeout(function () {
+                                return __awaiter(this, void 0, void 0, function () {
+                                    var pageMessages;
+                                    return __generator(this, function (_a) {
+                                        switch (_a.label) {
+                                            case 0:
+                                                pageMessages = documentSub.querySelectorAll('.message');
+                                                if (!pageMessages) return [3 /*break*/, 2];
+                                                return [4 /*yield*/, saveNewUnreadPageMessages(pageMessages, documentSub)];
+                                            case 1:
+                                                _a.sent();
+                                                windowSub.scrollTo(0, 0);
+                                                // click button to next page
+                                                // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
+                                                console.log('END: next page');
+                                                _a.label = 2;
+                                            case 2: return [2 /*return*/];
+                                        }
+                                    });
+                                });
+                            }, 400);
+                            return [2 /*return*/];
+                        });
+                    }); };
+                    if (!(iFrame && !window.location.search.includes('count'))) return [3 /*break*/, 1];
+                    if (!window.location.search.includes('true')) {
+                        console.log('In iFrame');
+                        iFrame.addEventListener("load", function () {
+                            var _a;
+                            return __awaiter(this, void 0, void 0, function () {
+                                return __generator(this, function (_b) {
+                                    switch (_b.label) {
+                                        case 0: return [4 /*yield*/, mainLogic((_a = iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow) === null || _a === void 0 ? void 0 : _a.document, iFrame === null || iFrame === void 0 ? void 0 : iFrame.contentWindow)];
+                                        case 1:
+                                            _b.sent();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            });
+                        });
+                    }
+                    return [3 /*break*/, 3];
+                case 1:
+                    console.log('Not in iFrame');
+                    return [4 /*yield*/, mainLogic(document, window)];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); };
+    main();
+
+}());
