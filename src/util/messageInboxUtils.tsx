@@ -92,6 +92,8 @@ export const compileReplyMessageList = async (filteredMessageList: PopulateRecei
         })
       }, [] as { message: string, order: string }[]);
 
+    // TODO we basiclly need to do this before hand.
+
     const NFDResponseTypeString: string = compiledUser?.lastSentMessage?.type?.split(':')[0] as string; // i.e. start, middle, final, follow
     const userResponseType: SendMessageType = retrieveUserResponseType(NFDResponseTypeString);
 

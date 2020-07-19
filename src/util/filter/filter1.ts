@@ -15,6 +15,7 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
     || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
     || new RegExp(/had no urges/i).test(messageText)
     || new RegExp(/sparta/i).test(messageText)
+    || new RegExp(/\./i).test(messageText)
   )
 
 

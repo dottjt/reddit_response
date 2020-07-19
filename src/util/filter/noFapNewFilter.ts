@@ -5,7 +5,7 @@ import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAd
 import { ConfigType } from '../config';
 import { finalJoinSubreddit, finalFantastic } from '../responses/final';
 
-import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner, toRemoveFinal, toRemoveInitialDay } from './noFapNewFilterRegex';
+import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner, toRemoveFinal, toRemoveInitialDay } from './filter1';
 import { followRelapseAdvice } from '../responses/follow';
 
 

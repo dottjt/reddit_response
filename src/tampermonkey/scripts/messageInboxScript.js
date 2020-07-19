@@ -314,7 +314,11 @@
             || new RegExp(/interested./i).test(messagePayload.message)
             || new RegExp(/would love to visit/i).test(messagePayload.message)
             || new RegExp(/nice if you linked the website/i).test(messagePayload.message)
-            || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message);
+            || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
+            || new RegExp(/That would be very welcome/i).test(messagePayload.message)
+            || new RegExp(/could I get a link?/i).test(messagePayload.message)
+            || new RegExp(/May I know your website?/i).test(messagePayload.message)
+            || new RegExp(/pass me your website/i).test(messagePayload.message);
     };
     // I would love to hear your story and any advice you got for me
     // i'd be ,
@@ -416,9 +420,13 @@
         // basically only triggers poorly if
         //
         console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type);
+        // this is still broken, I think maybe lastReceivedMessage just needs to be middle. That's all it needs to che
+        // changed it
+        // That website would be very helpful
         if (!moreThanOneMessage &&
-            messagePayload.type === SendMessageType.UserReplyMiddle &&
-            (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type) === SendMessageType.UserReplyStart && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
+            !window.location.search.includes('true') &&
+            // messagePayload.type === SendMessageType.UserReplyMiddle &&
+            (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type) === SendMessageType.UserReplyMiddle && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
             // TODO I Think there's a bug here.
             console.log(messagePayload.compiledUser.username, messagePayload.type, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type);
             // Join Subreddit

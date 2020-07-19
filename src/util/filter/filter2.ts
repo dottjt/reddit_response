@@ -54,6 +54,11 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/would love to visit/i).test(messagePayload.message)
   || new RegExp(/nice if you linked the website/i).test(messagePayload.message)
   || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
+  || new RegExp(/That would be very welcome/i).test(messagePayload.message)
+  || new RegExp(/could I get a link?/i).test(messagePayload.message)
+  || new RegExp(/May I know your website?/i).test(messagePayload.message)
+  || new RegExp(/pass me your website/i).test(messagePayload.message)
+
   // I would love to hear your story and any advice you got for me
   // i'd be ,
     // article
@@ -95,7 +100,9 @@ export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload)
 // Thank you i will check both of them out
 
 export const toFantastic = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
-  new RegExp(/I do meditate/i).test(messagePayload.message)
+  new RegExp(/I (currently|do) meditate/i).test(messagePayload.message)
+  || new RegExp(/I meditate daily/i).test(messagePayload.message)
+
 // That's Fantasti
 // Yeah I do transcendental meditation twice a day
 

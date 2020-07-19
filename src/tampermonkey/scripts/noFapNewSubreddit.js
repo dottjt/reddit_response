@@ -2575,11 +2575,11 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'Potential-Ad-7966';
+    var R_NOFAP_USERNAME = 'notsofappist';
     var R_NOFAP_TIMESTAMP = '';
-    var R_PORN_FREE_USERNAME = 'yoloboy22';
+    var R_PORN_FREE_USERNAME = 'Unknown__2780';
     var R_PORN_FREE_TIMESTAMP = '';
-    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
+    var R_PORN_ADDICTION_USERNAME = 'preredditor';
     var R_PORN_ADDICTION_TIMESTAMP = '';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
@@ -2674,7 +2674,8 @@
                 || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
                 || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
                 || new RegExp(/had no urges/i).test(messageText)
-                || new RegExp(/sparta/i).test(messageText));
+                || new RegExp(/sparta/i).test(messageText)
+                || new RegExp(/\./i).test(messageText));
     };
     var toRemoveInitial = function (titleText, flairText) {
         return flairText === 'Success Story'

@@ -3,7 +3,7 @@ import { CompiledFullUserObject, PopulateReceivedMessagesPayloadEXTREME } from '
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide, toNotRespond } from './messageInboxRegex';
+import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide, toNotRespond } from './filter2';
 
 export const filterRedditInboxMessages = (
   messagePayload: PopulateReceivedMessagesPayloadEXTREME,
@@ -89,11 +89,14 @@ export const filterRedditInboxMessages = (
   //
 
   console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage?.type, lastSentMessage?.type);
-
+  // this is still broken, I think maybe lastReceivedMessage just needs to be middle. That's all it needs to che
+  // changed it
+  // That website would be very helpful
   if (
     !moreThanOneMessage &&
-    messagePayload.type === SendMessageType.UserReplyMiddle &&
-    lastReceivedMessage?.type === SendMessageType.UserReplyStart &&
+    !window.location.search.includes('true') &&
+    // messagePayload.type === SendMessageType.UserReplyMiddle &&
+    lastReceivedMessage?.type === SendMessageType.UserReplyMiddle &&
     lastSentMessage?.type.includes('middle')
     ) {
       // TODO I Think there's a bug here.
