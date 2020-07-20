@@ -6,7 +6,7 @@ import {
   compileReplyMessageList,
   messageInboxAutomatedMessageSend,
   renderReplyUserPanel
-} from '../util/messageInboxUtils.js';
+} from '../util/utils/messageInboxUtils.js';
 
 'use strict';
 

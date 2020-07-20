@@ -1,12 +1,16 @@
 import { SendMessageType, UserType } from '../../types/serverTypes';
-import { generatePrelimUrl } from '../sendMessageUtils';
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAdvice, accountabilityPartner } from '../responses/start';
 import { ConfigType } from '../config';
 import { finalJoinSubreddit, finalFantastic } from '../responses/final';
 
-import { toRemoveInitial, toStartedAdvice, toStartedAgainAdvice, toGeneralAdvice, toRelapseAdvice, toWetDreamAdvice, toAccountabilityPartner, toRemoveFinal, toRemoveInitialDay } from './filter1';
 import { followRelapseAdvice } from '../responses/follow';
+import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterCollections/toRemove';
+import { toRelapseAdvice } from './filterCollections/toRelapse';
+import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/toStart';
+import { toGeneralAdvice } from './filterCollections/toGeneral';
+import { toWetDreamAdvice, toAccountabilityPartner } from './filterCollections/toOthers';
+import { generatePrelimUrl } from '../utils/sendMessageUtils';
 
 
 export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {

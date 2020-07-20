@@ -1,9 +1,13 @@
 import { SendMessageType, Message, UserType } from '../../types/serverTypes';
 import { CompiledFullUserObject, PopulateReceivedMessagePayloadEXTREME } from '../../types/tamperMonkeyTypes';
+
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide, toNotRespond } from './filter2';
+import { toNotRespond, toMeditateGuide, toHardTime } from './filterCollections/toInbox';
+import { toNoWorriesGuide } from './filterCollections/toNoWorries';
+import { toLinkYouGuide } from './filterCollections/toLinkYou';
+import { toJoinSubreddit } from './filterCollections/toJoinSubreddit';
 
 export const filterRedditInboxMessages = (
   messagePayload: PopulateReceivedMessagePayloadEXTREME,

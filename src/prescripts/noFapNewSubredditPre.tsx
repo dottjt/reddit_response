@@ -9,7 +9,7 @@ import {
   createPrelimContainer,
   createPrelimLink,
   renderUserPanel,
-} from '../util/noFapNewSubredditUtils';
+} from '../util/utils/noFapNewSubredditUtils';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 
