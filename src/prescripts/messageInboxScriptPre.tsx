@@ -1,5 +1,4 @@
-import { populateReceivedMessages } from '../util/httpResponses.js';
-import { PopulateReceivedMessagesPayload, PopulateReceivedMessagesPayloadEXTREME } from '../types/tamperMonkeyTypes.js';
+import { PopulateReceivedMessagePayload, PopulateReceivedMessagePayloadEXTREME } from '../types/tamperMonkeyTypes.js';
 import { filterRedditInboxMessages } from '../util/filter/messageInboxFilter.js';
 import {
   filterReplyMessageList,
@@ -16,9 +15,11 @@ const iFrame = document.querySelector('iframe');
 const saveNewUnreadPageMessages = async (
   pageMessages: NodeListOf<Element>, documentSub
 ) => {
-  const messageList: PopulateReceivedMessagesPayload[] = generateReplyMessageList(pageMessages);
-  const filteredMessageList: PopulateReceivedMessagesPayload[] = filterReplyMessageList(messageList);
-  const finalMessageList: PopulateReceivedMessagesPayloadEXTREME[] = await compileReplyMessageList(filteredMessageList);
+  const messageList: PopulateReceivedMessagePayload[] = generateReplyMessageList(pageMessages);
+  const filteredMessageList: PopulateReceivedMessagePayload[] = filterReplyMessageList(messageList);
+  const finalMessageList: PopulateReceivedMessagePayloadEXTREME[] = await compileReplyMessageList(filteredMessageList);
+
+  console.log('finalMessageList', finalMessageList);
 
   let counter = 0;
 
@@ -37,7 +38,6 @@ const saveNewUnreadPageMessages = async (
     }
   }
 
-  await populateReceivedMessages({ messages: finalMessageList });
   // TODO this needs to happen before filteredMessageList = because beolw is not getting sent a final message
   // belluomo2 true user:reply:middle user:reply:start middle:guide:noworries
 //   console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage?.type, lastSentMessage?.type);

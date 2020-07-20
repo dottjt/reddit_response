@@ -1,4 +1,4 @@
-import { CompiledFullUserObject, SendNewMessageSendPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload, PopulateReceivedMessagesPayloadEXTREME } from "../types/tamperMonkeyTypes";
+import { CompiledFullUserObject, SendNewMessageSendPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload, PopulateReceivedMessagePayloadEXTREME, PopulateReceivedMessagePayload } from "../types/tamperMonkeyTypes";
 
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',
@@ -32,11 +32,11 @@ export const checkUsernamesFetch =
       return JSONResponse.data.users;
     };
 
-export const populateReceivedMessages =
-  async (dataPayload: { messages: PopulateReceivedMessagesPayloadEXTREME[] }):
-    Promise<string> => {
-      const JSONResponse = await sendPostRequest(dataPayload, '/populateReceivedMessages', '3333');
-      return JSONResponse.data.message; // basically a success message.
+export const populateReceivedMessage =
+  async (dataPayload: { message: PopulateReceivedMessagePayload }):
+    Promise<CompiledFullUserObject> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/populateReceivedMessage', '3333');
+      return JSONResponse.data.compiledUser;
     };
 
 export const sendNewMessage =

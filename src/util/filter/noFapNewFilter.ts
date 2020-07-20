@@ -20,7 +20,7 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
     toRemoveInitial(titleText, flairText)
     || toRemoveInitialDay(titleText, flairText, messageText)
   ) {
-    console.log(`Deleted: ${flairText} - ${titleText}`);
+    console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
     return {
       shouldDeleteElementImmediately: true,
       sendMessageType: undefined,

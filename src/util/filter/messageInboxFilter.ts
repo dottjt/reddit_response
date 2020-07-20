@@ -1,12 +1,12 @@
 import { SendMessageType, Message, UserType } from '../../types/serverTypes';
-import { CompiledFullUserObject, PopulateReceivedMessagesPayloadEXTREME } from '../../types/tamperMonkeyTypes';
+import { CompiledFullUserObject, PopulateReceivedMessagePayloadEXTREME } from '../../types/tamperMonkeyTypes';
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
 import { toNoWorriesGuide, toLinkYouGuide, toHardTime, toJoinSubreddit, toMeditateGuide, toNotRespond } from './filter2';
 
 export const filterRedditInboxMessages = (
-  messagePayload: PopulateReceivedMessagesPayloadEXTREME,
+  messagePayload: PopulateReceivedMessagePayloadEXTREME,
   moreThanOneMessage: boolean
 ): {
   messageText: string | undefined;
@@ -29,7 +29,7 @@ export const filterRedditInboxMessages = (
 
   if ( // if I've sent a start message, and they've returned a start message.
     (lastSentMessage?.type.includes('start') || lastSentMessage?.type.includes('follow')) &&
-    (messagePayload.type === SendMessageType.UserReplyStart || messagePayload.type === SendMessageType.UserReplyFollow)
+    (lastReceivedMessage?.type.includes('start') || lastReceivedMessage?.type.includes('follow'))
     ) {
       // No Worries
       if (toNoWorriesGuide(messagePayload)) {
@@ -86,21 +86,15 @@ export const filterRedditInboxMessages = (
   // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
   // basically only triggers poorly if
 
-  //
-
-  console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage?.type, lastSentMessage?.type);
+  console.log('here', messagePayload.compiledUser.username, !moreThanOneMessage, lastSentMessage?.type, lastReceivedMessage?.type);
   // this is still broken, I think maybe lastReceivedMessage just needs to be middle. That's all it needs to che
   // changed it
   // That website would be very helpful
   if (
     !moreThanOneMessage &&
-    !window.location.search.includes('true') &&
-    // messagePayload.type === SendMessageType.UserReplyMiddle &&
-    lastReceivedMessage?.type === SendMessageType.UserReplyMiddle &&
+    lastReceivedMessage?.type.includes('middle') &&
     lastSentMessage?.type.includes('middle')
     ) {
-      // TODO I Think there's a bug here.
-      console.log(messagePayload.compiledUser.username, messagePayload.type, lastSentMessage?.type);
       // Join Subreddit
       if (toJoinSubreddit(messagePayload)) {
         return {

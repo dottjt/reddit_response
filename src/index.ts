@@ -9,7 +9,7 @@ import logger from 'koa-logger';
 
 import checkServerRunningRoute from './routes/checkServerRunningRoute';
 import checkUsernamesRoute from './routes/checkUsernamesRoute';
-import populateReceivedMessagesRoute from './routes/populateReceivedMessagesRoute';
+import populateReceivedMessageRoute from './routes/populateReceivedMessageRoute';
 import latestUnreadMessagesInformationRoute from './routes/latestUnreadMessagesInformationRoute';
 import sendNewMessageRoute from './routes/sendNewMessageRoute';
 import sendUserNoteRoute from './routes/sendUserNoteRoute';
@@ -24,7 +24,7 @@ const main = () => {
 
   router.post('/checkServerRunning', checkServerRunningRoute);
   router.post('/checkUsernames', checkUsernamesRoute);
-  router.post('/populateReceivedMessages', populateReceivedMessagesRoute);
+  router.post('/populateReceivedMessage', populateReceivedMessageRoute);
   router.post('/latestUnreadMessagesInformation', latestUnreadMessagesInformationRoute);
   router.post('/sendNewMessage', sendNewMessageRoute);
   router.post('/sendNewUserNote', sendUserNoteRoute);

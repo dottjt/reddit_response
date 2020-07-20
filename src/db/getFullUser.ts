@@ -1,6 +1,6 @@
 import knex from '../util/knex';
 
-import { User, Message, UserType } from '../types/serverTypes';
+import { User, Message, UserType, LastMessageType } from '../types/serverTypes';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 
@@ -10,13 +10,19 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
   const sentMessagesCount = await knex<Message>('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).count('id');
   const receivedMessagesCount = await knex<Message>('messages').where({ username_sending: username, username_receiving: 'NeverFapDeluxe' }).count('id');
 
+  // last sent by NFD
   const lastSentMessage: Message | undefined = await knex<Message>('messages').where({ username_sending: 'NeverFapDeluxe', username_receiving: username }).orderBy('created_at', 'desc').first('*');
+  // last sent by User
   const lastReceivedMessage: Message | undefined = await knex<Message>('messages').where({ username_sending: username, username_receiving: 'NeverFapDeluxe' }).orderBy('created_at', 'desc').first('*');
 
   const messageTypesSent: { type: string }[] | undefined = await knex<Message>('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).select('type');
   const messageTypesSentString = messageTypesSent?.map(message => message.type);
 
   // TODO Last follow message sent, so I can know if I should send it again.
+
+// TODO get all messages, get the last one ever sent. so if DONE then ALWAYS show DONE.
+  const lastSentMessages: Message[] | undefined = await knex<Message>('messages').where({ username_sending: 'NeverFapDeluxe', username_receiving: username }).select('type');
+  const absoluteLastSentMessageType: LastMessageType = retrieveAbsoluteLastMessage(lastSentMessages);
 
   const sentCount = Number(sentMessagesCount[0]["count(`id`)"]);
   const receivedCount = Number(receivedMessagesCount[0]["count(`id`)"]);
@@ -38,6 +44,7 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
 
     lastSentMessage,
     lastReceivedMessage,
+    absoluteLastSentMessageType,
 
     sentCount,
     receivedCount,
@@ -87,5 +94,31 @@ const calculateUserStatistics = (user: User, sentCount: number, receivedCount: n
     userColor
   }
 };
+
+const retrieveAbsoluteLastMessage = (messages: Message[] | undefined) => {
+  if (messages?.find(message => message.type.includes('final'))) {
+    return {
+      type: 'DONE',
+      colour: 'red'
+    }
+  }
+  if (messages?.find(message => message.type.includes('middle'))) {
+    return {
+      type: 'SEND FINAL',
+      colour: 'orange'
+    }
+  }
+  if (messages?.find(message => message.type.includes('start')) || messages?.find(message => message.type.includes('follow'))) {
+    return {
+      type: 'SEND MIDDLE',
+      colour: 'yellow'
+    }
+  }
+
+  return {
+    type: 'CUSTOM',
+    colour: 'yellow'
+  }
+}
 
 export default getFullUser;

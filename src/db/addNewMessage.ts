@@ -3,7 +3,7 @@ import knex from '../util/knex';
 
 import { Message, SendMessageType } from '../types/serverTypes';
 
-import { toMelbourneDateString } from '../util/util';
+import { toMelbourneDateString } from '../util/utils/commonUtils';
 
 import validateUser from './validateUser';
 

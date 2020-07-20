@@ -1,11 +1,11 @@
-import { PopulateReceivedMessagesPayload } from '../../types/tamperMonkeyTypes';
+import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
 
-export const toNotRespond = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+export const toNotRespond = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/no thank/i).test(messagePayload.message)
   || new RegExp(/(I'm|I’m|I am|im) not interest/i).test(messagePayload.message)
   || new RegExp(/I was interest/i).test(messagePayload.message)
 
-export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
   || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
   || new RegExp(/go ahead/i).test(messagePayload.message)
@@ -15,7 +15,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i).test(messagePayload.message)
   || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/url for this (site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/(I'm|I’m|I am|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
+  || new RegExp(/(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
   || new RegExp(/I’ll check the link if you have it/i).test(messagePayload.message)
   || new RegExp(/(sent|send) me the (site|link|web|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
@@ -64,6 +64,9 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/that website would be nice/i).test(messagePayload.message)
   || new RegExp(/love to know your website/i).test(messagePayload.message)
   || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message)
+  || new RegExp(/send website link/i).test(messagePayload.message)
+  || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message)
+
 
   // I would love to hear your story and any advice you got for me
   // i'd be ,
@@ -73,7 +76,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
 
 
 
-export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/name of (ur|your) website/i).test(messagePayload.message)
   || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
@@ -82,21 +85,25 @@ export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagesPayload):
   || new RegExp(/Where can I find this resource?/i).test(messagePayload.message)
   || new RegExp(/what is this website?/i).test(messagePayload.message)
   || new RegExp(/where can i find the website?/i).test(messagePayload.message)
+  || new RegExp(/links to any resources?/i).test(messagePayload.message)
 
-
-export const toMeditateGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+export const toMeditateGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
   || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
   || new RegExp(/tips on meditating?/i).test(messagePayload.message)
   || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
   || new RegExp(/^How do you meditate?$/i).test(messagePayload.message)
 
-export const toHardTime = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+export const toHardTime = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
   || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
   || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
+  || new RegExp(/I haven't done much/i).test(messagePayload.message)
+  || new RegExp(/I just distract myself/i).test(messagePayload.message)
 
-  export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+
+
+  export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/(ty|thank you|thanks)/i).test(messagePayload.message)
   || new RegExp(/(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
   || new RegExp(/will visit/i).test(messagePayload.message)
@@ -106,12 +113,14 @@ export const toHardTime = (messagePayload: PopulateReceivedMessagesPayload): boo
   || new RegExp(/for sharing/i).test(messagePayload.message)
 // Thank you i will check both of them out
 
-export const toFantastic = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+export const toFantastic = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/I (currently|do) meditate/i).test(messagePayload.message)
   || new RegExp(/I meditate daily/i).test(messagePayload.message)
   || new RegExp(/done a lot for my mental health/i).test(messagePayload.message)
   || new RegExp(/started Therapy/i).test(messagePayload.message)
   || new RegExp(/I meditate for/i).test(messagePayload.message)
+  || new RegExp(/I meditate and workout every day/i).test(messagePayload.message)
+
 // That's Fantasti
 // Yeah I do transcendental meditation twice a day
 

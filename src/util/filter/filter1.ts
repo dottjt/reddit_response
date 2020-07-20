@@ -6,6 +6,7 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
     || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
     || new RegExp(/profile/i).test(titleText)
     || new RegExp(/^day \d+ clean/i).test(titleText)
+    || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)
   ) &&
   (
     new RegExp(/^finally$/i).test(messageText)
@@ -16,6 +17,7 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
     || new RegExp(/had no urges/i).test(messageText)
     || new RegExp(/sparta/i).test(messageText)
     || new RegExp(/\./i).test(messageText)
+    || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)
   )
 
 // TODO
@@ -41,7 +43,10 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/diary/i).test(titleText)
     || new RegExp(/(tik tok|tiktok)/i).test(titleText)
     || new RegExp(/moral/i).test(titleText)
+    || new RegExp(/one habit that helped me/i).test(titleText)
+    || new RegExp(/just completed a/i).test(titleText)
     || new RegExp(/strange benefit/i).test(titleText)
+    || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
     || new RegExp(/not bragging/i).test(titleText)
     || new RegExp(/(semen|urine|anal)/i).test(titleText)
     || new RegExp(/motivational thought/i).test(titleText)
@@ -68,6 +73,8 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     || new RegExp(/(wim hof)/i).test(titleText) // cold shower
     || new RegExp(/(premature|ejaculation|precum|cum)/i).test(titleText)
     || new RegExp(/achieved my goal/i).test(titleText)
+    || new RegExp(/found a method/i).test(titleText)
+    || new RegExp(/longest streak yet/i).test(titleText)
     || new RegExp(/(insta|instagram)/i).test(titleText)
     || new RegExp(/hunger/i).test(titleText)
     // || new RegExp(/king /i).test(titleText) // because jerking
@@ -202,6 +209,8 @@ export const toStartedAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/started (nofap|no fap) today/i).test(titleText)
     || new RegExp(/(just) (begun|started)/i).test(titleText)
     || new RegExp(/why (I'm|im) starting/i).test(titleText)
+    || new RegExp(/day 0/i).test(titleText)
+    || new RegExp(/first post/i).test(titleText)
 
 
     // decided to quit .* today
@@ -217,6 +226,8 @@ export const toStartedAgainAdvice = (titleText: string, flairText: string): bool
     || new RegExp(/one last try/i).test(titleText)
     || new RegExp(/day (1|one) again/i).test(titleText)
     || new RegExp(/^starting again$/i).test(titleText)
+    || new RegExp(/need to start fresh/i).test(titleText)
+    || new RegExp(/doing (nofap|no fap) again/i).test(titleText)
 
 export const toGeneralAdvice = (titleText: string, flairText: string): boolean =>
   new RegExp(/I need ?(.*) help/i).test(titleText)
@@ -237,6 +248,7 @@ export const toGeneralAdvice = (titleText: string, flairText: string): boolean =
     || new RegExp(/how to get past .* (week|days|day)/i).test(titleText)
     || new RegExp(/Trying Nofap .* years/i).test(titleText)
     || new RegExp(/I keep failing/i).test(titleText)
+    || new RegExp(/starting over/i).test(titleText)
 
 
     // || new RegExp(/urges keep coming/i).test(titleText)
@@ -248,6 +260,7 @@ export const toGeneralAdvice = (titleText: string, flairText: string): boolean =
 export const toRelapseAdvice = (titleText: string, flairText: string): boolean =>
   flairText === 'Relapse Report'
   || new RegExp(/failed first attempt/i).test(titleText)
+  || new RegExp(/relapse report/i).test(titleText)
   || new RegExp(/(I|I've|just) ?(have)? (relapsed|failed)/i).test(titleText)
   || new RegExp(/(relapse|relapsed) (after|on day|again)/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
   || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
@@ -262,7 +275,14 @@ export const toRelapseAdvice = (titleText: string, flairText: string): boolean =
   || new RegExp(/(Relapsed|relapse) at \d+ days/i).test(titleText)
   || new RegExp(/(Relapsed|relapse) at day \d+/i).test(titleText)
   || new RegExp(/I slipped/i).test(titleText)
+  || new RegExp(/my first fail/i).test(titleText)
+  || new RegExp(/back to day (one|1)/i).test(titleText)
   // - relapsed
+
+
+
+  // || new RegExp(/relapsed a few minutes ago/i).test(messageText)
+
 
 export const toWetDreamAdvice = (titleText: string, flairText: string): boolean =>
   new RegExp(/wet dream advice/i).test(titleText)

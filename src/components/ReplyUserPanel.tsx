@@ -1,6 +1,6 @@
 import { createElement } from 'inferno-create-element';
 
-import { CompiledFullUserObject, PopulateReceivedMessagesPayload } from '../types/tamperMonkeyTypes';
+import { CompiledFullUserObject, PopulateReceivedMessagePayload } from '../types/tamperMonkeyTypes';
 import {
   middleWrittenGuide,
   middleGuideNoWorries,
@@ -16,7 +16,7 @@ import {
 } from '../util/responses/final';
 
 import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton, SetLastInboxMessageUsernameButton } from './ComponentsUtil';
-import { SendMessageType } from '../types/serverTypes';
+import { SendMessageType, LastMessageType } from '../types/serverTypes';
 import { populateMessageAndSend } from '../util/sendMessageUtils';
 
 const createReplyMessageLink = (
@@ -25,7 +25,7 @@ const createReplyMessageLink = (
   toUsername: string,
   messageText: string,
   containerDiv: Element,
-  previousMessageInformation: PopulateReceivedMessagesPayload,
+  previousMessageInformation: PopulateReceivedMessagePayload,
   sendImmediate: boolean,
 ) => {
   const style = {
@@ -65,7 +65,7 @@ const createReplyMessageLink = (
 
 type ReplyUserPanelProps = {
   dbUser: CompiledFullUserObject;
-  previousMessageInformation: PopulateReceivedMessagesPayload;
+  previousMessageInformation: PopulateReceivedMessagePayload;
   containerDiv: Element;
   numberOfMessagesFromThisUser: number;
   isUserLastMessagedUser: boolean;
@@ -138,21 +138,7 @@ const ReplyUserPanel = ({
         {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
       </div>
 
-      {dbUser?.lastSentMessage?.type.includes('start') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'black' }}>SEND MIDDLE</p>
-      )}
-
-      {dbUser?.lastSentMessage?.type.includes('middle') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'orange', 'color': 'black' }}>SEND FINAL</p>
-      )}
-
-      {dbUser?.lastSentMessage?.type.includes('final') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'red', 'color': 'black' }}>DONE</p>
-      )}
-
-      {dbUser?.lastSentMessage?.type.includes('follow') && (
-        <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'purple', 'color': 'white' }}>FOLLOW: SEND MIDDLE</p>
-      )}
+      <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' }}>{dbUser.absoluteLastSentMessageType.type}</p>
 
       {otherUserMessages.length > 0 && (
         <div>

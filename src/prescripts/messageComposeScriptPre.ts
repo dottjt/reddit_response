@@ -4,7 +4,7 @@ import {
   randomMessageDelay,
   getTimerQueryString,
   closeTabAfterDelay
-} from '../util/messageComposeUtils';
+} from '../util/utils/messageComposeUtils';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 import { SendMessageType } from '../types/serverTypes';
 

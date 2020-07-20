@@ -1,4 +1,4 @@
-import { Message, UserType, SendMessageType } from "./serverTypes";
+import { Message, UserType, SendMessageType, LastMessageType } from "./serverTypes";
 import { ConfigType } from '../util/config';
 
 export type CompiledFullUserObject = {
@@ -16,6 +16,7 @@ export type CompiledFullUserObject = {
 
   lastSentMessage?: Message;
   lastReceivedMessage?: Message;
+  absoluteLastSentMessageType: LastMessageType;
 
   sentCount: number;
   receivedCount: number;
@@ -47,7 +48,7 @@ export type SendNewMessageSendPayload = {
   type: SendMessageType;
 }
 
-export type PopulateReceivedMessagesPayload = {
+export type PopulateReceivedMessagePayload = {
   containerDiv: Element;
   subject: string;
   subjectReplyToTitle: string;
@@ -58,10 +59,10 @@ export type PopulateReceivedMessagesPayload = {
   type: SendMessageType;
 }
 
-export type PopulateReceivedMessagesPayloadEXTREME = {
+export type PopulateReceivedMessagePayloadEXTREME = {
   compiledUser: CompiledFullUserObject;
   isUserLastMessagedUser: boolean;
   otherUserMessages: { message: string; order: string }[];
   numberOfMessagesFromThisUser: number;
   userReplyMessage: string;
-} & PopulateReceivedMessagesPayload;
+} & PopulateReceivedMessagePayload;

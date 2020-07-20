@@ -4,7 +4,7 @@ import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { sendNewUserNote, markUserHostile, setMarker, markUserChatted, setLastInboxMessageUsername } from '../util/httpResponses';
 import { Component } from 'inferno';
 import { ConfigType } from '../util/config';
-import { timeSince } from '../util/commonUtils';
+import { timeSince } from '../util/utils/commonUtils';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
   <div>

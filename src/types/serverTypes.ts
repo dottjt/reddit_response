@@ -93,3 +93,8 @@ export enum MessageType {
   Historic = "Historic",
   NonHistoric = "NonHistoric"
 }
+
+export type LastMessageType = {
+  type: string;
+  colour: string;
+}

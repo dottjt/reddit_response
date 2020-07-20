@@ -87,115 +87,6 @@
         return r;
     }
 
-    var HTTPPOSToptions = function (data) { return ({
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
-    }); };
-    var sendPostRequest = function (dataPayload, urlEndpoint, port) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, JSONResponse, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("http://localhost:" + port + urlEndpoint, HTTPPOSToptions(dataPayload))];
-                case 1:
-                    response = _a.sent();
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse];
-                case 3:
-                    error_1 = _a.sent();
-                    console.log('Server not started.');
-                    throw new Error(urlEndpoint + " - " + error_1);
-                case 4: return [2 /*return*/];
-            }
-        });
-    }); };
-    var populateReceivedMessages = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessages', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.message]; // basically a success message.
-            }
-        });
-    }); };
-    var sendNewMessage = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.users];
-            }
-        });
-    }); };
-    var sendNewUserNote = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewUserNote', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.message];
-            }
-        });
-    }); };
-    var markUserHostile = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserHostile', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.message];
-            }
-        });
-    }); };
-    var markUserChatted = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserChatted', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.message];
-            }
-        });
-    }); };
-    var latestUnreadMessagesInformation = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/latestUnreadMessagesInformation', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.user];
-            }
-        });
-    }); };
-    var setLastInboxMessageUsername = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
-        var JSONResponse;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/setLastInboxMessageUsername', '3333')];
-                case 1:
-                    JSONResponse = _a.sent();
-                    return [2 /*return*/, JSONResponse.data.message];
-            }
-        });
-    }); };
-
     var UserType;
     (function (UserType) {
         UserType["FreshUser"] = "Fresh User";
@@ -276,7 +167,7 @@
             || new RegExp(/(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i).test(messagePayload.message)
             || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
             || new RegExp(/url for this (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/(I'm|I’m|I am|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
+            || new RegExp(/(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
             || new RegExp(/I’ll check the link if you have it/i).test(messagePayload.message)
             || new RegExp(/(sent|send) me the (site|link|web|guide|content|page)/i).test(messagePayload.message)
             || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
@@ -324,7 +215,9 @@
             || new RegExp(/i would be interested/i).test(messagePayload.message)
             || new RegExp(/that website would be nice/i).test(messagePayload.message)
             || new RegExp(/love to know your website/i).test(messagePayload.message)
-            || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message);
+            || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message)
+            || new RegExp(/send website link/i).test(messagePayload.message)
+            || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message);
     };
     // I would love to hear your story and any advice you got for me
     // i'd be ,
@@ -339,7 +232,8 @@
             || new RegExp(/What site have you/i).test(messagePayload.message)
             || new RegExp(/Where can I find this resource?/i).test(messagePayload.message)
             || new RegExp(/what is this website?/i).test(messagePayload.message)
-            || new RegExp(/where can i find the website?/i).test(messagePayload.message);
+            || new RegExp(/where can i find the website?/i).test(messagePayload.message)
+            || new RegExp(/links to any resources?/i).test(messagePayload.message);
     };
     var toMeditateGuide = function (messagePayload) {
         return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
@@ -351,7 +245,9 @@
     var toHardTime = function (messagePayload) {
         return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
             || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
-            || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message);
+            || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
+            || new RegExp(/I haven't done much/i).test(messagePayload.message)
+            || new RegExp(/I just distract myself/i).test(messagePayload.message);
     };
     var toJoinSubreddit = function (messagePayload) {
         return new RegExp(/(ty|thank you|thanks)/i).test(messagePayload.message)
@@ -377,7 +273,7 @@
         }
         if ( // if I've sent a start message, and they've returned a start message.
         ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
-            (messagePayload.type === SendMessageType.UserReplyStart || messagePayload.type === SendMessageType.UserReplyFollow)) {
+            ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
             // No Worries
             if (toNoWorriesGuide(messagePayload)) {
                 return {
@@ -425,17 +321,11 @@
         // the other flaw in this system is that it should check all messages sent by the user on this page and count them as one, not just one separately. It shouldn't count them like that, it's broken.
         // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
         // basically only triggers poorly if
-        //
-        console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type);
+        console.log('here', messagePayload.compiledUser.username, !moreThanOneMessage, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type, lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type);
         // this is still broken, I think maybe lastReceivedMessage just needs to be middle. That's all it needs to che
         // changed it
         // That website would be very helpful
-        if (!moreThanOneMessage &&
-            !window.location.search.includes('true') &&
-            // messagePayload.type === SendMessageType.UserReplyMiddle &&
-            (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type) === SendMessageType.UserReplyMiddle && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
-            // TODO I Think there's a bug here.
-            console.log(messagePayload.compiledUser.username, messagePayload.type, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type);
+        if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
             // Join Subreddit
             if (toJoinSubreddit(messagePayload)) {
                 return {
@@ -2528,6 +2418,115 @@
         return null;
     };
 
+    var HTTPPOSToptions = function (data) { return ({
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({ data: data }) // body data type must match "Content-Type" header
+    }); };
+    var sendPostRequest = function (dataPayload, urlEndpoint, port) { return __awaiter(void 0, void 0, void 0, function () {
+        var response, JSONResponse, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("http://localhost:" + port + urlEndpoint, HTTPPOSToptions(dataPayload))];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log('Server not started.');
+                    throw new Error(urlEndpoint + " - " + error_1);
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    var populateReceivedMessage = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/populateReceivedMessage', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.compiledUser];
+            }
+        });
+    }); };
+    var sendNewMessage = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewMessage', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.users];
+            }
+        });
+    }); };
+    var sendNewUserNote = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/sendNewUserNote', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserHostile = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserHostile', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserChatted = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserChatted', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var latestUnreadMessagesInformation = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/latestUnreadMessagesInformation', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.user];
+            }
+        });
+    }); };
+    var setLastInboxMessageUsername = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/setLastInboxMessageUsername', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+
     // export const USERNAME = 'NA';
     var ForumType;
     (function (ForumType) {
@@ -2755,13 +2754,9 @@
             }); }, "target": "_blank" }), 0));
     };
     var ReplyUserPanel = function (_a) {
-        var _b, _c, _d, _e, _f, _g;
+        var _b, _c;
         var dbUser = _a.dbUser, containerDiv = _a.containerDiv, previousMessageInformation = _a.previousMessageInformation, numberOfMessagesFromThisUser = _a.numberOfMessagesFromThisUser, isUserLastMessagedUser = _a.isUserLastMessagedUser, otherUserMessages = _a.otherUserMessages, userReplyMessage = _a.userReplyMessage;
-        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), ((_d = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _d === void 0 ? void 0 : _d.type.includes('start')) && (createVNode$2(1, "p", null, "SEND MIDDLE", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'yellow', 'color': 'black' } })),
-            ((_e = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _e === void 0 ? void 0 : _e.type.includes('middle')) && (createVNode$2(1, "p", null, "SEND FINAL", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'orange', 'color': 'black' } })),
-            ((_f = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _f === void 0 ? void 0 : _f.type.includes('final')) && (createVNode$2(1, "p", null, "DONE", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'red', 'color': 'black' } })),
-            ((_g = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _g === void 0 ? void 0 : _g.type.includes('follow')) && (createVNode$2(1, "p", null, "FOLLOW: SEND MIDDLE", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'purple', 'color': 'white' } })),
-            otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
+        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$2(1, "p", null, dbUser.absoluteLastSentMessageType.type, 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
     };
 
     var createComponentVNode$2 = createComponentVNode;
@@ -2819,9 +2814,8 @@
             switch (_f.label) {
                 case 0:
                     finalMessageList = [];
-                    console.log('filteredMessageList', filteredMessageList);
                     _loop_1 = function (item) {
-                        var compiledUser, isUserLastMessagedUser, otherUserMessages, NFDResponseTypeString, userResponseType, numberOfMessagesFromThisUser, userReplyMessage;
+                        var compiledUser, isUserLastMessagedUser, otherUserMessages, NFDResponseTypeString, userResponseType, numberOfMessagesFromThisUser, userReplyMessage, updatedItem, updatedCompiledUser;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0: return [4 /*yield*/, latestUnreadMessagesInformation({ username: item.username_sending })];
@@ -2843,8 +2837,11 @@
                                     userResponseType = retrieveUserResponseType(NFDResponseTypeString);
                                     numberOfMessagesFromThisUser = filteredMessageList.filter(function (item) { return item.username_sending === compiledUser.username; }).length;
                                     userReplyMessage = (_e = (_d = (_c = item === null || item === void 0 ? void 0 : item.containerDiv) === null || _c === void 0 ? void 0 : _c.querySelector('.md')) === null || _d === void 0 ? void 0 : _d.children[0]) === null || _e === void 0 ? void 0 : _e.innerText;
-                                    finalMessageList.push(__assign(__assign({}, item), { type: userResponseType, compiledUser: compiledUser,
-                                        isUserLastMessagedUser: isUserLastMessagedUser,
+                                    updatedItem = __assign(__assign({}, item), { type: userResponseType });
+                                    return [4 /*yield*/, populateReceivedMessage({ message: updatedItem })];
+                                case 2:
+                                    updatedCompiledUser = _a.sent();
+                                    finalMessageList.push(__assign(__assign({}, updatedItem), { compiledUser: updatedCompiledUser, isUserLastMessagedUser: isUserLastMessagedUser,
                                         otherUserMessages: otherUserMessages,
                                         numberOfMessagesFromThisUser: numberOfMessagesFromThisUser,
                                         userReplyMessage: userReplyMessage }));
@@ -2917,6 +2914,7 @@
                     return [4 /*yield*/, compileReplyMessageList(filteredMessageList)];
                 case 1:
                     finalMessageList = _a.sent();
+                    console.log('finalMessageList', finalMessageList);
                     counter = 0;
                     _loop_1 = function (item) {
                         var moreThanOneMessage, _a, messageText, messageType;
@@ -2951,10 +2949,7 @@
                 case 4:
                     _i++;
                     return [3 /*break*/, 2];
-                case 5: return [4 /*yield*/, populateReceivedMessages({ messages: finalMessageList })];
-                case 6:
-                    _a.sent();
-                    return [2 /*return*/];
+                case 5: return [2 /*return*/];
             }
         });
     }); };

@@ -2575,7 +2575,7 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'Antetokam34';
+    var R_NOFAP_USERNAME = 'kaito978';
     var R_NOFAP_TIMESTAMP = '';
     var R_PORN_FREE_USERNAME = 'TheDominantSpecies';
     var R_PORN_FREE_TIMESTAMP = '';
@@ -2667,7 +2667,8 @@
             || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
             || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
             || new RegExp(/profile/i).test(titleText)
-            || new RegExp(/^day \d+ clean/i).test(titleText)) &&
+            || new RegExp(/^day \d+ clean/i).test(titleText)
+            || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)) &&
             (new RegExp(/^finally$/i).test(messageText)
                 || new RegExp(/^day \d+ clean/i).test(titleText)
                 || new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(messageText)
@@ -2675,7 +2676,8 @@
                 || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
                 || new RegExp(/had no urges/i).test(messageText)
                 || new RegExp(/sparta/i).test(messageText)
-                || new RegExp(/\./i).test(messageText));
+                || new RegExp(/\./i).test(messageText)
+                || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText));
     };
     // TODO
     // export const toRemoveInitialMessage = (titleText: string, flairText: string, messageText: string): boolean =>
@@ -2699,7 +2701,10 @@
             || new RegExp(/diary/i).test(titleText)
             || new RegExp(/(tik tok|tiktok)/i).test(titleText)
             || new RegExp(/moral/i).test(titleText)
+            || new RegExp(/one habit that helped me/i).test(titleText)
+            || new RegExp(/just completed a/i).test(titleText)
             || new RegExp(/strange benefit/i).test(titleText)
+            || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
             || new RegExp(/not bragging/i).test(titleText)
             || new RegExp(/(semen|urine|anal)/i).test(titleText)
             || new RegExp(/motivational thought/i).test(titleText)
@@ -2725,6 +2730,8 @@
             || new RegExp(/(wim hof)/i).test(titleText) // cold shower
             || new RegExp(/(premature|ejaculation|precum|cum)/i).test(titleText)
             || new RegExp(/achieved my goal/i).test(titleText)
+            || new RegExp(/found a method/i).test(titleText)
+            || new RegExp(/longest streak yet/i).test(titleText)
             || new RegExp(/(insta|instagram)/i).test(titleText)
             || new RegExp(/hunger/i).test(titleText)
             // || new RegExp(/king /i).test(titleText) // because jerking
@@ -2847,7 +2854,8 @@
             || new RegExp(/Beginning of my Journey in (NoFap|no fap)/i).test(titleText)
             || new RegExp(/started (nofap|no fap) today/i).test(titleText)
             || new RegExp(/(just) (begun|started)/i).test(titleText)
-            || new RegExp(/why (I'm|im) starting/i).test(titleText);
+            || new RegExp(/why (I'm|im) starting/i).test(titleText)
+            || new RegExp(/day 0/i).test(titleText);
     };
     // decided to quit .* today
     // Day 1
@@ -2860,7 +2868,9 @@
             || new RegExp(/gonna try again/i).test(titleText)
             || new RegExp(/one last try/i).test(titleText)
             || new RegExp(/day (1|one) again/i).test(titleText)
-            || new RegExp(/^starting again$/i).test(titleText);
+            || new RegExp(/^starting again$/i).test(titleText)
+            || new RegExp(/need to start fresh/i).test(titleText)
+            || new RegExp(/doing (nofap|no fap) again/i).test(titleText);
     };
     var toGeneralAdvice = function (titleText, flairText) {
         return new RegExp(/I need ?(.*) help/i).test(titleText)
@@ -2880,7 +2890,8 @@
             || new RegExp(/need some general advice/i).test(titleText)
             || new RegExp(/how to get past .* (week|days|day)/i).test(titleText)
             || new RegExp(/Trying Nofap .* years/i).test(titleText)
-            || new RegExp(/I keep failing/i).test(titleText);
+            || new RegExp(/I keep failing/i).test(titleText)
+            || new RegExp(/starting over/i).test(titleText);
     };
     // || new RegExp(/urges keep coming/i).test(titleText)
     // I am Trying Nofap From Last 1.5 years But I keep Failing, is there any Improvement i can do?
@@ -2889,6 +2900,7 @@
     var toRelapseAdvice = function (titleText, flairText) {
         return flairText === 'Relapse Report'
             || new RegExp(/failed first attempt/i).test(titleText)
+            || new RegExp(/relapse report/i).test(titleText)
             || new RegExp(/(I|I've|just) ?(have)? (relapsed|failed)/i).test(titleText)
             || new RegExp(/(relapse|relapsed) (after|on day|again)/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
             || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
@@ -2902,9 +2914,12 @@
             // relapsed (will have to look into this)
             || new RegExp(/(Relapsed|relapse) at \d+ days/i).test(titleText)
             || new RegExp(/(Relapsed|relapse) at day \d+/i).test(titleText)
-            || new RegExp(/I slipped/i).test(titleText);
+            || new RegExp(/I slipped/i).test(titleText)
+            || new RegExp(/my first fail/i).test(titleText)
+            || new RegExp(/back to day (one|1)/i).test(titleText);
     };
     // - relapsed
+    // || new RegExp(/relapsed a few minutes ago/i).test(messageText)
     var toWetDreamAdvice = function (titleText, flairText) {
         return new RegExp(/wet dream advice/i).test(titleText)
             || new RegExp(/had a wet dream/i).test(titleText)
@@ -2921,7 +2936,7 @@
         // TO REMOVE
         if (toRemoveInitial(titleText, flairText)
             || toRemoveInitialDay(titleText, flairText, messageText)) {
-            console.log("Deleted: " + flairText + " - " + titleText);
+            console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText);
             return {
                 shouldDeleteElementImmediately: true,
                 sendMessageType: undefined,
