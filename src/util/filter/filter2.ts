@@ -3,9 +3,10 @@ import { PopulateReceivedMessagesPayload } from '../../types/tamperMonkeyTypes';
 export const toNotRespond = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/no thank/i).test(messagePayload.message)
   || new RegExp(/(I'm|I’m|I am|im) not interest/i).test(messagePayload.message)
+  || new RegExp(/I was interest/i).test(messagePayload.message)
 
 export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
-  new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (web|website|guide|site|link|address)/i).test(messagePayload.message)
+  new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
   || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
   || new RegExp(/go ahead/i).test(messagePayload.message)
   || new RegExp(/took up/i).test(messagePayload.message)
@@ -58,6 +59,11 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagesPayload
   || new RegExp(/could I get a link?/i).test(messagePayload.message)
   || new RegExp(/May I know your website?/i).test(messagePayload.message)
   || new RegExp(/pass me your website/i).test(messagePayload.message)
+  || new RegExp(/check on your website/i).test(messagePayload.message)
+  || new RegExp(/i would be interested/i).test(messagePayload.message)
+  || new RegExp(/that website would be nice/i).test(messagePayload.message)
+  || new RegExp(/love to know your website/i).test(messagePayload.message)
+  || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message)
 
   // I would love to hear your story and any advice you got for me
   // i'd be ,
@@ -88,8 +94,9 @@ export const toMeditateGuide = (messagePayload: PopulateReceivedMessagesPayload)
 export const toHardTime = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
   || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
+  || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
 
-export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
+  export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/(ty|thank you|thanks)/i).test(messagePayload.message)
   || new RegExp(/(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
   || new RegExp(/will visit/i).test(messagePayload.message)
@@ -102,7 +109,9 @@ export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagesPayload)
 export const toFantastic = (messagePayload: PopulateReceivedMessagesPayload): boolean =>
   new RegExp(/I (currently|do) meditate/i).test(messagePayload.message)
   || new RegExp(/I meditate daily/i).test(messagePayload.message)
-
+  || new RegExp(/done a lot for my mental health/i).test(messagePayload.message)
+  || new RegExp(/started Therapy/i).test(messagePayload.message)
+  || new RegExp(/I meditate for/i).test(messagePayload.message)
 // That's Fantasti
 // Yeah I do transcendental meditation twice a day
 
