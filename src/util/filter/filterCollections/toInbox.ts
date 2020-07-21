@@ -7,6 +7,8 @@ export const toNotRespond = (messagePayload: PopulateReceivedMessagePayload): bo
   || new RegExp(/not going to read/i).test(messagePayload.message)
   || new RegExp(/fuck off/i).test(messagePayload.message)
   || new RegExp(/not interested/i).test(messagePayload.message)
+  || new RegExp(/No I (don’t|dont|don't) meditate/i).test(messagePayload.message)
+
 
 export const toMeditateGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
@@ -30,6 +32,10 @@ export const toFantastic = (messagePayload: PopulateReceivedMessagePayload): boo
   || new RegExp(/I meditate for/i).test(messagePayload.message)
   || new RegExp(/I meditate and workout every day/i).test(messagePayload.message)
   || new RegExp(/Yeah I do ?(transcendental)? meditation/i).test(messagePayload.message)
+
+// I do meditate
+// Bro i meditate like twice a week, workout everyday and read twice a week, maybe i should use that sex energy doing that things everyday
+
 
 // OTHER
 // Meditating at night can gelp witg controlling the wet dreams

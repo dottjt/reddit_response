@@ -163,7 +163,8 @@
             || new RegExp(/I was interest/i).test(messagePayload.message)
             || new RegExp(/not going to read/i).test(messagePayload.message)
             || new RegExp(/fuck off/i).test(messagePayload.message)
-            || new RegExp(/not interested/i).test(messagePayload.message);
+            || new RegExp(/not interested/i).test(messagePayload.message)
+            || new RegExp(/No I (don’t|dont|don't) meditate/i).test(messagePayload.message);
     };
     var toMeditateGuide = function (messagePayload) {
         return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
@@ -183,7 +184,7 @@
     var toNoWorriesGuide = function (messagePayload) {
         return new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
             || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
-            || new RegExp(/go ahead/i).test(messagePayload.message)
+            || new RegExp(/go ahead and send/i).test(messagePayload.message)
             || new RegExp(/took up/i).test(messagePayload.message)
             || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
             || new RegExp(/website sounds .* interesting/i).test(messagePayload.message)
@@ -244,7 +245,8 @@
             || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message)
             || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
             || new RegExp(/^yes/i).test(messagePayload.message)
-            || new RegExp(/could you please direct me to it/i).test(messagePayload.message);
+            || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
+            || new RegExp(/take a look at your website/i).test(messagePayload.message);
     };
 
     var toLinkYouGuide = function (messagePayload) {
@@ -266,7 +268,8 @@
             || new RegExp(/visit ?(.*) today/i).test(messagePayload.message)
             || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
             || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
-            || new RegExp(/for sharing/i).test(messagePayload.message);
+            || new RegExp(/for sharing/i).test(messagePayload.message)
+            || new RegExp(/thanks for/i).test(messagePayload.message);
     };
 
     var filterRedditInboxMessages = function (messagePayload, moreThanOneMessage) {

@@ -14,6 +14,11 @@ Although there are a heap of features I can build into it, I would consider it m
 ## Improvements
 
 - Did I just relapse or not? MESSAGE If you have to ask, then generally yes. Although
+
+// Although not necessarily a relapse, indicates that you don't have control over your mind.
+
+- when does it get easier - It gets easier once you learn to develop control over your mind. // MESSAGE
+
 - Fetish is irrelevant. MESSAGE
 
 - Message compose page to have an inferno render in order to set user as hostile.
@@ -25,6 +30,8 @@ Although there are a heap of features I can build into it, I would consider it m
 - Target the nofap website, not just reddit. Increase your userbase :)
 
 // Send Final BANNER is not correct, please align with how it's being done in the filters. It will show purely if it's middle, but the use has only sent a start, which is wrong.
+
+- Remove did this count as relapse posts if I'm not addressing them
 
 ## Nice To Have
 

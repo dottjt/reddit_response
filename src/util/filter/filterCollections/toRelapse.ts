@@ -16,6 +16,7 @@ export const toRelapseAdvice = (titleText: string, flairText: string): boolean =
   || new RegExp(/(Relapsed|relapse) at \d+ days/i).test(titleText)
   || new RegExp(/(Relapsed|relapse) at day \d+/i).test(titleText)
   || new RegExp(/I slipped/i).test(titleText)
+  || new RegExp(/^Failed after/i).test(titleText)
   || new RegExp(/my first fail/i).test(titleText)
   || new RegExp(/back to day (one|1)/i).test(titleText)
   // - relapsed

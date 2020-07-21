@@ -1,6 +1,18 @@
 import { SendMessageType, UserType } from '../../types/serverTypes';
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
-import { startAdvice, startAgainAdvice, generalAdvice, relapseAdvice, wetdreamAdvice, accountabilityPartner } from '../responses/start';
+import {
+  startAdvice,
+  startAgainAdvice,
+  generalAdvice,
+  relapseAdvice,
+  wetdreamAdvice,
+  accountabilityPartner,
+  struggleAdvice,
+  dealingWithUrgesAdvice,
+  biggestBenefitPostAddictionAdvice,
+  pornBlockersAdvice,
+  masturbateWithoutPornAdvice
+} from '../responses/start';
 import { ConfigType } from '../config';
 import { finalJoinSubreddit, finalFantastic } from '../responses/final';
 
@@ -9,7 +21,7 @@ import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterColl
 import { toRelapseAdvice } from './filterCollections/toRelapse';
 import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/toStart';
 import { toGeneralAdvice } from './filterCollections/toGeneral';
-import { toWetDreamAdvice, toAccountabilityPartner } from './filterCollections/toOthers';
+import { toWetDreamAdvice, toAccountabilityPartner, toStruggleAdvice, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice } from './filterCollections/toOthers';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
 
 
@@ -85,7 +97,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     // }
 
     // STARTED MESSAGES
-    if (toStartedAdvice(titleText, flairText)) {
+    if (toStartedAdvice(titleText, flairText, messageText)) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStart,
@@ -94,7 +106,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     }
 
     // STARTED AGAIN MESSAGES
-    if (toStartedAgainAdvice(titleText, flairText)) {
+    if (toStartedAgainAdvice(titleText, flairText, messageText)) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStartAgain,
@@ -121,7 +133,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     }
 
     // WET DREAM MESSAGES
-    if (toWetDreamAdvice(titleText, flairText)) {
+    if (toWetDreamAdvice(titleText, flairText, messageText)) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceWetdreamAdvice,
@@ -130,11 +142,56 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     }
 
     // ACCOUNTABILITY PARTNER MESSAGES
-    if (toAccountabilityPartner(titleText, flairText)) {
+    if (toAccountabilityPartner(titleText, flairText, messageText)) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAccountabilityPartner,
         prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner, usernameConfig)
+      }
+    }
+
+    // STRUGGLE MESSAGES
+    if (toStruggleAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartAdviceStruggle,
+        prelimUrl: generatePrelimUrl(compiledUser.username, struggleAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStruggle, usernameConfig)
+      }
+    }
+
+    // URGES MESSAGES
+    if (toDealingWithUrgesAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartDealingWithUrgesAdvice,
+        prelimUrl: generatePrelimUrl(compiledUser.username, dealingWithUrgesAdvice(usernameConfig.forumType), SendMessageType.StartDealingWithUrgesAdvice, usernameConfig)
+      }
+    }
+
+    // BENEFITS MESSAGES
+    if (toBenefitsAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartBiggestBenefitPostAddictionAdvice,
+        prelimUrl: generatePrelimUrl(compiledUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType), SendMessageType.StartBiggestBenefitPostAddictionAdvice, usernameConfig)
+      }
+    }
+
+    // PORN BLOCKER MESSAGES
+    if (toPornBlockerAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartAdvicePornBlockersAdvice,
+        prelimUrl: generatePrelimUrl(compiledUser.username, pornBlockersAdvice(usernameConfig.forumType), SendMessageType.StartAdvicePornBlockersAdvice, usernameConfig)
+      }
+    }
+
+    // CAN YOU STILL MASTURBATE MESSAGES
+    if (toMasturbationAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartMasturbateWithoutPornAdvice,
+        prelimUrl: generatePrelimUrl(compiledUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType), SendMessageType.StartMasturbateWithoutPornAdvice, usernameConfig)
       }
     }
 

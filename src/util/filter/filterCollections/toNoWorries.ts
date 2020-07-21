@@ -3,7 +3,7 @@ import { PopulateReceivedMessagePayload } from '../../../types/tamperMonkeyTypes
 export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
   || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
-  || new RegExp(/go ahead/i).test(messagePayload.message)
+  || new RegExp(/go ahead and send/i).test(messagePayload.message)
   || new RegExp(/took up/i).test(messagePayload.message)
   || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
   || new RegExp(/website sounds .* interesting/i).test(messagePayload.message)
@@ -65,10 +65,15 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
   || new RegExp(/^yes/i).test(messagePayload.message)
   || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
+  || new RegExp(/take a look at your website/i).test(messagePayload.message)
 
   // I would love to hear your story and any advice you got for me
   // i'd be ,
     // article
   // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
   // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
+
+
+  // EDGET
+  // From your experience should I go ahead with my marriage and start following nofap no pmo
 

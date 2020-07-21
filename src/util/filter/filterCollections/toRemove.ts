@@ -30,10 +30,18 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   // || new RegExp(/("|“|')/i).test(titleText) // never do this, ever. breaks everything
   || new RegExp(/gift/i).test(titleText)
   || new RegExp(/beast mode/i).test(titleText)
+  || new RegExp(/does not fap/i).test(titleText)
+  || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
+  || new RegExp(/I feel amazing/i).test(titleText)
+  || new RegExp(/name tag/i).test(titleText)
+  || new RegExp(/(we will all make it|we will make it|you will make it|you can do it)/i).test(titleText)
+  || new RegExp(/overcame my worst urge/i).test(titleText)
+  || new RegExp(/(0|zero) urges to fap/i).test(titleText)
   || new RegExp(/(down side|downside)/i).test(titleText)
   || new RegExp(/a piece of advice/i).test(titleText)
   || new RegExp(/for those who relapse/i).test(titleText)
   || new RegExp(/sexting/i).test(titleText)
+  || new RegExp(/any evidence that/i).test(titleText)
   || new RegExp(/i made it/i).test(titleText)
   || new RegExp(/to those struggling/i).test(titleText)
   || new RegExp(/download the app/i).test(titleText)
@@ -46,9 +54,11 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   || new RegExp(/moral/i).test(titleText)
   || new RegExp(/one habit that helped me/i).test(titleText)
   || new RegExp(/just completed a/i).test(titleText)
+  || new RegExp(/super sensitive/i).test(titleText)
   || new RegExp(/strange benefit/i).test(titleText)
   || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
   || new RegExp(/not bragging/i).test(titleText)
+  || new RegExp(/medication/i).test(titleText)
   || new RegExp(/(semen|urine|anal)/i).test(titleText)
   || new RegExp(/motivational thought/i).test(titleText)
   || new RegExp(/(a reminder|remember this)/i).test(titleText)
@@ -94,11 +104,13 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   // || new RegExp(/(don't|dont) fall/i).test(titleText)
   || new RegExp(/read this if you/i).test(titleText)
   || new RegExp(/weed/i).test(titleText)
+  || new RegExp(/still going strong/i).test(titleText)
   || new RegExp(/(weekly|daily) journal/i).test(titleText)
   || new RegExp(/(tracker|counting|counter)/i).test(titleText)
   || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
   || new RegExp(/my benefits/i).test(titleText)
   || new RegExp(/placebo/i).test(titleText)
+  || new RegExp(/scientific/i).test(titleText)
   || new RegExp(/(balls|penis|pelvic|genital|testic)/i).test(titleText)
   || new RegExp(/accountability post/i).test(titleText)
   || new RegExp(/illusion/i).test(titleText)
@@ -106,6 +118,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
   // || new RegExp(/sex/i).test(titleText) // look into this (can't do this because of sexual urges)
   || new RegExp(/journal entry/i).test(titleText) // look into this.
+  || new RegExp(/vivid dream/i).test(titleText) // look into this.
   || new RegExp(/(mum|dad)/i).test(titleText) // look into this.
   || new RegExp(/benefits till now/i).test(titleText)
   || new RegExp(/harmful effect/i).test(titleText)
@@ -154,6 +167,7 @@ export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
   new RegExp(/^(day|week) \d+ (complete|done|free|strong)/i).test(titleText)
   || new RegExp(/\d+ (week|day).* (complete|done|free|strong)/i).test(titleText)
   || new RegExp(/(1st|first) (week|month) (complete|done|free|strong)/i).test(titleText)
+  || new RegExp(/(1st|first) \d+ day streak/i).test(titleText)
   // || new RegExp(/^\d+th day/i).test(titleText)
   // || new RegExp(/beginning of week/i).test(titleText) // look into this
   // || new RegExp(/dreams/i).test(titleText) // look into this
@@ -162,6 +176,7 @@ export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
   // || new RegExp(/(one|two|three|four|five) weeks in/i).test(titleText)
   // || new RegExp(/^\d+ (week|weeks) in/i).test(titleText)
   || new RegExp(/mission \.*? accomplished/i).test(titleText)
+  || new RegExp(/first time reaching /i).test(titleText)
   || new RegExp(/completed \d+ (days|weeks) today/i).test(titleText)
   || new RegExp(/celebrating (1|one) (week|month)/i).test(titleText)
 

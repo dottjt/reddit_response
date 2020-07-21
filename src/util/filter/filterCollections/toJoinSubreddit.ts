@@ -8,4 +8,5 @@ export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagePayload):
   || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
   || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
   || new RegExp(/for sharing/i).test(messagePayload.message)
+  || new RegExp(/thanks for/i).test(messagePayload.message)
 // Thank you i will check both of them out

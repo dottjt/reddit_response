@@ -155,7 +155,7 @@
             timer = getTimerQueryString(window.location.search);
             console.log('toInput', toInput);
             console.log('subjectInput', subjectInput);
-            console.log('messageInput', decodeURI(messageInput).replace(/%2C/, ','));
+            console.log('messageInput', decodeURI(messageInput).replace(/%2C/g, ',').replace(/%3F/g, '?'));
             console.log('type', type);
             console.log('timer', timer);
             // if (toInput && subjectInput && messageInput && type && timer) {
