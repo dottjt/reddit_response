@@ -88,11 +88,13 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   || new RegExp(/longest streak yet/i).test(titleText)
   || new RegExp(/(insta|instagram)/i).test(titleText)
   || new RegExp(/hunger/i).test(titleText)
+  || new RegExp(/just rejected a ?(hot)? girl/i).test(titleText)
   // || new RegExp(/king /i).test(titleText) // because jerking
   || new RegExp(/(previous record|milestone)/i).test(titleText)
   || new RegExp(/(pied|peid|in bed|get it up|shrink)/i).test(titleText)
   || new RegExp(/(hair|skin|acne|sperm)/i).test(titleText)
   || new RegExp(/the key is/i).test(titleText)
+  || new RegExp(/remember these \d+/i).test(titleText)
   || new RegExp(/the key to (everything|NoFap)/i).test(titleText)
   || new RegExp(/monk/i).test(titleText)
   || new RegExp(/(grip|syndrome)/i).test(titleText)
@@ -104,6 +106,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   // || new RegExp(/(don't|dont) fall/i).test(titleText)
   || new RegExp(/read this if you/i).test(titleText)
   || new RegExp(/weed/i).test(titleText)
+  || new RegExp(/pro tip for nofap/i).test(titleText)
   || new RegExp(/still going strong/i).test(titleText)
   || new RegExp(/(weekly|daily) journal/i).test(titleText)
   || new RegExp(/(tracker|counting|counter)/i).test(titleText)
@@ -134,7 +137,6 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   // || new RegExp(/transformation/i).test(titleText) // look into this.
   // || new RegExp(/longest .* streak/i).test(titleText) // look into this.
   // || new RegExp(/confessed .* to my/i).test(titleText) // look into this.
-  // || new RegExp(/pro tip/i).test(titleText)
   // || new RegExp(/update from/i).test(titleText)
 
   // tricks ... helped me

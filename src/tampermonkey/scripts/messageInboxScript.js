@@ -171,7 +171,7 @@
     var toMeditateGuide = function (messagePayload) {
         return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
             || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
-            || new RegExp(/tips on meditating?/i).test(messagePayload.message)
+            || new RegExp(/tips on meditating\?/i).test(messagePayload.message)
             || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
             || new RegExp(/^How do you meditate?$/i).test(messagePayload.message);
     };
@@ -234,8 +234,8 @@
             || new RegExp(/nice if you linked the website/i).test(messagePayload.message)
             || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
             || new RegExp(/That would be very welcome/i).test(messagePayload.message)
-            || new RegExp(/could I get a link?/i).test(messagePayload.message)
-            || new RegExp(/May I know your website?/i).test(messagePayload.message)
+            || new RegExp(/could I get a link/i).test(messagePayload.message)
+            || new RegExp(/May I know your website/i).test(messagePayload.message)
             || new RegExp(/pass me your website/i).test(messagePayload.message)
             || new RegExp(/check on your website/i).test(messagePayload.message)
             || new RegExp(/i would be interested/i).test(messagePayload.message)
@@ -257,10 +257,10 @@
             || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
             || new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
             || new RegExp(/What site have you/i).test(messagePayload.message)
-            || new RegExp(/Where can I find this resource?/i).test(messagePayload.message)
-            || new RegExp(/what is this website?/i).test(messagePayload.message)
-            || new RegExp(/where can i find the website?/i).test(messagePayload.message)
-            || new RegExp(/links to any resources?/i).test(messagePayload.message);
+            || new RegExp(/Where can I find this resource/i).test(messagePayload.message)
+            || new RegExp(/what is this website\?/i).test(messagePayload.message)
+            || new RegExp(/where can i find the website/i).test(messagePayload.message)
+            || new RegExp(/links to any resources/i).test(messagePayload.message);
     };
 
     var toJoinSubreddit = function (messagePayload) {

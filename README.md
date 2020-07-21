@@ -6,7 +6,7 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## How To Run
 
-- You need to use Chrome, because Firefox does not support using files from your local hard disk.
+- You need to use Chrome, because Firefox does not support using files from your local hard disk. (BOOOOOOO)
 - You need to add the userscript banners to tampermonkey. `src/util/prebanners`
 - You need to always have the server running so that it can intercept the messages. `npm run start:prod`
 - It's nice to have the UI bundler running as well at the same time, so it can change those scripts when you change the source code `npm run bundle:dev`
@@ -14,11 +14,17 @@ Although there are a heap of features I can build into it, I would consider it m
 ## Improvements
 
 - Fetish is irrelevant. MESSAGE
+- okay NOFAP with a girlfriend? MESSAGE
+- libido MESSAGE
+
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - Target the nofap website, not just reddit. Increase your userbase :)
+- Look into congratulation messages, along with
 
 ## Nice To Have
 
+- Look into incorporating whether they've been sent the website or not, so you can have more information from them.
+-
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage (I don't think it's possible to know until after? Well, it's possible but not a massive deal for now)
 - Whether a message was sent automatically by the bot or not.
 - fix up the inferno renders at the top, they're a bit of a mess, ya'll.
