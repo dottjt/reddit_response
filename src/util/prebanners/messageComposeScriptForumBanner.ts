@@ -6,5 +6,5 @@
 // @author       You
 // @match        https://forum.nofap.com/index.php?conversations/add*
 // @grant        none
-// @require      file:///Users/julius.reade/Code/PER/reddit_response/src/tampermonkey/scripts/messageComposeScript.js
+// @require      file:///Users/julius.reade/Code/PER/reddit_response/src/tampermonkey/scripts/messageComposeScriptForum.js
 // ==/UserScript==

@@ -2524,7 +2524,9 @@
     };
     var renderUserPanelForum = function (_a) {
         var tag = _a.tag, tagUsername = _a.tagUsername, index = _a.index, dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
-        var tagUsernameFiltered = tagUsername.replace('\'', '');
+        var tagUsernameFiltered = tagUsername
+            .replace('\'', '')
+            .replace('&', '');
         var rootId = "r" + tagUsernameFiltered + "-" + index;
         var root = document.createElement('div');
         root.id = rootId;
@@ -2540,7 +2542,8 @@
         createPrelimContainerForum();
         var prelimContainer = document.querySelector('#reade-automate-container');
         var discussionListItems = document.querySelectorAll('.discussionListItem');
-        var filteredDiscussionListItems = [discussionListItems].filter(function (item) { return __spreadArrays(item.classList).includes('sticky'); });
+        var filteredDiscussionListItems = __spreadArrays(discussionListItems).filter(function (item) { return !__spreadArrays(item.classList).includes('sticky'); });
+        console.log('filteredDiscussionListItems', filteredDiscussionListItems);
         // Remember that we need to filter these for the bottom ones.
         // sticky
         console.log(filteredDiscussionListItems);

@@ -27,7 +27,8 @@ const populateWebpageInformation = (users: CompiledFullUserObject[]) => {
   let alreadyPrelimUrlUsernameList: string[] = [];
 
   const discussionListItems = document.querySelectorAll('.discussionListItem');
-  const filteredDiscussionListItems = [discussionListItems as any].filter(item => [...item.classList].includes('sticky'));
+  const filteredDiscussionListItems = [...discussionListItems as any].filter(item => ![...item.classList].includes('sticky'));
+  console.log('filteredDiscussionListItems', filteredDiscussionListItems);
   // Remember that we need to filter these for the bottom ones.
 
   // sticky

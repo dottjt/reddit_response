@@ -86,19 +86,21 @@ const main = async () => {
   }
 
   const messageComposeScriptPre = path.resolve(__dirname, '..', 'prescripts', 'messageComposeScriptPre.ts');
+  const messageComposeScriptForumPre = path.resolve(__dirname, '..', 'prescripts', 'messageComposeScriptForumPre.ts');
   const messageInboxScriptPre = path.resolve(__dirname, '..', 'prescripts', 'messageInboxScriptPre.tsx');
   const noFapNewSubredditPre = path.resolve(__dirname, '..', 'prescripts', 'noFapNewSubredditPre.tsx');
   const retrieveCastboxLinksPre = path.resolve(__dirname, '..', 'prescripts', 'retrieveCastboxLinksPre.ts');
-  const noFapForumPre = path.resolve(__dirname, '..', 'prescripts', 'noFapForumPre.ts');
+  const noFapForumPre = path.resolve(__dirname, '..', 'prescripts', 'noFapForumPre.tsx');
 
   // WATCH_PRE_SCRIPT_DIRECTORY,
 
   // further changes
   chokidar.watch([ messageComposeScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageComposeScriptPre.ts'], event, path), 2000));
+  chokidar.watch([ messageComposeScriptForumPre ]).on('change', throttle((event, path) => chokidarHandler(['messageComposeScriptForumPre.ts'], event, path), 2000));
   chokidar.watch([ messageInboxScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageInboxScriptPre.tsx'], event, path), 2000));
   chokidar.watch([ noFapNewSubredditPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapNewSubredditPre.tsx'], event, path), 2000));
   chokidar.watch([ retrieveCastboxLinksPre ]).on('change', throttle((event, path) => chokidarHandler(['retrieveCastboxLinksPre.ts'], event, path), 2000));
-  chokidar.watch([ noFapForumPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapForumPre.ts'], event, path), 2000));
+  chokidar.watch([ noFapForumPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapForumPre.tsx'], event, path), 2000));
   chokidar.watch([ WATCH_COMPONENTS_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY ]).on('change', throttle((event, path) => chokidarHandler(dir, event, path), 2000));
 
   // make a few different ones

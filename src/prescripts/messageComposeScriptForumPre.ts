@@ -59,17 +59,18 @@ const sendMessage = async ({
 const main = async () => {
   console.log('START: preparing message');
 
-  const toInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=recipients]')).value;
-  const subjectInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=title]')).value;
+  const toInput: string | undefined = (<HTMLInputElement>document.querySelector('input[name=recipients]')).value;
+  const subjectInput: string | undefined = (<HTMLInputElement>document.querySelector('input[name=title]')).value;
   const messageInput: string | undefined = getMessageQueryString(window.location.search);
   const type: SendMessageType | undefined = getTypeQueryString(window.location.search) as SendMessageType;
   const timer: string | undefined = getTimerQueryString(window.location.search);
 
   console.log('toInput', toInput);
   console.log('subjectInput', subjectInput);
-  console.log('messageInput', messageInput);
+  console.log('messageInput', decodeURI(messageInput).replace(/%2C/g, ',').replace(/%3F/g, '?'));
   console.log('type', type);
   console.log('timer', timer);
+
 
   // if (toInput && subjectInput && messageInput && type && timer) {
   //   await randomMessageDelay(timer);

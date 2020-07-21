@@ -20,7 +20,10 @@ export const createPrelimContainerForum = (): void => {
 export const renderUserPanelForum = ({
   tag, tagUsername, index, dbUser, usernameConfig
 }) => {
-  const tagUsernameFiltered = tagUsername.replace('\'','');
+  const tagUsernameFiltered =
+    tagUsername
+      .replace('\'','')
+      .replace('&','');
 
   const rootId = `r${tagUsernameFiltered}-${index}`;
   const root = document.createElement('div');
