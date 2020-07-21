@@ -1,3 +1,7 @@
+import { render } from 'inferno';
+import { createElement } from 'inferno-create-element';
+import { MarkUserHostileButton } from '../../components/ComponentsUtil';
+
 export const closeTabAfterDelay = (delay: number, window: any): Promise<void> => new Promise((resolve, reject) => {
   setTimeout(function() {
     console.log(`closing tab in ${delay}.`);
@@ -40,5 +44,18 @@ export const getTimerQueryString = (searchString: string): string | undefined =>
       const type = arrayWithTimer[0].split('=')[1];
       return type;
     }
+  }
+}
+
+export const createHostileContainer = (iFrame, toInput): void => {
+  const prelimContainer = document.createElement('div');
+  prelimContainer.id = 'reade-automate-container';
+  const titleContainer = iFrame?.contentWindow?.document?.querySelectorAll('.title')[3];
+
+  titleContainer?.parentNode?.insertBefore(prelimContainer, titleContainer);
+
+  const readeAutomateContainer = iFrame?.contentWindow?.document?.querySelector('#reade-automate-container');
+  if (readeAutomateContainer) {
+    render(<MarkUserHostileButton username={toInput}/>, readeAutomateContainer);
   }
 }

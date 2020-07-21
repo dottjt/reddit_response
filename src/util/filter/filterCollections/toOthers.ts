@@ -24,3 +24,10 @@ export const toBenefitsAdvice = (titleText: string, flairText: string, messageTe
 
 export const toPornBlockerAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   new RegExp(/what programs do you use to block porn?/i).test(titleText)
+
+export const toDidIJustRelapseAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
+  new RegExp(/did I just relapse?/i).test(titleText)
+  || new RegExp(/count as relapse?/i).test(titleText)
+
+export const toWhenDoesItGetEasierAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
+  new RegExp(/when does it get easier?/i).test(titleText)

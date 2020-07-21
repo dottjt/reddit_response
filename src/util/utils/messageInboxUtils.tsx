@@ -192,8 +192,6 @@ export const renderReplyUserPanel = (
 
 // await sendNewMessageEventListener(pageMessages);
 
-
-
 // was for messageInboxScriptPre.ts
 
 // const setIntervalFunction = (interval) => {

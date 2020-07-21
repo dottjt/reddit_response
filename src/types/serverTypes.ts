@@ -52,6 +52,8 @@ export enum SendMessageType {
   StartMasturbateWithoutPornAdvice = 'start:advice:masturbateWithoutPorn',
   StartBiggestBenefitPostAddictionAdvice = 'start:advice:biggestBenefitPostAddiction',
   StartDealingWithUrgesAdvice = 'start:advice:dealingWithUrges',
+  StartDidIJustRelapseAdvice = 'start:advice:didIJustRelapseAdvice',
+  StartWhenDoesItGetEasierAdvice = 'start:advice:whenDoesItGetEasierAdvice',
 
   MiddleGuideIfYouWouldLikeToLearnMore = 'middle:guide:learnmore',
   MiddleGuideNoWorries = 'middle:guide:noworries',

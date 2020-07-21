@@ -3,7 +3,8 @@ import {
   getTypeQueryString,
   randomMessageDelay,
   getTimerQueryString,
-  closeTabAfterDelay
+  closeTabAfterDelay,
+  createHostileContainer
 } from '../util/utils/messageComposeUtils';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 import { SendMessageType, UserForumType } from '../types/serverTypes';
@@ -63,6 +64,8 @@ const main = async () => {
   const messageInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
   const type: SendMessageType | undefined = getTypeQueryString(window.location.search) as SendMessageType;
   const timer: string | undefined = getTimerQueryString(window.location.search);
+
+  createHostileContainer(iFrame, toInput);
 
   if (toInput && subjectInput && messageInput && type && timer) {
     await randomMessageDelay(timer);

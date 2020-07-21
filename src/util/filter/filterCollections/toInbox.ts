@@ -9,7 +9,6 @@ export const toNotRespond = (messagePayload: PopulateReceivedMessagePayload): bo
   || new RegExp(/not interested/i).test(messagePayload.message)
   || new RegExp(/No I (don’t|dont|don't) meditate/i).test(messagePayload.message)
 
-
 export const toMeditateGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
   || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)

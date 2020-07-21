@@ -115,6 +115,8 @@
         SendMessageType["StartMasturbateWithoutPornAdvice"] = "start:advice:masturbateWithoutPorn";
         SendMessageType["StartBiggestBenefitPostAddictionAdvice"] = "start:advice:biggestBenefitPostAddiction";
         SendMessageType["StartDealingWithUrgesAdvice"] = "start:advice:dealingWithUrges";
+        SendMessageType["StartDidIJustRelapseAdvice"] = "start:advice:didIJustRelapseAdvice";
+        SendMessageType["StartWhenDoesItGetEasierAdvice"] = "start:advice:whenDoesItGetEasierAdvice";
         SendMessageType["MiddleGuideIfYouWouldLikeToLearnMore"] = "middle:guide:learnmore";
         SendMessageType["MiddleGuideNoWorries"] = "middle:guide:noworries";
         SendMessageType["MiddleGuideLinkYou"] = "middle:guide:linkyou";

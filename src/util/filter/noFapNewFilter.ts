@@ -11,7 +11,9 @@ import {
   dealingWithUrgesAdvice,
   biggestBenefitPostAddictionAdvice,
   pornBlockersAdvice,
-  masturbateWithoutPornAdvice
+  masturbateWithoutPornAdvice,
+  didIJustRelapseAdvice,
+  whenDoesItGetEasierAdvice
 } from '../responses/start';
 import { ConfigType } from '../config';
 import { finalJoinSubreddit, finalFantastic } from '../responses/final';
@@ -21,7 +23,7 @@ import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterColl
 import { toRelapseAdvice } from './filterCollections/toRelapse';
 import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/toStart';
 import { toGeneralAdvice } from './filterCollections/toGeneral';
-import { toWetDreamAdvice, toAccountabilityPartner, toStruggleAdvice, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice } from './filterCollections/toOthers';
+import { toWetDreamAdvice, toAccountabilityPartner, toStruggleAdvice, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/toOthers';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
 
 
@@ -194,6 +196,27 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
         prelimUrl: generatePrelimUrl(compiledUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType), SendMessageType.StartMasturbateWithoutPornAdvice, usernameConfig)
       }
     }
+
+    // DID I JUST RELAPSE MESSAGES
+    if (toDidIJustRelapseAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartDidIJustRelapseAdvice,
+        prelimUrl: generatePrelimUrl(compiledUser.username, didIJustRelapseAdvice(usernameConfig.forumType), SendMessageType.StartDidIJustRelapseAdvice, usernameConfig)
+      }
+    }
+
+    // DID I JUST RELAPSE MESSAGES
+    if (toWhenDoesItGetEasierAdvice(titleText, flairText, messageText)) {
+      return {
+        shouldDeleteElementImmediately: false,
+        sendMessageType: SendMessageType.StartDidIJustRelapseAdvice,
+        prelimUrl: generatePrelimUrl(compiledUser.username, whenDoesItGetEasierAdvice(usernameConfig.forumType), SendMessageType.StartWhenDoesItGetEasierAdvice, usernameConfig)
+      }
+    }
+
+
+
 
     // Does the urge to masturbate get easier?
     // edging

@@ -19,6 +19,8 @@ import {
   masturbateWithoutPornAdvice,
   biggestBenefitPostAddictionAdvice,
   dealingWithUrgesAdvice,
+  didIJustRelapseAdvice,
+  whenDoesItGetEasierAdvice,
   // mentalhealthNotExerciseAdvice,
   // amIAddictedAdvice,
   // biggestDifference,
@@ -102,6 +104,7 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
           {createStartMessageLink(SendMessageType.StartMasturbateWithoutPornAdvice, 'purple', dbUser.username, masturbateWithoutPornAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartBiggestBenefitPostAddictionAdvice, 'purple', dbUser.username, biggestBenefitPostAddictionAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartPartnerAdvice, 'purple', dbUser.username, partnerAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartDidIJustRelapseAdvice, 'purple', dbUser.username, didIJustRelapseAdvice(usernameConfig?.forumType), usernameConfig)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig?.forumType), usernameConfig)}
@@ -110,6 +113,7 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
           {createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartWhenDoesItGetEasierAdvice, 'purple', dbUser.username, whenDoesItGetEasierAdvice(usernameConfig?.forumType), usernameConfig)}
 
           {createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig?.forumType), usernameConfig)}

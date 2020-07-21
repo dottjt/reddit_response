@@ -13,25 +13,9 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
-- Did I just relapse or not? MESSAGE If you have to ask, then generally yes. Although
-
-// Although not necessarily a relapse, indicates that you don't have control over your mind.
-
-- when does it get easier - It gets easier once you learn to develop control over your mind. // MESSAGE
-
 - Fetish is irrelevant. MESSAGE
-
-- Message compose page to have an inferno render in order to set user as hostile.
-- Should show DONE if they have EVER received a final message. Period.
-- If done, remove everything so it takes up less space.
-
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
-- split up filter, for sure.
 - Target the nofap website, not just reddit. Increase your userbase :)
-
-// Send Final BANNER is not correct, please align with how it's being done in the filters. It will show purely if it's middle, but the use has only sent a start, which is wrong.
-
-- Remove did this count as relapse posts if I'm not addressing them
 
 ## Nice To Have
 
@@ -40,9 +24,17 @@ Although there are a heap of features I can build into it, I would consider it m
 - fix up the inferno renders at the top, they're a bit of a mess, ya'll.
 - Track original post as part of the message.
 - Also, save the date (user chatted)
+- If done, remove everything so it takes up less space. (unsure about this one, because they still might be asking a question)
 
 ## DONE
 
+- Remove did this count as relapse posts if I'm not addressing them (I made this into it's own message :))
+- split up filter, for sure.
+- Send Final BANNER is not correct, please align with how it's being done in the filters. It will show purely if it's middle, but the use has only sent a start, which is wrong. (all works now, yay!)
+- Should show DONE if they have EVER received a final message. Period.
+- Message compose page to have an inferno render in order to set user as hostile.
+- Did I just relapse or not? MESSAGE If you have to ask, then generally yes. Although
+- when does it get easier - It gets easier once you learn to develop control over your mind. // MESSAGE
 - in replyFilter configure it so that user:start:reply can allow me to send users the right messages
 - print the list of all the titles which were deleted.
 - print the post title under the a-link, so I can validate them.
