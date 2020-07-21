@@ -1,5 +1,5 @@
 
-import { checkUsernamesFetch } from '../util/httpResponses';
+import { checkUsernames } from '../util/httpResponses';
 
 import {
   scrollToSpecifiedDate,
@@ -19,6 +19,7 @@ import {
   getUsernameMarker
 } from '../util/config'
 import { filterNewNoFapMessages } from '../util/filter/noFapNewFilter';
+import { UserForumType } from '../types/serverTypes';
 
 'use strict';
 
@@ -92,7 +93,7 @@ const main = async () => {
     console.log('timeframe: ', TIMEFRAME, 'username: ', usernameConfig.usernameValue);
 
     await scrollToSpecifiedDate(TIMEFRAME, usernameConfig);
-    const users: CompiledFullUserObject[] = await checkUsernamesFetch({ usernames: getAllNoFapNewUsernames() });
+    const users: CompiledFullUserObject[] = await checkUsernames({ usernames: getAllNoFapNewUsernames(), forum_type: UserForumType.Reddit });
     populateWebpageInformation(users, usernameConfig);
 
     setTimeout(function() {

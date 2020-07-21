@@ -33,6 +33,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   || new RegExp(/(down side|downside)/i).test(titleText)
   || new RegExp(/a piece of advice/i).test(titleText)
   || new RegExp(/for those who relapse/i).test(titleText)
+  || new RegExp(/sexting/i).test(titleText)
   || new RegExp(/i made it/i).test(titleText)
   || new RegExp(/download the app/i).test(titleText)
   || new RegExp(/(celebrate)/i).test(titleText)
@@ -149,9 +150,9 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
     // Deleted: undefined - guys i am 4 days through and i feel the urge to fap more than ever. any tips other than taking cold showers???
 
 export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
-  new RegExp(/^(day|week) \d+ (complete|done|free)/i).test(titleText)
-  || new RegExp(/\d+ (week|day).* (complete|done|free)/i).test(titleText)
-  || new RegExp(/(1st|first) (week|month) complete/i).test(titleText)
+  new RegExp(/^(day|week) \d+ (complete|done|free|strong)/i).test(titleText)
+  || new RegExp(/\d+ (week|day).* (complete|done|free|strong)/i).test(titleText)
+  || new RegExp(/(1st|first) (week|month) (complete|done|free|strong)/i).test(titleText)
   // || new RegExp(/^\d+th day/i).test(titleText)
   // || new RegExp(/beginning of week/i).test(titleText) // look into this
   // || new RegExp(/dreams/i).test(titleText) // look into this
@@ -161,6 +162,8 @@ export const toRemoveFinal = (titleText: string, flairText: string): boolean =>
   // || new RegExp(/^\d+ (week|weeks) in/i).test(titleText)
   || new RegExp(/mission \.*? accomplished/i).test(titleText)
   || new RegExp(/completed \d+ (days|weeks) today/i).test(titleText)
+  || new RegExp(/celebrating (1|one) (week|month)/i).test(titleText)
+
   // || new RegExp(/got to 90 days/i).test(titleText)
 
   // month free

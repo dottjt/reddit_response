@@ -19,8 +19,6 @@ const WATCH_RESPONSES_DIRECTORY = path.resolve(__dirname, '..', 'util', 'respons
 const WATCH_UTIL_DIRECTORY = path.resolve(__dirname, '..', 'util');
 const WATCH_COMPONENTS_DIRECTORY = path.resolve(__dirname, '..', 'components');
 
-const OUTPUT_SCRIPT_DIRECTORY = path.resolve(__dirname, 'scripts');
-
 const tsTransformer = () => ({
   before: [transformInferno()],
   after: [],
@@ -91,6 +89,7 @@ const main = async () => {
   const messageInboxScriptPre = path.resolve(__dirname, '..', 'prescripts', 'messageInboxScriptPre.tsx');
   const noFapNewSubredditPre = path.resolve(__dirname, '..', 'prescripts', 'noFapNewSubredditPre.tsx');
   const retrieveCastboxLinksPre = path.resolve(__dirname, '..', 'prescripts', 'retrieveCastboxLinksPre.ts');
+  const noFapForumPre = path.resolve(__dirname, '..', 'prescripts', 'noFapForumPre.ts');
 
   // WATCH_PRE_SCRIPT_DIRECTORY,
 
@@ -99,10 +98,10 @@ const main = async () => {
   chokidar.watch([ messageInboxScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageInboxScriptPre.tsx'], event, path), 2000));
   chokidar.watch([ noFapNewSubredditPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapNewSubredditPre.tsx'], event, path), 2000));
   chokidar.watch([ retrieveCastboxLinksPre ]).on('change', throttle((event, path) => chokidarHandler(['retrieveCastboxLinksPre.ts'], event, path), 2000));
+  chokidar.watch([ noFapForumPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapForumPre.ts'], event, path), 2000));
   chokidar.watch([ WATCH_COMPONENTS_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY ]).on('change', throttle((event, path) => chokidarHandler(dir, event, path), 2000));
 
   // make a few different ones
-
 };
 
 // QUICK REFERENCE

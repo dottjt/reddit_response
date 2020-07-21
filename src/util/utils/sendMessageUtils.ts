@@ -1,6 +1,6 @@
-import { SendMessageType } from '../types/serverTypes';
-import { PopulateReceivedMessagePayload } from '../types/tamperMonkeyTypes';
-import { sendNewMessage } from './httpResponses';
+import { SendMessageType, UserForumType } from '../../types/serverTypes';
+import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
+import { sendNewMessage } from '../httpResponses';
 
 export const openReplyLink = async (containerDiv) => {
   const entry = containerDiv.children[4];
@@ -84,6 +84,7 @@ export const populateMessageAndSend = async (
         message: textArea.value,
         send_date: new Date().toString(),
         type: messageType,
+        forum_type: UserForumType.Reddit
       }
       await sendNewMessage(dataPayload);
       submitButton.click();
@@ -98,6 +99,7 @@ export const populateMessageAndSend = async (
             message: textArea.value,
             send_date: new Date().toString(),
             type: messageType,
+            forum_type: UserForumType.Reddit
           }
           await sendNewMessage(dataPayload);
         }

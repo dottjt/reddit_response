@@ -129,6 +129,65 @@
         }
     };
 
+    var UserType;
+    (function (UserType) {
+        UserType["FreshUser"] = "Fresh User";
+        UserType["UserNotRespondedBack"] = "User Not Responded Back";
+        UserType["FollowMessageSent"] = "User Follow Message Sent";
+        UserType["UserRespondedBack"] = "User Responded Back";
+        UserType["UserHostile"] = "Hostile User";
+    })(UserType || (UserType = {}));
+    var SendMessageType;
+    (function (SendMessageType) {
+        SendMessageType["StartAdviceStart"] = "start:advice:start";
+        SendMessageType["StartAdviceStartAgain"] = "start:advice:startAgain";
+        SendMessageType["StartAdviceGeneral"] = "start:advice:general";
+        SendMessageType["StartAdviceRelapse"] = "start:advice:relapse";
+        SendMessageType["StartAdviceStruggle"] = "start:advice:struggle";
+        SendMessageType["StartAdviceAge"] = "start:advice:age";
+        SendMessageType["StartAdviceAbstain"] = "start:advice:abstain";
+        SendMessageType["StartAdviceFlatline"] = "start:advice:flatline";
+        SendMessageType["StartAdviceWetdreamAdvice"] = "start:advice:wetdreamAdvice";
+        SendMessageType["StartAdvicePornBlockersAdvice"] = "start:advice:pornBlockersAdvice";
+        SendMessageType["StartAdviceIsWatchingPornRelapseAdvice"] = "start:advice:isWatchingPornRelapseAdvice";
+        SendMessageType["StartNoReasonToRelapseAdvice"] = "start:advice:noReasonToRelapse";
+        SendMessageType["StartAccountabilityPartner"] = "start:accountability:accountabilityPartner";
+        // StartStraightToGuide = 'start:advice:straightToGuide',
+        SendMessageType["StartPartnerAdvice"] = "start:advice:partner";
+        SendMessageType["StartMasturbateWithoutPornAdvice"] = "start:advice:masturbateWithoutPorn";
+        SendMessageType["StartBiggestBenefitPostAddictionAdvice"] = "start:advice:biggestBenefitPostAddiction";
+        SendMessageType["StartDealingWithUrgesAdvice"] = "start:advice:dealingWithUrges";
+        SendMessageType["MiddleGuideIfYouWouldLikeToLearnMore"] = "middle:guide:learnmore";
+        SendMessageType["MiddleGuideNoWorries"] = "middle:guide:noworries";
+        SendMessageType["MiddleGuideLinkYou"] = "middle:guide:linkyou";
+        SendMessageType["MiddleGuideMeditationAdvice"] = "middle:guide:meditationAdvice";
+        SendMessageType["FinalHardTime"] = "final:disagree:hardTime";
+        SendMessageType["FinalFantastic"] = "final:agree:fantastic";
+        SendMessageType["FinalJoinSubreddit"] = "final:join:subreddit";
+        SendMessageType["FinalShareResources"] = "final:share:resources";
+        SendMessageType["FollowRelapseAdvice"] = "follow:advice:relapse";
+        SendMessageType["FollowMeditationAdvice"] = "follow:advice:meditation";
+        SendMessageType["FollowStruggleAdvice"] = "follow:advice:struggle";
+        SendMessageType["FollowNotSmoothlyAdvice"] = "follow:advice:notSmoothly";
+        SendMessageType["UserReplyCustom"] = "user:reply:custom";
+        SendMessageType["UserReplyStart"] = "user:reply:start";
+        SendMessageType["UserReplyMiddle"] = "user:reply:middle";
+        SendMessageType["UserReplyFinal"] = "user:reply:final";
+        SendMessageType["UserReplyFollow"] = "user:reply:follow";
+        SendMessageType["NFDCustomSend"] = "nfd:custom:send";
+        SendMessageType["NA"] = "NA";
+    })(SendMessageType || (SendMessageType = {}));
+    var MessageType;
+    (function (MessageType) {
+        MessageType["Historic"] = "Historic";
+        MessageType["NonHistoric"] = "NonHistoric";
+    })(MessageType || (MessageType = {}));
+    var UserForumType;
+    (function (UserForumType) {
+        UserForumType["NoFap"] = "NoFap";
+        UserForumType["Reddit"] = "Reddit";
+    })(UserForumType || (UserForumType = {}));
+
     var iFrame = document.querySelector('iframe');
     var sendMessage = function (_a) {
         var toInput = _a.toInput, subjectInput = _a.subjectInput, messageInput = _a.messageInput, type = _a.type, timer = _a.timer;
@@ -147,6 +206,7 @@
                             subject: subjectInput,
                             message: messageInput,
                             send_date: new Date().toString(),
+                            forum_type: UserForumType.Reddit,
                             type: type
                         };
                         return [4 /*yield*/, sendNewMessage(dataPayload)];

@@ -16,8 +16,8 @@ import {
 } from '../util/responses/final';
 
 import { PreviousMessageInformation, UserInformation, SendUserNoteForm, MarkUserHostileButton, MarkUserChattedButton, SetLastInboxMessageUsernameButton } from './ComponentsUtil';
-import { SendMessageType, LastMessageType } from '../types/serverTypes';
-import { populateMessageAndSend } from '../util/sendMessageUtils';
+import { SendMessageType, LastMessageType, UserForumType } from '../types/serverTypes';
+import { populateMessageAndSend } from '../util/utils/sendMessageUtils';
 
 const createReplyMessageLink = (
   messageType: SendMessageType,
@@ -70,7 +70,7 @@ type ReplyUserPanelProps = {
   numberOfMessagesFromThisUser: number;
   isUserLastMessagedUser: boolean;
   otherUserMessages: { message: string; order: string }[];
-  userReplyMessage: string;
+  forum_type: UserForumType;
 }
 
 const ReplyUserPanel = ({
@@ -80,7 +80,7 @@ const ReplyUserPanel = ({
   numberOfMessagesFromThisUser,
   isUserLastMessagedUser,
   otherUserMessages,
-  userReplyMessage
+  forum_type
 }: ReplyUserPanelProps) => {
   return (
     <div>
@@ -90,7 +90,7 @@ const ReplyUserPanel = ({
 
       <UserInformation dbUser={dbUser} numberOfMessagesFromThisUser={numberOfMessagesFromThisUser} />
       <div style={{ display: 'flex' }}>
-        <SendUserNoteForm username={dbUser.username} />
+        <SendUserNoteForm username={dbUser.username} forum_type={forum_type} />
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
         <SetLastInboxMessageUsernameButton username={dbUser.username} message='' />

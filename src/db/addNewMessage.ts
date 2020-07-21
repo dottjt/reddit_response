@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import knex from '../util/knex';
 
-import { Message, SendMessageType } from '../types/serverTypes';
+import { Message, SendMessageType, UserForumType } from '../types/serverTypes';
 
 import { toMelbourneDateString } from '../util/utils/commonUtils';
 
@@ -14,6 +14,7 @@ type AddNewMessageProps = {
   message: string;
   send_date: string;
   type: SendMessageType;
+  forum_type: UserForumType;
 }
 
 const addNewMessage = async ({
@@ -23,8 +24,9 @@ const addNewMessage = async ({
   message,
   send_date,
   type,
+  forum_type,
 }: AddNewMessageProps): Promise<void> => {
-  await validateUser(username_receiving, false);
+  await validateUser(username_receiving, false, forum_type);
 
   const doesMessageExist = await knex<Message>('messages').where({
     username_receiving, username_sending, send_date: toMelbourneDateString(new Date(send_date))

@@ -15,6 +15,7 @@ export type User = {
   username: string;
   is_hostile?: boolean;
   is_historic?: boolean;
+  forum_type: string;
   user_chat_function_utilised?: boolean;
 } & LinkSentObject;
 
@@ -47,10 +48,10 @@ export enum SendMessageType {
   StartNoReasonToRelapseAdvice = 'start:advice:noReasonToRelapse',
   StartAccountabilityPartner = 'start:accountability:accountabilityPartner',
   // StartStraightToGuide = 'start:advice:straightToGuide',
-  StartPartnerAdvice = 'start::advice:partner',
-  StartMasturbateWithoutPornAdvice = 'start::advice:masturbateWithoutPorn',
-  StartBiggestBenefitPostAddictionAdvice = 'start::advice:biggestBenefitPostAddiction',
-  StartDealingWithUrgesAdvice = 'start::advice:dealingWithUrges',
+  StartPartnerAdvice = 'start:advice:partner',
+  StartMasturbateWithoutPornAdvice = 'start:advice:masturbateWithoutPorn',
+  StartBiggestBenefitPostAddictionAdvice = 'start:advice:biggestBenefitPostAddiction',
+  StartDealingWithUrgesAdvice = 'start:advice:dealingWithUrges',
 
   MiddleGuideIfYouWouldLikeToLearnMore = 'middle:guide:learnmore',
   MiddleGuideNoWorries = 'middle:guide:noworries',
@@ -97,4 +98,9 @@ export enum MessageType {
 export type LastMessageType = {
   type: string;
   colour: string;
+}
+
+export enum UserForumType {
+  NoFap = 'NoFap',
+  Reddit = 'Reddit',
 }

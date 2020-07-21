@@ -7,6 +7,7 @@ export async function up(knex: Knex): Promise<any> {
     table.boolean('is_hostile');
     table.boolean('is_historic');
 
+
     table.timestamps(true, true);
   });
 }

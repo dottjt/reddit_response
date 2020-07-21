@@ -1,14 +1,14 @@
 import { render } from 'inferno';
 import { createElement } from 'inferno-create-element';
 
-import { checkServerRunning } from './httpResponses';
+import { checkServerRunning } from '../httpResponses';
 
 import {
   ConfigType,
-} from '../util/config'
-import { SendMessageType } from '../types/serverTypes';
-import { openNewLink } from './sendMessageUtils';
-import UserPanel from '../components/UserPanel';
+} from '../../util/config'
+import { SendMessageType } from '../../types/serverTypes';
+import { openNewLink } from '../utils/sendMessageUtils';
+import UserPanel from '../../components/UserPanel';
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');

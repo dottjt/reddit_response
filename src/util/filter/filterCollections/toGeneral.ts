@@ -14,10 +14,14 @@ export const toGeneralAdvice = (titleText: string, flairText: string): boolean =
   || new RegExp(/It's time to stop/i).test(titleText)
   || new RegExp(/Beginner, need some advice/i).test(titleText)
   || new RegExp(/need some general advice/i).test(titleText)
+  || new RegExp(/I want to stop masturbat/i).test(titleText)
   || new RegExp(/how to get past .* (week|days|day)/i).test(titleText)
   || new RegExp(/Trying Nofap .* years/i).test(titleText)
   || new RegExp(/I keep failing/i).test(titleText)
+  || new RegExp(/need ?(some)? help with stopping/i).test(titleText)
+  || new RegExp(/need help before (it|it is|it's) too late/i).test(titleText)
   || new RegExp(/starting over/i).test(titleText)
+  || new RegExp(/need (nofap|no fap) tips/i).test(titleText)
 
 
   // || new RegExp(/urges keep coming/i).test(titleText)

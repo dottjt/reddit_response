@@ -6,7 +6,7 @@ import {
   closeTabAfterDelay
 } from '../util/utils/messageComposeUtils';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
-import { SendMessageType } from '../types/serverTypes';
+import { SendMessageType, UserForumType } from '../types/serverTypes';
 
 'use strict';
 
@@ -34,6 +34,7 @@ const sendMessage = async ({
       subject: subjectInput,
       message: messageInput,
       send_date: new Date().toString(),
+      forum_type: UserForumType.Reddit,
       type
     };
 

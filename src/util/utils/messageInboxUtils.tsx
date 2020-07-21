@@ -2,12 +2,12 @@
 import { render } from 'inferno';
 import { createElement } from 'inferno-create-element';
 
-import { latestUnreadMessagesInformation, populateReceivedMessage } from './httpResponses';
-import { INBOX_LAST_MESSAGE_USER } from './config';
-import { PopulateReceivedMessagePayload, PopulateReceivedMessagePayloadEXTREME, CompiledFullUserObject } from '../types/tamperMonkeyTypes';
-import { SendMessageType } from '../types/serverTypes';
+import { latestUnreadMessagesInformation, populateReceivedMessage } from '../httpResponses';
+import { INBOX_LAST_MESSAGE_USER } from '../config';
+import { PopulateReceivedMessagePayload, PopulateReceivedMessagePayloadEXTREME, CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 import { populateMessageAndSend } from './sendMessageUtils';
-import ReplyUserPanel from '../components/ReplyUserPanel';
+import ReplyUserPanel from '../../components/ReplyUserPanel';
+import { SendMessageType, UserForumType } from '../../types/serverTypes';
 
 // messageInboxScriptPre.tsx
 
@@ -42,7 +42,8 @@ export const generateReplyMessageList = (pageMessages): PopulateReceivedMessageP
       username_sending: recipient,
       message,
       date,
-      type: SendMessageType.UserReplyCustom // NOTE: This will be overwritten at a later stage.
+      type: SendMessageType.UserReplyCustom, // NOTE: This will be overwritten at a later stage.
+      forum_type: UserForumType.Reddit
     }
   })
 );
@@ -71,7 +72,7 @@ export const compileReplyMessageList = async (filteredMessageList: PopulateRecei
   let finalMessageList: PopulateReceivedMessagePayloadEXTREME[] = [];
 
   for (const item of filteredMessageList) {
-    const compiledUser: CompiledFullUserObject = await latestUnreadMessagesInformation({ username: item.username_sending });
+    const compiledUser: CompiledFullUserObject = await latestUnreadMessagesInformation({ username: item.username_sending, forum_type: UserForumType.Reddit });
     const isUserLastMessagedUser: boolean = INBOX_LAST_MESSAGE_USER === compiledUser.username;
 
     const otherUserMessages: { message: string, order: string }[] = filteredMessageList
@@ -91,7 +92,7 @@ export const compileReplyMessageList = async (filteredMessageList: PopulateRecei
     const userResponseType: SendMessageType = retrieveUserResponseType(NFDResponseTypeString);
 
     const numberOfMessagesFromThisUser: number = filteredMessageList.filter(item => item.username_sending === compiledUser.username).length;
-    const userReplyMessage: string = (item?.containerDiv?.querySelector('.md')?.children[0] as HTMLElement)?.innerText;
+    // const userReplyMessage: string = (item?.containerDiv?.querySelector('.md')?.children[0] as HTMLElement)?.innerText;
 
     const updatedItem = {
       ...item,
@@ -106,7 +107,6 @@ export const compileReplyMessageList = async (filteredMessageList: PopulateRecei
       isUserLastMessagedUser,
       otherUserMessages,
       numberOfMessagesFromThisUser,
-      userReplyMessage,
     })
   }
 
@@ -149,11 +149,12 @@ export const renderReplyUserPanel = (
     if (domContainer) {
       render(<ReplyUserPanel
         dbUser={item.compiledUser}
+        forum_type={UserForumType.Reddit}
         previousMessageInformation={item}
         otherUserMessages={item.otherUserMessages}
         numberOfMessagesFromThisUser={item.numberOfMessagesFromThisUser}
         isUserLastMessagedUser={item.isUserLastMessagedUser}
-        userReplyMessage={item.userReplyMessage}
+        // userReplyMessage={item.userReplyMessage}
         containerDiv={item.containerDiv} />, domContainer);
     }
   }

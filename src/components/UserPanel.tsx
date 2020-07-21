@@ -29,7 +29,7 @@ import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { UserType, SendMessageType } from '../types/serverTypes';
 import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton, MarkUserChattedButton } from './ComponentsUtil';
 import { ConfigType } from '../util/config';
-import { openNewLink, generatePrelimUrl } from '../util/sendMessageUtils';
+import { openNewLink, generatePrelimUrl } from '../util/utils/sendMessageUtils';
 import { followRelapseAdvice, followMeditationAdvice, followStruggleAdvice, followNotSmoothlyAdvice } from '../util/responses/follow';
 // import ReactTooltip from 'react-tooltip';
 

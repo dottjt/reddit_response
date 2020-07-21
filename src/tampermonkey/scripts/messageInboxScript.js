@@ -111,10 +111,10 @@
         SendMessageType["StartNoReasonToRelapseAdvice"] = "start:advice:noReasonToRelapse";
         SendMessageType["StartAccountabilityPartner"] = "start:accountability:accountabilityPartner";
         // StartStraightToGuide = 'start:advice:straightToGuide',
-        SendMessageType["StartPartnerAdvice"] = "start::advice:partner";
-        SendMessageType["StartMasturbateWithoutPornAdvice"] = "start::advice:masturbateWithoutPorn";
-        SendMessageType["StartBiggestBenefitPostAddictionAdvice"] = "start::advice:biggestBenefitPostAddiction";
-        SendMessageType["StartDealingWithUrgesAdvice"] = "start::advice:dealingWithUrges";
+        SendMessageType["StartPartnerAdvice"] = "start:advice:partner";
+        SendMessageType["StartMasturbateWithoutPornAdvice"] = "start:advice:masturbateWithoutPorn";
+        SendMessageType["StartBiggestBenefitPostAddictionAdvice"] = "start:advice:biggestBenefitPostAddiction";
+        SendMessageType["StartDealingWithUrgesAdvice"] = "start:advice:dealingWithUrges";
         SendMessageType["MiddleGuideIfYouWouldLikeToLearnMore"] = "middle:guide:learnmore";
         SendMessageType["MiddleGuideNoWorries"] = "middle:guide:noworries";
         SendMessageType["MiddleGuideLinkYou"] = "middle:guide:linkyou";
@@ -140,6 +140,11 @@
         MessageType["Historic"] = "Historic";
         MessageType["NonHistoric"] = "NonHistoric";
     })(MessageType || (MessageType = {}));
+    var UserForumType;
+    (function (UserForumType) {
+        UserForumType["NoFap"] = "NoFap";
+        UserForumType["Reddit"] = "Reddit";
+    })(UserForumType || (UserForumType = {}));
 
     // <content>Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
     var middleWrittenGuide = ("If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
@@ -153,10 +158,28 @@
     var finalHardTime = ("Yeah, you might have a hard time addressing your addiction without maintaining a consistent mental health routine. Especially given addiction is a mental health problem at it's core.\n\nUltimately the important thing is being consistent with your mental health. Usually this means at least 10 minutes meditation each day. So if you can commit to that you'll be fine.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n");
 
     var toNotRespond = function (messagePayload) {
-        return new RegExp(/no thank/i).test(messagePayload.message)
+        return new RegExp(/no (thank|sorry)/i).test(messagePayload.message)
             || new RegExp(/(I'm|I’m|I am|im) not interest/i).test(messagePayload.message)
-            || new RegExp(/I was interest/i).test(messagePayload.message);
+            || new RegExp(/I was interest/i).test(messagePayload.message)
+            || new RegExp(/not going to read/i).test(messagePayload.message)
+            || new RegExp(/fuck off/i).test(messagePayload.message)
+            || new RegExp(/not interested/i).test(messagePayload.message);
     };
+    var toMeditateGuide = function (messagePayload) {
+        return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
+            || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
+            || new RegExp(/tips on meditating?/i).test(messagePayload.message)
+            || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
+            || new RegExp(/^How do you meditate?$/i).test(messagePayload.message);
+    };
+    var toHardTime = function (messagePayload) {
+        return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
+            || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
+            || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
+            || new RegExp(/I haven't done much/i).test(messagePayload.message)
+            || new RegExp(/I just distract myself/i).test(messagePayload.message);
+    };
+
     var toNoWorriesGuide = function (messagePayload) {
         return new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
             || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
@@ -219,11 +242,7 @@
             || new RegExp(/send website link/i).test(messagePayload.message)
             || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message);
     };
-    // I would love to hear your story and any advice you got for me
-    // i'd be ,
-    // article
-    // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
-    // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
+
     var toLinkYouGuide = function (messagePayload) {
         return new RegExp(/(what's|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
             || new RegExp(/name of (ur|your) website/i).test(messagePayload.message)
@@ -235,22 +254,9 @@
             || new RegExp(/where can i find the website?/i).test(messagePayload.message)
             || new RegExp(/links to any resources?/i).test(messagePayload.message);
     };
-    var toMeditateGuide = function (messagePayload) {
-        return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
-            || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
-            || new RegExp(/tips on meditating?/i).test(messagePayload.message)
-            || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
-            || new RegExp(/^How do you meditate?$/i).test(messagePayload.message);
-    };
-    var toHardTime = function (messagePayload) {
-        return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
-            || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
-            || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
-            || new RegExp(/I haven't done much/i).test(messagePayload.message)
-            || new RegExp(/I just distract myself/i).test(messagePayload.message);
-    };
+
     var toJoinSubreddit = function (messagePayload) {
-        return new RegExp(/(ty|thank you|thanks)/i).test(messagePayload.message)
+        return new RegExp(/(ty|thank you|thanks|thankyou)/i).test(messagePayload.message)
             || new RegExp(/(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
             || new RegExp(/will visit/i).test(messagePayload.message)
             || new RegExp(/visit ?(.*) today/i).test(messagePayload.message)
@@ -2586,6 +2592,7 @@
                         message: textArea.value,
                         send_date: new Date().toString(),
                         type: messageType,
+                        forum_type: UserForumType.Reddit
                     };
                     return [4 /*yield*/, sendNewMessage(dataPayload)];
                 case 1:
@@ -2607,6 +2614,7 @@
                                         message: textArea.value,
                                         send_date: new Date().toString(),
                                         type: messageType,
+                                        forum_type: UserForumType.Reddit
                                     };
                                     return [4 /*yield*/, sendNewMessage(dataPayload)];
                                 case 1:
@@ -2677,7 +2685,11 @@
                         var _a;
                         return __generator(this, function (_b) {
                             switch (_b.label) {
-                                case 0: return [4 /*yield*/, sendNewUserNote({ username: this.props.username, message: (_a = this.state) === null || _a === void 0 ? void 0 : _a.message })];
+                                case 0: return [4 /*yield*/, sendNewUserNote({
+                                        username: this.props.username,
+                                        message: (_a = this.state) === null || _a === void 0 ? void 0 : _a.message,
+                                        forum_type: this.props.forum_type
+                                    })];
                                 case 1:
                                     _b.sent();
                                     this.setState({ message: '' });
@@ -2755,8 +2767,8 @@
     };
     var ReplyUserPanel = function (_a) {
         var _b, _c;
-        var dbUser = _a.dbUser, containerDiv = _a.containerDiv, previousMessageInformation = _a.previousMessageInformation, numberOfMessagesFromThisUser = _a.numberOfMessagesFromThisUser, isUserLastMessagedUser = _a.isUserLastMessagedUser, otherUserMessages = _a.otherUserMessages, userReplyMessage = _a.userReplyMessage;
-        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$2(1, "p", null, dbUser.absoluteLastSentMessageType.type, 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
+        var dbUser = _a.dbUser, containerDiv = _a.containerDiv, previousMessageInformation = _a.previousMessageInformation, numberOfMessagesFromThisUser = _a.numberOfMessagesFromThisUser, isUserLastMessagedUser = _a.isUserLastMessagedUser, otherUserMessages = _a.otherUserMessages, forum_type = _a.forum_type;
+        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username, "forum_type": forum_type }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$2(1, "p", null, dbUser.absoluteLastSentMessageType.type, 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
     };
 
     var createComponentVNode$2 = createComponentVNode;
@@ -2788,7 +2800,8 @@
             username_sending: recipient,
             message: message,
             date: date,
-            type: SendMessageType.UserReplyCustom // NOTE: This will be overwritten at a later stage.
+            type: SendMessageType.UserReplyCustom,
+            forum_type: UserForumType.Reddit
         };
     })); };
     var filterReplyMessageList = function (messageList) { return messageList.filter(function (message) { return message.date &&
@@ -2809,16 +2822,16 @@
     };
     var compileReplyMessageList = function (filteredMessageList) { return __awaiter(void 0, void 0, void 0, function () {
         var finalMessageList, _loop_1, _i, filteredMessageList_1, item;
-        var _b, _c, _d, _e;
-        return __generator(this, function (_f) {
-            switch (_f.label) {
+        var _b;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
                     finalMessageList = [];
                     _loop_1 = function (item) {
-                        var compiledUser, isUserLastMessagedUser, otherUserMessages, NFDResponseTypeString, userResponseType, numberOfMessagesFromThisUser, userReplyMessage, updatedItem, updatedCompiledUser;
+                        var compiledUser, isUserLastMessagedUser, otherUserMessages, NFDResponseTypeString, userResponseType, numberOfMessagesFromThisUser, updatedItem, updatedCompiledUser;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
-                                case 0: return [4 /*yield*/, latestUnreadMessagesInformation({ username: item.username_sending })];
+                                case 0: return [4 /*yield*/, latestUnreadMessagesInformation({ username: item.username_sending, forum_type: UserForumType.Reddit })];
                                 case 1:
                                     compiledUser = _a.sent();
                                     isUserLastMessagedUser = INBOX_LAST_MESSAGE_USER === compiledUser.username;
@@ -2836,28 +2849,26 @@
                                     NFDResponseTypeString = (_b = (_a = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _a === void 0 ? void 0 : _a.type) === null || _b === void 0 ? void 0 : _b.split(':')[0];
                                     userResponseType = retrieveUserResponseType(NFDResponseTypeString);
                                     numberOfMessagesFromThisUser = filteredMessageList.filter(function (item) { return item.username_sending === compiledUser.username; }).length;
-                                    userReplyMessage = (_e = (_d = (_c = item === null || item === void 0 ? void 0 : item.containerDiv) === null || _c === void 0 ? void 0 : _c.querySelector('.md')) === null || _d === void 0 ? void 0 : _d.children[0]) === null || _e === void 0 ? void 0 : _e.innerText;
                                     updatedItem = __assign(__assign({}, item), { type: userResponseType });
                                     return [4 /*yield*/, populateReceivedMessage({ message: updatedItem })];
                                 case 2:
                                     updatedCompiledUser = _a.sent();
                                     finalMessageList.push(__assign(__assign({}, updatedItem), { compiledUser: updatedCompiledUser, isUserLastMessagedUser: isUserLastMessagedUser,
                                         otherUserMessages: otherUserMessages,
-                                        numberOfMessagesFromThisUser: numberOfMessagesFromThisUser,
-                                        userReplyMessage: userReplyMessage }));
+                                        numberOfMessagesFromThisUser: numberOfMessagesFromThisUser }));
                                     return [2 /*return*/];
                             }
                         });
                     };
                     _i = 0, filteredMessageList_1 = filteredMessageList;
-                    _f.label = 1;
+                    _c.label = 1;
                 case 1:
                     if (!(_i < filteredMessageList_1.length)) return [3 /*break*/, 4];
                     item = filteredMessageList_1[_i];
                     return [5 /*yield**/, _loop_1(item)];
                 case 2:
-                    _f.sent();
-                    _f.label = 3;
+                    _c.sent();
+                    _c.label = 3;
                 case 3:
                     _i++;
                     return [3 /*break*/, 1];
@@ -2898,7 +2909,7 @@
             (_a = item.containerDiv.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(root, item.containerDiv);
             var domContainer = documentSub.querySelector("#" + rootId);
             if (domContainer) {
-                render(createComponentVNode$2(2, ReplyUserPanel, { "dbUser": item.compiledUser, "previousMessageInformation": item, "otherUserMessages": item.otherUserMessages, "numberOfMessagesFromThisUser": item.numberOfMessagesFromThisUser, "isUserLastMessagedUser": item.isUserLastMessagedUser, "userReplyMessage": item.userReplyMessage, "containerDiv": item.containerDiv }), domContainer);
+                render(createComponentVNode$2(2, ReplyUserPanel, { "dbUser": item.compiledUser, "forum_type": UserForumType.Reddit, "previousMessageInformation": item, "otherUserMessages": item.otherUserMessages, "numberOfMessagesFromThisUser": item.numberOfMessagesFromThisUser, "isUserLastMessagedUser": item.isUserLastMessagedUser, "containerDiv": item.containerDiv }), domContainer);
             }
         }
     };

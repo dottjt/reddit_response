@@ -15,6 +15,7 @@ const sendNewMessageRoute = async (ctx: Context, next: Next) => {
     const send_date = data.send_date;
     const message = data.message;
     const type = data.type;
+    const forum_type = data.forum_type;
 
     console.log(`sendNewMessageRoute - ${username_receiving} - ${type} - ${message}`)
 
@@ -25,6 +26,7 @@ const sendNewMessageRoute = async (ctx: Context, next: Next) => {
       message,
       send_date,
       type,
+      forum_type,
     });
 
     if (username_sending === 'NeverFapDeluxe') {

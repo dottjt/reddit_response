@@ -1,4 +1,5 @@
 import { CompiledFullUserObject, SendNewMessageSendPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload, PopulateReceivedMessagePayloadEXTREME, PopulateReceivedMessagePayload } from "../types/tamperMonkeyTypes";
+import { UserForumType } from '../types/serverTypes';
 
 const HTTPPOSToptions = (data): any => ({
   method: 'POST',
@@ -25,8 +26,8 @@ const sendPostRequest = async (dataPayload: any, urlEndpoint: string, port: stri
   }
 }
 
-export const checkUsernamesFetch =
-  async (dataPayload: { usernames: string[] }):
+export const checkUsernames =
+  async (dataPayload: { usernames: string[], forum_type: UserForumType }):
     Promise<CompiledFullUserObject[]> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/checkUsernames', '3333');
       return JSONResponse.data.users;
@@ -68,7 +69,7 @@ export const markUserChatted =
     };
 
 export const latestUnreadMessagesInformation =
-  async (dataPayload: { username: string }):
+  async (dataPayload: { username: string, forum_type: string }):
     Promise<CompiledFullUserObject> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/latestUnreadMessagesInformation', '3333');
       return JSONResponse.data.user;
@@ -94,7 +95,6 @@ export const checkServerRunning =
       const JSONResponse = await sendPostRequest({}, '/checkServerRunning', '3333');
       return JSONResponse.data.isRunning;
     };
-
 
 export const updateCastboxLinks =
   async (dataPayload: { castboxLinks: any }):

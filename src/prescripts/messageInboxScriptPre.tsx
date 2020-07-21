@@ -37,11 +37,6 @@ const saveNewUnreadPageMessages = async (
       renderReplyUserPanel(item, documentSub, counter);
     }
   }
-
-  // TODO this needs to happen before filteredMessageList = because beolw is not getting sent a final message
-  // belluomo2 true user:reply:middle user:reply:start middle:guide:noworries
-//   console.log(messagePayload.compiledUser.username, !moreThanOneMessage, messagePayload.type, lastReceivedMessage?.type, lastSentMessage?.type);
-
 }
 
 const main = async () => {

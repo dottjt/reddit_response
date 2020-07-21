@@ -1,4 +1,4 @@
-import { Message, UserType, SendMessageType, LastMessageType } from "./serverTypes";
+import { Message, UserType, SendMessageType, LastMessageType, UserForumType } from "./serverTypes";
 import { ConfigType } from '../util/config';
 
 export type CompiledFullUserObject = {
@@ -26,6 +26,7 @@ export type CompiledFullUserObject = {
 
 export type SendUserNotePayload = {
   username: string;
+  forum_type: UserForumType;
   message: string;
 }
 
@@ -46,6 +47,7 @@ export type SendNewMessageSendPayload = {
   message: string;
   send_date: string;
   type: SendMessageType;
+  forum_type: UserForumType;
 }
 
 export type PopulateReceivedMessagePayload = {
@@ -57,6 +59,7 @@ export type PopulateReceivedMessagePayload = {
   message: SendMessageType;
   date: string;
   type: SendMessageType;
+  forum_type: UserForumType;
 }
 
 export type PopulateReceivedMessagePayloadEXTREME = {
@@ -64,5 +67,5 @@ export type PopulateReceivedMessagePayloadEXTREME = {
   isUserLastMessagedUser: boolean;
   otherUserMessages: { message: string; order: string }[];
   numberOfMessagesFromThisUser: number;
-  userReplyMessage: string;
 } & PopulateReceivedMessagePayload;
+

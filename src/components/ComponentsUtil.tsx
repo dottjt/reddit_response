@@ -5,6 +5,7 @@ import { sendNewUserNote, markUserHostile, setMarker, markUserChatted, setLastIn
 import { Component } from 'inferno';
 import { ConfigType } from '../util/config';
 import { timeSince } from '../util/utils/commonUtils';
+import { UserForumType } from '../types/serverTypes';
 
 export const PreviousMessageInformation = ({ dbUser }: { dbUser: CompiledFullUserObject }) => (
   <div>
@@ -50,7 +51,7 @@ export const UserInformation = ({
   </div>
 );
 
-export class SendUserNoteForm extends Component<{ username: string }, { message: string }> {
+export class SendUserNoteForm extends Component<{ username: string, forum_type: UserForumType }, { message: string }> {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,7 +68,11 @@ export class SendUserNoteForm extends Component<{ username: string }, { message:
           style={{ 'margin-right': '1rem' }}
         />
         <button onclick={async () => {
-          await sendNewUserNote({ username: this.props.username, message: this.state?.message as string });
+          await sendNewUserNote({
+            username: this.props.username,
+            message: this.state?.message as string,
+            forum_type: this.props.forum_type
+          });
           this.setState({ message: '' });
         }}>
           Send Note

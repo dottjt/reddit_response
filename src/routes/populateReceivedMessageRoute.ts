@@ -17,6 +17,7 @@ const populateReceivedMessageRoute = async (ctx: Context, next: Next) => {
   const send_date = item.date;
   const message = item.message;
   const type = item.type;
+  const forum_type = item.forum_type;
 
   await addNewMessage({
     username_sending,
@@ -25,9 +26,10 @@ const populateReceivedMessageRoute = async (ctx: Context, next: Next) => {
     send_date,
     message,
     type,
+    forum_type,
   });
 
-  const compiledUser = await validateUser(username_sending, false);
+  const compiledUser = await validateUser(username_sending, false, forum_type);
 
   ctx.body = { data: { compiledUser } };
 }

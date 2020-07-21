@@ -21,11 +21,11 @@ export enum ForumType {
 
 export const INBOX_LAST_MESSAGE_USER = 'vijay_st';
 
-export const R_NOFAP_USERNAME = 'GiraffePuncher69';
+export const R_NOFAP_USERNAME = 'Ethanbro123';
 export const R_NOFAP_TIMESTAMP = '';
-export const R_PORN_FREE_USERNAME = 'TheDominantSpecies';
+export const R_PORN_FREE_USERNAME = 'levikiwi5090';
 export const R_PORN_FREE_TIMESTAMP = '';
-export const R_PORN_ADDICTION_USERNAME = 'mcfunion';
+export const R_PORN_ADDICTION_USERNAME = 'djangomaniac';
 export const R_PORN_ADDICTION_TIMESTAMP = '';
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';
@@ -104,6 +104,13 @@ export const getUsernameMarker = (location): ConfigType => {
       forumType: ForumType.rMuslimNofapForum
     }
   }
+
+  // // NO FAP forumns
+  // if (location.pathname.toLowerCase().includes('index.php')) {
+  //   if (location.search.includes('self-improvement')) {
+  //     //
+  //   }
+  // }
 
   return {
     usernameValue: '',

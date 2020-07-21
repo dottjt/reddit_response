@@ -22,7 +22,7 @@ Although there are a heap of features I can build into it, I would consider it m
 
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - split up filter, for sure.
-
+- Target the nofap website, not just reddit. Increase your userbase :)
 
 // Send Final BANNER is not correct, please align with how it's being done in the filters. It will show purely if it's middle, but the use has only sent a start, which is wrong.
 
