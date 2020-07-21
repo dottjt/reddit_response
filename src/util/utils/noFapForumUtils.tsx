@@ -1,3 +1,7 @@
+import { render } from 'inferno';
+import { createElement } from 'inferno-create-element';
+
+import UserPanel from '../../components/UserPanel';
 
 export const getAllNoFapNewUsernamesForum = (): string[] => {
   const discussionListItems = document.querySelectorAll('.discussionListItem');
@@ -12,4 +16,23 @@ export const createPrelimContainerForum = (): void => {
 
   // TODO Test this.
   firstElementContainer?.parentNode?.insertBefore(prelimContainer, firstElementContainer)
+}
+
+export const renderUserPanelForum = ({
+  tag, tagUsername, index, dbUser, usernameConfig
+}) => {
+  const tagUsernameFiltered = tagUsername.replace('\'','');
+
+  const rootId = `r${tagUsernameFiltered}-${index}`;
+  const root = document.createElement('div');
+  root.id = rootId;
+  tag.parentNode.insertBefore(root, tag);
+  // tag.remove();
+
+  const domContainer = document.querySelector(`#${rootId}`);
+  if (domContainer) {
+    render(<UserPanel
+      dbUser={dbUser}
+      usernameConfig={usernameConfig}/>, domContainer);
+  }
 }

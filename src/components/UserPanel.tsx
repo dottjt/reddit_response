@@ -31,6 +31,7 @@ import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, Set
 import { ConfigType } from '../util/config';
 import { openNewLink, generatePrelimUrl } from '../util/utils/sendMessageUtils';
 import { followRelapseAdvice, followMeditationAdvice, followStruggleAdvice, followNotSmoothlyAdvice } from '../util/responses/follow';
+import { Config } from 'knex';
 // import ReactTooltip from 'react-tooltip';
 
 const createStartMessageLink = (
@@ -38,8 +39,13 @@ const createStartMessageLink = (
   color: string,
   toUsername: string,
   messageText: string,
+  usernameConfig?: ConfigType
 ) => {
-  const prelimUrl = generatePrelimUrl(toUsername, messageText, messageType);
+
+  const prelimUrl = generatePrelimUrl(toUsername, messageText, messageType, usernameConfig);
+
+  // https://forum.nofap.com/index.php?conversations/add&to=YoungRockLee&title=hey
+
 
   return (
     <div>
@@ -65,7 +71,7 @@ const createStartMessageLink = (
 
 type UserPanelProps = {
   dbUser: CompiledFullUserObject;
-  usernameConfig: ConfigType;
+  usernameConfig?: ConfigType;
 }
 
 const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
@@ -75,7 +81,9 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
         <PreviousMessageInformation dbUser={dbUser} />
       )}
       <div style={{ display: 'flex' }}>
-        <SetMarkerButton username={dbUser.username} usernameConfig={usernameConfig} />
+        {usernameConfig && (
+          <SetMarkerButton username={dbUser.username} usernameConfig={usernameConfig} />
+        )}
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />
       </div>
@@ -84,32 +92,32 @@ const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
       <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
           {createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '')}
-          {createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig?.forumType), usernameConfig)}
           <h4>Custom</h4>
-          {createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartDealingWithUrgesAdvice, 'purple', dbUser.username, dealingWithUrgesAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartMasturbateWithoutPornAdvice, 'purple', dbUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartBiggestBenefitPostAddictionAdvice, 'purple', dbUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartPartnerAdvice, 'purple', dbUser.username, partnerAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartDealingWithUrgesAdvice, 'purple', dbUser.username, dealingWithUrgesAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartMasturbateWithoutPornAdvice, 'purple', dbUser.username, masturbateWithoutPornAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartBiggestBenefitPostAddictionAdvice, 'purple', dbUser.username, biggestBenefitPostAddictionAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartPartnerAdvice, 'purple', dbUser.username, partnerAdvice(usernameConfig?.forumType), usernameConfig)}
         </div>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
-          {createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig.forumType))}
-          {/* {createStartMessageLink(SendMessageType.StartAdviceAbstain, 'purple', dbUser.username, abstainingHelpAdvice(usernameConfig.forumType))} */}
-          {createStartMessageLink(SendMessageType.StartAdviceFlatline, 'purple', dbUser.username, flatlineAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig?.forumType), usernameConfig)}
+          {/* {createStartMessageLink(SendMessageType.StartAdviceAbstain, 'purple', dbUser.username, abstainingHelpAdvice(usernameConfig?.forumType), usernameConfig)} */}
+          {createStartMessageLink(SendMessageType.StartAdviceFlatline, 'purple', dbUser.username, flatlineAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig?.forumType), usernameConfig)}
 
-          {createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig?.forumType), usernameConfig)}
           <h4>Follow</h4>
-          {createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.FollowStruggleAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig.forumType))}
-          {createStartMessageLink(SendMessageType.FollowNotSmoothlyAdvice, 'purple', dbUser.username, followNotSmoothlyAdvice(usernameConfig.forumType))}
+          {createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.FollowStruggleAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig?.forumType), usernameConfig)}
+          {createStartMessageLink(SendMessageType.FollowNotSmoothlyAdvice, 'purple', dbUser.username, followNotSmoothlyAdvice(usernameConfig?.forumType), usernameConfig)}
         </div>
       </div>
     </div>

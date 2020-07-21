@@ -13,7 +13,7 @@ import { toWetDreamAdvice, toAccountabilityPartner } from './filterCollections/t
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
 
 
-export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
+export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
   shouldDeleteElementImmediately: boolean,
   sendMessageType: SendMessageType | undefined,
   prelimUrl: string | undefined
@@ -76,7 +76,6 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
     }
   }
 
-
   // FRESH USER
   if (compiledUser.userType === UserType.FreshUser) {
     // TODO
@@ -104,7 +103,7 @@ export const filterNewNoFapMessages = (compiledUser: CompiledFullUserObject, use
     }
 
     // GENERAL MESSAGES
-    if (toGeneralAdvice(titleText, flairText)) {
+    if (toGeneralAdvice(titleText, flairText, messageText)) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceGeneral,

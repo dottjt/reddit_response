@@ -139,5 +139,4 @@ export const renderUserPanel = ({
       dbUser={dbUser}
       usernameConfig={usernameConfig}/>, domContainer);
   }
-
 }

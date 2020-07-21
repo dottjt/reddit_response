@@ -1,8 +1,9 @@
-export const toGeneralAdvice = (titleText: string, flairText: string): boolean =>
+export const toGeneralAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   new RegExp(/I need ?(.*) help/i).test(titleText)
   || new RegExp(/feel like shit/i).test(titleText)
   || new RegExp(/need some guidance/i).test(titleText)
   // || new RegExp(/needing advice/i).test(titleText)
+  || new RegExp(/I really, really need help/i).test(titleText)
   || new RegExp(/how do I avoid relapsing/i).test(titleText)
   || new RegExp(/what other steps/i).test(titleText)
   || new RegExp(/I (give up|need support|can't stop)/i).test(titleText)
@@ -23,6 +24,8 @@ export const toGeneralAdvice = (titleText: string, flairText: string): boolean =
   || new RegExp(/starting over/i).test(titleText)
   || new RegExp(/need (nofap|no fap) tips/i).test(titleText)
 
+  || new RegExp(/any tips on how to do it/i).test(messageText)
+  || new RegExp(/I wanted to know any advice/i).test(messageText)
 
   // || new RegExp(/urges keep coming/i).test(titleText)
 

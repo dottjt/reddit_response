@@ -129,6 +129,39 @@
             }
         });
     }); };
+    var markUserHostile = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserHostile', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var markUserChatted = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/markUserChatted', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
+    var setMarker = function (dataPayload) { return __awaiter(void 0, void 0, void 0, function () {
+        var JSONResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, sendPostRequest(dataPayload, '/setMarker', '3333')];
+                case 1:
+                    JSONResponse = _a.sent();
+                    return [2 /*return*/, JSONResponse.data.message];
+            }
+        });
+    }); };
     var checkServerRunning = function () { return __awaiter(void 0, void 0, void 0, function () {
         var JSONResponse;
         return __generator(this, function (_a) {
@@ -163,6 +196,9 @@
     }
     function isNull(o) {
         return o === null;
+    }
+    function isUndefined(o) {
+        return o === void 0;
     }
     function combineFrom(first, second) {
         var out = {};
@@ -315,6 +351,14 @@
             lastValue.event === nextValue.event &&
             lastValue.data === nextValue.data);
     }
+    function mergeUnsetProperties(to, from) {
+        for (var propName in from) {
+            if (isUndefined(to[propName])) {
+                to[propName] = from[propName];
+            }
+        }
+        return to;
+    }
     function safeCall1(method, arg1) {
         return !!isFunction(method) && (method(arg1), true);
     }
@@ -339,6 +383,50 @@
         }
         if (childFlag === 0 /* UnknownChildren */) {
             normalizeChildren(vNode, vNode.children);
+        }
+        return vNode;
+    }
+    function mergeDefaultHooks(flags, type, ref) {
+        if (flags & 4 /* ComponentClass */) {
+            return ref;
+        }
+        var defaultHooks = (flags & 32768 /* ForwardRef */ ? type.render : type).defaultHooks;
+        if (isNullOrUndef(defaultHooks)) {
+            return ref;
+        }
+        if (isNullOrUndef(ref)) {
+            return defaultHooks;
+        }
+        return mergeUnsetProperties(ref, defaultHooks);
+    }
+    function mergeDefaultProps(flags, type, props) {
+        // set default props
+        var defaultProps = (flags & 32768 /* ForwardRef */ ? type.render : type).defaultProps;
+        if (isNullOrUndef(defaultProps)) {
+            return props;
+        }
+        if (isNullOrUndef(props)) {
+            return combineFrom(defaultProps, null);
+        }
+        return mergeUnsetProperties(props, defaultProps);
+    }
+    function resolveComponentFlags(flags, type) {
+        if (flags & 12 /* ComponentKnown */) {
+            return flags;
+        }
+        if (type.prototype && type.prototype.render) {
+            return 4 /* ComponentClass */;
+        }
+        if (type.render) {
+            return 32776 /* ForwardRefComponent */;
+        }
+        return 8 /* ComponentFunction */;
+    }
+    function createComponentVNode(flags, type, props, key, ref) {
+        flags = resolveComponentFlags(flags, type);
+        var vNode = new V(1 /* HasInvalidChildren */, null, null, flags, key, mergeDefaultProps(flags, type, props), mergeDefaultHooks(flags, type, ref), type);
+        if (options.createVNode) {
+            options.createVNode(vNode);
         }
         return vNode;
     }
@@ -2001,6 +2089,48 @@
             Node.prototype.$V = null;
         }
     }
+    function __render(input, parentDOM, callback, context) {
+        var lifecycle = [];
+        var rootInput = parentDOM.$V;
+        renderCheck.v = true;
+        if (isNullOrUndef(rootInput)) {
+            if (!isNullOrUndef(input)) {
+                if (input.flags & 16384 /* InUse */) {
+                    input = directClone(input);
+                }
+                mount(input, parentDOM, context, false, null, lifecycle);
+                parentDOM.$V = input;
+                rootInput = input;
+            }
+        }
+        else {
+            if (isNullOrUndef(input)) {
+                remove(rootInput, parentDOM);
+                parentDOM.$V = null;
+            }
+            else {
+                if (input.flags & 16384 /* InUse */) {
+                    input = directClone(input);
+                }
+                patch(rootInput, input, parentDOM, context, false, null, lifecycle);
+                rootInput = parentDOM.$V = input;
+            }
+        }
+        callAll(lifecycle);
+        renderCheck.v = false;
+        if (isFunction(callback)) {
+            callback();
+        }
+        if (isFunction(options.renderComplete)) {
+            options.renderComplete(rootInput, parentDOM);
+        }
+    }
+    function render(input, parentDOM, callback, context) {
+        if ( callback === void 0 ) callback = null;
+        if ( context === void 0 ) context = EMPTY_OBJ;
+
+        __render(input, parentDOM, callback, context);
+    }
 
     var QUEUE = [];
     var nextTick = typeof Promise !== 'undefined'
@@ -2180,7 +2310,79 @@
         UserForumType["Reddit"] = "Reddit";
     })(UserForumType || (UserForumType = {}));
 
+    var increaseDelayTimer = function () {
+        var delayTimer = window.localStorage.getItem('delayTimer');
+        var delayTimerNumber = parseInt(delayTimer) + 26000;
+        window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
+    };
+    var openNewLink = function (prelimUrl, messageType) {
+        var url = "" + prelimUrl;
+        if (messageType !== 'custom') {
+            var delayTimer = window.localStorage.getItem('delayTimer');
+            url = url + ("&timer=" + delayTimer);
+            increaseDelayTimer();
+        }
+        window.open(url, '_blank');
+    };
+    var generatePrelimUrl = function (toUsername, messageText, messageType, usernameConfig) {
+        if (usernameConfig) {
+            return "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
+        }
+        return "https://forum.nofap.com/index.php?conversations/add&title=Hey&to=" + toUsername + "&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
+    };
+
+    var startAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var startAgainAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". It's great to see you're starting again!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var generalAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var relapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". I'm sorry to hear you relapsed.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var struggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var flatlineAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var wetdreamAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var ageAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.\n\nThere is no such thing as reasonable when it comes to addiction. I've created a website which explains why, if you're interested.\n"); };
+    var accountabilityPartner = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"); };
+    var partnerAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
+    var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var biggestBenefitPostAddictionAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". Sorry to hear you're struggling with urges. If they're a huge issue for you then it might mean that you don't have the fundamentals down.\n\nUltimately recovery should be relatively struggle free, otherwise are you really recovering at all? I find the main thing with recovery is to focus on your mental health. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+
+    var timeSince = function (date) {
+        var seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+        var interval = Math.floor(seconds / 31536000);
+        if (interval > 1) {
+            return interval + " years";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+            return interval + " months";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+            return interval + " days";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+            return interval + " hours";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+            return interval + " minutes";
+        }
+        return Math.floor(seconds) + " seconds";
+    };
+
+    var createTextVNode$1 = createTextVNode;
     var createVNode$1 = createVNode;
+    var PreviousMessageInformation = function (_a) {
+        var dbUser = _a.dbUser;
+        return (createVNode$1(1, "div", null, [createVNode$1(1, "p", null, createVNode$1(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$1(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16), createVNode$1(1, "p", null, createVNode$1(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$1(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16)], 0));
+    };
+    var UserInformation = function (_a) {
+        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        return (createVNode$1(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$1(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$1(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$1(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$1(1, "br"), createVNode$1(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$1(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
+    };
     var SendUserNoteForm = /** @class */ (function (_super) {
         __extends(SendUserNoteForm, _super);
         function SendUserNoteForm(props) {
@@ -2212,6 +2414,87 @@
         };
         return SendUserNoteForm;
     }(Component));
+    var MarkUserHostileButton = function (_a) {
+        var username = _a.username;
+        return (createVNode$1(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, markUserHostile({ username: username })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+    var MarkUserChattedButton = function (_a) {
+        var username = _a.username;
+        return (createVNode$1(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, markUserChatted({ username: username })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+    var SetMarkerButton = function (_a) {
+        var username = _a.username, usernameConfig = _a.usernameConfig;
+        return (createVNode$1(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, setMarker({ username: username, usernameConfig: usernameConfig })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); } }));
+    };
+
+    var followRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
+    var followMeditationAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". Have you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
+    var followStruggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
+    var followNotSmoothlyAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? "on " + forum : '') + ". I'm sorry things haven't been going smoothly with your recovery.\n\nHave you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
+
+    var createComponentVNode$1 = createComponentVNode;
+    var createVNode$2 = createVNode;
+    // import ReactTooltip from 'react-tooltip';
+    var createStartMessageLink = function (messageType, color, toUsername, messageText, usernameConfig) {
+        var prelimUrl = generatePrelimUrl(toUsername, messageText, messageType, usernameConfig);
+        // https://forum.nofap.com/index.php?conversations/add&to=YoungRockLee&title=hey
+        return (createVNode$2(1, "div", null, createVNode$2(1, "a", null, messageType, 0, { "style": {
+                color: color || 'black',
+                'margin-top': '0.2rem',
+                'margin-bottom': '0.2rem',
+                'margin-left': '0.3rem',
+                'margin-right': '0.3rem',
+                'font-size': '12px',
+                display: 'inline-block',
+            }, "onclick": function () { return openNewLink(prelimUrl, messageType); } }), 0));
+    };
+    var UserPanel = function (_a) {
+        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [usernameConfig && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$2(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartDealingWithUrgesAdvice, 'purple', dbUser.username, dealingWithUrgesAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartMasturbateWithoutPornAdvice, 'purple', dbUser.username, masturbateWithoutPornAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartBiggestBenefitPostAddictionAdvice, 'purple', dbUser.username, biggestBenefitPostAddictionAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartPartnerAdvice, 'purple', dbUser.username, partnerAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceFlatline, 'purple', dbUser.username, flatlineAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$2(1, "h4", null, "Follow", 16), createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.FollowStruggleAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.FollowNotSmoothlyAdvice, 'purple', dbUser.username, followNotSmoothlyAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "style": { display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' } })], 0));
+    };
 
     var isServerRunning = function () { return __awaiter(void 0, void 0, void 0, function () {
         var message;
@@ -2226,6 +2509,7 @@
         });
     }); };
 
+    var createComponentVNode$2 = createComponentVNode;
     var getAllNoFapNewUsernamesForum = function () {
         var discussionListItems = document.querySelectorAll('.discussionListItem');
         var usernames = __spreadArrays(discussionListItems).map(function (tag) { return tag.attributes['data-author'].value; });
@@ -2239,25 +2523,42 @@
         // TODO Test this.
         (_a = firstElementContainer === null || firstElementContainer === void 0 ? void 0 : firstElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(prelimContainer, firstElementContainer);
     };
+    var renderUserPanelForum = function (_a) {
+        var tag = _a.tag, tagUsername = _a.tagUsername, index = _a.index, dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        var tagUsernameFiltered = tagUsername.replace('\'', '');
+        var rootId = "r" + tagUsernameFiltered + "-" + index;
+        var root = document.createElement('div');
+        root.id = rootId;
+        tag.parentNode.insertBefore(root, tag);
+        // tag.remove();
+        var domContainer = document.querySelector("#" + rootId);
+        if (domContainer) {
+            render(createComponentVNode$2(2, UserPanel, { "dbUser": dbUser, "usernameConfig": usernameConfig }), domContainer);
+        }
+    };
 
     var populateWebpageInformation = function (users) {
         createPrelimContainerForum();
         var prelimContainer = document.querySelector('#reade-automate-container');
         var discussionListItems = document.querySelectorAll('.discussionListItem');
-        discussionListItems.forEach(function (tag, index) {
+        var filteredDiscussionListItems = [discussionListItems].filter(function (item) { return __spreadArrays(item.classList).includes('sticky'); });
+        // Remember that we need to filter these for the bottom ones.
+        // sticky
+        console.log(filteredDiscussionListItems);
+        filteredDiscussionListItems.forEach(function (tag, index) {
             var _a;
             var tagUsername = tag.attributes['data-author'].value;
             var dbUser = users.find(function (user) { return user.username === tagUsername; });
-            console.log(tag);
             if (dbUser) {
                 var titleText = ((_a = tag.querySelector('.title')) === null || _a === void 0 ? void 0 : _a.children[0]).innerText;
+                // I have no way of getting the messageText, at least easily without making another HTTP request to that webpage and returning the message text.
                 // const messageText = [...tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[2]?.children[0]?.children[0]?.children as any || []]?.map(item => item?.innerText)?.join('\n') || '';
                 // const {
                 //   shouldDeleteElementImmediately,
                 //   sendMessageType,
                 //   prelimUrl,
-                // } = filterNewNoFapMessages(dbUser, usernameConfig, undefined, titleText, messageText);
-                // if (index !== 0) {
+                // } = noFapNewFilter(dbUser, usernameConfig, undefined, titleText, messageText);
+                // if (prelimUrl) {
                 //   if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
                 //     tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
                 //     return;
@@ -2275,10 +2576,11 @@
                 //     return;
                 //   }
                 // }
-                // if (!prelimUrl || index === 0) {
-                //   renderUserPanel({
-                //     tag, tagUsername, index, dbUser, usernameConfig
-                //   });
+                // if (!prelimUrl) {
+                renderUserPanelForum({
+                    tag: tag, tagUsername: tagUsername, index: index, dbUser: dbUser,
+                    usernameConfig: undefined
+                });
                 // }
                 // forum_type={UserForumType.NoFap}
             }

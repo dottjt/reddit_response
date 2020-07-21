@@ -1,6 +1,7 @@
 import { SendMessageType, UserForumType } from '../../types/serverTypes';
 import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
 import { sendNewMessage } from '../httpResponses';
+import { ConfigType } from '../config';
 
 export const openReplyLink = async (containerDiv) => {
   const entry = containerDiv.children[4];
@@ -47,19 +48,13 @@ export const openNewLink = (prelimUrl: string, messageType: string) => {
   window.open(url, '_blank');
 }
 
-export const generatePrelimUrlWithTimer = (prelimUrl: string, messageType: string) => {
-  let url = `${prelimUrl}`;
-  if (messageType !== 'custom') {
-    const delayTimer = window.localStorage.getItem('delayTimer');
-    url = url + `&timer=${delayTimer}`;
-    increaseDelayTimer();
+export const generatePrelimUrl = (toUsername: string, messageText: string, messageType: SendMessageType, usernameConfig?: ConfigType) => {
+  if (usernameConfig) {
+    return `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${encodeURIComponent(messageText)}&type=${messageType}`;
   }
-  return url;
-}
 
-export const generatePrelimUrl = (toUsername: string, messageText: string, messageType: SendMessageType) => (
-  `https://www.reddit.com/message/compose/?to=${toUsername}&subject=Hey&message=${encodeURIComponent(messageText)}&type=${messageType}`
-);
+  return `https://forum.nofap.com/index.php?conversations/add&title=Hey&to=${toUsername}&message=${encodeURIComponent(messageText)}&type=${messageType}`;
+};
 
 export const populateMessageAndSend = async (
   messageText: string,

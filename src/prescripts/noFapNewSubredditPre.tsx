@@ -18,7 +18,7 @@ import {
   ConfigType,
   getUsernameMarker
 } from '../util/config'
-import { filterNewNoFapMessages } from '../util/filter/noFapNewFilter';
+import { noFapNewFilter } from '../util/filter/noFapNewFilter';
 import { UserForumType } from '../types/serverTypes';
 
 'use strict';
@@ -46,7 +46,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
         shouldDeleteElementImmediately,
         sendMessageType,
         prelimUrl,
-      } = filterNewNoFapMessages(dbUser, usernameConfig, flairText, titleText, messageText);
+      } = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText);
 
       if (index !== 0) {
         if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
