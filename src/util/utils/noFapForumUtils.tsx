@@ -14,7 +14,6 @@ export const createPrelimContainerForum = (): void => {
   prelimContainer.id = 'reade-automate-container';
   const firstElementContainer = document.querySelectorAll('.sectionHeaders')[2];
 
-  // TODO Test this.
   firstElementContainer?.parentNode?.insertBefore(prelimContainer, firstElementContainer)
 }
 

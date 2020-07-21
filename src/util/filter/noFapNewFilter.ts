@@ -16,7 +16,7 @@ import { generatePrelimUrl } from '../utils/sendMessageUtils';
 export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
   shouldDeleteElementImmediately: boolean,
   sendMessageType: SendMessageType | undefined,
-  prelimUrl: string | undefined
+  prelimUrl: string | undefined,
 } => {
 
   // TO REMOVE
@@ -53,7 +53,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
         return {
           shouldDeleteElementImmediately: false,
           sendMessageType: SendMessageType.FollowRelapseAdvice,
-          prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice)
+          prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice, usernameConfig)
         }
       }
     }
@@ -89,7 +89,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStart,
-        prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart)
+        prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig)
       }
     }
 
@@ -98,7 +98,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStartAgain,
-        prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain)
+        prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain, usernameConfig)
       }
     }
 
@@ -107,7 +107,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceGeneral,
-        prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral)
+        prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral, usernameConfig)
       }
     }
 
@@ -116,7 +116,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceRelapse,
-        prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse)
+        prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse, usernameConfig)
       }
     }
 
@@ -125,7 +125,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceWetdreamAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice)
+        prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice, usernameConfig)
       }
     }
 
@@ -134,7 +134,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAccountabilityPartner,
-        prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner)
+        prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner, usernameConfig)
       }
     }
 

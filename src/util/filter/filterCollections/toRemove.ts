@@ -35,6 +35,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   || new RegExp(/for those who relapse/i).test(titleText)
   || new RegExp(/sexting/i).test(titleText)
   || new RegExp(/i made it/i).test(titleText)
+  || new RegExp(/to those struggling/i).test(titleText)
   || new RegExp(/download the app/i).test(titleText)
   || new RegExp(/(celebrate)/i).test(titleText)
   || new RegExp(/why do you fap\?/i).test(titleText)

@@ -3,7 +3,8 @@ import {
   getTypeQueryString,
   randomMessageDelay,
   getTimerQueryString,
-  closeTabAfterDelay
+  closeTabAfterDelay,
+  getMessageQueryString
 } from '../util/utils/messageComposeUtils';
 import { SendNewMessageSendPayload } from '../types/tamperMonkeyTypes';
 import { SendMessageType, UserForumType } from '../types/serverTypes';
@@ -58,28 +59,34 @@ const sendMessage = async ({
 const main = async () => {
   console.log('START: preparing message');
 
-  const toInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=to]')).value;
-  const subjectInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=subject]')).value;
-  const messageInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelectorAll('textarea[name=text]')[1]).value;
+  const toInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=recipients]')).value;
+  const subjectInput: string | undefined = (<HTMLInputElement>iFrame?.contentWindow?.document?.querySelector('input[name=title]')).value;
+  const messageInput: string | undefined = getMessageQueryString(window.location.search);
   const type: SendMessageType | undefined = getTypeQueryString(window.location.search) as SendMessageType;
   const timer: string | undefined = getTimerQueryString(window.location.search);
 
-  // I need to input this. 
+  console.log('toInput', toInput);
+  console.log('subjectInput', subjectInput);
+  console.log('messageInput', messageInput);
+  console.log('type', type);
+  console.log('timer', timer);
+
+  // if (toInput && subjectInput && messageInput && type && timer) {
+  //   await randomMessageDelay(timer);
+
+  //   await sendMessage({
+  //     toInput, subjectInput, messageInput, type, timer
+  //   });
+  // }
+  // I need to input this.
   // document.querySelector('.redactor_MessageEditor').contentWindow.document.children[0].children[1]
 
-  if (toInput && subjectInput && messageInput && type && timer) {
-    await randomMessageDelay(timer);
-
-    await sendMessage({
-      toInput, subjectInput, messageInput, type, timer
-    });
-  }
-
-  if (!timer) {
-    iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
-      main();
-    });
-  }
+  // TODO
+  // if (!timer) {
+  //   iFrame?.contentWindow?.document.querySelector('#send')?.addEventListener('click', () => {
+  //     main();
+  //   });
+  // }
 
   console.log('END: script complete');
 }

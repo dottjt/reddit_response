@@ -2520,7 +2520,6 @@
         var prelimContainer = document.createElement('div');
         prelimContainer.id = 'reade-automate-container';
         var firstElementContainer = document.querySelectorAll('.sectionHeaders')[2];
-        // TODO Test this.
         (_a = firstElementContainer === null || firstElementContainer === void 0 ? void 0 : firstElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(prelimContainer, firstElementContainer);
     };
     var renderUserPanelForum = function (_a) {

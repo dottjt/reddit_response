@@ -22,6 +22,17 @@ export const getTypeQueryString = (searchString: string): string => {
   return 'reply';
 }
 
+export const getMessageQueryString = (searchString: string): string => {
+  if (searchString.includes('&')) {
+    const arrayWithType = searchString.split('&').filter(item => item.includes('message='));
+    if (arrayWithType.length === 1) {
+      const type = arrayWithType[0].split('=')[1];
+      return type;
+    }
+  }
+  return 'reply';
+}
+
 export const getTimerQueryString = (searchString: string): string | undefined => {
   if (searchString.includes('&')) {
     const arrayWithTimer = searchString.split('&').filter(item => item.includes('timer='));

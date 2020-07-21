@@ -241,7 +241,9 @@
             || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message)
             || new RegExp(/send website link/i).test(messagePayload.message)
             || new RegExp(/if you could send the website/i).test(messagePayload.message)
-            || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message);
+            || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message)
+            || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
+            || new RegExp(/^yes/i).test(messagePayload.message);
     };
 
     var toLinkYouGuide = function (messagePayload) {

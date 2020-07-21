@@ -104,3 +104,8 @@ export const populateMessageAndSend = async (
     console.log('cannot find textArea or submitButton')
   }
 }
+
+// https://stackoverflow.com/questions/45163512/text-to-html-conversion-in-node-js
+export const textToHTML = (text: string) => (
+  '<p>' + text.replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>") + '</p>'
+);

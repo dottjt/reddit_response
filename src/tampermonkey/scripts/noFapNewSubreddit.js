@@ -2606,7 +2606,7 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'swoahboat';
+    var R_NOFAP_USERNAME = 'Throwawayisover8000';
     var R_NOFAP_TIMESTAMP = '';
     var R_PORN_FREE_USERNAME = 'levikiwi5090';
     var R_PORN_FREE_TIMESTAMP = '';
@@ -2731,6 +2731,7 @@
             || new RegExp(/for those who relapse/i).test(titleText)
             || new RegExp(/sexting/i).test(titleText)
             || new RegExp(/i made it/i).test(titleText)
+            || new RegExp(/to those struggling/i).test(titleText)
             || new RegExp(/download the app/i).test(titleText)
             || new RegExp(/(celebrate)/i).test(titleText)
             || new RegExp(/why do you fap\?/i).test(titleText)
@@ -3003,7 +3004,7 @@
                     return {
                         shouldDeleteElementImmediately: false,
                         sendMessageType: SendMessageType.FollowRelapseAdvice,
-                        prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice)
+                        prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice, usernameConfig)
                     };
                 }
             }
@@ -3032,7 +3033,7 @@
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAdviceStart,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart)
+                    prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig)
                 };
             }
             // STARTED AGAIN MESSAGES
@@ -3040,7 +3041,7 @@
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAdviceStartAgain,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain)
+                    prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain, usernameConfig)
                 };
             }
             // GENERAL MESSAGES
@@ -3048,7 +3049,7 @@
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAdviceGeneral,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral)
+                    prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral, usernameConfig)
                 };
             }
             // RELAPSE MESSAGES
@@ -3056,7 +3057,7 @@
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAdviceRelapse,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse)
+                    prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse, usernameConfig)
                 };
             }
             // WET DREAM MESSAGES
@@ -3064,7 +3065,7 @@
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAdviceWetdreamAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice)
+                    prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice, usernameConfig)
                 };
             }
             // ACCOUNTABILITY PARTNER MESSAGES
@@ -3072,7 +3073,7 @@
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAccountabilityPartner,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner)
+                    prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner, usernameConfig)
                 };
             }
             // Does the urge to masturbate get easier?
