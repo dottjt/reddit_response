@@ -1,10 +1,3 @@
-export const toStruggleAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
-  new RegExp(/(im|i'm) really struggling already/i).test(titleText)
-  || new RegExp(/^emotionally exhausted$/i).test(titleText)
-  || new RegExp(/I am about to relapse/i).test(titleText)
-  || new RegExp(/encourage me not to/i).test(titleText)
-  || new RegExp(/this is getting harder/i).test(titleText)
-
 export const toWetDreamAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   new RegExp(/(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i).test(titleText)
   || new RegExp(/had a wet dream/i).test(titleText)
@@ -37,6 +30,7 @@ export const toDidIJustRelapseAdvice = (titleText: string, flairText: string, me
 
 export const toWhenDoesItGetEasierAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   new RegExp(/does it get easier\?/i).test(titleText)
+  || new RegExp(/When does the withdrawal period depression start to fade\?/i).test(titleText)
 
 
   // will nofap cure my cuckhold fetish

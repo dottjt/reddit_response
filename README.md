@@ -16,6 +16,7 @@ Although there are a heap of features I can build into it, I would consider it m
 - Fetish is irrelevant. MESSAGE
 - okay NOFAP with a girlfriend? MESSAGE
 - libido MESSAGE
+- sex during nofap MESSAGE
 
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - Target the nofap website, not just reddit. Increase your userbase :)

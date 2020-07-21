@@ -23,8 +23,9 @@ import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterColl
 import { toRelapseAdvice } from './filterCollections/toRelapse';
 import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/toStart';
 import { toGeneralAdvice } from './filterCollections/toGeneral';
-import { toWetDreamAdvice, toAccountabilityPartner, toStruggleAdvice, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/toOthers';
+import { toWetDreamAdvice, toAccountabilityPartner, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/toOthers';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
+import { toStruggleAdvice } from './filterCollections/toStruggle';
 
 
 export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
