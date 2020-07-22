@@ -5,7 +5,7 @@ export const toRelapseAdvice = (titleText: string, flairText: string): boolean =
   || new RegExp(/(I|I've|just) ?(have)? (relapsed|failed)/i).test(titleText)
   || new RegExp(/(relapse|relapsed) (after|on day|again)/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
   || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
-  || new RegExp(/(broke my|broke the|lost my) ?(.*) (streak)/i).test(titleText)
+  || new RegExp(/(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i).test(titleText)
   || new RegExp(/^relapsed\.?$/i).test(titleText)
   || new RegExp(/^relapse\.?$/i).test(titleText)
   || new RegExp(/^relapsed (last night|today)/i).test(titleText)

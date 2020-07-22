@@ -14,7 +14,9 @@ export const toMeditateGuide = (messagePayload: PopulateReceivedMessagePayload):
   || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
   || new RegExp(/tips on meditating\?/i).test(messagePayload.message)
   || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
-  || new RegExp(/^How do you meditate?$/i).test(messagePayload.message)
+  || new RegExp(/^How do (u|you) meditate?$/i).test(messagePayload.message)
+
+  // I'm wondering how do u meditate
 
 export const toHardTime = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
@@ -22,6 +24,7 @@ export const toHardTime = (messagePayload: PopulateReceivedMessagePayload): bool
   || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
   || new RegExp(/I haven't done much/i).test(messagePayload.message)
   || new RegExp(/I just distract myself/i).test(messagePayload.message)
+  || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message)
 
 export const toFantastic = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/I (currently|do) meditate/i).test(messagePayload.message)

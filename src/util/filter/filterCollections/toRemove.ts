@@ -27,12 +27,14 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
 export const toRemoveInitial = (titleText: string, flairText: string): boolean =>
   flairText === 'Success Story'
   || new RegExp(/profile/i).test(titleText)
+  || new RegExp(/(nofap|no fap) works/i).test(titleText)
   // || new RegExp(/("|“|')/i).test(titleText) // never do this, ever. breaks everything
   || new RegExp(/gift/i).test(titleText)
   || new RegExp(/beast mode/i).test(titleText)
   || new RegExp(/finally got a girlfriend/i).test(titleText)
   || new RegExp(/Nofap taught me/i).test(titleText)
   || new RegExp(/does not fap/i).test(titleText)
+  || new RegExp(/(didnt|didn't) relapse today/i).test(titleText)
   || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
   || new RegExp(/I feel amazing/i).test(titleText)
   || new RegExp(/name tag/i).test(titleText)
@@ -93,12 +95,13 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   || new RegExp(/just rejected a ?(hot)? girl/i).test(titleText)
   // || new RegExp(/king /i).test(titleText) // because jerking
   || new RegExp(/(previous record|milestone)/i).test(titleText)
-  || new RegExp(/(pied|peid|in bed|get it up|shrink)/i).test(titleText)
+  || new RegExp(/(pied|peid|get it up|shrink)/i).test(titleText)
   || new RegExp(/(hair|skin|acne|sperm)/i).test(titleText)
   || new RegExp(/the key is/i).test(titleText)
   || new RegExp(/remember these \d+/i).test(titleText)
   || new RegExp(/the key to (everything|NoFap)/i).test(titleText)
   || new RegExp(/monk/i).test(titleText)
+  || new RegExp(/went for first .* in (weeks|months)/i).test(titleText)
   || new RegExp(/(grip|syndrome)/i).test(titleText)
   || new RegExp(/(virgin|virginity)/i).test(titleText)
   // || new RegExp(/haven't relapsed/i).test(titleText)
@@ -117,6 +120,7 @@ export const toRemoveInitial = (titleText: string, flairText: string): boolean =
   || new RegExp(/(tracker|counting|counter)/i).test(titleText)
   || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
   || new RegExp(/my benefits/i).test(titleText)
+  || new RegExp(/checking my day count/i).test(titleText)
   || new RegExp(/placebo/i).test(titleText)
   || new RegExp(/small success/i).test(titleText)
   || new RegExp(/scientific/i).test(titleText)

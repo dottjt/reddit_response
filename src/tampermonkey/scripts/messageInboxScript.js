@@ -173,14 +173,16 @@
             || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
             || new RegExp(/tips on meditating\?/i).test(messagePayload.message)
             || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
-            || new RegExp(/^How do you meditate?$/i).test(messagePayload.message);
+            || new RegExp(/^How do (u|you) meditate?$/i).test(messagePayload.message);
     };
+    // I'm wondering how do u meditate
     var toHardTime = function (messagePayload) {
         return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
             || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
             || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
             || new RegExp(/I haven't done much/i).test(messagePayload.message)
-            || new RegExp(/I just distract myself/i).test(messagePayload.message);
+            || new RegExp(/I just distract myself/i).test(messagePayload.message)
+            || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message);
     };
 
     var toNoWorriesGuide = function (messagePayload) {
@@ -247,11 +249,16 @@
             || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message)
             || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
             || new RegExp(/^yes/i).test(messagePayload.message)
+            || new RegExp(/I would love to learn more about it/i).test(messagePayload.message)
             || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
             || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
             || new RegExp(/take a look at your website/i).test(messagePayload.message)
             || new RegExp(/like to here about your/i).test(messagePayload.message)
             || new RegExp(/love to see the website/i).test(messagePayload.message)
+            || new RegExp(/Whats is the website called/i).test(messagePayload.message)
+            || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
+            || new RegExp(/I'll take the link/i).test(messagePayload.message)
+            || new RegExp(/shoot me the link/i).test(messagePayload.message)
             || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message);
     };
 
@@ -264,7 +271,8 @@
             || new RegExp(/Where can I find this resource/i).test(messagePayload.message)
             || new RegExp(/what is this website\?/i).test(messagePayload.message)
             || new RegExp(/where can i find the website/i).test(messagePayload.message)
-            || new RegExp(/links to any resources/i).test(messagePayload.message);
+            || new RegExp(/links to any resources/i).test(messagePayload.message)
+            || new RegExp(/What website is it/i).test(messagePayload.message);
     };
 
     var toJoinSubreddit = function (messagePayload) {

@@ -5,4 +5,5 @@ export const toStruggleAdvice = (titleText: string, flairText: string, messageTe
   || new RegExp(/^help!$/i).test(titleText)
   || new RegExp(/encourage me not to/i).test(titleText)
   || new RegExp(/this is getting harder/i).test(titleText)
+  || new RegExp(/I CANT STOP(P)? HELP/i).test(titleText)
   || new RegExp(/I (cant|can't) get past the .* mark/i).test(titleText)

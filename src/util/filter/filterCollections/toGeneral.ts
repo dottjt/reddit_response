@@ -11,12 +11,15 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/best way to stop masturbating\?/i).test(titleText)
   || new RegExp(/I (give up|need support|can't stop)/i).test(titleText)
   || new RegExp(/It's impossible/i).test(titleText)
+  || new RegExp(/need some advice from pro/i).test(titleText)
   || new RegExp(/trying for years/i).test(titleText)
+  || new RegExp(/I have a serious addiction to masturbation/i).test(titleText)
   || new RegExp(/shit is getting rough/i).test(titleText)
   || new RegExp(/how can I stop/i).test(titleText)
   || new RegExp(/would like some help/i).test(titleText)
   || new RegExp(/^tips\?$/i).test(titleText)
   || new RegExp(/still can't do it/i).test(titleText)
+  || new RegExp(/How not to get into an Addiction/i).test(titleText)
   || new RegExp(/trying to make this attempt count/i).test(titleText)
   || new RegExp(/^please help me(\.|\?)?$/i).test(titleText)
   || new RegExp(/can't control help me please/i).test(titleText)
@@ -35,12 +38,15 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/need (nofap|no fap) tips/i).test(titleText)
   || new RegExp(/I need some ?(more)? inspiration/i).test(titleText)
   || new RegExp(/trying hard to stop masturbation/i).test(titleText)
+  || new RegExp(/things are getting worse/i).test(titleText)
   || new RegExp(/any tips to stop (fapping|mast)/i).test(titleText)
+  || new RegExp(/(cant|can't|can’t) make it more than/i).test(titleText)
+  || new RegExp(/help me out from relapsing/i).test(titleText)
 
   || new RegExp(/any tips on how to do it/i).test(messageText)
   || new RegExp(/I wanted to know any advice/i).test(messageText)
   || new RegExp(/How do I stop\?/i).test(messageText)
-  || new RegExp(/(cant|can't|can’t) make it more than/i).test(titleText)
+  || (new RegExp(/^(no fap|nofap|no-fap)(\.)?$/i).test(titleText) && new RegExp(/(Any)? (help|advice|tips)\?/i).test(messageText))
 
 
 

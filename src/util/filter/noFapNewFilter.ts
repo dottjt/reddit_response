@@ -26,6 +26,7 @@ import { toGeneralAdvice } from './filterCollections/toGeneral';
 import { toWetDreamAdvice, toAccountabilityPartner, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/toOthers';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
 import { toStruggleAdvice } from './filterCollections/toStruggle';
+import { isLessThan24Hours } from '../utils/commonUtils';
 
 
 export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
@@ -47,6 +48,16 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     }
   }
 
+  if (compiledUser?.lastSentMessage) {
+    if (isLessThan24Hours(new Date(compiledUser?.lastSentMessage?.send_date as string))) {
+      return {
+        shouldDeleteElementImmediately: true,
+        sendMessageType: undefined,
+        prelimUrl: undefined
+      }
+    }
+  }
+
   // USER HOSTILE
   if (
     compiledUser.userType === UserType.UserHostile
@@ -59,6 +70,14 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       prelimUrl: undefined
     }
   }
+
+  // EDGE
+  // Deleted: Iamnofapbeast - undefined - I relapsed on day 5 due to instagram triggers on a nude model photo
+  // Deleted: Sitaram0641 - undefined - Day 22 completed, but got nightfall 3 times in last week
+  // Deleted: the_invinciblee - undefined - Is NoFap benefits a Placebo?
+  // Deleted: Z1omek - undefined - How to fight urges while lying in bed?
+  // Deleted: frickandfrackooh - Question - How to stop an urge in bed?
+
 
   // USER NOT RESPONDED
   if (compiledUser.userType === UserType.UserNotRespondedBack) {

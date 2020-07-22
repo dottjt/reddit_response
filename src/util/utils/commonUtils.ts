@@ -24,6 +24,33 @@ export const timeSince = (date: Date): string => {
   return Math.floor(seconds) + " seconds";
 }
 
+export const isLessThan24Hours = (date: Date): boolean => {
+  let seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+  let interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return false;
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return false;
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return false;
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return true;
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return true;
+  }
+  return true;
+}
+
+
 const toISOTimezoneString = (date: Date): string => {
   var tzo = - date.getTimezoneOffset(),
       dif = tzo >= 0 ? '+' : '-',
