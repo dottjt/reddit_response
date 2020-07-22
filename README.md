@@ -20,7 +20,8 @@ Although there are a heap of features I can build into it, I would consider it m
 
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - Target the nofap website, not just reddit. Increase your userbase :)
-- Look into congratulation messages, along with
+- Look into addressing congratulation messages, along with
+- https://stackoverflow.com/questions/55457646/open-multiple-urls-in-same-new-tab-javascript
 
 ## Nice To Have
 
