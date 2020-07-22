@@ -12,7 +12,7 @@ Create front-facing website
 Create backend
 	•	Create database
 	•	Setup user authentication
-	•	 
+	•
 
 Create Chrome Extension
 	•	Figure out requirements

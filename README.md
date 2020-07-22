@@ -13,6 +13,7 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
+- Save last ago date if you cannot find the username. It
 - Fetish is irrelevant. MESSAGE
 - okay NOFAP with a girlfriend? MESSAGE
 - libido MESSAGE

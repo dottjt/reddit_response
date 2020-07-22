@@ -7,6 +7,7 @@ export const toStartedAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/(starting|started) .* (streak|first|run)/i).test(titleText)
   || new RegExp(/(starting|started) days of (nofap|no fap|no-fap)/i).test(titleText)
   || new RegExp(/going to stop watching porn from now/i).test(titleText)
+  || new RegExp(/getting started/i).test(titleText)
   || new RegExp(/changing for the better/i).test(titleText)
   || new RegExp(/first timer/i).test(titleText)
   || new RegExp(/(let's|lets) start/i).test(titleText)
@@ -20,8 +21,9 @@ export const toStartedAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/starting (NoFap|no fap|no-fap)/i).test(titleText)
   || new RegExp(/(I'm|im) done with this ?(.*) feeling/i).test(titleText)
   || new RegExp(/Day 1 Started/i).test(titleText)
-  || new RegExp(/^(starting|started)(\.|\!)?$)/i).test(titleText)
+  || new RegExp(/^(starting|started)(\.|\!)?$/i).test(titleText)
   || new RegExp(/we start today/i).test(titleText)
+  || new RegExp(/^(I'm|im) new/i).test(titleText)
   // || new RegExp(/this ends now/i).test(titleText)
   || new RegExp(/^Day 1(\.|\!)?$/i).test(titleText)
   || new RegExp(/officially day 1/i).test(titleText)
@@ -53,6 +55,7 @@ export const toStartedAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/first post/i).test(titleText)
 
   || new RegExp(/This is gonna be my first day to nofap/i).test(messageText)
+  || new RegExp(/Today i start my journey/i).test(messageText)
   || new RegExp(/I am starting today/i).test(messageText)
 
 

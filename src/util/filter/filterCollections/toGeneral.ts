@@ -33,6 +33,7 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/need (nofap|no fap) tips/i).test(titleText)
   || new RegExp(/I need some ?(more)? inspiration/i).test(titleText)
   || new RegExp(/trying hard to stop masturbation/i).test(titleText)
+  || new RegExp(/any tips to stop (fapping|mast)/i).test(titleText)
 
   || new RegExp(/any tips on how to do it/i).test(messageText)
   || new RegExp(/I wanted to know any advice/i).test(messageText)
