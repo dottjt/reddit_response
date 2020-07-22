@@ -7,6 +7,8 @@ export const toStartedAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/(starting|started) .* (streak|first|run)/i).test(titleText)
   || new RegExp(/(starting|started) days of (nofap|no fap|no-fap)/i).test(titleText)
   || new RegExp(/going to stop watching porn from now/i).test(titleText)
+  || new RegExp(/^day one no/i).test(titleText)
+  || new RegExp(/where to start/i).test(titleText)
   || new RegExp(/getting started/i).test(titleText)
   || new RegExp(/changing for the better/i).test(titleText)
   || new RegExp(/first timer/i).test(titleText)

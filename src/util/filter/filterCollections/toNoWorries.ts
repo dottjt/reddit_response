@@ -67,10 +67,12 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
   || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
   || new RegExp(/take a look at your website/i).test(messagePayload.message)
+  || new RegExp(/like to here about your/i).test(messagePayload.message)
   || new RegExp(/love to see the website/i).test(messagePayload.message)
   || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message)
 
   // I would love to hear your story and any advice you got for me
+  //id like to here about your websitee
   // i'd be ,
     // article
   // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
@@ -79,4 +81,6 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
 
   // EDGET
   // From your experience should I go ahead with my marriage and start following nofap no pmo
+  // Yes, meditation is really a key to control that urge, I have started inculcate those habits! Now I am on day 7 of nofap! It's true that mentally we have to be very strong! Thanks for your support! Means alot! 😇
+
 

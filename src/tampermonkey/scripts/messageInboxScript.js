@@ -250,6 +250,7 @@
             || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
             || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
             || new RegExp(/take a look at your website/i).test(messagePayload.message)
+            || new RegExp(/like to here about your/i).test(messagePayload.message)
             || new RegExp(/love to see the website/i).test(messagePayload.message)
             || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message);
     };

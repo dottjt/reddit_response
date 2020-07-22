@@ -22,6 +22,7 @@ export const toBenefitsAdvice = (titleText: string, flairText: string, messageTe
   new RegExp(/I want to know the benefits of (NoFap|no fap|no-fap)/i).test(titleText)
 
 export const toPornBlockerAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
+  new RegExp(/what website blocker/i).test(titleText)
   new RegExp(/what programs do you use to block porn/i).test(titleText)
 
 export const toDidIJustRelapseAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
