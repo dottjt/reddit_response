@@ -51,6 +51,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
   || new RegExp(/like to here about your/i).test(messagePayload.message)
   || new RegExp(/shoot me the link/i).test(messagePayload.message)
+  || new RegExp(/Yea absolutely that'd be interesting/i).test(messagePayload.message)
 
   || new RegExp(/interested./i).test(messagePayload.message)
   || new RegExp(/(Sure I am|Yeah sure|Sure Bro)/i).test(messagePayload.message)
@@ -61,6 +62,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/tell me more/i).test(messagePayload.message)
   || new RegExp(/like to look around at your site/i).test(messagePayload.message)
   || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
+  || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
 
   // GRATEFUL
   || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
@@ -101,12 +103,13 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
   || new RegExp(/I'll take the link/i).test(messagePayload.message)
 
+  // UNSORTED
+  || new RegExp(/Sure, I am looking for source material/i).test(messagePayload.message)
+  // Sure, I am looking for source material which explains the process and not just the success stories
 
 
-
-  // unsure.
+  // UNSURE
   // || new RegExp(/any advice you got for me/i).test(messagePayload.message)
-
 
 
   // I would love to hear your story and any advice you got for me
@@ -120,5 +123,6 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   // EDGET
   // From your experience should I go ahead with my marriage and start following nofap no pmo
   // Yes, meditation is really a key to control that urge, I have started inculcate those habits! Now I am on day 7 of nofap! It's true that mentally we have to be very strong! Thanks for your support! Means alot! 😇
+
 
 

@@ -106,12 +106,12 @@ export const MarkUserChattedButton = ({ username }: { username: string })  => {
   )
 }
 
-export const SetMarkerButton = ({ username, usernameConfig }: { username: string, usernameConfig: ConfigType })  => {
+export const SetMarkerButton = ({ username, usernameConfig, hoursAgoText }: { username: string, usernameConfig: ConfigType, hoursAgoText: string })  => {
   return (
     <button
       style={{ border: '1px solid black','margin-right': '0.4rem' }}
       onclick={async () => {
-        await setMarker({ username, usernameConfig });
+        await setMarker({ username, usernameConfig, hoursAgoText });
       }}>
       Set Marker
     </button>

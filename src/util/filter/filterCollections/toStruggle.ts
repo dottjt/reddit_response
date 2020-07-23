@@ -9,6 +9,7 @@ export const toStruggleAdvice = (titleText: string, flairText: string, messageTe
   // ABOUT TO RELAPSE
   || new RegExp(/I am about to relapse/i).test(titleText)
   || new RegExp(/encourage me not to/i).test(titleText)
+  || new RegExp(/I keep relapsing/i).test(titleText)
 
   // EXHAUSTED
   || new RegExp(/^emotionally exhausted$/i).test(titleText)

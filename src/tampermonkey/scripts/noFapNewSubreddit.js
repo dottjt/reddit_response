@@ -2470,11 +2470,11 @@
             }); } }));
     };
     var SetMarkerButton = function (_a) {
-        var username = _a.username, usernameConfig = _a.usernameConfig;
+        var username = _a.username, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
         return (createVNode$1(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, setMarker({ username: username, usernameConfig: usernameConfig })];
+                        case 0: return [4 /*yield*/, setMarker({ username: username, usernameConfig: usernameConfig, hoursAgoText: hoursAgoText })];
                         case 1:
                             _a.sent();
                             return [2 /*return*/];
@@ -2505,8 +2505,8 @@
             }, "onclick": function () { return openNewLink(prelimUrl, messageType); } }), 0));
     };
     var UserPanel = function (_a) {
-        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
-        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [usernameConfig && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+        var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
+        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$2(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
@@ -2544,39 +2544,49 @@
         // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
         (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = firstElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.parentNode) === null || _g === void 0 ? void 0 : _g.parentNode) === null || _h === void 0 ? void 0 : _h.parentNode.insertBefore(prelimContainer, (_q = (_p = (_o = (_m = (_l = (_k = (_j = firstElementContainer.parentNode) === null || _j === void 0 ? void 0 : _j.parentNode) === null || _k === void 0 ? void 0 : _k.parentNode) === null || _l === void 0 ? void 0 : _l.parentNode) === null || _m === void 0 ? void 0 : _m.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode);
     };
+    var getNextHoursAgoValueToSearch = function (timestamp) {
+        if (timestamp.includes('now') || timestamp.includes('minute')) {
+            return '1 hour ago';
+        }
+        if (timestamp.includes('hour')) {
+            var nextTimeNumber_1 = parseInt(timestamp.split(' ')[0]) + 1;
+            return nextTimeNumber_1 + " hours ago";
+        }
+        var nextTimeNumber = parseInt(timestamp.split(' ')[0]) + 1;
+        return nextTimeNumber + " days ago";
+    };
     var scrollToSpecifiedDate = function (dateString, usernameConfig) { return new Promise(function (resolve) {
         var interval;
+        var nextHoursAgoValueToSearch = getNextHoursAgoValueToSearch(usernameConfig.usernameTimestamp);
         interval = setInterval(function () {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j;
             window.scrollTo(0, document.body.scrollHeight);
-            if (dateString !== 'NA') {
-                console.log('scrollToSpecifiedDate - run');
-                var allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
-                for (var _i = 0, _a = allTimeStamps; _i < _a.length; _i++) {
-                    var timeStampElement = _a[_i];
-                    var doesTextContainXXX = timeStampElement.innerText.includes(dateString);
-                    if (doesTextContainXXX) {
-                        console.log('Found scroll date.');
-                        clearInterval(interval);
-                        resolve('Found scroll date.');
-                    }
-                    else {
-                        if (timeStampElement) {
-                            timeStampElement.remove();
-                        }
-                    }
-                }
-            }
+            if (dateString !== 'NA') ;
             else {
                 console.log('scrollToSpecifiedUsername - run');
                 var usernames = getAllNoFapNewUsernames();
-                for (var _b = 0, _c = usernames; _b < _c.length; _b++) {
-                    var username = _c[_b];
+                var _loop_1 = function (username) {
+                    var allATags = document.querySelectorAll('a');
+                    var usernameTag = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes(username); })[0];
+                    // console.log('usernameTag', usernameTag);
+                    var hoursAgoText = (_j = (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = usernameTag === null || usernameTag === void 0 ? void 0 : usernameTag.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode.children[1]) === null || _f === void 0 ? void 0 : _f.children[0]) === null || _g === void 0 ? void 0 : _g.children[0]) === null || _h === void 0 ? void 0 : _h.children[0].querySelectorAll('a')[1]) === null || _j === void 0 ? void 0 : _j.innerText;
+                    console.log(hoursAgoText);
                     var doesTextContainXXX = username === usernameConfig.usernameValue;
+                    var doesTimestampContainXXX = hoursAgoText === nextHoursAgoValueToSearch;
                     if (doesTextContainXXX) {
                         console.log('Found scroll username.');
                         clearInterval(interval);
                         resolve('Found scroll username.');
                     }
+                    if (doesTimestampContainXXX) {
+                        console.log('Found scroll timestamp instead.');
+                        clearInterval(interval);
+                        resolve('Found scroll timestamp instead.');
+                    }
+                };
+                for (var _i = 0, _k = usernames; _i < _k.length; _i++) {
+                    var username = _k[_i];
+                    _loop_1(username);
                 }
             }
         }, 700);
@@ -2614,7 +2624,7 @@
         prelimContainer === null || prelimContainer === void 0 ? void 0 : prelimContainer.appendChild(nodeContainer);
     };
     var renderUserPanel = function (_a) {
-        var tag = _a.tag, tagUsername = _a.tagUsername, index = _a.index, dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
+        var tag = _a.tag, tagUsername = _a.tagUsername, index = _a.index, dbUser = _a.dbUser, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
         var rootId = "r" + tagUsername + "-" + index;
         var root = document.createElement('div');
         root.id = rootId;
@@ -2622,7 +2632,7 @@
         tag.remove();
         var domContainer = document.querySelector("#" + rootId);
         if (domContainer) {
-            render(createComponentVNode$2(2, UserPanel, { "dbUser": dbUser, "usernameConfig": usernameConfig }), domContainer);
+            render(createComponentVNode$2(2, UserPanel, { "dbUser": dbUser, "hoursAgoText": hoursAgoText, "usernameConfig": usernameConfig }), domContainer);
         }
     };
 
@@ -2637,8 +2647,8 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'DistraugtlyDistractd';
-    var R_NOFAP_TIMESTAMP = '';
+    var R_NOFAP_USERNAME = 'itZacklol';
+    var R_NOFAP_TIMESTAMP = '1 hour ago';
     var R_PORN_FREE_USERNAME = 'gjay16';
     var R_PORN_FREE_TIMESTAMP = '';
     var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
@@ -2801,6 +2811,7 @@
             || new RegExp(/longest streak yet/i).test(titleText)
             || new RegExp(/(previous record|milestone)/i).test(titleText)
             || new RegExp(/small success/i).test(titleText)
+            || new RegExp(/finally made it to (day|week)/i).test(titleText)
             || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
             // MOTIVATION
             || new RegExp(/(we will all make it|we will make it|you will make it|you can do it)/i).test(titleText)
@@ -2957,6 +2968,7 @@
             || new RegExp(/(starting|started) days of (nofap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/going to stop watching porn from now/i).test(titleText)
             || new RegExp(/^day one no/i).test(titleText)
+            // || new RegExp(/^day one$/i).test(titleText) // could be relapse 
             || new RegExp(/a new start/i).test(titleText)
             || new RegExp(/(I'm|im) ready to start/i).test(titleText)
             || new RegExp(/where to start/i).test(titleText)
@@ -3044,6 +3056,7 @@
     var toGeneralAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/I need ?(.*) help/i).test(titleText)
             || new RegExp(/feel like shit/i).test(titleText)
+            || new RegExp(/^help me$/i).test(titleText)
             || new RegExp(/need some guidance/i).test(titleText)
             // || new RegExp(/needing advice/i).test(titleText)
             || new RegExp(/I really, really need help/i).test(titleText)
@@ -3150,6 +3163,7 @@
             // ABOUT TO RELAPSE
             || new RegExp(/I am about to relapse/i).test(titleText)
             || new RegExp(/encourage me not to/i).test(titleText)
+            || new RegExp(/I keep relapsing/i).test(titleText)
             // EXHAUSTED
             || new RegExp(/^emotionally exhausted$/i).test(titleText)
             || new RegExp(/So desensitized I literally feel nothing/i).test(titleText);
@@ -3225,7 +3239,8 @@
             //   // console.log(`relapse report - ${tagUsername}`);
             // }
             // STARTED MESSAGES
-            if (toStartedAdvice(titleText, flairText, messageText)) {
+            if (!titleText.includes('again')
+                && toStartedAdvice(titleText, flairText, messageText)) {
                 return {
                     shouldDeleteElementImmediately: false,
                     sendMessageType: SendMessageType.StartAdviceStart,
@@ -3390,27 +3405,30 @@
         var prelimContainer = document.querySelector('#reade-automate-container');
         var alreadyPrelimUrlUsernameList = [];
         filteredATags.forEach(function (tag, index) {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44;
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, _46, _47, _48, _49, _50, _51, _52, _53;
             var tagUsername = tag.innerText.split('/')[1];
             var dbUser = users.find(function (user) { return user.username === tagUsername; });
+            // console.log('1', tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
+            // console.log('2', tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0]);
             if (dbUser) {
                 var flairText = (_m = (_l = (_k = (_j = (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.children[1]) === null || _g === void 0 ? void 0 : _g.children[1]) === null || _h === void 0 ? void 0 : _h.children[1]) === null || _j === void 0 ? void 0 : _j.children[1]) === null || _k === void 0 ? void 0 : _k.children[0]) === null || _l === void 0 ? void 0 : _l.children[0]) === null || _m === void 0 ? void 0 : _m.innerText;
                 var titleText = (_z = (_y = (_x = (_w = (_v = (_u = (_t = (_s = (_r = (_q = (_p = (_o = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode) === null || _r === void 0 ? void 0 : _r.parentNode) === null || _s === void 0 ? void 0 : _s.parentNode) === null || _t === void 0 ? void 0 : _t.children[1]) === null || _u === void 0 ? void 0 : _u.children[1]) === null || _v === void 0 ? void 0 : _v.children[0]) === null || _w === void 0 ? void 0 : _w.children[0]) === null || _x === void 0 ? void 0 : _x.children[0]) === null || _y === void 0 ? void 0 : _y.children[0]) === null || _z === void 0 ? void 0 : _z.innerText;
                 var messageText = ((_11 = (_10 = __spreadArrays(((_9 = (_8 = (_7 = (_6 = (_5 = (_4 = (_3 = (_2 = (_1 = (_0 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _0 === void 0 ? void 0 : _0.parentNode) === null || _1 === void 0 ? void 0 : _1.parentNode) === null || _2 === void 0 ? void 0 : _2.parentNode) === null || _3 === void 0 ? void 0 : _3.parentNode) === null || _4 === void 0 ? void 0 : _4.parentNode) === null || _5 === void 0 ? void 0 : _5.children[1]) === null || _6 === void 0 ? void 0 : _6.children[2]) === null || _7 === void 0 ? void 0 : _7.children[0]) === null || _8 === void 0 ? void 0 : _8.children[0]) === null || _9 === void 0 ? void 0 : _9.children) || [])) === null || _10 === void 0 ? void 0 : _10.map(function (item) { return item === null || item === void 0 ? void 0 : item.innerText; })) === null || _11 === void 0 ? void 0 : _11.join('\n')) || '';
                 var aLinkHref = (_20 = (_19 = (_18 = (_17 = (_16 = (_15 = (_14 = (_13 = (_12 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _12 === void 0 ? void 0 : _12.parentNode) === null || _13 === void 0 ? void 0 : _13.parentNode) === null || _14 === void 0 ? void 0 : _14.parentNode) === null || _15 === void 0 ? void 0 : _15.parentNode) === null || _16 === void 0 ? void 0 : _16.parentNode) === null || _17 === void 0 ? void 0 : _17.children[1]) === null || _18 === void 0 ? void 0 : _18.children[1]) === null || _19 === void 0 ? void 0 : _19.children[0]) === null || _20 === void 0 ? void 0 : _20.children[0].href;
-                var _45 = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _45.shouldDeleteElementImmediately, sendMessageType = _45.sendMessageType, prelimUrl = _45.prelimUrl;
+                var hoursAgoText = (_29 = (_28 = (_27 = (_26 = (_25 = (_24 = (_23 = (_22 = (_21 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _21 === void 0 ? void 0 : _21.parentNode) === null || _22 === void 0 ? void 0 : _22.parentNode) === null || _23 === void 0 ? void 0 : _23.parentNode) === null || _24 === void 0 ? void 0 : _24.parentNode) === null || _25 === void 0 ? void 0 : _25.parentNode.children[1]) === null || _26 === void 0 ? void 0 : _26.children[0]) === null || _27 === void 0 ? void 0 : _27.children[0]) === null || _28 === void 0 ? void 0 : _28.children[0].querySelectorAll('a')[1]) === null || _29 === void 0 ? void 0 : _29.innerText;
+                var _54 = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _54.shouldDeleteElementImmediately, sendMessageType = _54.sendMessageType, prelimUrl = _54.prelimUrl;
                 if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
                     if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
-                        (_28 = (_27 = (_26 = (_25 = (_24 = (_23 = (_22 = (_21 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _21 === void 0 ? void 0 : _21.parentNode) === null || _22 === void 0 ? void 0 : _22.parentNode) === null || _23 === void 0 ? void 0 : _23.parentNode) === null || _24 === void 0 ? void 0 : _24.parentNode) === null || _25 === void 0 ? void 0 : _25.parentNode) === null || _26 === void 0 ? void 0 : _26.parentNode) === null || _27 === void 0 ? void 0 : _27.parentNode) === null || _28 === void 0 ? void 0 : _28.remove();
+                        (_37 = (_36 = (_35 = (_34 = (_33 = (_32 = (_31 = (_30 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _30 === void 0 ? void 0 : _30.parentNode) === null || _31 === void 0 ? void 0 : _31.parentNode) === null || _32 === void 0 ? void 0 : _32.parentNode) === null || _33 === void 0 ? void 0 : _33.parentNode) === null || _34 === void 0 ? void 0 : _34.parentNode) === null || _35 === void 0 ? void 0 : _35.parentNode) === null || _36 === void 0 ? void 0 : _36.parentNode) === null || _37 === void 0 ? void 0 : _37.remove();
                         return;
                     }
                     alreadyPrelimUrlUsernameList.push(dbUser.username);
                     if (shouldDeleteElementImmediately) {
-                        (_36 = (_35 = (_34 = (_33 = (_32 = (_31 = (_30 = (_29 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _29 === void 0 ? void 0 : _29.parentNode) === null || _30 === void 0 ? void 0 : _30.parentNode) === null || _31 === void 0 ? void 0 : _31.parentNode) === null || _32 === void 0 ? void 0 : _32.parentNode) === null || _33 === void 0 ? void 0 : _33.parentNode) === null || _34 === void 0 ? void 0 : _34.parentNode) === null || _35 === void 0 ? void 0 : _35.parentNode) === null || _36 === void 0 ? void 0 : _36.remove();
+                        (_45 = (_44 = (_43 = (_42 = (_41 = (_40 = (_39 = (_38 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _38 === void 0 ? void 0 : _38.parentNode) === null || _39 === void 0 ? void 0 : _39.parentNode) === null || _40 === void 0 ? void 0 : _40.parentNode) === null || _41 === void 0 ? void 0 : _41.parentNode) === null || _42 === void 0 ? void 0 : _42.parentNode) === null || _43 === void 0 ? void 0 : _43.parentNode) === null || _44 === void 0 ? void 0 : _44.parentNode) === null || _45 === void 0 ? void 0 : _45.remove();
                         return;
                     }
                     if (prelimUrl) {
-                        (_44 = (_43 = (_42 = (_41 = (_40 = (_39 = (_38 = (_37 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _37 === void 0 ? void 0 : _37.parentNode) === null || _38 === void 0 ? void 0 : _38.parentNode) === null || _39 === void 0 ? void 0 : _39.parentNode) === null || _40 === void 0 ? void 0 : _40.parentNode) === null || _41 === void 0 ? void 0 : _41.parentNode) === null || _42 === void 0 ? void 0 : _42.parentNode) === null || _43 === void 0 ? void 0 : _43.parentNode) === null || _44 === void 0 ? void 0 : _44.remove();
+                        (_53 = (_52 = (_51 = (_50 = (_49 = (_48 = (_47 = (_46 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _46 === void 0 ? void 0 : _46.parentNode) === null || _47 === void 0 ? void 0 : _47.parentNode) === null || _48 === void 0 ? void 0 : _48.parentNode) === null || _49 === void 0 ? void 0 : _49.parentNode) === null || _50 === void 0 ? void 0 : _50.parentNode) === null || _51 === void 0 ? void 0 : _51.parentNode) === null || _52 === void 0 ? void 0 : _52.parentNode) === null || _53 === void 0 ? void 0 : _53.remove();
                         createPrelimLink({
                             dbUser: dbUser, titleText: titleText, flairText: flairText, aLinkHref: aLinkHref, prelimUrl: prelimUrl, index: index, sendMessageType: sendMessageType, prelimContainer: prelimContainer
                         });
@@ -3419,7 +3437,7 @@
                 }
                 if (!prelimUrl || index === 0) {
                     renderUserPanel({
-                        tag: tag, tagUsername: tagUsername, index: index, dbUser: dbUser, usernameConfig: usernameConfig
+                        tag: tag, tagUsername: tagUsername, index: index, dbUser: dbUser, usernameConfig: usernameConfig, hoursAgoText: hoursAgoText
                     });
                 }
             }

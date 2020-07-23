@@ -4,6 +4,9 @@ This is my Reddit Markting solution.
 
 Although there are a heap of features I can build into it, I would consider it mature in terms of what it aims to achieve. To build those features would be a waste of time in my opinion, compared to the other stuff I could work on.
 
+Although this application saves me a tremendous amount of time, the biggest saver is cognitive load. The less I need to think the more I can get done. There will always be plenty of time if you want there to be.
+
+
 ## How To Run
 
 - You need to use Chrome, because Firefox does not support using files from your local hard disk. (BOOOOOOO)
@@ -13,7 +16,8 @@ Although there are a heap of features I can build into it, I would consider it m
 
 ## Improvements
 
-- Save last ago date if you cannot find the username. It
+- Save last ago date if you cannot find the username.
+
 - Fetish is irrelevant. MESSAGE
 - okay NOFAP with a girlfriend? MESSAGE
 - libido MESSAGE
@@ -26,13 +30,15 @@ Although there are a heap of features I can build into it, I would consider it m
 - Don't delete the last user post if it's the last one.
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - Target the nofap website, not just reddit. Increase your userbase :)
-- Look into addressing congratulation messages, along with
+- nofap
+
 - https://stackoverflow.com/questions/55457646/open-multiple-urls-in-same-new-tab-javascript
 - Fortify DONE with website links send/visited
 
 ## Nice To Have
 
-- Look into incorporating whether they've been sent the website or not, so you can have more information from them.
+- Look into addressing congratulation messages
+- Look into incorporating whether they've been sent the website or not into ReplyUserPanel, so you can have more information from them and what information they require. (might be too much information for no palatable reason)
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage (I don't think it's possible to know until after? Well, it's possible but not a massive deal for now)
 - Whether a message was sent automatically by the bot or not.
 - fix up the inferno renders at the top, they're a bit of a mess, ya'll.

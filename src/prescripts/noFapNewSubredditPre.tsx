@@ -36,11 +36,15 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
     const tagUsername: string = tag.innerText.split('/')[1];
     const dbUser: CompiledFullUserObject | undefined = users.find(user => user.username === tagUsername);
 
+    // console.log('1', tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
+    // console.log('2', tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0]);
+
     if (dbUser) {
       const flairText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[1]?.children[1]?.children[0]?.children[0]?.innerText;
       const titleText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[0]?.children[0]?.children[0]?.children[0]?.innerText;
       const messageText = [...tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[2]?.children[0]?.children[0]?.children as any || []]?.map(item => item?.innerText)?.join('\n') || '';
       const aLinkHref = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[0]?.children[0].href;
+      const hoursAgoText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0].querySelectorAll('a')[1]?.innerText;
 
       const {
         shouldDeleteElementImmediately,
@@ -74,7 +78,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
 
       if (!prelimUrl || index === 0) {
         renderUserPanel({
-          tag, tagUsername, index, dbUser, usernameConfig
+          tag, tagUsername, index, dbUser, usernameConfig, hoursAgoText
         });
       }
     }

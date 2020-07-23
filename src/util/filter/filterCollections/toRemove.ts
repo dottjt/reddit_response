@@ -78,6 +78,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/longest streak yet/i).test(titleText)
   || new RegExp(/(previous record|milestone)/i).test(titleText)
   || new RegExp(/small success/i).test(titleText)
+  || new RegExp(/finally made it to (day|week)/i).test(titleText)
   || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
 
   // MOTIVATION

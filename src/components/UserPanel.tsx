@@ -74,17 +74,18 @@ const createStartMessageLink = (
 type UserPanelProps = {
   dbUser: CompiledFullUserObject;
   usernameConfig?: ConfigType;
+  hoursAgoText?: string
 }
 
-const UserPanel = ({ dbUser, usernameConfig }: UserPanelProps) => {
+const UserPanel = ({ dbUser, usernameConfig, hoursAgoText }: UserPanelProps) => {
   return (
     <div>
       {dbUser.userType !== UserType.FreshUser && (
         <PreviousMessageInformation dbUser={dbUser} />
       )}
       <div style={{ display: 'flex' }}>
-        {usernameConfig && (
-          <SetMarkerButton username={dbUser.username} usernameConfig={usernameConfig} />
+        {usernameConfig && hoursAgoText && (
+          <SetMarkerButton username={dbUser.username} usernameConfig={usernameConfig} hoursAgoText={hoursAgoText} />
         )}
         <MarkUserChattedButton username={dbUser.username} />
         <MarkUserHostileButton username={dbUser.username} />

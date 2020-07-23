@@ -119,7 +119,10 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     // }
 
     // STARTED MESSAGES
-    if (toStartedAdvice(titleText, flairText, messageText)) {
+    if (
+      !titleText.includes('again')
+      && toStartedAdvice(titleText, flairText, messageText)
+    ) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStart,

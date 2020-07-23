@@ -48,3 +48,8 @@ export const toWhenDoesItGetEasierAdvice = (titleText: string, flairText: string
 
 
   // should I reset?
+
+
+
+  // around 15 years
+  // 10 years - 

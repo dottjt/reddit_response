@@ -231,6 +231,7 @@
             || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
             || new RegExp(/like to here about your/i).test(messagePayload.message)
             || new RegExp(/shoot me the link/i).test(messagePayload.message)
+            || new RegExp(/Yea absolutely that'd be interesting/i).test(messagePayload.message)
             || new RegExp(/interested./i).test(messagePayload.message)
             || new RegExp(/(Sure I am|Yeah sure|Sure Bro)/i).test(messagePayload.message)
             || new RegExp(/to know more about your website/i).test(messagePayload.message)
@@ -239,6 +240,7 @@
             || new RegExp(/tell me more/i).test(messagePayload.message)
             || new RegExp(/like to look around at your site/i).test(messagePayload.message)
             || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
+            || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
             // GRATEFUL
             || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
             || new RegExp(/That would be very welcome/i).test(messagePayload.message)
@@ -271,7 +273,9 @@
             || new RegExp(/check on your website/i).test(messagePayload.message)
             // LINK ME
             || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/I'll take the link/i).test(messagePayload.message);
+            || new RegExp(/I'll take the link/i).test(messagePayload.message)
+            // UNSORTED
+            || new RegExp(/Sure, I am looking for source material/i).test(messagePayload.message);
     };
 
     var toLinkYouGuide = function (messagePayload) {
@@ -311,7 +315,8 @@
             };
         }
         if ( // if I've sent a start message, and they've returned a start message.
-        ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
+        (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
+            ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
             ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
             // No Worries
             if (toNoWorriesGuide(messagePayload)) {

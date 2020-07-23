@@ -33,6 +33,7 @@ export type SendUserNotePayload = {
 export type SetMarkerPayload = {
   username: string;
   usernameConfig: ConfigType;
+  hoursAgoText: string;
 }
 
 export type SetLastMessageInboxUsernamePayload = {

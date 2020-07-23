@@ -26,39 +26,67 @@ export const createPrelimContainer = (filteredATags): void => {
   firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(prelimContainer, firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
 }
 
+const getNextHoursAgoValueToSearch = (timestamp: string) => {
+  if (timestamp.includes('now') || timestamp.includes('minute')) {
+    return '1 hour ago';
+  }
+  if (timestamp.includes('hour')) {
+    const nextTimeNumber = parseInt(timestamp.split(' ')[0]) + 1;
+    return `${nextTimeNumber} hours ago`;
+  }
+
+  const nextTimeNumber = parseInt(timestamp.split(' ')[0]) + 1;
+  return `${nextTimeNumber} days ago`;
+}
+
 export const scrollToSpecifiedDate = (dateString: string, usernameConfig: ConfigType): Promise<string> => new Promise(resolve => {
   let interval;
+
+  const nextHoursAgoValueToSearch = getNextHoursAgoValueToSearch(usernameConfig.usernameTimestamp);
 
   interval = setInterval(() => {
     window.scrollTo(0, document.body.scrollHeight);
 
     if (dateString !== 'NA') {
-      console.log('scrollToSpecifiedDate - run')
-      const allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
+      // console.log('scrollToSpecifiedDate - run')
+      // const allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
 
-      for (const timeStampElement of allTimeStamps as any) {
-        const doesTextContainXXX = timeStampElement.innerText.includes(dateString);
+      // for (const timeStampElement of allTimeStamps as any) {
+      //   const doesTextContainXXX = timeStampElement.innerText.includes(dateString);
+      //   // nextHoursAgoValueToSearch
 
-        if (doesTextContainXXX) {
-          console.log('Found scroll date.');
-          clearInterval(interval);
-          resolve('Found scroll date.');
-        } else {
-          if (timeStampElement) {
-            timeStampElement.remove();
-          }
-        }
-      }
+      //   if (doesTextContainXXX) {
+      //     console.log('Found scroll date.');
+      //     clearInterval(interval);
+      //     resolve('Found scroll date.');
+      //   } else {
+      //     if (timeStampElement) {
+      //       timeStampElement.remove();
+      //     }
+      //   }
+      // }
     } else {
       console.log('scrollToSpecifiedUsername - run')
       const usernames = getAllNoFapNewUsernames();
 
       for (const username of usernames as string[]) {
+        const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
+        const usernameTag = [...allATags as any].filter(tag => tag.innerText.includes(username))[0];
+
+        const hoursAgoText = usernameTag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0].querySelectorAll('a')[1]?.innerText;
+
         const doesTextContainXXX = username === usernameConfig.usernameValue;
+        const doesTimestampContainXXX = hoursAgoText === nextHoursAgoValueToSearch;
+
         if (doesTextContainXXX) {
           console.log('Found scroll username.');
           clearInterval(interval);
           resolve('Found scroll username.');
+        }
+        if (doesTimestampContainXXX) {
+          console.log('Found scroll timestamp instead.');
+          clearInterval(interval);
+          resolve('Found scroll timestamp instead.');
         }
       }
     }
@@ -102,7 +130,7 @@ export const createPrelimLink = ({
   prelimUrl,
   index,
   sendMessageType,
-  prelimContainer
+  prelimContainer,
 }) => {
   const nodeContainer = document.createElement('div');
   nodeContainer.id = `r${dbUser.username}-${index}`;
@@ -125,7 +153,7 @@ export const createPrelimLink = ({
 }
 
 export const renderUserPanel = ({
-  tag, tagUsername, index, dbUser, usernameConfig
+  tag, tagUsername, index, dbUser, usernameConfig, hoursAgoText
 }) => {
   const rootId = `r${tagUsername}-${index}`;
   const root = document.createElement('div');
@@ -137,6 +165,7 @@ export const renderUserPanel = ({
   if (domContainer) {
     render(<UserPanel
       dbUser={dbUser}
+      hoursAgoText={hoursAgoText}
       usernameConfig={usernameConfig}/>, domContainer);
   }
 }

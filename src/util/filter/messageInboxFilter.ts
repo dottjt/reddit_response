@@ -32,6 +32,7 @@ export const filterRedditInboxMessages = (
   }
 
   if ( // if I've sent a start message, and they've returned a start message.
+    lastSentMessage?.type.includes('advice') &&
     (lastSentMessage?.type.includes('start') || lastSentMessage?.type.includes('follow')) &&
     (lastReceivedMessage?.type.includes('start') || lastReceivedMessage?.type.includes('follow'))
     ) {
