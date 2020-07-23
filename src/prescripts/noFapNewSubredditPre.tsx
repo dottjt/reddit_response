@@ -48,7 +48,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
         prelimUrl,
       } = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText);
 
-      if (index !== 0) {
+      if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
         if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
           tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
           return;

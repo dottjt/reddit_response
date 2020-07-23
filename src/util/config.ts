@@ -21,11 +21,11 @@ export enum ForumType {
 
 export const INBOX_LAST_MESSAGE_USER = 'vijay_st';
 
-export const R_NOFAP_USERNAME = 'baklolbaba';
+export const R_NOFAP_USERNAME = 'torets-guy';
 export const R_NOFAP_TIMESTAMP = '';
-export const R_PORN_FREE_USERNAME = 'azar937';
+export const R_PORN_FREE_USERNAME = 'gjay16';
 export const R_PORN_FREE_TIMESTAMP = '';
-export const R_PORN_ADDICTION_USERNAME = 'IVzc00';
+export const R_PORN_ADDICTION_USERNAME = 'djangomaniac';
 export const R_PORN_ADDICTION_TIMESTAMP = '';
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';

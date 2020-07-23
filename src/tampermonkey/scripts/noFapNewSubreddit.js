@@ -2637,11 +2637,11 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'baklolbaba';
+    var R_NOFAP_USERNAME = 'torets-guy';
     var R_NOFAP_TIMESTAMP = '';
-    var R_PORN_FREE_USERNAME = 'azar937';
+    var R_PORN_FREE_USERNAME = 'gjay16';
     var R_PORN_FREE_TIMESTAMP = '';
-    var R_PORN_ADDICTION_USERNAME = 'IVzc00';
+    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
     var R_PORN_ADDICTION_TIMESTAMP = '';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
@@ -2751,120 +2751,115 @@
     // export const toRemoveInitialMessage = (titleText: string, flairText: string, messageText: string): boolean =>
     //   new RegExp(/profile/i).test(messageText)
     // show you how I did it
-    var toRemoveInitial = function (titleText, flairText) {
+    var toRemoveInitial = function (titleText, flairText, messageText) {
+        // FLAIR
         return flairText === 'Success Story'
+            // COUNTER
             || new RegExp(/profile/i).test(titleText)
-            || new RegExp(/(nofap|no fap) works/i).test(titleText)
-            // || new RegExp(/("|“|')/i).test(titleText) // never do this, ever. breaks everything
-            || new RegExp(/gift/i).test(titleText)
-            || new RegExp(/beast mode/i).test(titleText)
-            || new RegExp(/finally got a girlfriend/i).test(titleText)
-            || new RegExp(/Nofap taught me/i).test(titleText)
-            || new RegExp(/does not fap/i).test(titleText)
-            || new RegExp(/(didnt|didn't) relapse today/i).test(titleText)
-            || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
-            || new RegExp(/I feel amazing/i).test(titleText)
             || new RegExp(/name tag/i).test(titleText)
-            || new RegExp(/(we will all make it|we will make it|you will make it|you can do it)/i).test(titleText)
-            || new RegExp(/overcame my worst urge/i).test(titleText)
-            || new RegExp(/(0|zero) urges to fap/i).test(titleText)
-            || new RegExp(/(down side|downside)/i).test(titleText)
-            || new RegExp(/a piece of advice/i).test(titleText)
-            || new RegExp(/for those who relapse/i).test(titleText)
-            || new RegExp(/sexting/i).test(titleText)
-            || new RegExp(/any evidence that/i).test(titleText)
-            || new RegExp(/i made it/i).test(titleText)
-            || new RegExp(/to those struggling/i).test(titleText)
-            || new RegExp(/download the app/i).test(titleText)
-            || new RegExp(/(celebrate)/i).test(titleText)
-            || new RegExp(/why do you fap\?/i).test(titleText)
-            || new RegExp(/(boner|morning wood)/i).test(titleText)
-            || new RegExp(/double digit/i).test(titleText)
-            || new RegExp(/diary/i).test(titleText)
-            || new RegExp(/(tik tok|tiktok)/i).test(titleText)
-            || new RegExp(/moral/i).test(titleText)
-            || new RegExp(/one habit that helped me/i).test(titleText)
-            || new RegExp(/just completed a/i).test(titleText)
-            || new RegExp(/super sensitive/i).test(titleText)
-            || new RegExp(/strange benefit/i).test(titleText)
-            || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
-            || new RegExp(/not bragging/i).test(titleText)
-            || new RegExp(/medication/i).test(titleText)
-            || new RegExp(/(semen|urine|anal)/i).test(titleText)
-            || new RegExp(/motivational thought/i).test(titleText)
-            || new RegExp(/(a reminder|remember this)/i).test(titleText)
             || new RegExp(/(Don't|Don't|dont) mind me/i).test(titleText)
-            || new RegExp(/(cancer|prostatitis|erection)/i).test(titleText)
-            || new RegExp(/love you guys/i).test(titleText)
-            || new RegExp(/a study/i).test(titleText)
-            // || new RegExp(/(week|days) strong/i).test(titleText)
-            // || new RegExp(/passed (day|week)/i).test(titleText)
-            // || new RegExp(/become the/i).test(titleText)
-            // || new RegExp(/replaced PMO/i).test(titleText)
-            // || new RegExp(/longest streak/i).test(titleText) // look into
-            // || new RegExp(/a theory/i).test(titleText)
-            // || new RegExp(/today i reached/i).test(titleText)
-            // || new RegExp(/almost there/i).test(titleText)
-            // || new RegExp(/(weeks|days) porn free/i).test(titleText)
-            // || new RegExp(/learnt/i).test(titleText)
-            || new RegExp(/^(Don't|Don't|dont) give up$/i).test(titleText)
-            || new RegExp(/relapsed intentionally/i).test(titleText)
-            || new RegExp(/found something that/i).test(titleText)
-            // || new RegExp(/(women|girl)/i).test(titleText) // can't because there are good cases for this.
-            || new RegExp(/(wim hof)/i).test(titleText) // cold shower
-            || new RegExp(/(premature|ejaculation|precum|cum)/i).test(titleText)
-            || new RegExp(/achieved my goal/i).test(titleText)
-            || new RegExp(/found a method/i).test(titleText)
-            || new RegExp(/longest streak yet/i).test(titleText)
-            || new RegExp(/(insta|instagram)/i).test(titleText)
-            || new RegExp(/hunger/i).test(titleText)
-            || new RegExp(/just rejected a ?(hot)? girl/i).test(titleText)
-            // || new RegExp(/king /i).test(titleText) // because jerking
-            || new RegExp(/(previous record|milestone)/i).test(titleText)
-            || new RegExp(/(pied|peid|get it up|shrink)/i).test(titleText)
-            || new RegExp(/(hair|skin|acne|sperm)/i).test(titleText)
-            || new RegExp(/the key is/i).test(titleText)
-            || new RegExp(/remember these \d+/i).test(titleText)
-            || new RegExp(/the key to (everything|NoFap)/i).test(titleText)
-            || new RegExp(/monk/i).test(titleText)
-            || new RegExp(/went for first .* in (weeks|months)/i).test(titleText)
-            || new RegExp(/(grip|syndrome)/i).test(titleText)
-            || new RegExp(/(virgin|virginity)/i).test(titleText)
-            // || new RegExp(/haven't relapsed/i).test(titleText)
-            // || new RegExp(/is ?(.*) worth/i).test(titleText)
-            // || new RegExp(/come this far/i).test(titleText)
-            // || new RegExp(/breakthrough/i).test(titleText)
-            // || new RegExp(/(don't|dont) fall/i).test(titleText)
-            || new RegExp(/read this if you/i).test(titleText)
-            || new RegExp(/weed/i).test(titleText)
-            || new RegExp(/pro tip for nofap/i).test(titleText)
-            || new RegExp(/trying to give up/i).test(titleText)
-            || new RegExp(/streak for the first time/i).test(titleText)
-            || new RegExp(/do not relapse/i).test(titleText)
-            || new RegExp(/still going strong/i).test(titleText)
+            || new RegExp(/journal entry/i).test(titleText) // look into this.
+            || new RegExp(/diary/i).test(titleText)
             || new RegExp(/(weekly|daily) journal/i).test(titleText)
             || new RegExp(/(tracker|counting|counter)/i).test(titleText)
-            || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
-            || new RegExp(/my benefits/i).test(titleText)
             || new RegExp(/checking my day count/i).test(titleText)
-            || new RegExp(/placebo/i).test(titleText)
-            || new RegExp(/small success/i).test(titleText)
-            || new RegExp(/scientific/i).test(titleText)
-            || new RegExp(/(balls|penis|pelvic|genital|testic)/i).test(titleText)
             || new RegExp(/accountability post/i).test(titleText)
-            || new RegExp(/illusion/i).test(titleText)
-            || new RegExp(/counts as relapse/i).test(titleText) // look into this.
-            // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
-            // || new RegExp(/sex/i).test(titleText) // look into this (can't do this because of sexual urges)
-            || new RegExp(/journal entry/i).test(titleText) // look into this.
-            || new RegExp(/(vivid|weird) dream/i).test(titleText) // look into this.
-            || new RegExp(/(mum|dad)/i).test(titleText) // look into this.
-            || new RegExp(/benefits till now/i).test(titleText)
+            // LECTURE
+            || new RegExp(/Nofap taught me/i).test(titleText)
+            || new RegExp(/a piece of advice/i).test(titleText)
+            || new RegExp(/read this if you/i).test(titleText)
+            || new RegExp(/pro tip for nofap/i).test(titleText)
+            || new RegExp(/for those who relapse/i).test(titleText)
+            || new RegExp(/to those struggling/i).test(titleText)
+            || new RegExp(/one habit that helped me/i).test(titleText)
+            || new RegExp(/the key is/i).test(titleText)
+            || new RegExp(/my benefits/i).test(titleText)
+            || new RegExp(/(a reminder|remember this)/i).test(titleText)
+            || new RegExp(/strange benefit/i).test(titleText)
+            || new RegExp(/found a method/i).test(titleText)
+            || new RegExp(/the key to (everything|NoFap)/i).test(titleText)
+            // MOTIVATION
+            || new RegExp(/motivational thought/i).test(titleText)
+            || new RegExp(/do not relapse/i).test(titleText)
+            // VICTORY
+            || new RegExp(/overcame my worst urge/i).test(titleText)
+            || new RegExp(/(0|zero) urges to fap/i).test(titleText)
+            || new RegExp(/I feel amazing/i).test(titleText)
+            || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
+            || new RegExp(/(didnt|didn't) relapse today/i).test(titleText)
+            || new RegExp(/i made it/i).test(titleText)
+            || new RegExp(/went for first .* in (weeks|months)/i).test(titleText)
+            || new RegExp(/(celebrate)/i).test(titleText)
+            || new RegExp(/found something that/i).test(titleText)
+            || new RegExp(/streak for the first time/i).test(titleText)
+            || new RegExp(/double digit/i).test(titleText)
+            || new RegExp(/still going strong/i).test(titleText)
+            || new RegExp(/not bragging/i).test(titleText)
+            || new RegExp(/just completed a/i).test(titleText)
+            || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
+            || new RegExp(/achieved my goal/i).test(titleText)
+            || new RegExp(/longest streak yet/i).test(titleText)
+            || new RegExp(/(previous record|milestone)/i).test(titleText)
+            || new RegExp(/small success/i).test(titleText)
+            || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
+            // MOTIVATION
+            || new RegExp(/(we will all make it|we will make it|you will make it|you can do it)/i).test(titleText)
+            || new RegExp(/^(Don't|Don't|dont) give up$/i).test(titleText)
+            || new RegExp(/love you guys/i).test(titleText)
+            || new RegExp(/(nofap|no fap) works/i).test(titleText)
+            // RATIONALISATIONS
+            || new RegExp(/(down side|downside)/i).test(titleText)
+            || new RegExp(/relapsed intentionally/i).test(titleText)
+            || new RegExp(/any evidence that/i).test(titleText)
             || new RegExp(/harmful effect/i).test(titleText)
+            || new RegExp(/a study/i).test(titleText)
+            // SEXUAL / MEDICAL CONDITIONS
+            || new RegExp(/(balls|penis|pelvic|genital|testic)/i).test(titleText)
+            || new RegExp(/(boner|morning wood)/i).test(titleText)
+            || new RegExp(/(cancer|prostatitis|erection)/i).test(titleText)
+            || new RegExp(/(erectile|disfunction|erectile dysfunction)/i).test(titleText)
+            || new RegExp(/(grip|syndrome)/i).test(titleText)
+            || new RegExp(/(hair|skin|acne|sperm)/i).test(titleText)
+            || new RegExp(/medication/i).test(titleText)
+            || new RegExp(/(premature|ejaculation|precum|cum)/i).test(titleText)
+            || new RegExp(/(pied|peid|get it up|shrink)/i).test(titleText)
+            || new RegExp(/(semen|urine|anal)/i).test(titleText)
+            || new RegExp(/scientific/i).test(titleText)
+            || new RegExp(/super sensitive/i).test(titleText)
+            // SEX / WOMEN
+            || new RegExp(/finally got a girlfriend/i).test(titleText)
+            || new RegExp(/sexting/i).test(titleText)
+            || new RegExp(/(virgin|virginity)/i).test(titleText)
+            // POINTLESS QUESTIONS
+            || new RegExp(/counts as relapse/i).test(titleText) // look into this.
+            || new RegExp(/why do you fap\?/i).test(titleText)
+            // IRRELEVANT TOPICS
+            || new RegExp(/beast mode/i).test(titleText)
+            || new RegExp(/gift/i).test(titleText)
+            || new RegExp(/hunger/i).test(titleText)
+            || new RegExp(/(insta|instagram)/i).test(titleText)
+            || new RegExp(/illusion/i).test(titleText)
+            || new RegExp(/monk/i).test(titleText)
+            || new RegExp(/moral/i).test(titleText)
+            || new RegExp(/(mum|dad)/i).test(titleText) // look into this.
+            || new RegExp(/(vivid|weird) dream/i).test(titleText) // look into this.
+            || new RegExp(/(tik tok|tiktok)/i).test(titleText)
+            || new RegExp(/(wim hof)/i).test(titleText) // cold shower
+            || new RegExp(/weed/i).test(titleText)
+            // DOUBTS
+            || new RegExp(/placebo/i).test(titleText)
+            // UNSORTED
+            || new RegExp(/benefits till now/i).test(titleText)
+            || new RegExp(/does not fap/i).test(titleText)
+            || new RegExp(/download the app/i).test(titleText)
             || new RegExp(/interesting dream/i).test(titleText)
-            || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText);
+            || new RegExp(/just rejected a ?(hot)? girl/i).test(titleText)
+            || new RegExp(/remember these \d+/i).test(titleText);
     };
     // || new RegExp(/girlfriend/i).test(titleText) // look into this
+    // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
+    // || new RegExp(/sex/i).test(titleText) // look into this (can't do this because of sexual urges)
+    // || new RegExp(/trying to give up/i).test(titleText) // not sure about this.
     // || new RegExp(/should I go/i).test(titleText)
     // || new RegExp(/(going|growing) strong/i).test(titleText)
     // || new RegExp(/(don't|dont) give up/i).test(titleText)
@@ -2874,6 +2869,23 @@
     // || new RegExp(/longest .* streak/i).test(titleText) // look into this.
     // || new RegExp(/confessed .* to my/i).test(titleText) // look into this.
     // || new RegExp(/update from/i).test(titleText)
+    // || new RegExp(/king /i).test(titleText) // because jerking
+    // || new RegExp(/haven't relapsed/i).test(titleText)
+    // || new RegExp(/is ?(.*) worth/i).test(titleText)
+    // || new RegExp(/come this far/i).test(titleText)
+    // || new RegExp(/breakthrough/i).test(titleText)
+    // || new RegExp(/(don't|dont) fall/i).test(titleText)
+    // || new RegExp(/(week|days) strong/i).test(titleText)
+    // || new RegExp(/passed (day|week)/i).test(titleText)
+    // || new RegExp(/become the/i).test(titleText)
+    // || new RegExp(/replaced PMO/i).test(titleText)
+    // || new RegExp(/longest streak/i).test(titleText) // look into
+    // || new RegExp(/a theory/i).test(titleText)
+    // || new RegExp(/today i reached/i).test(titleText)
+    // || new RegExp(/almost there/i).test(titleText)
+    // || new RegExp(/(weeks|days) porn free/i).test(titleText)
+    // || new RegExp(/learnt/i).test(titleText)
+    // || new RegExp(/(women|girl)/i).test(titleText) // can't because there are good cases for this.
     // tricks ... helped me
     // news/newspaper
     // 10th day done
@@ -2887,14 +2899,13 @@
     // picture/quote
     // libdo
     // days complete / d
-    // the key is to
-    // harmful effects
+    // || new RegExp(/("|“|')/i).test(titleText) // never do this, ever. breaks everything
     // edgeCASES
     // What does your sex life looks like after you successfully quit porn?
     // Deleted: Motivate Me - I’ve been heavily masturbating since my early teens and have smoked weed regularly for the past year...
     // userscript.html?name=Reddit%20NoFap%20New%20Script.user.js&id=cd407b2d-ccbc-47ff-8aa0-1e9a382be0ab:16 Deleted: Question - Can’t focus on task at hand due to sexual urges. What are the options?
     // Deleted: undefined - guys i am 4 days through and i feel the urge to fap more than ever. any tips other than taking cold showers???
-    var toRemoveFinal = function (titleText, flairText) {
+    var toRemoveFinal = function (titleText, flairText, messageText) {
         return new RegExp(/^(day|week) \d+ (complete|done|free|strong)/i).test(titleText)
             || new RegExp(/\d+ (week|day).* (complete|done|free|strong)/i).test(titleText)
             || new RegExp(/(1st|first) (week|month) (complete|done|free|strong)/i).test(titleText)
@@ -2912,7 +2923,7 @@
             || new RegExp(/celebrating (1|one) (week|month)/i).test(titleText);
     };
 
-    var toRelapseAdvice = function (titleText, flairText) {
+    var toRelapseAdvice = function (titleText, flairText, messageText) {
         return flairText === 'Relapse Report'
             || new RegExp(/failed first attempt/i).test(titleText)
             || new RegExp(/relapse report/i).test(titleText)
@@ -2948,6 +2959,7 @@
             || new RegExp(/a new start/i).test(titleText)
             || new RegExp(/(I'm|im) ready to start/i).test(titleText)
             || new RegExp(/where to start/i).test(titleText)
+            || new RegExp(/first time doing this/i).test(titleText)
             || new RegExp(/getting started/i).test(titleText)
             || new RegExp(/here for (nofap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/today I start/i).test(titleText)
@@ -3015,6 +3027,7 @@
         return new RegExp(/(begin|let's do this) again/i).test(titleText)
             || new RegExp(/gonna try again/i).test(titleText)
             || new RegExp(/trying it again/i).test(titleText)
+            || new RegExp(/decided to try this again/i).test(titleText)
             || new RegExp(/one last try/i).test(titleText)
             || new RegExp(/^trying again$/i).test(titleText)
             || new RegExp(/day (1|one) again/i).test(titleText)
@@ -3036,13 +3049,17 @@
             || new RegExp(/what other steps/i).test(titleText)
             || new RegExp(/best way to stop masturbating\?/i).test(titleText)
             || new RegExp(/I (give up|need support|can't stop)/i).test(titleText)
-            || new RegExp(/It's impossible/i).test(titleText)
             || new RegExp(/need some advice from pro/i).test(titleText)
-            || new RegExp(/trying for years/i).test(titleText)
             || new RegExp(/I have a serious addiction to masturbation/i).test(titleText)
+            // TOO HARD
             || new RegExp(/shit is getting rough/i).test(titleText)
-            || new RegExp(/how can I stop/i).test(titleText)
+            || new RegExp(/It's impossible/i).test(titleText)
+            || new RegExp(/trying for years/i).test(titleText)
+            // LIKE HELP
             || new RegExp(/would like some help/i).test(titleText)
+            || new RegExp(/how can I stop/i).test(titleText)
+            // CAN'T STOP
+            || new RegExp(/I just can’t stop myself/i).test(titleText)
             || new RegExp(/^tips\?$/i).test(titleText)
             || new RegExp(/still can't do it/i).test(titleText)
             || new RegExp(/How not to get into an Addiction/i).test(titleText)
@@ -3372,7 +3389,7 @@
                 var messageText = ((_11 = (_10 = __spreadArrays(((_9 = (_8 = (_7 = (_6 = (_5 = (_4 = (_3 = (_2 = (_1 = (_0 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _0 === void 0 ? void 0 : _0.parentNode) === null || _1 === void 0 ? void 0 : _1.parentNode) === null || _2 === void 0 ? void 0 : _2.parentNode) === null || _3 === void 0 ? void 0 : _3.parentNode) === null || _4 === void 0 ? void 0 : _4.parentNode) === null || _5 === void 0 ? void 0 : _5.children[1]) === null || _6 === void 0 ? void 0 : _6.children[2]) === null || _7 === void 0 ? void 0 : _7.children[0]) === null || _8 === void 0 ? void 0 : _8.children[0]) === null || _9 === void 0 ? void 0 : _9.children) || [])) === null || _10 === void 0 ? void 0 : _10.map(function (item) { return item === null || item === void 0 ? void 0 : item.innerText; })) === null || _11 === void 0 ? void 0 : _11.join('\n')) || '';
                 var aLinkHref = (_20 = (_19 = (_18 = (_17 = (_16 = (_15 = (_14 = (_13 = (_12 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _12 === void 0 ? void 0 : _12.parentNode) === null || _13 === void 0 ? void 0 : _13.parentNode) === null || _14 === void 0 ? void 0 : _14.parentNode) === null || _15 === void 0 ? void 0 : _15.parentNode) === null || _16 === void 0 ? void 0 : _16.parentNode) === null || _17 === void 0 ? void 0 : _17.children[1]) === null || _18 === void 0 ? void 0 : _18.children[1]) === null || _19 === void 0 ? void 0 : _19.children[0]) === null || _20 === void 0 ? void 0 : _20.children[0].href;
                 var _45 = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _45.shouldDeleteElementImmediately, sendMessageType = _45.sendMessageType, prelimUrl = _45.prelimUrl;
-                if (index !== 0) {
+                if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
                     if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
                         (_28 = (_27 = (_26 = (_25 = (_24 = (_23 = (_22 = (_21 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _21 === void 0 ? void 0 : _21.parentNode) === null || _22 === void 0 ? void 0 : _22.parentNode) === null || _23 === void 0 ? void 0 : _23.parentNode) === null || _24 === void 0 ? void 0 : _24.parentNode) === null || _25 === void 0 ? void 0 : _25.parentNode) === null || _26 === void 0 ? void 0 : _26.parentNode) === null || _27 === void 0 ? void 0 : _27.parentNode) === null || _28 === void 0 ? void 0 : _28.remove();
                         return;

@@ -1,4 +1,4 @@
-export const toRelapseAdvice = (titleText: string, flairText: string): boolean =>
+export const toRelapseAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   flairText === 'Relapse Report'
   || new RegExp(/failed first attempt/i).test(titleText)
   || new RegExp(/relapse report/i).test(titleText)

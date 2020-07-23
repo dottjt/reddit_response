@@ -19,7 +19,7 @@ export const toMeditateGuide = (messagePayload: PopulateReceivedMessagePayload):
   // I'm wondering how do u meditate
 
 export const toHardTime = (messagePayload: PopulateReceivedMessagePayload): boolean =>
-  new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
+  new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i).test(messagePayload.message)
   || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
   || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
   || new RegExp(/I haven't done much/i).test(messagePayload.message)

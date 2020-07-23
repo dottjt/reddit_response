@@ -37,7 +37,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
 
   // TO REMOVE
   if (
-    toRemoveInitial(titleText, flairText)
+    toRemoveInitial(titleText, flairText, messageText)
     || toRemoveInitialDay(titleText, flairText, messageText)
   ) {
     console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
@@ -83,7 +83,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
   if (compiledUser.userType === UserType.UserNotRespondedBack) {
     // FOLLOW MESSAGES
     if (compiledUser?.lastSentMessage?.type.includes('start')) {
-      if (toRelapseAdvice(titleText, flairText)) {
+      if (toRelapseAdvice(titleText, flairText, messageText)) {
         return {
           shouldDeleteElementImmediately: false,
           sendMessageType: SendMessageType.FollowRelapseAdvice,
@@ -146,7 +146,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     }
 
     // RELAPSE MESSAGES
-    if (toRelapseAdvice(titleText, flairText)) {
+    if (toRelapseAdvice(titleText, flairText, messageText)) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceRelapse,
@@ -282,7 +282,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
 
 
   // Final Delete
-  if (toRemoveFinal(titleText, flairText)) {
+  if (toRemoveFinal(titleText, flairText, messageText)) {
     return {
       shouldDeleteElementImmediately: true,
       sendMessageType: undefined,

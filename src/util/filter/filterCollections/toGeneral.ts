@@ -10,13 +10,17 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/what other steps/i).test(titleText)
   || new RegExp(/best way to stop masturbating\?/i).test(titleText)
   || new RegExp(/I (give up|need support|can't stop)/i).test(titleText)
-  || new RegExp(/It's impossible/i).test(titleText)
   || new RegExp(/need some advice from pro/i).test(titleText)
-  || new RegExp(/trying for years/i).test(titleText)
   || new RegExp(/I have a serious addiction to masturbation/i).test(titleText)
+  // TOO HARD
   || new RegExp(/shit is getting rough/i).test(titleText)
-  || new RegExp(/how can I stop/i).test(titleText)
+  || new RegExp(/It's impossible/i).test(titleText)
+  || new RegExp(/trying for years/i).test(titleText)
+  // LIKE HELP
   || new RegExp(/would like some help/i).test(titleText)
+  || new RegExp(/how can I stop/i).test(titleText)
+  // CAN'T STOP
+  || new RegExp(/I just can’t stop myself/i).test(titleText)
   || new RegExp(/^tips\?$/i).test(titleText)
   || new RegExp(/still can't do it/i).test(titleText)
   || new RegExp(/How not to get into an Addiction/i).test(titleText)

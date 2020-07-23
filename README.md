@@ -18,11 +18,11 @@ Although there are a heap of features I can build into it, I would consider it m
 - okay NOFAP with a girlfriend? MESSAGE
 - libido MESSAGE
 - sex during nofap MESSAGE
-- Is NoFap worth it?
-- benefits of cold showers
-
+- Is NoFap worth it? MESSAGE
+- benefits of cold showers MESSAGE
 // feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
 
+- need to refactor the regex patterns into logical groups, as well as create certain
 - Don't delete the last user post if it's the last one.
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - Target the nofap website, not just reddit. Increase your userbase :)

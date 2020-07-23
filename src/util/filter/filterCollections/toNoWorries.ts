@@ -73,6 +73,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/Whats is the website called/i).test(messagePayload.message)
   || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
   || new RegExp(/I'll take the link/i).test(messagePayload.message)
+  || new RegExp(/Would love to see/i).test(messagePayload.message)
   || new RegExp(/shoot me the link/i).test(messagePayload.message)
   || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message)
 

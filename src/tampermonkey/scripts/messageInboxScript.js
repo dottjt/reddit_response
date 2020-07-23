@@ -177,7 +177,7 @@
     };
     // I'm wondering how do u meditate
     var toHardTime = function (messagePayload) {
-        return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much) for my mental health/i).test(messagePayload.message)
+        return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i).test(messagePayload.message)
             || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
             || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
             || new RegExp(/I haven't done much/i).test(messagePayload.message)
@@ -258,6 +258,7 @@
             || new RegExp(/Whats is the website called/i).test(messagePayload.message)
             || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
             || new RegExp(/I'll take the link/i).test(messagePayload.message)
+            || new RegExp(/Would love to see/i).test(messagePayload.message)
             || new RegExp(/shoot me the link/i).test(messagePayload.message)
             || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message);
     };
