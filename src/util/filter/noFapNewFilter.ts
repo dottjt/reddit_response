@@ -16,16 +16,15 @@ import {
   whenDoesItGetEasierAdvice
 } from '../responses/start';
 import { ConfigType } from '../config';
-import { finalJoinSubreddit, finalFantastic } from '../responses/final';
 
 import { followRelapseAdvice } from '../responses/follow';
-import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterCollections/toRemove';
-import { toRelapseAdvice } from './filterCollections/toRelapse';
-import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/toStart';
-import { toGeneralAdvice } from './filterCollections/toGeneral';
-import { toWetDreamAdvice, toAccountabilityPartner, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/toOthers';
+import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterCollections/sub/toRemove';
+import { toRelapseAdvice } from './filterCollections/sub/toRelapse';
+import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/sub/toStart';
+import { toGeneralAdvice } from './filterCollections/sub/toGeneral';
+import { toWetDreamAdvice, toAccountabilityPartner, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/sub/toOthers';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
-import { toStruggleAdvice } from './filterCollections/toStruggle';
+import { toStruggleAdvice } from './filterCollections/sub/toStruggle';
 import { isLessThan24Hours } from '../utils/commonUtils';
 
 
@@ -238,9 +237,6 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
       }
     }
 
-
-
-
     // Does the urge to masturbate get easier?
     // edging
     // is it a relapse?
@@ -280,9 +276,7 @@ export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameCon
     // did I just relapse?
     // how do you feel long term (after 1 month/week etc.)
     // does peeking count as relapse?
-
   }
-
 
   // Final Delete
   if (toRemoveFinal(titleText, flairText, messageText)) {

@@ -1,4 +1,4 @@
-import { PopulateReceivedMessagePayload } from '../../../types/tamperMonkeyTypes'
+import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes'
 
 export const toNotRespond = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/no (thank|sorry)/i).test(messagePayload.message)
@@ -15,15 +15,17 @@ export const toMeditateGuide = (messagePayload: PopulateReceivedMessagePayload):
   || new RegExp(/tips on meditating\?/i).test(messagePayload.message)
   || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
   || new RegExp(/^How do (u|you) meditate?$/i).test(messagePayload.message)
-
+  // How does one meditate?
   // I'm wondering how do u meditate
+  // Thank you so much for reaching out. I’ve never tried meditation but I’ve heard it helps a lot, is there any specific way to do it? Are there different methods?
 
 export const toHardTime = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i).test(messagePayload.message)
   || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
-  || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
+  || new RegExp(/I (don’t|dont|don't) (meditate|do much)/i).test(messagePayload.message)
   || new RegExp(/I haven't done much/i).test(messagePayload.message)
   || new RegExp(/I just distract myself/i).test(messagePayload.message)
+  || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message)
   || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message)
 
 export const toFantastic = (messagePayload: PopulateReceivedMessagePayload): boolean =>

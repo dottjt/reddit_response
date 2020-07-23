@@ -175,13 +175,16 @@
             || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
             || new RegExp(/^How do (u|you) meditate?$/i).test(messagePayload.message);
     };
+    // How does one meditate?
     // I'm wondering how do u meditate
+    // Thank you so much for reaching out. I’ve never tried meditation but I’ve heard it helps a lot, is there any specific way to do it? Are there different methods?
     var toHardTime = function (messagePayload) {
         return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i).test(messagePayload.message)
             || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
-            || new RegExp(/I (don’t|dont|don't) do much/i).test(messagePayload.message)
+            || new RegExp(/I (don’t|dont|don't) (meditate|do much)/i).test(messagePayload.message)
             || new RegExp(/I haven't done much/i).test(messagePayload.message)
             || new RegExp(/I just distract myself/i).test(messagePayload.message)
+            || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message)
             || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message);
     };
 
@@ -244,6 +247,7 @@
             // GRATEFUL
             || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
             || new RegExp(/That would be very welcome/i).test(messagePayload.message)
+            || new RegExp(/would like to see what the website is/i).test(messagePayload.message)
             || new RegExp(/that website would be nice/i).test(messagePayload.message)
             || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
             || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
@@ -299,7 +303,8 @@
             || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
             || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
             || new RegExp(/for sharing/i).test(messagePayload.message)
-            || new RegExp(/thanks for/i).test(messagePayload.message);
+            || new RegExp(/thanks for/i).test(messagePayload.message)
+            || new RegExp(/thanks bro/i).test(messagePayload.message);
     };
 
     var filterRedditInboxMessages = function (messagePayload, moreThanOneMessage) {
@@ -358,6 +363,7 @@
                 };
             }
         }
+        //  <!-- What is NFD website -->
         // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
         // therefore, this also need to know that the recieved messages from that used is exactly two
         // of course this breaks if the user sends two messages, so I'll have to look into this.

@@ -1,4 +1,4 @@
-import { PopulateReceivedMessagePayload } from '../../../types/tamperMonkeyTypes';
+import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes';
 
 export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
@@ -67,6 +67,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   // GRATEFUL
   || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
   || new RegExp(/That would be very welcome/i).test(messagePayload.message)
+  || new RegExp(/would like to see what the website is/i).test(messagePayload.message)
   || new RegExp(/that website would be nice/i).test(messagePayload.message)
   || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
   || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)

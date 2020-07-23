@@ -2483,10 +2483,10 @@
             }); } }));
     };
 
-    var followRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
-    var followMeditationAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Have you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
-    var followStruggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
-    var followNotSmoothlyAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry things haven't been going smoothly with your recovery.\n\nHave you been meditating daily like I suggested? Did you end up reading the NFD website?"); };
+    var followRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
+    var followMeditationAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
+    var followStruggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
+    var followNotSmoothlyAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry things haven't been going smoothly with your recovery.\n\nHave you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
 
     var createComponentVNode$1 = createComponentVNode;
     var createVNode$2 = createVNode;
@@ -2568,9 +2568,7 @@
                 var _loop_1 = function (username) {
                     var allATags = document.querySelectorAll('a');
                     var usernameTag = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes(username); })[0];
-                    // console.log('usernameTag', usernameTag);
                     var hoursAgoText = (_j = (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = usernameTag === null || usernameTag === void 0 ? void 0 : usernameTag.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode.children[1]) === null || _f === void 0 ? void 0 : _f.children[0]) === null || _g === void 0 ? void 0 : _g.children[0]) === null || _h === void 0 ? void 0 : _h.children[0].querySelectorAll('a')[1]) === null || _j === void 0 ? void 0 : _j.innerText;
-                    console.log(hoursAgoText);
                     var doesTextContainXXX = username === usernameConfig.usernameValue;
                     var doesTimestampContainXXX = hoursAgoText === nextHoursAgoValueToSearch;
                     if (doesTextContainXXX) {
@@ -2647,8 +2645,8 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'itZacklol';
-    var R_NOFAP_TIMESTAMP = '1 hour ago';
+    var R_NOFAP_USERNAME = 'satheesh3796';
+    var R_NOFAP_TIMESTAMP = 'just now';
     var R_PORN_FREE_USERNAME = 'gjay16';
     var R_PORN_FREE_TIMESTAMP = '';
     var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
@@ -2770,6 +2768,7 @@
             || new RegExp(/(Don't|Don't|dont) mind me/i).test(titleText)
             || new RegExp(/journal entry/i).test(titleText) // look into this.
             || new RegExp(/diary/i).test(titleText)
+            || new RegExp(/libido/i).test(titleText)
             || new RegExp(/(weekly|daily) journal/i).test(titleText)
             || new RegExp(/(tracker|counting|counter)/i).test(titleText)
             || new RegExp(/checking my day count/i).test(titleText)

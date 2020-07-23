@@ -1,4 +1,4 @@
-import { PopulateReceivedMessagePayload } from '../../../types/tamperMonkeyTypes';
+import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes';
 
 export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
   new RegExp(/(what's|What’s|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)

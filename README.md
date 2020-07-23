@@ -16,8 +16,6 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- Save last ago date if you cannot find the username.
-
 - Fetish is irrelevant. MESSAGE
 - okay NOFAP with a girlfriend? MESSAGE
 - libido MESSAGE
@@ -27,7 +25,6 @@ Although this application saves me a tremendous amount of time, the biggest save
 // feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
 
 - need to refactor the regex patterns into logical groups, as well as create certain
-- Don't delete the last user post if it's the last one.
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - Target the nofap website, not just reddit. Increase your userbase :)
 - nofap
@@ -48,6 +45,8 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## DONE
 
+- Don't delete the last user post if it's the last one.
+- Save last ago date if you cannot find the username.
 - Remove did this count as relapse posts if I'm not addressing them (I made this into it's own message :))
 - split up filter, for sure.
 - Send Final BANNER is not correct, please align with how it's being done in the filters. It will show purely if it's middle, but the use has only sent a start, which is wrong. (all works now, yay!)

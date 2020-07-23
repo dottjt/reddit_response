@@ -4,10 +4,10 @@ import { CompiledFullUserObject, PopulateReceivedMessagePayloadEXTREME } from '.
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNotRespond, toMeditateGuide, toHardTime } from './filterCollections/toInbox';
-import { toNoWorriesGuide } from './filterCollections/toNoWorries';
-import { toLinkYouGuide } from './filterCollections/toLinkYou';
-import { toJoinSubreddit } from './filterCollections/toJoinSubreddit';
+import { toNotRespond, toMeditateGuide, toHardTime } from './filterCollections/inbox/toInbox';
+import { toNoWorriesGuide } from './filterCollections/inbox/toNoWorries';
+import { toLinkYouGuide } from './filterCollections/inbox/toLinkYou';
+import { toJoinSubreddit } from './filterCollections/inbox/toJoinSubreddit';
 
 export const filterRedditInboxMessages = (
   messagePayload: PopulateReceivedMessagePayloadEXTREME,
@@ -80,6 +80,9 @@ export const filterRedditInboxMessages = (
         }
       }
   }
+
+  //  <!-- What is NFD website -->
+
 
   // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
   // therefore, this also need to know that the recieved messages from that used is exactly two
