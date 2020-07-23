@@ -23,6 +23,7 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 
 ## Nice To Have
 
+- Syntax highlight the reply message regex. (I honestly would have zero idea how to do this)
 - Look into addressing congratulation messages
 - Look into incorporating whether they've been sent the website or not into ReplyUserPanel, so you can have more information from them and what information they require. (might be too much information for no palatable reason)
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage (I don't think it's possible to know until after? Well, it's possible but not a massive deal for now)
