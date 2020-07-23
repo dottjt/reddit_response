@@ -30,6 +30,7 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/give (ur|your) (site|link|web|guide|content|page) a visit/i).test(messagePayload.message)
   || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
   || new RegExp(/please pass on (the|that) website info/i).test(messagePayload.message)
+  || new RegExp(/send me your website/i).test(messagePayload.message)
 
   // PASSIVE ASK
   || new RegExp(/May I know (your|the) website/i).test(messagePayload.message)
@@ -66,11 +67,13 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
 
   // GRATEFUL
+  || new RegExp(/the website would be quite helpful/i).test(messagePayload.message)
   || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
   || new RegExp(/That would be very welcome/i).test(messagePayload.message)
   || new RegExp(/would like to see what the website is/i).test(messagePayload.message)
   || new RegExp(/that website would be nice/i).test(messagePayload.message)
   || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
+  || new RegExp(/that would be really helpful/i).test(messagePayload.message)
   || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
   || new RegExp(/the (website|link) would be cool/i).test(messagePayload.message)
   || new RegExp(/will have a look on your website/i).test(messagePayload.message)
@@ -78,12 +81,14 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/(it|that|link) would be (super|awesome|great|cool)/i).test(messagePayload.message)
   || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message)
 
+
   // LOVE
   || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
   || new RegExp(/love to (see|know) (the|your) website/i).test(messagePayload.message)
   || new RegExp(/I would love to learn more about it/i).test(messagePayload.message)
   || new RegExp(/would love to visit/i).test(messagePayload.message)
   || new RegExp(/love to see the website/i).test(messagePayload.message)
+  || new RegExp(/would love that website/i).test(messagePayload.message)
   || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
   || new RegExp(/Would love to see/i).test(messagePayload.message)
   || new RegExp(/take a look at your website/i).test(messagePayload.message)
@@ -125,6 +130,8 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   // EDGET
   // From your experience should I go ahead with my marriage and start following nofap no pmo
   // Yes, meditation is really a key to control that urge, I have started inculcate those habits! Now I am on day 7 of nofap! It's true that mentally we have to be very strong! Thanks for your support! Means alot! 😇
+  // Yes I meditate once a day, and pray constantly. I’m not afraid to ask God for help. (look into this, it shouldn't have triggered)
+
 
 
 

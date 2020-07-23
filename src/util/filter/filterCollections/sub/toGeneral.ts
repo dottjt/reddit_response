@@ -19,11 +19,16 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/shit is getting rough/i).test(titleText)
   || new RegExp(/It's impossible/i).test(titleText)
   || new RegExp(/trying for years/i).test(titleText)
+  || new RegExp(/falling badly/i).test(titleText)
+  || new RegExp(/I've failed countless/i).test(titleText)
 
   // LIKE HELP
   || new RegExp(/would like some help/i).test(titleText)
   || new RegExp(/how can I stop/i).test(titleText)
-
+  || new RegExp(/^Please help/i).test(titleText)
+  || new RegExp(/^Need help/i).test(titleText)
+  || new RegExp(/looking for some guidance/i).test(titleText)
+  
   // CAN'T STOP
   || new RegExp(/I just can’t stop myself/i).test(titleText)
   || new RegExp(/^tips\?$/i).test(titleText)

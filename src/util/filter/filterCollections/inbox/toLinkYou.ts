@@ -11,3 +11,6 @@ export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagePayload): 
   || new RegExp(/where can i find the website/i).test(messagePayload.message)
   || new RegExp(/links to any resources/i).test(messagePayload.message)
   || new RegExp(/What website is it/i).test(messagePayload.message)
+  || new RegExp(/what website would that be/i).test(messagePayload.message)
+
+

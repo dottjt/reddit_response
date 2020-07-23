@@ -2591,16 +2591,10 @@
                         var usernameTag = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes(username); })[0];
                         var hoursAgoText = (_j = (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = usernameTag === null || usernameTag === void 0 ? void 0 : usernameTag.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode.children[1]) === null || _f === void 0 ? void 0 : _f.children[0]) === null || _g === void 0 ? void 0 : _g.children[0]) === null || _h === void 0 ? void 0 : _h.children[0].querySelectorAll('a')[1]) === null || _j === void 0 ? void 0 : _j.innerText;
                         var doesTextContainXXX = username === usernameConfig.usernameValue;
-                        var doesTimestampContainXXX = nextHoursAgoValueToSearch ? hoursAgoText === nextHoursAgoValueToSearch : false;
                         if (doesTextContainXXX) {
                             console.log('Found scroll username.');
                             clearInterval(interval);
                             resolve('Found scroll username.');
-                        }
-                        if (doesTimestampContainXXX) {
-                            console.log('Found scroll timestamp instead.');
-                            clearInterval(interval);
-                            resolve('Found scroll timestamp instead.');
                         }
                     };
                     for (var _l = 0, _m = usernames; _l < _m.length; _l++) {
@@ -2667,20 +2661,20 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'Ashinfinite';
-    var R_NOFAP_TIMESTAMP = 'just now';
-    var R_PORN_FREE_USERNAME = 'xanadork';
-    var R_PORN_FREE_TIMESTAMP = '11 minutes ago';
+    var R_NOFAP_USERNAME = 'OtterWhisperer';
+    var R_NOFAP_TIMESTAMP = '11 hours ago';
+    var R_PORN_FREE_USERNAME = 'adam_mescudi';
+    var R_PORN_FREE_TIMESTAMP = '5 minutes ago';
     var R_PORN_ADDICTION_USERNAME = 'External-Temporary38';
-    var R_PORN_ADDICTION_TIMESTAMP = '4 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '5 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
-    var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
+    var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
     var R_NOFAP_TEENS_USERNAME = '';
     var R_NOFAP_TEENS_TIMESTAMP = '';
     var R_SEMEN_RETENTION_USERNAME = '';
-    var R_SEMEN_RETENTION_TIMESTAMP = '';
+    var R_SEMEN_RETENTION_TIMESTAMP = 'NaN days ago';
     var R_MUSLIM_NOFAP_USERNAME = '';
-    var R_MUSLIM_NOFAP_TIMESTAMP = '';
+    var R_MUSLIM_NOFAP_TIMESTAMP = 'undefined';
     var TIMEFRAME = 'NA';
     // export const TIMEFRAME = '1 hour ago';
     // export const TIMEFRAME = '2 hours ago';
@@ -2813,8 +2807,10 @@
             // MOTIVATION
             || new RegExp(/motivational thought/i).test(titleText)
             || new RegExp(/do not relapse/i).test(titleText)
+            || new RegExp(/^keep going/i).test(titleText)
             // VICTORY
             || new RegExp(/overcame my worst urge/i).test(titleText)
+            || new RegExp(/I am proud of myself/i).test(titleText)
             || new RegExp(/(0|zero) urges to fap/i).test(titleText)
             || new RegExp(/I feel amazing/i).test(titleText)
             || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
@@ -2830,16 +2826,19 @@
             || new RegExp(/just completed a/i).test(titleText)
             || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
             || new RegExp(/achieved my goal/i).test(titleText)
+            || new RegExp(/finally reached \d+ days/i).test(titleText)
             || new RegExp(/longest streak yet/i).test(titleText)
             || new RegExp(/(previous record|milestone)/i).test(titleText)
             || new RegExp(/small success/i).test(titleText)
             || new RegExp(/finally made it to (day|week)/i).test(titleText)
+            || new RegExp(/reached day \d+ for the (first time|firsttime)/i).test(titleText)
             || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
             // MOTIVATION
             || new RegExp(/(we will all make it|we will make it|you will make it|you can do it)/i).test(titleText)
             || new RegExp(/^(Don't|Don't|dont) give up$/i).test(titleText)
             || new RegExp(/love you guys/i).test(titleText)
             || new RegExp(/(nofap|no fap) works/i).test(titleText)
+            || new RegExp(/^Instead of watching porn/i).test(titleText)
             // RATIONALISATIONS
             || new RegExp(/(down side|downside)/i).test(titleText)
             || new RegExp(/relapsed intentionally/i).test(titleText)
@@ -2860,6 +2859,7 @@
             || new RegExp(/scientific/i).test(titleText)
             || new RegExp(/super sensitive/i).test(titleText)
             || new RegExp(/testosterone/i).test(titleText)
+            || new RegExp(/health problems/i).test(titleText)
             // SEX / WOMEN
             || new RegExp(/finally got a girlfriend/i).test(titleText)
             || new RegExp(/sexting/i).test(titleText)
@@ -2882,13 +2882,18 @@
             || new RegExp(/weed/i).test(titleText)
             // DOUBTS
             || new RegExp(/placebo/i).test(titleText)
+            // OTHER TOPICS
+            || new RegExp(/is it worth it/i).test(titleText)
+            || new RegExp(/libido/i).test(titleText)
+            || new RegExp(/sex on (nofap|no fap|no-fap)/i).test(titleText)
             // UNSORTED
             || new RegExp(/benefits till now/i).test(titleText)
             || new RegExp(/does not fap/i).test(titleText)
             || new RegExp(/download the app/i).test(titleText)
             || new RegExp(/interesting dream/i).test(titleText)
             || new RegExp(/just rejected a ?(hot)? girl/i).test(titleText)
-            || new RegExp(/remember these \d+/i).test(titleText);
+            || new RegExp(/remember these \d+/i).test(titleText)
+            || new RegExp(/really helpful app/i).test(titleText);
     };
     // || new RegExp(/girlfriend/i).test(titleText) // look into this
     // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
@@ -2995,6 +3000,8 @@
             || new RegExp(/(I'm|im) ready to start/i).test(titleText)
             || new RegExp(/where to start/i).test(titleText)
             || new RegExp(/first time doing this/i).test(titleText)
+            || new RegExp(/I'm starting/i).test(titleText)
+            || new RegExp(/start of something amazing/i).test(titleText)
             || new RegExp(/getting started/i).test(titleText)
             || new RegExp(/here for (nofap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/today I start/i).test(titleText)
@@ -3020,11 +3027,12 @@
             || new RegExp(/officially day 1/i).test(titleText)
             || new RegExp(/the cycle stops here/i).test(titleText)
             || new RegExp(/starting my journey/i).test(titleText)
-            || new RegExp(/the beginning\.\./i).test(titleText)
+            || new RegExp(/the beginning/i).test(titleText)
             // || new RegExp(/my first post/i).test(titleText) // potentially inaccurate
             || new RegExp(/try to do this (NoFap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/(wanna|want|trying) to start/i).test(titleText)
             || new RegExp(/start of the journey/i).test(titleText)
+            || new RegExp(/(here|now) it begins/i).test(titleText)
             || new RegExp(/(Let's|lets) do this/i).test(titleText)
             || new RegExp(/(it's|its|it is) time to change/i).test(titleText)
             || new RegExp(/day 1 of (no fap|reboot|re boot)/i).test(titleText)
@@ -3036,6 +3044,7 @@
             || new RegExp(/stopping for good/i).test(titleText)
             || new RegExp(/(NoFap|no fap|no-fap) from today/i).test(titleText)
             || new RegExp(/Start of a New Journey/i).test(titleText)
+            || new RegExp(/Day (one|1) of /i).test(titleText)
             || new RegExp(/day (one|1) without fapping/i).test(titleText)
             || new RegExp(/I have made the right decision/i).test(titleText)
             || new RegExp(/finally admitting that (I'm|I’m) addicted/i).test(titleText)
@@ -3067,6 +3076,7 @@
             || new RegExp(/trying it again/i).test(titleText)
             || new RegExp(/decided to try this again/i).test(titleText)
             || new RegExp(/one last try/i).test(titleText)
+            || new RegExp(/coming back to (nofap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/^trying again$/i).test(titleText)
             || new RegExp(/day (1|one) again/i).test(titleText)
             || new RegExp(/starting, again/i).test(titleText)
@@ -3095,9 +3105,14 @@
             || new RegExp(/shit is getting rough/i).test(titleText)
             || new RegExp(/It's impossible/i).test(titleText)
             || new RegExp(/trying for years/i).test(titleText)
+            || new RegExp(/falling badly/i).test(titleText)
+            || new RegExp(/I've failed countless/i).test(titleText)
             // LIKE HELP
             || new RegExp(/would like some help/i).test(titleText)
             || new RegExp(/how can I stop/i).test(titleText)
+            || new RegExp(/^Please help/i).test(titleText)
+            || new RegExp(/^Need help/i).test(titleText)
+            || new RegExp(/looking for some guidance/i).test(titleText)
             // CAN'T STOP
             || new RegExp(/I just can’t stop myself/i).test(titleText)
             || new RegExp(/^tips\?$/i).test(titleText)
@@ -3135,7 +3150,11 @@
         return new RegExp(/(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i).test(titleText)
             || new RegExp(/had a wet dream/i).test(titleText)
             || new RegExp(/^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i).test(titleText)
-            || new RegExp(/how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i).test(titleText);
+            || new RegExp(/how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i).test(titleText)
+            || new RegExp(/how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i).test(titleText)
+            || new RegExp(/wet dreamed this morning/i).test(titleText)
+            || new RegExp(/wet dream on day/i).test(titleText)
+            || new RegExp(/Do wet dreams count as relapsing/i).test(titleText);
     };
 
     var toAccountabilityPartner = function (titleText, flairText, messageText) {
@@ -3152,7 +3171,8 @@
             || new RegExp(/urges from hell/i).test(titleText)
             || new RegExp(/how to beat .* urges/i).test(titleText)
             || new RegExp(/^urges(\.)?$/i).test(titleText)
-            || new RegExp(/How do I overcome ?(.*) urges/i).test(titleText);
+            || new RegExp(/How do I overcome ?(.*) urges/i).test(titleText)
+            || new RegExp(/Urges(\.)? Help me/i).test(titleText);
     };
 
     var toBenefitsAdvice = function (titleText, flairText, messageText) {
@@ -3168,6 +3188,7 @@
     var toMasturbationAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/Can you still masturbate during (NoFap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/Is masturbating without porn ?(a)? relapse/i).test(titleText)
+            || new RegExp(/Getting urges to masturbate/i).test(titleText)
             || new RegExp(/Can I masturbate without porn/i).test(titleText)
             || new RegExp(/opinions towards fapping without porn/i).test(titleText);
     };

@@ -88,11 +88,11 @@ export const scrollToSpecifiedDate = (dateString: string, usernameConfig: Config
             clearInterval(interval);
             resolve('Found scroll username.');
           }
-          if (doesTimestampContainXXX) {
-            console.log('Found scroll timestamp instead.');
-            clearInterval(interval);
-            resolve('Found scroll timestamp instead.');
-          }
+          // if (doesTimestampContainXXX) {
+          //   console.log('Found scroll timestamp instead.');
+          //   clearInterval(interval);
+          //   resolve('Found scroll timestamp instead.');
+          // }
         }
       }
     }

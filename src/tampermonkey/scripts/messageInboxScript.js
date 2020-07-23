@@ -214,6 +214,7 @@
             || new RegExp(/give (ur|your) (site|link|web|guide|content|page) a visit/i).test(messagePayload.message)
             || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
             || new RegExp(/please pass on (the|that) website info/i).test(messagePayload.message)
+            || new RegExp(/send me your website/i).test(messagePayload.message)
             // PASSIVE ASK
             || new RegExp(/May I know (your|the) website/i).test(messagePayload.message)
             || new RegExp(/could I get a link/i).test(messagePayload.message)
@@ -245,11 +246,13 @@
             || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
             || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
             // GRATEFUL
+            || new RegExp(/the website would be quite helpful/i).test(messagePayload.message)
             || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
             || new RegExp(/That would be very welcome/i).test(messagePayload.message)
             || new RegExp(/would like to see what the website is/i).test(messagePayload.message)
             || new RegExp(/that website would be nice/i).test(messagePayload.message)
             || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
+            || new RegExp(/that would be really helpful/i).test(messagePayload.message)
             || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
             || new RegExp(/the (website|link) would be cool/i).test(messagePayload.message)
             || new RegExp(/will have a look on your website/i).test(messagePayload.message)
@@ -262,6 +265,7 @@
             || new RegExp(/I would love to learn more about it/i).test(messagePayload.message)
             || new RegExp(/would love to visit/i).test(messagePayload.message)
             || new RegExp(/love to see the website/i).test(messagePayload.message)
+            || new RegExp(/would love that website/i).test(messagePayload.message)
             || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
             || new RegExp(/Would love to see/i).test(messagePayload.message)
             || new RegExp(/take a look at your website/i).test(messagePayload.message)
@@ -292,7 +296,8 @@
             || new RegExp(/what is this website\?/i).test(messagePayload.message)
             || new RegExp(/where can i find the website/i).test(messagePayload.message)
             || new RegExp(/links to any resources/i).test(messagePayload.message)
-            || new RegExp(/What website is it/i).test(messagePayload.message);
+            || new RegExp(/What website is it/i).test(messagePayload.message)
+            || new RegExp(/what website would that be/i).test(messagePayload.message);
     };
 
     var toJoinSubreddit = function (messagePayload) {

@@ -5,3 +5,4 @@ export const toDealingWithUrgesAdvice = (titleText: string, flairText: string, m
   || new RegExp(/how to beat .* urges/i).test(titleText)
   || new RegExp(/^urges(\.)?$/i).test(titleText)
   || new RegExp(/How do I overcome ?(.*) urges/i).test(titleText)
+  || new RegExp(/Urges(\.)? Help me/i).test(titleText)

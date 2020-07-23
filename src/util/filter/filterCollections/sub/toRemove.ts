@@ -59,9 +59,11 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   // MOTIVATION
   || new RegExp(/motivational thought/i).test(titleText)
   || new RegExp(/do not relapse/i).test(titleText)
+  || new RegExp(/^keep going/i).test(titleText)
 
   // VICTORY
   || new RegExp(/overcame my worst urge/i).test(titleText)
+  || new RegExp(/I am proud of myself/i).test(titleText)
   || new RegExp(/(0|zero) urges to fap/i).test(titleText)
   || new RegExp(/I feel amazing/i).test(titleText)
   || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
@@ -77,10 +79,12 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/just completed a/i).test(titleText)
   || new RegExp(/accomplishments on (nofap|no fap)/i).test(titleText)
   || new RegExp(/achieved my goal/i).test(titleText)
+  || new RegExp(/finally reached \d+ days/i).test(titleText)
   || new RegExp(/longest streak yet/i).test(titleText)
   || new RegExp(/(previous record|milestone)/i).test(titleText)
   || new RegExp(/small success/i).test(titleText)
   || new RegExp(/finally made it to (day|week)/i).test(titleText)
+  || new RegExp(/reached day \d+ for the (first time|firsttime)/i).test(titleText)
   || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
 
   // MOTIVATION
@@ -88,6 +92,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/^(Don't|Don't|dont) give up$/i).test(titleText)
   || new RegExp(/love you guys/i).test(titleText)
   || new RegExp(/(nofap|no fap) works/i).test(titleText)
+  || new RegExp(/^Instead of watching porn/i).test(titleText)
 
   // RATIONALISATIONS
   || new RegExp(/(down side|downside)/i).test(titleText)
@@ -110,6 +115,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/scientific/i).test(titleText)
   || new RegExp(/super sensitive/i).test(titleText)
   || new RegExp(/testosterone/i).test(titleText)
+  || new RegExp(/health problems/i).test(titleText)
 
   // SEX / WOMEN
   || new RegExp(/finally got a girlfriend/i).test(titleText)
@@ -137,6 +143,11 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   // DOUBTS
   || new RegExp(/placebo/i).test(titleText)
 
+  // OTHER TOPICS
+  || new RegExp(/is it worth it/i).test(titleText)
+  || new RegExp(/libido/i).test(titleText)
+  || new RegExp(/sex on (nofap|no fap|no-fap)/i).test(titleText)
+
   // UNSORTED
   || new RegExp(/benefits till now/i).test(titleText)
   || new RegExp(/does not fap/i).test(titleText)
@@ -144,6 +155,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/interesting dream/i).test(titleText)
   || new RegExp(/just rejected a ?(hot)? girl/i).test(titleText)
   || new RegExp(/remember these \d+/i).test(titleText)
+  || new RegExp(/really helpful app/i).test(titleText)
 
   // || new RegExp(/girlfriend/i).test(titleText) // look into this
   // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
