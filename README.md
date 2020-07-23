@@ -6,7 +6,6 @@ Although there are a heap of features I can build into it, I would consider it m
 
 Although this application saves me a tremendous amount of time, the biggest saver is cognitive load. The less I need to think the more I can get done. There will always be plenty of time if you want there to be.
 
-
 ## How To Run
 
 - You need to use Chrome, because Firefox does not support using files from your local hard disk. (BOOOOOOO)
@@ -24,6 +23,7 @@ Although this application saves me a tremendous amount of time, the biggest save
 - sex during nofap MESSAGE
 - Is NoFap worth it? MESSAGE
 - benefits of cold showers MESSAGE
+- what are your reasons to do NoFap? MESSAGE
 - feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
 
 ## Nice To Have
@@ -32,7 +32,8 @@ Although this application saves me a tremendous amount of time, the biggest save
 - Look into incorporating whether they've been sent the website or not into ReplyUserPanel, so you can have more information from them and what information they require. (might be too much information for no palatable reason)
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage (I don't think it's possible to know until after? Well, it's possible but not a massive deal for now)
 - Whether a message was sent automatically by the bot or not.
-- fix up the inferno renders at the top, they're a bit of a mess, ya'll.
+- fix message being sent multiple times because of the eventListener being sent multiple times.
+- fix up the inferno renders at the top, they're a bit of a mess, ya'll. / not a huge deal.
 - Track original post as part of the message.
 - Also, save the date (user chatted)
 - If done, remove everything so it takes up less space. (unsure about this one, because they still might be asking a question)

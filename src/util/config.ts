@@ -21,12 +21,12 @@ export enum ForumType {
 
 export const INBOX_LAST_MESSAGE_USER = 'vijay_st';
 
-export const R_NOFAP_USERNAME = 'satheesh3796';
+export const R_NOFAP_USERNAME = 'Ashinfinite';
 export const R_NOFAP_TIMESTAMP = 'just now';
-export const R_PORN_FREE_USERNAME = 'gjay16';
-export const R_PORN_FREE_TIMESTAMP = '';
-export const R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-export const R_PORN_ADDICTION_TIMESTAMP = '';
+export const R_PORN_FREE_USERNAME = 'xanadork';
+export const R_PORN_FREE_TIMESTAMP = '11 minutes ago';
+export const R_PORN_ADDICTION_USERNAME = 'External-Temporary38';
+export const R_PORN_ADDICTION_TIMESTAMP = '4 hours ago';
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';
 export const R_NOFAP_TEENS_USERNAME = '';

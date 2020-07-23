@@ -74,6 +74,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   // how to stop wet dreams? - 1
   // advice for boyfriend from girlfriend. - 1
   // edging and reseting counter. - 1
+  // any negative effects?
   // relapse when thinking about ex. - 1
   // recommend NFD podcast - 1
   // how long is too long - 1
@@ -103,8 +104,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
 
   // TO REMOVE
   if (
-    flairText !== 'New to NoFap'
-    || toRemoveInitial(titleText, flairText, messageText)
+    toRemoveInitial(titleText, flairText, messageText)
     || toRemoveInitialDay(titleText, flairText, messageText)
   ) {
     console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);

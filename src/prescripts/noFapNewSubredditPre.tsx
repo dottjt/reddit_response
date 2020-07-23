@@ -36,9 +36,6 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
     const tagUsername: string = tag.innerText.split('/')[1];
     const dbUser: CompiledFullUserObject | undefined = users.find(user => user.username === tagUsername);
 
-    // console.log('1', tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
-    // console.log('2', tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0]);
-
     if (dbUser) {
       const flairText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[1]?.children[1]?.children[0]?.children[0]?.innerText;
       const titleText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[0]?.children[0]?.children[0]?.children[0]?.innerText;
@@ -46,40 +43,42 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
       const aLinkHref = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.children[1]?.children[1]?.children[0]?.children[0].href;
       const hoursAgoText = tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0].querySelectorAll('a')[1]?.innerText;
 
-      const {
-        shouldDeleteElementImmediately,
-        sendMessageType,
-        prelimUrl,
-      } = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText);
+      if (titleText) {
+        const {
+          shouldDeleteElementImmediately,
+          sendMessageType,
+          prelimUrl,
+        } = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText);
 
-      if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
-        if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
-          tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
-          return;
+        if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
+          if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
+            tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
+            return;
+          }
+
+          alreadyPrelimUrlUsernameList.push(dbUser.username);
+
+          if (shouldDeleteElementImmediately) {
+            tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
+            return;
+          }
+
+          if (prelimUrl) {
+            tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
+
+            createPrelimLink({
+              dbUser, titleText, flairText, aLinkHref, prelimUrl, index, sendMessageType, prelimContainer
+            });
+
+            return;
+          }
         }
 
-        alreadyPrelimUrlUsernameList.push(dbUser.username);
-
-        if (shouldDeleteElementImmediately) {
-          tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
-          return;
-        }
-
-        if (prelimUrl) {
-          tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
-
-          createPrelimLink({
-            dbUser, titleText, flairText, aLinkHref, prelimUrl, index, sendMessageType, prelimContainer
+        if (!prelimUrl || index === 0) {
+          renderUserPanel({
+            tag, tagUsername, index, dbUser, usernameConfig, hoursAgoText
           });
-
-          return;
         }
-      }
-
-      if (!prelimUrl || index === 0) {
-        renderUserPanel({
-          tag, tagUsername, index, dbUser, usernameConfig, hoursAgoText
-        });
       }
     }
   });
@@ -94,7 +93,7 @@ const main = async () => {
   window.localStorage.setItem('delayTimer', '10000');
 
   if (usernameConfig.usernameValue !== '') {
-    console.log('timeframe: ', TIMEFRAME, 'username: ', usernameConfig.usernameValue);
+    console.log('timeframe:', usernameConfig.usernameTimestamp, 'username: ', usernameConfig.usernameValue);
 
     await scrollToSpecifiedDate(TIMEFRAME, usernameConfig);
     const users: CompiledFullUserObject[] = await checkUsernames({ usernames: getAllNoFapNewUsernames(), forum_type: UserForumType.Reddit });

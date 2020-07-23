@@ -39,6 +39,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/(tracker|counting|counter)/i).test(titleText)
   || new RegExp(/checking my day count/i).test(titleText)
   || new RegExp(/accountability post/i).test(titleText)
+  || new RegExp(/next to (ur|your) (name|tag)/i).test(titleText)
 
   // LECTURE
   || new RegExp(/Nofap taught me/i).test(titleText)

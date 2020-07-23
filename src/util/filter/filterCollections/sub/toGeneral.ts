@@ -13,6 +13,7 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/I (give up|need support|can't stop)/i).test(titleText)
   || new RegExp(/need some advice from pro/i).test(titleText)
   || new RegExp(/I have a serious addiction to masturbation/i).test(titleText)
+  || new RegExp(/I need some serious motivation/i).test(titleText)
 
   // TOO HARD
   || new RegExp(/shit is getting rough/i).test(titleText)
@@ -56,15 +57,15 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/How do I stop\?/i).test(messageText)
   || (new RegExp(/^(no fap|nofap|no-fap)(\.)?$/i).test(titleText) && new RegExp(/(Any)? (help|advice|tips)\?/i).test(messageText))
 
+  // MESSAGE
+  // any words of encouragement in a time of need?
+  // Alright, I've been trying hard to stop it for 3 years and sometimes I do edging or proper masturbation. Please help out. I wanna stop and I can't find any distraction
 
-
+  // UNSURE
   // || new RegExp(/if anyone can help/i).test(messageText)
-
   // || new RegExp(/urges keep coming/i).test(titleText)
 
   // I am Trying Nofap From Last 1.5 years But I keep Failing, is there any Improvement i can do?
   // Advice
 
-
   // message
-  // Alright, I've been trying hard to stop it for 3 years and sometimes I do edging or proper masturbation. Please help out. I wanna stop and I can't find any distraction

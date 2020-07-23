@@ -26,71 +26,77 @@ export const createPrelimContainer = (filteredATags): void => {
   firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(prelimContainer, firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
 }
 
-const getNextHoursAgoValueToSearch = (timestamp: string) => {
-  if (timestamp.includes('now') || timestamp.includes('minute')) {
-    return '1 hour ago';
-  }
-  if (timestamp.includes('hour')) {
+const getNextHoursAgoValueToSearch = (timestamp: string): string | undefined => {
+  if (timestamp !== '') {
+    if (timestamp.includes('now') || timestamp.includes('minute')) {
+      return '1 hour ago';
+    }
+    if (timestamp.includes('hour')) {
+      const nextTimeNumber = parseInt(timestamp.split(' ')[0]) + 1;
+      return `${nextTimeNumber} hours ago`;
+    }
+
     const nextTimeNumber = parseInt(timestamp.split(' ')[0]) + 1;
-    return `${nextTimeNumber} hours ago`;
+    return `${nextTimeNumber} days ago`;
   }
 
-  const nextTimeNumber = parseInt(timestamp.split(' ')[0]) + 1;
-  return `${nextTimeNumber} days ago`;
+  return undefined;
 }
 
 export const scrollToSpecifiedDate = (dateString: string, usernameConfig: ConfigType): Promise<string> => new Promise(resolve => {
   let interval;
+  let isFound = false;
 
   const nextHoursAgoValueToSearch = getNextHoursAgoValueToSearch(usernameConfig.usernameTimestamp);
 
   interval = setInterval(() => {
-    window.scrollTo(0, document.body.scrollHeight);
+    if (!isFound) {
+      window.scrollTo(0, document.body.scrollHeight);
 
-    if (dateString !== 'NA') {
-      // console.log('scrollToSpecifiedDate - run')
-      // const allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
+      if (dateString !== 'NA') {
+        console.log('scrollToSpecifiedDate - run')
+        const allTimeStamps = document.querySelectorAll('a[data-click-id="timestamp"]');
 
-      // for (const timeStampElement of allTimeStamps as any) {
-      //   const doesTextContainXXX = timeStampElement.innerText.includes(dateString);
-      //   // nextHoursAgoValueToSearch
+        for (const timeStampElement of allTimeStamps as any) {
+          const doesTextContainXXX = timeStampElement.innerText.includes(dateString);
 
-      //   if (doesTextContainXXX) {
-      //     console.log('Found scroll date.');
-      //     clearInterval(interval);
-      //     resolve('Found scroll date.');
-      //   } else {
-      //     if (timeStampElement) {
-      //       timeStampElement.remove();
-      //     }
-      //   }
-      // }
-    } else {
-      console.log('scrollToSpecifiedUsername - run')
-      const usernames = getAllNoFapNewUsernames();
-
-      for (const username of usernames as string[]) {
-        const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
-        const usernameTag = [...allATags as any].filter(tag => tag.innerText.includes(username))[0];
-
-        const hoursAgoText = usernameTag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0].querySelectorAll('a')[1]?.innerText;
-
-        const doesTextContainXXX = username === usernameConfig.usernameValue;
-        const doesTimestampContainXXX = hoursAgoText === nextHoursAgoValueToSearch;
-
-        if (doesTextContainXXX) {
-          console.log('Found scroll username.');
-          clearInterval(interval);
-          resolve('Found scroll username.');
+          if (doesTextContainXXX) {
+            console.log('Found scroll date.');
+            clearInterval(interval);
+            resolve('Found scroll date.');
+          } else {
+            if (timeStampElement) {
+              timeStampElement.remove();
+            }
+          }
         }
-        if (doesTimestampContainXXX) {
-          console.log('Found scroll timestamp instead.');
-          clearInterval(interval);
-          resolve('Found scroll timestamp instead.');
+      } else {
+        console.log('scrollToSpecifiedUsername - run')
+        const usernames = getAllNoFapNewUsernames();
+
+        for (const username of usernames as string[]) {
+          const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
+          const usernameTag = [...allATags as any].filter(tag => tag.innerText.includes(username))[0];
+
+          const hoursAgoText = usernameTag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.children[1]?.children[0]?.children[0]?.children[0].querySelectorAll('a')[1]?.innerText;
+
+          const doesTextContainXXX = username === usernameConfig.usernameValue;
+          const doesTimestampContainXXX =  nextHoursAgoValueToSearch ? hoursAgoText === nextHoursAgoValueToSearch : false;
+
+          if (doesTextContainXXX) {
+            console.log('Found scroll username.');
+            clearInterval(interval);
+            resolve('Found scroll username.');
+          }
+          if (doesTimestampContainXXX) {
+            console.log('Found scroll timestamp instead.');
+            clearInterval(interval);
+            resolve('Found scroll timestamp instead.');
+          }
         }
       }
     }
-  }, 700);
+  }, 800);
 });
 
 export const scrollToMarker = () => {
@@ -138,7 +144,7 @@ export const createPrelimLink = ({
   render(
     <div>
       <a
-        style={{ display: 'block', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }}
+        style={{ display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }}
         onclick={() => openNewLink(prelimUrl, SendMessageType.NA)}
       >
         <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
