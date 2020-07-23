@@ -12,6 +12,8 @@ export const toStartedAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/(I'm|im) ready to start/i).test(titleText)
   || new RegExp(/where to start/i).test(titleText)
   || new RegExp(/first time doing this/i).test(titleText)
+
+
   || new RegExp(/getting started/i).test(titleText)
   || new RegExp(/here for (nofap|no fap|no-fap)/i).test(titleText)
   || new RegExp(/today I start/i).test(titleText)
@@ -53,6 +55,9 @@ export const toStartedAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/stopping for good/i).test(titleText)
   || new RegExp(/(NoFap|no fap|no-fap) from today/i).test(titleText)
   || new RegExp(/Start of a New Journey/i).test(titleText)
+  || new RegExp(/day (one|1) without fapping/i).test(titleText)
+  || new RegExp(/I have made the right decision/i).test(titleText)
+  || new RegExp(/finally admitting that (I'm|I’m) addicted/i).test(titleText)
   || new RegExp(/Start to my Journey/i).test(titleText)
   || new RegExp(/journey to porn free/i).test(titleText)
   || new RegExp(/Beginning of my Journey in (NoFap|no fap|no-fap)/i).test(titleText)

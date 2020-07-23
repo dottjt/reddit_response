@@ -106,6 +106,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/(semen|urine|anal)/i).test(titleText)
   || new RegExp(/scientific/i).test(titleText)
   || new RegExp(/super sensitive/i).test(titleText)
+  || new RegExp(/testosterone/i).test(titleText)
 
   // SEX / WOMEN
   || new RegExp(/finally got a girlfriend/i).test(titleText)

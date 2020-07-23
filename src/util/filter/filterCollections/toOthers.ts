@@ -8,16 +8,16 @@ export const toAccountabilityPartner = (titleText: string, flairText: string, me
   new RegExp(/seeking a partner/i).test(titleText)
   || new RegExp(/Looking for an accountability/i).test(titleText)
   || new RegExp(/accountability partner/i).test(titleText)
+  || new RegExp(/^accountability(\.)?$/i).test(titleText)
   || new RegExp(/need (AP|accountability partner)/i).test(titleText)
 
 export const toMasturbationAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   new RegExp(/Can you still masturbate during (NoFap|no fap|no-fap)/i).test(titleText)
   || new RegExp(/Is masturbating without porn ?(a)? relapse/i).test(titleText)
   || new RegExp(/Can I masturbate without porn/i).test(titleText)
-
+  || new RegExp(/opinions towards fapping without porn/i).test(titleText)
 
 // Flatline 7 days in - scared!
-
 
 export const toDealingWithUrgesAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
   new RegExp(/advice on fighting urges/i).test(titleText)

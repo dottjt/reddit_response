@@ -2637,7 +2637,7 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'torets-guy';
+    var R_NOFAP_USERNAME = 'DistraugtlyDistractd';
     var R_NOFAP_TIMESTAMP = '';
     var R_PORN_FREE_USERNAME = 'gjay16';
     var R_PORN_FREE_TIMESTAMP = '';
@@ -2826,6 +2826,7 @@
             || new RegExp(/(semen|urine|anal)/i).test(titleText)
             || new RegExp(/scientific/i).test(titleText)
             || new RegExp(/super sensitive/i).test(titleText)
+            || new RegExp(/testosterone/i).test(titleText)
             // SEX / WOMEN
             || new RegExp(/finally got a girlfriend/i).test(titleText)
             || new RegExp(/sexting/i).test(titleText)
@@ -3001,6 +3002,9 @@
             || new RegExp(/stopping for good/i).test(titleText)
             || new RegExp(/(NoFap|no fap|no-fap) from today/i).test(titleText)
             || new RegExp(/Start of a New Journey/i).test(titleText)
+            || new RegExp(/day (one|1) without fapping/i).test(titleText)
+            || new RegExp(/I have made the right decision/i).test(titleText)
+            || new RegExp(/finally admitting that (I'm|I’m) addicted/i).test(titleText)
             || new RegExp(/Start to my Journey/i).test(titleText)
             || new RegExp(/journey to porn free/i).test(titleText)
             || new RegExp(/Beginning of my Journey in (NoFap|no fap|no-fap)/i).test(titleText)
@@ -3101,12 +3105,14 @@
         return new RegExp(/seeking a partner/i).test(titleText)
             || new RegExp(/Looking for an accountability/i).test(titleText)
             || new RegExp(/accountability partner/i).test(titleText)
+            || new RegExp(/^accountability(\.)?$/i).test(titleText)
             || new RegExp(/need (AP|accountability partner)/i).test(titleText);
     };
     var toMasturbationAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/Can you still masturbate during (NoFap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/Is masturbating without porn ?(a)? relapse/i).test(titleText)
-            || new RegExp(/Can I masturbate without porn/i).test(titleText);
+            || new RegExp(/Can I masturbate without porn/i).test(titleText)
+            || new RegExp(/opinions towards fapping without porn/i).test(titleText);
     };
     // Flatline 7 days in - scared!
     var toDealingWithUrgesAdvice = function (titleText, flairText, messageText) {
@@ -3135,14 +3141,18 @@
     };
 
     var toStruggleAdvice = function (titleText, flairText, messageText) {
+        // STRUGGLE
         return new RegExp(/(im|i'm) really struggling already/i).test(titleText)
-            || new RegExp(/^emotionally exhausted$/i).test(titleText)
-            || new RegExp(/I am about to relapse/i).test(titleText)
             || new RegExp(/^help!$/i).test(titleText)
-            || new RegExp(/encourage me not to/i).test(titleText)
-            || new RegExp(/this is getting harder/i).test(titleText)
             || new RegExp(/I CANT STOP(P)? HELP/i).test(titleText)
-            || new RegExp(/I (cant|can't) get past the .* mark/i).test(titleText);
+            || new RegExp(/this is getting harder/i).test(titleText)
+            || new RegExp(/I (cant|can't) get past the .* mark/i).test(titleText)
+            // ABOUT TO RELAPSE
+            || new RegExp(/I am about to relapse/i).test(titleText)
+            || new RegExp(/encourage me not to/i).test(titleText)
+            // EXHAUSTED
+            || new RegExp(/^emotionally exhausted$/i).test(titleText)
+            || new RegExp(/So desensitized I literally feel nothing/i).test(titleText);
     };
 
     var noFapNewFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
