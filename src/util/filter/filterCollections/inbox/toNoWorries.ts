@@ -8,8 +8,9 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   || new RegExp(/^sure$/i).test(messagePayload.message)
   || new RegExp(/^yes$/i).test(messagePayload.message)
   || new RegExp(/^yes/i).test(messagePayload.message)
+  || new RegExp(/(Yaa|ya) sure/i).test(messagePayload.message)
   || new RegExp(/yes please/i).test(messagePayload.message)
-  || new RegExp(/i m in./i).test(messagePayload.message)
+  || new RegExp(/(im|I'm|i m) in./i).test(messagePayload.message)
   || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
 
   // CHECK

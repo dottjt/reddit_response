@@ -168,13 +168,13 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 `
 );
 
+// TODO Create Messages
 
-// TODO
-// export const countAsRelapseAdvice = (forum?: string): string => (
-//   `Hey, I saw your post${forum ? ` on ${forum}` : ''}. Sorry to hear you're struggling with urges. If they're a huge issue for you then it likely means that you don't have the fundamentals down.
-
-//   Ultimately recovery should be relatively struggle free, otherwise are you really recovering at all? I find the main thing with recovery is to focus on your mental health. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind.
-
-//   Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
-//   `
-//   );
+// - Fetish is irrelevant. MESSAGE
+// - okay NOFAP with a girlfriend? MESSAGE
+// - libido MESSAGE
+// - sex during nofap MESSAGE
+// - Is NoFap worth it? MESSAGE
+// - benefits of cold showers MESSAGE
+// - what are your reasons to do NoFap? MESSAGE
+// - feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.

@@ -19,7 +19,7 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
     || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)
   )
 
-// TODO
+// TODO / UNSURE
 // export const toRemoveInitialMessage = (titleText: string, flairText: string, messageText: string): boolean =>
 //   new RegExp(/profile/i).test(messageText)
 // show you how I did it

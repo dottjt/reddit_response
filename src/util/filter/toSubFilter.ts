@@ -60,7 +60,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   // around 15 years
   // 10 years -
 
-  // TODO: OTHER TOPICS
+  // TODO: OTHER TOPIC MESSAGES
   // Does the urge to masturbate get easier?
   // edging
   // is it a relapse?

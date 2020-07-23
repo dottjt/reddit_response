@@ -17,14 +17,9 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 - Target the nofap website, not just reddit. Increase your userbase :)
 
-- Fetish is irrelevant. MESSAGE
-- okay NOFAP with a girlfriend? MESSAGE
-- libido MESSAGE
-- sex during nofap MESSAGE
-- Is NoFap worth it? MESSAGE
-- benefits of cold showers MESSAGE
-- what are your reasons to do NoFap? MESSAGE
-- feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
+open -a Google\ Chrome --args --disable-web-security --user-data-dir
+
+https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&message=Hey%2C%20I%20saw%20your%20post.%20I%27m%20sorry%20to%20hear%20you%27re%20struggling.%0A%0AThe%20main%20thing%20with%20recovery%20is%20to%20focus%20on%20your%20mental%20health.%20Fundamentally%2C%20it%27s%20about%20developing%20the%20awareness%20to%20change%20your%20behaviours%20so%20you%20can%20learn%20to%20develop%20control%20over%20your%20mind.%20Of%20course%2C%20that%27s%20a%20lot%20easier%20said%20than%20done%2C%20which%20is%20why%20it%20requires%20A%20LOT%20of%20practice.%0A%0ADo%20you%20do%20much%20for%20your%20mental%20health%3F%20Like%20meditate%2C%20and%20stuff%3F%20Personally%20I%20do%2010%20minutes%20of%20meditation%20each%20day%20and%20that%27s%20enough%20for%20me.%20I%27ve%20also%20created%20a%20website%20which%20explains%20the%20whole%20process%20of%20overcoming%20porn%20addiction%2C%20if%20you%27re%20interested.%0A&type=start:advice:struggle&timer=10000
 
 ## Nice To Have
 

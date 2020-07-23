@@ -194,8 +194,9 @@
             || new RegExp(/^sure$/i).test(messagePayload.message)
             || new RegExp(/^yes$/i).test(messagePayload.message)
             || new RegExp(/^yes/i).test(messagePayload.message)
+            || new RegExp(/(Yaa|ya) sure/i).test(messagePayload.message)
             || new RegExp(/yes please/i).test(messagePayload.message)
-            || new RegExp(/i m in./i).test(messagePayload.message)
+            || new RegExp(/(im|I'm|i m) in./i).test(messagePayload.message)
             || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
             // CHECK
             || new RegExp(/(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i).test(messagePayload.message)

@@ -18,9 +18,6 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
   const messageTypesSent: { type: string }[] | undefined = await knex<Message>('messages').where({ username_receiving: username, username_sending: 'NeverFapDeluxe' }).select('type');
   const messageTypesSentString = messageTypesSent?.map(message => message.type);
 
-  // TODO Last follow message sent, so I can know if I should send it again.
-
-// TODO get all messages, get the last one ever sent. so if DONE then ALWAYS show DONE.
   const lastSentMessages: Message[] | undefined = await knex<Message>('messages').where({ username_sending: 'NeverFapDeluxe', username_receiving: username }).select('type');
   const absoluteLastSentMessageType: LastMessageType = retrieveAbsoluteLastMessage(lastSentMessages);
 
