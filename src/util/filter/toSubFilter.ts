@@ -22,17 +22,36 @@ import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterColl
 import { toRelapseAdvice } from './filterCollections/sub/toRelapse';
 import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/sub/toStart';
 import { toGeneralAdvice } from './filterCollections/sub/toGeneral';
-import { toWetDreamAdvice, toAccountabilityPartner, toDealingWithUrgesAdvice, toBenefitsAdvice, toPornBlockerAdvice, toMasturbationAdvice, toDidIJustRelapseAdvice, toWhenDoesItGetEasierAdvice } from './filterCollections/sub/toOthers';
+import { toWetDreamAdvice } from './filterCollections/sub/toWetDreamAdvice';
+
+import { toAccountabilityPartner } from './filterCollections/sub/toAccountabilityPartner';
+import { toDealingWithUrgesAdvice } from './filterCollections/sub/toDealingWithUrgesAdvice';
+import { toBenefitsAdvice } from './filterCollections/sub/toBenefitsAdvice';
+import { toPornBlockerAdvice } from './filterCollections/sub/toPornBlockerAdvice';
+import { toMasturbationAdvice } from './filterCollections/sub/toMasturbationAdvice';
+import { toDidIJustRelapseAdvice } from './filterCollections/sub/toDidIJustRelapseAdvice';
+import { toWhenDoesItGetEasierAdvice } from './filterCollections/sub/toWhenDoesItGetEasierAdvice';
+
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
 import { toStruggleAdvice } from './filterCollections/sub/toStruggle';
 import { isLessThan24Hours } from '../utils/commonUtils';
 
-
-export const noFapNewFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
+export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
   shouldDeleteElementImmediately: boolean,
   sendMessageType: SendMessageType | undefined,
   prelimUrl: string | undefined,
 } => {
+  // OTHER
+  // Meditating at night can gelp witg controlling the wet dreams
+  // Any help or advice would be appreciated.
+  // Flatline 7 days in - scared!
+
+  // will nofap cure my cuckhold fetish
+
+  // should I reset?
+
+  // around 15 years
+  // 10 years -
 
   // TO REMOVE
   if (

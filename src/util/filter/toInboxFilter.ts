@@ -4,12 +4,15 @@ import { CompiledFullUserObject, PopulateReceivedMessagePayloadEXTREME } from '.
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNotRespond, toMeditateGuide, toHardTime } from './filterCollections/inbox/toInbox';
+import { toNotRespond } from './filterCollections/inbox/toNotRespond';
+import { toMeditateGuide } from './filterCollections/inbox/toMeditateGuide';
+import { toHardTime } from './filterCollections/inbox/toHardTime';
+
 import { toNoWorriesGuide } from './filterCollections/inbox/toNoWorries';
 import { toLinkYouGuide } from './filterCollections/inbox/toLinkYou';
 import { toJoinSubreddit } from './filterCollections/inbox/toJoinSubreddit';
 
-export const filterRedditInboxMessages = (
+export const toInboxFilter = (
   messagePayload: PopulateReceivedMessagePayloadEXTREME,
   moreThanOneMessage: boolean
 ): {
@@ -19,6 +22,9 @@ export const filterRedditInboxMessages = (
   const compiledUser: CompiledFullUserObject = messagePayload.compiledUser;
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
   const lastReceivedMessage: Message | undefined = compiledUser.lastReceivedMessage;
+
+  // EDGE
+  // Are you a bot?
 
   if (
     compiledUser.userType === UserType.UserHostile
@@ -31,7 +37,7 @@ export const filterRedditInboxMessages = (
     }
   }
 
-  if ( // if I've sent a start message, and they've returned a start message.
+  if (
     lastSentMessage?.type.includes('advice') &&
     (lastSentMessage?.type.includes('start') || lastSentMessage?.type.includes('follow')) &&
     (lastReceivedMessage?.type.includes('start') || lastReceivedMessage?.type.includes('follow'))
@@ -81,23 +87,6 @@ export const filterRedditInboxMessages = (
       }
   }
 
-  //  <!-- What is NFD website -->
-
-
-  // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
-  // therefore, this also need to know that the recieved messages from that used is exactly two
-  // of course this breaks if the user sends two messages, so I'll have to look into this.
-  // in addition it should check time last message was sent by ME and last message sent by them. if they are within a similar time span, then perhaps don't send it.
-
-  // the other flaw in this system is that it should check all messages sent by the user on this page and count them as one, not just one separately. It shouldn't count them like that, it's broken.
-
-  // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
-  // basically only triggers poorly if
-
-  console.log('here', messagePayload.compiledUser.username, !moreThanOneMessage, lastSentMessage?.type, lastReceivedMessage?.type);
-  // this is still broken, I think maybe lastReceivedMessage just needs to be middle. That's all it needs to che
-  // changed it
-  // That website would be very helpful
   if (
     !moreThanOneMessage &&
     lastReceivedMessage?.type.includes('middle') &&
@@ -111,8 +100,6 @@ export const filterRedditInboxMessages = (
         }
       }
   }
-
-  // Are you a bot?
 
   return {
     messageText: undefined,

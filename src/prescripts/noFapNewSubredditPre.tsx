@@ -18,7 +18,7 @@ import {
   ConfigType,
   getUsernameMarker
 } from '../util/config'
-import { noFapNewFilter } from '../util/filter/noFapNewFilter';
+import { toSubFilter } from '../util/filter/toSubFilter';
 import { UserForumType } from '../types/serverTypes';
 
 'use strict';
@@ -50,7 +50,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
         shouldDeleteElementImmediately,
         sendMessageType,
         prelimUrl,
-      } = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText);
+      } = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText);
 
       if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
         if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {

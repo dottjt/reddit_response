@@ -1,5 +1,5 @@
 import { PopulateReceivedMessagePayload, PopulateReceivedMessagePayloadEXTREME } from '../types/tamperMonkeyTypes.js';
-import { filterRedditInboxMessages } from '../util/filter/messageInboxFilter.js';
+import { toInboxFilter } from '../util/filter/toInboxFilter.js';
 import {
   filterReplyMessageList,
   generateReplyMessageList,
@@ -26,7 +26,7 @@ const saveNewUnreadPageMessages = async (
   for (const item of finalMessageList) {
     const moreThanOneMessage: boolean = finalMessageList.filter(msgItem => msgItem.username_sending === item.username_sending).length > 1;
 
-    const { messageText, messageType } = filterRedditInboxMessages(item, moreThanOneMessage);
+    const { messageText, messageType } = toInboxFilter(item, moreThanOneMessage);
 
     if (messageText && messageType) {
       await messageInboxAutomatedMessageSend(item, messageText, messageType);

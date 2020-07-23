@@ -2967,7 +2967,7 @@
             || new RegExp(/(starting|started) days of (nofap|no fap|no-fap)/i).test(titleText)
             || new RegExp(/going to stop watching porn from now/i).test(titleText)
             || new RegExp(/^day one no/i).test(titleText)
-            // || new RegExp(/^day one$/i).test(titleText) // could be relapse 
+            // || new RegExp(/^day one$/i).test(titleText) // could be relapse
             || new RegExp(/a new start/i).test(titleText)
             || new RegExp(/(I'm|im) ready to start/i).test(titleText)
             || new RegExp(/where to start/i).test(titleText)
@@ -3113,6 +3113,7 @@
             || new RegExp(/^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i).test(titleText)
             || new RegExp(/how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i).test(titleText);
     };
+
     var toAccountabilityPartner = function (titleText, flairText, messageText) {
         return new RegExp(/seeking a partner/i).test(titleText)
             || new RegExp(/Looking for an accountability/i).test(titleText)
@@ -3120,13 +3121,7 @@
             || new RegExp(/^accountability(\.)?$/i).test(titleText)
             || new RegExp(/need (AP|accountability partner)/i).test(titleText);
     };
-    var toMasturbationAdvice = function (titleText, flairText, messageText) {
-        return new RegExp(/Can you still masturbate during (NoFap|no fap|no-fap)/i).test(titleText)
-            || new RegExp(/Is masturbating without porn ?(a)? relapse/i).test(titleText)
-            || new RegExp(/Can I masturbate without porn/i).test(titleText)
-            || new RegExp(/opinions towards fapping without porn/i).test(titleText);
-    };
-    // Flatline 7 days in - scared!
+
     var toDealingWithUrgesAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/advice on fighting urges/i).test(titleText)
             || new RegExp(/how to deal with ?(the)? urges/i).test(titleText)
@@ -3135,18 +3130,29 @@
             || new RegExp(/^urges(\.)?$/i).test(titleText)
             || new RegExp(/How do I overcome ?(.*) urges/i).test(titleText);
     };
+
     var toBenefitsAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/I want to know the benefits of (NoFap|no fap|no-fap)/i).test(titleText);
     };
+
     var toPornBlockerAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/what website blocker/i).test(titleText)
             || new RegExp(/what programs do you use to block porn/i).test(titleText)
             || new RegExp(/block porn site/i).test(titleText);
     };
+
+    var toMasturbationAdvice = function (titleText, flairText, messageText) {
+        return new RegExp(/Can you still masturbate during (NoFap|no fap|no-fap)/i).test(titleText)
+            || new RegExp(/Is masturbating without porn ?(a)? relapse/i).test(titleText)
+            || new RegExp(/Can I masturbate without porn/i).test(titleText)
+            || new RegExp(/opinions towards fapping without porn/i).test(titleText);
+    };
+
     var toDidIJustRelapseAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/did I just relapse\?/i).test(titleText)
             || new RegExp(/count as relapse\?/i).test(titleText);
     };
+
     var toWhenDoesItGetEasierAdvice = function (titleText, flairText, messageText) {
         return new RegExp(/does it get easier\?/i).test(titleText)
             || new RegExp(/When does the withdrawal period depression start to fade\?/i).test(titleText);
@@ -3168,8 +3174,16 @@
             || new RegExp(/So desensitized I literally feel nothing/i).test(titleText);
     };
 
-    var noFapNewFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
+    var toSubFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
+        // OTHER
+        // Meditating at night can gelp witg controlling the wet dreams
+        // Any help or advice would be appreciated.
+        // Flatline 7 days in - scared!
         var _a, _b, _c;
+        // will nofap cure my cuckhold fetish
+        // should I reset?
+        // around 15 years
+        // 10 years -
         // TO REMOVE
         if (toRemoveInitial(titleText, flairText)
             || toRemoveInitialDay(titleText, flairText, messageText)) {
@@ -3415,7 +3429,7 @@
                 var messageText = ((_11 = (_10 = __spreadArrays(((_9 = (_8 = (_7 = (_6 = (_5 = (_4 = (_3 = (_2 = (_1 = (_0 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _0 === void 0 ? void 0 : _0.parentNode) === null || _1 === void 0 ? void 0 : _1.parentNode) === null || _2 === void 0 ? void 0 : _2.parentNode) === null || _3 === void 0 ? void 0 : _3.parentNode) === null || _4 === void 0 ? void 0 : _4.parentNode) === null || _5 === void 0 ? void 0 : _5.children[1]) === null || _6 === void 0 ? void 0 : _6.children[2]) === null || _7 === void 0 ? void 0 : _7.children[0]) === null || _8 === void 0 ? void 0 : _8.children[0]) === null || _9 === void 0 ? void 0 : _9.children) || [])) === null || _10 === void 0 ? void 0 : _10.map(function (item) { return item === null || item === void 0 ? void 0 : item.innerText; })) === null || _11 === void 0 ? void 0 : _11.join('\n')) || '';
                 var aLinkHref = (_20 = (_19 = (_18 = (_17 = (_16 = (_15 = (_14 = (_13 = (_12 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _12 === void 0 ? void 0 : _12.parentNode) === null || _13 === void 0 ? void 0 : _13.parentNode) === null || _14 === void 0 ? void 0 : _14.parentNode) === null || _15 === void 0 ? void 0 : _15.parentNode) === null || _16 === void 0 ? void 0 : _16.parentNode) === null || _17 === void 0 ? void 0 : _17.children[1]) === null || _18 === void 0 ? void 0 : _18.children[1]) === null || _19 === void 0 ? void 0 : _19.children[0]) === null || _20 === void 0 ? void 0 : _20.children[0].href;
                 var hoursAgoText = (_29 = (_28 = (_27 = (_26 = (_25 = (_24 = (_23 = (_22 = (_21 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _21 === void 0 ? void 0 : _21.parentNode) === null || _22 === void 0 ? void 0 : _22.parentNode) === null || _23 === void 0 ? void 0 : _23.parentNode) === null || _24 === void 0 ? void 0 : _24.parentNode) === null || _25 === void 0 ? void 0 : _25.parentNode.children[1]) === null || _26 === void 0 ? void 0 : _26.children[0]) === null || _27 === void 0 ? void 0 : _27.children[0]) === null || _28 === void 0 ? void 0 : _28.children[0].querySelectorAll('a')[1]) === null || _29 === void 0 ? void 0 : _29.innerText;
-                var _54 = noFapNewFilter(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _54.shouldDeleteElementImmediately, sendMessageType = _54.sendMessageType, prelimUrl = _54.prelimUrl;
+                var _54 = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _54.shouldDeleteElementImmediately, sendMessageType = _54.sendMessageType, prelimUrl = _54.prelimUrl;
                 if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
                     if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
                         (_37 = (_36 = (_35 = (_34 = (_33 = (_32 = (_31 = (_30 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _30 === void 0 ? void 0 : _30.parentNode) === null || _31 === void 0 ? void 0 : _31.parentNode) === null || _32 === void 0 ? void 0 : _32.parentNode) === null || _33 === void 0 ? void 0 : _33.parentNode) === null || _34 === void 0 ? void 0 : _34.parentNode) === null || _35 === void 0 ? void 0 : _35.parentNode) === null || _36 === void 0 ? void 0 : _36.parentNode) === null || _37 === void 0 ? void 0 : _37.remove();

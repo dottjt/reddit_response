@@ -168,6 +168,7 @@
             || new RegExp(/not interested/i).test(messagePayload.message)
             || new RegExp(/No I (don’t|dont|don't) meditate/i).test(messagePayload.message);
     };
+
     var toMeditateGuide = function (messagePayload) {
         return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
             || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
@@ -175,9 +176,7 @@
             || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
             || new RegExp(/^How do (u|you) meditate?$/i).test(messagePayload.message);
     };
-    // How does one meditate?
-    // I'm wondering how do u meditate
-    // Thank you so much for reaching out. I’ve never tried meditation but I’ve heard it helps a lot, is there any specific way to do it? Are there different methods?
+
     var toHardTime = function (messagePayload) {
         return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i).test(messagePayload.message)
             || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
@@ -307,10 +306,12 @@
             || new RegExp(/thanks bro/i).test(messagePayload.message);
     };
 
-    var filterRedditInboxMessages = function (messagePayload, moreThanOneMessage) {
+    var toInboxFilter = function (messagePayload, moreThanOneMessage) {
         var compiledUser = messagePayload.compiledUser;
         var lastSentMessage = compiledUser.lastSentMessage;
         var lastReceivedMessage = compiledUser.lastReceivedMessage;
+        // EDGE
+        // Are you a bot?
         if (compiledUser.userType === UserType.UserHostile
             || new RegExp(/(paid|free)/i).test(messagePayload.message)
             || toNotRespond(messagePayload)) {
@@ -319,8 +320,7 @@
                 messageType: undefined,
             };
         }
-        if ( // if I've sent a start message, and they've returned a start message.
-        (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
+        if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
             ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
             ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
             // No Worries
@@ -363,18 +363,6 @@
                 };
             }
         }
-        //  <!-- What is NFD website -->
-        // so this is broken. because once you go to a page that has the same text i.e. from unread to read it will send this automatically again to someone who's already received it.
-        // therefore, this also need to know that the recieved messages from that used is exactly two
-        // of course this breaks if the user sends two messages, so I'll have to look into this.
-        // in addition it should check time last message was sent by ME and last message sent by them. if they are within a similar time span, then perhaps don't send it.
-        // the other flaw in this system is that it should check all messages sent by the user on this page and count them as one, not just one separately. It shouldn't count them like that, it's broken.
-        // TODO: DO NOT do this if there are more than two messages on the screen at once. Because it might think the other message is the "BAD one"
-        // basically only triggers poorly if
-        console.log('here', messagePayload.compiledUser.username, !moreThanOneMessage, lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type, lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type);
-        // this is still broken, I think maybe lastReceivedMessage just needs to be middle. That's all it needs to che
-        // changed it
-        // That website would be very helpful
         if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
             // Join Subreddit
             if (toJoinSubreddit(messagePayload)) {
@@ -384,7 +372,6 @@
                 };
             }
         }
-        // Are you a bot?
         return {
             messageText: undefined,
             messageType: undefined,
@@ -2977,7 +2964,7 @@
                             switch (_b.label) {
                                 case 0:
                                     moreThanOneMessage = finalMessageList.filter(function (msgItem) { return msgItem.username_sending === item.username_sending; }).length > 1;
-                                    _a = filterRedditInboxMessages(item, moreThanOneMessage), messageText = _a.messageText, messageType = _a.messageType;
+                                    _a = toInboxFilter(item, moreThanOneMessage), messageText = _a.messageText, messageType = _a.messageType;
                                     if (!(messageText && messageType)) return [3 /*break*/, 2];
                                     return [4 /*yield*/, messageInboxAutomatedMessageSend(item, messageText, messageType)];
                                 case 1:

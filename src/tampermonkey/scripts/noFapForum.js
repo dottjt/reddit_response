@@ -2566,7 +2566,7 @@
                 //   shouldDeleteElementImmediately,
                 //   sendMessageType,
                 //   prelimUrl,
-                // } = noFapNewFilter(dbUser, usernameConfig, undefined, titleText, messageText);
+                // } = toSubFilter(dbUser, usernameConfig, undefined, titleText, messageText);
                 // if (prelimUrl) {
                 //   if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
                 //     tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
