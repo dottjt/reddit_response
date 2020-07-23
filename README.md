@@ -16,21 +16,15 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
+- Target the nofap website, not just reddit. Increase your userbase :)
+
 - Fetish is irrelevant. MESSAGE
 - okay NOFAP with a girlfriend? MESSAGE
 - libido MESSAGE
 - sex during nofap MESSAGE
 - Is NoFap worth it? MESSAGE
 - benefits of cold showers MESSAGE
-// feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
-
-- need to refactor the regex patterns into logical groups, as well as create certain
-- Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
-- Target the nofap website, not just reddit. Increase your userbase :)
-- nofap
-
-- https://stackoverflow.com/questions/55457646/open-multiple-urls-in-same-new-tab-javascript
-- Fortify DONE with website links send/visited
+- feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
 
 ## Nice To Have
 
@@ -42,9 +36,13 @@ Although this application saves me a tremendous amount of time, the biggest save
 - Track original post as part of the message.
 - Also, save the date (user chatted)
 - If done, remove everything so it takes up less space. (unsure about this one, because they still might be asking a question)
+- https://stackoverflow.com/questions/55457646/open-multiple-urls-in-same-new-tab-javascript
+- Fortify DONE with website links send/visited
 
 ## DONE
 
+- Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
+- need to refactor the regex patterns into logical groups, as well as create certain
 - Don't delete the last user post if it's the last one.
 - Save last ago date if you cannot find the username.
 - Remove did this count as relapse posts if I'm not addressing them (I made this into it's own message :))

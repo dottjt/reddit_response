@@ -41,21 +41,70 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   sendMessageType: SendMessageType | undefined,
   prelimUrl: string | undefined,
 } => {
+
+  // EDGE
+  // Deleted: Iamnofapbeast - undefined - I relapsed on day 5 due to instagram triggers on a nude model photo
+  // Deleted: Sitaram0641 - undefined - Day 22 completed, but got nightfall 3 times in last week
+  // Deleted: the_invinciblee - undefined - Is NoFap benefits a Placebo?
+  // Deleted: Z1omek - undefined - How to fight urges while lying in bed?
+  // Deleted: frickandfrackooh - Question - How to stop an urge in bed?
+
   // OTHER
   // Meditating at night can gelp witg controlling the wet dreams
   // Any help or advice would be appreciated.
   // Flatline 7 days in - scared!
-
   // will nofap cure my cuckhold fetish
-
   // should I reset?
 
+  // AGE
   // around 15 years
   // 10 years -
 
+  // TODO: OTHER TOPICS
+  // Does the urge to masturbate get easier?
+  // edging
+  // is it a relapse?
+  // masturbation without porn.
+  // cold showers
+  // once a day
+  // is it bad to fap without porn? - 2
+  // biggest difference once you recover? / benefits - 5 // why shouldn't I fap? // how has nofap changer your life?
+  // what benefits have you noticed? - 1
+  // is peeking relapse? - 1
+  // how to stop wet dreams? - 1
+  // advice for boyfriend from girlfriend. - 1
+  // edging and reseting counter. - 1
+  // relapse when thinking about ex. - 1
+  // recommend NFD podcast - 1
+  // how long is too long - 1
+  // benefits for hard mode vs no porn - 2
+  // advice cannot fall asleep because need to masturbate. - 1
+  // is it okay to masturbate because teen/not getting any - 1
+  // is it relapse if I have sex with my girlfriend.
+  // semen leakage is it bad? - 1
+  // is sadness and demotivation normal during reboot?
+  // how much is set back from relapsing?
+  // is it okay to ejaculate during sex?
+  // aren't flatlines good?
+  // what is the point of nofap if you can't have sex?
+  // how do I show the days I haven't ejaculated?
+  // smoking weed to help with porn addiction.
+  // what should I be experiencing ?
+  // did I lose progress?
+  // did you get morning wood again?
+  // will dating app make it worse?
+  // does this count as relapse?
+  // low sex drive?
+  // does it get easier over time?
+  // okay to masturbate without porn? 3 (jerking off every now and then. )
+  // did I just relapse?
+  // how do you feel long term (after 1 month/week etc.)
+  // does peeking count as relapse?
+
   // TO REMOVE
   if (
-    toRemoveInitial(titleText, flairText, messageText)
+    flairText !== 'New to NoFap'
+    || toRemoveInitial(titleText, flairText, messageText)
     || toRemoveInitialDay(titleText, flairText, messageText)
   ) {
     console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
@@ -66,6 +115,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
     }
   }
 
+  // LESS THAN 24 HOURS SINCE LAST MESSAGE
   if (compiledUser?.lastSentMessage) {
     if (isLessThan24Hours(new Date(compiledUser?.lastSentMessage?.send_date as string))) {
       return {
@@ -88,14 +138,6 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
       prelimUrl: undefined
     }
   }
-
-  // EDGE
-  // Deleted: Iamnofapbeast - undefined - I relapsed on day 5 due to instagram triggers on a nude model photo
-  // Deleted: Sitaram0641 - undefined - Day 22 completed, but got nightfall 3 times in last week
-  // Deleted: the_invinciblee - undefined - Is NoFap benefits a Placebo?
-  // Deleted: Z1omek - undefined - How to fight urges while lying in bed?
-  // Deleted: frickandfrackooh - Question - How to stop an urge in bed?
-
 
   // USER NOT RESPONDED
   if (compiledUser.userType === UserType.UserNotRespondedBack) {
@@ -130,11 +172,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
 
   // FRESH USER
   if (compiledUser.userType === UserType.FreshUser) {
-    // TODO
-    // if (flairText === 'New to NoFap') {
-    //   // console.log(`relapse report - ${tagUsername}`);
-
-    // }
+    // TODO: CHECK FLAIR
 
     // STARTED MESSAGES
     if (
@@ -255,46 +293,6 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
         prelimUrl: generatePrelimUrl(compiledUser.username, whenDoesItGetEasierAdvice(usernameConfig.forumType), SendMessageType.StartWhenDoesItGetEasierAdvice, usernameConfig)
       }
     }
-
-    // Does the urge to masturbate get easier?
-    // edging
-    // is it a relapse?
-    // masturbation without porn.
-    // cold showers
-    // once a day
-    // is it bad to fap without porn? - 2
-    // biggest difference once you recover? / benefits - 5 // why shouldn't I fap? // how has nofap changer your life?
-    // what benefits have you noticed? - 1
-    // is peeking relapse? - 1
-    // how to stop wet dreams? - 1
-    // advice for boyfriend from girlfriend. - 1
-    // edging and reseting counter. - 1
-    // relapse when thinking about ex. - 1
-    // recommend NFD podcast - 1
-    // how long is too long - 1
-    // benefits for hard mode vs no porn - 2
-    // advice cannot fall asleep because need to masturbate. - 1
-    // is it okay to masturbate because teen/not getting any - 1
-    // is it relapse if I have sex with my girlfriend.
-    // semen leakage is it bad? - 1
-    // is sadness and demotivation normal during reboot?
-    // how much is set back from relapsing?
-    // is it okay to ejaculate during sex?
-    // aren't flatlines good?
-    // what is the point of nofap if you can't have sex?
-    // how do I show the days I haven't ejaculated?
-    // smoking weed to help with porn addiction.
-    // what should I be experiencing ?
-    // did I lose progress?
-    // did you get morning wood again?
-    // will dating app make it worse?
-    // does this count as relapse?
-    // low sex drive?
-    // does it get easier over time?
-    // okay to masturbate without porn? 3 (jerking off every now and then. )
-    // did I just relapse?
-    // how do you feel long term (after 1 month/week etc.)
-    // does peeking count as relapse?
   }
 
   // Final Delete
