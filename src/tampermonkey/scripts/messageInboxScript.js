@@ -193,7 +193,7 @@
             // YES
             || new RegExp(/^sure$/i).test(messagePayload.message)
             || new RegExp(/^yes$/i).test(messagePayload.message)
-            || new RegExp(/^yes/i).test(messagePayload.message)
+            // || new RegExp(/^yes/i).test(messagePayload.message) // too broad
             || new RegExp(/(Yaa|ya) sure/i).test(messagePayload.message)
             || new RegExp(/yes please/i).test(messagePayload.message)
             || new RegExp(/(im|I'm|i m) in./i).test(messagePayload.message)
@@ -245,6 +245,7 @@
             || new RegExp(/like to look around at your site/i).test(messagePayload.message)
             || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
             || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
+            || new RegExp(/I’d like to try any resources you’re willing to share/i).test(messagePayload.message)
             // GRATEFUL
             || new RegExp(/the website would be quite helpful/i).test(messagePayload.message)
             || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)

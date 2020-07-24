@@ -4,3 +4,5 @@ export const toMasturbationAdvice = (titleText: string, flairText: string, messa
   || new RegExp(/Getting urges to masturbate/i).test(titleText)
   || new RegExp(/Can I masturbate without porn/i).test(titleText)
   || new RegExp(/opinions towards fapping without porn/i).test(titleText)
+  || new RegExp(/Is it ok to masturbate without watching porn/i).test(titleText)
+  || new RegExp(/is it better to fap without porn/i).test(titleText)

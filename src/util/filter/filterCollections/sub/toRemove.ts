@@ -28,6 +28,9 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   // FLAIR
   flairText === 'Success Story'
 
+  // DAY MILESTONES
+  || new RegExp(/180 day/i).test(titleText)
+
   // COUNTER
   || new RegExp(/profile/i).test(titleText)
   || new RegExp(/name tag/i).test(titleText)
@@ -64,6 +67,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   // VICTORY
   || new RegExp(/overcame my worst urge/i).test(titleText)
   || new RegExp(/I am proud of myself/i).test(titleText)
+  || new RegExp(/finally crossed a/i).test(titleText)
   || new RegExp(/(0|zero) urges to fap/i).test(titleText)
   || new RegExp(/I feel amazing/i).test(titleText)
   || new RegExp(/benefits ?(are)? becoming apparent/i).test(titleText)
@@ -86,6 +90,7 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/finally made it to (day|week)/i).test(titleText)
   || new RegExp(/reached day \d+ for the (first time|firsttime)/i).test(titleText)
   || new RegExp(/(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i).test(titleText)
+  || new RegExp(/\d+ (days|weeks|months|years) free$/i).test(titleText)
 
   // MOTIVATION
   || new RegExp(/(we will all make it|we will make it|you will make it|you can do it)/i).test(titleText)
@@ -116,11 +121,14 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/super sensitive/i).test(titleText)
   || new RegExp(/testosterone/i).test(titleText)
   || new RegExp(/health problems/i).test(titleText)
+  || new RegExp(/hypnotherapy/i).test(titleText)
+  || new RegExp(/hypnosis/i).test(titleText)
 
   // SEX / WOMEN
   || new RegExp(/finally got a girlfriend/i).test(titleText)
   || new RegExp(/sexting/i).test(titleText)
   || new RegExp(/(virgin|virginity)/i).test(titleText)
+  || new RegExp(/women attraction/i).test(titleText)
 
   // POINTLESS QUESTIONS
   || new RegExp(/counts as relapse/i).test(titleText) // look into this.
@@ -147,6 +155,9 @@ export const toRemoveInitial = (titleText: string, flairText: string, messageTex
   || new RegExp(/is it worth it/i).test(titleText)
   || new RegExp(/libido/i).test(titleText)
   || new RegExp(/sex on (nofap|no fap|no-fap)/i).test(titleText)
+  || new RegExp(/no urges yet/i).test(titleText)
+  || new RegExp(/(hard mode|hardmode)/i).test(titleText)
+
 
   // UNSORTED
   || new RegExp(/benefits till now/i).test(titleText)

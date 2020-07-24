@@ -4,7 +4,10 @@ export const toStruggleAdvice = (titleText: string, flairText: string, messageTe
   || new RegExp(/^help!$/i).test(titleText)
   || new RegExp(/I CANT STOP(P)? HELP/i).test(titleText)
   || new RegExp(/this is getting harder/i).test(titleText)
+  || new RegExp(/I really can't stop/i).test(titleText)
+  || new RegExp(/why is this so hard/i).test(titleText)
   || new RegExp(/I (cant|can't) get past the .* mark/i).test(titleText)
+  || new RegExp(/(cant|can't) get a streak going/i).test(titleText)
 
   // ABOUT TO RELAPSE
   || new RegExp(/I am about to relapse/i).test(titleText)

@@ -56,6 +56,9 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   // will nofap cure my cuckhold fetish
   // should I reset?
 
+  // IS SEX RELAPSE
+  // Is sex (with someone you just met) a relapse
+
   // AGE
   // around 15 years
   // 10 years -

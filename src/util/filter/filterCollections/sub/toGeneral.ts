@@ -14,6 +14,8 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/need some advice from pro/i).test(titleText)
   || new RegExp(/I have a serious addiction to masturbation/i).test(titleText)
   || new RegExp(/I need some serious motivation/i).test(titleText)
+  || new RegExp(/could use some advice/i).test(titleText)
+  || new RegExp(/how can I survive this journey/i).test(titleText)
 
   // TOO HARD
   || new RegExp(/shit is getting rough/i).test(titleText)
@@ -28,7 +30,7 @@ export const toGeneralAdvice = (titleText: string, flairText: string, messageTex
   || new RegExp(/^Please help/i).test(titleText)
   || new RegExp(/^Need help/i).test(titleText)
   || new RegExp(/looking for some guidance/i).test(titleText)
-  
+
   // CAN'T STOP
   || new RegExp(/I just can’t stop myself/i).test(titleText)
   || new RegExp(/^tips\?$/i).test(titleText)
