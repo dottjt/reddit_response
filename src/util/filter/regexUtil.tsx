@@ -50,7 +50,7 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
       const { matchObject } = regexKeys.reduce((acc, keyString) => {
         const regex = regexFilters[keyString];
 
-        if (acc.allFound) {``
+        if (acc.allFound) {
           if (keyString === 'titleText') {
             // What this does is that it uses titleText as both titleText and messageText
             if (regexFilters?.options?.both) {
@@ -141,8 +141,14 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 
 // result
 
+export enum RelevantType {
+  Title='Title',
+  Message='Message',
+  Flair='Flair',
+  Reply='Reply',
+}
 
-export const highlightSyntax = (relevantText: string | undefined, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
+export const highlightSyntax = (relevantText: string | undefined, relevantType: RelevantType, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
   if (relevantText) {
     const insert = (arr, index, newItem) => [
       ...arr.slice(0, index),
@@ -153,8 +159,7 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
     if (messageMatch.length > 0) {
       const { titleTextArray } = messageMatch.reduce((acc, regexFilterResult) => {
         if (!acc.foundMatch) {
-
-          if (regexFilterResult?.titleTextMatch) {
+          if (regexFilterResult?.titleTextMatch && relevantType === RelevantType.Title) {
             const splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>)
@@ -163,7 +168,7 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
 
-          if (regexFilterResult?.flairTextMatch) {
+          if (regexFilterResult?.flairTextMatch && relevantType === RelevantType.Flair) {
             const splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.flairTextMatch}</span>)
@@ -172,7 +177,7 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
 
-          if (regexFilterResult?.messageTextMatch) {
+          if (regexFilterResult?.messageTextMatch && relevantType === RelevantType.Message) {
             const splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch}</span>)
@@ -181,7 +186,7 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
 
-          if (regexFilterResult?.replyTextMatch) {
+          if (regexFilterResult?.replyTextMatch && relevantType === RelevantType.Reply) {
             const splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.replyTextMatch}</span>)

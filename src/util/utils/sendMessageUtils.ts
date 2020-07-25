@@ -2,7 +2,7 @@ import { SendMessageType, UserForumType } from '../../types/serverTypes';
 import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
 import { sendNewMessage } from '../httpResponses';
 import { ConfigType } from '../config';
-import { RegexFiltersMatch, highlightSyntax } from '../filter/regexUtil';
+import { RegexFiltersMatch, highlightSyntax, RelevantType } from '../filter/regexUtil';
 
 export const openReplyLink = async (containerDiv) => {
   const entry = containerDiv.children[4];
@@ -74,7 +74,7 @@ export const populateMessageAndSend = async (
     [...replyBox.children as any].forEach(ele => {
       const text = ele.textContent;
 
-      ele.innerHTML = highlightSyntax(text, messageMatch, false).join(' ');
+      ele.innerHTML = highlightSyntax(text, RelevantType.Reply, messageMatch, false).join(' ');
     });
   }
 

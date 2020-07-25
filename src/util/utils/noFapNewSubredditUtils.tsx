@@ -9,7 +9,7 @@ import {
 import { SendMessageType } from '../../types/serverTypes';
 import { openNewLink } from '../utils/sendMessageUtils';
 import UserPanel from '../../components/UserPanel';
-import { highlightSyntax } from '../filter/regexUtil';
+import { highlightSyntax, RelevantType } from '../filter/regexUtil';
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
@@ -151,13 +151,13 @@ export const createPrelimLink = ({
       >
         <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
           {messageMatch.length > 0 ? (
-            highlightSyntax(titleText, messageMatch, true).map(element => <span>{element}</span>)
+            highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(element => <span>{element}</span>)
           ) : (
             <span>{titleText}</span>
           )}
         <p style={{ 'margin-top': '0.5rem' }}>
           {messageMatch.length > 0 ? (
-            highlightSyntax(flairText, messageMatch, true).map(element => <span>{element}</span>)
+            highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(element => <span>{element}</span>)
           ) : (
             <span>{flairText}</span>
           )}

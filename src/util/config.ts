@@ -21,8 +21,8 @@ export enum ForumType {
 
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
-export const R_NOFAP_USERNAME = 'TheWeeb8000';
-export const R_NOFAP_TIMESTAMP = '3 hours ago';
+export const R_NOFAP_USERNAME = 'dadumn';
+export const R_NOFAP_TIMESTAMP = '1 minute ago';
 export const R_NOFAP_START_DATE = ''; // todo, all this shit. 
 
 export const R_PORN_FREE_USERNAME = 'bonfire321';
