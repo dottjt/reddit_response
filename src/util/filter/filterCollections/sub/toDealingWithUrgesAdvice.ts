@@ -15,4 +15,5 @@ export const toDealingWithUrgesAdviceRegexArray: RegexFilters[] = [
   { titleText: /help (w|with) persistent urge/i },
 
   { messageText: /Any tips on how to handle these?/i },
+  { messageText: /help make me stop letting my urges/i },
 ];

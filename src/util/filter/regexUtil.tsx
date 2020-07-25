@@ -50,7 +50,7 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
       const { matchObject } = regexKeys.reduce((acc, keyString) => {
         const regex = regexFilters[keyString];
 
-        if (acc.allFound) {
+        if (acc.allFound) {``
           if (keyString === 'titleText') {
             // What this does is that it uses titleText as both titleText and messageText
             if (regexFilters?.options?.both) {
@@ -99,8 +99,6 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
         return { ...acc, allFound: false };
       }, { matchObject: {}, allFound: true } as { matchObject: RegexFiltersMatch, allFound: boolean });
 
-      // TODO: This technically did not help achieve what I wanted.
-      // What I want is to be able to use titleText for both message and title, without having to define it twice. That was the purpose of this.
       if (regexFilters?.options?.logic === RegexFilterLogic.AND) {
         if (Object.keys(matchObject).length === regexKeys.length) {
           return { matchArray: [ matchObject ], matchFound: true };
@@ -201,3 +199,5 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
   }
   return [ relevantText ];
 };
+
+export const both = { options: { both: true } };

@@ -15,6 +15,7 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
 
   // MOTIVATION
   { titleText: /I need some serious motivation/i },
+  { titleText: /please I need motivation/i },
 
   // TIPS
   { titleText: /^tips\?$/i },

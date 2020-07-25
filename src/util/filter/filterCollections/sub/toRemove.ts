@@ -46,6 +46,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /checking my day count/i },
   { titleText: /accountability post/i },
   { titleText: /next to (ur|your) (name|tag)/i },
+  { messageText: /get a tag with your streak/i },
 
   // LECTURE
   { titleText: /Nofap taught me/i },
@@ -62,11 +63,6 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /found a method/i },
   { titleText: /the key to (everything|NoFap)/i },
   { titleText: /methods that you might like to/i },
-
-  // MOTIVATION
-  { titleText: /motivational thought/i },
-  { titleText: /do not relapse/i },
-  { titleText: /^keep going/i },
 
   // VICTORY
   { titleText: /overcame my worst urge/i },
@@ -93,6 +89,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /longest streak yet/i },
   { titleText: /(previous record|milestone)/i },
   { titleText: /small success/i },
+  { titleText: /a month of not fapping/i },
   { titleText: /finally made it to (day|week)/i },
   { titleText: /feels so .* good/i },
   { titleText: /reached day \d+ for the (first time|firsttime)/i },
@@ -107,8 +104,12 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /love you guys/i },
   { titleText: /(nofap|no fap) works/i },
   { titleText: /^Instead of watching porn/i },
+  { titleText: /(nofap|no fap) is changing my life/i },
   { titleText: /(its|It's) never too late/i },
   { titleText: /quote/i },
+  { titleText: /motivational thought/i },
+  { titleText: /do not relapse/i },
+  { titleText: /^keep going/i },
 
   // RATIONALISATIONS
   { titleText: /(down side|downside)/i },
