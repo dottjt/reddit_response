@@ -8,6 +8,7 @@ import { ForumType, ConfigType } from '../util/config';
 const chooseCorrectUsernameString = (forumType: ForumType): {
   usernameStringReplace: string;
   timeframeStringReplace: string;
+  timeframeStartDateReplace: string;
 } => {
   try {
     switch (forumType) {
@@ -15,42 +16,49 @@ const chooseCorrectUsernameString = (forumType: ForumType): {
         return {
           usernameStringReplace: 'R_NOFAP_USERNAME',
           timeframeStringReplace: 'R_NOFAP_TIMESTAMP',
+          timeframeStartDateReplace: 'R_NOFAP_START_DATE',
         }
       }
       case ForumType.rPornFreeForum: {
         return {
           usernameStringReplace: 'R_PORN_FREE_USERNAME',
           timeframeStringReplace: 'R_PORN_FREE_TIMESTAMP',
+          timeframeStartDateReplace: 'R_PORN_FREE_START_DATE',
         }
       }
       case ForumType.rPornAddictionForum: {
         return {
           usernameStringReplace: 'R_PORN_ADDICTION_USERNAME',
           timeframeStringReplace: 'R_PORN_ADDICTION_TIMESTAMP',
+          timeframeStartDateReplace: 'R_PORN_ADDICTION_START_DATE',
         }
       }
       case ForumType.rNofapChristiansForum: {
         return {
           usernameStringReplace: 'R_NOFAP_CHRISTIANS_USERNAME',
           timeframeStringReplace: 'R_NOFAP_CHRISTIANS_TIMESTAMP',
+          timeframeStartDateReplace: 'R_NOFAP_CHRISTIANS_START_DATE',
         }
       }
       case ForumType.rNofapTeensForum: {
         return {
           usernameStringReplace: 'R_NOFAP_TEENS_USERNAME',
           timeframeStringReplace: 'R_NOFAP_TEENS_TIMESTAMP',
+          timeframeStartDateReplace: 'R_NOFAP_TEENS_START_DATE',
         }
       }
       case ForumType.rSemenRetentionForum: {
         return {
           usernameStringReplace: 'R_SEMEN_RETENTION_USERNAME',
           timeframeStringReplace: 'R_SEMEN_RETENTION_TIMESTAMP',
+          timeframeStartDateReplace: 'R_SEMEN_RETENTION_START_DATE',
         }
       }
       case ForumType.rMuslimNofapForum: {
         return {
           usernameStringReplace: 'R_MUSLIM_NOFAP_USERNAME',
           timeframeStringReplace: 'R_MUSLIM_NOFAP_TIMESTAMP',
+          timeframeStartDateReplace: 'R_MUSLIM_NOFAP_START_DATE',
         }
       }
     }
@@ -70,19 +78,21 @@ const setMarkerRoute = async (ctx: Context, next: Next) => {
 
     const {
       usernameStringReplace,
-      timeframeStringReplace
+      timeframeStringReplace,
+      timeframeStartDateReplace
     } = chooseCorrectUsernameString(usernameConfig.forumType);
 
     console.log('usernameStringReplace', usernameStringReplace);
     console.log('timeframeStringReplace', timeframeStringReplace);
     console.log('hoursAgoText', hoursAgoText);
 
-    if (usernameStringReplace && timeframeStringReplace) {
+    if (usernameStringReplace && timeframeStringReplace && timeframeStartDateReplace) {
       const configFile = path.resolve(__dirname, '..', 'util', 'config.ts');
       const confileFileContents = await fse.readFile(configFile, 'utf-8');
 
       const regex = new RegExp(`export const ${usernameStringReplace} = '(?!NA).*;`);
       const regexTimeframe = new RegExp(`export const ${timeframeStringReplace} = '(?!NA).*;`);
+      const regexStartDate = new RegExp(`export const ${timeframeStartDateReplace} = '(?!NA).*;`);
 
       const newContents =
         confileFileContents.replace(
@@ -91,6 +101,9 @@ const setMarkerRoute = async (ctx: Context, next: Next) => {
         ).replace(
           regexTimeframe,
           `export const ${timeframeStringReplace} = '${hoursAgoText}';`
+        ).replace(
+          regexStartDate,
+          `export const ${timeframeStartDateReplace} = '${new Date()}';`
         );
 
       fse.outputFile(configFile, newContents);

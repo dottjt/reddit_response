@@ -136,10 +136,8 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
   // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
 
-
   // EDGET
   // From your experience should I go ahead with my marriage and start following nofap no pmo
   // Yes, meditation is really a key to control that urge, I have started inculcate those habits! Now I am on day 7 of nofap! It's true that mentally we have to be very strong! Thanks for your support! Means alot! 😇
   // Yes I meditate once a day, and pray constantly. I’m not afraid to ask God for help. (look into this, it shouldn't have triggered)
-
 ];

@@ -22,38 +22,52 @@ const getNextHoursAgoValueToSearch = (timestamp: string): string | undefined => 
 
 const setupCron = () => {
 
-  cron.schedule('0 * * * *', async () => {
-    const timestampList: string[] = [
-      'R_NOFAP_TIMESTAMP',
-      'R_PORN_FREE_TIMESTAMP',
-      'R_PORN_ADDICTION_TIMESTAMP',
-      'R_NOFAP_CHRISTIANS_TIMESTAMP',
-      'R_NOFAP_TEENS_TIMESTAMP',
-      'R_SEMEN_RETENTION_TIMESTAMP',
-      'R_MUSLIM_NOFAP_TIMESTAMP',
+  cron.schedule('* /10 * * *', async () => {
+    const forumTimesList: { timestamp: string, start_date: string }[] = [
+      { timestamp: 'R_NOFAP_TIMESTAMP', start_date: 'R_NOFAP_START_DATE' },
+      { timestamp: 'R_PORN_FREE_TIMESTAMP', start_date: 'R_PORN_FREE_START_DATE' },
+      { timestamp: 'R_PORN_ADDICTION_TIMESTAMP', start_date: 'R_PORN_ADDICTION_START_DATE' },
+      { timestamp: 'R_NOFAP_CHRISTIANS_TIMESTAMP', start_date: 'R_NOFAP_CHRISTIANS_START_DATE' },
+      { timestamp: 'R_NOFAP_TEENS_TIMESTAMP', start_date: 'R_NOFAP_TEENS_START_DATE' },
+      { timestamp: 'R_SEMEN_RETENTION_TIMESTAMP', start_date: 'R_SEMEN_RETENTION_START_DATE' },
+      { timestamp: 'R_MUSLIM_NOFAP_TIMESTAMP', start_date: 'R_MUSLIM_NOFAP_START_DATE' },
     ];
 
-    for (const timestampString of timestampList) {
+    for (const forumTime of forumTimesList) {
       const configFile = path.resolve(__dirname, '..', 'util', 'config.ts');
       const confileFileContents = await fse.readFile(configFile, 'utf-8');
 
-      const regex = new RegExp(`export const ${timestampString} = '(?!NA).*;`);
+      const regex = new RegExp(`export const ${forumTime.timestamp} = '(?!NA).*;`);
+      const regexDate = new RegExp(`export const ${forumTime.start_date} = '(?!NA).*;`);
 
       const timeStringMatch = confileFileContents.match(regex);
+      const startDategMatch = confileFileContents.match(regexDate);
 
-      if (timeStringMatch) {
+      if (timeStringMatch && startDategMatch) {
         const timeString = timeStringMatch[0].split('\'')[1]; // 1 minute ago
         const nextTime = getNextHoursAgoValueToSearch(timeString);
 
-        const newContents =
-          confileFileContents.replace(
-            regex,
-            `export const ${timestampString} = '${nextTime}';`
-          );
+        // TODO I'm not sure how it will know that it's within the same ten minute timeframe. 
 
-        fse.outputFile(configFile, newContents);
-        console.log(`setMarkerRoute - ${nextTime}`);
+        // const startDateDATE = new Date(startDategMatch[0].split('\'')[1]).getTime();
+
+      //   const dateNow = new Date().getTime();
+      //   const tenMinutesAgo = (
+      //     new Date(dateNow - 10*60000)
+      //   );
+
+      //   if (publishDate >= tenMinutesAgo && publishDate <= dateNow) {
+      //     const newContents =
+      //     confileFileContents.replace(
+      //       regex,
+      //       `export const ${forumTime.timestamp} = '${nextTime}';`
+      //     );
+
+      //     fse.outputFile(configFile, newContents);
+      //     console.log(`setMarkerRoute - ${nextTime}`);
+      //   }
       }
+
     }
   }, {
     scheduled: true,
