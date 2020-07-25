@@ -1,123 +1,131 @@
-import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes';
+import { RegexFilters } from '../../regexUtil';
 
-export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
-  new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
-  || new RegExp(/took up/i).test(messagePayload.message)
+export const toNoWorriesGuideRegexArray: RegexFilters[] = [
+  { replyText: /(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i },
+  { replyText: /took up/i },
 
   // YES
-  || new RegExp(/^sure$/i).test(messagePayload.message)
-  || new RegExp(/^yes$/i).test(messagePayload.message)
-  // || new RegExp(/^yes/i).test(messagePayload.message) // too broad
-  || new RegExp(/(Yaa|ya) sure/i).test(messagePayload.message)
-  || new RegExp(/yes please/i).test(messagePayload.message)
-  || new RegExp(/(im|I'm|i m) in./i).test(messagePayload.message)
-  || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
+  { replyText: /^sure$/i },
+  { replyText: /^yes$/i },
+  { replyText: /^yes/i }, // too broad
+  { replyText: /(Yaa|ya) sure/i },
+  { replyText: /yes please/i },
+  { replyText: /(im|I'm|i m) in./i },
+  { replyText: /(yes|yeah) (for sure|I am)/i },
+  { replyText: /shoot me a link to the website/i },
 
   // CHECK
-  || new RegExp(/(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/I’ll check the link if you have it/i).test(messagePayload.message)
+  { replyText: /(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
+  { replyText: /(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
+  { replyText: /I’ll check the link if you have it/i },
 
   // SEND
-  || new RegExp(/(sent|send) me the (site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/pass me your website/i).test(messagePayload.message)
-  || new RegExp(/send website link/i).test(messagePayload.message)
-  || new RegExp(/send that my way/i).test(messagePayload.message)
-  || new RegExp(/send over the link/i).test(messagePayload.message)
-  || new RegExp(/(send it|do share)/i).test(messagePayload.message)
-  || new RegExp(/go ahead and send/i).test(messagePayload.message)
-  || new RegExp(/share ?(me)? the/i).test(messagePayload.message)
-  || new RegExp(/give (ur|your) (site|link|web|guide|content|page) a visit/i).test(messagePayload.message)
-  || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
-  || new RegExp(/please pass on (the|that) website info/i).test(messagePayload.message)
-  || new RegExp(/send me your website/i).test(messagePayload.message)
+  { replyText: /(sent|send) me the (site|link|web|guide|content|page)/i },
+  { replyText: /pass me your website/i },
+  { replyText: /send website link/i },
+  { replyText: /send that my way/i },
+  { replyText: /send over the link/i },
+  { replyText: /(send it|do share)/i },
+  { replyText: /go ahead and send/i },
+  { replyText: /share ?(me)? the/i },
+  { replyText: /give (ur|your) (site|link|web|guide|content|page) a visit/i },
+  { replyText: /hit me (up|with)/i },
+  { replyText: /please pass on (the|that) website info/i },
+  { replyText: /send me your website/i },
+  { replyText: /send me this website/i },
 
   // PASSIVE ASK
-  || new RegExp(/May I know (your|the) website/i).test(messagePayload.message)
-  || new RegExp(/could I get a link/i).test(messagePayload.message)
-  || new RegExp(/could send the website/i).test(messagePayload.message)
-  || new RegExp(/you could share/i).test(messagePayload.message)
-  || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
-  || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message)
-  || new RegExp(/feel free to share it/i).test(messagePayload.message)
-  || new RegExp(/(can|could) you ?(please)? link/i).test(messagePayload.message)
-  || new RegExp(/comfortable with sharing it/i).test(messagePayload.message)
-  || new RegExp(/if you sent ?(me)? the (site|link|web|guide|content|page)/i).test(messagePayload.message)
+  { replyText: /May I know (your|the) website/i },
+  { replyText: /could I get a link/i },
+  { replyText: /could send the website/i },
+  { replyText: /you could share/i },
+  { replyText: /could you please direct me to it/i },
+  { replyText: /Feel free to link (that|your|the) website/i },
+  { replyText: /feel free to share it/i },
+  { replyText: /(can|could) you ?(please)? link/i },
+  { replyText: /comfortable with sharing it/i },
+  { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
+
+  // SHARE
+  { replyText: /can share me ur site/i },
 
   // INTERESTED
-  || new RegExp(/(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
-  || new RegExp(/(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i).test(messagePayload.message)
-  || new RegExp(/(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/website sounds .* interesting/i).test(messagePayload.message)
-  || new RegExp(/i would be interested/i).test(messagePayload.message)
-  || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
-  || new RegExp(/like to here about your/i).test(messagePayload.message)
-  || new RegExp(/shoot me the link/i).test(messagePayload.message)
-  || new RegExp(/Yea absolutely that'd be interesting/i).test(messagePayload.message)
+  { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
+  { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
+  { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
+  { replyText: /website sounds .* interesting/i },
+  { replyText: /i would be interested/i },
+  { replyText: /the website (sound|sounds) interesting/i },
+  { replyText: /like to here about your/i },
+  { replyText: /shoot me the link/i },
+  { replyText: /Yea absolutely that'd be interesting/i },
 
-  || new RegExp(/interested./i).test(messagePayload.message)
-  || new RegExp(/(Sure I am|Yeah sure|Sure Bro)/i).test(messagePayload.message)
-  || new RegExp(/to know more about your website/i).test(messagePayload.message)
-  || new RegExp(/nice if you linked the website/i).test(messagePayload.message)
+  { replyText: /interested./i },
+  { replyText: /(Sure I am|Yeah sure|Sure Bro)/i },
+  { replyText: /to know more about your website/i },
+  { replyText: /nice if you linked the website/i },
 
-  || new RegExp(/wanna visit (ur|your) site/i).test(messagePayload.message)
-  || new RegExp(/tell me more/i).test(messagePayload.message)
-  || new RegExp(/like to look around at your site/i).test(messagePayload.message)
-  || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
-  || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
-  || new RegExp(/I’d like to try any resources you’re willing to share/i).test(messagePayload.message)
+  { replyText: /wanna visit (ur|your) site/i },
+  { replyText: /tell me more/i },
+  { replyText: /like to look around at your site/i },
+  { replyText: /interested in seeing your website/i },
+  { replyText: /actually really interested in your website/i },
+  { replyText: /I’d like to try any resources you’re willing to share/i },
+  { replyText: /I appreciate any info/i },
 
   // GRATEFUL
-  || new RegExp(/the website would be quite helpful/i).test(messagePayload.message)
-  || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
-  || new RegExp(/That would be very welcome/i).test(messagePayload.message)
-  || new RegExp(/would like to see what the website is/i).test(messagePayload.message)
-  || new RegExp(/that website would be nice/i).test(messagePayload.message)
-  || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
-  || new RegExp(/that would be really helpful/i).test(messagePayload.message)
-  || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
-  || new RegExp(/the (website|link) would be cool/i).test(messagePayload.message)
-  || new RegExp(/will have a look on your website/i).test(messagePayload.message)
-  || new RegExp(/I would really (appreaciate|appreciate) that/i).test(messagePayload.message)
-  || new RegExp(/(it|that|link) would be (super|awesome|great|cool)/i).test(messagePayload.message)
-  || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message)
+  { replyText: /the website would be quite helpful/i },
+  { replyText: /glad to (have|take) a look/i },
+  { replyText: /That would be very welcome/i },
+  { replyText: /would like to see what the website is/i },
+  { replyText: /that website would be nice/i },
+  { replyText: /yes that would be helpful/i },
+  { replyText: /that would be really helpful/i },
+  { replyText: /appreciate viewing your website/i },
+  { replyText: /the (website|link) would be cool/i },
+  { replyText: /will have a look on your website/i },
+  { replyText: /I would really (appreaciate|appreciate) that/i },
+  { replyText: /(it|that|link) would be (super|awesome|great|cool)/i },
+  { replyText: /happy to check out the (url|web|website|guide|site|link|address|resource)/i },
 
 
   // LOVE
-  || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
-  || new RegExp(/love to (see|know) (the|your) website/i).test(messagePayload.message)
-  || new RegExp(/I would love to learn more about it/i).test(messagePayload.message)
-  || new RegExp(/would love to visit/i).test(messagePayload.message)
-  || new RegExp(/love to see the website/i).test(messagePayload.message)
-  || new RegExp(/would love that website/i).test(messagePayload.message)
-  || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
-  || new RegExp(/Would love to see/i).test(messagePayload.message)
-  || new RegExp(/take a look at your website/i).test(messagePayload.message)
-  || new RegExp(/like to see (it|that)/i).test(messagePayload.message)
+  { replyText: /(id|I'd) love/i },
+  { replyText: /love to (see|know) (the|your) website/i },
+  { replyText: /I would love to learn more about it/i },
+  { replyText: /would love to visit/i },
+  { replyText: /love to see the website/i },
+  { replyText: /would love that website/i },
+  { replyText: /website sounds like a huge help/i },
+  { replyText: /Would love to see/i },
+  { replyText: /take a look at your website/i },
+  { replyText: /like to see (it|that)/i },
 
   // NEUTRAL
-  || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message)
+  { replyText: /(yah|ya|yeah) why not/i },
 
   // NAME
-  || new RegExp(/name of (ur|your|the) (site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/how is your website called/i).test(messagePayload.message)
-  || new RegExp(/Whats is the website called/i).test(messagePayload.message)
-  || new RegExp(/url for this (site|link|web|guide|content|page)/i).test(messagePayload.message)
+  { replyText: /name of (ur|your|the) (site|link|web|guide|content|page)/i },
+  { replyText: /how is your website called/i },
+  { replyText: /Whats is the website called/i },
+  { replyText: /url for this (site|link|web|guide|content|page)/i },
 
   // CHECK
-  || new RegExp(/check on your website/i).test(messagePayload.message)
+  { replyText: /check on your website/i },
 
   // LINK ME
-  || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/I'll take the link/i).test(messagePayload.message)
+  { replyText: /link ?(me)? to ur (site|link|web|guide|content|page)/i },
+  { replyText: /I'll take the link/i },
 
   // UNSORTED
-  || new RegExp(/Sure, I am looking for source material/i).test(messagePayload.message)
+  { replyText: /Sure, I am looking for source material/i },
   // Sure, I am looking for source material which explains the process and not just the success stories
 
+  // TODO
+  // the website sounds great I’ll give it a look
 
   // UNSURE
-  // || new RegExp(/any advice you got for me/i).test(messagePayload.message)
+  // || new /any advice you got for me/i).test(messagePayload.message)
 
 
   // I would love to hear your story and any advice you got for me
@@ -133,6 +141,4 @@ export const toNoWorriesGuide = (messagePayload: PopulateReceivedMessagePayload)
   // Yes, meditation is really a key to control that urge, I have started inculcate those habits! Now I am on day 7 of nofap! It's true that mentally we have to be very strong! Thanks for your support! Means alot! 😇
   // Yes I meditate once a day, and pray constantly. I’m not afraid to ask God for help. (look into this, it shouldn't have triggered)
 
-
-
-
+];

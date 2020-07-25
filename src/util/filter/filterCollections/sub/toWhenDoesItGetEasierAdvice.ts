@@ -1,4 +1,7 @@
-export const toWhenDoesItGetEasierAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
-  new RegExp(/does it get easier\?/i).test(titleText)
-  || new RegExp(/When does the withdrawal period depression start to fade\?/i).test(titleText)
+import { RegexFilters } from '../../regexUtil';
+
+export const toWhenDoesItGetEasierAdviceRegexArray: RegexFilters[] = [
+  { titleText: /does it get easier\?/i },
+  { titleText: /When does the withdrawal period depression start to fade\?/i },
+];
 

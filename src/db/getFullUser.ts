@@ -19,7 +19,8 @@ const getFullUser = async (username: string): Promise<CompiledFullUserObject> =>
   const messageTypesSentString = messageTypesSent?.map(message => message.type);
 
   const lastSentMessages: Message[] | undefined = await knex<Message>('messages').where({ username_sending: 'NeverFapDeluxe', username_receiving: username }).select('type');
-  const absoluteLastSentMessageType: LastMessageType = retrieveAbsoluteLastMessage(lastSentMessages);
+  const lastReceivedMessages: Message[] | undefined = await knex<Message>('messages').where({ username_sending: username, username_receiving: 'NeverFapDeluxe' }).select('type');
+  const absoluteLastSentMessageType: LastMessageType = retrieveAbsoluteLastMessage(lastSentMessages, lastReceivedMessages);
 
   const sentCount = Number(sentMessagesCount[0]["count(`id`)"]);
   const receivedCount = Number(receivedMessagesCount[0]["count(`id`)"]);
@@ -92,26 +93,41 @@ const calculateUserStatistics = (user: User, sentCount: number, receivedCount: n
   }
 };
 
-const retrieveAbsoluteLastMessage = (messages: Message[] | undefined) => {
-  if (messages?.find(message => message.type.includes('final'))) {
+const retrieveAbsoluteLastMessage = (lastSentMessages: Message[] | undefined, lastReceivedMessages: Message[] | undefined) => {
+  if (lastSentMessages?.find(message => message.type.includes('final'))) {
     return {
       type: 'DONE',
       colour: 'red'
     }
   }
-  if (messages?.find(message => message.type.includes('middle'))) {
+  if (lastSentMessages?.find(message => message.type.includes('middle')) && lastReceivedMessages?.find(message => message.type.includes('start'))) {
+    return {
+      type: 'AWAIT MIDDLE RESPONSE',
+      colour: 'orange'
+    }
+  }
+
+  if (lastSentMessages?.find(message => message.type.includes('middle')) && lastReceivedMessages?.find(message => message.type.includes('middle'))) {
     return {
       type: 'SEND FINAL',
       colour: 'orange'
     }
   }
-  if (messages?.find(message => message.type.includes('start')) || messages?.find(message => message.type.includes('follow'))) {
+
+  if (
+    (
+      lastSentMessages?.find(message => message.type.includes('start')) && lastReceivedMessages?.find(message => message.type.includes('start')) ||
+      lastSentMessages?.find(message => message.type.includes('follow')) && lastReceivedMessages?.find(message => message.type.includes('follow'))
+    )
+  ) {
     return {
       type: 'SEND MIDDLE',
       colour: 'yellow'
     }
   }
 
+  // TODO IT ALWAYS SEEMS THIS IS THE RESULT
+  // I think it just needs to see the last sent, not all the messages.
   return {
     type: 'CUSTOM',
     colour: 'yellow'

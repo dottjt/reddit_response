@@ -26,10 +26,10 @@ const saveNewUnreadPageMessages = async (
   for (const item of finalMessageList) {
     const moreThanOneMessage: boolean = finalMessageList.filter(msgItem => msgItem.username_sending === item.username_sending).length > 1;
 
-    const { messageText, messageType } = toInboxFilter(item, moreThanOneMessage);
+    const { messageText, messageType, messageMatch } = toInboxFilter(item, moreThanOneMessage);
 
-    if (messageText && messageType) {
-      await messageInboxAutomatedMessageSend(item, messageText, messageType);
+    if (messageText && messageType && messageMatch) {
+      await messageInboxAutomatedMessageSend(item, messageText, messageType, messageMatch);
     }
 
     if (!messageText && !messageType) {
@@ -50,7 +50,9 @@ const main = async () => {
       if (pageMessages) {
         await saveNewUnreadPageMessages(pageMessages, documentSub);
 
-        windowSub.scrollTo(0,0);
+        // so I start at the bottom of the page now :)
+        // windowSub.scrollTo(0,0);
+
         // click button to next page
         // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
         console.log('END: next page');

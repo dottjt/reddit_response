@@ -1,20 +1,29 @@
-export const toStruggleAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
+import { RegexFilters } from '../../regexUtil';
+
+export const toStruggleAdviceRegexArray: RegexFilters[] = [
   // STRUGGLE
-  new RegExp(/(im|i'm) really struggling already/i).test(titleText)
-  || new RegExp(/^help!$/i).test(titleText)
-  || new RegExp(/I CANT STOP(P)? HELP/i).test(titleText)
-  || new RegExp(/this is getting harder/i).test(titleText)
-  || new RegExp(/I really can't stop/i).test(titleText)
-  || new RegExp(/why is this so hard/i).test(titleText)
-  || new RegExp(/I (cant|can't) get past the .* mark/i).test(titleText)
-  || new RegExp(/(cant|can't) get a streak going/i).test(titleText)
+  { titleText: /(im|i'm) really struggling/i, },
+  { titleText: /^help!$/i, },
+  { titleText: /I CANT STOP(P)? HELP/i, },
+  { titleText: /this is getting harder/i, },
+  { titleText: /I really can't stop/i, },
+  { titleText: /why is this so hard/i, },
+  { titleText: /I (cant|can't) get past the .* mark/i, },
+  { titleText: /(cant|can't) get a streak going/i, },
+  { titleText: /Struggling to (break|kick) this addiction/i, },
+  { titleText: /Struggling to to get a new streak/i, },
 
   // ABOUT TO RELAPSE
-  || new RegExp(/I am about to relapse/i).test(titleText)
-  || new RegExp(/encourage me not to/i).test(titleText)
-  || new RegExp(/I keep relapsing/i).test(titleText)
+  { titleText: /I am about to relapse/i, },
+  { titleText: /encourage me not to/i, },
+  { titleText: /I keep relapsing/i, },
 
   // EXHAUSTED
-  || new RegExp(/^emotionally exhausted$/i).test(titleText)
-  || new RegExp(/So desensitized I literally feel nothing/i).test(titleText)
+  { titleText: /^emotionally exhausted$/i, },
+  { titleText: /So desensitized I literally feel nothing/i, },
+
+  // MESSAGE
+  // I can't really keep any consistency
+  // I always end up binging porn after a few days.
+];
 

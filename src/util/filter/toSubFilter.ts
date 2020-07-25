@@ -18,29 +18,38 @@ import {
 import { ConfigType } from '../config';
 
 import { followRelapseAdvice } from '../responses/follow';
-import { toRemoveInitial, toRemoveInitialDay, toRemoveFinal } from './filterCollections/sub/toRemove';
-import { toRelapseAdvice } from './filterCollections/sub/toRelapse';
-import { toStartedAdvice, toStartedAgainAdvice } from './filterCollections/sub/toStart';
-import { toGeneralAdvice } from './filterCollections/sub/toGeneral';
-import { toWetDreamAdvice } from './filterCollections/sub/toWetDreamAdvice';
+import {
+  toRemoveInitialDay,
+  toRemoveInitialRegexArray,
+  toRemoveFinalRegexArray
+} from './filterCollections/sub/toRemove';
+import { toRelapseAdviceRegexArray } from './filterCollections/sub/toRelapse';
+import { toStartAdviceRegexArray } from './filterCollections/sub/toStart';
+import { toStartAgainRegexArray } from './filterCollections/sub/toStartAgain';
+import { toGeneralAdviceRegexArray } from './filterCollections/sub/toGeneral';
+import { toWetDreamAdviceRegexArray } from './filterCollections/sub/toWetDreamAdvice';
+import { toStruggleAdviceRegexArray } from './filterCollections/sub/toStruggle';
 
-import { toAccountabilityPartner } from './filterCollections/sub/toAccountabilityPartner';
-import { toDealingWithUrgesAdvice } from './filterCollections/sub/toDealingWithUrgesAdvice';
-import { toBenefitsAdvice } from './filterCollections/sub/toBenefitsAdvice';
-import { toPornBlockerAdvice } from './filterCollections/sub/toPornBlockerAdvice';
-import { toMasturbationAdvice } from './filterCollections/sub/toMasturbationAdvice';
-import { toDidIJustRelapseAdvice } from './filterCollections/sub/toDidIJustRelapseAdvice';
-import { toWhenDoesItGetEasierAdvice } from './filterCollections/sub/toWhenDoesItGetEasierAdvice';
+import { toAccountabilityPartnerRegexArray } from './filterCollections/sub/toAccountabilityPartner';
+import { toDealingWithUrgesAdviceRegexArray } from './filterCollections/sub/toDealingWithUrgesAdvice';
+import { toBenefitsAdviceRegexArray } from './filterCollections/sub/toBenefitsAdvice';
+import { toPornBlockerAdviceRegexArray } from './filterCollections/sub/toPornBlockerAdvice';
+import { toMasturbationAdviceRegexArray } from './filterCollections/sub/toMasturbationAdvice';
+import { toDidIJustRelapseAdviceRegexArray } from './filterCollections/sub/toDidIJustRelapseAdvice';
+import { toWhenDoesItGetEasierAdviceRegexArray } from './filterCollections/sub/toWhenDoesItGetEasierAdvice';
 
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
-import { toStruggleAdvice } from './filterCollections/sub/toStruggle';
 import { isLessThan24Hours } from '../utils/commonUtils';
+import { matchRegex, RegexFiltersMatch } from './regexUtil';
 
 export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
   shouldDeleteElementImmediately: boolean,
   sendMessageType: SendMessageType | undefined,
   prelimUrl: string | undefined,
+  messageMatch: RegexFiltersMatch[] | undefined,
 } => {
+
+  const regexTextObject = { titleText, flairText, messageText };
 
   // EDGE
   // Deleted: Iamnofapbeast - undefined - I relapsed on day 5 due to instagram triggers on a nude model photo
@@ -106,15 +115,21 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   // does peeking count as relapse?
 
   // TO REMOVE
+
+  const toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText)
+  const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
+
   if (
-    toRemoveInitial(titleText, flairText, messageText)
-    || toRemoveInitialDay(titleText, flairText, messageText)
+    toRemoveInitialDayResult
+    || toRemoveInitialMatch.length > 0
   ) {
+    // TODO Save this into the database.
     console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
     return {
       shouldDeleteElementImmediately: true,
       sendMessageType: undefined,
-      prelimUrl: undefined
+      prelimUrl: undefined,
+      messageMatch: undefined
     }
   }
 
@@ -124,7 +139,8 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
       return {
         shouldDeleteElementImmediately: true,
         sendMessageType: undefined,
-        prelimUrl: undefined
+        prelimUrl: undefined,
+        messageMatch: undefined
       }
     }
   }
@@ -138,19 +154,23 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
     return {
       shouldDeleteElementImmediately: true,
       sendMessageType: undefined,
-      prelimUrl: undefined
+      prelimUrl: undefined,
+      messageMatch: undefined
     }
   }
 
   // USER NOT RESPONDED
   if (compiledUser.userType === UserType.UserNotRespondedBack) {
     // FOLLOW MESSAGES
+
     if (compiledUser?.lastSentMessage?.type.includes('start')) {
-      if (toRelapseAdvice(titleText, flairText, messageText)) {
+      const toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, regexTextObject);
+      if (toRelapseAdviceMatch.length > 0) {
         return {
           shouldDeleteElementImmediately: false,
           sendMessageType: SendMessageType.FollowRelapseAdvice,
-          prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice, usernameConfig)
+          prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice, usernameConfig),
+          messageMatch: toRelapseAdviceMatch
         }
       }
     }
@@ -163,12 +183,12 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
     }
 
     const messageSendDate = compiledUser?.lastSentMessage?.send_date;
-
     if (messageSendDate && lessThanOneDayAgo(new Date(messageSendDate))) {
       return {
         shouldDeleteElementImmediately: true,
         sendMessageType: undefined,
-        prelimUrl: undefined
+        prelimUrl: undefined,
+        messageMatch: undefined
       }
     }
   }
@@ -178,138 +198,164 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
     // TODO: CHECK FLAIR
 
     // STARTED MESSAGES
-    if (
-      !titleText.includes('again')
-      && toStartedAdvice(titleText, flairText, messageText)
-    ) {
+    const toStartMatch = matchRegex(toStartAdviceRegexArray, regexTextObject);
+    if (!titleText.includes('again') && toStartMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStart,
-        prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig),
+        messageMatch: toStartMatch
       }
     }
 
     // STARTED AGAIN MESSAGES
-    if (toStartedAgainAdvice(titleText, flairText, messageText)) {
+    const toStartAgainMatch = matchRegex(toStartAgainRegexArray, regexTextObject);
+    if (toStartAgainMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStartAgain,
-        prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain, usernameConfig),
+        messageMatch: toStartAgainMatch
       }
     }
 
     // GENERAL MESSAGES
-    if (toGeneralAdvice(titleText, flairText, messageText)) {
+    const toGeneralAdviceMatch = matchRegex(toGeneralAdviceRegexArray, regexTextObject);
+    if (toGeneralAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceGeneral,
-        prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral, usernameConfig),
+        messageMatch: toGeneralAdviceMatch
       }
     }
 
     // RELAPSE MESSAGES
-    if (toRelapseAdvice(titleText, flairText, messageText)) {
+    const toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, regexTextObject);
+    if (toRelapseAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceRelapse,
-        prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse, usernameConfig),
+        messageMatch: toRelapseAdviceMatch
       }
     }
 
     // WET DREAM MESSAGES
-    if (toWetDreamAdvice(titleText, flairText, messageText)) {
+    const toWetDreamAdviceMatch = matchRegex(toWetDreamAdviceRegexArray, regexTextObject);
+    if (toWetDreamAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceWetdreamAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice, usernameConfig),
+        messageMatch: toWetDreamAdviceMatch
       }
     }
 
     // ACCOUNTABILITY PARTNER MESSAGES
-    if (toAccountabilityPartner(titleText, flairText, messageText)) {
+    const toAccountabilityPartnerMatch = matchRegex(toAccountabilityPartnerRegexArray, regexTextObject);
+    if (toAccountabilityPartnerMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAccountabilityPartner,
-        prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner, usernameConfig),
+        messageMatch: toAccountabilityPartnerMatch
       }
     }
 
     // STRUGGLE MESSAGES
-    if (toStruggleAdvice(titleText, flairText, messageText)) {
+    const toStruggleAdviceMatch = matchRegex(toStruggleAdviceRegexArray, regexTextObject);
+    if (toStruggleAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdviceStruggle,
-        prelimUrl: generatePrelimUrl(compiledUser.username, struggleAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStruggle, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, struggleAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStruggle, usernameConfig),
+        messageMatch: toStruggleAdviceMatch
       }
     }
 
     // URGES MESSAGES
-    if (toDealingWithUrgesAdvice(titleText, flairText, messageText)) {
+    const toDealingWithUrgesAdviceMatch = matchRegex(toDealingWithUrgesAdviceRegexArray, regexTextObject);
+    if (toDealingWithUrgesAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartDealingWithUrgesAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, dealingWithUrgesAdvice(usernameConfig.forumType), SendMessageType.StartDealingWithUrgesAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, dealingWithUrgesAdvice(usernameConfig.forumType), SendMessageType.StartDealingWithUrgesAdvice, usernameConfig),
+        messageMatch: toDealingWithUrgesAdviceMatch
       }
     }
 
     // BENEFITS MESSAGES
-    if (toBenefitsAdvice(titleText, flairText, messageText)) {
+    const toBenefitsAdviceMatch = matchRegex(toBenefitsAdviceRegexArray, regexTextObject);
+    if (toBenefitsAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartBiggestBenefitPostAddictionAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType), SendMessageType.StartBiggestBenefitPostAddictionAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType), SendMessageType.StartBiggestBenefitPostAddictionAdvice, usernameConfig),
+        messageMatch: toBenefitsAdviceMatch
       }
     }
 
     // PORN BLOCKER MESSAGES
-    if (toPornBlockerAdvice(titleText, flairText, messageText)) {
+    const toPornBlockerAdviceMatch = matchRegex(toPornBlockerAdviceRegexArray, regexTextObject);
+    if (toPornBlockerAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartAdvicePornBlockersAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, pornBlockersAdvice(usernameConfig.forumType), SendMessageType.StartAdvicePornBlockersAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, pornBlockersAdvice(usernameConfig.forumType), SendMessageType.StartAdvicePornBlockersAdvice, usernameConfig),
+        messageMatch: toPornBlockerAdviceMatch
       }
     }
 
     // CAN YOU STILL MASTURBATE MESSAGES
-    if (toMasturbationAdvice(titleText, flairText, messageText)) {
+    const toMasturbationAdviceMatch = matchRegex(toMasturbationAdviceRegexArray, regexTextObject);
+    if (toMasturbationAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartMasturbateWithoutPornAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType), SendMessageType.StartMasturbateWithoutPornAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType), SendMessageType.StartMasturbateWithoutPornAdvice, usernameConfig),
+        messageMatch: toMasturbationAdviceMatch
       }
     }
 
     // DID I JUST RELAPSE MESSAGES
-    if (toDidIJustRelapseAdvice(titleText, flairText, messageText)) {
+    const toDidIJustRelapseAdviceMatch = matchRegex(toDidIJustRelapseAdviceRegexArray, regexTextObject);
+    if (toDidIJustRelapseAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartDidIJustRelapseAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, didIJustRelapseAdvice(usernameConfig.forumType), SendMessageType.StartDidIJustRelapseAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, didIJustRelapseAdvice(usernameConfig.forumType), SendMessageType.StartDidIJustRelapseAdvice, usernameConfig),
+        messageMatch: toDidIJustRelapseAdviceMatch
       }
     }
 
     // DID I JUST RELAPSE MESSAGES
-    if (toWhenDoesItGetEasierAdvice(titleText, flairText, messageText)) {
+    const toWhenDoesItGetEasierAdviceMatch = matchRegex(toWhenDoesItGetEasierAdviceRegexArray, regexTextObject);
+    if (toWhenDoesItGetEasierAdviceMatch.length > 0) {
       return {
         shouldDeleteElementImmediately: false,
         sendMessageType: SendMessageType.StartDidIJustRelapseAdvice,
-        prelimUrl: generatePrelimUrl(compiledUser.username, whenDoesItGetEasierAdvice(usernameConfig.forumType), SendMessageType.StartWhenDoesItGetEasierAdvice, usernameConfig)
+        prelimUrl: generatePrelimUrl(compiledUser.username, whenDoesItGetEasierAdvice(usernameConfig.forumType), SendMessageType.StartWhenDoesItGetEasierAdvice, usernameConfig),
+        messageMatch: toWhenDoesItGetEasierAdviceMatch
       }
     }
   }
 
   // Final Delete
-  if (toRemoveFinal(titleText, flairText, messageText)) {
+  const toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, regexTextObject);
+  if (toRemoveFinalMatch.length > 0) {
     return {
       shouldDeleteElementImmediately: true,
       sendMessageType: undefined,
-      prelimUrl: undefined
+      prelimUrl: undefined,
+      messageMatch: toRemoveFinalMatch
     }
   }
 
   return {
     shouldDeleteElementImmediately: false,
     sendMessageType: undefined,
-    prelimUrl: undefined
+    prelimUrl: undefined,
+    messageMatch: undefined,
   }
 }

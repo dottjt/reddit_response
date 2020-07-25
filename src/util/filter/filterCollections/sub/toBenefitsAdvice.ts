@@ -1,4 +1,6 @@
+import { RegexFilters } from '../../regexUtil';
 
-export const toBenefitsAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
-  new RegExp(/I want to know the benefits of (NoFap|no fap|no-fap)/i).test(titleText)
-  || new RegExp(/^beneftis(\?|.)?$/i).test(titleText)
+export const toBenefitsAdviceRegexArray: RegexFilters[] = [
+  { titleText: /I want to know the benefits of (NoFap|no fap|no-fap)/i },
+  { titleText: /^beneftis(\?|.)?$/i },
+];

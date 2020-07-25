@@ -1,10 +1,13 @@
-import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes'
+import { RegexFilters } from '../../regexUtil';
 
-export const toNotRespond = (messagePayload: PopulateReceivedMessagePayload): boolean =>
-  new RegExp(/no (thank|sorry)/i).test(messagePayload.message)
-  || new RegExp(/(I'm|I’m|I am|im) not interest/i).test(messagePayload.message)
-  || new RegExp(/I was interest/i).test(messagePayload.message)
-  || new RegExp(/not going to read/i).test(messagePayload.message)
-  || new RegExp(/fuck off/i).test(messagePayload.message)
-  || new RegExp(/not interested/i).test(messagePayload.message)
-  || new RegExp(/No I (don’t|dont|don't) meditate/i).test(messagePayload.message)
+export const toNotRespondRegexArray: RegexFilters[] = [
+  { replyText: /no (thank|sorry)/i },
+  { replyText: /(paid|free)/i },
+
+  { replyText: /(I'm|I’m|I am|im) not interest/i },
+  { replyText: /I was interest/i },
+  { replyText: /not going to read/i },
+  { replyText: /fuck off/i },
+  { replyText: /not interested/i },
+  { replyText: /No I (don’t|dont|don't) meditate/i },
+];

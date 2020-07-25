@@ -1,11 +1,15 @@
-export const toDealingWithUrgesAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
-  new RegExp(/advice on fighting urges/i).test(titleText)
-  || new RegExp(/how to deal with ?(the)? urges/i).test(titleText)
-  || new RegExp(/how to control urges/i).test(titleText)
-  || new RegExp(/how do I resist the urge/i).test(titleText)
-  || new RegExp(/urges from hell/i).test(titleText)
-  || new RegExp(/how to beat .* urges/i).test(titleText)
-  || new RegExp(/^urges(\.)?$/i).test(titleText)
-  || new RegExp(/How do I overcome ?(.*) urges/i).test(titleText)
-  || new RegExp(/Urges(\.)? Help me/i).test(titleText)
-  || new RegExp(/very strong urges/i).test(titleText)
+import { RegexFilters } from '../../regexUtil';
+
+export const toDealingWithUrgesAdviceRegexArray: RegexFilters[] = [
+  { titleText: /advice on fighting urges/i },
+  { titleText: /how to deal with ?(the)? urges/i },
+  { titleText: /how to control urges/i },
+  { titleText: /how do I resist the urge/i },
+  { titleText: /urges from hell/i },
+  { titleText: /how to beat .* urges/i },
+  { titleText: /^urges(\.)?$/i },
+  { titleText: /How do I overcome ?(.*) urges/i },
+  { titleText: /Urges(\.)? Help me/i },
+  { titleText: /very strong urges/i },
+  { titleText: /help (w|with) persistent urge/i },
+];

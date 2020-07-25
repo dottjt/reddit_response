@@ -34,6 +34,7 @@ import { ConfigType } from '../util/config';
 import { openNewLink, generatePrelimUrl } from '../util/utils/sendMessageUtils';
 import { followRelapseAdvice, followMeditationAdvice, followStruggleAdvice, followNotSmoothlyAdvice } from '../util/responses/follow';
 import { Config } from 'knex';
+import { RegexMatch, RegexFiltersMatch } from '../util/filter/regexUtil';
 // import ReactTooltip from 'react-tooltip';
 
 const createStartMessageLink = (

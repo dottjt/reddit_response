@@ -1,15 +1,16 @@
-import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes';
+import { RegexFilters } from '../../regexUtil';
 
-export const toJoinSubreddit = (messagePayload: PopulateReceivedMessagePayload): boolean =>
-  new RegExp(/(ty|thank you|thanks|thankyou|thank u)/i).test(messagePayload.message)
-  || new RegExp(/(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
-  || new RegExp(/will visit/i).test(messagePayload.message)
-  || new RegExp(/visit ?(.*) today/i).test(messagePayload.message)
-  || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
-  || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
-  || new RegExp(/for sharing/i).test(messagePayload.message)
-  || new RegExp(/thanks for/i).test(messagePayload.message)
-  || new RegExp(/thanks (man|bro)/i).test(messagePayload.message)
-  || new RegExp(/great resource/i).test(messagePayload.message)
+export const toJoinSubredditRegexArray: RegexFilters[] = [
+  { replyText: /(ty|thank you|thanks|thankyou|thank u)/i },
+  { replyText: /(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i },
+  { replyText: /will visit/i },
+  { replyText: /visit ?(.*) today/i },
+  { replyText: /(wow|cheers)/i },
+  { replyText: /I ?(genuinely)? appreciate/i },
+  { replyText: /for sharing/i },
+  { replyText: /thanks for/i },
+  { replyText: /thanks (man|bro)/i },
+  { replyText: /great resource/i },
 
 // Thank you i will check both of them out
+];

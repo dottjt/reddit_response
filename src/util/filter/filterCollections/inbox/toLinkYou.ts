@@ -1,16 +1,16 @@
-import { PopulateReceivedMessagePayload } from '../../../../types/tamperMonkeyTypes';
+import { RegexFilters } from '../../regexUtil';
 
-export const toLinkYouGuide = (messagePayload: PopulateReceivedMessagePayload): boolean =>
-  new RegExp(/(what's|What’s|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/name of (ur|your) website/i).test(messagePayload.message)
-  || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-  || new RegExp(/What site have you/i).test(messagePayload.message)
-  || new RegExp(/Where can I find this resource/i).test(messagePayload.message)
-  || new RegExp(/what is this website\?/i).test(messagePayload.message)
-  || new RegExp(/where can i find the website/i).test(messagePayload.message)
-  || new RegExp(/links to any resources/i).test(messagePayload.message)
-  || new RegExp(/What website is it/i).test(messagePayload.message)
-  || new RegExp(/what website would that be/i).test(messagePayload.message)
-
-
+export const toLinkYouGuideRegexArray: RegexFilters[] = [
+  { replyText: /(what's|What’s|what is|whats) the (site|link|website|webite|guide|content|page)/i },
+  { replyText: /name of (ur|your) website/i },
+  { replyText: /(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i },
+  { replyText: /Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i },
+  { replyText: /What site have you/i },
+  { replyText: /Where can I find this resource/i },
+  { replyText: /what is this website\?/i },
+  { replyText: /where can i find the website/i },
+  { replyText: /links to any resources/i },
+  { replyText: /What website is it/i },
+  { replyText: /what website would that be/i },
+  { replyText: /How can I access the guide/i },
+];

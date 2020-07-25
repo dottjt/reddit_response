@@ -159,232 +159,168 @@
     var finalShareResources = ("Thank you! Feel free to share these resources if you find them useful :D");
     var finalHardTime = ("Yeah, you might have a hard time addressing your addiction without maintaining a consistent mental health routine. Especially given addiction is a mental health problem at it's core.\n\nUltimately the important thing is being consistent with your mental health. Usually this means at least 10 minutes meditation each day. So if you can commit to that you'll be fine.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n");
 
-    var toNotRespond = function (messagePayload) {
-        return new RegExp(/no (thank|sorry)/i).test(messagePayload.message)
-            || new RegExp(/(I'm|I’m|I am|im) not interest/i).test(messagePayload.message)
-            || new RegExp(/I was interest/i).test(messagePayload.message)
-            || new RegExp(/not going to read/i).test(messagePayload.message)
-            || new RegExp(/fuck off/i).test(messagePayload.message)
-            || new RegExp(/not interested/i).test(messagePayload.message)
-            || new RegExp(/No I (don’t|dont|don't) meditate/i).test(messagePayload.message);
-    };
+    var toNotRespondRegexArray = [
+        { replyText: /no (thank|sorry)/i },
+        { replyText: /(paid|free)/i },
+        { replyText: /(I'm|I’m|I am|im) not interest/i },
+        { replyText: /I was interest/i },
+        { replyText: /not going to read/i },
+        { replyText: /fuck off/i },
+        { replyText: /not interested/i },
+        { replyText: /No I (don’t|dont|don't) meditate/i },
+    ];
 
-    var toMeditateGuide = function (messagePayload) {
-        return new RegExp(/would love to (mediate|meditate)/i).test(messagePayload.message)
-            || new RegExp(/(don't|dont|don’t) know (how|where) to start/i).test(messagePayload.message)
-            || new RegExp(/tips on meditating\?/i).test(messagePayload.message)
-            || new RegExp(/I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i).test(messagePayload.message)
-            || new RegExp(/^How do (u|you) meditate?$/i).test(messagePayload.message);
-    };
+    var toMeditateGuideRegexArray = [
+        { replyText: /would love to (mediate|meditate)/i },
+        { replyText: /(don't|dont|don’t) know (how|where) to start/i },
+        { replyText: /tips on meditating\?/i },
+        { replyText: /I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i },
+        { replyText: /^How do (u|you) meditate?$/i },
+    ];
 
-    var toHardTime = function (messagePayload) {
-        return new RegExp(/I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i).test(messagePayload.message)
-            || new RegExp(/do nothing for my mental health/i).test(messagePayload.message)
-            || new RegExp(/I (don’t|dont|don't) (meditate|do much)/i).test(messagePayload.message)
-            || new RegExp(/I haven't done much/i).test(messagePayload.message)
-            || new RegExp(/I just distract myself/i).test(messagePayload.message)
-            || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message)
-            || new RegExp(/I used to ?(do)? meditation/i).test(messagePayload.message);
-    };
+    var toHardTimeRegexArray = [
+        { replyText: /I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i },
+        { replyText: /do nothing for my mental health/i },
+        { replyText: /I (don’t|dont|don't) (meditate|do much)/i },
+        { replyText: /I haven't done much/i },
+        { replyText: /I just distract myself/i },
+        { replyText: /never really done a lot for my mental health/i },
+        { replyText: /I used to ?(do)? meditation/i },
+        { replyText: /Personally I (don’t|don't|dont) take any measures to help my mental health/i },
+    ];
 
-    var toNoWorriesGuide = function (messagePayload) {
-        return new RegExp(/(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i).test(messagePayload.message)
-            || new RegExp(/took up/i).test(messagePayload.message)
-            // YES
-            || new RegExp(/^sure$/i).test(messagePayload.message)
-            || new RegExp(/^yes$/i).test(messagePayload.message)
-            // || new RegExp(/^yes/i).test(messagePayload.message) // too broad
-            || new RegExp(/(Yaa|ya) sure/i).test(messagePayload.message)
-            || new RegExp(/yes please/i).test(messagePayload.message)
-            || new RegExp(/(im|I'm|i m) in./i).test(messagePayload.message)
-            || new RegExp(/(yes|yeah) (for sure|I am)/i).test(messagePayload.message)
-            // CHECK
-            || new RegExp(/(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/I’ll check the link if you have it/i).test(messagePayload.message)
-            // SEND
-            || new RegExp(/(sent|send) me the (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/pass me your website/i).test(messagePayload.message)
-            || new RegExp(/send website link/i).test(messagePayload.message)
-            || new RegExp(/send that my way/i).test(messagePayload.message)
-            || new RegExp(/send over the link/i).test(messagePayload.message)
-            || new RegExp(/(send it|do share)/i).test(messagePayload.message)
-            || new RegExp(/go ahead and send/i).test(messagePayload.message)
-            || new RegExp(/share ?(me)? the/i).test(messagePayload.message)
-            || new RegExp(/give (ur|your) (site|link|web|guide|content|page) a visit/i).test(messagePayload.message)
-            || new RegExp(/hit me (up|with)/i).test(messagePayload.message)
-            || new RegExp(/please pass on (the|that) website info/i).test(messagePayload.message)
-            || new RegExp(/send me your website/i).test(messagePayload.message)
-            // PASSIVE ASK
-            || new RegExp(/May I know (your|the) website/i).test(messagePayload.message)
-            || new RegExp(/could I get a link/i).test(messagePayload.message)
-            || new RegExp(/could send the website/i).test(messagePayload.message)
-            || new RegExp(/you could share/i).test(messagePayload.message)
-            || new RegExp(/could you please direct me to it/i).test(messagePayload.message)
-            || new RegExp(/Feel free to link (that|your|the) website/i).test(messagePayload.message)
-            || new RegExp(/feel free to share it/i).test(messagePayload.message)
-            || new RegExp(/(can|could) you ?(please)? link/i).test(messagePayload.message)
-            || new RegExp(/comfortable with sharing it/i).test(messagePayload.message)
-            || new RegExp(/if you sent ?(me)? the (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            // INTERESTED
-            || new RegExp(/(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i).test(messagePayload.message)
-            || new RegExp(/(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i).test(messagePayload.message)
-            || new RegExp(/(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/website sounds .* interesting/i).test(messagePayload.message)
-            || new RegExp(/i would be interested/i).test(messagePayload.message)
-            || new RegExp(/the website (sound|sounds) interesting/i).test(messagePayload.message)
-            || new RegExp(/like to here about your/i).test(messagePayload.message)
-            || new RegExp(/shoot me the link/i).test(messagePayload.message)
-            || new RegExp(/Yea absolutely that'd be interesting/i).test(messagePayload.message)
-            || new RegExp(/interested./i).test(messagePayload.message)
-            || new RegExp(/(Sure I am|Yeah sure|Sure Bro)/i).test(messagePayload.message)
-            || new RegExp(/to know more about your website/i).test(messagePayload.message)
-            || new RegExp(/nice if you linked the website/i).test(messagePayload.message)
-            || new RegExp(/wanna visit (ur|your) site/i).test(messagePayload.message)
-            || new RegExp(/tell me more/i).test(messagePayload.message)
-            || new RegExp(/like to look around at your site/i).test(messagePayload.message)
-            || new RegExp(/interested in seeing your website/i).test(messagePayload.message)
-            || new RegExp(/actually really interested in your website/i).test(messagePayload.message)
-            || new RegExp(/I’d like to try any resources you’re willing to share/i).test(messagePayload.message)
-            // GRATEFUL
-            || new RegExp(/the website would be quite helpful/i).test(messagePayload.message)
-            || new RegExp(/glad to (have|take) a look/i).test(messagePayload.message)
-            || new RegExp(/That would be very welcome/i).test(messagePayload.message)
-            || new RegExp(/would like to see what the website is/i).test(messagePayload.message)
-            || new RegExp(/that website would be nice/i).test(messagePayload.message)
-            || new RegExp(/yes that would be helpful/i).test(messagePayload.message)
-            || new RegExp(/that would be really helpful/i).test(messagePayload.message)
-            || new RegExp(/appreciate viewing your website/i).test(messagePayload.message)
-            || new RegExp(/the (website|link) would be cool/i).test(messagePayload.message)
-            || new RegExp(/will have a look on your website/i).test(messagePayload.message)
-            || new RegExp(/I would really (appreaciate|appreciate) that/i).test(messagePayload.message)
-            || new RegExp(/(it|that|link) would be (super|awesome|great|cool)/i).test(messagePayload.message)
-            || new RegExp(/happy to check out the (url|web|website|guide|site|link|address|resource)/i).test(messagePayload.message)
-            // LOVE
-            || new RegExp(/(id|I'd) love/i).test(messagePayload.message)
-            || new RegExp(/love to (see|know) (the|your) website/i).test(messagePayload.message)
-            || new RegExp(/I would love to learn more about it/i).test(messagePayload.message)
-            || new RegExp(/would love to visit/i).test(messagePayload.message)
-            || new RegExp(/love to see the website/i).test(messagePayload.message)
-            || new RegExp(/would love that website/i).test(messagePayload.message)
-            || new RegExp(/website sounds like a huge help/i).test(messagePayload.message)
-            || new RegExp(/Would love to see/i).test(messagePayload.message)
-            || new RegExp(/take a look at your website/i).test(messagePayload.message)
-            || new RegExp(/like to see (it|that)/i).test(messagePayload.message)
-            // NEUTRAL
-            || new RegExp(/(yah|ya|yeah) why not/i).test(messagePayload.message)
-            // NAME
-            || new RegExp(/name of (ur|your|the) (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/how is your website called/i).test(messagePayload.message)
-            || new RegExp(/Whats is the website called/i).test(messagePayload.message)
-            || new RegExp(/url for this (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            // CHECK
-            || new RegExp(/check on your website/i).test(messagePayload.message)
-            // LINK ME
-            || new RegExp(/link ?(me)? to ur (site|link|web|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/I'll take the link/i).test(messagePayload.message)
-            // UNSORTED
-            || new RegExp(/Sure, I am looking for source material/i).test(messagePayload.message);
-    };
+    var toNoWorriesGuideRegexArray = [
+        { replyText: /(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i },
+        { replyText: /took up/i },
+        // YES
+        { replyText: /^sure$/i },
+        { replyText: /^yes$/i },
+        { replyText: /^yes/i },
+        { replyText: /(Yaa|ya) sure/i },
+        { replyText: /yes please/i },
+        { replyText: /(im|I'm|i m) in./i },
+        { replyText: /(yes|yeah) (for sure|I am)/i },
+        { replyText: /shoot me a link to the website/i },
+        // CHECK
+        { replyText: /(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
+        { replyText: /(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
+        { replyText: /I’ll check the link if you have it/i },
+        // SEND
+        { replyText: /(sent|send) me the (site|link|web|guide|content|page)/i },
+        { replyText: /pass me your website/i },
+        { replyText: /send website link/i },
+        { replyText: /send that my way/i },
+        { replyText: /send over the link/i },
+        { replyText: /(send it|do share)/i },
+        { replyText: /go ahead and send/i },
+        { replyText: /share ?(me)? the/i },
+        { replyText: /give (ur|your) (site|link|web|guide|content|page) a visit/i },
+        { replyText: /hit me (up|with)/i },
+        { replyText: /please pass on (the|that) website info/i },
+        { replyText: /send me your website/i },
+        { replyText: /send me this website/i },
+        // PASSIVE ASK
+        { replyText: /May I know (your|the) website/i },
+        { replyText: /could I get a link/i },
+        { replyText: /could send the website/i },
+        { replyText: /you could share/i },
+        { replyText: /could you please direct me to it/i },
+        { replyText: /Feel free to link (that|your|the) website/i },
+        { replyText: /feel free to share it/i },
+        { replyText: /(can|could) you ?(please)? link/i },
+        { replyText: /comfortable with sharing it/i },
+        { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
+        // SHARE
+        { replyText: /can share me ur site/i },
+        // INTERESTED
+        { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
+        { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
+        { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
+        { replyText: /website sounds .* interesting/i },
+        { replyText: /i would be interested/i },
+        { replyText: /the website (sound|sounds) interesting/i },
+        { replyText: /like to here about your/i },
+        { replyText: /shoot me the link/i },
+        { replyText: /Yea absolutely that'd be interesting/i },
+        { replyText: /interested./i },
+        { replyText: /(Sure I am|Yeah sure|Sure Bro)/i },
+        { replyText: /to know more about your website/i },
+        { replyText: /nice if you linked the website/i },
+        { replyText: /wanna visit (ur|your) site/i },
+        { replyText: /tell me more/i },
+        { replyText: /like to look around at your site/i },
+        { replyText: /interested in seeing your website/i },
+        { replyText: /actually really interested in your website/i },
+        { replyText: /I’d like to try any resources you’re willing to share/i },
+        { replyText: /I appreciate any info/i },
+        // GRATEFUL
+        { replyText: /the website would be quite helpful/i },
+        { replyText: /glad to (have|take) a look/i },
+        { replyText: /That would be very welcome/i },
+        { replyText: /would like to see what the website is/i },
+        { replyText: /that website would be nice/i },
+        { replyText: /yes that would be helpful/i },
+        { replyText: /that would be really helpful/i },
+        { replyText: /appreciate viewing your website/i },
+        { replyText: /the (website|link) would be cool/i },
+        { replyText: /will have a look on your website/i },
+        { replyText: /I would really (appreaciate|appreciate) that/i },
+        { replyText: /(it|that|link) would be (super|awesome|great|cool)/i },
+        { replyText: /happy to check out the (url|web|website|guide|site|link|address|resource)/i },
+        // LOVE
+        { replyText: /(id|I'd) love/i },
+        { replyText: /love to (see|know) (the|your) website/i },
+        { replyText: /I would love to learn more about it/i },
+        { replyText: /would love to visit/i },
+        { replyText: /love to see the website/i },
+        { replyText: /would love that website/i },
+        { replyText: /website sounds like a huge help/i },
+        { replyText: /Would love to see/i },
+        { replyText: /take a look at your website/i },
+        { replyText: /like to see (it|that)/i },
+        // NEUTRAL
+        { replyText: /(yah|ya|yeah) why not/i },
+        // NAME
+        { replyText: /name of (ur|your|the) (site|link|web|guide|content|page)/i },
+        { replyText: /how is your website called/i },
+        { replyText: /Whats is the website called/i },
+        { replyText: /url for this (site|link|web|guide|content|page)/i },
+        // CHECK
+        { replyText: /check on your website/i },
+        // LINK ME
+        { replyText: /link ?(me)? to ur (site|link|web|guide|content|page)/i },
+        { replyText: /I'll take the link/i },
+        // UNSORTED
+        { replyText: /Sure, I am looking for source material/i },
+    ];
 
-    var toLinkYouGuide = function (messagePayload) {
-        return new RegExp(/(what's|What’s|what is|whats) the (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/name of (ur|your) website/i).test(messagePayload.message)
-            || new RegExp(/(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i).test(messagePayload.message)
-            || new RegExp(/What site have you/i).test(messagePayload.message)
-            || new RegExp(/Where can I find this resource/i).test(messagePayload.message)
-            || new RegExp(/what is this website\?/i).test(messagePayload.message)
-            || new RegExp(/where can i find the website/i).test(messagePayload.message)
-            || new RegExp(/links to any resources/i).test(messagePayload.message)
-            || new RegExp(/What website is it/i).test(messagePayload.message)
-            || new RegExp(/what website would that be/i).test(messagePayload.message);
-    };
+    var toLinkYouGuideRegexArray = [
+        { replyText: /(what's|What’s|what is|whats) the (site|link|website|webite|guide|content|page)/i },
+        { replyText: /name of (ur|your) website/i },
+        { replyText: /(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i },
+        { replyText: /Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i },
+        { replyText: /What site have you/i },
+        { replyText: /Where can I find this resource/i },
+        { replyText: /what is this website\?/i },
+        { replyText: /where can i find the website/i },
+        { replyText: /links to any resources/i },
+        { replyText: /What website is it/i },
+        { replyText: /what website would that be/i },
+        { replyText: /How can I access the guide/i },
+    ];
 
-    var toJoinSubreddit = function (messagePayload) {
-        return new RegExp(/(ty|thank you|thanks|thankyou|thank u)/i).test(messagePayload.message)
-            || new RegExp(/(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i).test(messagePayload.message)
-            || new RegExp(/will visit/i).test(messagePayload.message)
-            || new RegExp(/visit ?(.*) today/i).test(messagePayload.message)
-            || new RegExp(/(wow|cheers)/i).test(messagePayload.message)
-            || new RegExp(/I ?(genuinely)? appreciate/i).test(messagePayload.message)
-            || new RegExp(/for sharing/i).test(messagePayload.message)
-            || new RegExp(/thanks for/i).test(messagePayload.message)
-            || new RegExp(/thanks (man|bro)/i).test(messagePayload.message)
-            || new RegExp(/great resource/i).test(messagePayload.message);
-    };
-
-    var toInboxFilter = function (messagePayload, moreThanOneMessage) {
-        var compiledUser = messagePayload.compiledUser;
-        var lastSentMessage = compiledUser.lastSentMessage;
-        var lastReceivedMessage = compiledUser.lastReceivedMessage;
-        // EDGE
-        // Are you a bot?
-        if (compiledUser.userType === UserType.UserHostile
-            || new RegExp(/(paid|free)/i).test(messagePayload.message)
-            || toNotRespond(messagePayload)) {
-            return {
-                messageText: undefined,
-                messageType: undefined,
-            };
-        }
-        if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
-            ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
-            ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
-            // No Worries
-            if (toNoWorriesGuide(messagePayload)) {
-                return {
-                    messageText: middleGuideNoWorries,
-                    messageType: SendMessageType.MiddleGuideNoWorries,
-                };
-            }
-            // Link You
-            if (toLinkYouGuide(messagePayload)) {
-                return {
-                    messageText: middleGuideLinkYou,
-                    messageType: SendMessageType.MiddleGuideLinkYou,
-                };
-            }
-            // Meditation
-            if (toMeditateGuide(messagePayload)) {
-                return {
-                    messageText: middleGuideMeditationAdvice,
-                    messageType: SendMessageType.MiddleGuideMeditationAdvice,
-                };
-            }
-            // That's fantastic
-            // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
-            // I will have to careful check that it DOES NOT contain certain things.
-            // if (
-            //   new RegExp(//i).test(messagePayload.message)
-            //   || new RegExp(//i).test(messagePayload.message) // will need to actually test this.
-            // ) {
-            //   return {
-            //     messageText: finalFantastic,
-            //     messageType: SendMessageType.FinalFantastic,
-            //   }
-            // }
-            if (toHardTime(messagePayload)) {
-                return {
-                    messageText: finalHardTime,
-                    messageType: SendMessageType.FinalHardTime,
-                };
-            }
-        }
-        if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
-            // Join Subreddit
-            if (toJoinSubreddit(messagePayload)) {
-                return {
-                    messageText: finalJoinSubreddit,
-                    messageType: SendMessageType.FinalJoinSubreddit,
-                };
-            }
-        }
-        return {
-            messageText: undefined,
-            messageType: undefined,
-        };
-    };
+    var toJoinSubredditRegexArray = [
+        { replyText: /(ty|thank you|thanks|thankyou|thank u)/i },
+        { replyText: /(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i },
+        { replyText: /will visit/i },
+        { replyText: /visit ?(.*) today/i },
+        { replyText: /(wow|cheers)/i },
+        { replyText: /I ?(genuinely)? appreciate/i },
+        { replyText: /for sharing/i },
+        { replyText: /thanks for/i },
+        { replyText: /thanks (man|bro)/i },
+        { replyText: /great resource/i },
+    ];
 
     var isArray = Array.isArray;
     function isStringOrNumber(o) {
@@ -2463,6 +2399,134 @@
         return null;
     };
 
+    // THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
+    var matchRegex = function (regexArray, textObject) {
+        var matchArray = regexArray.reduce(function (acc, RegexFilters) {
+            if (!acc.matchFound) {
+                var regexKeys = Object.keys(RegexFilters);
+                var _a = regexKeys.reduce(function (acc, keyString) {
+                    var _a, _b, _c, _d;
+                    var regex = RegexFilters[keyString];
+                    if (acc.allFound) {
+                        if (keyString === 'titleText') {
+                            var match = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'flairText') {
+                            var match = (_b = textObject.flairText) === null || _b === void 0 ? void 0 : _b.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ flairTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'messageText') {
+                            var match = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'replyText') {
+                            var match = (_d = textObject.replyText) === null || _d === void 0 ? void 0 : _d.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ replyTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                    }
+                    return { matchArray: [], allFound: false };
+                }, { matchArray: [], allFound: true }), matchArray_1 = _a.matchArray, allFound = _a.allFound;
+                if (matchArray_1.length > 0) {
+                    return { matchArray: matchArray_1, matchFound: true };
+                }
+            }
+            return acc;
+        }, { matchArray: [], matchFound: false }).matchArray;
+        return matchArray;
+    };
+
+    var toInboxFilter = function (messagePayload, moreThanOneMessage) {
+        var compiledUser = messagePayload.compiledUser;
+        var lastSentMessage = compiledUser.lastSentMessage;
+        var lastReceivedMessage = compiledUser.lastReceivedMessage;
+        var regexTextObject = { replyText: messagePayload.message };
+        // EDGE
+        // Are you a bot?
+        var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, regexTextObject);
+        if (compiledUser.userType === UserType.UserHostile
+            || toNotRespondRegexMatch.length > 0) {
+            return {
+                messageText: undefined,
+                messageType: undefined,
+                messageMatch: undefined,
+            };
+        }
+        if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
+            ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
+            ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
+            // No Worries
+            var toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, regexTextObject);
+            if (toNoWorriesGuideRegexMatch.length > 0) {
+                return {
+                    messageText: middleGuideNoWorries,
+                    messageType: SendMessageType.MiddleGuideNoWorries,
+                    messageMatch: toNoWorriesGuideRegexMatch,
+                };
+            }
+            // Link You
+            var toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, regexTextObject);
+            if (toLinkYouGuideRegexMatch.length > 0) {
+                return {
+                    messageText: middleGuideLinkYou,
+                    messageType: SendMessageType.MiddleGuideLinkYou,
+                    messageMatch: toLinkYouGuideRegexMatch,
+                };
+            }
+            // Meditation
+            var toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, regexTextObject);
+            if (toMeditateGuideRegexMatch.length > 0) {
+                return {
+                    messageText: middleGuideMeditationAdvice,
+                    messageType: SendMessageType.MiddleGuideMeditationAdvice,
+                    messageMatch: toMeditateGuideRegexMatch,
+                };
+            }
+            // // That's fantastic
+            // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
+            // I will have to careful check that it DOES NOT contain certain things.
+            // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, regexTextObject);
+            // if (toFantasticRegexMatch.length > 0) {
+            //   return {
+            //     messageText: finalFantastic,
+            //     messageType: SendMessageType.FinalFantastic,
+            //   }
+            // }
+            var toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, regexTextObject);
+            if (toHardTimeRegexMatch.length > 0) {
+                return {
+                    messageText: finalHardTime,
+                    messageType: SendMessageType.FinalHardTime,
+                    messageMatch: toHardTimeRegexMatch,
+                };
+            }
+        }
+        if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
+            // Join Subreddit
+            var toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, regexTextObject);
+            if (toJoinSubredditRegexMatch.length > 0) {
+                return {
+                    messageText: finalJoinSubreddit,
+                    messageType: SendMessageType.FinalJoinSubreddit,
+                    messageMatch: toJoinSubredditRegexMatch,
+                };
+            }
+        }
+        return {
+            messageText: undefined,
+            messageType: undefined,
+            messageMatch: undefined,
+        };
+    };
+
     var HTTPPOSToptions = function (data) { return ({
         method: 'POST',
         mode: 'cors',
@@ -2583,7 +2647,7 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var INBOX_LAST_MESSAGE_USER = 'vijay_st';
+    var INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
     var openReplyLink = function (containerDiv) { return __awaiter(void 0, void 0, void 0, function () {
         var entry, replyLink, replyALink;
@@ -2613,7 +2677,7 @@
             }
         }
     };
-    var populateMessageAndSend = function (messageText, previousMessageInformation, containerDiv, toUsername, messageType, sendImmediate) { return __awaiter(void 0, void 0, void 0, function () {
+    var populateMessageAndSend = function (messageText, previousMessageInformation, containerDiv, toUsername, messageType, messageMatch, sendImmediate) { return __awaiter(void 0, void 0, void 0, function () {
         var textArea, submitButton, dataPayload;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -2796,7 +2860,7 @@
         return (createVNode$2(1, "div", null, createVNode$2(1, "a", null, messageType, 0, { "data-tip": true, "data-for": dataTipId, "style": style, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, populateMessageAndSend(messageText, previousMessageInformation, containerDiv, toUsername, messageType, sendImmediate)];
+                        case 0: return [4 /*yield*/, populateMessageAndSend(messageText, previousMessageInformation, containerDiv, toUsername, messageType)];
                         case 1:
                             _a.sent();
                             return [2 /*return*/];
@@ -2807,7 +2871,7 @@
     var ReplyUserPanel = function (_a) {
         var _b, _c;
         var dbUser = _a.dbUser, containerDiv = _a.containerDiv, previousMessageInformation = _a.previousMessageInformation, numberOfMessagesFromThisUser = _a.numberOfMessagesFromThisUser, isUserLastMessagedUser = _a.isUserLastMessagedUser, otherUserMessages = _a.otherUserMessages, forum_type = _a.forum_type;
-        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username, "forum_type": forum_type }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$2(1, "p", null, dbUser.absoluteLastSentMessageType.type, 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
+        return (createVNode$2(1, "div", null, [isUserLastMessagedUser && (createVNode$2(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$2(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username, "forum_type": forum_type }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation)], 0)), createVNode$2(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation), createVNode$2(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$2(1, "div", null, [createVNode$2(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation)], 0)), createVNode$2(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$2(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$2(1, "p", null, dbUser.absoluteLastSentMessageType.type, 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$2(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$2(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
     };
 
     var createComponentVNode$2 = createComponentVNode;
@@ -2915,7 +2979,7 @@
             }
         });
     }); };
-    var messageInboxAutomatedMessageSend = function (item, messageText, messageType) { return __awaiter(void 0, void 0, void 0, function () {
+    var messageInboxAutomatedMessageSend = function (item, messageText, messageType, messageMatch) { return __awaiter(void 0, void 0, void 0, function () {
         var replyDelay, replyDelayNumber;
         return __generator(this, function (_a) {
             replyDelay = localStorage.getItem('replyDelay');
@@ -2927,7 +2991,7 @@
                         switch (_a.label) {
                             case 0:
                                 console.log("send automatically - " + item.compiledUser.username + " - " + messageType + " - delay: " + replyDelayNumber);
-                                return [4 /*yield*/, populateMessageAndSend(messageText, item, item.containerDiv, item.compiledUser.username, messageType, true)];
+                                return [4 /*yield*/, populateMessageAndSend(messageText, item, item.containerDiv, item.compiledUser.username, messageType, messageMatch, true)];
                             case 1:
                                 _a.sent();
                                 return [2 /*return*/];
@@ -2967,14 +3031,14 @@
                     console.log('finalMessageList', finalMessageList);
                     counter = 0;
                     _loop_1 = function (item) {
-                        var moreThanOneMessage, _a, messageText, messageType;
+                        var moreThanOneMessage, _a, messageText, messageType, messageMatch;
                         return __generator(this, function (_b) {
                             switch (_b.label) {
                                 case 0:
                                     moreThanOneMessage = finalMessageList.filter(function (msgItem) { return msgItem.username_sending === item.username_sending; }).length > 1;
-                                    _a = toInboxFilter(item, moreThanOneMessage), messageText = _a.messageText, messageType = _a.messageType;
-                                    if (!(messageText && messageType)) return [3 /*break*/, 2];
-                                    return [4 /*yield*/, messageInboxAutomatedMessageSend(item, messageText, messageType)];
+                                    _a = toInboxFilter(item, moreThanOneMessage), messageText = _a.messageText, messageType = _a.messageType, messageMatch = _a.messageMatch;
+                                    if (!(messageText && messageType && messageMatch)) return [3 /*break*/, 2];
+                                    return [4 /*yield*/, messageInboxAutomatedMessageSend(item, messageText, messageType, messageMatch)];
                                 case 1:
                                     _b.sent();
                                     _b.label = 2;
@@ -3023,7 +3087,8 @@
                                                 return [4 /*yield*/, saveNewUnreadPageMessages(pageMessages, documentSub)];
                                             case 1:
                                                 _a.sent();
-                                                windowSub.scrollTo(0, 0);
+                                                // so I start at the bottom of the page now :)
+                                                // windowSub.scrollTo(0,0);
                                                 // click button to next page
                                                 // iFrame.contentWindow.document.querySelector('.next-button').children[0].click();
                                                 console.log('END: next page');

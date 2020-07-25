@@ -9,6 +9,7 @@ import {
 import { SendMessageType } from '../../types/serverTypes';
 import { openNewLink } from '../utils/sendMessageUtils';
 import UserPanel from '../../components/UserPanel';
+import { highlightSyntax } from '../filter/regexUtil';
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
@@ -128,6 +129,7 @@ export const addGlobalStyle = (css: string): void => {
   head.appendChild(style);
 }
 
+
 export const createPrelimLink = ({
   dbUser,
   titleText,
@@ -137,6 +139,7 @@ export const createPrelimLink = ({
   index,
   sendMessageType,
   prelimContainer,
+  messageMatch,
 }) => {
   const nodeContainer = document.createElement('div');
   nodeContainer.id = `r${dbUser.username}-${index}`;
@@ -148,7 +151,11 @@ export const createPrelimLink = ({
         onclick={() => openNewLink(prelimUrl, SendMessageType.NA)}
       >
         <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
-        <span>{titleText}</span>
+        {messageMatch.length > 0 ? (
+          highlightSyntax(titleText, messageMatch, true).map(element => <span>{element}</span>)
+        ) : (
+          <span>{titleText}</span>
+        )}
         <p style={{ 'margin-top': '0.5rem' }}>{flairText}</p>
       </a>
       <a data-click-id='body' href={`${aLinkHref}`}>Show Post</a>
@@ -159,7 +166,12 @@ export const createPrelimLink = ({
 }
 
 export const renderUserPanel = ({
-  tag, tagUsername, index, dbUser, usernameConfig, hoursAgoText
+  tag,
+  tagUsername,
+  index,
+  dbUser,
+  usernameConfig,
+  hoursAgoText,
 }) => {
   const rootId = `r${tagUsername}-${index}`;
   const root = document.createElement('div');

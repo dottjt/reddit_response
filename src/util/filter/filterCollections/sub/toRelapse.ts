@@ -1,23 +1,29 @@
-export const toRelapseAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
-  flairText === 'Relapse Report'
-  || new RegExp(/failed first attempt/i).test(titleText)
-  || new RegExp(/relapse report/i).test(titleText)
-  || new RegExp(/(I|I've|just) ?(have)? (relapsed|failed)/i).test(titleText)
-  || new RegExp(/(relapse|relapsed) (after|on day|again)/i).test(titleText) // relapsed today DOES NOT work, because it can be used in other contexts.
-  || new RegExp(/(failed|lost) (at|on) day/i).test(titleText)
-  || new RegExp(/(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i).test(titleText)
-  || new RegExp(/^relapsed\.?$/i).test(titleText)
-  || new RegExp(/^relapse\.?$/i).test(titleText)
-  || new RegExp(/^relapsed (last night|today)/i).test(titleText)
-  || new RegExp(/^failed\.?$/i).test(titleText)
-  || new RegExp(/relapsing after a/i).test(titleText)
-  || new RegExp(/relapsed \d+ times today/i).test(titleText)
-  || new RegExp(/any tips after a relapse/i).test(titleText)
+import { RegexFilters } from '../../regexUtil';
+
+export const toRelapseAdviceRegexArray: RegexFilters[] = [
+  { flairText: /Relapse Report/i },
+
+  { titleText: /failed first attempt/i },
+  { titleText: /relapse report/i },
+  { titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
+  { titleText: /(relapse|relapsed) (after|on day|again)/i }, // relapsed today DOES NOT work, because it can be used in other contexts.
+  { titleText: /(failed|lost) (at|on) day/i },
+  { titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i },
+  { titleText: /^relapsed\.?$/i },
+  { titleText: /^relapse\.?$/i },
+  { titleText: /^relapsed (last night|today)/i },
+  { titleText: /^failed\.?$/i },
+  { titleText: /relapsing after a/i },
+  { titleText: /relapsed \d+ times today/i },
+  { titleText: /any tips after a relapse/i },
   // relapsed (will have to look into this)
-  || new RegExp(/(Relapsed|relapse) at \d+ days/i).test(titleText)
-  || new RegExp(/(Relapsed|relapse) at day \d+/i).test(titleText)
-  || new RegExp(/I slipped/i).test(titleText)
-  || new RegExp(/^Failed after/i).test(titleText)
-  || new RegExp(/my first fail/i).test(titleText)
-  || new RegExp(/back to day (one|1)/i).test(titleText)
-  // - relapsed
+  { titleText: /(Relapsed|relapse) at \d+ days/i },
+  { titleText: /(Relapsed|relapse) at day \d+/i },
+  { titleText: /I slipped/i },
+  { titleText: /^Failed after/i },
+  { titleText: /made it .* and relapsed/i },
+  { titleText: /my first fail/i },
+  { titleText: /I had a relapse/i },
+  { titleText: /back to day (one|1)/i },
+// - relapsed
+];

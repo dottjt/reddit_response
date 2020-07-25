@@ -2,6 +2,7 @@ import { SendMessageType, UserForumType } from '../../types/serverTypes';
 import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
 import { sendNewMessage } from '../httpResponses';
 import { ConfigType } from '../config';
+import { RegexFiltersMatch } from '../filter/regexUtil';
 
 export const openReplyLink = async (containerDiv) => {
   const entry = containerDiv.children[4];
@@ -62,9 +63,13 @@ export const populateMessageAndSend = async (
   containerDiv: Element,
   toUsername: string,
   messageType: SendMessageType,
+  messageMatch: RegexFiltersMatch[],
   sendImmediate: boolean
 ) => {
   openReplyLink(containerDiv);
+
+  // TODO syntax highlighting for .md element
+
   const textArea = containerDiv.querySelector('textarea');
   const submitButton = containerDiv.querySelector('.save') as HTMLInputElement;
 

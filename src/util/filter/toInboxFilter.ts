@@ -4,13 +4,15 @@ import { CompiledFullUserObject, PopulateReceivedMessagePayloadEXTREME } from '.
 import { middleGuideNoWorries, middleGuideLinkYou, middleGuideMeditationAdvice } from '../responses/middle';
 import { finalJoinSubreddit, finalFantastic, finalHardTime } from '../responses/final';
 
-import { toNotRespond } from './filterCollections/inbox/toNotRespond';
-import { toMeditateGuide } from './filterCollections/inbox/toMeditateGuide';
-import { toHardTime } from './filterCollections/inbox/toHardTime';
+import { toNotRespondRegexArray } from './filterCollections/inbox/toNotRespond';
+import { toMeditateGuideRegexArray } from './filterCollections/inbox/toMeditateGuide';
+import { toHardTimeRegexArray } from './filterCollections/inbox/toHardTime';
 
-import { toNoWorriesGuide } from './filterCollections/inbox/toNoWorries';
-import { toLinkYouGuide } from './filterCollections/inbox/toLinkYou';
-import { toJoinSubreddit } from './filterCollections/inbox/toJoinSubreddit';
+import { toNoWorriesGuideRegexArray } from './filterCollections/inbox/toNoWorries';
+import { toLinkYouGuideRegexArray } from './filterCollections/inbox/toLinkYou';
+import { toJoinSubredditRegexArray } from './filterCollections/inbox/toJoinSubreddit';
+import { toFantasticRegexArray } from './filterCollections/inbox/toFantastic';
+import { matchRegex, RegexFiltersMatch } from './regexUtil';
 
 export const toInboxFilter = (
   messagePayload: PopulateReceivedMessagePayloadEXTREME,
@@ -18,22 +20,24 @@ export const toInboxFilter = (
 ): {
   messageText: string | undefined;
   messageType: SendMessageType | undefined;
+  messageMatch: RegexFiltersMatch[] | undefined
 } => {
   const compiledUser: CompiledFullUserObject = messagePayload.compiledUser;
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
   const lastReceivedMessage: Message | undefined = compiledUser.lastReceivedMessage;
+  const regexTextObject = { replyText: messagePayload.message };
 
   // EDGE
   // Are you a bot?
-
+  const toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, regexTextObject);
   if (
     compiledUser.userType === UserType.UserHostile
-    || new RegExp(/(paid|free)/i).test(messagePayload.message)
-    || toNotRespond(messagePayload)
+    || toNotRespondRegexMatch.length > 0
   ) {
     return {
       messageText: undefined,
       messageType: undefined,
+      messageMatch: undefined,
     }
   }
 
@@ -43,46 +47,52 @@ export const toInboxFilter = (
     (lastReceivedMessage?.type.includes('start') || lastReceivedMessage?.type.includes('follow'))
     ) {
       // No Worries
-      if (toNoWorriesGuide(messagePayload)) {
+      const toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, regexTextObject);
+      if (toNoWorriesGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideNoWorries, // lastSentMessage.forum
           messageType: SendMessageType.MiddleGuideNoWorries,
+          messageMatch: toNoWorriesGuideRegexMatch,
         }
       }
 
       // Link You
-      if (toLinkYouGuide(messagePayload)) {
+      const toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, regexTextObject);
+      if (toLinkYouGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideLinkYou,
           messageType: SendMessageType.MiddleGuideLinkYou,
+          messageMatch: toLinkYouGuideRegexMatch,
         }
       }
 
       // Meditation
-      if (toMeditateGuide(messagePayload)) {
+      const toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, regexTextObject);
+      if (toMeditateGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideMeditationAdvice,
           messageType: SendMessageType.MiddleGuideMeditationAdvice,
+          messageMatch: toMeditateGuideRegexMatch,
         }
       }
 
-      // That's fantastic
+      // // That's fantastic
       // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
       // I will have to careful check that it DOES NOT contain certain things.
-      // if (
-      //   new RegExp(//i).test(messagePayload.message)
-      //   || new RegExp(//i).test(messagePayload.message) // will need to actually test this.
-      // ) {
+      // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, regexTextObject);
+      // if (toFantasticRegexMatch.length > 0) {
       //   return {
       //     messageText: finalFantastic,
       //     messageType: SendMessageType.FinalFantastic,
       //   }
       // }
 
-      if (toHardTime(messagePayload)) {
+      const toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, regexTextObject);
+      if (toHardTimeRegexMatch.length > 0) {
         return {
           messageText: finalHardTime,
           messageType: SendMessageType.FinalHardTime,
+          messageMatch: toHardTimeRegexMatch,
         }
       }
   }
@@ -93,10 +103,12 @@ export const toInboxFilter = (
     lastSentMessage?.type.includes('middle')
     ) {
       // Join Subreddit
-      if (toJoinSubreddit(messagePayload)) {
+      const toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, regexTextObject);
+      if (toJoinSubredditRegexMatch.length > 0) {
         return {
           messageText: finalJoinSubreddit,
           messageType: SendMessageType.FinalJoinSubreddit,
+          messageMatch: toJoinSubredditRegexMatch,
         }
       }
   }
@@ -104,5 +116,6 @@ export const toInboxFilter = (
   return {
     messageText: undefined,
     messageType: undefined,
+    messageMatch: undefined,
   }
 }

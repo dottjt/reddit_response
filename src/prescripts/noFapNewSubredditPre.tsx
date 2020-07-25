@@ -48,6 +48,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
           shouldDeleteElementImmediately,
           sendMessageType,
           prelimUrl,
+          messageMatch
         } = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText);
 
         if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
@@ -67,7 +68,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
             tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
 
             createPrelimLink({
-              dbUser, titleText, flairText, aLinkHref, prelimUrl, index, sendMessageType, prelimContainer
+              dbUser, titleText, flairText, aLinkHref, prelimUrl, index, sendMessageType, prelimContainer, messageMatch
             });
 
             return;

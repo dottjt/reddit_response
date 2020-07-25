@@ -1,3 +1,6 @@
-export const toDidIJustRelapseAdvice = (titleText: string, flairText: string, messageText: string): boolean =>
-  new RegExp(/did I just relapse\?/i).test(titleText)
-  || new RegExp(/count as relapse\?/i).test(titleText)
+import { RegexFilters } from '../../regexUtil';
+
+export const toDidIJustRelapseAdviceRegexArray: RegexFilters[] = [
+  { titleText: /did I just relapse\?/i },
+  { titleText: /count as relapse\?/i },
+];
