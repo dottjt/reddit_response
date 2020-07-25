@@ -11,5 +11,8 @@ export const toDealingWithUrgesAdviceRegexArray: RegexFilters[] = [
   { titleText: /How do I overcome ?(.*) urges/i },
   { titleText: /Urges(\.)? Help me/i },
   { titleText: /very strong urges/i },
+  { titleText: /anyone find the urges/i },
   { titleText: /help (w|with) persistent urge/i },
+
+  { messageText: /Any tips on how to handle these?/i },
 ];

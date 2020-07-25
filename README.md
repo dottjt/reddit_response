@@ -15,6 +15,7 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
+<!-- MESSAGE - Don't see any improvements. -->
 - I need to make the system faster, it is now slower. There needs to be optimisations.
 
 - Bring next page button to the top of the page. Copy it and install it at the top.

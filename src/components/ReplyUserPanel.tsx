@@ -49,6 +49,7 @@ const createReplyMessageLink = (
           containerDiv,
           toUsername,
           messageType,
+          undefined,
           sendImmediate
         )
       }} target='_blank'>

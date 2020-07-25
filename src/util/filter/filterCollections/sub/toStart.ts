@@ -15,13 +15,13 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /I'm starting/i },
   { titleText: /So finally let's begin/i },
 
-  { titleText: /start of something amazing/i },
   { titleText: /here for (nofap|no fap|no-fap)/i },
+  { titleText: /it begins here/i },
   { titleText: /changing for the better/i },
 
   { titleText: /(let's|lets) start/i },
   { titleText: /(journey) (start|begins)/i },
-  { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+
   { titleText: /fapped for the last time today/i },
   { titleText: /Committing to a new lifestyle/i },
   { titleText: /my decision to start (NoFap|no fap|no-fap)/i },
@@ -29,11 +29,12 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /this ends now/i },
   { titleText: /my first post/i }, // potentially inaccurate
   { titleText: /try to do this (NoFap|no fap|no-fap)/i },
-  { titleText: /(wanna|want|trying) to start/i },
   { titleText: /(here|now) it begins/i },
   { titleText: /(Let's|lets) do this/i },
   { titleText: /(it's|its|it is) time to change/i },
-  { titleText: /day 1 of (no fap|reboot|re boot)/i },
+
+  // FINALLY
+  { titleText: /finally try to get things turned around/i, },
   { titleText: /I’m finally quitting/i },
 
   // START
@@ -44,8 +45,10 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /I have made the right decision/i },
   { titleText: /finally admitting that (I'm|I’m) addicted/i },
 
-  // ASK HELP
+  // ADVICE
   { titleText: /any tips on getting started/i },
+
+  { messageText: /Any advice on how to start/i },
 
   // JOINED / NEW
   { titleText: /just joined (nofap|no fap|no-fap)/i },
@@ -62,12 +65,17 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /Beginning the Challenge/i },
   { titleText: /the beginning/i },
 
+  // DECLARATION
+  { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+  { titleText: /start of something amazing/i },
+
   // START
   { titleText: /about to start/i },
   { titleText: /How to start\?/i },
   { titleText: /a new start/i },
   { titleText: /(I'm|im) ready to start/i },
   { titleText: /where to start/i },
+  { titleText: /(wanna|want|trying) to start/i },
 
   // STARTING
   { titleText: /starting (NoFap|no fap|no-fap)/i },
@@ -105,17 +113,20 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /Day 1 (lets|let's) go/i },
   { titleText: /^Day 1(\.|\!)?$/i },
   { titleText: /officially day 1/i },
+  { titleText: /day 1 of (no fap|reboot|re boot)/i },
 
   // FIRST
-  { messageText: /This is gonna be my first day to nofap/i },
   { titleText: /first post/i },
   { titleText: /first time doing this/i },
   { titleText: /(first|1st) (step|day)/i },
   { titleText: /first timer/i },
   { titleText: /^first time here$/i },
 
+  { messageText: /This is gonna be my first day to nofap/i },
+
   // TODAY
   { titleText: /(NoFap|no fap|no-fap) from today/i },
+  { titleText: /(gonna|going to) start today/i },
 
 
     // decided to quit .* today

@@ -8,6 +8,7 @@ export const toRelapseAdviceRegexArray: RegexFilters[] = [
   { titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
   { titleText: /(relapse|relapsed) (after|on day|again)/i }, // relapsed today DOES NOT work, because it can be used in other contexts.
   { titleText: /(failed|lost) (at|on) day/i },
+  { titleText: /relapsed hard/i },
   { titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i },
   { titleText: /^relapsed\.?$/i },
   { titleText: /^relapse\.?$/i },
@@ -24,6 +25,7 @@ export const toRelapseAdviceRegexArray: RegexFilters[] = [
   { titleText: /made it .* and relapsed/i },
   { titleText: /my first fail/i },
   { titleText: /I had a relapse/i },
+  { titleText: /.* made me relapse$/i },
   { titleText: /back to day (one|1)/i },
 // - relapsed
 ];

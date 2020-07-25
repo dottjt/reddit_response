@@ -86,57 +86,55 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
   return matchArray;
 };
 
-export const highlightSyntax = (titleText: string, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
-  const insert = (arr, index, newItem) => [
-    ...arr.slice(0, index),
-    newItem,
-    ...arr.slice(index)
-  ];
+export const highlightSyntax = (relevantText: string | undefined, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
+  if (relevantText) {
+    const insert = (arr, index, newItem) => [
+      ...arr.slice(0, index),
+      newItem,
+      ...arr.slice(index)
+    ];
 
-  if (messageMatch.length > 0) {
-    const { titleTextArray } = messageMatch.reduce((acc, regexFilterResult, isReact) => {
-      if (regexFilterResult?.titleTextMatch) {
-        const splitArray = acc.titleText.split(regexFilterResult.titleTextMatch);
-        const newArray = isReact
-          ? insert(splitArray, 1, <span style="color: red;">{regexFilterResult.titleTextMatch}</span>)
-          : insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>);
+    if (messageMatch.length > 0) {
+      const { titleTextArray } = messageMatch.reduce((acc, regexFilterResult) => {
+        if (regexFilterResult?.titleTextMatch) {
+          const splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+          const newArray = isReact
+            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>)
+            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.titleTextMatch}</span>`);
 
-        console.log(newArray);
-        console.log(newArray.join());
+          return { ...acc, titleTextArray: newArray };
+        }
+        if (regexFilterResult?.flairTextMatch) {
+          const splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+          const newArray = isReact
+            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.flairTextMatch}</span>)
+            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.flairTextMatch}</span>`);
 
-        return { ...acc, titleTextArray: newArray };
-      }
-      if (regexFilterResult?.flairTextMatch) {
-        const splitArray = acc.titleText.split(regexFilterResult.flairTextMatch);
-        const newArray = isReact
-          ? insert(splitArray, 1, <span style="color: red;">{regexFilterResult.titleTextMatch}</span>)
-          : insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>);
+          return { ...acc, titleTextArray: newArray };
+        }
+        if (regexFilterResult?.messageTextMatch) {
+          const splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+          const newArray = isReact
+            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch}</span>)
+            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.messageTextMatch}</span>`);
 
-        return { ...acc, titleTextArray: newArray };
-      }
-      if (regexFilterResult?.messageTextMatch) {
-        const splitArray = acc.titleText.split(regexFilterResult.messageTextMatch);
-        const newArray = isReact
-          ? insert(splitArray, 1, <span style="color: red;">{regexFilterResult.titleTextMatch}</span>)
-          : insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>);
+          return { ...acc, titleTextArray: newArray };
+        }
 
-        return { ...acc, titleTextArray: newArray };
-      }
+        if (regexFilterResult?.replyTextMatch) {
+          const splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+          const newArray = isReact
+            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.replyTextMatch}</span>)
+            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.replyTextMatch}</span>`);
 
-      if (regexFilterResult?.replyTextMatch) {
-        const splitArray = acc.titleText.split(regexFilterResult.replyTextMatch);
-        const newArray = isReact
-          ? insert(splitArray, 1, <span style="color: red;">{regexFilterResult.titleTextMatch}</span>)
-          : insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>);
+          return { ...acc, titleTextArray: newArray };
+        }
 
-        return { ...acc, titleTextArray: newArray };
-      }
+        return acc;
+      }, { relevantText, titleTextArray: [] } as { relevantText: string, titleTextArray: any[] });
 
-      return acc;
-    }, { titleText: titleText, titleTextArray: [] } as { titleText: string, titleTextArray: any[] });
-
-    return titleTextArray;
+      return titleTextArray;
+    }
   }
-
-  return [ titleText ];
+  return [ relevantText ];
 };

@@ -38,6 +38,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /name tag/i },
   { titleText: /(Don't|Don't|dont) mind me/i },
   { titleText: /journal entry/i }, // look into this.
+  { titleText: /journal check in/i }, // look into this.
   { titleText: /diary/i },
   { titleText: /libido/i },
   { titleText: /(weekly|daily) journal/i },
@@ -60,6 +61,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /strange benefit/i },
   { titleText: /found a method/i },
   { titleText: /the key to (everything|NoFap)/i },
+  { titleText: /methods that you might like to/i },
 
   // MOTIVATION
   { titleText: /motivational thought/i },
@@ -69,6 +71,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   // VICTORY
   { titleText: /overcame my worst urge/i },
   { titleText: /I am proud of myself/i },
+  { titleText: /Instead of (masturbating|PMO) i/i },
   { titleText: /finally crossed a/i },
   { titleText: /(0|zero) urges to fap/i },
   { titleText: /I feel amazing/i },
@@ -80,6 +83,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /found something that/i },
   { titleText: /streak for the first time/i },
   { titleText: /double digit/i },
+  { titleText: /so proud of myself/i },
   { titleText: /still going strong/i },
   { titleText: /not bragging/i },
   { titleText: /just completed a/i },
@@ -90,9 +94,12 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(previous record|milestone)/i },
   { titleText: /small success/i },
   { titleText: /finally made it to (day|week)/i },
+  { titleText: /feels so .* good/i },
   { titleText: /reached day \d+ for the (first time|firsttime)/i },
   { titleText: /(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i },
   { titleText: /\d+ (days|weeks|months|years) free$/i },
+  { titleText: /On my way to triumph/i },
+  { titleText: /finally hit .* (weeks|days) again/i },
 
   // MOTIVATION
   { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },
@@ -100,6 +107,8 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /love you guys/i },
   { titleText: /(nofap|no fap) works/i },
   { titleText: /^Instead of watching porn/i },
+  { titleText: /(its|It's) never too late/i },
+  { titleText: /quote/i },
 
   // RATIONALISATIONS
   { titleText: /(down side|downside)/i },
@@ -107,6 +116,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /any evidence that/i },
   { titleText: /harmful effect/i },
   { titleText: /a study/i },
+  { titleText: /future (son|daughter)/i },
 
   // SEXUAL / MEDICAL CONDITIONS
   { titleText: /(balls|penis|pelvic|genital|testic)/i },
@@ -149,6 +159,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(tik tok|tiktok)/i },
   { titleText: /(wim hof)/i }, // cold shower
   { titleText: /weed/i },
+  { titleText: /God/ },
 
   // DOUBTS
   { titleText: /placebo/i },

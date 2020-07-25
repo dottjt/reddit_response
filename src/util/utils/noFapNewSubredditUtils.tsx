@@ -129,7 +129,6 @@ export const addGlobalStyle = (css: string): void => {
   head.appendChild(style);
 }
 
-
 export const createPrelimLink = ({
   dbUser,
   titleText,
@@ -156,7 +155,13 @@ export const createPrelimLink = ({
         ) : (
           <span>{titleText}</span>
         )}
-        <p style={{ 'margin-top': '0.5rem' }}>{flairText}</p>
+        <p style={{ 'margin-top': '0.5rem' }}>
+          {messageMatch.length > 0 ? (
+            highlightSyntax(flairText, messageMatch, true).map(element => <span>{element}</span>)
+          ) : (
+            <span>{flairText}</span>
+          )}
+        </p>
       </a>
       <a data-click-id='body' href={`${aLinkHref}`}>Show Post</a>
     </div>, nodeContainer

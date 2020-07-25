@@ -24,6 +24,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /pass me your website/i },
   { replyText: /send website link/i },
   { replyText: /send that my way/i },
+  { replyText: /send me your page/i },
   { replyText: /send over the link/i },
   { replyText: /(send it|do share)/i },
   { replyText: /go ahead and send/i },
@@ -33,6 +34,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /please pass on (the|that) website info/i },
   { replyText: /send me your website/i },
   { replyText: /send me this website/i },
+  { replyText: /send link to website/i },
 
   // PASSIVE ASK
   { replyText: /May I know (your|the) website/i },
@@ -72,22 +74,24 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /actually really interested in your website/i },
   { replyText: /I’d like to try any resources you’re willing to share/i },
   { replyText: /I appreciate any info/i },
+  { replyText: /(I'd|id|I’d) like to see that/i },
 
   // GRATEFUL
   { replyText: /the website would be quite helpful/i },
   { replyText: /glad to (have|take) a look/i },
   { replyText: /That would be very welcome/i },
   { replyText: /would like to see what the website is/i },
-  { replyText: /that website would be nice/i },
+  { replyText: /that website would be (great|nice)/i },
   { replyText: /yes that would be helpful/i },
   { replyText: /that would be really helpful/i },
   { replyText: /appreciate viewing your website/i },
   { replyText: /the (website|link) would be cool/i },
+  { replyText: /Any information you could/i },
+  { replyText: /would (definitely|definelty) read thorugh it/i },
   { replyText: /will have a look on your website/i },
   { replyText: /I would really (appreaciate|appreciate) that/i },
   { replyText: /(it|that|link) would be (super|awesome|great|cool)/i },
   { replyText: /happy to check out the (url|web|website|guide|site|link|address|resource)/i },
-
 
   // LOVE
   { replyText: /(id|I'd) love/i },

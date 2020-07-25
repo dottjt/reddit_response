@@ -2,7 +2,7 @@ import { SendMessageType, UserForumType } from '../../types/serverTypes';
 import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
 import { sendNewMessage } from '../httpResponses';
 import { ConfigType } from '../config';
-import { RegexFiltersMatch } from '../filter/regexUtil';
+import { RegexFiltersMatch, highlightSyntax } from '../filter/regexUtil';
 
 export const openReplyLink = async (containerDiv) => {
   const entry = containerDiv.children[4];
@@ -63,12 +63,20 @@ export const populateMessageAndSend = async (
   containerDiv: Element,
   toUsername: string,
   messageType: SendMessageType,
-  messageMatch: RegexFiltersMatch[],
+  messageMatch: RegexFiltersMatch[] | undefined,
   sendImmediate: boolean
 ) => {
   openReplyLink(containerDiv);
 
-  // TODO syntax highlighting for .md element
+  const replyBox = containerDiv.querySelector('.md');
+  console.log(replyBox);
+  if (replyBox && messageMatch) {
+    [...replyBox.children as any].forEach(ele => {
+      const text = ele.textContent;
+
+      ele.innerHTML = highlightSyntax(text, messageMatch, false).join();
+    });
+  }
 
   const textArea = containerDiv.querySelector('textarea');
   const submitButton = containerDiv.querySelector('.save') as HTMLInputElement;

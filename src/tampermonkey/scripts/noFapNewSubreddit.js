@@ -2323,6 +2323,94 @@
         UserForumType["Reddit"] = "Reddit";
     })(UserForumType || (UserForumType = {}));
 
+    var createVNode$1 = createVNode;
+    // THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
+    var matchRegex = function (regexArray, textObject) {
+        var matchArray = regexArray.reduce(function (acc, RegexFilters) {
+            if (!acc.matchFound) {
+                var regexKeys = Object.keys(RegexFilters);
+                var _a = regexKeys.reduce(function (acc, keyString) {
+                    var _a, _b, _c, _d;
+                    var regex = RegexFilters[keyString];
+                    if (acc.allFound) {
+                        if (keyString === 'titleText') {
+                            var match = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'flairText') {
+                            var match = (_b = textObject.flairText) === null || _b === void 0 ? void 0 : _b.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ flairTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'messageText') {
+                            var match = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'replyText') {
+                            var match = (_d = textObject.replyText) === null || _d === void 0 ? void 0 : _d.match(regex);
+                            if (match) {
+                                return { matchArray: acc.matchArray.concat({ replyTextMatch: match[0] }), allFound: true };
+                            }
+                        }
+                    }
+                    return { matchArray: [], allFound: false };
+                }, { matchArray: [], allFound: true }), matchArray_1 = _a.matchArray, allFound = _a.allFound;
+                if (matchArray_1.length > 0) {
+                    return { matchArray: matchArray_1, matchFound: true };
+                }
+            }
+            return acc;
+        }, { matchArray: [], matchFound: false }).matchArray;
+        return matchArray;
+    };
+    var highlightSyntax = function (relevantText, messageMatch, isReact) {
+        if (relevantText) {
+            var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
+                newItem
+            ], arr.slice(index)); };
+            if (messageMatch.length > 0) {
+                var titleTextArray = messageMatch.reduce(function (acc, regexFilterResult) {
+                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
+                        var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+                        var newArray = isReact
+                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
+                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
+                        return __assign(__assign({}, acc), { titleTextArray: newArray });
+                    }
+                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
+                        var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+                        var newArray = isReact
+                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
+                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
+                        return __assign(__assign({}, acc), { titleTextArray: newArray });
+                    }
+                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                        var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+                        var newArray = isReact
+                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
+                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
+                        return __assign(__assign({}, acc), { titleTextArray: newArray });
+                    }
+                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
+                        var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+                        var newArray = isReact
+                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
+                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
+                        return __assign(__assign({}, acc), { titleTextArray: newArray });
+                    }
+                    return acc;
+                }, { relevantText: relevantText, titleTextArray: [] }).titleTextArray;
+                return titleTextArray;
+            }
+        }
+        return [relevantText];
+    };
+
     var increaseDelayTimer = function () {
         var delayTimer = window.localStorage.getItem('delayTimer');
         var delayTimerNumber = parseInt(delayTimer) + 26000;
@@ -2414,14 +2502,14 @@
     };
 
     var createTextVNode$1 = createTextVNode;
-    var createVNode$1 = createVNode;
+    var createVNode$2 = createVNode;
     var PreviousMessageInformation = function (_a) {
         var dbUser = _a.dbUser;
-        return (createVNode$1(1, "div", null, [createVNode$1(1, "p", null, createVNode$1(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$1(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16), createVNode$1(1, "p", null, createVNode$1(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$1(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16)], 0));
+        return (createVNode$2(1, "div", null, [createVNode$2(1, "p", null, createVNode$2(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$2(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$2(1, "p", null, "NA", 16), createVNode$2(1, "p", null, createVNode$2(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$2(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$2(1, "p", null, "NA", 16)], 0));
     };
     var UserInformation = function (_a) {
         var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
-        return (createVNode$1(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$1(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$1(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$1(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$1(1, "br"), createVNode$1(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$1(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
+        return (createVNode$2(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$2(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$2(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$2(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$2(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$2(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$2(1, "br"), createVNode$2(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$2(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
     };
     var SendUserNoteForm = /** @class */ (function (_super) {
         __extends(SendUserNoteForm, _super);
@@ -2435,7 +2523,7 @@
         SendUserNoteForm.prototype.render = function () {
             var _this = this;
             var _a;
-            return (createVNode$1(1, "div", null, [createVNode$1(64, "input", null, null, 1, { "value": (_a = this.state) === null || _a === void 0 ? void 0 : _a.message, "onChange": function (e) { return _this.setState({ message: e.target.value }); }, "style": { 'margin-right': '1rem' } }), createVNode$1(1, "button", null, "Send Note", 16, { "onclick": function () { return __awaiter(_this, void 0, void 0, function () {
+            return (createVNode$2(1, "div", null, [createVNode$2(64, "input", null, null, 1, { "value": (_a = this.state) === null || _a === void 0 ? void 0 : _a.message, "onChange": function (e) { return _this.setState({ message: e.target.value }); }, "style": { 'margin-right': '1rem' } }), createVNode$2(1, "button", null, "Send Note", 16, { "onclick": function () { return __awaiter(_this, void 0, void 0, function () {
                         var _a;
                         return __generator(this, function (_b) {
                             switch (_b.label) {
@@ -2456,7 +2544,7 @@
     }(Component));
     var MarkUserHostileButton = function (_a) {
         var username = _a.username;
-        return (createVNode$1(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+        return (createVNode$2(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, markUserHostile({ username: username })];
@@ -2469,7 +2557,7 @@
     };
     var MarkUserChattedButton = function (_a) {
         var username = _a.username;
-        return (createVNode$1(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+        return (createVNode$2(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, markUserChatted({ username: username })];
@@ -2482,7 +2570,7 @@
     };
     var SetMarkerButton = function (_a) {
         var username = _a.username, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
-        return (createVNode$1(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+        return (createVNode$2(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, setMarker({ username: username, usernameConfig: usernameConfig, hoursAgoText: hoursAgoText })];
@@ -2500,12 +2588,12 @@
     var followNotSmoothlyAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry things haven't been going smoothly with your recovery.\n\nHave you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
 
     var createComponentVNode$1 = createComponentVNode;
-    var createVNode$2 = createVNode;
+    var createVNode$3 = createVNode;
     // import ReactTooltip from 'react-tooltip';
     var createStartMessageLink = function (messageType, color, toUsername, messageText, usernameConfig) {
         var prelimUrl = generatePrelimUrl(toUsername, messageText, messageType, usernameConfig);
         // https://forum.nofap.com/index.php?conversations/add&to=YoungRockLee&title=hey
-        return (createVNode$2(1, "div", null, createVNode$2(1, "a", null, messageType, 0, { "style": {
+        return (createVNode$3(1, "div", null, createVNode$3(1, "a", null, messageType, 0, { "style": {
                 color: color || 'black',
                 'margin-top': '0.2rem',
                 'margin-bottom': '0.2rem',
@@ -2517,113 +2605,25 @@
     };
     var UserPanel = function (_a) {
         var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
-        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+        return (createVNode$3(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$3(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$3(1, "div", null, [createVNode$3(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
-                    createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$2(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$3(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartDealingWithUrgesAdvice, 'purple', dbUser.username, dealingWithUrgesAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartMasturbateWithoutPornAdvice, 'purple', dbUser.username, masturbateWithoutPornAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartBiggestBenefitPostAddictionAdvice, 'purple', dbUser.username, biggestBenefitPostAddictionAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartPartnerAdvice, 'purple', dbUser.username, partnerAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
-                    createStartMessageLink(SendMessageType.StartDidIJustRelapseAdvice, 'purple', dbUser.username, didIJustRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartDidIJustRelapseAdvice, 'purple', dbUser.username, didIJustRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$3(1, "div", null, [createStartMessageLink(SendMessageType.StartAdviceStruggle, 'purple', dbUser.username, struggleAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceFlatline, 'purple', dbUser.username, flatlineAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceWetdreamAdvice, 'purple', dbUser.username, wetdreamAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdvicePornBlockersAdvice, 'purple', dbUser.username, pornBlockersAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, 'purple', dbUser.username, isWatchingPornRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartWhenDoesItGetEasierAdvice, 'purple', dbUser.username, whenDoesItGetEasierAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartNoReasonToRelapseAdvice, 'purple', dbUser.username, noReasonToRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
-                    createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$2(1, "h4", null, "Follow", 16), createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+                    createStartMessageLink(SendMessageType.StartAccountabilityPartner, 'purple', dbUser.username, accountabilityPartner(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$3(1, "h4", null, "Follow", 16), createStartMessageLink(SendMessageType.FollowRelapseAdvice, 'purple', dbUser.username, followRelapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.FollowMeditationAdvice, 'purple', dbUser.username, followMeditationAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.FollowStruggleAdvice, 'purple', dbUser.username, followStruggleAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.FollowNotSmoothlyAdvice, 'purple', dbUser.username, followNotSmoothlyAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "style": { display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' } })], 0));
-    };
-
-    var createVNode$3 = createVNode;
-    // THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
-    var matchRegex = function (regexArray, textObject) {
-        var matchArray = regexArray.reduce(function (acc, RegexFilters) {
-            if (!acc.matchFound) {
-                var regexKeys = Object.keys(RegexFilters);
-                var _a = regexKeys.reduce(function (acc, keyString) {
-                    var _a, _b, _c, _d;
-                    var regex = RegexFilters[keyString];
-                    if (acc.allFound) {
-                        if (keyString === 'titleText') {
-                            var match = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
-                            if (match) {
-                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'flairText') {
-                            var match = (_b = textObject.flairText) === null || _b === void 0 ? void 0 : _b.match(regex);
-                            if (match) {
-                                return { matchArray: acc.matchArray.concat({ flairTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'messageText') {
-                            var match = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
-                            if (match) {
-                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'replyText') {
-                            var match = (_d = textObject.replyText) === null || _d === void 0 ? void 0 : _d.match(regex);
-                            if (match) {
-                                return { matchArray: acc.matchArray.concat({ replyTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                    }
-                    return { matchArray: [], allFound: false };
-                }, { matchArray: [], allFound: true }), matchArray_1 = _a.matchArray, allFound = _a.allFound;
-                if (matchArray_1.length > 0) {
-                    return { matchArray: matchArray_1, matchFound: true };
-                }
-            }
-            return acc;
-        }, { matchArray: [], matchFound: false }).matchArray;
-        return matchArray;
-    };
-    var highlightSyntax = function (titleText, messageMatch, isReact) {
-        var insert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
-            newItem
-        ], arr.slice(index)); };
-        if (messageMatch.length > 0) {
-            var titleTextArray = messageMatch.reduce(function (acc, regexFilterResult, isReact) {
-                if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
-                    var splitArray = acc.titleText.split(regexFilterResult.titleTextMatch);
-                    var newArray = isReact
-                        ? insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": "color: red;" }))
-                        : insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }));
-                    console.log(newArray);
-                    console.log(newArray.join());
-                    return __assign(__assign({}, acc), { titleTextArray: newArray });
-                }
-                if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
-                    var splitArray = acc.titleText.split(regexFilterResult.flairTextMatch);
-                    var newArray = isReact
-                        ? insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": "color: red;" }))
-                        : insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }));
-                    return __assign(__assign({}, acc), { titleTextArray: newArray });
-                }
-                if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-                    var splitArray = acc.titleText.split(regexFilterResult.messageTextMatch);
-                    var newArray = isReact
-                        ? insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": "color: red;" }))
-                        : insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }));
-                    return __assign(__assign({}, acc), { titleTextArray: newArray });
-                }
-                if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
-                    var splitArray = acc.titleText.split(regexFilterResult.replyTextMatch);
-                    var newArray = isReact
-                        ? insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": "color: red;" }))
-                        : insert(splitArray, 1, createVNode$3(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }));
-                    return __assign(__assign({}, acc), { titleTextArray: newArray });
-                }
-                return acc;
-            }, { titleText: titleText, titleTextArray: [] }).titleTextArray;
-            return titleTextArray;
-        }
-        return [titleText];
     };
 
     var createTextVNode$2 = createTextVNode;
@@ -2733,7 +2733,7 @@
         var dbUser = _a.dbUser, titleText = _a.titleText, flairText = _a.flairText, aLinkHref = _a.aLinkHref, prelimUrl = _a.prelimUrl, index = _a.index, sendMessageType = _a.sendMessageType, prelimContainer = _a.prelimContainer, messageMatch = _a.messageMatch;
         var nodeContainer = document.createElement('div');
         nodeContainer.id = "r" + dbUser.username + "-" + index;
-        render(createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "span", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, messageMatch).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, titleText, 0)), createVNode$4(1, "p", null, flairText, 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
+        render(createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "span", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, titleText, 0)), createVNode$4(1, "p", null, messageMatch.length > 0 ? (highlightSyntax(flairText, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, flairText, 0)), 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
         prelimContainer === null || prelimContainer === void 0 ? void 0 : prelimContainer.appendChild(nodeContainer);
     };
     var renderUserPanel = function (_a) {
@@ -2760,12 +2760,12 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'krown5130';
-    var R_NOFAP_TIMESTAMP = '5 hours ago';
-    var R_PORN_FREE_USERNAME = 'Kyle1906';
-    var R_PORN_FREE_TIMESTAMP = '4 minutes ago';
+    var R_NOFAP_USERNAME = 'TheWeeb8000';
+    var R_NOFAP_TIMESTAMP = '1 hour ago';
+    var R_PORN_FREE_USERNAME = '12101921';
+    var R_PORN_FREE_TIMESTAMP = '25 minutes ago';
     var R_PORN_ADDICTION_USERNAME = 'pxl4xl';
-    var R_PORN_ADDICTION_TIMESTAMP = '4 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '7 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2884,6 +2884,7 @@
         { titleText: /name tag/i },
         { titleText: /(Don't|Don't|dont) mind me/i },
         { titleText: /journal entry/i },
+        { titleText: /journal check in/i },
         { titleText: /diary/i },
         { titleText: /libido/i },
         { titleText: /(weekly|daily) journal/i },
@@ -2905,6 +2906,7 @@
         { titleText: /strange benefit/i },
         { titleText: /found a method/i },
         { titleText: /the key to (everything|NoFap)/i },
+        { titleText: /methods that you might like to/i },
         // MOTIVATION
         { titleText: /motivational thought/i },
         { titleText: /do not relapse/i },
@@ -2912,6 +2914,7 @@
         // VICTORY
         { titleText: /overcame my worst urge/i },
         { titleText: /I am proud of myself/i },
+        { titleText: /Instead of (masturbating|PMO) i/i },
         { titleText: /finally crossed a/i },
         { titleText: /(0|zero) urges to fap/i },
         { titleText: /I feel amazing/i },
@@ -2923,6 +2926,7 @@
         { titleText: /found something that/i },
         { titleText: /streak for the first time/i },
         { titleText: /double digit/i },
+        { titleText: /so proud of myself/i },
         { titleText: /still going strong/i },
         { titleText: /not bragging/i },
         { titleText: /just completed a/i },
@@ -2933,21 +2937,27 @@
         { titleText: /(previous record|milestone)/i },
         { titleText: /small success/i },
         { titleText: /finally made it to (day|week)/i },
+        { titleText: /feels so .* good/i },
         { titleText: /reached day \d+ for the (first time|firsttime)/i },
         { titleText: /(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i },
         { titleText: /\d+ (days|weeks|months|years) free$/i },
+        { titleText: /On my way to triumph/i },
+        { titleText: /finally hit .* (weeks|days) again/i },
         // MOTIVATION
         { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },
         { titleText: /(Don't|Don't|dont) give up$/i },
         { titleText: /love you guys/i },
         { titleText: /(nofap|no fap) works/i },
         { titleText: /^Instead of watching porn/i },
+        { titleText: /(its|It's) never too late/i },
+        { titleText: /quote/i },
         // RATIONALISATIONS
         { titleText: /(down side|downside)/i },
         { titleText: /relapsed intentionally/i },
         { titleText: /any evidence that/i },
         { titleText: /harmful effect/i },
         { titleText: /a study/i },
+        { titleText: /future (son|daughter)/i },
         // SEXUAL / MEDICAL CONDITIONS
         { titleText: /(balls|penis|pelvic|genital|testic)/i },
         { titleText: /(boner|morning wood)/i },
@@ -2986,6 +2996,7 @@
         { titleText: /(tik tok|tiktok)/i },
         { titleText: /(wim hof)/i },
         { titleText: /weed/i },
+        { titleText: /God/ },
         // DOUBTS
         { titleText: /placebo/i },
         // OTHER TOPICS
@@ -3021,6 +3032,7 @@
         { titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
         { titleText: /(relapse|relapsed) (after|on day|again)/i },
         { titleText: /(failed|lost) (at|on) day/i },
+        { titleText: /relapsed hard/i },
         { titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i },
         { titleText: /^relapsed\.?$/i },
         { titleText: /^relapse\.?$/i },
@@ -3037,6 +3049,7 @@
         { titleText: /made it .* and relapsed/i },
         { titleText: /my first fail/i },
         { titleText: /I had a relapse/i },
+        { titleText: /.* made me relapse$/i },
         { titleText: /back to day (one|1)/i },
     ];
 
@@ -3053,12 +3066,11 @@
         { titleText: /^day one$/i },
         { titleText: /I'm starting/i },
         { titleText: /So finally let's begin/i },
-        { titleText: /start of something amazing/i },
         { titleText: /here for (nofap|no fap|no-fap)/i },
+        { titleText: /it begins here/i },
         { titleText: /changing for the better/i },
         { titleText: /(let's|lets) start/i },
         { titleText: /(journey) (start|begins)/i },
-        { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
         { titleText: /fapped for the last time today/i },
         { titleText: /Committing to a new lifestyle/i },
         { titleText: /my decision to start (NoFap|no fap|no-fap)/i },
@@ -3066,11 +3078,11 @@
         { titleText: /this ends now/i },
         { titleText: /my first post/i },
         { titleText: /try to do this (NoFap|no fap|no-fap)/i },
-        { titleText: /(wanna|want|trying) to start/i },
         { titleText: /(here|now) it begins/i },
         { titleText: /(Let's|lets) do this/i },
         { titleText: /(it's|its|it is) time to change/i },
-        { titleText: /day 1 of (no fap|reboot|re boot)/i },
+        // FINALLY
+        { titleText: /finally try to get things turned around/i, },
         { titleText: /I’m finally quitting/i },
         // START
         { titleText: /we start today/i },
@@ -3078,8 +3090,9 @@
         // RATIONALISE DECISION
         { titleText: /I have made the right decision/i },
         { titleText: /finally admitting that (I'm|I’m) addicted/i },
-        // ASK HELP
+        // ADVICE
         { titleText: /any tips on getting started/i },
+        { messageText: /Any advice on how to start/i },
         // JOINED / NEW
         { titleText: /just joined (nofap|no fap|no-fap)/i },
         { titleText: /new here/i },
@@ -3092,12 +3105,16 @@
         { titleText: /Beginning of my Journey in (NoFap|no fap|no-fap)/i },
         { titleText: /Beginning the Challenge/i },
         { titleText: /the beginning/i },
+        // DECLARATION
+        { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+        { titleText: /start of something amazing/i },
         // START
         { titleText: /about to start/i },
         { titleText: /How to start\?/i },
         { titleText: /a new start/i },
         { titleText: /(I'm|im) ready to start/i },
         { titleText: /where to start/i },
+        { titleText: /(wanna|want|trying) to start/i },
         // STARTING
         { titleText: /starting (NoFap|no fap|no-fap)/i },
         { titleText: /why (I'm|im) starting/i },
@@ -3128,21 +3145,24 @@
         { titleText: /Day 1 (lets|let's) go/i },
         { titleText: /^Day 1(\.|\!)?$/i },
         { titleText: /officially day 1/i },
+        { titleText: /day 1 of (no fap|reboot|re boot)/i },
         // FIRST
-        { messageText: /This is gonna be my first day to nofap/i },
         { titleText: /first post/i },
         { titleText: /first time doing this/i },
         { titleText: /(first|1st) (step|day)/i },
         { titleText: /first timer/i },
         { titleText: /^first time here$/i },
+        { messageText: /This is gonna be my first day to nofap/i },
         // TODAY
         { titleText: /(NoFap|no fap|no-fap) from today/i },
+        { titleText: /(gonna|going to) start today/i },
     ];
 
     var toStartAgainRegexArray = [
         { titleText: /(begin|let's do this) again/i },
         { titleText: /gonna try again/i, },
         { titleText: /trying it again/i, },
+        { titleText: /Trying to start again/i, },
         { titleText: /decided to try this again/i, },
         { titleText: /going to quit (.*)? today/i, },
         { titleText: /one last try/i, },
@@ -3151,6 +3171,7 @@
         { titleText: /^trying again$/i, },
         { titleText: /day (1|one) again/i, },
         { titleText: /starting, again/i, },
+        { titleText: /starting (nofap|no fap|no-fap) again/i, },
         { titleText: /^starting again(\.)?$/i, },
         { titleText: /need to start fresh/i, },
         { titleText: /doing (nofap|no fap|no-fap) again/i, },
@@ -3159,40 +3180,52 @@
     var toGeneralAdviceRegexArray = [
         { titleText: /I need ?(.*) help/i },
         { titleText: /feel like shit/i },
-        { titleText: /^help me$/i },
         { titleText: /need some guidance/i },
-        { titleText: /I really, really need help/i },
-        { titleText: /I don't know what to do/i },
         { titleText: /I need to stop/i },
         { titleText: /how do I avoid relapsing/i },
         { titleText: /what other steps/i },
-        { titleText: /best way to stop masturbating\?/i },
-        { titleText: /I (give up|need support|can't stop)/i },
-        { titleText: /need some advice from pro/i },
         { titleText: /I have a serious addiction to masturbation/i },
+        // LOST
+        { titleText: /I don't know what to do/i },
+        // MOTIVATION
         { titleText: /I need some serious motivation/i },
-        { titleText: /could use some advice/i },
-        { titleText: /how can I survive this journey/i },
+        // TIPS
+        { titleText: /^tips\?$/i },
         { titleText: /.* any tips\?$/i },
+        { titleText: /^Need advice$/i },
+        // HOW TO
+        { titleText: /^how to quit(\?)?$/i },
+        { titleText: /best way to stop masturbating\?/i },
+        { titleText: /how can I survive this journey/i },
+        // ADVICE
+        { titleText: /could use some advice/i },
+        { titleText: /need some advice from pro/i },
         // TOO HARD
         { titleText: /shit is getting rough/i },
         { titleText: /It's impossible/i },
         { titleText: /trying for years/i },
         { titleText: /falling badly/i },
+        { titleText: /addicted like hell/i },
         { titleText: /I've failed countless/i },
-        // LIKE HELP
+        // HELP
         { titleText: /would like some help/i },
         { titleText: /how can I stop/i },
         { titleText: /^Please help/i },
         { titleText: /^Need help/i },
         { titleText: /looking for some guidance/i },
+        { titleText: /need help and advice/i },
+        { titleText: /I really, really need help/i },
+        { titleText: /^help me$/i },
         { messageText: /any improvements are welcome/i },
         { messageText: /tell me the secret/i },
         // CAN'T STOP
         { titleText: /I just can’t stop myself/i },
+        { titleText: /I (give up|need support|can't stop)/i },
+        // RELAPSE
         { titleText: /keep relapsing everyday/i },
-        { titleText: /^tips\?$/i },
+        { titleText: /I feel like relapsing/i },
         { titleText: /still can't do it/i },
+        { titleText: /what have I become?/i },
         { titleText: /How not to get into an Addiction/i },
         { titleText: /trying to make this attempt count/i },
         { titleText: /^please help me(\.|\?)?$/i },
@@ -3217,17 +3250,23 @@
         { titleText: /(cant|can't|can’t) make it more than/i },
         { titleText: /help me out from relapsing/i },
         { titleText: /I want to quit porn/i },
+        { titleText: /I (don't|dont) (wanna|want to) masturbate anymore/i },
+        // * MESSAGES *
         { messageText: /any tips on how to do it/i },
         { messageText: /I wanted to know any advice/i },
         { messageText: /How do I stop\?/i },
+        { messageText: /anyone plzzzz/i },
+        { messageText: /Any advice is ?(much)? appreci/i },
+        { messageText: /anybody could help/i },
+        { messageText: /give me some pointers/i },
+        { messageText: /what can I do to change/i },
+        { messageText: /any words of encouragement/i },
+        { messageText: /been trying hard to stop .* for/i },
+        { messageText: /Can anyone help me/i },
+        { messageText: /looking for something that will make me stop/i },
+        { messageText: /I would appreciate (any|all the) advice/i },
         { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i }
         // MESSAGE
-        // if anybody could help or give me some pointers it would be greatly appreciated
-        // what can I do to change.
-        // any words of encouragement in a time of need?
-        // Alright, I've been trying hard to stop it for 3 years and sometimes I do edging or proper masturbation. Please help out. I wanna stop and I can't find any distraction
-        // Can anyone help me changing my habit?
-        // Any advice on how to start?
         // UNSURE
         // || new RegExp(/if anyone can help/i).test(messageText)
         // || new RegExp(/urges keep coming/i).test(titleText)
@@ -3247,9 +3286,15 @@
         { titleText: /wet dream on day/i },
         { titleText: /Do wet dreams count as relapsing/i },
         { titleText: /Lose benefits after a wet dream?/i },
+        { titleText: /Wet dreams (wont|won't) stop/i },
+        // TITLE + MESSAGE
+        { titleText: /wet dream/i, messageText: /any solutions\?/ },
+        { titleText: /wet dream/i, messageText: /ways to avoid it\?/ },
     ];
 
     var toStruggleAdviceRegexArray = [
+        // FLAIR
+        { flairText: /Slip-Up Prevention/i },
         // STRUGGLE
         { titleText: /(im|i'm) really struggling/i, },
         { titleText: /^help!$/i, },
@@ -3261,6 +3306,9 @@
         { titleText: /(cant|can't) get a streak going/i, },
         { titleText: /Struggling to (break|kick) this addiction/i, },
         { titleText: /Struggling to to get a new streak/i, },
+        { titleText: /^Struggling$/i, },
+        { titleText: /^Struggling on day /i, },
+        { titleText: /been failing miserably/i, },
         // ABOUT TO RELAPSE
         { titleText: /I am about to relapse/i, },
         { titleText: /encourage me not to/i, },
@@ -3268,6 +3316,13 @@
         // EXHAUSTED
         { titleText: /^emotionally exhausted$/i, },
         { titleText: /So desensitized I literally feel nothing/i, },
+        // * MESSAGES *
+        { messageText: /Help me guys/i, },
+        { messageText: /Please help me out of this/i, },
+        { messageText: /I can't really keep any consistency/i, },
+        { messageText: /I always end up binging/i, },
+        { messageText: /I keep ?(on)? struggling with PMO/i, },
+        { messageText: /Any motivation would be great now/i, },
     ];
 
     var toAccountabilityPartnerRegexArray = [
@@ -3289,11 +3344,15 @@
         { titleText: /How do I overcome ?(.*) urges/i },
         { titleText: /Urges(\.)? Help me/i },
         { titleText: /very strong urges/i },
+        { titleText: /anyone find the urges/i },
         { titleText: /help (w|with) persistent urge/i },
+        { messageText: /Any tips on how to handle these?/i },
     ];
 
     var toBenefitsAdviceRegexArray = [
         { titleText: /I want to know the benefits of (NoFap|no fap|no-fap)/i },
+        { titleText: /what are the benefits to quitting/i },
+        { titleText: /Benefits from quitting\?/i },
         { titleText: /^beneftis(\?|.)?$/i },
     ];
 
@@ -3301,6 +3360,7 @@
         { titleText: /what website blocker/i },
         { titleText: /what programs do you use to block porn/i },
         { titleText: /block porn site/i },
+        { titleText: /need a porn (.*)? blocker/i },
         { titleText: /Website-blocking software/i },
     ];
 
