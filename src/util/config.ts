@@ -22,19 +22,33 @@ export enum ForumType {
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
 export const R_NOFAP_USERNAME = 'TheWeeb8000';
-export const R_NOFAP_TIMESTAMP = '2 hours ago';
+export const R_NOFAP_TIMESTAMP = '3 hours ago';
+export const R_NOFAP_START_DATE = ''; // todo, all this shit. 
+
 export const R_PORN_FREE_USERNAME = 'bonfire321';
 export const R_PORN_FREE_TIMESTAMP = '1 hour ago';
+export const R_PORN_FREE_START_DATE = '';
+
 export const R_PORN_ADDICTION_USERNAME = 'YourFriendlyShiba';
-export const R_PORN_ADDICTION_TIMESTAMP = '1 hour ago';
+export const R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+export const R_PORN_ADDICTION_START_DATE = '';
+
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
+export const R_NOFAP_CHRISTIANS_START_DATE = '';
+
 export const R_NOFAP_TEENS_USERNAME = '';
 export const R_NOFAP_TEENS_TIMESTAMP = 'NaN days ago';
+export const R_NOFAP_TEENS_START_DATE = '';
+
 export const R_SEMEN_RETENTION_USERNAME = '';
 export const R_SEMEN_RETENTION_TIMESTAMP = 'NaN days ago';
+export const R_SEMEN_RETENTION_START_DATE = '';
+
 export const R_MUSLIM_NOFAP_USERNAME = '';
 export const R_MUSLIM_NOFAP_TIMESTAMP = 'NaN days ago';
+export const R_MUSLIM_NOFAP_START_DATE = '';
+
 
 export const TIMEFRAME = 'NA';
 // export const TIMEFRAME = '1 hour ago';

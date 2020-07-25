@@ -52,6 +52,8 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
 
   // JOINED / NEW
   { titleText: /just joined (nofap|no fap|no-fap)/i },
+  { titleText: /just joined (nofap|no fap|no-fap)/i },
+  // I just joined NoFap today
   { titleText: /new here/i },
   { titleText: /^(I'm|im) new/i },
   { titleText: /New to (NoFap|no fap|no-fap)/i },

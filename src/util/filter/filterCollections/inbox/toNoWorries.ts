@@ -15,27 +15,23 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /shoot me a link to the website/i },
 
   // CHECK
-  { replyText: /(check|read| get |see|visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
+  { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
   { replyText: /(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
   { replyText: /I’ll check the link if you have it/i },
 
   // SEND
-  { replyText: /(sent|send) me the (site|link|web|guide|content|page)/i },
-  { replyText: /pass me your website/i },
-  { replyText: /send website link/i },
-  { replyText: /send that my way/i },
-  { replyText: /send me your page/i },
   { replyText: /send over the link/i },
-  { replyText: /send my way/i },
   { replyText: /(send it|do share)/i },
   { replyText: /go ahead and send/i },
   { replyText: /share ?(me)? the/i },
   { replyText: /give (ur|your) (site|link|web|guide|content|page) a visit/i },
   { replyText: /hit me (up|with)/i },
   { replyText: /please pass on (the|that) website info/i },
-  { replyText: /send me your website/i },
-  { replyText: /send me this website/i },
+  { replyText: /send me (your|this) (page|website)/i },
+  { replyText: /(sent|send|pass) me (your|the) (site|link|web|guide|content|page)/i },
   { replyText: /send link to website/i },
+  { replyText: /send ?(that)? my way/i },
+  { replyText: /send website link/i },
 
   // PASSIVE ASK
   { replyText: /May I know (your|the) website/i },

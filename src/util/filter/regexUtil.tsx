@@ -14,7 +14,8 @@ export enum RegexFilterLogic {
 };
 
 type RegexFiltersOptions = {
-  logic: RegexFilterLogic;
+  logic?: RegexFilterLogic;
+  both?: boolean;
 }
 
 export type RegexFilters = {
@@ -51,6 +52,22 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 
         if (acc.allFound) {
           if (keyString === 'titleText') {
+            // What this does is that it uses titleText as both titleText and messageText
+            if (regexFilters?.options?.both) {
+              let matchObject = {} as RegexFiltersMatch;
+              const matchText = textObject.titleText?.match(regex);
+              if (matchText) {
+                matchObject.titleTextMatch = matchText[0];
+              }
+
+              const matchMessage = textObject.messageText?.match(regex);
+              if (matchMessage) {
+                matchObject.messageTextMatch = matchMessage[0]
+              }
+
+              return { matchObject: { ...acc.matchObject, ...matchObject }, allFound: true  }
+            }
+
             const match = textObject.titleText?.match(regex);
             if (match) {
               return { matchObject: { ...acc.matchObject, titleTextMatch: match[0] }, allFound: true  }
@@ -82,14 +99,18 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
         return { ...acc, allFound: false };
       }, { matchObject: {}, allFound: true } as { matchObject: RegexFiltersMatch, allFound: boolean });
 
-      // TODO THIS IS WRONG
+      // TODO: This technically did not help achieve what I wanted.
+      // What I want is to be able to use titleText for both message and title, without having to define it twice. That was the purpose of this.
       if (regexFilters?.options?.logic === RegexFilterLogic.AND) {
         if (Object.keys(matchObject).length === regexKeys.length) {
           return { matchArray: [ matchObject ], matchFound: true };
         }
       }
 
-      if (regexFilters?.options?.logic === RegexFilterLogic.OR) {
+      if (
+        regexFilters?.options?.logic === RegexFilterLogic.OR
+        || regexFilters?.options?.both
+      ) {
         if (Object.keys(matchObject).length > 0) {
           return { matchArray: [ matchObject ], matchFound: true };
         }
@@ -109,12 +130,11 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 };
 
 // const titleText = 'hello'
-// const text = 'hello text thing'
+// const text = 'text thing'
 
 // const result = matchRegex([{
 //   titleText: /hello/,
-//   messageText: /fwtawft/,
-//   options: { logic: RegexFilterLogic.AND }
+//   options: { both: true }
 // },
 // ], {
 //   titleText: 'hello',
@@ -122,6 +142,7 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 // });
 
 // result
+
 
 export const highlightSyntax = (relevantText: string | undefined, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
   if (relevantText) {
