@@ -212,6 +212,7 @@
         { replyText: /send that my way/i },
         { replyText: /send me your page/i },
         { replyText: /send over the link/i },
+        { replyText: /send my way/i },
         { replyText: /(send it|do share)/i },
         { replyText: /go ahead and send/i },
         { replyText: /share ?(me)? the/i },
@@ -2405,50 +2406,80 @@
     };
 
     var createVNode$1 = createVNode;
-    // THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
+    var RegexFilterLogic;
+    (function (RegexFilterLogic) {
+        RegexFilterLogic["AND"] = "AND";
+        RegexFilterLogic["OR"] = "OR";
+    })(RegexFilterLogic || (RegexFilterLogic = {}));
     var matchRegex = function (regexArray, textObject) {
-        var matchArray = regexArray.reduce(function (acc, RegexFilters) {
+        var matchArray = regexArray.reduce(function (acc, regexFilters) {
+            var _a, _b;
             if (!acc.matchFound) {
-                var regexKeys = Object.keys(RegexFilters);
-                var _a = regexKeys.reduce(function (acc, keyString) {
+                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
+                var matchObject = regexKeys.reduce(function (acc, keyString) {
                     var _a, _b, _c, _d;
-                    var regex = RegexFilters[keyString];
+                    var regex = regexFilters[keyString];
                     if (acc.allFound) {
                         if (keyString === 'titleText') {
                             var match = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { titleTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'flairText') {
                             var match = (_b = textObject.flairText) === null || _b === void 0 ? void 0 : _b.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ flairTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { flairTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'messageText') {
                             var match = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { messageTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'replyText') {
                             var match = (_d = textObject.replyText) === null || _d === void 0 ? void 0 : _d.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ replyTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { replyTextMatch: match[0] }), allFound: true };
                             }
                         }
                     }
-                    return { matchArray: [], allFound: false };
-                }, { matchArray: [], allFound: true }), matchArray_1 = _a.matchArray, allFound = _a.allFound;
-                if (matchArray_1.length > 0) {
-                    return { matchArray: matchArray_1, matchFound: true };
+                    return __assign(__assign({}, acc), { allFound: false });
+                }, { matchObject: {}, allFound: true }).matchObject;
+                // TODO THIS IS WRONG
+                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
+                    if (Object.keys(matchObject).length === regexKeys.length) {
+                        return { matchArray: [matchObject], matchFound: true };
+                    }
+                }
+                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR) {
+                    if (Object.keys(matchObject).length > 0) {
+                        return { matchArray: [matchObject], matchFound: true };
+                    }
+                }
+                // default to AND
+                if (Object.keys(matchObject).length === regexKeys.length) {
+                    return { matchArray: [matchObject], matchFound: true };
                 }
             }
             return acc;
+            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
         }, { matchArray: [], matchFound: false }).matchArray;
         return matchArray;
     };
+    // const titleText = 'hello'
+    // const text = 'hello text thing'
+    // const result = matchRegex([{
+    //   titleText: /hello/,
+    //   messageText: /fwtawft/,
+    //   options: { logic: RegexFilterLogic.AND }
+    // },
+    // ], {
+    //   titleText: 'hello',
+    //   messageText: 'hello text thing'
+    // });
+    // result
     var highlightSyntax = function (relevantText, messageMatch, isReact) {
         if (relevantText) {
             var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
@@ -2456,36 +2487,38 @@
             ], arr.slice(index)); };
             if (messageMatch.length > 0) {
                 var titleTextArray = messageMatch.reduce(function (acc, regexFilterResult) {
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
-                    }
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
-                    }
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
-                    }
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
+                    if (!acc.foundMatch) {
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
                     }
                     return acc;
-                }, { relevantText: relevantText, titleTextArray: [] }).titleTextArray;
+                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }).titleTextArray;
                 return titleTextArray;
             }
         }
@@ -2736,7 +2769,7 @@
                     if (replyBox && messageMatch) {
                         __spreadArrays(replyBox.children).forEach(function (ele) {
                             var text = ele.textContent;
-                            ele.innerHTML = highlightSyntax(text, messageMatch, false).join();
+                            ele.innerHTML = highlightSyntax(text, messageMatch, false).join(' ');
                         });
                     }
                     textArea = containerDiv.querySelector('textarea');

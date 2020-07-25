@@ -26,6 +26,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /send that my way/i },
   { replyText: /send me your page/i },
   { replyText: /send over the link/i },
+  { replyText: /send my way/i },
   { replyText: /(send it|do share)/i },
   { replyText: /go ahead and send/i },
   { replyText: /share ?(me)? the/i },

@@ -87,6 +87,7 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /(starting|started) days of (nofap|no fap|no-fap)/i },
 
   { messageText: /starting from today/i },
+  { messageText: /Starting today i am done/i },
 
   // STARTED
   { titleText: /started (nofap|no fap|no-fap) today/i },
@@ -128,14 +129,15 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /(NoFap|no fap|no-fap) from today/i },
   { titleText: /(gonna|going to) start today/i },
 
+  // <!-- MESSAGE - Don't see any improvements. -->
 
-    // decided to quit .* today
-    // Day 1
-    // Need Help + Flair New Never Fapper
-    // Need help + Flair motivate me
-    // Let's do this
-    // new here
+  // decided to quit .* today
+  // Day 1
+  // Need Help + Flair New Never Fapper
+  // Need help + Flair motivate me
+  // Let's do this
+  // new here
 
-    // toStartAdvice + flair
-    // New to NoFap + Day 1
+  // toStartAdvice + flair
+  // New to NoFap + Day 1
 ];

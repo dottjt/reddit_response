@@ -2312,6 +2312,12 @@
         UserForumType["Reddit"] = "Reddit";
     })(UserForumType || (UserForumType = {}));
 
+    var RegexFilterLogic;
+    (function (RegexFilterLogic) {
+        RegexFilterLogic["AND"] = "AND";
+        RegexFilterLogic["OR"] = "OR";
+    })(RegexFilterLogic || (RegexFilterLogic = {}));
+
     var increaseDelayTimer = function () {
         var delayTimer = window.localStorage.getItem('delayTimer');
         var delayTimerNumber = parseInt(delayTimer) + 26000;

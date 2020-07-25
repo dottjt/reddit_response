@@ -11,8 +11,11 @@ export const toWetDreamAdviceRegexArray: RegexFilters[] = [
   { titleText: /Do wet dreams count as relapsing/i },
   { titleText: /Lose benefits after a wet dream?/i },
   { titleText: /Wet dreams (wont|won't) stop/i },
+  { titleText: /Wet dreams every \d+/i },
 
   // TITLE + MESSAGE
   { titleText: /wet dream/i, messageText: /any solutions\?/ },
   { titleText: /wet dream/i, messageText: /ways to avoid it\?/ },
+  { titleText: /wet dream/i, messageText: /Is this normal\?/ },
+  { titleText: /wet dream/i, messageText: /Does it reset progress\?/ },
 ];

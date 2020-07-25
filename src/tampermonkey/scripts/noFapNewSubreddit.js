@@ -2324,50 +2324,81 @@
     })(UserForumType || (UserForumType = {}));
 
     var createVNode$1 = createVNode;
+    var RegexFilterLogic;
+    (function (RegexFilterLogic) {
+        RegexFilterLogic["AND"] = "AND";
+        RegexFilterLogic["OR"] = "OR";
+    })(RegexFilterLogic || (RegexFilterLogic = {}));
     // THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
     var matchRegex = function (regexArray, textObject) {
-        var matchArray = regexArray.reduce(function (acc, RegexFilters) {
+        var matchArray = regexArray.reduce(function (acc, regexFilters) {
+            var _a, _b;
             if (!acc.matchFound) {
-                var regexKeys = Object.keys(RegexFilters);
-                var _a = regexKeys.reduce(function (acc, keyString) {
+                var regexKeys = Object.keys(regexFilters);
+                var _c = regexKeys.reduce(function (acc, keyString) {
                     var _a, _b, _c, _d;
-                    var regex = RegexFilters[keyString];
+                    var regex = regexFilters[keyString];
                     if (acc.allFound) {
                         if (keyString === 'titleText') {
                             var match = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { titleTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'flairText') {
                             var match = (_b = textObject.flairText) === null || _b === void 0 ? void 0 : _b.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ flairTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { flairTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'messageText') {
                             var match = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { messageTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'replyText') {
                             var match = (_d = textObject.replyText) === null || _d === void 0 ? void 0 : _d.match(regex);
                             if (match) {
-                                return { matchArray: acc.matchArray.concat({ replyTextMatch: match[0] }), allFound: true };
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { replyTextMatch: match[0] }), allFound: true };
                             }
                         }
                     }
-                    return { matchArray: [], allFound: false };
-                }, { matchArray: [], allFound: true }), matchArray_1 = _a.matchArray, allFound = _a.allFound;
-                if (matchArray_1.length > 0) {
-                    return { matchArray: matchArray_1, matchFound: true };
+                    return { matchObject: {}, allFound: false };
+                }, { matchObject: {}, allFound: true }), matchObject = _c.matchObject, allFound = _c.allFound;
+                // TODO if I want to be able to do an OR statement, then I would change this to length > 0.
+                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
+                    if (Object.keys(matchObject).length === regexKeys.length) {
+                        return { matchArray: [matchObject], matchFound: true };
+                    }
+                }
+                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR) {
+                    if (Object.keys(matchObject).length > 0) {
+                        return { matchArray: [matchObject], matchFound: true };
+                    }
+                }
+                if (Object.keys(matchObject).length === regexKeys.length) {
+                    return { matchArray: [matchObject], matchFound: true };
                 }
             }
             return acc;
+            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
         }, { matchArray: [], matchFound: false }).matchArray;
         return matchArray;
     };
+    // const titleText = 'hello'
+    // const text = 'hello text thing'
+    // const result = matchRegex([{
+    //   titleText: /hello/,
+    //   messageText: /text thing/,
+    // },
+    // {
+    //   titleText: /ello/,
+    // }
+    // ], {
+    //   titleText: 'hello',
+    //   messageText: 'hello text thing'
+    // });
     var highlightSyntax = function (relevantText, messageMatch, isReact) {
         if (relevantText) {
             var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
@@ -2375,36 +2406,38 @@
             ], arr.slice(index)); };
             if (messageMatch.length > 0) {
                 var titleTextArray = messageMatch.reduce(function (acc, regexFilterResult) {
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
-                    }
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
-                    }
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
-                    }
-                    if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
-                        var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
-                        var newArray = isReact
-                            ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
-                            : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
-                        return __assign(__assign({}, acc), { titleTextArray: newArray });
+                    if (!acc.foundMatch) {
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+                            var newArray = isReact
+                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
                     }
                     return acc;
-                }, { relevantText: relevantText, titleTextArray: [] }).titleTextArray;
+                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }).titleTextArray;
                 return titleTextArray;
             }
         }
@@ -2761,11 +2794,11 @@
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
     var R_NOFAP_USERNAME = 'TheWeeb8000';
-    var R_NOFAP_TIMESTAMP = '1 hour ago';
-    var R_PORN_FREE_USERNAME = '12101921';
-    var R_PORN_FREE_TIMESTAMP = '25 minutes ago';
-    var R_PORN_ADDICTION_USERNAME = 'pxl4xl';
-    var R_PORN_ADDICTION_TIMESTAMP = '7 hours ago';
+    var R_NOFAP_TIMESTAMP = '2 hours ago';
+    var R_PORN_FREE_USERNAME = 'bonfire321';
+    var R_PORN_FREE_TIMESTAMP = '1 hour ago';
+    var R_PORN_ADDICTION_USERNAME = 'YourFriendlyShiba';
+    var R_PORN_ADDICTION_TIMESTAMP = '1 hour ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3124,6 +3157,7 @@
         { titleText: /(starting|started) .* (streak|first|run)/i },
         { titleText: /(starting|started) days of (nofap|no fap|no-fap)/i },
         { messageText: /starting from today/i },
+        { messageText: /Starting today i am done/i },
         // STARTED
         { titleText: /started (nofap|no fap|no-fap) today/i },
         { titleText: /(just) (begun|started)/i },
@@ -3287,9 +3321,12 @@
         { titleText: /Do wet dreams count as relapsing/i },
         { titleText: /Lose benefits after a wet dream?/i },
         { titleText: /Wet dreams (wont|won't) stop/i },
+        { titleText: /Wet dreams every \d+/i },
         // TITLE + MESSAGE
         { titleText: /wet dream/i, messageText: /any solutions\?/ },
         { titleText: /wet dream/i, messageText: /ways to avoid it\?/ },
+        { titleText: /wet dream/i, messageText: /Is this normal\?/ },
+        { titleText: /wet dream/i, messageText: /Does it reset progress\?/ },
     ];
 
     var toStruggleAdviceRegexArray = [

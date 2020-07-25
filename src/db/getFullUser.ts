@@ -100,12 +100,6 @@ const retrieveAbsoluteLastMessage = (lastSentMessages: Message[] | undefined, la
       colour: 'red'
     }
   }
-  if (lastSentMessages?.find(message => message.type.includes('middle')) && lastReceivedMessages?.find(message => message.type.includes('start'))) {
-    return {
-      type: 'AWAIT MIDDLE RESPONSE',
-      colour: 'orange'
-    }
-  }
 
   if (lastSentMessages?.find(message => message.type.includes('middle')) && lastReceivedMessages?.find(message => message.type.includes('middle'))) {
     return {
@@ -114,11 +108,16 @@ const retrieveAbsoluteLastMessage = (lastSentMessages: Message[] | undefined, la
     }
   }
 
+  if (lastSentMessages?.find(message => message.type.includes('middle')) && lastReceivedMessages?.find(message => message.type.includes('start'))) {
+    return {
+      type: 'AWAIT MIDDLE RESPONSE',
+      colour: 'orange'
+    }
+  }
+
   if (
-    (
-      lastSentMessages?.find(message => message.type.includes('start')) && lastReceivedMessages?.find(message => message.type.includes('start')) ||
-      lastSentMessages?.find(message => message.type.includes('follow')) && lastReceivedMessages?.find(message => message.type.includes('follow'))
-    )
+    lastSentMessages?.find(message => message.type.includes('start')) && lastReceivedMessages?.find(message => message.type.includes('start')) ||
+    lastSentMessages?.find(message => message.type.includes('follow')) && lastReceivedMessages?.find(message => message.type.includes('follow'))
   ) {
     return {
       type: 'SEND MIDDLE',

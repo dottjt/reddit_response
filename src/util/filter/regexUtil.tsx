@@ -8,12 +8,23 @@ export type RegexTextObject = {
   replyText?: string;
 }
 
+export enum RegexFilterLogic {
+  AND='AND',
+  OR='OR'
+};
+
+type RegexFiltersOptions = {
+  logic: RegexFilterLogic;
+}
+
 export type RegexFilters = {
   titleText?: RegExp;
   flairText?: RegExp;
   messageText?: RegExp;
 
   replyText?: RegExp;
+
+  options?: RegexFiltersOptions;
 }
 
 export type RegexFiltersMatch = {
@@ -24,67 +35,93 @@ export type RegexFiltersMatch = {
   replyTextMatch?: string;
 }
 
-export type InboxSub = {
-  message?: RegExp;
-}
-
-export type RegexMatch = {
+export type ReduceRegexMatch = {
   matchArray: RegexFiltersMatch[];
   matchFound: boolean;
 }
 
-// THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
 export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObject): RegexFiltersMatch[] => {
-  const { matchArray } = regexArray.reduce((acc: RegexMatch, RegexFilters: RegexFilters) => {
+  const { matchArray } = regexArray.reduce((acc: ReduceRegexMatch, regexFilters: RegexFilters) => {
 
     if (!acc.matchFound) {
-      const regexKeys = Object.keys(RegexFilters);
+      const regexKeys = Object.keys(regexFilters).filter(item => item !== 'options');
 
-      const { matchArray, allFound } = regexKeys.reduce((acc, keyString) => {
-        const regex = RegexFilters[keyString];
+      const { matchObject } = regexKeys.reduce((acc, keyString) => {
+        const regex = regexFilters[keyString];
 
         if (acc.allFound) {
           if (keyString === 'titleText') {
             const match = textObject.titleText?.match(regex);
             if (match) {
-              return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true  }
+              return { matchObject: { ...acc.matchObject, titleTextMatch: match[0] }, allFound: true  }
             }
           }
 
           if (keyString === 'flairText') {
             const match = textObject.flairText?.match(regex);
             if (match) {
-              return { matchArray: acc.matchArray.concat({ flairTextMatch: match[0] }), allFound: true  }
+              return { matchObject: { ...acc.matchObject, flairTextMatch: match[0] }, allFound: true  }
             }
           }
 
           if (keyString === 'messageText') {
             const match = textObject.messageText?.match(regex);
             if (match) {
-              return { matchArray: acc.matchArray.concat({ titleTextMatch: match[0] }), allFound: true  }
+              return { matchObject: { ...acc.matchObject, messageTextMatch: match[0] }, allFound: true  }
             }
           }
 
           if (keyString === 'replyText') {
             const match = textObject.replyText?.match(regex);
             if (match) {
-              return { matchArray: acc.matchArray.concat({ replyTextMatch: match[0] }), allFound: true  }
+              return { matchObject: { ...acc.matchObject, replyTextMatch: match[0] }, allFound: true  }
             }
           }
         }
 
-        return { matchArray: [], allFound: false };
-      }, { matchArray: [], allFound: true  } as { matchArray: RegexFiltersMatch[], allFound: boolean });
+        return { ...acc, allFound: false };
+      }, { matchObject: {}, allFound: true } as { matchObject: RegexFiltersMatch, allFound: boolean });
 
-      if (matchArray.length > 0) {
-        return { matchArray, matchFound: true };
+      // TODO THIS IS WRONG
+      if (regexFilters?.options?.logic === RegexFilterLogic.AND) {
+        if (Object.keys(matchObject).length === regexKeys.length) {
+          return { matchArray: [ matchObject ], matchFound: true };
+        }
+      }
+
+      if (regexFilters?.options?.logic === RegexFilterLogic.OR) {
+        if (Object.keys(matchObject).length > 0) {
+          return { matchArray: [ matchObject ], matchFound: true };
+        }
+      }
+
+      // default to AND
+      if (Object.keys(matchObject).length === regexKeys.length) {
+        return { matchArray: [ matchObject ], matchFound: true };
       }
     }
     return acc;
-  }, { matchArray: [], matchFound: false } as RegexMatch);
+
+    // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
+  }, { matchArray: [], matchFound: false } as ReduceRegexMatch);
 
   return matchArray;
 };
+
+// const titleText = 'hello'
+// const text = 'hello text thing'
+
+// const result = matchRegex([{
+//   titleText: /hello/,
+//   messageText: /fwtawft/,
+//   options: { logic: RegexFilterLogic.AND }
+// },
+// ], {
+//   titleText: 'hello',
+//   messageText: 'hello text thing'
+// });
+
+// result
 
 export const highlightSyntax = (relevantText: string | undefined, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
   if (relevantText) {
@@ -96,42 +133,47 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
 
     if (messageMatch.length > 0) {
       const { titleTextArray } = messageMatch.reduce((acc, regexFilterResult) => {
-        if (regexFilterResult?.titleTextMatch) {
-          const splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
-          const newArray = isReact
-            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>)
-            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.titleTextMatch}</span>`);
+        if (!acc.foundMatch) {
 
-          return { ...acc, titleTextArray: newArray };
-        }
-        if (regexFilterResult?.flairTextMatch) {
-          const splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
-          const newArray = isReact
-            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.flairTextMatch}</span>)
-            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.flairTextMatch}</span>`);
+          if (regexFilterResult?.titleTextMatch) {
+            const splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+            const newArray = isReact
+              ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>)
+              : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.titleTextMatch}</span>`);
 
-          return { ...acc, titleTextArray: newArray };
-        }
-        if (regexFilterResult?.messageTextMatch) {
-          const splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
-          const newArray = isReact
-            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch}</span>)
-            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.messageTextMatch}</span>`);
+            return { ...acc, titleTextArray: newArray, foundMatch: true };
+          }
 
-          return { ...acc, titleTextArray: newArray };
-        }
+          if (regexFilterResult?.flairTextMatch) {
+            const splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+            const newArray = isReact
+              ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.flairTextMatch}</span>)
+              : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.flairTextMatch}</span>`);
 
-        if (regexFilterResult?.replyTextMatch) {
-          const splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
-          const newArray = isReact
-            ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.replyTextMatch}</span>)
-            : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.replyTextMatch}</span>`);
+            return { ...acc, titleTextArray: newArray, foundMatch: true };
+          }
 
-          return { ...acc, titleTextArray: newArray };
+          if (regexFilterResult?.messageTextMatch) {
+            const splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+            const newArray = isReact
+              ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch}</span>)
+              : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.messageTextMatch}</span>`);
+
+            return { ...acc, titleTextArray: newArray, foundMatch: true };
+          }
+
+          if (regexFilterResult?.replyTextMatch) {
+            const splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+            const newArray = isReact
+              ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.replyTextMatch}</span>)
+              : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.replyTextMatch}</span>`);
+
+            return { ...acc, titleTextArray: newArray, foundMatch: true };
+          }
         }
 
         return acc;
-      }, { relevantText, titleTextArray: [] } as { relevantText: string, titleTextArray: any[] });
+      }, { relevantText, titleTextArray: [], foundMatch: false } as { relevantText: string, titleTextArray: any[], foundMatch: boolean });
 
       return titleTextArray;
     }

@@ -74,7 +74,7 @@ export const populateMessageAndSend = async (
     [...replyBox.children as any].forEach(ele => {
       const text = ele.textContent;
 
-      ele.innerHTML = highlightSyntax(text, messageMatch, false).join();
+      ele.innerHTML = highlightSyntax(text, messageMatch, false).join(' ');
     });
   }
 

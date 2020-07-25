@@ -150,11 +150,11 @@ export const createPrelimLink = ({
         onclick={() => openNewLink(prelimUrl, SendMessageType.NA)}
       >
         <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
-        {messageMatch.length > 0 ? (
-          highlightSyntax(titleText, messageMatch, true).map(element => <span>{element}</span>)
-        ) : (
-          <span>{titleText}</span>
-        )}
+          {messageMatch.length > 0 ? (
+            highlightSyntax(titleText, messageMatch, true).map(element => <span>{element}</span>)
+          ) : (
+            <span>{titleText}</span>
+          )}
         <p style={{ 'margin-top': '0.5rem' }}>
           {messageMatch.length > 0 ? (
             highlightSyntax(flairText, messageMatch, true).map(element => <span>{element}</span>)
