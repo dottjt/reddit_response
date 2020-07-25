@@ -2329,54 +2329,67 @@
         RegexFilterLogic["AND"] = "AND";
         RegexFilterLogic["OR"] = "OR";
     })(RegexFilterLogic || (RegexFilterLogic = {}));
-    // THIS BASICALLY MATCHES IN AN 'AND' WAY. It needs to have all the elements in order to succeed.
     var matchRegex = function (regexArray, textObject) {
         var matchArray = regexArray.reduce(function (acc, regexFilters) {
-            var _a, _b;
+            var _a, _b, _c;
             if (!acc.matchFound) {
-                var regexKeys = Object.keys(regexFilters);
-                var _c = regexKeys.reduce(function (acc, keyString) {
-                    var _a, _b, _c, _d;
+                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
+                var matchObject = regexKeys.reduce(function (acc, keyString) {
+                    var _a, _b, _c, _d, _e, _f, _g;
                     var regex = regexFilters[keyString];
                     if (acc.allFound) {
                         if (keyString === 'titleText') {
-                            var match = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+                            // What this does is that it uses titleText as both titleText and messageText
+                            if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
+                                var matchObject_1 = {};
+                                var matchText = (_b = textObject.titleText) === null || _b === void 0 ? void 0 : _b.match(regex);
+                                if (matchText) {
+                                    matchObject_1.titleTextMatch = matchText[0];
+                                }
+                                var matchMessage = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
+                                if (matchMessage) {
+                                    matchObject_1.messageTextMatch = matchMessage[0];
+                                }
+                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
+                            }
+                            var match = (_d = textObject.titleText) === null || _d === void 0 ? void 0 : _d.match(regex);
                             if (match) {
                                 return { matchObject: __assign(__assign({}, acc.matchObject), { titleTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'flairText') {
-                            var match = (_b = textObject.flairText) === null || _b === void 0 ? void 0 : _b.match(regex);
+                            var match = (_e = textObject.flairText) === null || _e === void 0 ? void 0 : _e.match(regex);
                             if (match) {
                                 return { matchObject: __assign(__assign({}, acc.matchObject), { flairTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'messageText') {
-                            var match = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
+                            var match = (_f = textObject.messageText) === null || _f === void 0 ? void 0 : _f.match(regex);
                             if (match) {
                                 return { matchObject: __assign(__assign({}, acc.matchObject), { messageTextMatch: match[0] }), allFound: true };
                             }
                         }
                         if (keyString === 'replyText') {
-                            var match = (_d = textObject.replyText) === null || _d === void 0 ? void 0 : _d.match(regex);
+                            var match = (_g = textObject.replyText) === null || _g === void 0 ? void 0 : _g.match(regex);
                             if (match) {
                                 return { matchObject: __assign(__assign({}, acc.matchObject), { replyTextMatch: match[0] }), allFound: true };
                             }
                         }
                     }
-                    return { matchObject: {}, allFound: false };
-                }, { matchObject: {}, allFound: true }), matchObject = _c.matchObject, allFound = _c.allFound;
-                // TODO if I want to be able to do an OR statement, then I would change this to length > 0.
+                    return __assign(__assign({}, acc), { allFound: false });
+                }, { matchObject: {}, allFound: true }).matchObject;
                 if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
                     if (Object.keys(matchObject).length === regexKeys.length) {
                         return { matchArray: [matchObject], matchFound: true };
                     }
                 }
-                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR) {
+                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
+                    || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
                     if (Object.keys(matchObject).length > 0) {
                         return { matchArray: [matchObject], matchFound: true };
                     }
                 }
+                // default to AND
                 if (Object.keys(matchObject).length === regexKeys.length) {
                     return { matchArray: [matchObject], matchFound: true };
                 }
@@ -2387,19 +2400,24 @@
         return matchArray;
     };
     // const titleText = 'hello'
-    // const text = 'hello text thing'
+    // const text = 'text thing'
     // const result = matchRegex([{
     //   titleText: /hello/,
-    //   messageText: /text thing/,
+    //   options: { both: true }
     // },
-    // {
-    //   titleText: /ello/,
-    // }
     // ], {
     //   titleText: 'hello',
     //   messageText: 'hello text thing'
     // });
-    var highlightSyntax = function (relevantText, messageMatch, isReact) {
+    // result
+    var RelevantType;
+    (function (RelevantType) {
+        RelevantType["Title"] = "Title";
+        RelevantType["Message"] = "Message";
+        RelevantType["Flair"] = "Flair";
+        RelevantType["Reply"] = "Reply";
+    })(RelevantType || (RelevantType = {}));
+    var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
         if (relevantText) {
             var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
                 newItem
@@ -2407,28 +2425,28 @@
             if (messageMatch.length > 0) {
                 var titleTextArray = messageMatch.reduce(function (acc, regexFilterResult) {
                     if (!acc.foundMatch) {
-                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) {
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
                             var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
-                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) {
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
                             var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
-                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
                             var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
-                        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) {
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
                             var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
@@ -2443,6 +2461,7 @@
         }
         return [relevantText];
     };
+    var both = { options: { both: true } };
 
     var increaseDelayTimer = function () {
         var delayTimer = window.localStorage.getItem('delayTimer');
@@ -2766,7 +2785,7 @@
         var dbUser = _a.dbUser, titleText = _a.titleText, flairText = _a.flairText, aLinkHref = _a.aLinkHref, prelimUrl = _a.prelimUrl, index = _a.index, sendMessageType = _a.sendMessageType, prelimContainer = _a.prelimContainer, messageMatch = _a.messageMatch;
         var nodeContainer = document.createElement('div');
         nodeContainer.id = "r" + dbUser.username + "-" + index;
-        render(createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "span", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, titleText, 0)), createVNode$4(1, "p", null, messageMatch.length > 0 ? (highlightSyntax(flairText, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, flairText, 0)), 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
+        render(createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "span", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, titleText, 0)), createVNode$4(1, "p", null, messageMatch.length > 0 ? (highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, flairText, 0)), 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
         prelimContainer === null || prelimContainer === void 0 ? void 0 : prelimContainer.appendChild(nodeContainer);
     };
     var renderUserPanel = function (_a) {
@@ -2793,12 +2812,12 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'TheWeeb8000';
-    var R_NOFAP_TIMESTAMP = '2 hours ago';
+    var R_NOFAP_USERNAME = 'dadumn';
+    var R_NOFAP_TIMESTAMP = '1 hour ago';
     var R_PORN_FREE_USERNAME = 'bonfire321';
     var R_PORN_FREE_TIMESTAMP = '1 hour ago';
     var R_PORN_ADDICTION_USERNAME = 'YourFriendlyShiba';
-    var R_PORN_ADDICTION_TIMESTAMP = '1 hour ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2925,6 +2944,7 @@
         { titleText: /checking my day count/i },
         { titleText: /accountability post/i },
         { titleText: /next to (ur|your) (name|tag)/i },
+        { messageText: /get a tag with your streak/i },
         // LECTURE
         { titleText: /Nofap taught me/i },
         { titleText: /a piece of advice/i },
@@ -2940,10 +2960,6 @@
         { titleText: /found a method/i },
         { titleText: /the key to (everything|NoFap)/i },
         { titleText: /methods that you might like to/i },
-        // MOTIVATION
-        { titleText: /motivational thought/i },
-        { titleText: /do not relapse/i },
-        { titleText: /^keep going/i },
         // VICTORY
         { titleText: /overcame my worst urge/i },
         { titleText: /I am proud of myself/i },
@@ -2969,6 +2985,7 @@
         { titleText: /longest streak yet/i },
         { titleText: /(previous record|milestone)/i },
         { titleText: /small success/i },
+        { titleText: /a month of not fapping/i },
         { titleText: /finally made it to (day|week)/i },
         { titleText: /feels so .* good/i },
         { titleText: /reached day \d+ for the (first time|firsttime)/i },
@@ -2982,8 +2999,12 @@
         { titleText: /love you guys/i },
         { titleText: /(nofap|no fap) works/i },
         { titleText: /^Instead of watching porn/i },
+        { titleText: /(nofap|no fap) is changing my life/i },
         { titleText: /(its|It's) never too late/i },
         { titleText: /quote/i },
+        { titleText: /motivational thought/i },
+        { titleText: /do not relapse/i },
+        { titleText: /^keep going/i },
         // RATIONALISATIONS
         { titleText: /(down side|downside)/i },
         { titleText: /relapsed intentionally/i },
@@ -3060,30 +3081,30 @@
 
     var toRelapseAdviceRegexArray = [
         { flairText: /Relapse Report/i },
-        { titleText: /failed first attempt/i },
-        { titleText: /relapse report/i },
-        { titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
-        { titleText: /(relapse|relapsed) (after|on day|again)/i },
-        { titleText: /(failed|lost) (at|on) day/i },
-        { titleText: /relapsed hard/i },
-        { titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i },
-        { titleText: /^relapsed\.?$/i },
-        { titleText: /^relapse\.?$/i },
-        { titleText: /^relapsed (last night|today)/i },
-        { titleText: /^failed\.?$/i },
-        { titleText: /relapsing after a/i },
-        { titleText: /relapsed \d+ times today/i },
-        { titleText: /any tips after a relapse/i },
-        // relapsed (will have to look into this)
-        { titleText: /(Relapsed|relapse) at \d+ days/i },
-        { titleText: /(Relapsed|relapse) at day \d+/i },
-        { titleText: /I slipped/i },
-        { titleText: /^Failed after/i },
-        { titleText: /made it .* and relapsed/i },
-        { titleText: /my first fail/i },
-        { titleText: /I had a relapse/i },
-        { titleText: /.* made me relapse$/i },
-        { titleText: /back to day (one|1)/i },
+        __assign(__assign({}, both), { titleText: /failed first attempt/i }),
+        __assign(__assign({}, both), { titleText: /relapse report/i }),
+        __assign(__assign({}, both), { titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i }),
+        __assign(__assign({}, both), { titleText: /(failed|lost) (at|on) day/i }),
+        __assign(__assign({}, both), { titleText: /relapsed hard/i }),
+        __assign(__assign({}, both), { titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i }),
+        __assign(__assign({}, both), { titleText: /^relapsed\.?$/i }),
+        __assign(__assign({}, both), { titleText: /^relapse\.?$/i }),
+        __assign(__assign({}, both), { titleText: /^relapsed (last night|today)/i }),
+        __assign(__assign({}, both), { titleText: /^failed\.?$/i }),
+        __assign(__assign({}, both), { titleText: /relapsing after a/i }),
+        __assign(__assign({}, both), { titleText: /relapsed \d+ times today/i }),
+        __assign(__assign({}, both), { titleText: /any tips after a relapse/i }),
+        __assign(__assign({}, both), { titleText: /(Relapsed|relapse) at \d+ days/i }),
+        __assign(__assign({}, both), { titleText: /(Relapsed|relapse) at day \d+/i }),
+        __assign(__assign({}, both), { titleText: /I slipped/i }),
+        __assign(__assign({}, both), { titleText: /^Failed after/i }),
+        __assign(__assign({}, both), { titleText: /made it .* and relapsed/i }),
+        __assign(__assign({}, both), { titleText: /my first fail/i }),
+        __assign(__assign({}, both), { titleText: /I had a relapse/i }),
+        __assign(__assign({}, both), { titleText: /.* made me relapse$/i }),
+        __assign(__assign({}, both), { titleText: /back to day (one|1)/i }),
+        { messageText: /Yesterday I relapsed again/i },
+        __assign(__assign({}, both), { titleText: /(relapse|relapsed) (after|on day|again)/i }),
     ];
 
     var toStartAdviceRegexArray = [
@@ -3128,6 +3149,8 @@
         { messageText: /Any advice on how to start/i },
         // JOINED / NEW
         { titleText: /just joined (nofap|no fap|no-fap)/i },
+        { titleText: /just joined (nofap|no fap|no-fap)/i },
+        // I just joined NoFap today
         { titleText: /new here/i },
         { titleText: /^(I'm|im) new/i },
         { titleText: /New to (NoFap|no fap|no-fap)/i },
@@ -3223,6 +3246,7 @@
         { titleText: /I don't know what to do/i },
         // MOTIVATION
         { titleText: /I need some serious motivation/i },
+        { titleText: /please I need motivation/i },
         // TIPS
         { titleText: /^tips\?$/i },
         { titleText: /.* any tips\?$/i },
@@ -3384,6 +3408,7 @@
         { titleText: /anyone find the urges/i },
         { titleText: /help (w|with) persistent urge/i },
         { messageText: /Any tips on how to handle these?/i },
+        { messageText: /help make me stop letting my urges/i },
     ];
 
     var toBenefitsAdviceRegexArray = [
@@ -3391,6 +3416,7 @@
         { titleText: /what are the benefits to quitting/i },
         { titleText: /Benefits from quitting\?/i },
         { titleText: /^beneftis(\?|.)?$/i },
+        { titleText: /^(NoFap|no fap|no-fap) benefits(\?|.)?$/i },
     ];
 
     var toPornBlockerAdviceRegexArray = [

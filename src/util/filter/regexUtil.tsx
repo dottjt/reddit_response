@@ -127,6 +127,7 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
   return matchArray;
 };
 
+
 // const titleText = 'hello'
 // const text = 'text thing'
 

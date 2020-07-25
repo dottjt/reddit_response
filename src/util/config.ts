@@ -22,7 +22,7 @@ export enum ForumType {
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
 export const R_NOFAP_USERNAME = 'dadumn';
-export const R_NOFAP_TIMESTAMP = '1 minute ago';
+export const R_NOFAP_TIMESTAMP = '1 hour ago';
 export const R_NOFAP_START_DATE = ''; // todo, all this shit. 
 
 export const R_PORN_FREE_USERNAME = 'bonfire321';
@@ -30,7 +30,7 @@ export const R_PORN_FREE_TIMESTAMP = '1 hour ago';
 export const R_PORN_FREE_START_DATE = '';
 
 export const R_PORN_ADDICTION_USERNAME = 'YourFriendlyShiba';
-export const R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+export const R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
 export const R_PORN_ADDICTION_START_DATE = '';
 
 export const R_NOFAP_CHRISTIANS_USERNAME = '';

@@ -2317,6 +2317,24 @@
         RegexFilterLogic["AND"] = "AND";
         RegexFilterLogic["OR"] = "OR";
     })(RegexFilterLogic || (RegexFilterLogic = {}));
+    // const titleText = 'hello'
+    // const text = 'text thing'
+    // const result = matchRegex([{
+    //   titleText: /hello/,
+    //   options: { both: true }
+    // },
+    // ], {
+    //   titleText: 'hello',
+    //   messageText: 'hello text thing'
+    // });
+    // result
+    var RelevantType;
+    (function (RelevantType) {
+        RelevantType["Title"] = "Title";
+        RelevantType["Message"] = "Message";
+        RelevantType["Flair"] = "Flair";
+        RelevantType["Reply"] = "Reply";
+    })(RelevantType || (RelevantType = {}));
 
     var increaseDelayTimer = function () {
         var delayTimer = window.localStorage.getItem('delayTimer');
