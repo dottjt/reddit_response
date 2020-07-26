@@ -16,6 +16,7 @@ export const toStartAgainRegexArray: RegexFilters[] = [
   { ...both, titleText: /^starting ?(nofap|no fap|no-fap|this|it)? again(\.)?$/i, },
   { ...both, titleText: /doing (nofap|no fap|no-fap) again/i, },
   { ...both, titleText: /(Let's|let’s|lets) start ?(nofap|no fap|no-fap|this)? again/i, },
+  { ...both, titleText: /Back at it again/i, },
 
   // RETURNING
   { ...both, titleText: /back on my ?(nofap|no fap|no-fap)? journey/i, },

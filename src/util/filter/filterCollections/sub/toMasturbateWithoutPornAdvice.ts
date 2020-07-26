@@ -13,7 +13,12 @@ export const toMasturbateWithoutPornAdviceRegexArray: RegexFilters[] = [
 
   { ...both, titleText: /Is it ok to masturbate without watching porn/i },
   { ...both, titleText: /is it better to fap without porn/i },
-
+  { ...both, titleText: /Do you ?(guys)? still masturbate?/i },
+  { ...both, titleText: /Is it ok to only fap once a/i },
+  { ...both, titleText: /is masturbating to thoughts as bad as/i },
+  { ...both, titleText: /confused on weather masturbating to your own thoughts is as bad/i },
+  { ...both, titleText: /Is it ok to (fap|masturbate) without porn/i },
+  { ...both, titleText: /Is masturbation ok\?/i },
 
   // OPINIONS
   { ...both, titleText: /opinions towards fapping without porn/i },

@@ -64,7 +64,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
             return;
           }
 
-          if (prelimUrl) {
+          if (prelimUrl && messageMatch) {
             tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
 
             // TODO pass in message text.

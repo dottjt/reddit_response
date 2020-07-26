@@ -130,13 +130,16 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   // how do you feel long term (after 1 month/week etc.)
   // does peeking count as relapse?
 
+
+  // Does the guilt go away (yes, onnce you develop control over your mind)
+
   // TO REMOVE
   const toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText)
   const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
 
-  if (flairText !== 'New To NoFap') {
+  if (flairText !== 'New to NoFap') {
     if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-      console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
+      console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText} - Match: ${toRemoveInitialMatch && toRemoveInitialMatch[0]}`);
       return deleteImmediately;
     }
   }
@@ -182,7 +185,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
 
   // FRESH USER
   if (compiledUser.userType === UserType.FreshUser) {
-    
+
     // STARTED MESSAGES
     const toStartMatch = matchRegex(toStartAdviceRegexArray, regexTextObject);
     if (!titleText.includes('again') && toStartMatch.length > 0) {

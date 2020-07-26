@@ -1,4 +1,4 @@
-import { RegexFilters } from '../../regexUtil';
+import { RegexFilters, both } from '../../regexUtil';
 
 // TODO fix this up
 
@@ -22,13 +22,15 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /(I’m|I'm|im|I am) done with this ?(.*) feeling/i },
   { titleText: /stopping for good/i },
   { titleText: /(it’s|it's|its|it is) time to change/i },
-  { titleText: /(Let's|let’s|lets) (start|do this)/i },
-  { titleText: /try to do this (NoFap|no fap|no-fap)/i },
-  { titleText: /(masturbated|watched porn|fapped) for the last time today/i },
   { titleText: /this ends now/i },
+  { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
-  { titleText: /start of something amazing/i },
-  { titleText: /going to (stop|quit) (.*)? today/i, },
+
+  { ...both, titleText: /try to do this (NoFap|no fap|no-fap)/i },
+  { ...both, titleText: /(masturbated|watched porn|fapped) for the last time today/i },
+  { ...both, titleText: /start of something amazing/i },
+  { ...both, titleText: /going to (stop|quit) (.*)? today/i, },
+  { ...both, titleText: /I have started my journey/i },
 
   // ADVICE
   { titleText: /any tips on getting started/i },
@@ -96,20 +98,20 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { messageText: /(I’m|I'm|im|i am) starting today/i },
 
   // DAY ZERO
-  { titleText: /day (0|zero)/i },
+  { ...both, titleText: /day (0|zero)/i },
 
   // DAY ONE
-  { titleText: /day (one|1) of /i },
-  { titleText: /day (one|1) without fapping/i },
-  { titleText: /this is day (one|1)/i },
-  { titleText: /day (one|1) Started/i },
-  { titleText: /day (one|1) (Let's|let’s|lets) go/i },
-  { titleText: /^day 1(\.|\!)?$/i },
-  { titleText: /officially day (1|one)/i },
-  { titleText: /today is day (1|one)/i },
-  { titleText: /^day (one|1) of (no fap|reboot|re boot)/i },
-  { titleText: /^day (one|1) no/i },
-  { titleText: /^day (one|1)$/i }, // could be relapse
+  { ...both, titleText: /day (one|1) of /i },
+  { ...both, titleText: /day (one|1) without fapping/i },
+  { ...both, titleText: /this is day (one|1)/i },
+  { ...both, titleText: /day (one|1) Started/i },
+  { ...both, titleText: /day (one|1) (Let's|let’s|lets) go/i },
+  { ...both, titleText: /^day 1(\.|\!)?$/i },
+  { ...both, titleText: /officially day (1|one)/i },
+  { ...both, titleText: /today is day (1|one)/i },
+  { ...both, titleText: /^day (one|1) of (no fap|reboot|re boot)/i },
+  { ...both, titleText: /^day (one|1) no/i },
+  { ...both, titleText: /^day (one|1)$/i }, // could be relapse
 
   // FIRST
   { titleText: /first post/i },
@@ -121,5 +123,5 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { messageText: /this is gonna be my first day to nofap/i },
 
   // FLAIR
-  { flairText: /New To NoFap/i },
+  // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time. 
 ];

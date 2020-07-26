@@ -66,12 +66,14 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /found a method/i },
   { titleText: /the key to (everything|(NoFap|no fap|no-fap))/i },
   { titleText: /methods that you might like to/i },
+  { titleText: /Tip that might help you/i },
 
   // VICTORY
   { titleText: /overcame my worst urge/i },
   { titleText: /I am proud of myself/i },
   { titleText: /Instead of (masturbating|PMO) i/i },
   { titleText: /finally crossed a/i },
+  { titleText: /years without porn/i },
   { titleText: /(0|zero) urges to fap/i },
   { titleText: /I feel amazing/i },
   { titleText: /benefits ?(are)? becoming apparent/i },
@@ -111,11 +113,14 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(its|It's|It’s) never too late/i },
   { titleText: /quote/i },
   { titleText: /motivational thought/i },
+  { titleText: /(NoFap|no fap|no-fap) is ?(really)? worth it/i },
   { titleText: /do not relapse/i },
   { titleText: /^keep going/i },
   { titleText: /Our Greatest Fear Is/i },
+  { titleText: /Awesome benefits/i },
 
-  { ...both, titleText: /greatest nofap inspiration/i },
+  { ...both, titleText: /(I'm|I’m|I am|im|i m) so proud of (you|us)/i },
+  { ...both, titleText: /greatest (NoFap|no fap|no-fap) inspiration/i },
 
   // RATIONALISATIONS
   { titleText: /(down side|downside)/i },
@@ -135,7 +140,9 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { ...both, titleText: /(premature|ejaculation|precum|cum)/i },
   { ...both, titleText: /(pied|peid|get it up|shrink)/i },
   { ...both, titleText: /(semen|urine|anal)/i },
+  { ...both, titleText: /hocd/i },
   { ...both, titleText: /scientific/i },
+  { ...both, titleText: /vasectomy/i },
   { ...both, titleText: /super sensitive/i },
   { ...both, titleText: /testosterone/i },
   { ...both, titleText: /baldness/i },
@@ -158,6 +165,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   // POINTLESS QUESTIONS
   { titleText: /counts as relapse/i }, // look into this.
   { titleText: /why do you fap\?/i },
+  { titleText: /Why quit porn\?/i },
 
   // IRRELEVANT TOPICS
   { titleText: /beast mode/i },
@@ -170,8 +178,10 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(mum|dad)/i }, // look into this.
   { titleText: /(vivid|weird) dream/i }, // look into this.
   { titleText: /(tik tok|tiktok)/i },
+  { titleText: /Youtube/i },
   { titleText: /(wim hof)/i }, // cold shower
   { titleText: /weed/i },
+  { titleText: /imagination more vivid/i },
 
   { ...both, titleText: /sex before marriage/i },
 
@@ -186,6 +196,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(hard mode|hardmode)/i },
   { titleText: /cold showers/i },
 
+  { ...both, titleText: /I (don’t|dont|don't) see any benefits/i },
   { ...both, titleText: /negatives of masturbating/i },
   { ...both, titleText: /am I addicted to (porn|pron)/i },
   { ...both, titleText: /What does PMO stand for/i },

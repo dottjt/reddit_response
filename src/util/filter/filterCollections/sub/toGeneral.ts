@@ -14,18 +14,23 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { messageText: /any words of encouragement/i },
 
   // ADVICE
+
   { titleText: /I need ?(.*) help/i },
+  { titleText: /Looking for Tips/i },
   { titleText: /^tips\?$/i },
   { titleText: /.* any tips\?$/i },
   { titleText: /need (NoFap|no fap|no-fap) tips/i },
   { titleText: /any tips to stop (fapping|mast)/i },
   { titleText: /any tips to (stop|quit)\?/i },
+  { titleText: /^need tips$/i },
   { titleText: /^Need advice$/i },
   { titleText: /could use some advice/i },
   { titleText: /Beginner, need some advice/i },
   { titleText: /what other steps/i },
   { titleText: /need some general advice/i },
   { titleText: /any help or advice/i },
+  { titleText: /I really want to stop fapping and watching porn/i },
+  { titleText: /scared that i will relapse(,)? some tips/i },
 
   { ...both, titleText: /I'm an addict please help me with some advice/i },
   { ...both, titleText: /if anyone has (advice|tips) for a (beginner|novice)/i },
@@ -43,10 +48,11 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { messageText: /please tell me what (should I|to) do\?/i },
   { messageText: /share their conclusions about how they overcame/i },
   { messageText: /any improvements are welcome/i },
+  { messageText: /wondering if there are other techniques and suggestions/i },
 
   { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i },
 
-  // STRUGGLE
+  // UNABLE TO STOP
   { titleText: /I keep failing/i },
   { titleText: /I ?(still)? (don’t|don't|dont) know what to do/i },
   { titleText: /still can't do it/i },
@@ -64,7 +70,6 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /How do I regain (self control|self-control)/i },
 
   // STRUGGLE
-  { titleText: /I (don’t|don't|dont) know what to do/i },
   { titleText: /no (masterbation|masturbation) is hard for me/i },
   { titleText: /shit is getting rough/i },
   { titleText: /It's impossible/i },
@@ -77,6 +82,8 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { titleText: /Trying Nofap .* years/i },
   { titleText: /(cant|can't|can’t) make it more than/i },
   { titleText: /I feel like relapsing/i },
+
+  { ...both, titleText: /I ?(really)? (don’t|don't|dont) know what to do/i },
 
   // HELP
   { titleText: /^Need help/i },
@@ -91,6 +98,11 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { titleText: /(cant|can't|can’t) control help me please/i },
   { titleText: /help me out from relapsing/i },
 
+  { ...both, titleText: /help me with this addiction/i },
+
+  { messageText: /So please guys, I need your help/i },
+  { messageText: /I just want to stop this thing/i },
+
   // GUIDANCE
   { titleText: /need some guidance/i },
   { titleText: /looking for some guidance/i },
@@ -98,7 +110,10 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { titleText: /need some advice from pro/i },
 
   { messageText: /tell me the secret/i },
+  { messageText: /someone please guide me/i },
+  { messageText: /what steps should I take\?/i },
   { messageText: /I would be grateful if someone could help me (on|in) this journey?/i },
+
 
   // CAN'T STOP
   { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },

@@ -48,7 +48,7 @@ const setupCron = () => {
           const startDateInHours = new Date(startDateMatch[0].split('\'')[1]).getTime();
           const differenceInHours = Math.abs(startDateInHours - new Date().getTime()) / 36e5;
 
-          const nextTime = `${differenceInHours + 1} hours ago`;
+          const nextTime = `${Math.round(differenceInHours + 1)} hours ago`;
 
           const newContents =
             confileFileContents.replace(

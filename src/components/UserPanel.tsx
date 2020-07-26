@@ -48,7 +48,6 @@ const createStartMessageLink = (
 
   // https://forum.nofap.com/index.php?conversations/add&to=YoungRockLee&title=hey
 
-
   return (
     <div>
       <a style={{
@@ -78,6 +77,8 @@ type UserPanelProps = {
 }
 
 const UserPanel = ({ dbUser, usernameConfig, hoursAgoText }: UserPanelProps) => {
+
+
   return (
     <div>
       {dbUser.userType !== UserType.FreshUser && (
