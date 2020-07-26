@@ -3549,6 +3549,19 @@
         prelimUrl: undefined,
         messageMatch: undefined
     };
+    var freshUserResponse = function (messageType, messageMatch, compiledUser, usernameConfig) {
+        switch (messageType) {
+            case SendMessageType.StartAdviceStart: {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceStart,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig),
+                    messageMatch: messageMatch
+                };
+            }
+            default: throw new Error("messageType - " + messageType + " does not exist.");
+        }
+    };
 
     var toSubFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
         var _a, _b, _c;
@@ -3617,9 +3630,11 @@
         // TO REMOVE
         var toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText);
         var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
-        if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-            console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText);
-            return deleteImmediately;
+        if (flairText !== 'New To NoFap') {
+            if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
+                console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText);
+                return deleteImmediately;
+            }
         }
         // LESS THAN 24 HOURS SINCE LAST MESSAGE
         if ((compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) && isLessThan24Hours(new Date((_a = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _a === void 0 ? void 0 : _a.send_date))) {
@@ -3650,26 +3665,15 @@
             };
             var messageSendDate = (_c = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.send_date;
             if (messageSendDate && lessThanOneDayAgo(new Date(messageSendDate))) {
-                return {
-                    shouldDeleteElementImmediately: true,
-                    sendMessageType: undefined,
-                    prelimUrl: undefined,
-                    messageMatch: undefined
-                };
+                return deleteImmediately;
             }
         }
         // FRESH USER
         if (compiledUser.userType === UserType.FreshUser) {
-            // TODO: CHECK FLAIR
             // STARTED MESSAGES
             var toStartMatch = matchRegex(toStartAdviceRegexArray, regexTextObject);
             if (!titleText.includes('again') && toStartMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceStart,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig),
-                    messageMatch: toStartMatch
-                };
+                return freshUserResponse(SendMessageType.StartAdviceStart, toStartMatch, compiledUser, usernameConfig);
             }
             // STARTED AGAIN MESSAGES
             var toStartAgainMatch = matchRegex(toStartAgainRegexArray, regexTextObject);

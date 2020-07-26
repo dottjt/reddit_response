@@ -52,7 +52,7 @@ import { toIsWatchingPornRelapseAdviceRegexArray } from './filterCollections/sub
 import { toNoReasonToRelapseAdviceRegexArray } from './filterCollections/sub/toNoReasonToRelapseAdvice';
 import { toAgeAdviceRegexArray } from './filterCollections/sub/toAgeAdvice';
 import { toFlatlineAdviceRegexArray } from './filterCollections/sub/toFlatlineAdvice';
-import { deleteImmediately } from './toSubFilterUtil';
+import { deleteImmediately, freshUserResponse } from './toSubFilterUtil';
 
 export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): {
   shouldDeleteElementImmediately: boolean,
@@ -134,9 +134,11 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   const toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText)
   const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
 
-  if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-    console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
-    return deleteImmediately;
+  if (flairText !== 'New To NoFap') {
+    if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
+      console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}`);
+      return deleteImmediately;
+    }
   }
 
   // LESS THAN 24 HOURS SINCE LAST MESSAGE
@@ -180,17 +182,11 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
 
   // FRESH USER
   if (compiledUser.userType === UserType.FreshUser) {
-    // TODO: CHECK FLAIR
-
+    
     // STARTED MESSAGES
     const toStartMatch = matchRegex(toStartAdviceRegexArray, regexTextObject);
     if (!titleText.includes('again') && toStartMatch.length > 0) {
-      return {
-        shouldDeleteElementImmediately: false,
-        sendMessageType: SendMessageType.StartAdviceStart,
-        prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig),
-        messageMatch: toStartMatch
-      }
+      return freshUserResponse(SendMessageType.StartAdviceStart, toStartMatch, compiledUser, usernameConfig);
     }
 
     // STARTED AGAIN MESSAGES
