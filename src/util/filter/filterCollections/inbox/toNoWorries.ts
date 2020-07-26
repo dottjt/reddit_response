@@ -1,26 +1,32 @@
 import { RegexFilters } from '../../regexUtil';
 
+// TODO SORT AND FIGURE OUT, IT IS SUPER BLOATED
+
 export const toNoWorriesGuideRegexArray: RegexFilters[] = [
-  { replyText: /(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i },
+  { replyText: /(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|website|web site|guide|site|link|address)/i },
   { replyText: /took up/i },
 
   // YES
   { replyText: /^sure$/i },
   { replyText: /^yes$/i },
-  { replyText: /^yes/i }, // too broad
   { replyText: /(Yaa|ya) sure/i },
   { replyText: /yes please/i },
-  { replyText: /(im|I'm|i m) in./i },
+  { replyText: /^(im|I'm|i m) in(\.)?$/i },
   { replyText: /(yes|yeah) (for sure|I am)/i },
-  { replyText: /shoot me a link to the website/i },
+  { replyText: /shoot me a link/i },
+  { replyText: /shoot the link over/i },
+
+  // { replyText: /^yes I am interested/i }, // too broad
 
   // CHECK
   { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
-  { replyText: /(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
+  { replyText: /(name of|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
+  { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
   { replyText: /I’ll check the link if you have it/i },
 
   // SEND
-  { replyText: /send over the link/i },
+  { replyText: /send (me|over) the link/i },
+  { replyText: /send me ?(a)? link/i },
   { replyText: /(send it|do share)/i },
   { replyText: /go ahead and send/i },
   { replyText: /share ?(me)? the/i },
@@ -47,6 +53,9 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
 
   // SHARE
   { replyText: /can share me ur site/i },
+  { replyText: /feel free to share your website/i },
+  { replyText: /could you share your mediation website/i },
+  { replyText: /Link it pls/i },
 
   // INTERESTED
   { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
@@ -60,9 +69,11 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /Yea absolutely that'd be interesting/i },
 
   { replyText: /interested./i },
+  { replyText: /interested in looking at your .* website/i },
   { replyText: /(Sure I am|Yeah sure|Sure Bro)/i },
   { replyText: /to know more about your website/i },
   { replyText: /nice if you linked the website/i },
+  { replyText: /like to take a look at it/i },
 
   { replyText: /wanna visit (ur|your) site/i },
   { replyText: /tell me more/i },
@@ -81,25 +92,25 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /that website would be (great|nice)/i },
   { replyText: /yes that would be helpful/i },
   { replyText: /that would be really helpful/i },
-  { replyText: /appreciate viewing your website/i },
+  { replyText: /appreciate viewing your (web site|website)/i },
   { replyText: /the (website|link) would be cool/i },
   { replyText: /Any information you could/i },
   { replyText: /would (definitely|definelty) read thorugh it/i },
-  { replyText: /will have a look on your website/i },
+  { replyText: /will have a look on your (web site|website)/i },
   { replyText: /I would really (appreaciate|appreciate) that/i },
   { replyText: /(it|that|link) would be (super|awesome|great|cool)/i },
-  { replyText: /happy to check out the (url|web|website|guide|site|link|address|resource)/i },
+  { replyText: /happy to check out the (url|web site|website|guide|site|link|address|resource)/i },
 
   // LOVE
-  { replyText: /(id|I'd) love/i },
-  { replyText: /love to (see|know) (the|your) website/i },
+  { replyText: /(id|I'd|I’d) love/i },
+  { replyText: /love to (see|know) (the|your) (web site|website)/i },
   { replyText: /I would love to learn more about it/i },
   { replyText: /would love to visit/i },
-  { replyText: /love to see the website/i },
-  { replyText: /would love that website/i },
+  { replyText: /love to see the (web site|website)/i },
+  { replyText: /would love that (web site|website)/i },
   { replyText: /website sounds like a huge help/i },
   { replyText: /Would love to see/i },
-  { replyText: /take a look at your website/i },
+  { replyText: /take a look at your (web site|website)/i },
   { replyText: /like to see (it|that)/i },
 
   // NEUTRAL
@@ -120,24 +131,20 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
 
   // UNSORTED
   { replyText: /Sure, I am looking for source material/i },
-  // Sure, I am looking for source material which explains the process and not just the success stories
+  { replyText: /source material which explains the process/i },
+  { replyText: /sounds great/i },
+  { replyText: /would love to hear your story/i },
+  { replyText: /like to here about your/i },
 
-  // TODO
-  // the website sounds great I’ll give it a look
+  // UNVIABLE
+  // || new /any advice you got for me/i).test(messagePayload.message) // too broad
 
-  // UNSURE
-  // || new /any advice you got for me/i).test(messagePayload.message)
-
-
-  // I would love to hear your story and any advice you got for me
-  //id like to here about your websitee
-  // i'd be ,
-    // article
+  // article
   // TODO It will send in this scenario. Signifies the importance of context, not sure what to do about this.
-  // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
 
   // EDGET
   // From your experience should I go ahead with my marriage and start following nofap no pmo
   // Yes, meditation is really a key to control that urge, I have started inculcate those habits! Now I am on day 7 of nofap! It's true that mentally we have to be very strong! Thanks for your support! Means alot! 😇
   // Yes I meditate once a day, and pray constantly. I’m not afraid to ask God for help. (look into this, it shouldn't have triggered)
+  // Thank you for checking up on me. But I find this approach slightly ineffective. I mean, if you want more people to visit your website, make your website rank higher.
 ];

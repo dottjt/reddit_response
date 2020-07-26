@@ -1,6 +1,9 @@
-import { RegexFilters } from '../../regexUtil';
+import { RegexFilters, both } from '../../regexUtil';
 
 export const toDidIJustRelapseAdviceRegexArray: RegexFilters[] = [
-  { titleText: /did I just relapse\?/i },
-  { titleText: /count as relapse\?/i },
+  // DID I JUST RELAPSE?
+  { ...both, titleText: /did I just relapse\?/i },
+
+  // COUNT AS RELAPSE
+  { ...both, titleText: /count as relapse\?/i },
 ];

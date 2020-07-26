@@ -160,53 +160,76 @@
     var finalHardTime = ("Yeah, you might have a hard time addressing your addiction without maintaining a consistent mental health routine. Especially given addiction is a mental health problem at it's core.\n\nUltimately the important thing is being consistent with your mental health. Usually this means at least 10 minutes meditation each day. So if you can commit to that you'll be fine.\n\nI also have a subreddit if you're interested in joining the community and following up on updates to NeverFap Deluxe! r/NeverFapDeluxe\n");
 
     var toNotRespondRegexArray = [
-        { replyText: /no (thank|sorry)/i },
+        // MONEY
         { replyText: /(paid|free)/i },
-        { replyText: /(I'm|I’m|I am|im) not interest/i },
+        // NOT INTERESTED
+        { replyText: /(I'm|I’m|I am|im|i m) not interest/i },
+        { replyText: /not interest/i },
+        { replyText: /no (thank|sorry|ty)/i },
+        { replyText: /not (going|gonna) to read/i },
+        { replyText: /(it’s|it's|its|it is) not for me/i },
+        // WAS INTERESTED
         { replyText: /I was interest/i },
-        { replyText: /not going to read/i },
-        { replyText: /fuck off/i },
-        { replyText: /not interested/i },
+        { replyText: /was interest/i },
+        // REFUSE MEDITATION
         { replyText: /No I (don’t|dont|don't) meditate/i },
+        // ANGER
+        { replyText: /fuck (you|off)/i },
+        { replyText: /piss off/i },
+        { replyText: /(flag|report) you/i },
     ];
 
     var toMeditateGuideRegexArray = [
+        // EXPRESS INTERESTED
         { replyText: /would love to (mediate|meditate)/i },
-        { replyText: /(don't|dont|don’t) know (how|where) to start/i },
         { replyText: /tips on meditating\?/i },
-        { replyText: /I (don’t|dont|don't) know how to (do meditation|meditate). Can you please suggest something/i },
-        { replyText: /^How do (u|you) meditate?$/i },
+        // NOT SURE HOW TO BEGIN
+        { replyText: /I (don’t|dont|don't) know how to (do meditation|meditation|meditate). (could|can) you please suggest something/i },
+        { replyText: /(don't|dont|don’t) know (how|where) to start/i },
+        { replyText: /How (to|do) ?(u|you)? (mediate|meditate)/i },
+        { replyText: /How does one (mediate|meditate)\?/i },
+        { replyText: /could ?(you)? give me some (tipps|tips|advice) for begin/i },
+        { replyText: /any specific way to (do it|meditate)\?/i },
     ];
 
     var toHardTimeRegexArray = [
+        // DON'T DO ANYTHING / MUCH
         { replyText: /I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i },
         { replyText: /do nothing for my mental health/i },
-        { replyText: /I (don’t|dont|don't) (meditate|do much)/i },
-        { replyText: /I haven't done much/i },
+        { replyText: /I (haven't|haven’t|have not) done much/i },
+        { replyText: /never really done (much|a lot) for my mental health/i },
+        { replyText: /I (don’t|don't|dont) take any measures to (improve|help) my mental health/i },
+        { replyText: /I (don’t|don't|dont) (place|put) much attention on my mental health/i },
+        // DON'T MEDITATE
+        { replyText: /I (don’t|dont|don't) (mediate|meditate|do much)/i },
+        { replyText: /I used to ?(do)? (mediate|meditate|meditation)/i },
+        { replyText: /I used to (mediate|meditate) .* but (I've|I’ve|Ive|I) stopped/i },
+        // DISTRACT
         { replyText: /I just distract myself/i },
-        { replyText: /never really done a lot for my mental health/i },
-        { replyText: /I used to ?(do)? meditation/i },
-        { replyText: /Personally I (don’t|don't|dont) take any measures to help my mental health/i },
     ];
 
+    // TODO SORT AND FIGURE OUT, IT IS SUPER BLOATED
     var toNoWorriesGuideRegexArray = [
-        { replyText: /(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|web|website|guide|site|link|address)/i },
+        { replyText: /(What's|What’s|please share|share|to see|send|sending me|send me|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|website|web site|guide|site|link|address)/i },
         { replyText: /took up/i },
         // YES
         { replyText: /^sure$/i },
         { replyText: /^yes$/i },
-        { replyText: /^yes/i },
         { replyText: /(Yaa|ya) sure/i },
         { replyText: /yes please/i },
-        { replyText: /(im|I'm|i m) in./i },
+        { replyText: /^(im|I'm|i m) in(\.)?$/i },
         { replyText: /(yes|yeah) (for sure|I am)/i },
-        { replyText: /shoot me a link to the website/i },
+        { replyText: /shoot me a link/i },
+        { replyText: /shoot the link over/i },
+        // { replyText: /^yes I am interested/i }, // too broad
         // CHECK
         { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
-        { replyText: /(name of|checking out|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
+        { replyText: /(name of|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
+        { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
         { replyText: /I’ll check the link if you have it/i },
         // SEND
-        { replyText: /send over the link/i },
+        { replyText: /send (me|over) the link/i },
+        { replyText: /send me ?(a)? link/i },
         { replyText: /(send it|do share)/i },
         { replyText: /go ahead and send/i },
         { replyText: /share ?(me)? the/i },
@@ -231,6 +254,9 @@
         { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
         // SHARE
         { replyText: /can share me ur site/i },
+        { replyText: /feel free to share your website/i },
+        { replyText: /could you share your mediation website/i },
+        { replyText: /Link it pls/i },
         // INTERESTED
         { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
         { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
@@ -242,9 +268,11 @@
         { replyText: /shoot me the link/i },
         { replyText: /Yea absolutely that'd be interesting/i },
         { replyText: /interested./i },
+        { replyText: /interested in looking at your .* website/i },
         { replyText: /(Sure I am|Yeah sure|Sure Bro)/i },
         { replyText: /to know more about your website/i },
         { replyText: /nice if you linked the website/i },
+        { replyText: /like to take a look at it/i },
         { replyText: /wanna visit (ur|your) site/i },
         { replyText: /tell me more/i },
         { replyText: /like to look around at your site/i },
@@ -261,24 +289,24 @@
         { replyText: /that website would be (great|nice)/i },
         { replyText: /yes that would be helpful/i },
         { replyText: /that would be really helpful/i },
-        { replyText: /appreciate viewing your website/i },
+        { replyText: /appreciate viewing your (web site|website)/i },
         { replyText: /the (website|link) would be cool/i },
         { replyText: /Any information you could/i },
         { replyText: /would (definitely|definelty) read thorugh it/i },
-        { replyText: /will have a look on your website/i },
+        { replyText: /will have a look on your (web site|website)/i },
         { replyText: /I would really (appreaciate|appreciate) that/i },
         { replyText: /(it|that|link) would be (super|awesome|great|cool)/i },
-        { replyText: /happy to check out the (url|web|website|guide|site|link|address|resource)/i },
+        { replyText: /happy to check out the (url|web site|website|guide|site|link|address|resource)/i },
         // LOVE
-        { replyText: /(id|I'd) love/i },
-        { replyText: /love to (see|know) (the|your) website/i },
+        { replyText: /(id|I'd|I’d) love/i },
+        { replyText: /love to (see|know) (the|your) (web site|website)/i },
         { replyText: /I would love to learn more about it/i },
         { replyText: /would love to visit/i },
-        { replyText: /love to see the website/i },
-        { replyText: /would love that website/i },
+        { replyText: /love to see the (web site|website)/i },
+        { replyText: /would love that (web site|website)/i },
         { replyText: /website sounds like a huge help/i },
         { replyText: /Would love to see/i },
-        { replyText: /take a look at your website/i },
+        { replyText: /take a look at your (web site|website)/i },
         { replyText: /like to see (it|that)/i },
         // NEUTRAL
         { replyText: /(yah|ya|yeah) why not/i },
@@ -294,33 +322,44 @@
         { replyText: /I'll take the link/i },
         // UNSORTED
         { replyText: /Sure, I am looking for source material/i },
+        { replyText: /source material which explains the process/i },
+        { replyText: /sounds great/i },
+        { replyText: /would love to hear your story/i },
+        { replyText: /like to here about your/i },
     ];
 
     var toLinkYouGuideRegexArray = [
-        { replyText: /(what's|What’s|what is|whats) the (site|link|website|webite|guide|content|page)/i },
-        { replyText: /name of (ur|your) website/i },
-        { replyText: /(what is|whats|what's|called) (ur|your|the) (site|link|website|webite|guide|content|page)/i },
-        { replyText: /Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|webite|guide|content|page)/i },
-        { replyText: /What site have you/i },
-        { replyText: /Where can I find this resource/i },
-        { replyText: /what is this website\?/i },
-        { replyText: /where can i find the website/i },
-        { replyText: /links to any resources/i },
-        { replyText: /What website is it/i },
-        { replyText: /what website would that be/i },
-        { replyText: /How can I access the guide/i },
+        // WHAT IS NAME
+        { replyText: /(what's|What’s|what is|whats) the (name|site|link|website|web site|webite|guide|content|page)/i },
+        { replyText: /(what is|whats|what's|called) (ur|your|the) (name|site|link|website|web site|webite|guide|content|page)/i },
+        { replyText: /name of (ur|your) (site|link|website|web site|webite|guide|content|page)/i },
+        // TELL ME MORE
+        { replyText: /Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|web site|webite|guide|content|page)/i },
+        // WHERE TO FIND
+        { replyText: /where can i find (this|the) (site|link|website|web site|webite|guide|content|page)/i },
+        // WHAT
+        { replyText: /What (site|link|website|web site|webite|guide|content|page) have you/i },
+        { replyText: /What (site|link|website|web site|webite|guide|content|page) (is it|would that be)/i },
+        { replyText: /what is this (name|site|link|website|web site|webite|guide|content|page|it)\?/i },
+        { replyText: /yeah what is it/i },
+        // HOW
+        { replyText: /How can I access the (name|site|link|website|web site|webite|guide|content|page|it)/i },
+        // LINKS
+        { replyText: /(link|links) to any resources/i },
     ];
 
     var toJoinSubredditRegexArray = [
-        { replyText: /(ty|thank you|thanks|thankyou|thank u)/i },
+        // THANK YOU
+        { replyText: /^ty$/i },
+        { replyText: /(thank you|thanks|thankyou|thank u)/i },
+        { replyText: /(wow|cheers)/i },
+        // CHECK IT
         { replyText: /(I'll||I’ll|ill|I will) ?(.*) (check|checkout|check it|check out)/i },
+        // VISIT
         { replyText: /will visit/i },
         { replyText: /visit ?(.*) today/i },
-        { replyText: /(wow|cheers)/i },
+        // APPRECIATION
         { replyText: /I ?(genuinely)? appreciate/i },
-        { replyText: /for sharing/i },
-        { replyText: /thanks for/i },
-        { replyText: /thanks (man|bro)/i },
         { replyText: /great resource/i },
     ];
 
@@ -2495,16 +2534,20 @@
         RelevantType["Flair"] = "Flair";
         RelevantType["Reply"] = "Reply";
     })(RelevantType || (RelevantType = {}));
+    // TODO Checking for relevant type is not relevant. It is not needed.
     var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
         if (relevantText) {
             var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
                 newItem
             ], arr.slice(index)); };
             if (messageMatch.length > 0) {
-                var titleTextArray = messageMatch.reduce(function (acc, regexFilterResult) {
+                var _a = messageMatch.reduce(function (acc, regexFilterResult) {
                     if (!acc.foundMatch) {
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
                             var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
@@ -2512,6 +2555,9 @@
                         }
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
                             var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
@@ -2519,6 +2565,9 @@
                         }
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
                             var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
@@ -2526,6 +2575,9 @@
                         }
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
                             var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
                             var newArray = isReact
                                 ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
                                 : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
@@ -2533,7 +2585,10 @@
                         }
                     }
                     return acc;
-                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }).titleTextArray;
+                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }), titleTextArray = _a.titleTextArray, foundMatch = _a.foundMatch;
+                if (!foundMatch) {
+                    return [relevantText];
+                }
                 return titleTextArray;
             }
         }
@@ -2975,7 +3030,7 @@
     var ReplyUserPanel = function (_a) {
         var _b, _c;
         var dbUser = _a.dbUser, containerDiv = _a.containerDiv, previousMessageInformation = _a.previousMessageInformation, numberOfMessagesFromThisUser = _a.numberOfMessagesFromThisUser, isUserLastMessagedUser = _a.isUserLastMessagedUser, otherUserMessages = _a.otherUserMessages, forum_type = _a.forum_type;
-        return (createVNode$3(1, "div", null, [isUserLastMessagedUser && (createVNode$3(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$3(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username, "forum_type": forum_type }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$3(1, "div", null, [createVNode$3(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$3(1, "div", null, [createVNode$3(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$3(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$3(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$3(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$3(1, "div", null, [createVNode$3(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$3(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$3(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$3(1, "p", null, dbUser.absoluteLastSentMessageType.type, 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$3(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$3(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
+        return (createVNode$3(1, "div", null, [isUserLastMessagedUser && (createVNode$3(1, "p", null, "Last Messaged User", 16, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': 'mediumpurple', 'color': 'white' } })), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "numberOfMessagesFromThisUser": numberOfMessagesFromThisUser }), createVNode$3(1, "div", null, [createComponentVNode$1(2, SendUserNoteForm, { "username": dbUser.username, "forum_type": forum_type }), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username }), createComponentVNode$1(2, SetLastInboxMessageUsernameButton, { "username": dbUser.username, "message": "" })], 4, { "style": { display: 'flex' } }), createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser }), createVNode$3(1, "div", null, [createVNode$3(1, "div", null, [!((_b = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('middle')) && (createVNode$3(1, "div", null, [createVNode$3(1, "h4", null, "Send", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, false)], 0)), createVNode$3(1, "h4", null, "Final", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, false), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, false), createVNode$3(1, "h4", null, "Custom", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', containerDiv, previousMessageInformation, false)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } }), createVNode$3(1, "div", null, [!((_c = dbUser === null || dbUser === void 0 ? void 0 : dbUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.type.includes('middle')) && (createVNode$3(1, "div", null, [createVNode$3(1, "h4", null, "Send Immediate", 16), createReplyMessageLink(SendMessageType.MiddleGuideIfYouWouldLikeToLearnMore, 'purple', dbUser.username, middleWrittenGuide, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideNoWorries, 'purple', dbUser.username, middleGuideNoWorries, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideLinkYou, 'purple', dbUser.username, middleGuideLinkYou, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.MiddleGuideMeditationAdvice, 'purple', dbUser.username, middleGuideMeditationAdvice, containerDiv, previousMessageInformation, true)], 0)), createVNode$3(1, "h4", null, "Final Immediate", 16, { "style": { 'margin-top': '0.3rem', 'margin-left': '0.4rem', 'margin-right': '0.4rem' } }), createReplyMessageLink(SendMessageType.FinalJoinSubreddit, 'purple', dbUser.username, finalJoinSubreddit, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalHardTime, 'purple', dbUser.username, finalHardTime, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalFantastic, 'purple', dbUser.username, finalFantastic, containerDiv, previousMessageInformation, true), createReplyMessageLink(SendMessageType.FinalShareResources, 'purple', dbUser.username, finalShareResources, containerDiv, previousMessageInformation, true)], 0, { "style": { display: 'flex', 'flex-direction': 'column' } })], 4, { "id": "cake", "style": { display: 'flex', 'margin-top': '1rem', 'margin-bottom': '1rem' } }), createVNode$3(1, "div", null, numberOfMessagesFromThisUser && "Message count: " + numberOfMessagesFromThisUser, 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black' } }), createVNode$3(1, "p", null, [dbUser.absoluteLastSentMessageType.type, createTextVNode$2(" | website: "), dbUser === null || dbUser === void 0 ? void 0 : dbUser.website_homepage_link_sent, createTextVNode$2(" | discord: "), dbUser === null || dbUser === void 0 ? void 0 : dbUser.discord_link_sent, createTextVNode$2(" | subreddit: "), dbUser === null || dbUser === void 0 ? void 0 : dbUser.subreddit_link_sent], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' } }), otherUserMessages.length > 0 && (createVNode$3(1, "div", null, otherUserMessages.map(function (message) { return (createVNode$3(1, "p", null, [message.message, createTextVNode$2(" | "), message.order], 0, { "style": { 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'border': '1px solid black' } })); }), 0))], 0));
     };
 
     var createComponentVNode$2 = createComponentVNode;

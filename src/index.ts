@@ -17,7 +17,7 @@ import markUserHostileRoute from './routes/markUserHostileRoute';
 import markUserChattedRoute from './routes/markUserChattedRoute';
 import setMarkerRoute from './routes/setMarkerRoute';
 import setLastInboxMessageUsernameRoute from './routes/setLastInboxMessageUsernameRoute';
-// import setupCron from './util/cron';
+import setupCron from './util/cron';
 
 const main = () => {
   const app = new Koa();
@@ -34,7 +34,7 @@ const main = () => {
   router.post('/setMarker', setMarkerRoute);
   router.post('/setLastInboxMessageUsername', setLastInboxMessageUsernameRoute);
 
-  // setupCron()
+  setupCron()
 
   app
     .use(bodyParser())

@@ -149,6 +149,7 @@ export enum RelevantType {
   Reply='Reply',
 }
 
+// TODO Checking for relevant type is not relevant. It is not needed.
 export const highlightSyntax = (relevantText: string | undefined, relevantType: RelevantType, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
   if (relevantText) {
     const insert = (arr, index, newItem) => [
@@ -158,10 +159,13 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
     ];
 
     if (messageMatch.length > 0) {
-      const { titleTextArray } = messageMatch.reduce((acc, regexFilterResult) => {
+      const { titleTextArray, foundMatch } = messageMatch.reduce((acc, regexFilterResult) => {
         if (!acc.foundMatch) {
           if (regexFilterResult?.titleTextMatch && relevantType === RelevantType.Title) {
             const splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
+            if (splitArray.length === 1) {
+              return acc;
+            }
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.titleTextMatch}</span>)
               : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.titleTextMatch}</span>`);
@@ -171,6 +175,9 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
           if (regexFilterResult?.flairTextMatch && relevantType === RelevantType.Flair) {
             const splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
+            if (splitArray.length === 1) {
+              return acc;
+            }
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.flairTextMatch}</span>)
               : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.flairTextMatch}</span>`);
@@ -180,6 +187,9 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
           if (regexFilterResult?.messageTextMatch && relevantType === RelevantType.Message) {
             const splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
+            if (splitArray.length === 1) {
+              return acc;
+            }
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch}</span>)
               : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.messageTextMatch}</span>`);
@@ -189,6 +199,9 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
           if (regexFilterResult?.replyTextMatch && relevantType === RelevantType.Reply) {
             const splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
+            if (splitArray.length === 1) {
+              return acc;
+            }
             const newArray = isReact
               ? insert(splitArray, 1, <span style={{ color: 'red' }}>{regexFilterResult.replyTextMatch}</span>)
               : insert(splitArray, 1, `<span style="color: red;">${regexFilterResult.replyTextMatch}</span>`);
@@ -199,6 +212,10 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
         return acc;
       }, { relevantText, titleTextArray: [], foundMatch: false } as { relevantText: string, titleTextArray: any[], foundMatch: boolean });
+
+      if (!foundMatch) {
+        return [ relevantText ];
+      }
 
       return titleTextArray;
     }

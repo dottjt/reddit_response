@@ -1,19 +1,26 @@
-import { RegexFilters } from '../../regexUtil';
+import { RegexFilters, both } from '../../regexUtil';
 
 export const toDealingWithUrgesAdviceRegexArray: RegexFilters[] = [
-  { titleText: /advice on fighting urges/i },
-  { titleText: /how to deal with ?(the)? urges/i },
-  { titleText: /how to control urges/i },
-  { titleText: /how do I resist the urge/i },
-  { titleText: /urges from hell/i },
-  { titleText: /how to beat .* urges/i },
-  { titleText: /^urges(\.)?$/i },
-  { titleText: /How do I overcome ?(.*) urges/i },
-  { titleText: /Urges(\.)? Help me/i },
-  { titleText: /very strong urges/i },
-  { titleText: /anyone find the urges/i },
-  { titleText: /help (w|with) persistent urge/i },
+  // URGES
+  { ...both, titleText: /^urges(\.)?$/i },
+  { ...both, titleText: /Urges(\.)? Help me/i },
+  { ...both, titleText: /(I’m|im|I m|i'm) having urges/i },
 
-  { messageText: /Any tips on how to handle these?/i },
-  { messageText: /help make me stop letting my urges/i },
+  // ADVICE / HELP
+  { ...both, titleText: /advice on (fighting|resisting) urges/i },
+  { ...both, titleText: /help (w|with) persistent urge/i },
+  { ...both, titleText: /help make me stop letting my urges/i },
+  { ...both, titleText: /help stop my urges/i },
+  { ...both, titleText: /When urges get strong(,)? what should I do/i },
+
+  // HOW TO
+  { ...both, titleText: /How do I (fight|resist) the urge/i },
+  { ...both, titleText: /How do I overcome ?(.*) urges/i },
+  { ...both, titleText: /How to (control|handle|deal with) ?(these|the)? urges/i },
+  { ...both, titleText: /how to beat .* urges/i },
+
+  // URGES STRUGGLE
+  { ...both, titleText: /urges from hell/i },
+  { ...both, titleText: /very strong urges/i },
+  { ...both, titleText: /urges are ?(getting|becoming)? bigger and bigger/i },
 ];

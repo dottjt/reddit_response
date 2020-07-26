@@ -178,3 +178,4 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 // - benefits of cold showers MESSAGE
 // - what are your reasons to do NoFap? MESSAGE
 // - feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
+

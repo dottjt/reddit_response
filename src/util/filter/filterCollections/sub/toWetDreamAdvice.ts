@@ -1,17 +1,19 @@
-import { RegexFilters } from '../../regexUtil';
+import { RegexFilters, both } from '../../regexUtil';
 
 export const toWetDreamAdviceRegexArray: RegexFilters[] = [
-  { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i },
-  { titleText: /had a wet dream/i },
   { titleText: /^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i },
-  { titleText: /how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
-  { titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
-  { titleText: /wet dreamed this morning/i },
-  { titleText: /wet dream on day/i },
-  { titleText: /Do wet dreams count as relapsing/i },
-  { titleText: /Lose benefits after a wet dream?/i },
-  { titleText: /Wet dreams (wont|won't) stop/i },
-  { titleText: /Wet dreams every \d+/i },
+  
+  { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i },
+  { ...both, titleText: /had a wet dream/i },
+  { ...both, titleText: /how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /wet dreamed this morning/i },
+  { ...both, titleText: /wet dream on day/i },
+  { ...both, titleText: /Do wet dreams count as relapsing/i },
+  { ...both, titleText: /Lose benefits after a wet dream?/i },
+  { ...both, titleText: /Wet dreams (wont|won't) stop/i },
+  { ...both, titleText: /Wet dreams every \d+/i },
+  { ...both, titleText: /Wet dreams bad\?/i },
 
   // TITLE + MESSAGE
   { titleText: /wet dream/i, messageText: /any solutions\?/ },

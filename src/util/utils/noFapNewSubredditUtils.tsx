@@ -9,7 +9,8 @@ import {
 import { SendMessageType } from '../../types/serverTypes';
 import { openNewLink } from '../utils/sendMessageUtils';
 import UserPanel from '../../components/UserPanel';
-import { highlightSyntax, RelevantType } from '../filter/regexUtil';
+import { highlightSyntax, RelevantType, RegexFiltersMatch } from '../filter/regexUtil';
+import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
@@ -129,6 +130,19 @@ export const addGlobalStyle = (css: string): void => {
   head.appendChild(style);
 }
 
+// // TODO
+// type CreatePrelimLink = {
+//   dbUser: CompiledFullUserObject;
+//   titleText: string;
+//   flairText: string;
+//   aLinkHref: string;
+//   prelimUrl: string;
+//   index: number;
+//   sendMessageType: SendMessageType;
+//   prelimContainer: any; // FUTURE to change
+//   messageMatch?: RegexFiltersMatch[]
+// }
+
 export const createPrelimLink = ({
   dbUser,
   titleText,
@@ -154,6 +168,10 @@ export const createPrelimLink = ({
             highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(element => <span>{element}</span>)
           ) : (
             <span>{titleText}</span>
+          )}
+          {/* TO TEST */}
+          {messageMatch.length > 0 && messageMatch[0]?.messageTextMatch && (
+            <span> | Message: <span style={{ color: 'red' }}>{messageMatch[0].messageTextMatch}</span></span>
           )}
         <p style={{ 'margin-top': '0.5rem' }}>
           {messageMatch.length > 0 ? (

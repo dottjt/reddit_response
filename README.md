@@ -15,7 +15,10 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-
+- send custom broken
+- Actually go through and consolidate missing pieces within the regex.
+- I had a bit of a radical idea. Instead of me having to open all the links, what if instead I send the list to node.js and then it opens it there?
+PROS: Would be more efficient. Would save me time.
 
 ## Nice To Have
 
@@ -26,10 +29,7 @@ open -a Google\ Chrome --args --disable-web-security --user-data-dir
 
 https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&message=Hey%2C%20I%20saw%20your%20post.%20I%27m%20sorry%20to%20hear%20you%27re%20struggling.%0A%0AThe%20main%20thing%20with%20recovery%20is%20to%20focus%20on%20your%20mental%20health.%20Fundamentally%2C%20it%27s%20about%20developing%20the%20awareness%20to%20change%20your%20behaviours%20so%20you%20can%20learn%20to%20develop%20control%20over%20your%20mind.%20Of%20course%2C%20that%27s%20a%20lot%20easier%20said%20than%20done%2C%20which%20is%20why%20it%20requires%20A%20LOT%20of%20practice.%0A%0ADo%20you%20do%20much%20for%20your%20mental%20health%3F%20Like%20meditate%2C%20and%20stuff%3F%20Personally%20I%20do%2010%20minutes%20of%20meditation%20each%20day%20and%20that%27s%20enough%20for%20me.%20I%27ve%20also%20created%20a%20website%20which%20explains%20the%20whole%20process%20of%20overcoming%20porn%20addiction%2C%20if%20you%27re%20interested.%0A&type=start:advice:struggle&timer=10000
 
-- For timestamps to truly work, I need to actually set the date when it was set, so I can use that as a marker, with a cron every 10 minutes which checks for that date. Then if that date is within bounds, increase the config timestamp. That makes the most sense to me. (eh, is it worth the effort?)
-- Instead of SEND FINAL we need like a "Middle sent, awaiting reply" type message :) So if our last message is middle, BUT theirs is still start it means that
 - Look into addressing congratulation messages
-- Look into incorporating whether they've been sent the website or not into ReplyUserPanel, so you can have more information from them and what information they require. (might be too much information for no palatable reason)
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage (I don't think it's possible to know until after? Well, it's possible but not a massive deal for now)
 - Whether a message was sent automatically by the bot or not.
 - fix message being sent multiple times because of the eventListener being sent multiple times.
@@ -43,6 +43,9 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 
 ## DONE
 
+- For timestamps to truly work, I need to actually set the date when it was set, so I can use that as a marker, with a cron every 10 minutes which checks for that date. Then if that date is within bounds, increase the config timestamp. That makes the most sense to me. (made it so it checks the initial date and then changes the date from there.)
+- Look into incorporating whether they've been sent the website or not into ReplyUserPanel, so you can have more information from them and what information they require. (might be too much information for no palatable reason)
+- Instead of SEND FINAL we need like a "Middle sent, awaiting reply" type message :) So if our last message is middle, BUT theirs is still start it means that
 - Syntax highlight the reply message regex. (I honestly would have zero idea how to do this) Place all regex inside an array, and then use helper functions to parse them. It's a lot of work, but potentially useful. (DONE!)
 - Not just toRemove, but I need a filter which nullifies positive case i.e. New to NoFap then don't delete.
 - need to refactor the regex patterns into logical groups, as well as create certain

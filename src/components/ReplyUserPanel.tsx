@@ -139,7 +139,9 @@ const ReplyUserPanel = ({
         {numberOfMessagesFromThisUser && `Message count: ${numberOfMessagesFromThisUser}`}
       </div>
 
-      <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' }}>{dbUser.absoluteLastSentMessageType.type}</p>
+      <p style={{ 'font-size': '1rem', 'padding-top': '1.2rem', 'padding-bottom': '1.2rem', 'padding-left': '0.4rem', 'margin-right': '0.4rem', 'background': dbUser.absoluteLastSentMessageType.colour, 'color': 'black' }}>
+        {dbUser.absoluteLastSentMessageType.type} | website: {dbUser?.website_homepage_link_sent} | discord: {dbUser?.discord_link_sent} | subreddit: {dbUser?.subreddit_link_sent}
+      </p>
 
       {otherUserMessages.length > 0 && (
         <div>

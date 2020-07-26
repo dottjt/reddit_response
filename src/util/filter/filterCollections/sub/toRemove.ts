@@ -1,4 +1,4 @@
-import { RegexFilters } from '../../regexUtil'
+import { RegexFilters, both } from '../../regexUtil'
 
 export const toRemoveInitialDay = (titleText: string, flairText: string, messageText: string): boolean =>
   (
@@ -21,10 +21,7 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
     || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)
   )
 
-// TODO / UNSURE
-// export const toRemoveInitialMessageRegexArray: RegexFilters[] = [
-//   new RegExp(/profile/i).test(messageText)
-// show you how I did it
+// TODO Fix this up
 
 export const toRemoveInitialRegexArray: RegexFilters[] = [
   // FLAIR
@@ -35,6 +32,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
 
   // COUNTER
   { titleText: /profile/i },
+  { titleText: /(days|day) flair/i },
   { titleText: /name tag/i },
   { titleText: /(Don't|Don't|dont) mind me/i },
   { titleText: /journal entry/i }, // look into this.
@@ -46,13 +44,18 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /checking my day count/i },
   { titleText: /accountability post/i },
   { titleText: /next to (ur|your) (name|tag)/i },
+  { titleText: /Where is the tag that/i },
+  { titleText: /tag that shows your streak/i },
+  { titleText: /I need methods to keep count/i },
+
   { messageText: /get a tag with your streak/i },
 
   // LECTURE
-  { titleText: /Nofap taught me/i },
+  { titleText: /(NoFap|no fap|no-fap) taught me/i },
+  { titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
   { titleText: /a piece of advice/i },
   { titleText: /read this if you/i },
-  { titleText: /pro tip for nofap/i },
+  { titleText: /pro tip for (NoFap|no fap|no-fap)/i },
   { titleText: /for those who relapse/i },
   { titleText: /to those struggling/i },
   { titleText: /one habit that helped me/i },
@@ -61,7 +64,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(a reminder|remember this)/i },
   { titleText: /strange benefit/i },
   { titleText: /found a method/i },
-  { titleText: /the key to (everything|NoFap)/i },
+  { titleText: /the key to (everything|(NoFap|no fap|no-fap))/i },
   { titleText: /methods that you might like to/i },
 
   // VICTORY
@@ -83,7 +86,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /still going strong/i },
   { titleText: /not bragging/i },
   { titleText: /just completed a/i },
-  { titleText: /accomplishments on (nofap|no fap)/i },
+  { titleText: /accomplishments on (NoFap|no fap|no-fap)/i },
   { titleText: /achieved my goal/i },
   { titleText: /finally reached \d+ days/i },
   { titleText: /longest streak yet/i },
@@ -102,14 +105,17 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },
   { titleText: /(Don't|Don't|dont) give up$/i },
   { titleText: /love you guys/i },
-  { titleText: /(nofap|no fap) works/i },
+  { titleText: /(NoFap|no fap|no-fap) works/i },
   { titleText: /^Instead of watching porn/i },
-  { titleText: /(nofap|no fap) is changing my life/i },
-  { titleText: /(its|It's) never too late/i },
+  { titleText: /(NoFap|no fap|no-fap) is changing my life/i },
+  { titleText: /(its|It's|It’s) never too late/i },
   { titleText: /quote/i },
   { titleText: /motivational thought/i },
   { titleText: /do not relapse/i },
   { titleText: /^keep going/i },
+  { titleText: /Our Greatest Fear Is/i },
+
+  { ...both, titleText: /greatest nofap inspiration/i },
 
   // RATIONALISATIONS
   { titleText: /(down side|downside)/i },
@@ -120,28 +126,33 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /future (son|daughter)/i },
 
   // SEXUAL / MEDICAL CONDITIONS
-  { titleText: /(balls|penis|pelvic|genital|testic)/i },
+  { ...both, titleText: /(balls|penis|pelvic|genital|testic)/i },
+  { ...both, titleText: /(cancer|prostatitis|erection)/i },
+  { ...both, titleText: /(erectile|disfunction|erectile dysfunction)/i },
+  { ...both, titleText: /(grip|syndrome)/i },
+  { ...both, titleText: /(hair|skin|acne|sperm)/i },
+  { ...both, titleText: /medication/i },
+  { ...both, titleText: /(premature|ejaculation|precum|cum)/i },
+  { ...both, titleText: /(pied|peid|get it up|shrink)/i },
+  { ...both, titleText: /(semen|urine|anal)/i },
+  { ...both, titleText: /scientific/i },
+  { ...both, titleText: /super sensitive/i },
+  { ...both, titleText: /testosterone/i },
+  { ...both, titleText: /baldness/i },
+  { ...both, titleText: /weight loss/i },
+  { ...both, titleText: /health problems/i },
+  { ...both, titleText: /hypnotherapy/i },
+  { ...both, titleText: /hypnosis/i },
+  { ...both, titleText: /circumcised/i },
+
   { titleText: /(boner|morning wood)/i },
-  { titleText: /(cancer|prostatitis|erection)/i },
-  { titleText: /(erectile|disfunction|erectile dysfunction)/i },
-  { titleText: /(grip|syndrome)/i },
-  { titleText: /(hair|skin|acne|sperm)/i },
-  { titleText: /medication/i },
-  { titleText: /(premature|ejaculation|precum|cum)/i },
-  { titleText: /(pied|peid|get it up|shrink)/i },
-  { titleText: /(semen|urine|anal)/i },
-  { titleText: /scientific/i },
-  { titleText: /super sensitive/i },
-  { titleText: /testosterone/i },
-  { titleText: /health problems/i },
-  { titleText: /hypnotherapy/i },
-  { titleText: /hypnosis/i },
 
   // SEX / WOMEN
   { titleText: /finally got a girlfriend/i },
   { titleText: /sexting/i },
   { titleText: /(virgin|virginity)/i },
   { titleText: /women attraction/i },
+  { titleText: /got laid (1st|first) time/i },
 
   // POINTLESS QUESTIONS
   { titleText: /counts as relapse/i }, // look into this.
@@ -160,7 +171,8 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(tik tok|tiktok)/i },
   { titleText: /(wim hof)/i }, // cold shower
   { titleText: /weed/i },
-  { titleText: /God/ },
+  
+  { ...both, titleText: /sex before marriage/i },
 
   // DOUBTS
   { titleText: /placebo/i },
@@ -172,6 +184,9 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /no urges yet/i },
   { titleText: /(hard mode|hardmode)/i },
 
+  { ...both, titleText: /negatives of masturbating/i },
+  { ...both, titleText: /am I addicted to (porn|pron)/i },
+  { ...both, titleText: /What does PMO stand for/i },
 
   // UNSORTED
   { titleText: /benefits till now/i },
@@ -182,6 +197,8 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /remember these \d+/i },
   { titleText: /really helpful app/i },
 
+  // NOT WORKING
+  // { titleText: /God/ }, // doesn't work for like oh God
   // || new RegExp(/girlfriend/i).test(titleText) // look into this
   // || new RegExp(/app/i).test(titleText) // look into (doesn't work because porn blocking app )
   // || new RegExp(/sex/i).test(titleText) // look into this (can't do this because of sexual urges)
@@ -249,7 +266,11 @@ export const toRemoveFinalRegexArray: RegexFilters[] = [
   { titleText: /mission \.*? accomplished/i },
   { titleText: /first time reaching /i },
   { titleText: /completed \d+ (days|weeks) today/i },
-  { titleText: /celebrating (1|one) (week|month)/i },
+
+  { ...both, titleText: /celebrating (1|one) (week|month)/i },
+  { ...both, titleText: /90 days (clean|complete|done)/i },
+
+  { messageText: /Officially hit a month of nofap/i },
 
   // UNSURE
   // || new RegExp(/^\d+th day/i).test(titleText)

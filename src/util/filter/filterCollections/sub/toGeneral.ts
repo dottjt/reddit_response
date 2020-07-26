@@ -1,122 +1,124 @@
-import { RegexFilters } from '../../regexUtil';
+import { RegexFilters, both } from '../../regexUtil';
+
+// TODO FIX THIS UP
 
 export const toGeneralAdviceRegexArray: RegexFilters[] = [
-  { titleText: /I need ?(.*) help/i },
-
-  { titleText: /feel like shit/i },
-  { titleText: /need some guidance/i },
-  { titleText: /I need to stop/i },
-  { titleText: /how do I avoid relapsing/i },
-  { titleText: /what other steps/i },
-  { titleText: /I have a serious addiction to masturbation/i },
-
-  // LOST
-  { titleText: /I don't know what to do/i },
 
   // MOTIVATION
-  { titleText: /I need some serious motivation/i },
   { titleText: /please I need motivation/i },
+  { titleText: /I have a serious addiction to masturbation/i },
 
-  // TIPS
-  { titleText: /^tips\?$/i },
-  { titleText: /.* any tips\?$/i },
-  { titleText: /^Need advice$/i },
+  { ...both, titleText: /need some ?(more|serious)? (inspiration|motivation)/i },
 
-  // HOW TO
-  { titleText: /^how to quit(\?)?$/i },
-  { titleText: /best way to stop masturbating\?/i },
-  { titleText: /how can I survive this journey/i },
+  { messageText: /any motivation or advice is welcome/i },
+  { messageText: /any words of encouragement/i },
 
   // ADVICE
+  { titleText: /I need ?(.*) help/i },
+  { titleText: /^tips\?$/i },
+  { titleText: /.* any tips\?$/i },
+  { titleText: /need (NoFap|no fap|no-fap) tips/i },
+  { titleText: /any tips to stop (fapping|mast)/i },
+  { titleText: /any tips to (stop|quit)\?/i },
+  { titleText: /^Need advice$/i },
   { titleText: /could use some advice/i },
-  { titleText: /need some advice from pro/i },
+  { titleText: /Beginner, need some advice/i },
+  { titleText: /what other steps/i },
+  { titleText: /need some general advice/i },
 
-  // TOO HARD
+  { ...both, titleText: /I'm an addict please help me with some advice/i },
+  { ...both, titleText: /if anyone has (advice|tips) for a (beginner|novice)/i },
+
+  { messageText: /Can anyone help me/i },
+  { messageText: /What do (you|u) do when (you|u) really want to do it/i },
+  { messageText: /what can I do to change/i },
+  { messageText: /give me some pointers/i },
+  { messageText: /any tips on how to do it/i },
+  { messageText: /looking for something that will make me stop/i },
+  { messageText: /I wanted to know any advice/i },
+  { messageText: /Any advice is ?(much)? appreci/i },
+  { messageText: /anybody could help/i },
+  { messageText: /I would appreciate (any|all the) advice/i },
+  { messageText: /please tell me what (should I|to) do\?/i },
+  { messageText: /share their conclusions about how they overcame/i },
+  { messageText: /any improvements are welcome/i },
+
+  { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i },
+
+  // STRUGGLE
+  { titleText: /I keep failing/i },
+  { titleText: /I ?(still)? (don’t|don't|dont) know what to do/i },
+  { titleText: /still can't do it/i },
+  { messageText: /How do I stop\?/i },
+  { messageText: /anyone plzzzz/i },
+
+  // HOW TO
+  { ...both, titleText: /^how to quit(\?)?$/i },
+  { ...both, titleText: /best way to stop masturbating\?/i },
+  { ...both, titleText: /how can I (stop|survive this journey)/i },
+  { ...both, titleText: /how do I avoid relapsing/i },
+  { ...both, titleText: /How not to get into an Addiction/i },
+  { ...both, titleText: /how to get past .* (week|days|day)/i },
+
+  { ...both, titleText: /How do I regain (self control|self-control)/i },
+
+  // STRUGGLE
+  { titleText: /I (don’t|don't|dont) know what to do/i },
+  { titleText: /no (masterbation|masturbation) is hard for me/i },
   { titleText: /shit is getting rough/i },
   { titleText: /It's impossible/i },
   { titleText: /trying for years/i },
-  { titleText: /falling badly/i },
+  { titleText: /(failing|falling|struggling) badly/i },
   { titleText: /addicted like hell/i },
-  { titleText: /I've failed countless/i },
-
-  // HELP
-  { titleText: /would like some help/i },
-  { titleText: /how can I stop/i },
-  { titleText: /^Please help/i },
-  { titleText: /^Need help/i },
-  { titleText: /looking for some guidance/i },
-  { titleText: /need help and advice/i },
-  { titleText: /I really, really need help/i },
-  { titleText: /^help me$/i },
-
-
-  { messageText: /any improvements are welcome/i },
-  { messageText: /tell me the secret/i },
-
-  // CAN'T STOP
-  { titleText: /I just can’t stop myself/i },
-  { titleText: /I (give up|need support|can't stop)/i },
-
-  // RELAPSE
-  { titleText: /keep relapsing everyday/i },
+  { titleText: /(I've|I’ve|Ive) failed countless/i },
+  { titleText: /feel like shit/i },
+  { titleText: /things are getting worse/i },
+  { titleText: /Trying Nofap .* years/i },
+  { titleText: /(cant|can't|can’t) make it more than/i },
   { titleText: /I feel like relapsing/i },
 
-  { titleText: /still can't do it/i },
-  { titleText: /what have I become?/i },
-  { titleText: /How not to get into an Addiction/i },
-  { titleText: /trying to make this attempt count/i },
+  // HELP
+  { titleText: /^Need help/i },
+  { titleText: /^Please help/i },
   { titleText: /^please help me(\.|\?)?$/i },
-  { titleText: /can't control help me please/i },
-  { titleText: /It's time to stop/i },
-  { titleText: /I (dont|don't) know what to do/i },
-  { titleText: /Beginner, need some advice/i },
-  { titleText: /need some general advice/i },
-  { titleText: /I want to stop masturbat/i },
-  { titleText: /no (masterbation|masturbation) is hard for me/i },
-  { titleText: /how to get past .* (week|days|day)/i },
-  { titleText: /Trying Nofap .* years/i },
-  { titleText: /I keep failing/i },
+  { titleText: /^help me please(\.|\?)?$/i },
+  { titleText: /^help me$/i },
+  { titleText: /need help and advice/i },
+  { titleText: /I really, really need help/i },
+  { titleText: /How do i recover my (mind|body)/i },
   { titleText: /need ?(some)? help with stopping/i },
-  { titleText: /need help before (it|it is|it's) too late/i },
-  { titleText: /starting over/i },
-  { titleText: /need (nofap|no fap) tips/i },
-  { titleText: /I need some ?(more)? inspiration/i },
-  { titleText: /trying hard to stop masturbation/i },
-  { titleText: /things are getting worse/i },
-  { titleText: /any tips to stop (fapping|mast)/i },
-  { titleText: /(cant|can't|can’t) make it more than/i },
+  { titleText: /(cant|can't|can’t) control help me please/i },
   { titleText: /help me out from relapsing/i },
-  { titleText: /I want to quit porn/i },
-  { titleText: /I (don't|dont) (wanna|want to) masturbate anymore/i },
 
-  // * MESSAGES *
-  { messageText: /any tips on how to do it/i },
-  { messageText: /I wanted to know any advice/i },
-  { messageText: /How do I stop\?/i },
-  { messageText: /anyone plzzzz/i },
-  { messageText: /Any advice is ?(much)? appreci/i },
-  { messageText: /anybody could help/i },
-  { messageText: /give me some pointers/i },
-  { messageText: /what can I do to change/i },
-  { messageText: /any words of encouragement/i },
-  { messageText: /been trying hard to stop .* for/i },
-  { messageText: /Can anyone help me/i },
-  { messageText: /looking for something that will make me stop/i },
-  { messageText: /I would appreciate (any|all the) advice/i },
+  // GUIDANCE
+  { titleText: /need some guidance/i },
+  { titleText: /looking for some guidance/i },
+  { titleText: /would like some help/i },
+  { titleText: /need some advice from pro/i },
 
+  { messageText: /tell me the secret/i },
+  { messageText: /I would be grateful if someone could help me (on|in) this journey?/i },
 
-  { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i }
+  // CAN'T STOP
+  { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
-  // MESSAGE
+  { ...both, titleText: /keep relapsing everyday/i },
+  { ...both, titleText: /how to stop relapsing on day/i },
 
-  // UNSURE
+  // EXPECTATION
+  { titleText: /(need|want) to (quit|stop) (masturbating|porn)/i },
+  { titleText: /It's time to stop/i },
+  { titleText: /what have I become?/i },
+  { titleText: /trying to make this attempt count/i },
+  { titleText: /need help before (it|it is|it's) too late/i },
+
+  { titleText: /I (don’t|don't|dont) (wanna|want to) masturbate anymore/i },
+
+  { ...both, titleText: /trying hard to stop/i },
+  { ...both, titleText: /How can you ?(guys)? just stop/i },
+
+  // UNVIABLE
   // || new RegExp(/if anyone can help/i).test(messageText)
   // || new RegExp(/urges keep coming/i).test(titleText)
   // || new RegExp(/needing advice/i).test(titleText)
-
-
-  // I am Trying Nofap From Last 1.5 years But I keep Failing, is there any Improvement i can do?
-  // Advice
-
-  // message
 ];

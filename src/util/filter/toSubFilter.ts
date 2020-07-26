@@ -64,6 +64,11 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   // Flatline 7 days in - scared!
   // will nofap cure my cuckhold fetish
   // should I reset?
+  // Is this flatline? - title,  How do you get through it? - messageText
+  // Does peeking count as a relapse (both) - did I just relapse.
+
+  // Ways to help me stay motivated through flatline -messageText
+  // Should I just finish and restart my counter? messageText  - no reason to relapse.
 
   // IS SEX RELAPSE
   // Is sex (with someone you just met) a relapse
