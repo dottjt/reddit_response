@@ -30,7 +30,7 @@ import {
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { UserType, SendMessageType } from '../types/serverTypes';
 import { PreviousMessageInformation, UserInformation, MarkUserHostileButton, SetMarkerButton, MarkUserChattedButton } from './ComponentsUtil';
-import { ConfigType } from '../util/config';
+import { ConfigType, fakeConfigType } from '../util/config';
 import { openNewLink, generatePrelimUrl } from '../util/utils/sendMessageUtils';
 import { followRelapseAdvice, followMeditationAdvice, followStruggleAdvice, followNotSmoothlyAdvice } from '../util/responses/follow';
 
@@ -94,7 +94,7 @@ const UserPanel = ({ dbUser, usernameConfig, hoursAgoText }: UserPanelProps) => 
 
       <div style={{ display: 'flex', 'justify-content': 'space-between', 'margin-top': '1rem', 'margin-bottom': '1rem' }}>
         <div style={{ display: 'flex', 'flex-direction': 'column' }}>
-          {createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '')}
+          {createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', fakeConfigType)}
           {createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig?.forumType), usernameConfig)}
           {createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig?.forumType), usernameConfig)}

@@ -2798,6 +2798,11 @@
         ForumType["rSemenRetentionForum"] = "r/Semenretention";
         ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
     })(ForumType || (ForumType = {}));
+    var fakeConfigType = {
+        usernameValue: 'NA',
+        usernameTimestamp: 'NA',
+        forumType: ForumType.rNofapForum,
+    };
     var INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
     var openReplyLink = function (containerDiv) { return __awaiter(void 0, void 0, void 0, function () {

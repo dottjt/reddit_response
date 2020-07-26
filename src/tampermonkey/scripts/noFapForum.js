@@ -2483,6 +2483,23 @@
             }); } }));
     };
 
+    // export const USERNAME = 'NA';
+    var ForumType;
+    (function (ForumType) {
+        ForumType["rNofapForum"] = "r/NoFap";
+        ForumType["rPornFreeForum"] = "r/pornfree";
+        ForumType["rPornAddictionForum"] = "r/PornAddiction";
+        ForumType["rNofapChristiansForum"] = "r/NoFapChristians";
+        ForumType["rNofapTeensForum"] = "r/NoFapTeens";
+        ForumType["rSemenRetentionForum"] = "r/Semenretention";
+        ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
+    })(ForumType || (ForumType = {}));
+    var fakeConfigType = {
+        usernameValue: 'NA',
+        usernameTimestamp: 'NA',
+        forumType: ForumType.rNofapForum,
+    };
+
     var followRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
     var followMeditationAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
     var followStruggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
@@ -2506,7 +2523,7 @@
     };
     var UserPanel = function (_a) {
         var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
-        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+        return (createVNode$2(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$2(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$2(1, "div", null, [createVNode$2(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', fakeConfigType), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$2(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),

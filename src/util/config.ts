@@ -19,6 +19,12 @@ export enum ForumType {
   rMuslimNofapForum='r/MuslimNoFap',
 }
 
+export const fakeConfigType: ConfigType = {
+  usernameValue: 'NA',
+  usernameTimestamp: 'NA',
+  forumType: ForumType.rNofapForum,
+}
+
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
 export const R_NOFAP_USERNAME = 'jvstin16';

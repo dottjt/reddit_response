@@ -2650,6 +2650,115 @@
             }); } }));
     };
 
+    // export const USERNAME = 'NA';
+    var ForumType;
+    (function (ForumType) {
+        ForumType["rNofapForum"] = "r/NoFap";
+        ForumType["rPornFreeForum"] = "r/pornfree";
+        ForumType["rPornAddictionForum"] = "r/PornAddiction";
+        ForumType["rNofapChristiansForum"] = "r/NoFapChristians";
+        ForumType["rNofapTeensForum"] = "r/NoFapTeens";
+        ForumType["rSemenRetentionForum"] = "r/Semenretention";
+        ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
+    })(ForumType || (ForumType = {}));
+    var fakeConfigType = {
+        usernameValue: 'NA',
+        usernameTimestamp: 'NA',
+        forumType: ForumType.rNofapForum,
+    };
+    var R_NOFAP_USERNAME = 'jvstin16';
+    var R_NOFAP_TIMESTAMP = '1 minute ago';
+    var R_PORN_FREE_USERNAME = 'Alternative_Comment6';
+    var R_PORN_FREE_TIMESTAMP = '4 minutes ago';
+    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
+    var R_PORN_ADDICTION_TIMESTAMP = '26 minutes ago';
+    var R_NOFAP_CHRISTIANS_USERNAME = '';
+    var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
+    var R_NOFAP_TEENS_USERNAME = '';
+    var R_NOFAP_TEENS_TIMESTAMP = 'NaN days ago';
+    var R_SEMEN_RETENTION_USERNAME = '';
+    var R_SEMEN_RETENTION_TIMESTAMP = 'NaN days ago';
+    var R_MUSLIM_NOFAP_USERNAME = '';
+    var R_MUSLIM_NOFAP_TIMESTAMP = 'NaN days ago';
+    var TIMEFRAME = 'NA';
+    // export const TIMEFRAME = '1 hour ago';
+    // export const TIMEFRAME = '2 hours ago';
+    // export const TIMEFRAME = '3 hours ago';
+    // export const TIMEFRAME = '4 hours ago';
+    // export const TIMEFRAME = '5 hours ago';
+    // export const TIMEFRAME = '6 hours ago';
+    // export const TIMEFRAME = '7 hours ago';
+    // export const TIMEFRAME = '8 hours ago';
+    // export const TIMEFRAME = '9 hours ago';
+    // export const TIMEFRAME = '10 hours ago';
+    // export const TIMEFRAME = '11 hours ago';
+    // export const TIMEFRAME = '12 hours ago';
+    // export const TIMEFRAME = '13 hours ago';
+    // export const TIMEFRAME = '14 hours ago';
+    // export const TIMEFRAME = '15 hours ago';
+    var getUsernameMarker = function (location) {
+        if (location.pathname.toLowerCase().includes('/nofap/new')) {
+            return {
+                usernameValue: R_NOFAP_USERNAME,
+                usernameTimestamp: R_NOFAP_TIMESTAMP,
+                forumType: ForumType.rNofapForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/pornfree/new')) {
+            return {
+                usernameValue: R_PORN_FREE_USERNAME,
+                usernameTimestamp: R_PORN_FREE_TIMESTAMP,
+                forumType: ForumType.rPornFreeForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/pornaddiction/new')) {
+            return {
+                usernameValue: R_PORN_ADDICTION_USERNAME,
+                usernameTimestamp: R_PORN_ADDICTION_TIMESTAMP,
+                forumType: ForumType.rPornAddictionForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {
+            return {
+                usernameValue: R_NOFAP_CHRISTIANS_USERNAME,
+                usernameTimestamp: R_NOFAP_CHRISTIANS_TIMESTAMP,
+                forumType: ForumType.rNofapChristiansForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/nofapteens/new')) {
+            return {
+                usernameValue: R_NOFAP_TEENS_USERNAME,
+                usernameTimestamp: R_NOFAP_TEENS_TIMESTAMP,
+                forumType: ForumType.rNofapTeensForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/semenretention/new')) {
+            return {
+                usernameValue: R_SEMEN_RETENTION_USERNAME,
+                usernameTimestamp: R_SEMEN_RETENTION_TIMESTAMP,
+                forumType: ForumType.rSemenRetentionForum
+            };
+        }
+        if (location.pathname.toLowerCase().includes('/muslimnofap/new')) {
+            return {
+                usernameValue: R_MUSLIM_NOFAP_USERNAME,
+                usernameTimestamp: R_MUSLIM_NOFAP_TIMESTAMP,
+                forumType: ForumType.rMuslimNofapForum
+            };
+        }
+        // // NO FAP forumns
+        // if (location.pathname.toLowerCase().includes('index.php')) {
+        //   if (location.search.includes('self-improvement')) {
+        //     //
+        //   }
+        // }
+        return {
+            usernameValue: '',
+            usernameTimestamp: '',
+            forumType: ForumType.rNofapForum
+        };
+    };
+
     var followRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
     var followMeditationAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
     var followStruggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
@@ -2673,7 +2782,7 @@
     };
     var UserPanel = function (_a) {
         var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
-        return (createVNode$3(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$3(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$3(1, "div", null, [createVNode$3(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, ''), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
+        return (createVNode$3(1, "div", null, [dbUser.userType !== UserType.FreshUser && (createComponentVNode$1(2, PreviousMessageInformation, { "dbUser": dbUser })), createVNode$3(1, "div", null, [usernameConfig && hoursAgoText && (createComponentVNode$1(2, SetMarkerButton, { "username": dbUser.username, "usernameConfig": usernameConfig, "hoursAgoText": hoursAgoText })), createComponentVNode$1(2, MarkUserChattedButton, { "username": dbUser.username }), createComponentVNode$1(2, MarkUserHostileButton, { "username": dbUser.username })], 0, { "style": { display: 'flex' } }), createComponentVNode$1(2, UserInformation, { "dbUser": dbUser, "usernameConfig": usernameConfig }), createVNode$3(1, "div", null, [createVNode$3(1, "div", null, [createStartMessageLink(SendMessageType.NFDCustomSend, 'purple', dbUser.username, '', fakeConfigType), createStartMessageLink(SendMessageType.StartAdviceStart, 'purple', dbUser.username, startAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceStartAgain, 'purple', dbUser.username, startAgainAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceGeneral, 'purple', dbUser.username, generalAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
                     createStartMessageLink(SendMessageType.StartAdviceRelapse, 'purple', dbUser.username, relapseAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig), createVNode$3(1, "h4", null, "Custom", 16), createStartMessageLink(SendMessageType.StartAdviceAge, 'purple', dbUser.username, ageAdvice(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.forumType), usernameConfig),
@@ -2829,110 +2938,6 @@
         if (domContainer) {
             render(createComponentVNode$2(2, UserPanel, { "dbUser": dbUser, "hoursAgoText": hoursAgoText, "usernameConfig": usernameConfig }), domContainer);
         }
-    };
-
-    // export const USERNAME = 'NA';
-    var ForumType;
-    (function (ForumType) {
-        ForumType["rNofapForum"] = "r/NoFap";
-        ForumType["rPornFreeForum"] = "r/pornfree";
-        ForumType["rPornAddictionForum"] = "r/PornAddiction";
-        ForumType["rNofapChristiansForum"] = "r/NoFapChristians";
-        ForumType["rNofapTeensForum"] = "r/NoFapTeens";
-        ForumType["rSemenRetentionForum"] = "r/Semenretention";
-        ForumType["rMuslimNofapForum"] = "r/MuslimNoFap";
-    })(ForumType || (ForumType = {}));
-    var R_NOFAP_USERNAME = 'jvstin16';
-    var R_NOFAP_TIMESTAMP = '1 minute ago';
-    var R_PORN_FREE_USERNAME = 'Alternative_Comment6';
-    var R_PORN_FREE_TIMESTAMP = '4 minutes ago';
-    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '26 minutes ago';
-    var R_NOFAP_CHRISTIANS_USERNAME = '';
-    var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
-    var R_NOFAP_TEENS_USERNAME = '';
-    var R_NOFAP_TEENS_TIMESTAMP = 'NaN days ago';
-    var R_SEMEN_RETENTION_USERNAME = '';
-    var R_SEMEN_RETENTION_TIMESTAMP = 'NaN days ago';
-    var R_MUSLIM_NOFAP_USERNAME = '';
-    var R_MUSLIM_NOFAP_TIMESTAMP = 'NaN days ago';
-    var TIMEFRAME = 'NA';
-    // export const TIMEFRAME = '1 hour ago';
-    // export const TIMEFRAME = '2 hours ago';
-    // export const TIMEFRAME = '3 hours ago';
-    // export const TIMEFRAME = '4 hours ago';
-    // export const TIMEFRAME = '5 hours ago';
-    // export const TIMEFRAME = '6 hours ago';
-    // export const TIMEFRAME = '7 hours ago';
-    // export const TIMEFRAME = '8 hours ago';
-    // export const TIMEFRAME = '9 hours ago';
-    // export const TIMEFRAME = '10 hours ago';
-    // export const TIMEFRAME = '11 hours ago';
-    // export const TIMEFRAME = '12 hours ago';
-    // export const TIMEFRAME = '13 hours ago';
-    // export const TIMEFRAME = '14 hours ago';
-    // export const TIMEFRAME = '15 hours ago';
-    var getUsernameMarker = function (location) {
-        if (location.pathname.toLowerCase().includes('/nofap/new')) {
-            return {
-                usernameValue: R_NOFAP_USERNAME,
-                usernameTimestamp: R_NOFAP_TIMESTAMP,
-                forumType: ForumType.rNofapForum
-            };
-        }
-        if (location.pathname.toLowerCase().includes('/pornfree/new')) {
-            return {
-                usernameValue: R_PORN_FREE_USERNAME,
-                usernameTimestamp: R_PORN_FREE_TIMESTAMP,
-                forumType: ForumType.rPornFreeForum
-            };
-        }
-        if (location.pathname.toLowerCase().includes('/pornaddiction/new')) {
-            return {
-                usernameValue: R_PORN_ADDICTION_USERNAME,
-                usernameTimestamp: R_PORN_ADDICTION_TIMESTAMP,
-                forumType: ForumType.rPornAddictionForum
-            };
-        }
-        if (location.pathname.toLowerCase().includes('/nofapchristians/new')) {
-            return {
-                usernameValue: R_NOFAP_CHRISTIANS_USERNAME,
-                usernameTimestamp: R_NOFAP_CHRISTIANS_TIMESTAMP,
-                forumType: ForumType.rNofapChristiansForum
-            };
-        }
-        if (location.pathname.toLowerCase().includes('/nofapteens/new')) {
-            return {
-                usernameValue: R_NOFAP_TEENS_USERNAME,
-                usernameTimestamp: R_NOFAP_TEENS_TIMESTAMP,
-                forumType: ForumType.rNofapTeensForum
-            };
-        }
-        if (location.pathname.toLowerCase().includes('/semenretention/new')) {
-            return {
-                usernameValue: R_SEMEN_RETENTION_USERNAME,
-                usernameTimestamp: R_SEMEN_RETENTION_TIMESTAMP,
-                forumType: ForumType.rSemenRetentionForum
-            };
-        }
-        if (location.pathname.toLowerCase().includes('/muslimnofap/new')) {
-            return {
-                usernameValue: R_MUSLIM_NOFAP_USERNAME,
-                usernameTimestamp: R_MUSLIM_NOFAP_TIMESTAMP,
-                forumType: ForumType.rMuslimNofapForum
-            };
-        }
-        // // NO FAP forumns
-        // if (location.pathname.toLowerCase().includes('index.php')) {
-        //   if (location.search.includes('self-improvement')) {
-        //     //
-        //   }
-        // }
-        return {
-            usernameValue: '',
-            usernameTimestamp: '',
-            forumType: ForumType.rNofapForum
-        };
     };
 
     var toRemoveInitialDay = function (titleText, flairText, messageText) {
