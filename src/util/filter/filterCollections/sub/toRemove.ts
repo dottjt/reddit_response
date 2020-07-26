@@ -144,6 +144,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { ...both, titleText: /hypnotherapy/i },
   { ...both, titleText: /hypnosis/i },
   { ...both, titleText: /circumcised/i },
+  { ...both, titleText: /inflammation/i },
 
   { titleText: /(boner|morning wood)/i },
 

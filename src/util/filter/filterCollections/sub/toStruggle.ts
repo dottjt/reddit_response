@@ -1,4 +1,4 @@
-import { RegexFilters } from '../../regexUtil';
+import { RegexFilters, both } from '../../regexUtil';
 
 export const toStruggleAdviceRegexArray: RegexFilters[] = [
 
@@ -22,10 +22,13 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
   { titleText: /tried countless of times before/i, },
   { titleText: /I (can’t|can't|cant) get my mind (of|off) it/i, },
   { titleText: /Still Struggling/i, },
-  { titleText: /Trouble starting/i, },
+
+  { ...both, titleText: /not able to start .* journey again/i, },
 
   { messageText: /How can I get out of this hole\?/i, },
   { messageText: /reasons so that I (don’t|don't|dont) (.*)? relapse/i, },
+  { messageText: /I (don’t|don't|dont) know what to do and I need help/i, },
+  { messageText: /I (don’t|don't|dont) want this anymore/i, },
 
   // ABOUT TO RELAPSE
   { titleText: /(I’m|I'm|im|I am) about to relapse/i, },

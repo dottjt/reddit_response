@@ -2510,7 +2510,7 @@
     var ageAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.\n\nThere is no such thing as reasonable when it comes to addiction. I've created a website which explains why, if you're interested.\n"); };
+    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var accountabilityPartner = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"); };
     var partnerAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
     var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
@@ -2666,20 +2666,20 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'jvstin16';
-    var R_NOFAP_TIMESTAMP = '1 minute ago';
-    var R_PORN_FREE_USERNAME = 'Alternative_Comment6';
-    var R_PORN_FREE_TIMESTAMP = '4 minutes ago';
+    var R_NOFAP_USERNAME = 'ajadityajain1711';
+    var R_NOFAP_TIMESTAMP = '2.255278888888889 hours ago';
+    var R_PORN_FREE_USERNAME = 'plucpj';
+    var R_PORN_FREE_TIMESTAMP = '4.210003333333333 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '26 minutes ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '4.487502222222222 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
-    var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN days ago';
+    var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN hours ago';
     var R_NOFAP_TEENS_USERNAME = '';
-    var R_NOFAP_TEENS_TIMESTAMP = 'NaN days ago';
+    var R_NOFAP_TEENS_TIMESTAMP = 'NaN hours ago';
     var R_SEMEN_RETENTION_USERNAME = '';
-    var R_SEMEN_RETENTION_TIMESTAMP = 'NaN days ago';
+    var R_SEMEN_RETENTION_TIMESTAMP = 'NaN hours ago';
     var R_MUSLIM_NOFAP_USERNAME = '';
-    var R_MUSLIM_NOFAP_TIMESTAMP = 'NaN days ago';
+    var R_MUSLIM_NOFAP_TIMESTAMP = 'NaN hours ago';
     var TIMEFRAME = 'NA';
     // export const TIMEFRAME = '1 hour ago';
     // export const TIMEFRAME = '2 hours ago';
@@ -2867,10 +2867,16 @@
                         var usernameTag = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes(username); })[0];
                         var hoursAgoText = (_j = (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = usernameTag === null || usernameTag === void 0 ? void 0 : usernameTag.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode.children[1]) === null || _f === void 0 ? void 0 : _f.children[0]) === null || _g === void 0 ? void 0 : _g.children[0]) === null || _h === void 0 ? void 0 : _h.children[0].querySelectorAll('a')[1]) === null || _j === void 0 ? void 0 : _j.innerText;
                         var doesTextContainXXX = username === usernameConfig.usernameValue;
+                        var doesTimestampContainXXX = nextHoursAgoValueToSearch ? hoursAgoText === nextHoursAgoValueToSearch : false;
                         if (doesTextContainXXX) {
                             console.log('Found scroll username.');
                             clearInterval(interval);
                             resolve('Found scroll username.');
+                        }
+                        if (doesTimestampContainXXX) {
+                            console.log('Found scroll timestamp instead.');
+                            clearInterval(interval);
+                            resolve('Found scroll timestamp instead.');
                         }
                     };
                     for (var _l = 0, _m = usernames; _l < _m.length; _l++) {
@@ -2923,8 +2929,8 @@
         var dbUser = _a.dbUser, titleText = _a.titleText, flairText = _a.flairText, aLinkHref = _a.aLinkHref, prelimUrl = _a.prelimUrl, index = _a.index, sendMessageType = _a.sendMessageType, prelimContainer = _a.prelimContainer, messageMatch = _a.messageMatch;
         var nodeContainer = document.createElement('div');
         nodeContainer.id = "r" + dbUser.username + "-" + index;
-        render(createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "span", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, titleText, 0)),
-                messageMatch.length > 0 && ((_b = messageMatch[0]) === null || _b === void 0 ? void 0 : _b.messageTextMatch) && (createVNode$4(1, "span", null, [createTextVNode$2(" | Message: "), createVNode$4(1, "span", null, messageMatch[0].messageTextMatch, 0, { "style": { color: 'red' } })], 4)), createVNode$4(1, "p", null, messageMatch.length > 0 ? (highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0); })) : (createVNode$4(1, "span", null, flairText, 0)), 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
+        render(createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0, { "style": { 'line-height': '1.4rem' } }); })) : (createVNode$4(1, "span", null, titleText, 0)),
+                messageMatch.length > 0 && ((_b = messageMatch[0]) === null || _b === void 0 ? void 0 : _b.messageTextMatch) && (createVNode$4(1, "span", null, [createTextVNode$2(" | Message: "), createVNode$4(1, "span", null, messageMatch[0].messageTextMatch, 0, { "style": { color: 'red' } })], 4, { "style": { 'line-height': '1.4rem' } })), createVNode$4(1, "p", null, messageMatch.length > 0 ? (highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0, { "style": { 'line-height': '1.4rem' } }); })) : (createVNode$4(1, "span", null, flairText, 0, { "style": { 'line-height': '1.4rem' } })), 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }, "onclick": function () { return openNewLink(prelimUrl, SendMessageType.NA); } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4), nodeContainer);
         prelimContainer === null || prelimContainer === void 0 ? void 0 : prelimContainer.appendChild(nodeContainer);
     };
     var renderUserPanel = function (_a) {
@@ -3069,6 +3075,7 @@
         __assign(__assign({}, both), { titleText: /hypnotherapy/i }),
         __assign(__assign({}, both), { titleText: /hypnosis/i }),
         __assign(__assign({}, both), { titleText: /circumcised/i }),
+        __assign(__assign({}, both), { titleText: /inflammation/i }),
         { titleText: /(boner|morning wood)/i },
         // SEX / WOMEN
         { titleText: /finally got a girlfriend/i },
@@ -3394,7 +3401,8 @@
         __assign(__assign({}, both), { titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /wet dreamed this morning/i }),
         __assign(__assign({}, both), { titleText: /wet dream on day/i }),
-        __assign(__assign({}, both), { titleText: /Do wet dreams count as relapsing/i }),
+        __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count as relapsing/i }),
+        __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
         __assign(__assign({}, both), { titleText: /Lose benefits after a wet dream?/i }),
         __assign(__assign({}, both), { titleText: /Wet dreams (wont|won't) stop/i }),
         __assign(__assign({}, both), { titleText: /Wet dreams every \d+/i }),
@@ -3427,9 +3435,11 @@
         { titleText: /tried countless of times before/i, },
         { titleText: /I (can’t|can't|cant) get my mind (of|off) it/i, },
         { titleText: /Still Struggling/i, },
-        { titleText: /Trouble starting/i, },
+        __assign(__assign({}, both), { titleText: /not able to start .* journey again/i }),
         { messageText: /How can I get out of this hole\?/i, },
         { messageText: /reasons so that I (don’t|don't|dont) (.*)? relapse/i, },
+        { messageText: /I (don’t|don't|dont) know what to do and I need help/i, },
+        { messageText: /I (don’t|don't|dont) want this anymore/i, },
         // ABOUT TO RELAPSE
         { titleText: /(I’m|I'm|im|I am) about to relapse/i, },
         { titleText: /(I’m|I'm|im|I am) ?(really)? close to relapsing/i, },
@@ -3493,6 +3503,7 @@
         { titleText: /block porn site/i },
         { titleText: /what website blocker/i },
         { titleText: /Website-blocking software/i },
+        __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
         __assign(__assign({}, both), { titleText: /How do I block NSFW/i }),
         __assign(__assign({}, both), { titleText: /need a porn (.*)? blocker/i }),
         __assign(__assign({}, both), { titleText: /what programs do you use to block porn/i }),
@@ -3532,7 +3543,7 @@
     ];
 
     var toNoReasonToRelapseAdviceRegexArray = [
-        { titleText: /hellohellohellohellohellohello/i },
+        __assign(__assign({}, both), { titleText: /Should I relapse/i }),
     ];
 
     var toAgeAdviceRegexArray = [

@@ -91,9 +91,11 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 export const noReasonToRelapseAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}.
 
-There is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you're addicted to it, otherwise you wouldn't be having this thought at all.
+There is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.
 
-There is no such thing as reasonable when it comes to addiction. I've created a website which explains why, if you're interested.
+The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+
+Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 

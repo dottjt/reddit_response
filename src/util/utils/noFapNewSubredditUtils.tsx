@@ -90,11 +90,11 @@ export const scrollToSpecifiedDate = (dateString: string, usernameConfig: Config
             clearInterval(interval);
             resolve('Found scroll username.');
           }
-          // if (doesTimestampContainXXX) {
-          //   console.log('Found scroll timestamp instead.');
-          //   clearInterval(interval);
-          //   resolve('Found scroll timestamp instead.');
-          // }
+          if (doesTimestampContainXXX) {
+            console.log('Found scroll timestamp instead.');
+            clearInterval(interval);
+            resolve('Found scroll timestamp instead.');
+          }
         }
       }
     }
@@ -163,21 +163,21 @@ export const createPrelimLink = ({
         style={{ display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: '1px solid black' }}
         onclick={() => openNewLink(prelimUrl, SendMessageType.NA)}
       >
-        <span style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</span>
+        <p style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</p>
           {messageMatch.length > 0 ? (
-            highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(element => <span>{element}</span>)
+            highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(element => <span style={{ 'line-height': '1.4rem' }}>{element}</span>)
           ) : (
             <span>{titleText}</span>
           )}
           {/* TO TEST */}
           {messageMatch.length > 0 && messageMatch[0]?.messageTextMatch && (
-            <span> | Message: <span style={{ color: 'red' }}>{messageMatch[0].messageTextMatch}</span></span>
+            <span style={{ 'line-height': '1.4rem' }}> | Message: <span style={{ color: 'red' }}>{messageMatch[0].messageTextMatch}</span></span>
           )}
         <p style={{ 'margin-top': '0.5rem' }}>
           {messageMatch.length > 0 ? (
-            highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(element => <span>{element}</span>)
+            highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(element => <span style={{ 'line-height': '1.4rem' }}>{element}</span>)
           ) : (
-            <span>{flairText}</span>
+            <span style={{ 'line-height': '1.4rem' }}>{flairText}</span>
           )}
         </p>
       </a>

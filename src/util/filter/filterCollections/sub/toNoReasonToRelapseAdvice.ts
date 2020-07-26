@@ -1,5 +1,5 @@
 import { RegexFilters, both } from '../../regexUtil';
 
 export const toNoReasonToRelapseAdviceRegexArray: RegexFilters[] = [
-  { titleText: /hellohellohellohellohellohello/i },
+  { ...both, titleText: /Should I relapse/i },
 ];
