@@ -116,6 +116,8 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   // FIRST
   { titleText: /first post/i },
   { titleText: /first time doing this/i },
+  { titleText: /first time .* looking for advice/i },
+  { titleText: /first time (nofap|no fap|no-fap)/i },
   { titleText: /(first|1st) (step|day)/i },
   { titleText: /first timer/i },
   { titleText: /^first time here$/i },
@@ -123,5 +125,5 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { messageText: /this is gonna be my first day to nofap/i },
 
   // FLAIR
-  // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time. 
+  // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time.
 ];

@@ -251,6 +251,7 @@
         { replyText: /could I get a link/i },
         { replyText: /could send the website/i },
         { replyText: /you could share/i },
+        { replyText: /I could take a look/i },
         { replyText: /could you please direct me to it/i },
         { replyText: /Feel free to link (that|your|the) website/i },
         { replyText: /feel free to share it/i },
@@ -267,6 +268,8 @@
         // INTERESTED
         { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
         { replyText: /I'm interested in the website/i },
+        { replyText: /interested in the information/i },
+        { replyText: /would be interesting to read/i },
         { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
         { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
         { replyText: /website sounds .* interesting/i },

@@ -10,7 +10,7 @@ export const toHardTimeRegexArray: RegexFilters[] = [
   { replyText: /I (don’t|don't|dont) (place|put) much attention on my mental health/i },
 
   // DON'T MEDITATE
-  { replyText: /I (don’t|dont|don't) (mediate|meditate|do much)/i },
+  { replyText: /I (don’t|dont|don't) (mediate|meditate|do much)/i }, // not sure about having mediate|meditate
   { replyText: /I used to ?(do)? (mediate|meditate|meditation)/i },
   { replyText: /I used to (mediate|meditate) .* but (I've|I’ve|Ive|I) stopped/i },
 

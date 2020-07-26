@@ -2666,12 +2666,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = '18pion18';
-    var R_NOFAP_TIMESTAMP = '3.123056111111111 hours ago';
+    var R_NOFAP_USERNAME = 'bruhman46';
+    var R_NOFAP_TIMESTAMP = 'just now';
     var R_PORN_FREE_USERNAME = 'noisyninja1';
     var R_PORN_FREE_TIMESTAMP = '13 minutes ago';
     var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '1.4027786111111111 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN hours ago';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2994,6 +2994,7 @@
         { titleText: /tag that shows your streak/i },
         { titleText: /I need methods to keep count/i },
         { messageText: /get a tag with your streak/i },
+        __assign(__assign({}, both), { titleText: /How does the day counter work/i }),
         // LECTURE
         { titleText: /(NoFap|no fap|no-fap) taught me/i },
         { titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
@@ -3078,8 +3079,10 @@
         __assign(__assign({}, both), { titleText: /(premature|ejaculation|precum|cum)/i }),
         __assign(__assign({}, both), { titleText: /(pied|peid|get it up|shrink)/i }),
         __assign(__assign({}, both), { titleText: /(semen|urine|anal)/i }),
+        __assign(__assign({}, both), { titleText: /blue balls/i }),
         __assign(__assign({}, both), { titleText: /hocd/i }),
         __assign(__assign({}, both), { titleText: /scientific/i }),
+        __assign(__assign({}, both), { titleText: /vasectomy/i }),
         __assign(__assign({}, both), { titleText: /super sensitive/i }),
         __assign(__assign({}, both), { titleText: /testosterone/i }),
         __assign(__assign({}, both), { titleText: /baldness/i }),
@@ -3101,6 +3104,7 @@
         { titleText: /why do you fap\?/i },
         { titleText: /Why quit porn\?/i },
         // IRRELEVANT TOPICS
+        { titleText: /Playlist/i },
         { titleText: /beast mode/i },
         { titleText: /gift/i },
         { titleText: /hunger/i },
@@ -3124,7 +3128,7 @@
         { titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
         { titleText: /no urges yet/i },
         { titleText: /(hard mode|hardmode)/i },
-        { titleText: /cold showers/i },
+        { titleText: /cold shower/i },
         __assign(__assign({}, both), { titleText: /I (don’t|dont|don't) see any benefits/i }),
         __assign(__assign({}, both), { titleText: /negatives of masturbating/i }),
         __assign(__assign({}, both), { titleText: /am I addicted to (porn|pron)/i }),
@@ -3284,6 +3288,8 @@
         // FIRST
         { titleText: /first post/i },
         { titleText: /first time doing this/i },
+        { titleText: /first time .* looking for advice/i },
+        { titleText: /first time (nofap|no fap|no-fap)/i },
         { titleText: /(first|1st) (step|day)/i },
         { titleText: /first timer/i },
         { titleText: /^first time here$/i },
@@ -3523,6 +3529,11 @@
         __assign(__assign({}, both), { titleText: /how to beat .* urges/i }),
         __assign(__assign({}, both), { titleText: /urges from hell/i }),
         __assign(__assign({}, both), { titleText: /very strong urges/i }),
+        __assign(__assign({}, both), { titleText: /the urges are unreal/i }),
+        __assign(__assign({}, both), { titleText: /just got the biggest urge ever/i }),
+        __assign(__assign({}, both), { titleText: /temptation to peak is too damn high/i }),
+        __assign(__assign({}, both), { titleText: /(couple of|past few) days .* constant urges/i }),
+        __assign(__assign({}, both), { titleText: /(it’s|it's|its|it is) hard to resist/i }),
         __assign(__assign({}, both), { titleText: /urges are ?(getting|becoming)? bigger and bigger/i }),
     ];
 

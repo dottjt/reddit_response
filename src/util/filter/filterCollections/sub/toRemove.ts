@@ -34,6 +34,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /profile/i },
   { titleText: /(days|day) flair/i },
   { titleText: /name tag/i },
+
   { titleText: /(Don't|Don't|dont) mind me/i },
   { titleText: /journal entry/i }, // look into this.
   { titleText: /journal check in/i }, // look into this.
@@ -49,6 +50,8 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /I need methods to keep count/i },
 
   { messageText: /get a tag with your streak/i },
+
+  { ...both, titleText: /How does the day counter work/i },
 
   // LECTURE
   { titleText: /(NoFap|no fap|no-fap) taught me/i },
@@ -140,6 +143,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { ...both, titleText: /(premature|ejaculation|precum|cum)/i },
   { ...both, titleText: /(pied|peid|get it up|shrink)/i },
   { ...both, titleText: /(semen|urine|anal)/i },
+  { ...both, titleText: /blue balls/i },
   { ...both, titleText: /hocd/i },
   { ...both, titleText: /scientific/i },
   { ...both, titleText: /vasectomy/i },
@@ -168,6 +172,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /Why quit porn\?/i },
 
   // IRRELEVANT TOPICS
+  { titleText: /Playlist/i },
   { titleText: /beast mode/i },
   { titleText: /gift/i },
   { titleText: /hunger/i },
@@ -194,7 +199,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
   { titleText: /no urges yet/i },
   { titleText: /(hard mode|hardmode)/i },
-  { titleText: /cold showers/i },
+  { titleText: /cold shower/i },
 
   { ...both, titleText: /I (don’t|dont|don't) see any benefits/i },
   { ...both, titleText: /negatives of masturbating/i },

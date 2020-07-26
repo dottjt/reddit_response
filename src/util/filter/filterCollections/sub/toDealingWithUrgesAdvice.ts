@@ -30,5 +30,14 @@ export const toDealingWithUrgesAdviceRegexArray: RegexFilters[] = [
   // URGES STRUGGLE
   { ...both, titleText: /urges from hell/i },
   { ...both, titleText: /very strong urges/i },
+  { ...both, titleText: /the urges are unreal/i },
+  { ...both, titleText: /just got the biggest urge ever/i },
+  { ...both, titleText: /temptation to peak is too damn high/i },
+  { ...both, titleText: /(couple of|past few) days .* constant urges/i },
+  { ...both, titleText: /(it’s|it's|its|it is) hard to resist/i },
+
+
   { ...both, titleText: /urges are ?(getting|becoming)? bigger and bigger/i },
+
+
 ];
