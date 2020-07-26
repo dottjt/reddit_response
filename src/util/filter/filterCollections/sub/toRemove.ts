@@ -171,18 +171,19 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(tik tok|tiktok)/i },
   { titleText: /(wim hof)/i }, // cold shower
   { titleText: /weed/i },
-  
+
   { ...both, titleText: /sex before marriage/i },
 
   // DOUBTS
   { titleText: /placebo/i },
 
   // OTHER TOPICS
-  { titleText: /is it worth it/i },
+  { titleText: /is (it|nofap|no fap) worth it/i },
   { titleText: /libido/i },
-  { titleText: /sex on (nofap|no fap|no-fap)/i },
+  { titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
   { titleText: /no urges yet/i },
   { titleText: /(hard mode|hardmode)/i },
+  { titleText: /cold showers/i },
 
   { ...both, titleText: /negatives of masturbating/i },
   { ...both, titleText: /am I addicted to (porn|pron)/i },

@@ -3096,11 +3096,12 @@
         // DOUBTS
         { titleText: /placebo/i },
         // OTHER TOPICS
-        { titleText: /is it worth it/i },
+        { titleText: /is (it|nofap|no fap) worth it/i },
         { titleText: /libido/i },
-        { titleText: /sex on (nofap|no fap|no-fap)/i },
+        { titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
         { titleText: /no urges yet/i },
         { titleText: /(hard mode|hardmode)/i },
+        { titleText: /cold showers/i },
         __assign(__assign({}, both), { titleText: /negatives of masturbating/i }),
         __assign(__assign({}, both), { titleText: /am I addicted to (porn|pron)/i }),
         __assign(__assign({}, both), { titleText: /What does PMO stand for/i }),
@@ -3307,6 +3308,7 @@
         { titleText: /Beginner, need some advice/i },
         { titleText: /what other steps/i },
         { titleText: /need some general advice/i },
+        { titleText: /any help or advice/i },
         __assign(__assign({}, both), { titleText: /I'm an addict please help me with some advice/i }),
         __assign(__assign({}, both), { titleText: /if anyone has (advice|tips) for a (beginner|novice)/i }),
         { messageText: /Can anyone help me/i },
@@ -3496,7 +3498,7 @@
         __assign(__assign({}, both), { titleText: /what programs do you use to block porn/i }),
     ];
 
-    var toMasturbationAdviceRegexArray = [
+    var toMasturbateWithoutPornAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /Can (I|you) still masturbate (while (on|doing)|during) (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /Is masturbating without porn ?(a)? relapse/i }),
         __assign(__assign({}, both), { titleText: /Can I masturbate without porn/i }),
@@ -3517,6 +3519,37 @@
         { titleText: /When does the withdrawal period depression start to fade\?/i },
     ];
 
+    var toBiggestBenefitPostAddictionAdviceRegexArray = [
+        { titleText: /hellohellohellohellohellohello/i },
+    ];
+
+    var toPartnerAdviceRegexArray = [
+        { titleText: /hellohellohellohellohellohello/i },
+    ];
+
+    var toIsWatchingPornRelapseAdviceRegexArray = [
+        { titleText: /hellohellohellohellohellohello/i },
+    ];
+
+    var toNoReasonToRelapseAdviceRegexArray = [
+        { titleText: /hellohellohellohellohellohello/i },
+    ];
+
+    var toAgeAdviceRegexArray = [
+        { titleText: /hellohellohellohellohellohello/i },
+    ];
+
+    var toFlatlineAdviceRegexArray = [
+        { titleText: /hellohellohellohellohellohello/i },
+    ];
+
+    var deleteImmediately = {
+        shouldDeleteElementImmediately: true,
+        sendMessageType: undefined,
+        prelimUrl: undefined,
+        messageMatch: undefined
+    };
+
     var toSubFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
         var _a, _b, _c;
         var regexTextObject = { titleText: titleText, flairText: flairText, messageText: messageText };
@@ -3528,7 +3561,6 @@
         // Deleted: frickandfrackooh - Question - How to stop an urge in bed?
         // OTHER
         // Meditating at night can gelp witg controlling the wet dreams
-        // Any help or advice would be appreciated.
         // Flatline 7 days in - scared!
         // will nofap cure my cuckhold fetish
         // should I reset?
@@ -3585,38 +3617,17 @@
         // TO REMOVE
         var toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText);
         var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
-        if (toRemoveInitialDayResult
-            || toRemoveInitialMatch.length > 0) {
-            // TODO Save this into the database.
+        if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
             console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText);
-            return {
-                shouldDeleteElementImmediately: true,
-                sendMessageType: undefined,
-                prelimUrl: undefined,
-                messageMatch: undefined
-            };
+            return deleteImmediately;
         }
         // LESS THAN 24 HOURS SINCE LAST MESSAGE
-        if (compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) {
-            if (isLessThan24Hours(new Date((_a = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _a === void 0 ? void 0 : _a.send_date))) {
-                return {
-                    shouldDeleteElementImmediately: true,
-                    sendMessageType: undefined,
-                    prelimUrl: undefined,
-                    messageMatch: undefined
-                };
-            }
+        if ((compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) && isLessThan24Hours(new Date((_a = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _a === void 0 ? void 0 : _a.send_date))) {
+            return deleteImmediately;
         }
         // USER HOSTILE
-        if (compiledUser.userType === UserType.UserHostile
-            || compiledUser.userType === UserType.UserRespondedBack
-            || compiledUser.userType === UserType.FollowMessageSent) {
-            return {
-                shouldDeleteElementImmediately: true,
-                sendMessageType: undefined,
-                prelimUrl: undefined,
-                messageMatch: undefined
-            };
+        if (compiledUser.userType === UserType.UserHostile || compiledUser.userType === UserType.UserRespondedBack || compiledUser.userType === UserType.FollowMessageSent) {
+            return deleteImmediately;
         }
         // USER NOT RESPONDED
         if (compiledUser.userType === UserType.UserNotRespondedBack) {
@@ -3751,7 +3762,7 @@
                 };
             }
             // CAN YOU STILL MASTURBATE MESSAGES
-            var toMasturbationAdviceMatch = matchRegex(toMasturbationAdviceRegexArray, regexTextObject);
+            var toMasturbationAdviceMatch = matchRegex(toMasturbateWithoutPornAdviceRegexArray, regexTextObject);
             if (toMasturbationAdviceMatch.length > 0) {
                 return {
                     shouldDeleteElementImmediately: false,
@@ -3770,14 +3781,74 @@
                     messageMatch: toDidIJustRelapseAdviceMatch
                 };
             }
-            // DID I JUST RELAPSE MESSAGES
+            // WHEN DOES IT GET EASIER MESSAGES
             var toWhenDoesItGetEasierAdviceMatch = matchRegex(toWhenDoesItGetEasierAdviceRegexArray, regexTextObject);
             if (toWhenDoesItGetEasierAdviceMatch.length > 0) {
                 return {
                     shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartDidIJustRelapseAdvice,
+                    sendMessageType: SendMessageType.StartWhenDoesItGetEasierAdvice,
                     prelimUrl: generatePrelimUrl(compiledUser.username, whenDoesItGetEasierAdvice(usernameConfig.forumType), SendMessageType.StartWhenDoesItGetEasierAdvice, usernameConfig),
                     messageMatch: toWhenDoesItGetEasierAdviceMatch
+                };
+            }
+            // BIGGEST BENEFIT POST ADDICTION
+            var toBiggestBenefitPostAddictionAdvice = matchRegex(toBiggestBenefitPostAddictionAdviceRegexArray, regexTextObject);
+            if (toBiggestBenefitPostAddictionAdvice.length > 0) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartBiggestBenefitPostAddictionAdvice,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType), SendMessageType.StartBiggestBenefitPostAddictionAdvice, usernameConfig),
+                    messageMatch: toBiggestBenefitPostAddictionAdvice
+                };
+            }
+            // PARTNER ADVICE
+            var toPartnerAdviceAdvice = matchRegex(toPartnerAdviceRegexArray, regexTextObject);
+            if (toPartnerAdviceAdvice.length > 0) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartPartnerAdvice,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, partnerAdvice(usernameConfig.forumType), SendMessageType.StartPartnerAdvice, usernameConfig),
+                    messageMatch: toPartnerAdviceAdvice
+                };
+            }
+            // NO REASON TO RELAPSE ADVICE
+            var toNoReasonToRelapseAdvice = matchRegex(toNoReasonToRelapseAdviceRegexArray, regexTextObject);
+            if (toNoReasonToRelapseAdvice.length > 0) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartNoReasonToRelapseAdvice,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, noReasonToRelapseAdvice(usernameConfig.forumType), SendMessageType.StartNoReasonToRelapseAdvice, usernameConfig),
+                    messageMatch: toNoReasonToRelapseAdvice
+                };
+            }
+            // IS WATCHING PORN RELAPSE?
+            var toIsWatchingPornRelapseAdvice = matchRegex(toIsWatchingPornRelapseAdviceRegexArray, regexTextObject);
+            if (toIsWatchingPornRelapseAdvice.length > 0) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceIsWatchingPornRelapseAdvice,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, isWatchingPornRelapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, usernameConfig),
+                    messageMatch: toIsWatchingPornRelapseAdvice
+                };
+            }
+            // AGE ADVICE
+            var toAgeAdvice = matchRegex(toAgeAdviceRegexArray, regexTextObject);
+            if (toAgeAdvice.length > 0) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceAge,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, ageAdvice(usernameConfig.forumType), SendMessageType.StartAdviceAge, usernameConfig),
+                    messageMatch: toAgeAdvice
+                };
+            }
+            // FLATLINE ADVICE
+            var toFlatlineAdvice = matchRegex(toFlatlineAdviceRegexArray, regexTextObject);
+            if (toFlatlineAdvice.length > 0) {
+                return {
+                    shouldDeleteElementImmediately: false,
+                    sendMessageType: SendMessageType.StartAdviceFlatline,
+                    prelimUrl: generatePrelimUrl(compiledUser.username, flatlineAdvice(usernameConfig.forumType), SendMessageType.StartAdviceFlatline, usernameConfig),
+                    messageMatch: toFlatlineAdvice
                 };
             }
         }

@@ -15,9 +15,9 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- Add other existing messages to the filters
 - Create all other new messages.
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
+- Message for providing meditation advice.
 
 ### LOW PRIORITY
 
@@ -36,6 +36,7 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 
 ## DONE
 
+- Add other existing messages to the filters
 - Fortify DONE with website links send/visited
 - send custom broken
 - in the above/below message, it would be nice to know if the message has been sent inboxMessage (I don't think it's possible to know until after? Well, it's possible but not a massive deal for now)

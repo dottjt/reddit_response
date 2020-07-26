@@ -25,6 +25,7 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { titleText: /Beginner, need some advice/i },
   { titleText: /what other steps/i },
   { titleText: /need some general advice/i },
+  { titleText: /any help or advice/i },
 
   { ...both, titleText: /I'm an addict please help me with some advice/i },
   { ...both, titleText: /if anyone has (advice|tips) for a (beginner|novice)/i },

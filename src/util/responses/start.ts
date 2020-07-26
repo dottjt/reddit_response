@@ -43,15 +43,6 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 `
 );
 
-export const abstainingHelpAdvice = (forum?: string): string => (
-`Hey, I saw your post${forum ? ` on ${forum}` : ''}. In your case, it sounds like abstaining would help with that tremendously.
-
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
-
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
-`
-);
-
 export const flatlineAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}.
 
@@ -168,14 +159,25 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 `
 );
 
+
+// TODO PROBABLY REMOVE THIS
+// export const abstainingHelpAdvice = (forum?: string): string => (
+// `Hey, I saw your post${forum ? ` on ${forum}` : ''}. In your case, it sounds like abstaining would help with that tremendously.
+
+// The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+
+// Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+// `
+// );
+
+
 // TODO Create Messages
 
 // - Fetish is irrelevant. MESSAGE
 // - okay NOFAP with a girlfriend? MESSAGE
-// - libido MESSAGE
-// - sex during nofap MESSAGE
-// - Is NoFap worth it? MESSAGE
-// - benefits of cold showers MESSAGE
+// - libido MESSAGE - in toRemove
+// - sex during nofap MESSAGE - in toRemove
+// - Is NoFap worth it? MESSAGE - in toRemove
+// - benefits of cold showers MESSAGE - in toRemove
 // - what are your reasons to do NoFap? MESSAGE
 // - feeling miserable/anxiety message - it's not just about stopping porn/masturbation. You also need to replace that with something else.
-
