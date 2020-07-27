@@ -59,6 +59,7 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /it begins here/i },
   { ...both, titleText: /(here|now) it begins/i },
   { ...both, titleText: /the cycle stops here/i },
+  { ...both, titleText: /officially starting (NoFap|no fap|no-fap)/i },
 
   // BEGINNING
   { titleText: /beginning of my Journey in (NoFap|no fap|no-fap)/i },

@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'daveinpublic';
-    var R_NOFAP_TIMESTAMP = '2 hours ago';
-    var R_PORN_FREE_USERNAME = 'mamut2020';
-    var R_PORN_FREE_TIMESTAMP = '49 minutes ago';
+    var R_NOFAP_USERNAME = 'just_a_jerk_';
+    var R_NOFAP_TIMESTAMP = '2 minutes ago';
+    var R_PORN_FREE_USERNAME = '1milktime1';
+    var R_PORN_FREE_TIMESTAMP = '1 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'cluterfoot5';
-    var R_PORN_ADDICTION_TIMESTAMP = '11 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '12 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3286,6 +3286,7 @@
         __assign(__assign({}, both), { titleText: /it begins here/i }),
         __assign(__assign({}, both), { titleText: /(here|now) it begins/i }),
         __assign(__assign({}, both), { titleText: /the cycle stops here/i }),
+        __assign(__assign({}, both), { titleText: /officially starting (NoFap|no fap|no-fap)/i }),
         // BEGINNING
         { titleText: /beginning of my Journey in (NoFap|no fap|no-fap)/i },
         { titleText: /beginning the Challenge/i },
@@ -3360,6 +3361,7 @@
         __assign(__assign({}, both), { titleText: /^trying again$/i }),
         __assign(__assign({}, both), { titleText: /day (1|one) again/i }),
         __assign(__assign({}, both), { titleText: /starting, again/i }),
+        __assign(__assign({}, both), { titleText: /^Starting again../i }),
         __assign(__assign({}, both), { titleText: /starting (nofap|no fap|no-fap) again/i }),
         __assign(__assign({}, both), { titleText: /^starting ?(nofap|no fap|no-fap|this|it)? again(\.)?$/i }),
         __assign(__assign({}, both), { titleText: /doing (nofap|no fap|no-fap) again/i }),
@@ -3399,6 +3401,7 @@
         __assign(__assign({}, both), { titleText: /need (NoFap|no fap|no-fap) tips/i }),
         __assign(__assign({}, both), { titleText: /any tips to stop (fapping|mast)/i }),
         __assign(__assign({}, both), { titleText: /any tips to (stop|quit)\?/i }),
+        __assign(__assign({}, both), { titleText: /Tips for (quitting|quiting) (porn|masturbation)/i }),
         __assign(__assign({}, both), { titleText: /need some general advice/i }),
         __assign(__assign({}, both), { titleText: /I really want to stop fapping and watching porn/i }),
         __assign(__assign({}, both), { titleText: /scared that i will relapse(,)? some tips/i }),
@@ -3433,6 +3436,7 @@
         __assign(__assign({}, both), { titleText: /how do I avoid relapsing/i }),
         __assign(__assign({}, both), { titleText: /How not to get into an Addiction/i }),
         __assign(__assign({}, both), { titleText: /how to get past .* (week|days|day)/i }),
+        __assign(__assign({}, both), { titleText: /someone tell me how to (stop|quit)/i }),
         __assign(__assign({}, both), { titleText: /How do I regain (self control|self-control)/i }),
         // STRUGGLE
         { titleText: /no (masterbation|masturbation) is hard for me/i },

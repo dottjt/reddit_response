@@ -12,6 +12,8 @@ export const toStartAgainAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /^trying again$/i, },
   { ...both, titleText: /day (1|one) again/i, },
   { ...both, titleText: /starting, again/i, },
+  { ...both, titleText: /^Starting again../i, },
+
   { ...both, titleText: /starting (nofap|no fap|no-fap) again/i, },
   { ...both, titleText: /^starting ?(nofap|no fap|no-fap|this|it)? again(\.)?$/i, },
   { ...both, titleText: /doing (nofap|no fap|no-fap) again/i, },

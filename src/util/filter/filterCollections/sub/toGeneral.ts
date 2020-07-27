@@ -32,6 +32,8 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /need (NoFap|no fap|no-fap) tips/i },
   { ...both, titleText: /any tips to stop (fapping|mast)/i },
   { ...both, titleText: /any tips to (stop|quit)\?/i },
+  { ...both, titleText: /Tips for (quitting|quiting) (porn|masturbation)/i },
+
   { ...both, titleText: /need some general advice/i },
   { ...both, titleText: /I really want to stop fapping and watching porn/i },
   { ...both, titleText: /scared that i will relapse(,)? some tips/i },
@@ -71,7 +73,7 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /how do I avoid relapsing/i },
   { ...both, titleText: /How not to get into an Addiction/i },
   { ...both, titleText: /how to get past .* (week|days|day)/i },
-
+  { ...both, titleText: /someone tell me how to (stop|quit)/i },
   { ...both, titleText: /How do I regain (self control|self-control)/i },
 
   // STRUGGLE
