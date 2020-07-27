@@ -1,4 +1,4 @@
-import { CompiledFullUserObject, SendNewMessageSendPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload, PopulateReceivedMessagePayloadEXTREME, PopulateReceivedMessagePayload } from "../types/tamperMonkeyTypes";
+import { CompiledFullUserObject, SendNewMessageSendPayload, SendUserNotePayload, SetMarkerPayload, SetLastMessageInboxUsernamePayload, PopulateReceivedMessagePayloadEXTREME, PopulateReceivedMessagePayload, RecordTextMatchPayload } from "../types/tamperMonkeyTypes";
 import { UserForumType } from '../types/serverTypes';
 
 const HTTPPOSToptions = (data): any => ({
@@ -101,4 +101,11 @@ export const updateCastboxLinks =
     Promise<CompiledFullUserObject> => {
       const JSONResponse = await sendPostRequest(dataPayload, '/updateCastboxLinks', '3232');
       return JSONResponse.data.isRunning;
+    };
+
+export const recordTextMatch =
+  async (dataPayload: RecordTextMatchPayload):
+    Promise<string> => {
+      const JSONResponse = await sendPostRequest(dataPayload, '/recordTextMatch', '3232');
+      return JSONResponse.data.message;
     };

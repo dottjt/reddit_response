@@ -96,11 +96,11 @@ const main = async () => {
 
   // further changes
   chokidar.watch([ messageComposeScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageComposeScriptPre.ts'], event, path), 2000));
-  chokidar.watch([ messageComposeScriptForumPre ]).on('change', throttle((event, path) => chokidarHandler(['messageComposeScriptForumPre.ts'], event, path), 2000));
+  // chokidar.watch([ messageComposeScriptForumPre ]).on('change', throttle((event, path) => chokidarHandler(['messageComposeScriptForumPre.ts'], event, path), 2000));
   chokidar.watch([ messageInboxScriptPre ]).on('change', throttle((event, path) => chokidarHandler(['messageInboxScriptPre.tsx'], event, path), 2000));
   chokidar.watch([ noFapNewSubredditPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapNewSubredditPre.tsx'], event, path), 2000));
   chokidar.watch([ retrieveCastboxLinksPre ]).on('change', throttle((event, path) => chokidarHandler(['retrieveCastboxLinksPre.ts'], event, path), 2000));
-  chokidar.watch([ noFapForumPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapForumPre.tsx'], event, path), 2000));
+  // chokidar.watch([ noFapForumPre ]).on('change', throttle((event, path) => chokidarHandler(['noFapForumPre.tsx'], event, path), 2000));
   chokidar.watch([ WATCH_COMPONENTS_DIRECTORY, WATCH_RESPONSES_DIRECTORY, WATCH_UTIL_DIRECTORY ]).on('change', throttle((event, path) => chokidarHandler(dir, event, path), 2000));
 
   // make a few different ones

@@ -3,14 +3,14 @@ import { RegexFilters } from '../../regexUtil';
 // TODO SORT AND FIGURE OUT, IT IS SUPER BLOATED
 
 export const toNoWorriesGuideRegexArray: RegexFilters[] = [
-  { replyText: /(What's|What’s|please share|share|to see|send|sending me|send (ne|me)|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|website|web site|guide|site|link|address)/i },
+  { replyText: /(What's|What’s|please share|share|to see|send|sending me|send (ne|me|us)|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|website|web site|guide|site|link|address)/i },
   { replyText: /took up/i },
 
   // YES
   { replyText: /^sure$/i },
   { replyText: /^yes$/i },
   { replyText: /(Yaa|ya) sure/i },
-  { replyText: /yes please/i },
+  { replyText: /yes(,)? please/i },
   { replyText: /^(im|I'm|i m) in(\.)?$/i },
   { replyText: /(yes|yeah) (for sure|I am)/i },
   { replyText: /shoot me a link/i },
@@ -23,6 +23,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /(name of|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
   { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
   { replyText: /I’ll check the link if you have it/i },
+  { replyText: /keen to check out your website/i },
 
   // SEND
   { replyText: /send (me|over) the link/i },
@@ -40,6 +41,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /send website link/i },
   { replyText: /send your guide/i },
   { replyText: /provide me with some link/i },
+  { replyText: /Suggest me your website/i },
 
   // PASSIVE ASK
   { replyText: /May I know (your|the) website/i },
@@ -68,7 +70,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /I'm interested in the website/i },
   { replyText: /interested in the information/i },
   { replyText: /would be interesting to read/i },
-  
+
   { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
   { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
   { replyText: /website sounds .* interesting/i },

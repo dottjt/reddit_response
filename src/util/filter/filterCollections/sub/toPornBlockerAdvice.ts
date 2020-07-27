@@ -1,6 +1,6 @@
 import { RegexFilters, both } from '../../regexUtil';
 
-export const toPornBlockerAdviceRegexArray: RegexFilters[] = [
+export const toPornBlockersAdviceRegexArray: RegexFilters[] = [
   { titleText: /block porn site/i },
   { titleText: /what website blocker/i },
   { titleText: /Website-blocking software/i },
@@ -11,5 +11,4 @@ export const toPornBlockerAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /what programs do you use to block porn/i },
   { ...both, titleText: /any good (plugins|websites|apps|programs) .* blocks/i },
   { ...both, titleText: /looking for more ways to block porn/i },
-
 ];

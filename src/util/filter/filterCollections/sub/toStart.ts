@@ -34,7 +34,8 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
 
   // ADVICE
   { titleText: /any tips on getting started/i },
-  { messageText: /Any advice on how to start/i },
+
+  { ...both, titleText: /Advice on How to Start/i },
 
   // JOINED / NEW
   { titleText: /just joined (nofap|no fap|no-fap)/i },
@@ -44,16 +45,16 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
 
   // STARTS NOW
   { titleText: /we start today/i },
-  { titleText: /today I start/i },
-  { titleText: /(NoFap|no fap|no-fap) from today/i },
-  { titleText: /(gonna|going to) start today/i },
-  { titleText: /(quitting|quiting|starting) ?(.*) (now|today)/i },
-  { titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i },
-  { titleText: /gonna start to stop watching porn from now/i },
-  { titleText: /journey (start|begins)/i },
-  { titleText: /it begins here/i },
-  { titleText: /(here|now) it begins/i },
-  { titleText: /the cycle stops here/i },
+  { ...both, titleText: /today I start/i },
+  { ...both, titleText: /(NoFap|no fap|no-fap) from today/i },
+  { ...both, titleText: /(gonna|going to) start today/i },
+  { ...both, titleText: /(quitting|quiting|starting) ?(.*) (now|today)/i },
+  { ...both, titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i },
+  { ...both, titleText: /gonna start to stop watching porn from now/i },
+  { ...both, titleText: /journey (start|begins)/i },
+  { ...both, titleText: /it begins here/i },
+  { ...both, titleText: /(here|now) it begins/i },
+  { ...both, titleText: /the cycle stops here/i },
 
   // BEGINNING
   { titleText: /beginning of my Journey in (NoFap|no fap|no-fap)/i },
@@ -118,12 +119,9 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /first time doing this/i },
   { titleText: /first time .* looking for advice/i },
   { titleText: /first time (nofap|no fap|no-fap)/i },
-  { titleText: /(first|1st) (step|day)/i },
+  { titleText: /(first|1st) (day)/i },
   { titleText: /first timer/i },
   { titleText: /^first time here$/i },
 
   { messageText: /this is gonna be my first day to nofap/i },
-
-  // FLAIR
-  // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time.
 ];

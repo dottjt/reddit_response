@@ -3,14 +3,9 @@ import { createElement } from 'inferno-create-element';
 
 import { checkServerRunning } from '../httpResponses';
 
-import {
-  ConfigType,
-} from '../../util/config'
-import { SendMessageType } from '../../types/serverTypes';
-import { openNewLink } from '../utils/sendMessageUtils';
+import { ConfigType } from '../../util/config'
 import UserPanel from '../../components/UserPanel';
-import { highlightSyntax, RelevantType, RegexFiltersMatch } from '../filter/regexUtil';
-import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
+import { CreatePrelimLink } from '../../components/CreatePrelimLink';
 
 export const getAllNoFapNewUsernames = (): string[] => {
   const allATags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a');
@@ -130,75 +125,10 @@ export const addGlobalStyle = (css: string): void => {
   head.appendChild(style);
 }
 
-type CreatePrelimLinkProps = {
-  dbUser: CompiledFullUserObject;
-  titleText: string;
-  flairText: string;
-  aLinkHref: string;
-  prelimUrl: string;
-  index: number;
-  sendMessageType: SendMessageType;
-  prelimContainer: any; // FUTURE to change
-  messageMatch: RegexFiltersMatch[]
-}
-
-export class CreatePrelimLink extends Component<CreatePrelimLinkProps, { borderClass: string }> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      borderClass: '1px solid black'
-    }
-  }
-
-  render () {
-    const {
-      dbUser,
-      titleText,
-      flairText,
-      aLinkHref,
-      prelimUrl,
-      index,
-      sendMessageType,
-      prelimContainer,
-      messageMatch,
-    } = this.props;
-
-    return (
-      <div>
-        <a
-          style={{ display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: this.state?.borderClass as string }}
-          onclick={() => {
-            this.setState({ borderClass: '1px solid red' })
-            openNewLink(prelimUrl, SendMessageType.NA)
-          }}
-        >
-          <p style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</p>
-            {messageMatch.length > 0 ? (
-              highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(element => <span style={{ 'line-height': '1.4rem' }}>{element}</span>)
-            ) : (
-              <span>{titleText}</span>
-            )}
-            {/* TO TEST */}
-            {messageMatch.length > 0 && messageMatch[0]?.messageTextMatch && (
-              <span style={{ 'line-height': '1.4rem' }}> | Message: <span style={{ color: 'red' }}>{messageMatch[0].messageTextMatch}</span></span>
-            )}
-          <p style={{ 'margin-top': '0.5rem' }}>
-            {messageMatch.length > 0 ? (
-              highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(element => <span style={{ 'line-height': '1.4rem' }}>{element}</span>)
-            ) : (
-              <span style={{ 'line-height': '1.4rem' }}>{flairText}</span>
-            )}
-          </p>
-        </a>
-        <a data-click-id='body' href={`${aLinkHref}`}>Show Post</a>
-      </div>
-    );
-  }
-}
-
 export const createPrelimLink = ({
   dbUser,
   titleText,
+  messageText,
   flairText,
   aLinkHref,
   prelimUrl,
@@ -214,6 +144,7 @@ export const createPrelimLink = ({
     <CreatePrelimLink
       dbUser={dbUser}
       titleText={titleText}
+      messageText={messageText}
       flairText={flairText}
       aLinkHref={aLinkHref}
       prelimUrl={prelimUrl}

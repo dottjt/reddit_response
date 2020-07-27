@@ -19,19 +19,22 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { titleText: /Looking for Tips/i },
   { titleText: /^tips\?$/i },
   { titleText: /.* any tips\?$/i },
-  { titleText: /need (NoFap|no fap|no-fap) tips/i },
-  { titleText: /any tips to stop (fapping|mast)/i },
-  { titleText: /any tips to (stop|quit)\?/i },
   { titleText: /^need tips$/i },
   { titleText: /^Need advice$/i },
   { titleText: /could use some advice/i },
   { titleText: /Beginner, need some advice/i },
   { titleText: /what other steps/i },
-  { titleText: /need some general advice/i },
   { titleText: /any help or advice/i },
-  { titleText: /I really want to stop fapping and watching porn/i },
-  { titleText: /scared that i will relapse(,)? some tips/i },
 
+
+  { ...both, titleText: /Looking for advice on my relapses/i },
+  { ...both, titleText: /need (NoFap|no fap|no-fap) tips/i },
+  { ...both, titleText: /any tips to stop (fapping|mast)/i },
+  { ...both, titleText: /any tips to (stop|quit)\?/i },
+  { ...both, titleText: /need some general advice/i },
+  { ...both, titleText: /I really want to stop fapping and watching porn/i },
+  { ...both, titleText: /scared that i will relapse(,)? some tips/i },
+  { ...both, titleText: /Need Advice to fight porn addiction/i },
   { ...both, titleText: /I'm an addict please help me with some advice/i },
   { ...both, titleText: /if anyone has (advice|tips) for a (beginner|novice)/i },
 
@@ -102,6 +105,7 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
 
   { messageText: /So please guys, I need your help/i },
   { messageText: /I just want to stop this thing/i },
+  { messageText: /What did you guys do to stop ?(thinking about)? (porn|fapping)/i },
 
   // GUIDANCE
   { titleText: /need some guidance/i },
@@ -113,6 +117,7 @@ export const toGeneralAdviceRegexArray: RegexFilters[] = [
   { messageText: /someone please guide me/i },
   { messageText: /what steps should I take\?/i },
   { messageText: /I would be grateful if someone could help me (on|in) this journey?/i },
+  { messageText: /What tips do you ?(guys)? have to build (self discipline|self-discipline)\?/i },
 
 
   // CAN'T STOP

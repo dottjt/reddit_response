@@ -1,6 +1,6 @@
 // DB TYPES
 
-import { ForumType } from '../util/config'
+import { ForumType } from '../util/config';
 
 type LinkSentObject = {
   website_homepage_link_sent?: boolean;
@@ -105,4 +105,16 @@ export type LastMessageType = {
 export enum UserForumType {
   NoFap = 'NoFap',
   Reddit = 'Reddit',
+}
+
+export type Match = {
+  id: string;
+  username: string;
+  match_type: string;
+  match_regex: string;
+  matched_text_type: string;
+  flair_text: string;
+  title_text: string;
+  message_text: string;
+  original_match_text: string;
 }

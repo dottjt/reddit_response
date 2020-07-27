@@ -70,3 +70,9 @@ export type PopulateReceivedMessagePayloadEXTREME = {
   numberOfMessagesFromThisUser: number;
 } & PopulateReceivedMessagePayload;
 
+export type RecordTextMatchPayload = {
+  flairText: string;
+  titleText: string;
+  messageText: string;
+  // messageMatch;
+}

@@ -1,5 +1,5 @@
 
-import { checkUsernames } from '../util/httpResponses';
+import { checkUsernames, recordTextMatch } from '../util/httpResponses';
 
 import {
   scrollToSpecifiedDate,
@@ -51,6 +51,16 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
           messageMatch
         } = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText);
 
+        // if (messageMatch) {
+          // TODO all these messages to the
+
+          // recordTextMatch({
+          //   flairText,
+          //   titleText,
+          //   messageText,
+          // });
+        // }
+
         if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
           if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
             tag?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove();
@@ -69,7 +79,7 @@ const populateWebpageInformation = (users: CompiledFullUserObject[], usernameCon
 
             // TODO pass in message text.
             createPrelimLink({
-              dbUser, titleText, flairText, aLinkHref, prelimUrl, index, sendMessageType, prelimContainer, messageMatch
+              dbUser, titleText, messageText, flairText, aLinkHref, prelimUrl, index, sendMessageType, prelimContainer, messageMatch
             });
 
             return;

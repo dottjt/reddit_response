@@ -27,32 +27,32 @@ export const fakeConfigType: ConfigType = {
 
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
-export const R_NOFAP_USERNAME = 'bruhman46';
-export const R_NOFAP_TIMESTAMP = 'just now';
-export const R_NOFAP_START_DATE = 'Mon Jul 27 2020 09:37:34 GMT+1000 (Australian Eastern Standard Time)'; // todo, all this shit.
+export const R_NOFAP_USERNAME = 'Noisy_Fart';
+export const R_NOFAP_TIMESTAMP = '5 hours ago';
+export const R_NOFAP_START_DATE = 'Mon Jul 27 2020 15:49:36 GMT+1000 (Australian Eastern Standard Time)'; // todo, all this shit.
 
-export const R_PORN_FREE_USERNAME = 'noisyninja1';
-export const R_PORN_FREE_TIMESTAMP = '13 minutes ago';
-export const R_PORN_FREE_START_DATE = 'Mon Jul 27 2020 08:14:01 GMT+1000 (Australian Eastern Standard Time)';
+export const R_PORN_FREE_USERNAME = 'ChortleLikeAMortal';
+export const R_PORN_FREE_TIMESTAMP = '7 hours ago';
+export const R_PORN_FREE_START_DATE = 'Mon Jul 27 2020 13:10:55 GMT+1000 (Australian Eastern Standard Time)';
 
-export const R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-export const R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
-export const R_PORN_ADDICTION_START_DATE = 'Mon Jul 27 2020 08:15:50 GMT+1000 (Australian Eastern Standard Time)';
+export const R_PORN_ADDICTION_USERNAME = 'Andrew_Murray1';
+export const R_PORN_ADDICTION_TIMESTAMP = '7 hours ago';
+export const R_PORN_ADDICTION_START_DATE = 'Mon Jul 27 2020 13:11:18 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
-export const R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN hours ago';
+export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';
 export const R_NOFAP_CHRISTIANS_START_DATE = '';
 
 export const R_NOFAP_TEENS_USERNAME = '';
-export const R_NOFAP_TEENS_TIMESTAMP = 'NaN hours ago';
+export const R_NOFAP_TEENS_TIMESTAMP = '';
 export const R_NOFAP_TEENS_START_DATE = '';
 
 export const R_SEMEN_RETENTION_USERNAME = '';
-export const R_SEMEN_RETENTION_TIMESTAMP = 'NaN hours ago';
+export const R_SEMEN_RETENTION_TIMESTAMP = '';
 export const R_SEMEN_RETENTION_START_DATE = '';
 
 export const R_MUSLIM_NOFAP_USERNAME = '';
-export const R_MUSLIM_NOFAP_TIMESTAMP = 'NaN hours ago';
+export const R_MUSLIM_NOFAP_TIMESTAMP = '';
 export const R_MUSLIM_NOFAP_START_DATE = '';
 
 

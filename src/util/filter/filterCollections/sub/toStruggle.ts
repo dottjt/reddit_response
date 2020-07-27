@@ -22,6 +22,7 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
   { titleText: /tried countless of times before/i, },
   { titleText: /I (can’t|can't|cant) get my mind (of|off) it/i, },
   { titleText: /Still Struggling/i, },
+  { titleText: /I just have to stop/i, },
 
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
@@ -51,8 +52,8 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
   { messageText: /I keep ?(on)? struggling with PMO/i, },
   { messageText: /Any motivation would be great now/i, },
   { messageText: /Please motivate me to do better/i, },
+  { messageText: /I really need you guys to help me out here please/i, },
 
-  // FLAIR
-  { flairText: /Slip-Up Prevention/i },
+  { ...both, titleText: / I am relapsing again and again/i, },
 ];
 

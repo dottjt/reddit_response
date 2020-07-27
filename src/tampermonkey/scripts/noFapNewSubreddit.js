@@ -2262,6 +2262,26 @@
         return null;
     };
 
+    var startAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var startAgainAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you're starting again!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var generalAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var relapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var struggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var flatlineAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var wetdreamAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var ageAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var accountabilityPartner = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"); };
+    var partnerAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
+    var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var biggestBenefitPostAddictionAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Sorry to hear you're struggling with urges. If they're a big issue for you then it might mean that you don't quite have the fundamentals down.\n\nUltimately recovery should be relatively struggle free, and the only way you're going to achieve that is by having mental balance. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Once you have that control it becomes trivial.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    // If you have to ask, then generally yes. Although
+    var didIJustRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Although not necessarily a relapse, indicates that you don't quite have control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var whenDoesItGetEasierAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Ultimately it gets easier once you learn to develop control over your mind, which comes from daily mental health practice.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+
     var UserType;
     (function (UserType) {
         UserType["FreshUser"] = "Fresh User";
@@ -2323,203 +2343,6 @@
         UserForumType["Reddit"] = "Reddit";
     })(UserForumType || (UserForumType = {}));
 
-    var createVNode$1 = createVNode;
-    var RegexFilterLogic;
-    (function (RegexFilterLogic) {
-        RegexFilterLogic["AND"] = "AND";
-        RegexFilterLogic["OR"] = "OR";
-    })(RegexFilterLogic || (RegexFilterLogic = {}));
-    var matchRegex = function (regexArray, textObject) {
-        var matchArray = regexArray.reduce(function (acc, regexFilters) {
-            var _a, _b, _c;
-            if (!acc.matchFound) {
-                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
-                var matchObject = regexKeys.reduce(function (acc, keyString) {
-                    var _a, _b, _c, _d, _e, _f, _g;
-                    var regex = regexFilters[keyString];
-                    if (acc.allFound) {
-                        if (keyString === 'titleText') {
-                            // What this does is that it uses titleText as both titleText and messageText
-                            if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
-                                var matchObject_1 = {};
-                                var matchText = (_b = textObject.titleText) === null || _b === void 0 ? void 0 : _b.match(regex);
-                                if (matchText) {
-                                    matchObject_1.titleTextMatch = matchText[0];
-                                }
-                                var matchMessage = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
-                                if (matchMessage) {
-                                    matchObject_1.messageTextMatch = matchMessage[0];
-                                }
-                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
-                            }
-                            var match = (_d = textObject.titleText) === null || _d === void 0 ? void 0 : _d.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { titleTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'flairText') {
-                            var match = (_e = textObject.flairText) === null || _e === void 0 ? void 0 : _e.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { flairTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'messageText') {
-                            var match = (_f = textObject.messageText) === null || _f === void 0 ? void 0 : _f.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { messageTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'replyText') {
-                            var match = (_g = textObject.replyText) === null || _g === void 0 ? void 0 : _g.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { replyTextMatch: match[0] }), allFound: true };
-                            }
-                        }
-                    }
-                    return __assign(__assign({}, acc), { allFound: false });
-                }, { matchObject: {}, allFound: true }).matchObject;
-                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
-                    if (Object.keys(matchObject).length === regexKeys.length) {
-                        return { matchArray: [matchObject], matchFound: true };
-                    }
-                }
-                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
-                    || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
-                    if (Object.keys(matchObject).length > 0) {
-                        return { matchArray: [matchObject], matchFound: true };
-                    }
-                }
-                // default to AND
-                if (Object.keys(matchObject).length === regexKeys.length) {
-                    return { matchArray: [matchObject], matchFound: true };
-                }
-            }
-            return acc;
-            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
-        }, { matchArray: [], matchFound: false }).matchArray;
-        return matchArray;
-    };
-    // const titleText = 'hello'
-    // const text = 'text thing'
-    // const result = matchRegex([{
-    //   titleText: /hello/,
-    //   options: { both: true }
-    // },
-    // ], {
-    //   titleText: 'hello',
-    //   messageText: 'hello text thing'
-    // });
-    // result
-    var RelevantType;
-    (function (RelevantType) {
-        RelevantType["Title"] = "Title";
-        RelevantType["Message"] = "Message";
-        RelevantType["Flair"] = "Flair";
-        RelevantType["Reply"] = "Reply";
-    })(RelevantType || (RelevantType = {}));
-    // TODO Checking for relevant type is not relevant. It is not needed.
-    var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
-        if (relevantText) {
-            var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
-                newItem
-            ], arr.slice(index)); };
-            if (messageMatch.length > 0) {
-                var _a = messageMatch.reduce(function (acc, regexFilterResult) {
-                    if (!acc.foundMatch) {
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var newArray = isReact
-                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch, 0, { "style": { color: 'red' } }))
-                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.titleTextMatch + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var newArray = isReact
-                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch, 0, { "style": { color: 'red' } }))
-                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.flairTextMatch + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var newArray = isReact
-                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch, 0, { "style": { color: 'red' } }))
-                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var newArray = isReact
-                                ? insert_1(splitArray, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch, 0, { "style": { color: 'red' } }))
-                                : insert_1(splitArray, 1, "<span style=\"color: red;\">" + regexFilterResult.replyTextMatch + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                    }
-                    return acc;
-                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }), titleTextArray = _a.titleTextArray, foundMatch = _a.foundMatch;
-                if (!foundMatch) {
-                    return [relevantText];
-                }
-                return titleTextArray;
-            }
-        }
-        return [relevantText];
-    };
-    var both = { options: { both: true } };
-
-    var increaseDelayTimer = function () {
-        var delayTimer = window.localStorage.getItem('delayTimer');
-        var delayTimerNumber = parseInt(delayTimer) + 26000;
-        window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
-    };
-    var openNewLink = function (prelimUrl, messageType) {
-        var url = "" + prelimUrl;
-        if (messageType !== 'custom') {
-            var delayTimer = window.localStorage.getItem('delayTimer');
-            url = url + ("&timer=" + delayTimer);
-            increaseDelayTimer();
-        }
-        window.open(url, '_blank');
-    };
-    var generatePrelimUrl = function (toUsername, messageText, messageType, usernameConfig) {
-        if (usernameConfig) {
-            return "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
-        }
-        return "https://forum.nofap.com/index.php?conversations/add&title=Hey&to=" + toUsername + "&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
-    };
-
-    var startAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var startAgainAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you're starting again!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var generalAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var relapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var struggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var flatlineAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var wetdreamAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var ageAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var accountabilityPartner = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"); };
-    var partnerAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
-    var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var biggestBenefitPostAddictionAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Sorry to hear you're struggling with urges. If they're a big issue for you then it might mean that you don't quite have the fundamentals down.\n\nUltimately recovery should be relatively struggle free, and the only way you're going to achieve that is by having mental balance. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Once you have that control it becomes trivial.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    // If you have to ask, then generally yes. Although
-    var didIJustRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Although not necessarily a relapse, indicates that you don't quite have control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var whenDoesItGetEasierAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Ultimately it gets easier once you learn to develop control over your mind, which comes from daily mental health practice.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-
     var timeSince = function (date) {
         var seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
         var interval = Math.floor(seconds / 31536000);
@@ -2570,14 +2393,14 @@
     };
 
     var createTextVNode$1 = createTextVNode;
-    var createVNode$2 = createVNode;
+    var createVNode$1 = createVNode;
     var PreviousMessageInformation = function (_a) {
         var dbUser = _a.dbUser;
-        return (createVNode$2(1, "div", null, [createVNode$2(1, "p", null, createVNode$2(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$2(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$2(1, "p", null, "NA", 16), createVNode$2(1, "p", null, createVNode$2(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$2(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$2(1, "p", null, "NA", 16)], 0));
+        return (createVNode$1(1, "div", null, [createVNode$1(1, "p", null, createVNode$1(1, "b", null, "NFD Sent", 16, { "style": { 'font-weight': 900 } }), 2), dbUser.lastSentMessage ? (createVNode$1(1, "p", null, dbUser.lastSentMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16), createVNode$1(1, "p", null, createVNode$1(1, "b", null, [dbUser.username, createTextVNode$1(" Sent")], 0, { "style": { 'font-weight': 900 } }), 2), dbUser.lastReceivedMessage ? (createVNode$1(1, "p", null, dbUser.lastReceivedMessage.text, 0, { "style": { 'padding-top': '0.2rem', 'padding-bottom': '0.2rem' } })) : createVNode$1(1, "p", null, "NA", 16)], 0));
     };
     var UserInformation = function (_a) {
         var dbUser = _a.dbUser, usernameConfig = _a.usernameConfig;
-        return (createVNode$2(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$2(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$2(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$2(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$2(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$2(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$2(1, "br"), createVNode$2(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$2(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
+        return (createVNode$1(1, "div", null, [(usernameConfig === null || usernameConfig === void 0 ? void 0 : usernameConfig.usernameValue) === dbUser.username ? createVNode$1(1, "h1", null, "LASTUSER", 16, { "id": "last-user-reade", "style": { 'font-size': '4.5rem' } }) : '', createVNode$1(1, "span", null, [dbUser.username, createTextVNode$1(" | "), dbUser.user_chat_function_utilised ? createVNode$1(1, "span", null, "(Chatted)", 16, { "style": { color: 'black' } }) : ''], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Type: "), dbUser.userType, createTextVNode$1(" |")], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: dbUser.userColor } }), createVNode$1(1, "span", null, [createTextVNode$1("Sent: "), dbUser.sentCount], 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'blue' } }), createVNode$1(1, "br"), createVNode$1(1, "span", null, dbUser.lastReceivedMessage && timeSince(new Date(dbUser.lastReceivedMessage.send_date)) + " since last received message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } }), createVNode$1(1, "span", null, dbUser.lastSentMessage && timeSince(new Date(dbUser.lastSentMessage.send_date)) + " since last sent message.", 0, { "style": { 'font-size': '20px', 'margin-left': '0.4rem', 'margin-right': '0.4rem', color: 'black', 'margin-top': '0.6rem' } })], 0, { "style": { 'margin-top': '1rem', 'margin-bottom': '1rem' } }));
     };
     var SendUserNoteForm = /** @class */ (function (_super) {
         __extends(SendUserNoteForm, _super);
@@ -2591,7 +2414,7 @@
         SendUserNoteForm.prototype.render = function () {
             var _this = this;
             var _a;
-            return (createVNode$2(1, "div", null, [createVNode$2(64, "input", null, null, 1, { "value": (_a = this.state) === null || _a === void 0 ? void 0 : _a.message, "onChange": function (e) { return _this.setState({ message: e.target.value }); }, "style": { 'margin-right': '1rem' } }), createVNode$2(1, "button", null, "Send Note", 16, { "onclick": function () { return __awaiter(_this, void 0, void 0, function () {
+            return (createVNode$1(1, "div", null, [createVNode$1(64, "input", null, null, 1, { "value": (_a = this.state) === null || _a === void 0 ? void 0 : _a.message, "onChange": function (e) { return _this.setState({ message: e.target.value }); }, "style": { 'margin-right': '1rem' } }), createVNode$1(1, "button", null, "Send Note", 16, { "onclick": function () { return __awaiter(_this, void 0, void 0, function () {
                         var _a;
                         return __generator(this, function (_b) {
                             switch (_b.label) {
@@ -2612,7 +2435,7 @@
     }(Component));
     var MarkUserHostileButton = function (_a) {
         var username = _a.username;
-        return (createVNode$2(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+        return (createVNode$1(1, "button", null, "Mark User Hostile", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, markUserHostile({ username: username })];
@@ -2625,7 +2448,7 @@
     };
     var MarkUserChattedButton = function (_a) {
         var username = _a.username;
-        return (createVNode$2(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+        return (createVNode$1(1, "button", null, "Mark User Chatted", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, markUserChatted({ username: username })];
@@ -2638,7 +2461,7 @@
     };
     var SetMarkerButton = function (_a) {
         var username = _a.username, usernameConfig = _a.usernameConfig, hoursAgoText = _a.hoursAgoText;
-        return (createVNode$2(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
+        return (createVNode$1(1, "button", null, "Set Marker", 16, { "style": { border: '1px solid black', 'margin-right': '0.4rem' }, "onclick": function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, setMarker({ username: username, usernameConfig: usernameConfig, hoursAgoText: hoursAgoText })];
@@ -2666,20 +2489,20 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'bruhman46';
-    var R_NOFAP_TIMESTAMP = 'just now';
-    var R_PORN_FREE_USERNAME = 'noisyninja1';
-    var R_PORN_FREE_TIMESTAMP = '13 minutes ago';
-    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+    var R_NOFAP_USERNAME = 'Noisy_Fart';
+    var R_NOFAP_TIMESTAMP = '5 hours ago';
+    var R_PORN_FREE_USERNAME = 'ChortleLikeAMortal';
+    var R_PORN_FREE_TIMESTAMP = '7 hours ago';
+    var R_PORN_ADDICTION_USERNAME = 'Andrew_Murray1';
+    var R_PORN_ADDICTION_TIMESTAMP = '7 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
-    var R_NOFAP_CHRISTIANS_TIMESTAMP = 'NaN hours ago';
+    var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
-    var R_NOFAP_TEENS_TIMESTAMP = 'NaN hours ago';
+    var R_NOFAP_TEENS_TIMESTAMP = '';
     var R_SEMEN_RETENTION_USERNAME = '';
-    var R_SEMEN_RETENTION_TIMESTAMP = 'NaN hours ago';
+    var R_SEMEN_RETENTION_TIMESTAMP = '';
     var R_MUSLIM_NOFAP_USERNAME = '';
-    var R_MUSLIM_NOFAP_TIMESTAMP = 'NaN hours ago';
+    var R_MUSLIM_NOFAP_TIMESTAMP = '';
     var TIMEFRAME = 'NA';
     // export const TIMEFRAME = '1 hour ago';
     // export const TIMEFRAME = '2 hours ago';
@@ -2759,6 +2582,212 @@
         };
     };
 
+    var createVNode$2 = createVNode;
+    var RegexFilterLogic;
+    (function (RegexFilterLogic) {
+        RegexFilterLogic["AND"] = "AND";
+        RegexFilterLogic["OR"] = "OR";
+    })(RegexFilterLogic || (RegexFilterLogic = {}));
+    var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
+    var matchRegex = function (regexArray, textObject) {
+        var matchArray = regexArray.reduce(function (acc, regexFilters) {
+            var _a, _b, _c;
+            if (!acc.matchFound) {
+                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
+                var matchObject = regexKeys.reduce(function (acc, keyString) {
+                    var _a, _b, _c, _d, _e, _f, _g;
+                    var regex = regexFilters[keyString];
+                    if (acc.allFound) {
+                        if (keyString === 'titleText') {
+                            // What this does is that it uses titleText as both titleText and messageText
+                            if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
+                                var matchObject_1 = {};
+                                var matchText = (_b = textObject.titleText) === null || _b === void 0 ? void 0 : _b.match(regex);
+                                if (matchText) {
+                                    matchObject_1.titleTextMatch = {
+                                        value: matchText[0],
+                                        regex: String(regex),
+                                    };
+                                }
+                                var matchMessage = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
+                                if (matchMessage) {
+                                    matchObject_1.messageTextMatch = {
+                                        value: matchMessage[0],
+                                        regex: String(regex),
+                                    };
+                                }
+                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
+                            }
+                            var match = (_d = textObject.titleText) === null || _d === void 0 ? void 0 : _d.match(regex);
+                            if (match) {
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { titleTextMatch: {
+                                            value: match[0],
+                                            regex: String(regex)
+                                        } }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'flairText') {
+                            var match = (_e = textObject.flairText) === null || _e === void 0 ? void 0 : _e.match(regex);
+                            if (match) {
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { flairTextMatch: {
+                                            value: match[0],
+                                            regex: String(regex)
+                                        } }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'messageText') {
+                            var match = (_f = textObject.messageText) === null || _f === void 0 ? void 0 : _f.match(regex);
+                            if (match) {
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { messageTextMatch: {
+                                            value: match[0],
+                                            regex: String(regex)
+                                        } }), allFound: true };
+                            }
+                        }
+                        if (keyString === 'replyText') {
+                            var match = (_g = textObject.replyText) === null || _g === void 0 ? void 0 : _g.match(regex);
+                            if (match) {
+                                return { matchObject: __assign(__assign({}, acc.matchObject), { replyTextMatch: {
+                                            value: match[0],
+                                            regex: String(regex)
+                                        } }), allFound: true };
+                            }
+                        }
+                    }
+                    return __assign(__assign({}, acc), { allFound: false });
+                }, { matchObject: {}, allFound: true }).matchObject;
+                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
+                    if (Object.keys(matchObject).length === regexKeys.length) {
+                        return { matchArray: [matchObject], matchFound: true };
+                    }
+                }
+                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
+                    || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
+                    if (Object.keys(matchObject).length > 0) {
+                        return { matchArray: [matchObject], matchFound: true };
+                    }
+                }
+                // default to AND
+                if (Object.keys(matchObject).length === regexKeys.length) {
+                    return { matchArray: [matchObject], matchFound: true };
+                }
+            }
+            return acc;
+            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
+        }, { matchArray: [], matchFound: false }).matchArray;
+        return matchArray;
+    };
+    // const titleText = 'hello'
+    // const text = 'text thing'
+    // const result = matchRegex([{
+    //   titleText: /hello/,
+    //   options: { both: true }
+    // },
+    // ], {
+    //   titleText: 'hello',
+    //   messageText: 'hello text thing'
+    // });
+    // result
+    var RelevantType;
+    (function (RelevantType) {
+        RelevantType["Title"] = "Title";
+        RelevantType["Message"] = "Message";
+        RelevantType["Flair"] = "Flair";
+        RelevantType["Reply"] = "Reply";
+    })(RelevantType || (RelevantType = {}));
+    // TODO Checking for relevant type is not relevant. It is not needed.
+    var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
+        if (relevantText) {
+            var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
+                newItem
+            ], arr.slice(index)); };
+            if (messageMatch.length > 0) {
+                var _a = messageMatch.reduce(function (acc, regexFilterResult) {
+                    if (!acc.foundMatch) {
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch.value);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
+                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+                            var newArray = isReact
+                                ? insert_1(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.titleTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                                : insert_1(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.titleTextMatch.value + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch.value);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
+                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+                            var newArray = isReact
+                                ? insert_1(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.flairTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                                : insert_1(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.flairTextMatch.value + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch.value);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
+                            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+                            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+                            splitArray[0] = firstText;
+                            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+                            var lastText = lastPartOfSentence[0].trimRight();
+                            splitArray[1] = lastText.slice(0, 40);
+                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+                            var newArray = isReact
+                                ? insert_1(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.messageTextMatch.value, 0, { "style": { color: 'red' } }))
+                                : insert_1(splitArraySpan, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch.value + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
+                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch.value);
+                            if (splitArray.length === 1) {
+                                return acc;
+                            }
+                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+                            var newArray = isReact
+                                ? insert_1(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.replyTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                                : insert_1(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.replyTextMatch.value + "</span>");
+                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
+                        }
+                    }
+                    return acc;
+                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }), titleTextArray = _a.titleTextArray, foundMatch = _a.foundMatch;
+                if (!foundMatch) {
+                    return isReact ? [createVNode$2(1, "span", null, relevantText.slice(0, 200), 0)] : [relevantText];
+                }
+                return titleTextArray;
+            }
+        }
+        return isReact ? [createVNode$2(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || relevantText, 0)] : [relevantText];
+    };
+    var both = { options: { both: true } };
+
+    var increaseDelayTimer = function () {
+        var delayTimer = window.localStorage.getItem('delayTimer');
+        var delayTimerNumber = parseInt(delayTimer) + 26000;
+        window.localStorage.setItem('delayTimer', delayTimerNumber.toString());
+    };
+    var openNewLink = function (prelimUrl, messageType) {
+        var url = "" + prelimUrl;
+        if (messageType !== 'custom') {
+            var delayTimer = window.localStorage.getItem('delayTimer');
+            url = url + ("&timer=" + delayTimer);
+            increaseDelayTimer();
+        }
+        window.open(url, '_blank');
+    };
+    var generatePrelimUrl = function (toUsername, messageText, messageType, usernameConfig) {
+        if (usernameConfig) {
+            return "https://www.reddit.com/message/compose/?to=" + toUsername + "&subject=Hey&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
+        }
+        return "https://forum.nofap.com/index.php?conversations/add&title=Hey&to=" + toUsername + "&message=" + encodeURIComponent(messageText) + "&type=" + messageType;
+    };
+
     var followRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed. Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
     var followMeditationAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Have you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
     var followStruggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nHave you been meditating daily like I suggested? Did you end up reading the NeverFap Deluxe website?"); };
@@ -2804,8 +2833,29 @@
     };
 
     var createTextVNode$2 = createTextVNode;
-    var createComponentVNode$2 = createComponentVNode;
     var createVNode$4 = createVNode;
+    var CreatePrelimLink = /** @class */ (function (_super) {
+        __extends(CreatePrelimLink, _super);
+        function CreatePrelimLink(props) {
+            var _this = _super.call(this, props) || this;
+            _this.state = {
+                borderClass: '1px solid black'
+            };
+            return _this;
+        }
+        CreatePrelimLink.prototype.render = function () {
+            var _this = this;
+            var _a;
+            var _b = this.props, dbUser = _b.dbUser, titleText = _b.titleText, messageText = _b.messageText, flairText = _b.flairText, aLinkHref = _b.aLinkHref, prelimUrl = _b.prelimUrl, index = _b.index, sendMessageType = _b.sendMessageType, prelimContainer = _b.prelimContainer, messageMatch = _b.messageMatch;
+            return (createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Title:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Message:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(messageText, RelevantType.Message, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Flair:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } })], 4, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: (_a = this.state) === null || _a === void 0 ? void 0 : _a.borderClass }, "onclick": function () {
+                        _this.setState({ borderClass: '1px solid red' });
+                        openNewLink(prelimUrl, SendMessageType.NA);
+                    } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4));
+        };
+        return CreatePrelimLink;
+    }(Component));
+
+    var createComponentVNode$2 = createComponentVNode;
     var getAllNoFapNewUsernames = function () {
         var allATags = document.querySelectorAll('a');
         var filteredATags = __spreadArrays(allATags).filter(function (tag) { return tag.innerText.includes('u/'); });
@@ -2912,32 +2962,11 @@
             }
         });
     }); };
-    var CreatePrelimLink = /** @class */ (function (_super) {
-        __extends(CreatePrelimLink, _super);
-        function CreatePrelimLink(props) {
-            var _this = _super.call(this, props) || this;
-            _this.state = {
-                borderClass: '1px solid black'
-            };
-            return _this;
-        }
-        CreatePrelimLink.prototype.render = function () {
-            var _this = this;
-            var _a, _b;
-            var _c = this.props, dbUser = _c.dbUser, titleText = _c.titleText, flairText = _c.flairText, aLinkHref = _c.aLinkHref, prelimUrl = _c.prelimUrl, index = _c.index, sendMessageType = _c.sendMessageType, prelimContainer = _c.prelimContainer, messageMatch = _c.messageMatch;
-            return (createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), messageMatch.length > 0 ? (highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0, { "style": { 'line-height': '1.4rem' } }); })) : (createVNode$4(1, "span", null, titleText, 0)),
-                    messageMatch.length > 0 && ((_a = messageMatch[0]) === null || _a === void 0 ? void 0 : _a.messageTextMatch) && (createVNode$4(1, "span", null, [createTextVNode$2(" | Message: "), createVNode$4(1, "span", null, messageMatch[0].messageTextMatch, 0, { "style": { color: 'red' } })], 4, { "style": { 'line-height': '1.4rem' } })), createVNode$4(1, "p", null, messageMatch.length > 0 ? (highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return createVNode$4(1, "span", null, element, 0, { "style": { 'line-height': '1.4rem' } }); })) : (createVNode$4(1, "span", null, flairText, 0, { "style": { 'line-height': '1.4rem' } })), 0, { "style": { 'margin-top': '0.5rem' } })], 0, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: (_b = this.state) === null || _b === void 0 ? void 0 : _b.borderClass }, "onclick": function () {
-                        _this.setState({ borderClass: '1px solid red' });
-                        openNewLink(prelimUrl, SendMessageType.NA);
-                    } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4));
-        };
-        return CreatePrelimLink;
-    }(Component));
     var createPrelimLink = function (_a) {
-        var dbUser = _a.dbUser, titleText = _a.titleText, flairText = _a.flairText, aLinkHref = _a.aLinkHref, prelimUrl = _a.prelimUrl, index = _a.index, sendMessageType = _a.sendMessageType, prelimContainer = _a.prelimContainer, messageMatch = _a.messageMatch;
+        var dbUser = _a.dbUser, titleText = _a.titleText, messageText = _a.messageText, flairText = _a.flairText, aLinkHref = _a.aLinkHref, prelimUrl = _a.prelimUrl, index = _a.index, sendMessageType = _a.sendMessageType, prelimContainer = _a.prelimContainer, messageMatch = _a.messageMatch;
         var nodeContainer = document.createElement('div');
         nodeContainer.id = "r" + dbUser.username + "-" + index;
-        render(createComponentVNode$2(2, CreatePrelimLink, { "dbUser": dbUser, "titleText": titleText, "flairText": flairText, "aLinkHref": aLinkHref, "prelimUrl": prelimUrl, "index": index, "sendMessageType": sendMessageType, "prelimContainer": prelimContainer, "messageMatch": messageMatch }), nodeContainer);
+        render(createComponentVNode$2(2, CreatePrelimLink, { "dbUser": dbUser, "titleText": titleText, "messageText": messageText, "flairText": flairText, "aLinkHref": aLinkHref, "prelimUrl": prelimUrl, "index": index, "sendMessageType": sendMessageType, "prelimContainer": prelimContainer, "messageMatch": messageMatch }), nodeContainer);
         prelimContainer === null || prelimContainer === void 0 ? void 0 : prelimContainer.appendChild(nodeContainer);
     };
     var renderUserPanel = function (_a) {
@@ -2972,8 +3001,8 @@
     };
     // TODO Fix this up
     var toRemoveInitialRegexArray = [
-        // FLAIR
-        { flairText: /Success Story/i },
+        { titleText: /\".*\"/i },
+        { titleText: /\“.*\“/i },
         // DAY MILESTONES
         { titleText: /180 day/i },
         // COUNTER
@@ -2996,22 +3025,22 @@
         { messageText: /get a tag with your streak/i },
         __assign(__assign({}, both), { titleText: /How does the day counter work/i }),
         // LECTURE
-        { titleText: /(NoFap|no fap|no-fap) taught me/i },
-        { titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
-        { titleText: /a piece of advice/i },
-        { titleText: /read this if you/i },
-        { titleText: /pro tip for (NoFap|no fap|no-fap)/i },
-        { titleText: /for those who relapse/i },
-        { titleText: /to those struggling/i },
-        { titleText: /one habit that helped me/i },
-        { titleText: /the key is/i },
         { titleText: /my benefits/i },
-        { titleText: /(a reminder|remember this)/i },
-        { titleText: /strange benefit/i },
-        { titleText: /found a method/i },
-        { titleText: /the key to (everything|(NoFap|no fap|no-fap))/i },
-        { titleText: /methods that you might like to/i },
-        { titleText: /Tip that might help you/i },
+        { titleText: /read this if you/i },
+        { titleText: /a piece of advice/i },
+        __assign(__assign({}, both), { titleText: /(NoFap|no fap|no-fap) taught me/i }),
+        __assign(__assign({}, both), { titleText: /\d+ (NoFap|no fap|no-fap) benefits/i }),
+        __assign(__assign({}, both), { titleText: /pro tip for (NoFap|no fap|no-fap)/i }),
+        __assign(__assign({}, both), { titleText: /for those who relapse/i }),
+        __assign(__assign({}, both), { titleText: /to those struggling/i }),
+        __assign(__assign({}, both), { titleText: /one habit that helped me/i }),
+        __assign(__assign({}, both), { titleText: /the key is/i }),
+        __assign(__assign({}, both), { titleText: /(a ?(friendly)? reminder|remember this)/i }),
+        __assign(__assign({}, both), { titleText: /strange benefit/i }),
+        __assign(__assign({}, both), { titleText: /found a method/i }),
+        __assign(__assign({}, both), { titleText: /the key to (everything|(NoFap|no fap|no-fap))/i }),
+        __assign(__assign({}, both), { titleText: /methods that you might like to/i }),
+        __assign(__assign({}, both), { titleText: /Tip that might help you/i }),
         // VICTORY
         { titleText: /overcame my worst urge/i },
         { titleText: /I am proud of myself/i },
@@ -3106,6 +3135,7 @@
         // IRRELEVANT TOPICS
         { titleText: /Playlist/i },
         { titleText: /beast mode/i },
+        { titleText: /Erotica/i },
         { titleText: /gift/i },
         { titleText: /hunger/i },
         { titleText: /(insta|instagram)/i },
@@ -3129,6 +3159,8 @@
         { titleText: /no urges yet/i },
         { titleText: /(hard mode|hardmode)/i },
         { titleText: /cold shower/i },
+        { titleText: /book recommendation/i },
+        __assign(__assign({}, both), { titleText: /does having sex break (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /I (don’t|dont|don't) see any benefits/i }),
         __assign(__assign({}, both), { titleText: /negatives of masturbating/i }),
         __assign(__assign({}, both), { titleText: /am I addicted to (porn|pron)/i }),
@@ -3184,11 +3216,11 @@
         __assign(__assign({}, both), { titleText: /Failed \.* again/i }),
         __assign(__assign({}, both), { titleText: /Ended my \d+ day streak/i }),
         __assign(__assign({}, both), { titleText: /I lost ?(the)? battle today/i }),
+        __assign(__assign({}, both), { titleText: /Gave in last night/i }),
         { messageText: /was going strong till today/i },
         { messageText: /Yesterday I relapsed again/i },
         __assign(__assign({}, both), { titleText: /relapsed (after|on day|again)/i }),
         __assign(__assign({}, both), { titleText: /relapse (after|on day)/i }),
-        { flairText: /Relapse Report/i },
     ];
 
     // TODO fix this up
@@ -3220,7 +3252,7 @@
         __assign(__assign({}, both), { titleText: /I have started my journey/i }),
         // ADVICE
         { titleText: /any tips on getting started/i },
-        { messageText: /Any advice on how to start/i },
+        __assign(__assign({}, both), { titleText: /Advice on How to Start/i }),
         // JOINED / NEW
         { titleText: /just joined (nofap|no fap|no-fap)/i },
         { titleText: /new here/i },
@@ -3228,16 +3260,16 @@
         { titleText: /new to (NoFap|no fap|no-fap|this)/i },
         // STARTS NOW
         { titleText: /we start today/i },
-        { titleText: /today I start/i },
-        { titleText: /(NoFap|no fap|no-fap) from today/i },
-        { titleText: /(gonna|going to) start today/i },
-        { titleText: /(quitting|quiting|starting) ?(.*) (now|today)/i },
-        { titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i },
-        { titleText: /gonna start to stop watching porn from now/i },
-        { titleText: /journey (start|begins)/i },
-        { titleText: /it begins here/i },
-        { titleText: /(here|now) it begins/i },
-        { titleText: /the cycle stops here/i },
+        __assign(__assign({}, both), { titleText: /today I start/i }),
+        __assign(__assign({}, both), { titleText: /(NoFap|no fap|no-fap) from today/i }),
+        __assign(__assign({}, both), { titleText: /(gonna|going to) start today/i }),
+        __assign(__assign({}, both), { titleText: /(quitting|quiting|starting) ?(.*) (now|today)/i }),
+        __assign(__assign({}, both), { titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i }),
+        __assign(__assign({}, both), { titleText: /gonna start to stop watching porn from now/i }),
+        __assign(__assign({}, both), { titleText: /journey (start|begins)/i }),
+        __assign(__assign({}, both), { titleText: /it begins here/i }),
+        __assign(__assign({}, both), { titleText: /(here|now) it begins/i }),
+        __assign(__assign({}, both), { titleText: /the cycle stops here/i }),
         // BEGINNING
         { titleText: /beginning of my Journey in (NoFap|no fap|no-fap)/i },
         { titleText: /beginning the Challenge/i },
@@ -3290,13 +3322,13 @@
         { titleText: /first time doing this/i },
         { titleText: /first time .* looking for advice/i },
         { titleText: /first time (nofap|no fap|no-fap)/i },
-        { titleText: /(first|1st) (step|day)/i },
+        { titleText: /(first|1st) (day)/i },
         { titleText: /first timer/i },
         { titleText: /^first time here$/i },
         { messageText: /this is gonna be my first day to nofap/i },
     ];
 
-    var toStartAgainRegexArray = [
+    var toStartAgainAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /(begin|(Let's|let’s|lets) do this) again/i }),
         __assign(__assign({}, both), { titleText: /gonna try again/i }),
         __assign(__assign({}, both), { titleText: /trying ?(nofap|no fap|no-fap|this|it)? again/i }),
@@ -3332,18 +3364,20 @@
         { titleText: /Looking for Tips/i },
         { titleText: /^tips\?$/i },
         { titleText: /.* any tips\?$/i },
-        { titleText: /need (NoFap|no fap|no-fap) tips/i },
-        { titleText: /any tips to stop (fapping|mast)/i },
-        { titleText: /any tips to (stop|quit)\?/i },
         { titleText: /^need tips$/i },
         { titleText: /^Need advice$/i },
         { titleText: /could use some advice/i },
         { titleText: /Beginner, need some advice/i },
         { titleText: /what other steps/i },
-        { titleText: /need some general advice/i },
         { titleText: /any help or advice/i },
-        { titleText: /I really want to stop fapping and watching porn/i },
-        { titleText: /scared that i will relapse(,)? some tips/i },
+        __assign(__assign({}, both), { titleText: /Looking for advice on my relapses/i }),
+        __assign(__assign({}, both), { titleText: /need (NoFap|no fap|no-fap) tips/i }),
+        __assign(__assign({}, both), { titleText: /any tips to stop (fapping|mast)/i }),
+        __assign(__assign({}, both), { titleText: /any tips to (stop|quit)\?/i }),
+        __assign(__assign({}, both), { titleText: /need some general advice/i }),
+        __assign(__assign({}, both), { titleText: /I really want to stop fapping and watching porn/i }),
+        __assign(__assign({}, both), { titleText: /scared that i will relapse(,)? some tips/i }),
+        __assign(__assign({}, both), { titleText: /Need Advice to fight porn addiction/i }),
         __assign(__assign({}, both), { titleText: /I'm an addict please help me with some advice/i }),
         __assign(__assign({}, both), { titleText: /if anyone has (advice|tips) for a (beginner|novice)/i }),
         { messageText: /Can anyone help me/i },
@@ -3403,6 +3437,7 @@
         __assign(__assign({}, both), { titleText: /help me with this addiction/i }),
         { messageText: /So please guys, I need your help/i },
         { messageText: /I just want to stop this thing/i },
+        { messageText: /What did you guys do to stop ?(thinking about)? (porn|fapping)/i },
         // GUIDANCE
         { titleText: /need some guidance/i },
         { titleText: /looking for some guidance/i },
@@ -3412,6 +3447,7 @@
         { messageText: /someone please guide me/i },
         { messageText: /what steps should I take\?/i },
         { messageText: /I would be grateful if someone could help me (on|in) this journey?/i },
+        { messageText: /What tips do you ?(guys)? have to build (self discipline|self-discipline)\?/i },
         // CAN'T STOP
         { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
         __assign(__assign({}, both), { titleText: /keep relapsing everyday/i }),
@@ -3427,7 +3463,7 @@
         __assign(__assign({}, both), { titleText: /How can you ?(guys)? just stop/i }),
     ];
 
-    var toWetDreamAdviceRegexArray = [
+    var toWetdreamAdviceRegexArray = [
         { titleText: /^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i },
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i }),
         __assign(__assign({}, both), { titleText: /had a wet dream/i }),
@@ -3435,19 +3471,21 @@
         __assign(__assign({}, both), { titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /wet dreamed this morning/i }),
         __assign(__assign({}, both), { titleText: /wet dream on day/i }),
-        __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count as relapsing/i }),
+        __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
         __assign(__assign({}, both), { titleText: /Lose benefits after a wet dream?/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) (wont|won't) stop/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) every \d+/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) bad\?/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) = relapse/i }),
+        __assign(__assign({}, both), { titleText: /Anybody have tips to avoid (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         // TITLE + MESSAGE
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /any solutions\?/ },
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /ways to avoid it\?/ },
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Is this normal\?/ },
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Does it reset progress\?/ },
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Should I worry about it/ },
+        { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Any advice/ },
     ];
 
     var toStruggleAdviceRegexArray = [
@@ -3471,6 +3509,7 @@
         { titleText: /tried countless of times before/i, },
         { titleText: /I (can’t|can't|cant) get my mind (of|off) it/i, },
         { titleText: /Still Struggling/i, },
+        { titleText: /I just have to stop/i, },
         __assign(__assign({}, both), { titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i }),
         __assign(__assign({}, both), { titleText: /not able to start .* journey again/i }),
         { messageText: /How can I get out of this hole\?/i, },
@@ -3495,16 +3534,17 @@
         { messageText: /I keep ?(on)? struggling with PMO/i, },
         { messageText: /Any motivation would be great now/i, },
         { messageText: /Please motivate me to do better/i, },
-        // FLAIR
-        { flairText: /Slip-Up Prevention/i },
+        { messageText: /I really need you guys to help me out here please/i, },
+        __assign(__assign({}, both), { titleText: / I am relapsing again and again/i }),
     ];
 
     var toAccountabilityPartnerRegexArray = [
         { titleText: /^accountability(\.)?$/i },
-        __assign(__assign({}, both), { titleText: /seeking a partner/i }),
+        __assign(__assign({}, both), { titleText: /seeking a (Parter|partner)/i }),
         __assign(__assign({}, both), { titleText: /Looking for an accountability/i }),
-        __assign(__assign({}, both), { titleText: /accountability partner/i }),
-        __assign(__assign({}, both), { titleText: /need (AP|accountability partner)/i }),
+        __assign(__assign({}, both), { titleText: /accountability (Parter|partner)/i }),
+        __assign(__assign({}, both), { titleText: /accountability (Parter|partner)/i }),
+        __assign(__assign({}, both), { titleText: /need (AP|accountability (Parter|partner))/i }),
     ];
 
     var toDealingWithUrgesAdviceRegexArray = [
@@ -3537,19 +3577,7 @@
         __assign(__assign({}, both), { titleText: /urges are ?(getting|becoming)? bigger and bigger/i }),
     ];
 
-    var toBenefitsAdviceRegexArray = [
-        // TITLE BENEFITS
-        { titleText: /^beneftis(\?|.)?$/i },
-        { titleText: /^(NoFap|no fap|no-fap) benefits(\?|.)?$/i },
-        __assign(__assign({}, both), { titleText: /I want to know the benefits of (NoFap|no fap|no-fap)/i }),
-        __assign(__assign({}, both), { titleText: /what are the benefits to quitting/i }),
-        __assign(__assign({}, both), { titleText: /Benefits from quitting\?/i }),
-        __assign(__assign({}, both), { titleText: /What are the benefits\?/i }),
-        __assign(__assign({}, both), { titleText: /share some ?(overall)? benefits you (have|guys) experienced/i }),
-        __assign(__assign({}, both), { titleText: /Can you ?(guys)? share some benefits/i }),
-    ];
-
-    var toPornBlockerAdviceRegexArray = [
+    var toPornBlockersAdviceRegexArray = [
         { titleText: /block porn site/i },
         { titleText: /what website blocker/i },
         { titleText: /Website-blocking software/i },
@@ -3581,6 +3609,7 @@
     var toDidIJustRelapseAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /did I just relapse\?/i }),
         __assign(__assign({}, both), { titleText: /count as relapse\?/i }),
+        __assign(__assign({}, both), { titleText: /do I have to (restart|reset) my streak/i }),
     ];
 
     var toWhenDoesItGetEasierAdviceRegexArray = [
@@ -3590,7 +3619,15 @@
     ];
 
     var toBiggestBenefitPostAddictionAdviceRegexArray = [
-        { titleText: /hellohellohellohellohellohello/i },
+        // TITLE BENEFITS
+        { titleText: /^beneftis(\?|.)?$/i },
+        { titleText: /^(NoFap|no fap|no-fap) benefits(\?|.)?$/i },
+        __assign(__assign({}, both), { titleText: /I want to know the benefits of (NoFap|no fap|no-fap)/i }),
+        __assign(__assign({}, both), { titleText: /what are the benefits to quitting/i }),
+        __assign(__assign({}, both), { titleText: /Benefits from quitting\?/i }),
+        __assign(__assign({}, both), { titleText: /What are the benefits\?/i }),
+        __assign(__assign({}, both), { titleText: /share some ?(overall)? benefits you (have|guys) experienced/i }),
+        __assign(__assign({}, both), { titleText: /Can you ?(guys)? share some benefits/i }),
     ];
 
     var toPartnerAdviceRegexArray = [
@@ -3620,91 +3657,38 @@
         prelimUrl: undefined,
         messageMatch: undefined
     };
-    var freshUserResponse = function (messageType, messageMatch, compiledUser, usernameConfig) {
-        switch (messageType) {
-            case SendMessageType.StartAdviceStart: {
+    var lessThanOneDayAgo = function (date) {
+        var DAY = 24 * 60 * 60 * 1000;
+        var aDayAgo = Date.now() - DAY;
+        return date.getTime() > aDayAgo;
+    };
+    var calculateRegexArray = function (freshUserRegexArray, compiledUser, regexTextObject, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
+        if (!acc.matchFound) {
+            var matchArray = matchRegex(regexItem.regexArray, regexTextObject);
+            if (regexItem.condition && matchArray.length > 0) {
                 return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceStart,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, startAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStart, usernameConfig),
-                    messageMatch: messageMatch
+                    matchObject: {
+                        shouldDeleteElementImmediately: regexItem.delete,
+                        sendMessageType: regexItem.sendMessageType,
+                        prelimUrl: generatePrelimUrl(compiledUser.username, regexItem.regexUrlGenerator(usernameConfig.forumType), regexItem.sendMessageType, usernameConfig),
+                        messageMatch: matchArray
+                    },
+                    matchFound: true
                 };
             }
-            default: throw new Error("messageType - " + messageType + " does not exist.");
         }
-    };
+        return acc;
+    }, { matchObject: undefined, matchFound: false })); };
 
     var toSubFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
         var _a, _b, _c;
         var regexTextObject = { titleText: titleText, flairText: flairText, messageText: messageText };
-        // EDGE
-        // Deleted: Iamnofapbeast - undefined - I relapsed on day 5 due to instagram triggers on a nude model photo
-        // Deleted: Sitaram0641 - undefined - Day 22 completed, but got nightfall 3 times in last week
-        // Deleted: the_invinciblee - undefined - Is NoFap benefits a Placebo?
-        // Deleted: Z1omek - undefined - How to fight urges while lying in bed?
-        // Deleted: frickandfrackooh - Question - How to stop an urge in bed?
-        // OTHER
-        // Meditating at night can gelp witg controlling the wet dreams
-        // Flatline 7 days in - scared!
-        // will nofap cure my cuckhold fetish
-        // should I reset?
-        // Is this flatline? - title,  How do you get through it? - messageText
-        // Does peeking count as a relapse (both) - did I just relapse.
-        // Ways to help me stay motivated through flatline -messageText
-        // Should I just finish and restart my counter? messageText  - no reason to relapse.
-        // IS SEX RELAPSE
-        // Is sex (with someone you just met) a relapse
-        // AGE
-        // around 15 years
-        // 10 years -
-        // TODO: OTHER TOPIC MESSAGES
-        // Does the urge to masturbate get easier?
-        // edging
-        // is it a relapse?
-        // masturbation without porn.
-        // cold showers
-        // once a day
-        // is it bad to fap without porn? - 2
-        // biggest difference once you recover? / benefits - 5 // why shouldn't I fap? // how has nofap changer your life?
-        // what benefits have you noticed? - 1
-        // is peeking relapse? - 1
-        // how to stop wet dreams? - 1
-        // advice for boyfriend from girlfriend. - 1
-        // edging and reseting counter. - 1
-        // any negative effects?
-        // relapse when thinking about ex. - 1
-        // recommend NFD podcast - 1
-        // how long is too long - 1
-        // benefits for hard mode vs no porn - 2
-        // advice cannot fall asleep because need to masturbate. - 1
-        // is it okay to masturbate because teen/not getting any - 1
-        // is it relapse if I have sex with my girlfriend.
-        // semen leakage is it bad? - 1
-        // is sadness and demotivation normal during reboot?
-        // how much is set back from relapsing?
-        // is it okay to ejaculate during sex?
-        // aren't flatlines good?
-        // what is the point of nofap if you can't have sex?
-        // how do I show the days I haven't ejaculated?
-        // smoking weed to help with porn addiction.
-        // what should I be experiencing ?
-        // did I lose progress?
-        // did you get morning wood again?
-        // will dating app make it worse?
-        // does this count as relapse?
-        // low sex drive?
-        // does it get easier over time?
-        // okay to masturbate without porn? 3 (jerking off every now and then. )
-        // did I just relapse?
-        // how do you feel long term (after 1 month/week etc.)
-        // does peeking count as relapse?
-        // Does the guilt go away (yes, onnce you develop control over your mind)
         // TO REMOVE
         var toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText);
         var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
         if (flairText !== 'New to NoFap') {
             if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-                console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText + " - Match: " + (toRemoveInitialMatch && toRemoveInitialMatch[0]));
+                console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText + (toRemoveInitialMatch.length > 0 ? " - " + extractRegexMatch(toRemoveInitialMatch) : ''));
                 return deleteImmediately;
             }
         }
@@ -3719,6 +3703,7 @@
         // USER NOT RESPONDED
         if (compiledUser.userType === UserType.UserNotRespondedBack) {
             // FOLLOW MESSAGES
+            // TODO: Extend this to struggle.
             if ((_b = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('start')) {
                 var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, regexTextObject);
                 if (toRelapseAdviceMatch.length > 0) {
@@ -3730,11 +3715,6 @@
                     };
                 }
             }
-            var lessThanOneDayAgo = function (date) {
-                var DAY = 24 * 60 * 60 * 1000;
-                var aDayAgo = Date.now() - DAY;
-                return date.getTime() > aDayAgo;
-            };
             var messageSendDate = (_c = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _c === void 0 ? void 0 : _c.send_date;
             if (messageSendDate && lessThanOneDayAgo(new Date(messageSendDate))) {
                 return deleteImmediately;
@@ -3742,190 +3722,34 @@
         }
         // FRESH USER
         if (compiledUser.userType === UserType.FreshUser) {
-            // STARTED MESSAGES
-            var toStartMatch = matchRegex(toStartAdviceRegexArray, regexTextObject);
-            if (!titleText.includes('again') && toStartMatch.length > 0) {
-                return freshUserResponse(SendMessageType.StartAdviceStart, toStartMatch, compiledUser, usernameConfig);
-            }
-            // STARTED AGAIN MESSAGES
-            var toStartAgainMatch = matchRegex(toStartAgainRegexArray, regexTextObject);
-            if (toStartAgainMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceStartAgain,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, startAgainAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStartAgain, usernameConfig),
-                    messageMatch: toStartAgainMatch
-                };
-            }
-            // GENERAL MESSAGES
-            var toGeneralAdviceMatch = matchRegex(toGeneralAdviceRegexArray, regexTextObject);
-            if (toGeneralAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceGeneral,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, generalAdvice(usernameConfig.forumType), SendMessageType.StartAdviceGeneral, usernameConfig),
-                    messageMatch: toGeneralAdviceMatch
-                };
-            }
-            // RELAPSE MESSAGES
-            var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, regexTextObject);
-            if (toRelapseAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceRelapse,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, relapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceRelapse, usernameConfig),
-                    messageMatch: toRelapseAdviceMatch
-                };
-            }
-            // WET DREAM MESSAGES
-            var toWetDreamAdviceMatch = matchRegex(toWetDreamAdviceRegexArray, regexTextObject);
-            if (toWetDreamAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceWetdreamAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, wetdreamAdvice(usernameConfig.forumType), SendMessageType.StartAdviceWetdreamAdvice, usernameConfig),
-                    messageMatch: toWetDreamAdviceMatch
-                };
-            }
-            // ACCOUNTABILITY PARTNER MESSAGES
-            var toAccountabilityPartnerMatch = matchRegex(toAccountabilityPartnerRegexArray, regexTextObject);
-            if (toAccountabilityPartnerMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAccountabilityPartner,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, accountabilityPartner(usernameConfig.forumType), SendMessageType.StartAccountabilityPartner, usernameConfig),
-                    messageMatch: toAccountabilityPartnerMatch
-                };
-            }
-            // STRUGGLE MESSAGES
-            var toStruggleAdviceMatch = matchRegex(toStruggleAdviceRegexArray, regexTextObject);
-            if (toStruggleAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceStruggle,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, struggleAdvice(usernameConfig.forumType), SendMessageType.StartAdviceStruggle, usernameConfig),
-                    messageMatch: toStruggleAdviceMatch
-                };
-            }
-            // URGES MESSAGES
-            var toDealingWithUrgesAdviceMatch = matchRegex(toDealingWithUrgesAdviceRegexArray, regexTextObject);
-            if (toDealingWithUrgesAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartDealingWithUrgesAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, dealingWithUrgesAdvice(usernameConfig.forumType), SendMessageType.StartDealingWithUrgesAdvice, usernameConfig),
-                    messageMatch: toDealingWithUrgesAdviceMatch
-                };
-            }
-            // BENEFITS MESSAGES
-            var toBenefitsAdviceMatch = matchRegex(toBenefitsAdviceRegexArray, regexTextObject);
-            if (toBenefitsAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartBiggestBenefitPostAddictionAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType), SendMessageType.StartBiggestBenefitPostAddictionAdvice, usernameConfig),
-                    messageMatch: toBenefitsAdviceMatch
-                };
-            }
-            // PORN BLOCKER MESSAGES
-            var toPornBlockerAdviceMatch = matchRegex(toPornBlockerAdviceRegexArray, regexTextObject);
-            if (toPornBlockerAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdvicePornBlockersAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, pornBlockersAdvice(usernameConfig.forumType), SendMessageType.StartAdvicePornBlockersAdvice, usernameConfig),
-                    messageMatch: toPornBlockerAdviceMatch
-                };
-            }
-            // CAN YOU STILL MASTURBATE MESSAGES
-            var toMasturbationAdviceMatch = matchRegex(toMasturbateWithoutPornAdviceRegexArray, regexTextObject);
-            if (toMasturbationAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartMasturbateWithoutPornAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, masturbateWithoutPornAdvice(usernameConfig.forumType), SendMessageType.StartMasturbateWithoutPornAdvice, usernameConfig),
-                    messageMatch: toMasturbationAdviceMatch
-                };
-            }
-            // DID I JUST RELAPSE MESSAGES
-            var toDidIJustRelapseAdviceMatch = matchRegex(toDidIJustRelapseAdviceRegexArray, regexTextObject);
-            if (toDidIJustRelapseAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartDidIJustRelapseAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, didIJustRelapseAdvice(usernameConfig.forumType), SendMessageType.StartDidIJustRelapseAdvice, usernameConfig),
-                    messageMatch: toDidIJustRelapseAdviceMatch
-                };
-            }
-            // WHEN DOES IT GET EASIER MESSAGES
-            var toWhenDoesItGetEasierAdviceMatch = matchRegex(toWhenDoesItGetEasierAdviceRegexArray, regexTextObject);
-            if (toWhenDoesItGetEasierAdviceMatch.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartWhenDoesItGetEasierAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, whenDoesItGetEasierAdvice(usernameConfig.forumType), SendMessageType.StartWhenDoesItGetEasierAdvice, usernameConfig),
-                    messageMatch: toWhenDoesItGetEasierAdviceMatch
-                };
-            }
-            // BIGGEST BENEFIT POST ADDICTION
-            var toBiggestBenefitPostAddictionAdvice = matchRegex(toBiggestBenefitPostAddictionAdviceRegexArray, regexTextObject);
-            if (toBiggestBenefitPostAddictionAdvice.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartBiggestBenefitPostAddictionAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, biggestBenefitPostAddictionAdvice(usernameConfig.forumType), SendMessageType.StartBiggestBenefitPostAddictionAdvice, usernameConfig),
-                    messageMatch: toBiggestBenefitPostAddictionAdvice
-                };
-            }
-            // PARTNER ADVICE
-            var toPartnerAdviceAdvice = matchRegex(toPartnerAdviceRegexArray, regexTextObject);
-            if (toPartnerAdviceAdvice.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartPartnerAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, partnerAdvice(usernameConfig.forumType), SendMessageType.StartPartnerAdvice, usernameConfig),
-                    messageMatch: toPartnerAdviceAdvice
-                };
-            }
-            // NO REASON TO RELAPSE ADVICE
-            var toNoReasonToRelapseAdvice = matchRegex(toNoReasonToRelapseAdviceRegexArray, regexTextObject);
-            if (toNoReasonToRelapseAdvice.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartNoReasonToRelapseAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, noReasonToRelapseAdvice(usernameConfig.forumType), SendMessageType.StartNoReasonToRelapseAdvice, usernameConfig),
-                    messageMatch: toNoReasonToRelapseAdvice
-                };
-            }
-            // IS WATCHING PORN RELAPSE?
-            var toIsWatchingPornRelapseAdvice = matchRegex(toIsWatchingPornRelapseAdviceRegexArray, regexTextObject);
-            if (toIsWatchingPornRelapseAdvice.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceIsWatchingPornRelapseAdvice,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, isWatchingPornRelapseAdvice(usernameConfig.forumType), SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, usernameConfig),
-                    messageMatch: toIsWatchingPornRelapseAdvice
-                };
-            }
-            // AGE ADVICE
-            var toAgeAdvice = matchRegex(toAgeAdviceRegexArray, regexTextObject);
-            if (toAgeAdvice.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceAge,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, ageAdvice(usernameConfig.forumType), SendMessageType.StartAdviceAge, usernameConfig),
-                    messageMatch: toAgeAdvice
-                };
-            }
-            // FLATLINE ADVICE
-            var toFlatlineAdvice = matchRegex(toFlatlineAdviceRegexArray, regexTextObject);
-            if (toFlatlineAdvice.length > 0) {
-                return {
-                    shouldDeleteElementImmediately: false,
-                    sendMessageType: SendMessageType.StartAdviceFlatline,
-                    prelimUrl: generatePrelimUrl(compiledUser.username, flatlineAdvice(usernameConfig.forumType), SendMessageType.StartAdviceFlatline, usernameConfig),
-                    messageMatch: toFlatlineAdvice
-                };
+            var freshUserRegexArray = [
+                // SPECIFIC
+                { sendMessageType: SendMessageType.StartAdviceWetdreamAdvice, regexArray: toWetdreamAdviceRegexArray, regexUrlGenerator: wetdreamAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAccountabilityPartner, regexArray: toAccountabilityPartnerRegexArray, regexUrlGenerator: accountabilityPartner, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: toStruggleAdviceRegexArray, regexUrlGenerator: struggleAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartDealingWithUrgesAdvice, regexArray: toDealingWithUrgesAdviceRegexArray, regexUrlGenerator: dealingWithUrgesAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdvicePornBlockersAdvice, regexArray: toPornBlockersAdviceRegexArray, regexUrlGenerator: pornBlockersAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartMasturbateWithoutPornAdvice, regexArray: toMasturbateWithoutPornAdviceRegexArray, regexUrlGenerator: masturbateWithoutPornAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartDidIJustRelapseAdvice, regexArray: toDidIJustRelapseAdviceRegexArray, regexUrlGenerator: didIJustRelapseAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartWhenDoesItGetEasierAdvice, regexArray: toWhenDoesItGetEasierAdviceRegexArray, regexUrlGenerator: whenDoesItGetEasierAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartBiggestBenefitPostAddictionAdvice, regexArray: toBiggestBenefitPostAddictionAdviceRegexArray, regexUrlGenerator: biggestBenefitPostAddictionAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartPartnerAdvice, regexArray: toPartnerAdviceRegexArray, regexUrlGenerator: partnerAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartNoReasonToRelapseAdvice, regexArray: toNoReasonToRelapseAdviceRegexArray, regexUrlGenerator: noReasonToRelapseAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, regexArray: toIsWatchingPornRelapseAdviceRegexArray, regexUrlGenerator: isWatchingPornRelapseAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceFlatline, regexArray: toFlatlineAdviceRegexArray, regexUrlGenerator: flatlineAdvice, condition: true, delete: false },
+                // GENERIC
+                { sendMessageType: SendMessageType.StartAdviceStart, regexArray: toStartAdviceRegexArray, regexUrlGenerator: startAdvice, condition: !titleText.includes('again'), delete: false },
+                { sendMessageType: SendMessageType.StartAdviceStartAgain, regexArray: toStartAgainAdviceRegexArray, regexUrlGenerator: startAgainAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceGeneral, regexArray: toGeneralAdviceRegexArray, regexUrlGenerator: generalAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: toRelapseAdviceRegexArray, regexUrlGenerator: relapseAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceAge, regexArray: toAgeAdviceRegexArray, regexUrlGenerator: ageAdvice, condition: true, delete: false },
+                // FLAIRS
+                { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [{ flairText: /Slip-Up Prevention/ }], regexUrlGenerator: struggleAdvice, condition: true, delete: false },
+                { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [{ flairText: /Victory/ }, { flairText: /Success Story/ }], regexUrlGenerator: generalAdvice, condition: true, delete: true },
+            ];
+            var matchObject = calculateRegexArray(freshUserRegexArray, compiledUser, regexTextObject, usernameConfig).matchObject;
+            if (matchObject) {
+                return matchObject;
             }
         }
         // Final Delete
@@ -3964,6 +3788,14 @@
                 var hoursAgoText = (_29 = (_28 = (_27 = (_26 = (_25 = (_24 = (_23 = (_22 = (_21 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _21 === void 0 ? void 0 : _21.parentNode) === null || _22 === void 0 ? void 0 : _22.parentNode) === null || _23 === void 0 ? void 0 : _23.parentNode) === null || _24 === void 0 ? void 0 : _24.parentNode) === null || _25 === void 0 ? void 0 : _25.parentNode.children[1]) === null || _26 === void 0 ? void 0 : _26.children[0]) === null || _27 === void 0 ? void 0 : _27.children[0]) === null || _28 === void 0 ? void 0 : _28.children[0].querySelectorAll('a')[1]) === null || _29 === void 0 ? void 0 : _29.innerText;
                 if (titleText) {
                     var _54 = toSubFilter(dbUser, usernameConfig, flairText, titleText, messageText), shouldDeleteElementImmediately = _54.shouldDeleteElementImmediately, sendMessageType = _54.sendMessageType, prelimUrl = _54.prelimUrl, messageMatch = _54.messageMatch;
+                    // if (messageMatch) {
+                    // TODO all these messages to the
+                    // recordTextMatch({
+                    //   flairText,
+                    //   titleText,
+                    //   messageText,
+                    // });
+                    // }
                     if (index !== 0 && dbUser.username !== usernameConfig.usernameValue) {
                         if (alreadyPrelimUrlUsernameList.includes(dbUser.username)) {
                             (_37 = (_36 = (_35 = (_34 = (_33 = (_32 = (_31 = (_30 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _30 === void 0 ? void 0 : _30.parentNode) === null || _31 === void 0 ? void 0 : _31.parentNode) === null || _32 === void 0 ? void 0 : _32.parentNode) === null || _33 === void 0 ? void 0 : _33.parentNode) === null || _34 === void 0 ? void 0 : _34.parentNode) === null || _35 === void 0 ? void 0 : _35.parentNode) === null || _36 === void 0 ? void 0 : _36.parentNode) === null || _37 === void 0 ? void 0 : _37.remove();
@@ -3978,7 +3810,7 @@
                             (_53 = (_52 = (_51 = (_50 = (_49 = (_48 = (_47 = (_46 = tag === null || tag === void 0 ? void 0 : tag.parentNode) === null || _46 === void 0 ? void 0 : _46.parentNode) === null || _47 === void 0 ? void 0 : _47.parentNode) === null || _48 === void 0 ? void 0 : _48.parentNode) === null || _49 === void 0 ? void 0 : _49.parentNode) === null || _50 === void 0 ? void 0 : _50.parentNode) === null || _51 === void 0 ? void 0 : _51.parentNode) === null || _52 === void 0 ? void 0 : _52.parentNode) === null || _53 === void 0 ? void 0 : _53.remove();
                             // TODO pass in message text.
                             createPrelimLink({
-                                dbUser: dbUser, titleText: titleText, flairText: flairText, aLinkHref: aLinkHref, prelimUrl: prelimUrl, index: index, sendMessageType: sendMessageType, prelimContainer: prelimContainer, messageMatch: messageMatch
+                                dbUser: dbUser, titleText: titleText, messageText: messageText, flairText: flairText, aLinkHref: aLinkHref, prelimUrl: prelimUrl, index: index, sendMessageType: sendMessageType, prelimContainer: prelimContainer, messageMatch: messageMatch
                             });
                             return;
                         }

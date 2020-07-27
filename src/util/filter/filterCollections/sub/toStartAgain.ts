@@ -1,6 +1,6 @@
 import { RegexFilters, both } from '../../regexUtil';
 
-export const toStartAgainRegexArray: RegexFilters[] = [
+export const toStartAgainAdviceRegexArray: RegexFilters[] = [
 // TODO, not sure about making this a `both` - but we'll see.
 
   // AGAIN

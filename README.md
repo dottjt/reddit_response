@@ -15,12 +15,13 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
+- I figured out how to simplify the 
+- Handle flairs at the very end. So that they can have more specific searches.
 - message border turns red when clicking on prelimLink
 - Create all other new messages.
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Message for providing meditation advice.
-- For inbox messages, console.log why some go unmatched, esepecially the toNotRespond ones. 
-
+- For inbox messages, console.log why some go unmatched, esepecially the toNotRespond ones.
 
 ### LOW PRIORITY
 

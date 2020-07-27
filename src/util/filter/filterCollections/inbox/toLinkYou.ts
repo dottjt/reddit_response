@@ -17,6 +17,7 @@ export const toLinkYouGuideRegexArray: RegexFilters[] = [
   { replyText: /What (site|link|website|web site|webite|guide|content|page) (is it|would that be)/i },
   { replyText: /what is this (name|site|link|website|web site|webite|guide|content|page|it)\?/i },
   { replyText: /yeah what is it/i },
+  { replyText: /what is it called/i },
 
   // HOW
   { replyText: /How can I access the (name|site|link|website|web site|webite|guide|content|page|it)/i },

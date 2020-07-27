@@ -24,8 +24,8 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
 // TODO Fix this up
 
 export const toRemoveInitialRegexArray: RegexFilters[] = [
-  // FLAIR
-  { flairText: /Success Story/i },
+  { titleText: /\".*\"/i },
+  { titleText: /\“.*\“/i },
 
   // DAY MILESTONES
   { titleText: /180 day/i },
@@ -54,22 +54,23 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { ...both, titleText: /How does the day counter work/i },
 
   // LECTURE
-  { titleText: /(NoFap|no fap|no-fap) taught me/i },
-  { titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
-  { titleText: /a piece of advice/i },
-  { titleText: /read this if you/i },
-  { titleText: /pro tip for (NoFap|no fap|no-fap)/i },
-  { titleText: /for those who relapse/i },
-  { titleText: /to those struggling/i },
-  { titleText: /one habit that helped me/i },
-  { titleText: /the key is/i },
   { titleText: /my benefits/i },
-  { titleText: /(a reminder|remember this)/i },
-  { titleText: /strange benefit/i },
-  { titleText: /found a method/i },
-  { titleText: /the key to (everything|(NoFap|no fap|no-fap))/i },
-  { titleText: /methods that you might like to/i },
-  { titleText: /Tip that might help you/i },
+  { titleText: /read this if you/i },
+  { titleText: /a piece of advice/i },
+
+  { ...both, titleText: /(NoFap|no fap|no-fap) taught me/i },
+  { ...both, titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
+  { ...both, titleText: /pro tip for (NoFap|no fap|no-fap)/i },
+  { ...both, titleText: /for those who relapse/i },
+  { ...both, titleText: /to those struggling/i },
+  { ...both, titleText: /one habit that helped me/i },
+  { ...both, titleText: /the key is/i },
+  { ...both, titleText: /(a ?(friendly)? reminder|remember this)/i },
+  { ...both, titleText: /strange benefit/i },
+  { ...both, titleText: /found a method/i },
+  { ...both, titleText: /the key to (everything|(NoFap|no fap|no-fap))/i },
+  { ...both, titleText: /methods that you might like to/i },
+  { ...both, titleText: /Tip that might help you/i },
 
   // VICTORY
   { titleText: /overcame my worst urge/i },
@@ -174,6 +175,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   // IRRELEVANT TOPICS
   { titleText: /Playlist/i },
   { titleText: /beast mode/i },
+  { titleText: /Erotica/i },
   { titleText: /gift/i },
   { titleText: /hunger/i },
   { titleText: /(insta|instagram)/i },
@@ -200,7 +202,9 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /no urges yet/i },
   { titleText: /(hard mode|hardmode)/i },
   { titleText: /cold shower/i },
+  { titleText: /book recommendation/i },
 
+  { ...both, titleText: /does having sex break (NoFap|no fap|no-fap)/i },
   { ...both, titleText: /I (don’t|dont|don't) see any benefits/i },
   { ...both, titleText: /negatives of masturbating/i },
   { ...both, titleText: /am I addicted to (porn|pron)/i },

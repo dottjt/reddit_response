@@ -29,8 +29,7 @@ export const toRelapseAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /Failed \.* again/i },
   { ...both, titleText: /Ended my \d+ day streak/i },
   { ...both, titleText: /I lost ?(the)? battle today/i },
-
-
+  { ...both, titleText: /Gave in last night/i },
 
   { messageText: /was going strong till today/i },
   { messageText: /Yesterday I relapsed again/i },
@@ -38,7 +37,4 @@ export const toRelapseAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /relapsed (after|on day|again)/i }, // relapsed today DOES NOT work, because it can be used in other contexts.
   { ...both, titleText: /relapse (after|on day)/i }, // relapsed today DOES NOT work, because it can be used in other contexts.
 
-
-
-  { flairText: /Relapse Report/i },
 ];

@@ -48,16 +48,18 @@ const setupCron = () => {
           const startDateInHours = new Date(startDateMatch[0].split('\'')[1]).getTime();
           const differenceInHours = Math.abs(startDateInHours - new Date().getTime()) / 36e5;
 
-          const nextTime = `${Math.round(differenceInHours + 1)} hours ago`;
+          if (differenceInHours) {
+            const nextTime = `${Math.round(differenceInHours + 1)} hours ago`;
 
-          const newContents =
-            confileFileContents.replace(
-              regex,
-              `export const ${forumTime.timestamp} = '${nextTime}';`
-            );
+            const newContents =
+              confileFileContents.replace(
+                regex,
+                `export const ${forumTime.timestamp} = '${nextTime}';`
+              );
 
-          fse.outputFile(configFile, newContents);
-          console.log(`setMarkerRoute - ${nextTime}`);
+            fse.outputFile(configFile, newContents);
+            console.log(`setMarkerRoute - ${nextTime}`);
+          }
         }
       }
     } catch (e) {
