@@ -36,7 +36,6 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /I have started my journey/i },
   { ...both, titleText: /(I’m|I'm|im|I am) gonna try this ?(nofap|no fap|no-fap)? Challenge/i },
 
-
   // ADVICE
   { titleText: /any tips on getting started/i },
 

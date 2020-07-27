@@ -2490,11 +2490,11 @@
         forumType: ForumType.rNofapForum,
     };
     var R_NOFAP_USERNAME = 'daveinpublic';
-    var R_NOFAP_TIMESTAMP = 'just now';
+    var R_NOFAP_TIMESTAMP = '2 hours ago';
     var R_PORN_FREE_USERNAME = 'mamut2020';
     var R_PORN_FREE_TIMESTAMP = '49 minutes ago';
     var R_PORN_ADDICTION_USERNAME = 'cluterfoot5';
-    var R_PORN_ADDICTION_TIMESTAMP = '10 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '11 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2589,87 +2589,89 @@
         RegexFilterLogic["OR"] = "OR";
     })(RegexFilterLogic || (RegexFilterLogic = {}));
     var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
+    var matchTextBoth = function (textObject, regex) {
+        var _a, _b;
+        var matchObject = {};
+        var matchText = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+        if (matchText) {
+            matchObject.titleTextMatch = {
+                value: matchText[0],
+                regex: String(regex),
+            };
+        }
+        var matchMessage = (_b = textObject.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
+        if (matchMessage) {
+            matchObject.messageTextMatch = {
+                value: matchMessage[0],
+                regex: String(regex),
+            };
+        }
+        return { matchObject: matchObject };
+    };
+    var matchOne = function (keyString, textObject, regex) {
+        var _a;
+        var matchObject = {};
+        var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
+        if (match) {
+            matchObject[keyString] = {
+                value: match[0],
+                regex: String(regex)
+            };
+        }
+        return { matchObject: matchObject };
+    };
+    var calculateMatch = function (regexFilters, matchObject, regexKeys) {
+        var _a, _b, _c;
+        // if AND logic, then all matches need to exist.
+        if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
+            if (Object.keys(matchObject).length === regexKeys.length) {
+                return { matchArray: [matchObject], matchFound: true };
+            }
+        }
+        // if OR logic, then only one match needs to exist
+        // if both logic, then only one match needs to exist
+        if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
+            || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
+            if (Object.keys(matchObject).length > 0) {
+                return { matchArray: [matchObject], matchFound: true };
+            }
+        }
+        // default to AND
+        if (Object.keys(matchObject).length === regexKeys.length) {
+            return { matchArray: [matchObject], matchFound: true };
+        }
+        return { matchArray: [], matchFound: false };
+    };
     var matchRegex = function (regexArray, textObject) {
         var matchArray = regexArray.reduce(function (acc, regexFilters) {
-            var _a, _b, _c;
             if (!acc.matchFound) {
                 var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
                 var matchObject = regexKeys.reduce(function (acc, keyString) {
-                    var _a, _b, _c, _d, _e, _f, _g;
+                    var _a;
                     var regex = regexFilters[keyString];
                     if (acc.allFound) {
                         if (keyString === 'titleText') {
-                            // What this does is that it uses titleText as both titleText and messageText
+                            // This checks both titleText and messageText, with only titleText specified. It is an OR condition.
                             if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
-                                var matchObject_1 = {};
-                                var matchText = (_b = textObject.titleText) === null || _b === void 0 ? void 0 : _b.match(regex);
-                                if (matchText) {
-                                    matchObject_1.titleTextMatch = {
-                                        value: matchText[0],
-                                        regex: String(regex),
-                                    };
+                                var matchObject_1 = matchTextBoth(textObject, regex).matchObject;
+                                if (Object.keys(matchObject_1).length > 0) {
+                                    return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
                                 }
-                                var matchMessage = (_c = textObject.messageText) === null || _c === void 0 ? void 0 : _c.match(regex);
-                                if (matchMessage) {
-                                    matchObject_1.messageTextMatch = {
-                                        value: matchMessage[0],
-                                        regex: String(regex),
-                                    };
-                                }
-                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
-                            }
-                            var match = (_d = textObject.titleText) === null || _d === void 0 ? void 0 : _d.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { titleTextMatch: {
-                                            value: match[0],
-                                            regex: String(regex)
-                                        } }), allFound: true };
                             }
                         }
-                        if (keyString === 'flairText') {
-                            var match = (_e = textObject.flairText) === null || _e === void 0 ? void 0 : _e.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { flairTextMatch: {
-                                            value: match[0],
-                                            regex: String(regex)
-                                        } }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'messageText') {
-                            var match = (_f = textObject.messageText) === null || _f === void 0 ? void 0 : _f.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { messageTextMatch: {
-                                            value: match[0],
-                                            regex: String(regex)
-                                        } }), allFound: true };
-                            }
-                        }
-                        if (keyString === 'replyText') {
-                            var match = (_g = textObject.replyText) === null || _g === void 0 ? void 0 : _g.match(regex);
-                            if (match) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), { replyTextMatch: {
-                                            value: match[0],
-                                            regex: String(regex)
-                                        } }), allFound: true };
+                        if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
+                            var matchObject_2 = matchOne(keyString, textObject, regex).matchObject;
+                            console.log('matchObject', matchObject_2);
+                            if (Object.keys(matchObject_2).length > 0) {
+                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_2), allFound: true };
                             }
                         }
                     }
                     return __assign(__assign({}, acc), { allFound: false });
                 }, { matchObject: {}, allFound: true }).matchObject;
-                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
-                    if (Object.keys(matchObject).length === regexKeys.length) {
-                        return { matchArray: [matchObject], matchFound: true };
-                    }
-                }
-                if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
-                    || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
-                    if (Object.keys(matchObject).length > 0) {
-                        return { matchArray: [matchObject], matchFound: true };
-                    }
-                }
-                // default to AND
-                if (Object.keys(matchObject).length === regexKeys.length) {
-                    return { matchArray: [matchObject], matchFound: true };
+                var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
+                if (matchFound) {
+                    return { matchArray: matchArray_1, matchFound: matchFound };
                 }
             }
             return acc;
@@ -2688,6 +2690,9 @@
     //   messageText: 'hello text thing'
     // });
     // result
+    // // check if messageText is an array of regex. If so, then
+    // if (Array.isArray(textObject.messageText)) {
+    //   // This would imply that there might be multiple values.
     var RelevantType;
     (function (RelevantType) {
         RelevantType["Title"] = "Title";

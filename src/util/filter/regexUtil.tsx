@@ -56,6 +56,66 @@ export const extractRegexMatch = (matchArray: RegexFiltersMatch[]) => (
   Object.keys(matchArray[0]).map(key => `${key}: ${matchArray[0][key].value}`).join(', ')
 );
 
+const matchTextBoth = (textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
+  let matchObject = {} as RegexFiltersMatch;
+  const matchText = textObject.titleText?.match(regex);
+  if (matchText) {
+    matchObject.titleTextMatch = {
+      value: matchText[0],
+      regex: String(regex),
+    }
+  }
+
+  const matchMessage = textObject.messageText?.match(regex);
+  if (matchMessage) {
+    matchObject.messageTextMatch = {
+      value: matchMessage[0],
+      regex: String(regex),
+    }
+  }
+  return { matchObject }
+}
+
+const matchOne = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
+  let matchObject = {} as RegexFiltersMatch;
+  const match = textObject[keyString]?.match(regex);
+  if (match) {
+    matchObject[keyString] = {
+      value: match[0],
+      regex: String(regex)
+    }
+  }
+  return { matchObject }
+
+}
+
+const calculateMatch = (regexFilters: RegexFilters, matchObject: RegexFiltersMatch, regexKeys: string[]) => {
+  // if AND logic, then all matches need to exist.
+  if (regexFilters?.options?.logic === RegexFilterLogic.AND) {
+    if (Object.keys(matchObject).length === regexKeys.length) {
+      return { matchArray: [ matchObject ], matchFound: true };
+    }
+  }
+
+  // if OR logic, then only one match needs to exist
+  // if both logic, then only one match needs to exist
+  if (
+    regexFilters?.options?.logic === RegexFilterLogic.OR
+    || regexFilters?.options?.both
+  ) {
+    if (Object.keys(matchObject).length > 0) {
+      return { matchArray: [ matchObject ], matchFound: true };
+    }
+  }
+
+  // default to AND
+  if (Object.keys(matchObject).length === regexKeys.length) {
+    return { matchArray: [ matchObject ], matchFound: true };
+  }
+
+  return { matchArray: [], matchFound: false };
+}
+
 export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObject): RegexFiltersMatch[] => {
   const { matchArray } = regexArray.reduce((acc: ReduceRegexMatch, regexFilters: RegexFilters) => {
 
@@ -67,64 +127,20 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 
         if (acc.allFound) {
           if (keyString === 'titleText') {
-            // What this does is that it uses titleText as both titleText and messageText
+            // This checks both titleText and messageText, with only titleText specified. It is an OR condition.
             if (regexFilters?.options?.both) {
-              let matchObject = {} as RegexFiltersMatch;
-              const matchText = textObject.titleText?.match(regex);
-              if (matchText) {
-                matchObject.titleTextMatch = {
-                  value: matchText[0],
-                  regex: String(regex),
-                }
+              const { matchObject } = matchTextBoth(textObject, regex);
+              if (Object.keys(matchObject).length > 0) {
+                return { matchObject: { ...acc.matchObject, ...matchObject }, allFound: true };
               }
-
-              const matchMessage = textObject.messageText?.match(regex);
-              if (matchMessage) {
-                matchObject.messageTextMatch = {
-                  value: matchMessage[0],
-                  regex: String(regex),
-                }
-              }
-
-              return { matchObject: { ...acc.matchObject, ...matchObject }, allFound: true  }
-            }
-
-            const match = textObject.titleText?.match(regex);
-            if (match) {
-              return { matchObject: { ...acc.matchObject, titleTextMatch: {
-                value: match[0],
-                regex: String(regex)
-              } }, allFound: true  }
             }
           }
 
-          if (keyString === 'flairText') {
-            const match = textObject.flairText?.match(regex);
-            if (match) {
-              return { matchObject: { ...acc.matchObject, flairTextMatch: {
-                value: match[0],
-                regex: String(regex)
-              } }, allFound: true  }
-            }
-          }
-
-          if (keyString === 'messageText') {
-            const match = textObject.messageText?.match(regex);
-            if (match) {
-              return { matchObject: { ...acc.matchObject, messageTextMatch: {
-                value: match[0],
-                regex: String(regex)
-              } }, allFound: true  }
-            }
-          }
-
-          if (keyString === 'replyText') {
-            const match = textObject.replyText?.match(regex);
-            if (match) {
-              return { matchObject: { ...acc.matchObject, replyTextMatch: {
-                value: match[0],
-                regex: String(regex)
-              } }, allFound: true  }
+          if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
+            const { matchObject } = matchOne(keyString, textObject, regex);
+            console.log('matchObject', matchObject);
+            if (Object.keys(matchObject).length > 0) {
+              return { matchObject: { ...acc.matchObject, ...matchObject }, allFound: true };
             }
           }
         }
@@ -132,28 +148,12 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
         return { ...acc, allFound: false };
       }, { matchObject: {}, allFound: true } as { matchObject: RegexFiltersMatch, allFound: boolean });
 
-      if (regexFilters?.options?.logic === RegexFilterLogic.AND) {
-        if (Object.keys(matchObject).length === regexKeys.length) {
-          return { matchArray: [ matchObject ], matchFound: true };
-        }
-      }
-
-      if (
-        regexFilters?.options?.logic === RegexFilterLogic.OR
-        || regexFilters?.options?.both
-      ) {
-        if (Object.keys(matchObject).length > 0) {
-          return { matchArray: [ matchObject ], matchFound: true };
-        }
-      }
-
-      // default to AND
-      if (Object.keys(matchObject).length === regexKeys.length) {
-        return { matchArray: [ matchObject ], matchFound: true };
+      const { matchArray, matchFound } = calculateMatch(regexFilters, matchObject, regexKeys);
+      if (matchFound) {
+        return { matchArray, matchFound };
       }
     }
     return acc;
-
     // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
   }, { matchArray: [], matchFound: false } as ReduceRegexMatch);
 
@@ -174,6 +174,12 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 // });
 
 // result
+
+
+// // check if messageText is an array of regex. If so, then
+// if (Array.isArray(textObject.messageText)) {
+//   // This would imply that there might be multiple values.
+
 
 export enum RelevantType {
   Title='Title',
