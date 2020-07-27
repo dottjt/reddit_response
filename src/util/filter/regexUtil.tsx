@@ -56,6 +56,12 @@ export const extractRegexMatch = (matchArray: RegexFiltersMatch[]) => (
   Object.keys(matchArray[0]).map(key => `${key}: ${matchArray[0][key].value}`).join(', ')
 );
 
+// const matchMultiple = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
+//   let matchObject = {} as RegexFiltersMatch;
+  // TODO
+
+// }
+
 const matchTextBoth = (textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
   let matchObject = {} as RegexFiltersMatch;
   const matchText = textObject.titleText?.match(regex);
@@ -78,6 +84,7 @@ const matchTextBoth = (textObject: RegexTextObject, regex: RegExp): { matchObjec
 
 const matchOne = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
   let matchObject = {} as RegexFiltersMatch;
+
   const match = textObject[keyString]?.match(regex);
   if (match) {
     matchObject[keyString] = {
@@ -86,7 +93,6 @@ const matchOne = (keyString: string, textObject: RegexTextObject, regex: RegExp)
     }
   }
   return { matchObject }
-
 }
 
 const calculateMatch = (regexFilters: RegexFilters, matchObject: RegexFiltersMatch, regexKeys: string[]) => {
@@ -137,8 +143,11 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
           }
 
           if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
+            // if (Array.isArray(textObject[keyString])) {
+            //   const { matchObject } = matchMultiple(keyString, textObject, regex);
+            // }
+
             const { matchObject } = matchOne(keyString, textObject, regex);
-            console.log('matchObject', matchObject);
             if (Object.keys(matchObject).length > 0) {
               return { matchObject: { ...acc.matchObject, ...matchObject }, allFound: true };
             }
@@ -146,6 +155,7 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
         }
 
         return { ...acc, allFound: false };
+
       }, { matchObject: {}, allFound: true } as { matchObject: RegexFiltersMatch, allFound: boolean });
 
       const { matchArray, matchFound } = calculateMatch(regexFilters, matchObject, regexKeys);
@@ -174,11 +184,6 @@ export const matchRegex = (regexArray: RegexFilters[], textObject: RegexTextObje
 // });
 
 // result
-
-
-// // check if messageText is an array of regex. If so, then
-// if (Array.isArray(textObject.messageText)) {
-//   // This would imply that there might be multiple values.
 
 
 export enum RelevantType {

@@ -149,7 +149,7 @@
     })(UserForumType || (UserForumType = {}));
 
     // <content>Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
-    var middleWrittenGuide = ("If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
+    var middleWrittenGuide = ("No worries! If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
     var middleGuideNoWorries = ("No worries! The homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
     var middleGuideLinkYou = ("I'll link you! The homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
     var middleGuideMeditationAdvice = ("Ultimately meditation is about learning to become aware of your senses. So for example, sitting there and noticing your emotions and physical sensations, as well as observing your surroundings in a non-judgemental way.\n\nThis article explains the basics of it:\n\nhttps://neverfapdeluxe.com/practices/observe-your-senses\n\nFeel free to ask if you have any questions! I'm more than happy to help!\n\nThe homepage on the other hand should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.\n\nhttps://neverfapdeluxe.com/\n\nAlso happy to have you join the #accountability program on Discord once you've become familiar with the material. Our bot tracks your days and progress.\n\nhttps://discord.gg/TuwARWk\n");
@@ -273,7 +273,7 @@
         { replyText: /I'm interested in the website/i },
         { replyText: /interested in the information/i },
         { replyText: /would be interesting to read/i },
-        { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
+        { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be|very)? (interested|intrested)/i },
         { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
         { replyText: /website sounds .* interesting/i },
         { replyText: /i would be (intrested|interested)/i },
@@ -2462,6 +2462,10 @@
         RegexFilterLogic["AND"] = "AND";
         RegexFilterLogic["OR"] = "OR";
     })(RegexFilterLogic || (RegexFilterLogic = {}));
+    // const matchMultiple = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
+    //   let matchObject = {} as RegexFiltersMatch;
+    // TODO
+    // }
     var matchTextBoth = function (textObject, regex) {
         var _a, _b;
         var matchObject = {};
@@ -2524,7 +2528,7 @@
                     var regex = regexFilters[keyString];
                     if (acc.allFound) {
                         if (keyString === 'titleText') {
-                            // This checks both titleText and messageText, with only titleText specified.
+                            // This checks both titleText and messageText, with only titleText specified. It is an OR condition.
                             if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
                                 var matchObject_1 = matchTextBoth(textObject, regex).matchObject;
                                 if (Object.keys(matchObject_1).length > 0) {
@@ -2533,8 +2537,10 @@
                             }
                         }
                         if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
+                            // if (Array.isArray(textObject[keyString])) {
+                            //   const { matchObject } = matchMultiple(keyString, textObject, regex);
+                            // }
                             var matchObject_2 = matchOne(keyString, textObject, regex).matchObject;
-                            console.log('matchObject', matchObject_2);
                             if (Object.keys(matchObject_2).length > 0) {
                                 return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_2), allFound: true };
                             }
@@ -2563,9 +2569,6 @@
     //   messageText: 'hello text thing'
     // });
     // result
-    // // check if messageText is an array of regex. If so, then
-    // if (Array.isArray(textObject.messageText)) {
-    //   // This would imply that there might be multiple values.
     var RelevantType;
     (function (RelevantType) {
         RelevantType["Title"] = "Title";

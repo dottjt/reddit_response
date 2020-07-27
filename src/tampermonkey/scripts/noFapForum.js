@@ -2483,9 +2483,6 @@
     //   messageText: 'hello text thing'
     // });
     // result
-    // // check if messageText is an array of regex. If so, then
-    // if (Array.isArray(textObject.messageText)) {
-    //   // This would imply that there might be multiple values.
     var RelevantType;
     (function (RelevantType) {
         RelevantType["Title"] = "Title";

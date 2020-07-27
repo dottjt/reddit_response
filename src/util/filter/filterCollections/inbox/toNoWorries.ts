@@ -72,7 +72,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /interested in the information/i },
   { replyText: /would be interesting to read/i },
 
-  { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
+  { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be|very)? (interested|intrested)/i },
   { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
   { replyText: /website sounds .* interesting/i },
   { replyText: /i would be (intrested|interested)/i },

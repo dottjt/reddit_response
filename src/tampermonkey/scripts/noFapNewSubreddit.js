@@ -2589,6 +2589,10 @@
         RegexFilterLogic["OR"] = "OR";
     })(RegexFilterLogic || (RegexFilterLogic = {}));
     var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
+    // const matchMultiple = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
+    //   let matchObject = {} as RegexFiltersMatch;
+    // TODO
+    // }
     var matchTextBoth = function (textObject, regex) {
         var _a, _b;
         var matchObject = {};
@@ -2660,8 +2664,10 @@
                             }
                         }
                         if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
+                            // if (Array.isArray(textObject[keyString])) {
+                            //   const { matchObject } = matchMultiple(keyString, textObject, regex);
+                            // }
                             var matchObject_2 = matchOne(keyString, textObject, regex).matchObject;
-                            console.log('matchObject', matchObject_2);
                             if (Object.keys(matchObject_2).length > 0) {
                                 return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_2), allFound: true };
                             }
@@ -2690,9 +2696,6 @@
     //   messageText: 'hello text thing'
     // });
     // result
-    // // check if messageText is an array of regex. If so, then
-    // if (Array.isArray(textObject.messageText)) {
-    //   // This would imply that there might be multiple values.
     var RelevantType;
     (function (RelevantType) {
         RelevantType["Title"] = "Title";

@@ -1,7 +1,7 @@
 // <content>Hey, I saw your post on r/NoFap. I&apos;m sorry to hear you relapsed. How are you currently coping? Were you meditating daily in order to help deal with your feelings and emotions?
 
 export const middleWrittenGuide = (
-`If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.
+`No worries! If you'd like to learn more the homepage should cover 90% of how NeverFap Deluxe works and is an excellent preface to the guide, which is also a lot more in-depth. A lot of people also find the NeverFap Deluxe Podcast useful as well. It goes into meditation, healthy coping mechanisms and the basics of recovery.
 
 https://neverfapdeluxe.com/
 
