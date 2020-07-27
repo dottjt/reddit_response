@@ -34,6 +34,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /profile/i },
   { titleText: /(days|day) flair/i },
   { titleText: /name tag/i },
+  { titleText: /How do you add ?(the)? days/i },
 
   { titleText: /(Don't|Don't|dont) mind me/i },
   { titleText: /journal entry/i }, // look into this.
@@ -64,6 +65,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { ...both, titleText: /for those who relapse/i },
   { ...both, titleText: /to those struggling/i },
   { ...both, titleText: /one habit that helped me/i },
+  { ...both, titleText: /HERE ARE THE TRUE BENEFITS/i },
   { ...both, titleText: /the key is/i },
   { ...both, titleText: /(a ?(friendly)? reminder|remember this)/i },
   { ...both, titleText: /strange benefit/i },
@@ -117,6 +119,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(its|It's|It’s) never too late/i },
   { titleText: /quote/i },
   { titleText: /motivational thought/i },
+  { titleText: /motivational speaker/i },
   { titleText: /(NoFap|no fap|no-fap) is ?(really)? worth it/i },
   { titleText: /do not relapse/i },
   { titleText: /^keep going/i },
@@ -136,12 +139,13 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
 
   // SEXUAL / MEDICAL CONDITIONS
   { ...both, titleText: /(balls|penis|pelvic|genital|testic)/i },
-  { ...both, titleText: /(cancer|prostatitis|erection)/i },
+  { ...both, titleText: /(cancer|prostatitis)/i }, // erection // too broad
   { ...both, titleText: /(erectile|disfunction|erectile dysfunction)/i },
   { ...both, titleText: /(grip|syndrome)/i },
-  { ...both, titleText: /(hair|skin|acne|sperm)/i },
+  { ...both, titleText: /acne/i },
+  { ...both, titleText: /(skin|hair) condition/i }, // hair|skin|sperm|cum|precum // too broad
   { ...both, titleText: /medication/i },
-  { ...both, titleText: /(premature|ejaculation|precum|cum)/i },
+  { ...both, titleText: /(premature|ejaculation)/i },
   { ...both, titleText: /(pied|peid|get it up|shrink)/i },
   { ...both, titleText: /(semen|urine|anal)/i },
   { ...both, titleText: /blue balls/i },

@@ -21,16 +21,21 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /my decision to start (NoFap|no fap|no-fap)/i },
   { titleText: /(I’m|I'm|im|I am) done with this ?(.*) feeling/i },
   { titleText: /stopping for good/i },
-  { titleText: /(it’s|it's|its|it is) time to change/i },
+
+  { titleText: /(it’s|it's|its|it is) time to (quit|change)/i },
   { titleText: /this ends now/i },
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
 
+  { ...both, titleText: /I will be attempting (NoFap|no fap|no-fap) for the first time/i },
+  { ...both, titleText: /Today I decided to try ?(the)? (nofap|no fap|no-fap) challenge/i },
   { ...both, titleText: /try to do this (NoFap|no fap|no-fap)/i },
   { ...both, titleText: /(masturbated|watched porn|fapped) for the last time today/i },
   { ...both, titleText: /start of something amazing/i },
   { ...both, titleText: /going to (stop|quit) (.*)? today/i, },
   { ...both, titleText: /I have started my journey/i },
+  { ...both, titleText: /(I’m|I'm|im|I am) gonna try this ?(nofap|no fap|no-fap)? Challenge/i },
+
 
   // ADVICE
   { titleText: /any tips on getting started/i },
@@ -66,12 +71,17 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /about to start/i },
   { titleText: /How to start\?/i },
   { titleText: /a new start/i },
+  { titleText: /trying to begin/i },
   { titleText: /(I’m|I'm|im|I am) ready to start/i },
+  { titleText: /I start my journey from now/i },
   { titleText: /where to start/i },
   { titleText: /(wanna|want|trying) to start/i },
 
+
+  { ...both, titleText: /Start of \d+ days/i },
+  { ...both, titleText: /how do I start\?/i },
+
   // STARTING
-  { titleText: /starting (NoFap|no fap|no-fap)/i },
   { titleText: /why (I’m|I'm|im|I am) starting/i },
   { titleText: /^(starting|started)(\.|\!)?$/i },
   { titleText: /starting my journey/i },
@@ -81,8 +91,10 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { titleText: /starting .* challenge/i },
   { titleText: /(I’m|I'm|im|I am) starting/i },
   { titleText: /starting .* journey/i },
+  { titleText: /just starting out/i },
+  // { titleText: /starting (NoFap|no fap|no-fap)/i }, // too broad in my opinion
 
-  { messageText: /starting from today/i },
+  { messageText: /starting ?(from)? today/i },
   { messageText: /starting today i am done/i },
 
   // STARTED
@@ -107,7 +119,10 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /this is day (one|1)/i },
   { ...both, titleText: /day (one|1) Started/i },
   { ...both, titleText: /day (one|1) (Let's|let’s|lets) go/i },
+  { ...both, titleText: /(Let's|let’s|lets) go (nofap|no fap|no-fap) day (one|1)/i },
   { ...both, titleText: /^day 1(\.|\!)?$/i },
+  { ...both, titleText: /^day 1 start/i },
+
   { ...both, titleText: /officially day (1|one)/i },
   { ...both, titleText: /today is day (1|one)/i },
   { ...both, titleText: /^day (one|1) of (no fap|reboot|re boot)/i },

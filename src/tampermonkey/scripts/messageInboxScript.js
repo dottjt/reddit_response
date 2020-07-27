@@ -259,6 +259,7 @@
         { replyText: /feel free to share it/i },
         { replyText: /would like to discover page/i },
         { replyText: /that website could be great/i },
+        { replyText: /left the link of the website/i },
         { replyText: /(can|could) you ?(please)? link/i },
         { replyText: /comfortable with sharing it/i },
         { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
@@ -275,7 +276,7 @@
         { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
         { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
         { replyText: /website sounds .* interesting/i },
-        { replyText: /i would be interested/i },
+        { replyText: /i would be (intrested|interested)/i },
         { replyText: /the website (sound|sounds) interesting/i },
         { replyText: /like to here about your/i },
         { replyText: /shoot me the link/i },
@@ -350,6 +351,7 @@
         { replyText: /Tell me ?(about|the name of)? ?(ur|your|the)? (site|link|website|web site|webite|guide|content|page)/i },
         // WHERE TO FIND
         { replyText: /where can i find (this|the) (site|link|website|web site|webite|guide|content|page)/i },
+        { replyText: /(Im|I'm) considering reading/i },
         // WHAT
         { replyText: /What (site|link|website|web site|webite|guide|content|page) have you/i },
         { replyText: /What (site|link|website|web site|webite|guide|content|page) (is it|would that be)/i },

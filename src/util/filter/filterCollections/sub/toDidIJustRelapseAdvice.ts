@@ -6,6 +6,6 @@ export const toDidIJustRelapseAdviceRegexArray: RegexFilters[] = [
 
 
   // COUNT AS RELAPSE
-  { ...both, titleText: /count as relapse\?/i },
+  { ...both, titleText: /count as ?(a)? relapse\?/i },
   { ...both, titleText: /do I have to (restart|reset) my streak/i },
 ];

@@ -11,6 +11,7 @@ export const toLinkYouGuideRegexArray: RegexFilters[] = [
 
   // WHERE TO FIND
   { replyText: /where can i find (this|the) (site|link|website|web site|webite|guide|content|page)/i },
+  { replyText: /(Im|I'm) considering reading/i },
 
   // WHAT
   { replyText: /What (site|link|website|web site|webite|guide|content|page) have you/i },

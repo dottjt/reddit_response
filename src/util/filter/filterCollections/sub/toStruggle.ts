@@ -23,6 +23,8 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
   { titleText: /I (can’t|can't|cant) get my mind (of|off) it/i, },
   { titleText: /Still Struggling/i, },
   { titleText: /I just have to stop/i, },
+  { titleText: /how do i get past day 1\?/i, },
+  { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
@@ -31,6 +33,7 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
   { messageText: /reasons so that I (don’t|don't|dont) (.*)? relapse/i, },
   { messageText: /I (don’t|don't|dont) know what to do and I need help/i, },
   { messageText: /I (don’t|don't|dont) want this anymore/i, },
+  { messageText: /not sure if I can reason my way through it any longer/i, },
 
   // ABOUT TO RELAPSE
   { titleText: /(I’m|I'm|im|I am) about to relapse/i, },

@@ -15,7 +15,10 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- I figured out how to simplify the 
+- Maybe save the link to the post in matches. Sounds smart :)
+- possibly capture all possibilities and select the best one. I will refine the matches first.
+- have userpanel go red if clicked
+- I figured out how to simplify the sub filter
 - Handle flairs at the very end. So that they can have more specific searches.
 - message border turns red when clicking on prelimLink
 - Create all other new messages.

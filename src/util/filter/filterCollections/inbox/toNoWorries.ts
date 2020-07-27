@@ -54,6 +54,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /feel free to share it/i },
   { replyText: /would like to discover page/i },
   { replyText: /that website could be great/i },
+  { replyText: /left the link of the website/i },
 
   { replyText: /(can|could) you ?(please)? link/i },
   { replyText: /comfortable with sharing it/i },
@@ -74,7 +75,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be)? (interested|intrested)/i },
   { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
   { replyText: /website sounds .* interesting/i },
-  { replyText: /i would be interested/i },
+  { replyText: /i would be (intrested|interested)/i },
 
   { replyText: /the website (sound|sounds) interesting/i },
   { replyText: /like to here about your/i },

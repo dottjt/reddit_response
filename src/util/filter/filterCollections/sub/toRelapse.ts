@@ -2,6 +2,7 @@ import { RegexFilters, both } from '../../regexUtil';
 
 export const toRelapseAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /failed first attempt/i },
+  { ...both, titleText: /Failed my \d+ day streak/i },
   { ...both, titleText: /relapse report/i },
   { ...both, titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
   { ...both, titleText: /(failed|lost) (at|on) day/i },

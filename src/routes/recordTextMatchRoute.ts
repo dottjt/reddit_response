@@ -12,10 +12,15 @@ const recordTextMatchRoute = async (ctx: Context, next: Next) => {
     const flairText = data.flairText;
     const titleText = data.titleText;
     const messageText = data.messageText;
+    // // const username = data.username;
 
+
+    // TODO check if match already exists.
     // TODO update matches
 
-    knex()
+    // knex('matches').insert({
+
+    // })
 
     ctx.body = { data: { message: 'success!' } };
   }
