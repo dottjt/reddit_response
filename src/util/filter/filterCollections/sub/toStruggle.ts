@@ -28,12 +28,12 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
 
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
-
-  { messageText: /How can I get out of this hole\?/i, },
-  { messageText: /reasons so that I (don’t|don't|dont) (.*)? relapse/i, },
-  { messageText: /I (don’t|don't|dont) know what to do and I need help/i, },
-  { messageText: /I (don’t|don't|dont) want this anymore/i, },
-  { messageText: /not sure if I can reason my way through it any longer/i, },
+  { ...both, messageText: /having a really hard time controlling my urges\?/i, },
+  { ...both, messageText: /How can I get out of this hole\?/i, },
+  { ...both, messageText: /reasons so that I (don’t|don't|dont) (.*)? relapse/i, },
+  { ...both, messageText: /I (don’t|don't|dont) know what to do and I need help/i, },
+  { ...both, messageText: /I (don’t|don't|dont) want this anymore/i, },
+  { ...both, messageText: /not sure if I can reason my way through it any longer/i, },
 
   // ABOUT TO RELAPSE
   { titleText: /(I’m|I'm|im|I am) about to relapse/i, },
@@ -49,13 +49,15 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
 
   // * MESSAGES *
   { messageText: /Help me guys/i, },
-  { messageText: /Please help me out of this/i, },
-  { messageText: /I (can’t|can't|cant) really keep any consistency/i, },
-  { messageText: /I always end up binging/i, },
-  { messageText: /I keep ?(on)? struggling with PMO/i, },
   { messageText: /Any motivation would be great now/i, },
   { messageText: /Please motivate me to do better/i, },
-  { messageText: /I really need you guys to help me out here please/i, },
+
+  { ...both, messageText: /help guys what i should do/i, },
+  { ...both, messageText: /Please help me out of this/i, },
+  { ...both, messageText: /I (can’t|can't|cant) really keep any consistency/i, },
+  { ...both, messageText: /I always end up binging/i, },
+  { ...both, messageText: /I keep ?(on)? struggling with PMO/i, },
+  { ...both, messageText: /I really need you guys to help me out here please/i, },
 
   { ...both, titleText: / I am relapsing again and again/i, },
 ];

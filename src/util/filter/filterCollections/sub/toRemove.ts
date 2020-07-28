@@ -59,6 +59,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /read this if you/i },
   { titleText: /a piece of advice/i },
 
+  { ...both, titleText: /once a wise man/i },
   { ...both, titleText: /(NoFap|no fap|no-fap) taught me/i },
   { ...both, titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
   { ...both, titleText: /pro tip for (NoFap|no fap|no-fap)/i },
@@ -160,7 +161,9 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { ...both, titleText: /hypnotherapy/i },
   { ...both, titleText: /hypnosis/i },
   { ...both, titleText: /circumcised/i },
+  { ...both, titleText: /take until ED goes away/i },
   { ...both, titleText: /inflammation/i },
+  { ...both, titleText: /increase my size/i },
 
   { titleText: /(boner|morning wood)/i },
 
@@ -193,6 +196,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
   { titleText: /(wim hof)/i }, // cold shower
   { titleText: /weed/i },
   { titleText: /imagination more vivid/i },
+  { ...both, titleText: /petition/i },
 
   { ...both, titleText: /sex before marriage/i },
 

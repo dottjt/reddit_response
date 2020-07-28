@@ -69,12 +69,15 @@ export const populateMessageAndSend = async (
   openReplyLink(containerDiv);
 
   const replyBox = containerDiv.querySelector('.md');
-  console.log(replyBox);
+
   if (replyBox && messageMatch) {
     [...replyBox.children as any].forEach(ele => {
-      const text = ele.textContent;
+      const replyText = ele.textContent;
 
-      ele.innerHTML = highlightSyntax(text, RelevantType.Reply, messageMatch, false).join(' ');
+      const highlightArray = highlightSyntax(replyText, RelevantType.Reply, messageMatch, false);
+
+      console.log('highlightArray', highlightArray);
+      ele.innerHTML = highlightArray.join(' ');
     });
   }
 

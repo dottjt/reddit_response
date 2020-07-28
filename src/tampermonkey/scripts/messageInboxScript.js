@@ -2490,7 +2490,7 @@
         var matchObject = {};
         var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (match) {
-            matchObject[keyString] = {
+            matchObject[keyString + "Match"] = {
                 value: match[0],
                 regex: String(regex)
             };
@@ -2576,15 +2576,21 @@
         RelevantType["Flair"] = "Flair";
         RelevantType["Reply"] = "Reply";
     })(RelevantType || (RelevantType = {}));
+    var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
+        newItem
+    ], arr.slice(index)); };
     // TODO Checking for relevant type is not relevant. It is not needed.
+    // Will simplify the hell out of this, fo sure.
     var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
         if (relevantText) {
-            var insert_1 = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
-                newItem
-            ], arr.slice(index)); };
             if (messageMatch.length > 0) {
                 var _a = messageMatch.reduce(function (acc, regexFilterResult) {
+                    // TODO CONFIRM THAT THERE IS ONLY ONE
                     if (!acc.foundMatch) {
+                        console.log('regexFilterResult (shoudl be one item, for now)', regexFilterResult);
+                        // titleText etc. there should only be one, for now.
+                        // Object.keys(regexFilterResult).forEach(() => {
+                        // })
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
                             var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch.value);
                             if (splitArray.length === 1) {
@@ -2592,8 +2598,8 @@
                             }
                             var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
                             var newArray = isReact
-                                ? insert_1(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : insert_1(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.titleTextMatch.value + "</span>");
+                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.titleTextMatch.value + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
@@ -2603,8 +2609,8 @@
                             }
                             var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
                             var newArray = isReact
-                                ? insert_1(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : insert_1(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.flairTextMatch.value + "</span>");
+                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.flairTextMatch.value + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
@@ -2620,8 +2626,8 @@
                             splitArray[1] = lastText.slice(0, 40);
                             var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
                             var newArray = isReact
-                                ? insert_1(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch.value, 0, { "style": { color: 'red' } }))
-                                : insert_1(splitArraySpan, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch.value + "</span>");
+                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch.value, 0, { "style": { color: 'red' } }))
+                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch.value + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
                         if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
@@ -2631,8 +2637,8 @@
                             }
                             var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
                             var newArray = isReact
-                                ? insert_1(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : insert_1(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.replyTextMatch.value + "</span>");
+                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.replyTextMatch.value + "</span>");
                             return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
                         }
                     }
@@ -2892,11 +2898,12 @@
                 case 0:
                     openReplyLink(containerDiv);
                     replyBox = containerDiv.querySelector('.md');
-                    console.log(replyBox);
                     if (replyBox && messageMatch) {
                         __spreadArrays(replyBox.children).forEach(function (ele) {
-                            var text = ele.textContent;
-                            ele.innerHTML = highlightSyntax(text, RelevantType.Reply, messageMatch, false).join(' ');
+                            var replyText = ele.textContent;
+                            var highlightArray = highlightSyntax(replyText, RelevantType.Reply, messageMatch, false);
+                            console.log('highlightArray', highlightArray);
+                            ele.innerHTML = highlightArray.join(' ');
                         });
                     }
                     textArea = containerDiv.querySelector('textarea');

@@ -17,14 +17,10 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 - Maybe save the link to the post in matches. Sounds smart :)
 - possibly capture all possibilities and select the best one. I will refine the matches first.
-- have userpanel go red if clicked
-- I figured out how to simplify the sub filter
-- Handle flairs at the very end. So that they can have more specific searches.
-- message border turns red when clicking on prelimLink
 - Create all other new messages.
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Message for providing meditation advice.
-- For inbox messages, console.log why some go unmatched, esepecially the toNotRespond ones.
+- For inbox messages, console.log unmatched thhings, esepecially the toNotRespond ones.
 
 ### LOW PRIORITY
 
@@ -43,6 +39,10 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 
 ## DONE
 
+- message border turns red when clicking on prelimLink
+- I figured out how to simplify the sub filter
+- Handle flairs at the very end. So that they can have more specific searches.
+- have userpanel go red if clicked
 - Add other existing messages to the filters
 - Fortify DONE with website links send/visited
 - send custom broken

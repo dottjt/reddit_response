@@ -79,7 +79,7 @@ const matchTextBoth = (textObject: RegexTextObject, regex: RegExp): { matchObjec
       regex: String(regex),
     }
   }
-  return { matchObject }
+  return { matchObject };
 }
 
 const matchOne = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
@@ -87,12 +87,12 @@ const matchOne = (keyString: string, textObject: RegexTextObject, regex: RegExp)
 
   const match = textObject[keyString]?.match(regex);
   if (match) {
-    matchObject[keyString] = {
+    matchObject[`${keyString}Match`] = {
       value: match[0],
       regex: String(regex)
     }
   }
-  return { matchObject }
+  return { matchObject };
 }
 
 const calculateMatch = (regexFilters: RegexFilters, matchObject: RegexFiltersMatch, regexKeys: string[]) => {
@@ -193,18 +193,26 @@ export enum RelevantType {
   Reply='Reply',
 }
 
+const highlightArrayInsert = (arr, index, newItem) => [
+  ...arr.slice(0, index),
+  newItem,
+  ...arr.slice(index)
+];
+
 // TODO Checking for relevant type is not relevant. It is not needed.
+// Will simplify the hell out of this, fo sure.
 export const highlightSyntax = (relevantText: string | undefined, relevantType: RelevantType, messageMatch: RegexFiltersMatch[], isReact: boolean) => {
   if (relevantText) {
-    const insert = (arr, index, newItem) => [
-      ...arr.slice(0, index),
-      newItem,
-      ...arr.slice(index)
-    ];
-
     if (messageMatch.length > 0) {
       const { titleTextArray, foundMatch } = messageMatch.reduce((acc, regexFilterResult) => {
+        // TODO CONFIRM THAT THERE IS ONLY ONE
         if (!acc.foundMatch) {
+          console.log('regexFilterResult (shoudl be one item, for now)', regexFilterResult);
+          // titleText etc. there should only be one, for now.
+          // Object.keys(regexFilterResult).forEach(() => {
+
+          // })
+
           if (regexFilterResult?.titleTextMatch && relevantType === RelevantType.Title) {
             const splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch.value);
             if (splitArray.length === 1) {
@@ -213,8 +221,8 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
             const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
             const newArray = isReact
-              ? insert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult.titleTextMatch.value}</span>)
-              : insert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult.titleTextMatch.value}</span>`);
+              ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult.titleTextMatch.value}</span>)
+              : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult.titleTextMatch.value}</span>`);
 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
@@ -227,8 +235,8 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
             const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
             const newArray = isReact
-              ? insert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult.flairTextMatch.value}</span>)
-              : insert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult.flairTextMatch.value}</span>`);
+              ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult.flairTextMatch.value}</span>)
+              : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult.flairTextMatch.value}</span>`);
 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
@@ -249,22 +257,23 @@ export const highlightSyntax = (relevantText: string | undefined, relevantType: 
 
             const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
             const newArray = isReact
-              ? insert(splitArraySpan, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch.value}</span>)
-              : insert(splitArraySpan, 1, `<span style="color: red;">${regexFilterResult.messageTextMatch.value}</span>`);
+              ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red' }}>{regexFilterResult.messageTextMatch.value}</span>)
+              : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red;">${regexFilterResult.messageTextMatch.value}</span>`);
 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
 
           if (regexFilterResult?.replyTextMatch && relevantType === RelevantType.Reply) {
             const splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch.value);
+
             if (splitArray.length === 1) {
               return acc;
             }
 
             const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
             const newArray = isReact
-              ? insert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult.replyTextMatch.value}</span>)
-              : insert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult.replyTextMatch.value}</span>`);
+              ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult.replyTextMatch.value}</span>)
+              : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult.replyTextMatch.value}</span>`);
 
             return { ...acc, titleTextArray: newArray, foundMatch: true };
           }
