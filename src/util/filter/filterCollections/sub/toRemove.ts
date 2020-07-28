@@ -35,6 +35,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /(days|day) flair/i },
   { titleText: /name tag/i },
   { titleText: /How do you add ?(the)? days/i },
+  { titleText: /tell me how to add days/i },
 
   { titleText: /(Don't|Don't|dont) mind me/i },
   { titleText: /journal entry/i }, // look into this.
@@ -48,7 +49,10 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /next to (ur|your) (name|tag)/i },
   { titleText: /Where is the tag that/i },
   { titleText: /tag that shows your streak/i },
-  { titleText: /I need methods to keep count/i },
+  { titleText: /someone put a counter/i },
+
+  { ...both, titleText: /I need methods to keep count/i },
+  { ...both, titleText: /How to get the number of days/i },
 
   { messageText: /get a tag with your streak/i },
 
@@ -58,6 +62,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /my benefits/i },
   { titleText: /read this if you/i },
   { titleText: /a piece of advice/i },
+
 
   { ...both, titleText: /once a wise man/i },
   { ...both, titleText: /(NoFap|no fap|no-fap) taught me/i },
@@ -139,16 +144,17 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /future (son|daughter)/i },
 
   // SEXUAL / MEDICAL CONDITIONS
-  { ...both, titleText: /(balls|penis|pelvic|genital|testic)/i },
+  { ...both, titleText: /(balls|pelvic|genital|testic)/i }, // ejaculation // too broad, maybe?
   { ...both, titleText: /(cancer|prostatitis)/i }, // erection // too broad
   { ...both, titleText: /(erectile|disfunction|erectile dysfunction)/i },
   { ...both, titleText: /(grip|syndrome)/i },
   { ...both, titleText: /acne/i },
   { ...both, titleText: /(skin|hair) condition/i }, // hair|skin|sperm|cum|precum // too broad
   { ...both, titleText: /medication/i },
-  { ...both, titleText: /(premature|ejaculation)/i },
+  { ...both, titleText: /(premature)/i }, // ejaculation // too broad, maybe?
   { ...both, titleText: /(pied|peid|get it up|shrink)/i },
   { ...both, titleText: /(semen|urine|anal)/i },
+  { ...both, titleText: /(pe induced)/i },
   { ...both, titleText: /blue balls/i },
   { ...both, titleText: /hocd/i },
   { ...both, titleText: /scientific/i },
@@ -196,8 +202,9 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /(wim hof)/i }, // cold shower
   { titleText: /weed/i },
   { titleText: /imagination more vivid/i },
-  { ...both, titleText: /petition/i },
+  { titleText: /receiving nudes/i },
 
+  { ...both, titleText: /petition/i },
   { ...both, titleText: /sex before marriage/i },
 
   // DOUBTS

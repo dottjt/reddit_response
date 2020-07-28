@@ -128,7 +128,7 @@ export const toSubFilter = (
       { sendMessageType: SendMessageType.StartAdviceFlatline, regexArray: toFlatlineAdviceRegexArray, regexUrlGenerator: flatlineAdvice, condition: true, delete: false },
 
       // GENERIC
-      { sendMessageType: SendMessageType.StartAdviceStart, regexArray: toStartAdviceRegexArray, regexUrlGenerator: startAdvice, condition: !titleText.includes('again'), delete: false },
+      { sendMessageType: SendMessageType.StartAdviceStart, regexArray: toStartAdviceRegexArray, regexUrlGenerator: startAdvice, condition: !titleText.includes('again') || !titleText.includes('yet again'), delete: false },
       { sendMessageType: SendMessageType.StartAdviceStartAgain, regexArray: toStartAgainAdviceRegexArray, regexUrlGenerator: startAgainAdvice, condition: true, delete: false },
       { sendMessageType: SendMessageType.StartAdviceGeneral, regexArray: toGeneralAdviceRegexArray, regexUrlGenerator: generalAdvice, condition: true, delete: false },
       { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: toRelapseAdviceRegexArray, regexUrlGenerator: relapseAdvice, condition: true, delete: false },

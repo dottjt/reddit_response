@@ -94,6 +94,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(cant|can't|can’t) make it more than/i },
   { titleText: /I feel like relapsing/i },
 
+  { ...both, titleText: /Anyone else get crazy depressed/i },
   { ...both, titleText: /I ?(really)? (don’t|don't|dont) know what to do/i },
 
   // HELP
@@ -112,8 +113,8 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /help me with this addiction/i },
 
   { messageText: /So please guys, I need your help/i },
-  { messageText: /I just want to stop this thing/i },
-  { messageText: /What did you guys do to stop ?(thinking about)? (porn|fapping)/i },
+  { ...both, titleText: /I just want to stop this thing/i },
+  { ...both, titleText: /What did you guys do to stop ?(thinking about)? (porn|fapping)/i },
 
   // GUIDANCE
   { titleText: /need some guidance/i },
@@ -122,11 +123,12 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /need some advice from pro/i },
 
   { messageText: /tell me the secret/i },
-  { messageText: /someone please guide me/i },
   { messageText: /what steps should I take\?/i },
-  { messageText: /I would be grateful if someone could help me (on|in) this journey?/i },
-  { messageText: /What tips do you ?(guys)? have to build (self discipline|self-discipline)\?/i },
 
+  { ...both, titleText: /someone please guide me/i },
+  { ...both, titleText: /I would be grateful if someone could help me (on|in) this journey?/i },
+  { ...both, titleText: /What tips do you ?(guys)? have to build (self discipline|self-discipline)\?/i },
+  { ...both, titleText: /What has helped you the most during your/i },
   { ...both, titleText: /keep relapsing everyday/i },
   { ...both, titleText: /how to stop relapsing on day/i },
 

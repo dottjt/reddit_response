@@ -184,6 +184,7 @@
         { replyText: /would love to (mediate|meditate)/i },
         { replyText: /tips on meditating\?/i },
         { replyText: /you have any meditation tips\?/i },
+        { replyText: /How would you go about doing meditation\?/i },
         // NOT SURE HOW TO BEGIN
         { replyText: /I (don’t|dont|don't) know how to (do meditation|meditation|meditate). (could|can) you please suggest something/i },
         { replyText: /(don't|dont|don’t) know (how|where) to start/i },
@@ -249,6 +250,8 @@
         { replyText: /send your guide/i },
         { replyText: /provide me with some link/i },
         { replyText: /Suggest me your website/i },
+        { replyText: /send link pls/i },
+        { replyText: /feel free on sending me a link to your site/i },
         // PASSIVE ASK
         { replyText: /May I know (your|the) website/i },
         { replyText: /could I get a link/i },
@@ -261,6 +264,8 @@
         { replyText: /would like to discover page/i },
         { replyText: /that website could be great/i },
         { replyText: /left the link of the website/i },
+        { replyText: /can have a read into your website/i },
+        { replyText: /be thankful for that link/i },
         { replyText: /(can|could) you ?(please)? link/i },
         { replyText: /comfortable with sharing it/i },
         { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
@@ -274,6 +279,7 @@
         { replyText: /I'm interested in the website/i },
         { replyText: /interested in the information/i },
         { replyText: /would be interesting to read/i },
+        { replyText: /deffo interested/i },
         { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be|very)? (interested|intrested)/i },
         { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
         { replyText: /website sounds .* interesting/i },
@@ -2765,13 +2771,22 @@
         newItem
     ], arr.slice(index)); };
     var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
+        var _a;
         if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-            splitArray[0] = firstText;
-            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-            var lastText = lastPartOfSentence[0].trimRight();
-            splitArray[1] = lastText.slice(0, 40);
+            if (Boolean(splitArray[0])) {
+                var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+                if (firstPartOfSentence) {
+                    var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+                    splitArray[0] = firstText;
+                }
+            }
+            if (Boolean(splitArray[1])) {
+                var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+                if (lastPartOfSentence) {
+                    var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
+                    splitArray[1] = lastText.slice(0, 40);
+                }
+            }
         }
         var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
         var newArray = isReact

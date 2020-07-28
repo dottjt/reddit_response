@@ -7,6 +7,7 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
   { ...both, titleText: /(failed|lost) (at|on) day/i },
   { ...both, titleText: /relapsed hard/i },
+  { ...both, titleText: /^failed again$/i },
   { ...both, titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i },
   { ...both, titleText: /^relapsed\.?$/i },
   { ...both, titleText: /^relapse\.?$/i },

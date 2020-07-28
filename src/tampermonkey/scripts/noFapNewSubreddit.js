@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'MHeat283';
+    var R_NOFAP_USERNAME = 'BATMANIsalfred';
     var R_NOFAP_TIMESTAMP = '2 hours ago';
-    var R_PORN_FREE_USERNAME = 'Individual-Novel-294';
-    var R_PORN_FREE_TIMESTAMP = '2 hours ago';
-    var R_PORN_ADDICTION_USERNAME = 'Virginkillerrr';
-    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
+    var R_PORN_FREE_USERNAME = 'forlorn_patience';
+    var R_PORN_FREE_TIMESTAMP = '8 minutes ago';
+    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
+    var R_PORN_ADDICTION_TIMESTAMP = '1 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2594,13 +2594,22 @@
         newItem
     ], arr.slice(index)); };
     var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
+        var _a;
         if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-            splitArray[0] = firstText;
-            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-            var lastText = lastPartOfSentence[0].trimRight();
-            splitArray[1] = lastText.slice(0, 40);
+            if (Boolean(splitArray[0])) {
+                var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+                if (firstPartOfSentence) {
+                    var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+                    splitArray[0] = firstText;
+                }
+            }
+            if (Boolean(splitArray[1])) {
+                var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+                if (lastPartOfSentence) {
+                    var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
+                    splitArray[1] = lastText.slice(0, 40);
+                }
+            }
         }
         var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
         var newArray = isReact
@@ -2740,9 +2749,9 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
         var prelimContainer = document.createElement('div');
         prelimContainer.id = 'reade-automate-container';
-        var firstElementContainer = filteredATags[0];
+        var secondElementContainer = filteredATags[1];
         // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
-        (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = firstElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.parentNode) === null || _g === void 0 ? void 0 : _g.parentNode) === null || _h === void 0 ? void 0 : _h.parentNode.insertBefore(prelimContainer, (_q = (_p = (_o = (_m = (_l = (_k = (_j = firstElementContainer.parentNode) === null || _j === void 0 ? void 0 : _j.parentNode) === null || _k === void 0 ? void 0 : _k.parentNode) === null || _l === void 0 ? void 0 : _l.parentNode) === null || _m === void 0 ? void 0 : _m.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode);
+        (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = secondElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.parentNode) === null || _g === void 0 ? void 0 : _g.parentNode) === null || _h === void 0 ? void 0 : _h.parentNode.insertBefore(prelimContainer, (_q = (_p = (_o = (_m = (_l = (_k = (_j = secondElementContainer.parentNode) === null || _j === void 0 ? void 0 : _j.parentNode) === null || _k === void 0 ? void 0 : _k.parentNode) === null || _l === void 0 ? void 0 : _l.parentNode) === null || _m === void 0 ? void 0 : _m.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode);
     };
     var getNextHoursAgoValueToSearch = function (timestamp) {
         if (timestamp !== '') {
@@ -2892,6 +2901,7 @@
         { titleText: /(days|day) flair/i },
         { titleText: /name tag/i },
         { titleText: /How do you add ?(the)? days/i },
+        { titleText: /tell me how to add days/i },
         { titleText: /(Don't|Don't|dont) mind me/i },
         { titleText: /journal entry/i },
         { titleText: /journal check in/i },
@@ -2904,7 +2914,9 @@
         { titleText: /next to (ur|your) (name|tag)/i },
         { titleText: /Where is the tag that/i },
         { titleText: /tag that shows your streak/i },
-        { titleText: /I need methods to keep count/i },
+        { titleText: /someone put a counter/i },
+        __assign(__assign({}, both), { titleText: /I need methods to keep count/i }),
+        __assign(__assign({}, both), { titleText: /How to get the number of days/i }),
         { messageText: /get a tag with your streak/i },
         __assign(__assign({}, both), { titleText: /How does the day counter work/i }),
         // LECTURE
@@ -2985,16 +2997,17 @@
         { titleText: /harmful effect/i },
         { titleText: /a study/i },
         { titleText: /future (son|daughter)/i },
-        __assign(__assign({}, both), { titleText: /(balls|penis|pelvic|genital|testic)/i }),
+        __assign(__assign({}, both), { titleText: /(balls|pelvic|genital|testic)/i }),
         __assign(__assign({}, both), { titleText: /(cancer|prostatitis)/i }),
         __assign(__assign({}, both), { titleText: /(erectile|disfunction|erectile dysfunction)/i }),
         __assign(__assign({}, both), { titleText: /(grip|syndrome)/i }),
         __assign(__assign({}, both), { titleText: /acne/i }),
         __assign(__assign({}, both), { titleText: /(skin|hair) condition/i }),
         __assign(__assign({}, both), { titleText: /medication/i }),
-        __assign(__assign({}, both), { titleText: /(premature|ejaculation)/i }),
+        __assign(__assign({}, both), { titleText: /(premature)/i }),
         __assign(__assign({}, both), { titleText: /(pied|peid|get it up|shrink)/i }),
         __assign(__assign({}, both), { titleText: /(semen|urine|anal)/i }),
+        __assign(__assign({}, both), { titleText: /(pe induced)/i }),
         __assign(__assign({}, both), { titleText: /blue balls/i }),
         __assign(__assign({}, both), { titleText: /hocd/i }),
         __assign(__assign({}, both), { titleText: /scientific/i }),
@@ -3038,6 +3051,7 @@
         { titleText: /(wim hof)/i },
         { titleText: /weed/i },
         { titleText: /imagination more vivid/i },
+        { titleText: /receiving nudes/i },
         __assign(__assign({}, both), { titleText: /petition/i }),
         __assign(__assign({}, both), { titleText: /sex before marriage/i }),
         // DOUBTS
@@ -3084,6 +3098,7 @@
         __assign(__assign({}, both), { titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i }),
         __assign(__assign({}, both), { titleText: /(failed|lost) (at|on) day/i }),
         __assign(__assign({}, both), { titleText: /relapsed hard/i }),
+        __assign(__assign({}, both), { titleText: /^failed again$/i }),
         __assign(__assign({}, both), { titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i }),
         __assign(__assign({}, both), { titleText: /^relapsed\.?$/i }),
         __assign(__assign({}, both), { titleText: /^relapse\.?$/i }),
@@ -3133,6 +3148,7 @@
         { titleText: /my decision to start (NoFap|no fap|no-fap)/i },
         { titleText: /(I’m|I'm|im|I am) done with this ?(.*) feeling/i },
         { titleText: /stopping for good/i },
+        { titleText: /Going on a \d+ day trial/i },
         { titleText: /(it’s|it's|its|it is) time to (quit|change)/i },
         { titleText: /this ends now/i },
         { titleText: /(Let's|let’s|lets) (start|do this)/i },
@@ -3193,9 +3209,11 @@
         { titleText: /(I’m|I'm|im|I am) starting/i },
         { titleText: /starting .* journey/i },
         { titleText: /just starting out/i },
+        { titleText: /today I stop forever/i },
         // { titleText: /starting (NoFap|no fap|no-fap)/i }, // too broad in my opinion
         { messageText: /starting ?(from)? today/i },
         { messageText: /starting today i am done/i },
+        __assign(__assign({}, both), { titleText: /starting at \d+/i }),
         // STARTED
         { titleText: /started (nofap|no fap|no-fap) today/i },
         { titleText: /(just) (begun|started)/i },
@@ -3242,6 +3260,7 @@
         __assign(__assign({}, both), { titleText: /day (1|one) again/i }),
         __assign(__assign({}, both), { titleText: /starting, again/i }),
         __assign(__assign({}, both), { titleText: /^Starting again../i }),
+        __assign(__assign({}, both), { titleText: /giving (nofap|no fap|no-fap|this) another go/i }),
         __assign(__assign({}, both), { titleText: /Any advices for my second attempt/i }),
         __assign(__assign({}, both), { titleText: /starting (nofap|no fap|no-fap) again/i }),
         __assign(__assign({}, both), { titleText: /^starting ?(nofap|no fap|no-fap|this|it)? again(\.)?$/i }),
@@ -3250,6 +3269,7 @@
         __assign(__assign({}, both), { titleText: /Back at it again/i }),
         __assign(__assign({}, both), { titleText: /(It’s|It's|its) my second attempt/i }),
         __assign(__assign({}, both), { titleText: /once again (going for|attempt)/i }),
+        __assign(__assign({}, both), { titleText: /day (1|0) yet again/i }),
         __assign(__assign({}, both), { titleText: /back on my ?(nofap|no fap|no-fap)? journey/i }),
         __assign(__assign({}, both), { titleText: /coming back to (nofap|no fap|no-fap)/i }),
         // TRY AGAIN
@@ -3338,6 +3358,7 @@
         { titleText: /Trying Nofap .* years/i },
         { titleText: /(cant|can't|can’t) make it more than/i },
         { titleText: /I feel like relapsing/i },
+        __assign(__assign({}, both), { titleText: /Anyone else get crazy depressed/i }),
         __assign(__assign({}, both), { titleText: /I ?(really)? (don’t|don't|dont) know what to do/i }),
         // HELP
         { titleText: /^Need help/i },
@@ -3353,18 +3374,19 @@
         { titleText: /help me out from relapsing/i },
         __assign(__assign({}, both), { titleText: /help me with this addiction/i }),
         { messageText: /So please guys, I need your help/i },
-        { messageText: /I just want to stop this thing/i },
-        { messageText: /What did you guys do to stop ?(thinking about)? (porn|fapping)/i },
+        __assign(__assign({}, both), { titleText: /I just want to stop this thing/i }),
+        __assign(__assign({}, both), { titleText: /What did you guys do to stop ?(thinking about)? (porn|fapping)/i }),
         // GUIDANCE
         { titleText: /need some guidance/i },
         { titleText: /looking for some guidance/i },
         { titleText: /would like some help/i },
         { titleText: /need some advice from pro/i },
         { messageText: /tell me the secret/i },
-        { messageText: /someone please guide me/i },
         { messageText: /what steps should I take\?/i },
-        { messageText: /I would be grateful if someone could help me (on|in) this journey?/i },
-        { messageText: /What tips do you ?(guys)? have to build (self discipline|self-discipline)\?/i },
+        __assign(__assign({}, both), { titleText: /someone please guide me/i }),
+        __assign(__assign({}, both), { titleText: /I would be grateful if someone could help me (on|in) this journey?/i }),
+        __assign(__assign({}, both), { titleText: /What tips do you ?(guys)? have to build (self discipline|self-discipline)\?/i }),
+        __assign(__assign({}, both), { titleText: /What has helped you the most during your/i }),
         __assign(__assign({}, both), { titleText: /keep relapsing everyday/i }),
         __assign(__assign({}, both), { titleText: /how to stop relapsing on day/i }),
         // EXPECTATION
@@ -3491,6 +3513,7 @@
         __assign(__assign({}, both), { titleText: /How to (control|handle|deal with) ?(these|the)? urges/i }),
         __assign(__assign({}, both), { titleText: /how to beat .* urges/i }),
         __assign(__assign({}, both), { titleText: /How do you guys keep fantasizing in check/i }),
+        __assign(__assign({}, both), { titleText: /How do you stop the unsurmountable urges/i }),
         __assign(__assign({}, both), { titleText: /urges from hell/i }),
         __assign(__assign({}, both), { titleText: /very strong urges/i }),
         __assign(__assign({}, both), { titleText: /the urges are unreal/i }),
@@ -3516,6 +3539,8 @@
         __assign(__assign({}, both), { titleText: /any good (plugins|websites|apps|programs) .* blocks/i }),
         __assign(__assign({}, both), { titleText: /looking for more ways to block porn/i }),
         __assign(__assign({}, both), { titleText: /is there an app .* that blocks/i }),
+        __assign(__assign({}, both), { titleText: /Good porn blockers for (mac|pc)/i }),
+        __assign(__assign({}, both), { titleText: /Has anyone found a .* blocker/i }),
     ];
 
     var toMasturbateWithoutPornAdviceRegexArray = [
@@ -3768,7 +3793,7 @@
                 { sendMessageType: SendMessageType.StartAdviceIsWatchingPornRelapseAdvice, regexArray: toIsWatchingPornRelapseAdviceRegexArray, regexUrlGenerator: isWatchingPornRelapseAdvice, condition: true, delete: false },
                 { sendMessageType: SendMessageType.StartAdviceFlatline, regexArray: toFlatlineAdviceRegexArray, regexUrlGenerator: flatlineAdvice, condition: true, delete: false },
                 // GENERIC
-                { sendMessageType: SendMessageType.StartAdviceStart, regexArray: toStartAdviceRegexArray, regexUrlGenerator: startAdvice, condition: !titleText.includes('again'), delete: false },
+                { sendMessageType: SendMessageType.StartAdviceStart, regexArray: toStartAdviceRegexArray, regexUrlGenerator: startAdvice, condition: !titleText.includes('again') || !titleText.includes('yet again'), delete: false },
                 { sendMessageType: SendMessageType.StartAdviceStartAgain, regexArray: toStartAgainAdviceRegexArray, regexUrlGenerator: startAgainAdvice, condition: true, delete: false },
                 { sendMessageType: SendMessageType.StartAdviceGeneral, regexArray: toGeneralAdviceRegexArray, regexUrlGenerator: generalAdvice, condition: true, delete: false },
                 { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: toRelapseAdviceRegexArray, regexUrlGenerator: relapseAdvice, condition: true, delete: false },

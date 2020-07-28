@@ -13,6 +13,7 @@ export const toStartAgainAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /day (1|one) again/i, },
   { ...both, titleText: /starting, again/i, },
   { ...both, titleText: /^Starting again../i, },
+  { ...both, titleText: /giving (nofap|no fap|no-fap|this) another go/i, },
 
   { ...both, titleText: /Any advices for my second attempt/i, },
   { ...both, titleText: /starting (nofap|no fap|no-fap) again/i, },
@@ -22,6 +23,7 @@ export const toStartAgainAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Back at it again/i, },
   { ...both, titleText: /(It’s|It's|its) my second attempt/i, },
   { ...both, titleText: /once again (going for|attempt)/i, },
+  { ...both, titleText: /day (1|0) yet again/i, },
 
   // RETURNING
   { ...both, titleText: /back on my ?(nofap|no fap|no-fap)? journey/i, },

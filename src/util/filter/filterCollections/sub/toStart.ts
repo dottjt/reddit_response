@@ -21,6 +21,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /my decision to start (NoFap|no fap|no-fap)/i },
   { titleText: /(I’m|I'm|im|I am) done with this ?(.*) feeling/i },
   { titleText: /stopping for good/i },
+  { titleText: /Going on a \d+ day trial/i },
 
   { titleText: /(it’s|it's|its|it is) time to (quit|change)/i },
   { titleText: /this ends now/i },
@@ -92,10 +93,13 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(I’m|I'm|im|I am) starting/i },
   { titleText: /starting .* journey/i },
   { titleText: /just starting out/i },
+  { titleText: /today I stop forever/i },
   // { titleText: /starting (NoFap|no fap|no-fap)/i }, // too broad in my opinion
 
   { messageText: /starting ?(from)? today/i },
   { messageText: /starting today i am done/i },
+
+  { ...both, titleText: /starting at \d+/i },
 
   // STARTED
   { titleText: /started (nofap|no fap|no-fap) today/i },

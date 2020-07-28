@@ -17,10 +17,10 @@ export const getAllNoFapNewUsernames = (): string[] => {
 export const createPrelimContainer = (filteredATags): void => {
   const prelimContainer = document.createElement('div');
   prelimContainer.id = 'reade-automate-container';
-  const firstElementContainer = filteredATags[0];
+  const secondElementContainer = filteredATags[1];
 
   // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
-  firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(prelimContainer, firstElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
+  secondElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(prelimContainer, secondElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);
 }
 
 const getNextHoursAgoValueToSearch = (timestamp: string): string | undefined => {

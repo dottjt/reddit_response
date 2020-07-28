@@ -42,6 +42,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /send your guide/i },
   { replyText: /provide me with some link/i },
   { replyText: /Suggest me your website/i },
+  { replyText: /send link pls/i },
+  { replyText: /feel free on sending me a link to your site/i },
 
   // PASSIVE ASK
   { replyText: /May I know (your|the) website/i },
@@ -55,7 +57,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /would like to discover page/i },
   { replyText: /that website could be great/i },
   { replyText: /left the link of the website/i },
-
+  { replyText: /can have a read into your website/i },
+  { replyText: /be thankful for that link/i },
   { replyText: /(can|could) you ?(please)? link/i },
   { replyText: /comfortable with sharing it/i },
   { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
@@ -71,6 +74,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /I'm interested in the website/i },
   { replyText: /interested in the information/i },
   { replyText: /would be interesting to read/i },
+  { replyText: /deffo interested/i },
 
   { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be|very)? (interested|intrested)/i },
   { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },

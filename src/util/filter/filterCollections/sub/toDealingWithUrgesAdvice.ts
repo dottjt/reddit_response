@@ -28,6 +28,7 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /How to (control|handle|deal with) ?(these|the)? urges/i },
   { ...both, titleText: /how to beat .* urges/i },
   { ...both, titleText: /How do you guys keep fantasizing in check/i },
+  { ...both, titleText: /How do you stop the unsurmountable urges/i },
 
 
   // URGES STRUGGLE
