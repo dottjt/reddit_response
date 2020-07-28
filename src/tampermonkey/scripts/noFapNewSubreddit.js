@@ -2494,7 +2494,7 @@
     var R_PORN_FREE_USERNAME = 'Individual-Novel-294';
     var R_PORN_FREE_TIMESTAMP = '2 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'Virginkillerrr';
-    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';

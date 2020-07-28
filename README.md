@@ -15,7 +15,6 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- possibly capture all possibilities and select the best one. I will refine the matches first.
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Message for providing meditation advice.
 - For inbox messages, console.log unmatched things, esepecially the toNotRespond ones.
@@ -23,6 +22,7 @@ Although this application saves me a tremendous amount of time, the biggest save
 ### LOW PRIORITY
 
 - Create all other new messages.
+- possibly capture all possibilities and select the best one. I will refine the matches first. (might make the system too slow/a bit slower than before.)
 - Maybe save the link to the post in matches. Sounds smart :) (not yet, still need to figure out how to make it stronger)
 - Look into addressing congratulation messages (this could be great, but unsure)
 - fix message being sent multiple times because of the eventListener being sent multiple times. (this would be a good one, but also don't see the benefit)
@@ -111,7 +111,6 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 - Tampermonkey plugin installed
 - Insert all the Banners into TamperMonkey
 - Ensure the server is running.
-
 
 ## OUTLINE
 

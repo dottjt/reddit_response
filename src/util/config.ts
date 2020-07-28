@@ -36,7 +36,7 @@ export const R_PORN_FREE_TIMESTAMP = '2 hours ago';
 export const R_PORN_FREE_START_DATE = 'Tue Jul 28 2020 15:43:33 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_PORN_ADDICTION_USERNAME = 'Virginkillerrr';
-export const R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+export const R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
 export const R_PORN_ADDICTION_START_DATE = 'Tue Jul 28 2020 15:48:12 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
