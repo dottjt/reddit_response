@@ -12,6 +12,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
 
   { messageText: /any motivation or advice is welcome/i },
   { messageText: /any words of encouragement/i },
+  { messageText: /(I’ll|ill|I'll)  definitely be open to anything/i },
 
   // ADVICE
 
@@ -41,7 +42,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /I really want to stop fapping and watching porn/i },
   { ...both, titleText: /scared that i will relapse(,)? some tips/i },
   { ...both, titleText: /Need Advice to fight porn addiction/i },
-  { ...both, titleText: /I'm an addict please help me with some advice/i },
+  { ...both, titleText: /(I’m|im|I'm|I am) an addict please help me with some advice/i },
   { ...both, titleText: /if anyone has (advice|tips) for a (beginner|novice)/i },
 
   { messageText: /Can anyone help me/i },
@@ -82,7 +83,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   // STRUGGLE
   { titleText: /no (masterbation|masturbation) is hard for me/i },
   { titleText: /shit is getting rough/i },
-  { titleText: /It's impossible/i },
+  { titleText: /(It’s|its|It's|it is) impossible/i },
   { titleText: /trying for years/i },
   { titleText: /(failing|falling|struggling) badly/i },
   { titleText: /addicted like hell/i },
@@ -131,10 +132,10 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
 
   // EXPECTATION
   { titleText: /(need|want) to (quit|stop) (masturbating|porn)/i },
-  { titleText: /It's time to stop/i },
+  { titleText: /(It’s|its|It's|it is)  time to stop/i },
   { titleText: /what have I become?/i },
   { titleText: /trying to make this attempt count/i },
-  { titleText: /need help before (it|it is|it's) too late/i },
+  { titleText: /need help before (It’s|its|It's|it is) too late/i },
 
   { titleText: /I (don’t|don't|dont) (wanna|want to) masturbate anymore/i },
 

@@ -2491,8 +2491,8 @@
     };
     var R_NOFAP_USERNAME = 'sunlitstranger';
     var R_NOFAP_TIMESTAMP = '3 hours ago';
-    var R_PORN_FREE_USERNAME = '1milktime1';
-    var R_PORN_FREE_TIMESTAMP = '8 hours ago';
+    var R_PORN_FREE_USERNAME = 'Individual-Novel-294';
+    var R_PORN_FREE_TIMESTAMP = '16 minutes ago';
     var R_PORN_ADDICTION_USERNAME = 'cluterfoot5';
     var R_PORN_ADDICTION_TIMESTAMP = '20 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
@@ -3266,6 +3266,7 @@
         __assign(__assign({}, both), { titleText: /need some ?(more|serious)? (inspiration|motivation)/i }),
         { messageText: /any motivation or advice is welcome/i },
         { messageText: /any words of encouragement/i },
+        { messageText: /(I’ll|ill|I'll)  definitely be open to anything/i },
         // ADVICE
         { titleText: /I need ?(.*) help/i },
         { titleText: /Looking for Tips/i },
@@ -3291,7 +3292,7 @@
         __assign(__assign({}, both), { titleText: /I really want to stop fapping and watching porn/i }),
         __assign(__assign({}, both), { titleText: /scared that i will relapse(,)? some tips/i }),
         __assign(__assign({}, both), { titleText: /Need Advice to fight porn addiction/i }),
-        __assign(__assign({}, both), { titleText: /I'm an addict please help me with some advice/i }),
+        __assign(__assign({}, both), { titleText: /(I’m|im|I'm|I am) an addict please help me with some advice/i }),
         __assign(__assign({}, both), { titleText: /if anyone has (advice|tips) for a (beginner|novice)/i }),
         { messageText: /Can anyone help me/i },
         { messageText: /What do (you|u) do when (you|u) really want to do it/i },
@@ -3326,7 +3327,7 @@
         // STRUGGLE
         { titleText: /no (masterbation|masturbation) is hard for me/i },
         { titleText: /shit is getting rough/i },
-        { titleText: /It's impossible/i },
+        { titleText: /(It’s|its|It's|it is) impossible/i },
         { titleText: /trying for years/i },
         { titleText: /(failing|falling|struggling) badly/i },
         { titleText: /addicted like hell/i },
@@ -3367,10 +3368,10 @@
         __assign(__assign({}, both), { titleText: /how to stop relapsing on day/i }),
         // EXPECTATION
         { titleText: /(need|want) to (quit|stop) (masturbating|porn)/i },
-        { titleText: /It's time to stop/i },
+        { titleText: /(It’s|its|It's|it is)  time to stop/i },
         { titleText: /what have I become?/i },
         { titleText: /trying to make this attempt count/i },
-        { titleText: /need help before (it|it is|it's) too late/i },
+        { titleText: /need help before (It’s|its|It's|it is) too late/i },
         { titleText: /I (don’t|don't|dont) (wanna|want to) masturbate anymore/i },
         __assign(__assign({}, both), { titleText: /trying hard to stop/i }),
         __assign(__assign({}, both), { titleText: /How can you ?(guys)? just stop/i }),
