@@ -1,5 +1,5 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toAgeAdviceRegexArray: RegexFilters[] = [
+export const toAgeAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /hellohellohellohellohellohello/i },
 ];

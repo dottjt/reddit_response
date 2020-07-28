@@ -1,5 +1,5 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toIsWatchingPornRelapseAdviceRegexArray: RegexFilters[] = [
+export const toIsWatchingPornRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /hellohellohellohellohellohello/i },
 ];

@@ -1,0 +1,64 @@
+import { createElement } from 'inferno-create-element';
+import { MatchRegExpResponse } from './regexUtil';
+
+export enum RelevantType {
+  Title='Title',
+  Message='Message',
+  Flair='Flair',
+  Reply='Reply',
+}
+
+const highlightArrayInsert = (arr, index, newItem) => [
+  ...arr.slice(0, index),
+  newItem,
+  ...arr.slice(index)
+];
+
+const generateNodeSplitArray = (splitArray: string[], regexFilterResult: MatchRegExpResponse, singleRelevantKey: string, isReact: boolean) => {
+  if (regexFilterResult?.messageTextMatch) {
+    const firstPartOfSentence = splitArray[0].split('.').filter(p => p)
+    const firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+    splitArray[0] = firstText;
+
+    const lastPartOfSentence = splitArray[1].split('.').filter(p => p);
+    const lastText = lastPartOfSentence[0].trimRight();
+    splitArray[1] = lastText.slice(0, 40);
+  }
+
+  const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
+  const newArray = isReact
+    ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult[singleRelevantKey].value}</span>)
+    : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult[singleRelevantKey].value}</span>`);
+
+  return { newArray };
+}
+
+type HighlightSyntaxReduceProps = {
+  relevantText: string,
+  expressionArray: (string|JSX.Element)[],
+  foundMatch: boolean
+}
+
+// TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
+export const highlightSyntax = (relevantText: string | undefined, messageMatch: MatchRegExpResponse[], isReact: boolean): (JSX.Element|string)[] => {
+  if (relevantText && messageMatch.length > 0) {
+    const { expressionArray, foundMatch } = messageMatch.reduce((acc: HighlightSyntaxReduceProps, regexFilterResult: MatchRegExpResponse) => {
+
+      if (!acc.foundMatch) {
+        const singleRelevantKey = Object.keys(regexFilterResult)[0];
+
+        const splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+        if (splitArray.length === 1) return acc;
+
+        const { newArray } = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact);
+        return { ...acc, expressionArray: newArray, foundMatch: true };
+      }
+
+      return acc;
+    }, { relevantText, expressionArray: [], foundMatch: false } as HighlightSyntaxReduceProps);
+
+    if (foundMatch) return expressionArray;
+  }
+
+  return isReact ? [ <span>{relevantText?.slice(0, 200) || ''}</span> ] : [ relevantText || '' ];
+};

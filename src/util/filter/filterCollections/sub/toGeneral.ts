@@ -1,8 +1,8 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
 // TODO FIX THIS UP
 
-export const toGeneralAdviceRegexArray: RegexFilters[] = [
+export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
 
   // MOTIVATION
   { titleText: /please I need motivation/i },

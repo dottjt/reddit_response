@@ -12,7 +12,9 @@ import { toNoWorriesGuideRegexArray } from './filterCollections/inbox/toNoWorrie
 import { toLinkYouGuideRegexArray } from './filterCollections/inbox/toLinkYou';
 import { toJoinSubredditRegexArray } from './filterCollections/inbox/toJoinSubreddit';
 import { toFantasticRegexArray } from './filterCollections/inbox/toFantastic';
-import { matchRegex, RegexFiltersMatch } from './regexUtil';
+
+import { MatchRegExpResponse } from './regex/regexUtil';
+import { matchRegex } from './regex/matchRegex';
 
 export const toInboxFilter = (
   messagePayload: PopulateReceivedMessagePayloadEXTREME,
@@ -20,16 +22,16 @@ export const toInboxFilter = (
 ): {
   messageText: string | undefined;
   messageType: SendMessageType | undefined;
-  messageMatch: RegexFiltersMatch[] | undefined
+  messageMatch: MatchRegExpResponse[] | undefined
 } => {
   const compiledUser: CompiledFullUserObject = messagePayload.compiledUser;
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
   const lastReceivedMessage: Message | undefined = compiledUser.lastReceivedMessage;
-  const regexTextObject = { replyText: messagePayload.message };
+  const RegExpTextStringObject = { replyText: messagePayload.message };
 
   // EDGE
   // Are you a bot?
-  const toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, regexTextObject);
+  const toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, RegExpTextStringObject);
   if (
     compiledUser.userType === UserType.UserHostile
     || toNotRespondRegexMatch.length > 0
@@ -47,7 +49,7 @@ export const toInboxFilter = (
     (lastReceivedMessage?.type.includes('start') || lastReceivedMessage?.type.includes('follow'))
     ) {
       // No Worries
-      const toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, regexTextObject);
+      const toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, RegExpTextStringObject);
       if (toNoWorriesGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideNoWorries, // lastSentMessage.forum
@@ -57,7 +59,7 @@ export const toInboxFilter = (
       }
 
       // Link You
-      const toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, regexTextObject);
+      const toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, RegExpTextStringObject);
       if (toLinkYouGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideLinkYou,
@@ -67,7 +69,7 @@ export const toInboxFilter = (
       }
 
       // Meditation
-      const toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, regexTextObject);
+      const toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, RegExpTextStringObject);
       if (toMeditateGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideMeditationAdvice,
@@ -79,7 +81,7 @@ export const toInboxFilter = (
       // // That's fantastic
       // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
       // I will have to careful check that it DOES NOT contain certain things.
-      // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, regexTextObject);
+      // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, RegExpTextStringObject);
       // if (toFantasticRegexMatch.length > 0) {
       //   return {
       //     messageText: finalFantastic,
@@ -87,7 +89,7 @@ export const toInboxFilter = (
       //   }
       // }
 
-      const toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, regexTextObject);
+      const toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, RegExpTextStringObject);
       if (toHardTimeRegexMatch.length > 0) {
         return {
           messageText: finalHardTime,
@@ -103,7 +105,7 @@ export const toInboxFilter = (
     lastSentMessage?.type.includes('middle')
     ) {
       // Join Subreddit
-      const toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, regexTextObject);
+      const toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, RegExpTextStringObject);
       if (toJoinSubredditRegexMatch.length > 0) {
         return {
           messageText: finalJoinSubreddit,

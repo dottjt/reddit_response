@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toWetdreamAdviceRegexArray: RegexFilters[] = [
+export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i },
 
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i },

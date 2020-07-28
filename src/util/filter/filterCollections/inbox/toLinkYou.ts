@@ -1,6 +1,6 @@
-import { RegexFilters } from '../../regexUtil';
+import { InitialRegExpCollection } from '../../regex/regexUtil';
 
-export const toLinkYouGuideRegexArray: RegexFilters[] = [
+export const toLinkYouGuideRegexArray: InitialRegExpCollection[] = [
   // WHAT IS NAME
   { replyText: /(what's|What’s|what is|whats) the (name|site|link|website|web site|webite|guide|content|page)/i },
   { replyText: /(what is|whats|what's|called) (ur|your|the) (name|site|link|website|web site|webite|guide|content|page)/i },

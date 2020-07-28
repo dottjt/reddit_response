@@ -1,8 +1,8 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
 // TODO fix this up
 
-export const toStartAdviceRegexArray: RegexFilters[] = [
+export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // NEW
   { titleText: /^newbie/i },
@@ -104,6 +104,7 @@ export const toStartAdviceRegexArray: RegexFilters[] = [
 
   // START JOURNEY
   { titleText: /start to my Journey/i },
+  { titleText: /Just began my journey/i },
   { titleText: /journey to porn free/i },
   { titleText: /start of (a new|the) journey/i },
 

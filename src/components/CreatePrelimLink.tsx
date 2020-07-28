@@ -3,8 +3,9 @@ import { createElement } from 'inferno-create-element';
 
 import { CompiledFullUserObject } from '../types/tamperMonkeyTypes';
 import { SendMessageType } from '../types/serverTypes';
-import { RegexFiltersMatch, highlightSyntax, RelevantType } from '../util/filter/regexUtil';
+import { MatchRegExpResponse } from '../util/filter/regex/regexUtil';
 import { openNewLink } from '../util/utils/sendMessageUtils';
+import { highlightSyntax } from '../util/filter/regex/highlightSyntax';
 
 type CreatePrelimLinkProps = {
   dbUser: CompiledFullUserObject;
@@ -16,7 +17,7 @@ type CreatePrelimLinkProps = {
   index: number;
   sendMessageType: SendMessageType;
   prelimContainer: any; // FUTURE to change
-  messageMatch: RegexFiltersMatch[]
+  messageMatch: MatchRegExpResponse[]
 }
 
 export class CreatePrelimLink extends Component<CreatePrelimLinkProps, { borderClass: string }> {
@@ -51,9 +52,18 @@ export class CreatePrelimLink extends Component<CreatePrelimLinkProps, { borderC
           }}
         >
           <p style={{ 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' }}>{dbUser.username} - {sendMessageType}</p>
-          <p style={{ 'margin-bottom': '0.5rem', 'line-height': '1.4rem' }}><b style={{ 'font-weight': 900, 'margin-right': '0.3rem' }}>Title:</b> {highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(element => element)}</p>
-          <p style={{ 'margin-bottom': '0.5rem', 'line-height': '1.4rem' }}><b style={{ 'font-weight': 900, 'margin-right': '0.3rem' }}>Message:</b> {highlightSyntax(messageText, RelevantType.Message, messageMatch, true).map(element => element)}</p>
-          <p style={{ 'margin-bottom': '0.5rem', 'line-height': '1.4rem' }}><b style={{ 'font-weight': 900, 'margin-right': '0.3rem' }}>Flair:</b> {highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(element => element)}</p>
+          <p style={{ 'margin-bottom': '0.5rem', 'line-height': '1.4rem' }}>
+            <b style={{ 'font-weight': 900, 'margin-right': '0.3rem' }}>Title:</b>
+            {highlightSyntax(titleText, messageMatch, true).map(element => element)}
+          </p>
+          <p style={{ 'margin-bottom': '0.5rem', 'line-height': '1.4rem' }}>
+            <b style={{ 'font-weight': 900, 'margin-right': '0.3rem' }}>Message:</b>
+            {highlightSyntax(messageText, messageMatch, true).map(element => element)}
+          </p>
+          <p style={{ 'margin-bottom': '0.5rem', 'line-height': '1.4rem' }}>
+            <b style={{ 'font-weight': 900, 'margin-right': '0.3rem' }}>Flair:</b>
+            {highlightSyntax(flairText, messageMatch, true).map(element => element)}
+          </p>
         </a>
         <a data-click-id='body' href={`${aLinkHref}`}>Show Post</a>
       </div>

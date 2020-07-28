@@ -1,6 +1,6 @@
-import { RegexFilters } from '../../regexUtil';
+import { InitialRegExpCollection } from '../../regex/regexUtil';
 
-export const toFantasticRegexArray: RegexFilters[] = [
+export const toFantasticRegexArray: InitialRegExpCollection[] = [
   // DO MEDITATE
   { replyText: /I (currently|do) meditate for/i },
   { replyText: /I meditate daily/i },

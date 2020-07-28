@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toStruggleAdviceRegexArray: RegexFilters[] = [
+export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
 
   // STRUGGLE
   { titleText: /Feel like ?(I’m|I'm|im|I am)? slipping/i, },
@@ -34,6 +34,7 @@ export const toStruggleAdviceRegexArray: RegexFilters[] = [
   { ...both, messageText: /I (don’t|don't|dont) know what to do and I need help/i, },
   { ...both, messageText: /I (don’t|don't|dont) want this anymore/i, },
   { ...both, messageText: /not sure if I can reason my way through it any longer/i, },
+  { ...both, messageText: /never (been|felt) so depressed/i, },
 
   // ABOUT TO RELAPSE
   { titleText: /(I’m|I'm|im|I am) about to relapse/i, },

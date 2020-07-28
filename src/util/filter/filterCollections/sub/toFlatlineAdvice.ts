@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toFlatlineAdviceRegexArray: RegexFilters[] = [
+export const toFlatlineAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /\d+ days in and flatl/i },
   { titleText: /flatl/i, messageText: /Any advice on whether this is normal/i },
 

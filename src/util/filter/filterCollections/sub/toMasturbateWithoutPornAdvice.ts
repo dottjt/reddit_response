@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toMasturbateWithoutPornAdviceRegexArray: RegexFilters[] = [
+export const toMasturbateWithoutPornAdviceRegexArray: InitialRegExpCollection[] = [
   // CAN STILL MASTURBATE?
   { ...both, titleText: /Can (I|you) still masturbate (while (on|doing)|during) (NoFap|no fap|no-fap)/i },
 
@@ -11,6 +11,7 @@ export const toMasturbateWithoutPornAdviceRegexArray: RegexFilters[] = [
   // IS IT OKAY
   { titleText: /masturbation without porn/i },
 
+  { ...both, titleText: /Is it still ?(a)? relapse if you masturbate/i },
   { ...both, titleText: /a healthy way to (fap|masturbate)/i },
   { ...both, titleText: /Is it ok to masturbate without watching porn/i },
   { ...both, titleText: /is it better to fap without porn/i },

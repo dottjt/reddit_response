@@ -198,10 +198,11 @@
     var toHardTimeRegexArray = [
         // DON'T DO ANYTHING / MUCH
         { replyText: /I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i },
-        { replyText: /do nothing for my mental health/i },
+        { replyText: /do (anything about|nothing for) my mental health/i },
         { replyText: /I (haven't|haven’t|have not) done much/i },
         { replyText: /never really done (much|a lot) for my mental health/i },
         { replyText: /I (don’t|don't|dont) take any measures to (improve|help) my mental health/i },
+        { replyText: /I (don’t|don't|dont) (place|put) much attention on my mental health/i },
         { replyText: /I (don’t|don't|dont) (place|put) much attention on my mental health/i },
         // DON'T MEDITATE
         { replyText: /I (don’t|dont|don't) (mediate|meditate|do much)/i },
@@ -322,6 +323,7 @@
         { replyText: /Would love to see/i },
         { replyText: /take a look at your (web site|website)/i },
         { replyText: /like to see (it|that)/i },
+        { replyText: /love to go through your website/i },
         // NEUTRAL
         { replyText: /(yah|ya|yeah) why not/i },
         // NAME
@@ -378,6 +380,192 @@
         { replyText: /I ?(genuinely)? appreciate/i },
         { replyText: /great resource/i },
     ];
+
+    var RegExpFilterLogic;
+    (function (RegExpFilterLogic) {
+        RegExpFilterLogic["AND"] = "AND";
+        RegExpFilterLogic["OR"] = "OR";
+    })(RegExpFilterLogic || (RegExpFilterLogic = {}));
+
+    var matchMultiple = function (keyString, textObject, regex) {
+        var matchObject = {};
+        // TODO, I think this would be an additional reduce.
+        return matchObject;
+    };
+    var matchTextBoth = function (textObject, regex) {
+        var _a, _b;
+        var matchObject = {};
+        var matchText = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+        if (matchText) {
+            matchObject.titleTextMatch = {
+                value: matchText[0],
+                regex: String(regex),
+            };
+        }
+        var matchMessage = (_b = textObject.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
+        if (matchMessage) {
+            matchObject.messageTextMatch = {
+                value: matchMessage[0],
+                regex: String(regex),
+            };
+        }
+        return matchObject;
+    };
+    var matchOne = function (keyString, textObject, regex) {
+        var _a;
+        var matchObject = {};
+        var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
+        if (match) {
+            matchObject[keyString + "Match"] = {
+                value: match[0],
+                regex: String(regex)
+            };
+        }
+        return matchObject;
+    };
+    var calculateMatch = function (regexFilters, matchObject, regexKeys) {
+        var _a, _b, _c;
+        // if OR logic, then only one match needs to exist
+        // if both logic, then only one match needs to exist
+        if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegExpFilterLogic.OR || ((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.both)) {
+            if (Object.keys(matchObject).length > 0) {
+                return { matchArray: [matchObject], matchFound: true };
+            }
+        }
+        // if AND logic, then all matches need to exist.
+        if (((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.logic) === RegExpFilterLogic.AND) {
+            if (Object.keys(matchObject).length === regexKeys.length) {
+                return { matchArray: [matchObject], matchFound: true };
+            }
+        }
+        // default to AND
+        if (Object.keys(matchObject).length === regexKeys.length) {
+            return { matchArray: [matchObject], matchFound: true };
+        }
+        return { matchArray: [], matchFound: false };
+    };
+    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, textObject) {
+        var matchObject = regexKeys.reduce(function (acc, keyString) {
+            var _a;
+            var regex = regexFilters[keyString];
+            if (acc.allFound) {
+                var matchObject_1 = {};
+                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) && keyString === 'titleText') {
+                    matchObject_1 = matchTextBoth(textObject, regex);
+                }
+                else {
+                    if (Array.isArray(textObject[keyString])) {
+                        matchObject_1 = matchMultiple();
+                    }
+                    else {
+                        matchObject_1 = matchOne(keyString, textObject, regex);
+                    }
+                }
+                if (Object.keys(matchObject_1).length > 0) {
+                    return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
+                }
+            }
+            return __assign(__assign({}, acc), { allFound: false });
+        }, { matchObject: {}, allFound: true }).matchObject;
+        return { matchObject: matchObject };
+    };
+    var matchRegex = function (regexArray, textObject) {
+        var matchArray = regexArray.reduce(function (acc, regexFilters) {
+            if (!acc.matchFound) {
+                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
+                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, textObject).matchObject;
+                var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
+                if (matchFound)
+                    return { matchArray: matchArray_1, matchFound: matchFound };
+            }
+            return acc;
+            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
+        }, { matchArray: [], matchFound: false }).matchArray;
+        return matchArray;
+    };
+
+    var toInboxFilter = function (messagePayload, moreThanOneMessage) {
+        var compiledUser = messagePayload.compiledUser;
+        var lastSentMessage = compiledUser.lastSentMessage;
+        var lastReceivedMessage = compiledUser.lastReceivedMessage;
+        var RegExpTextStringObject = { replyText: messagePayload.message };
+        // EDGE
+        // Are you a bot?
+        var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, RegExpTextStringObject);
+        if (compiledUser.userType === UserType.UserHostile
+            || toNotRespondRegexMatch.length > 0) {
+            return {
+                messageText: undefined,
+                messageType: undefined,
+                messageMatch: undefined,
+            };
+        }
+        if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
+            ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
+            ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
+            // No Worries
+            var toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, RegExpTextStringObject);
+            if (toNoWorriesGuideRegexMatch.length > 0) {
+                return {
+                    messageText: middleGuideNoWorries,
+                    messageType: SendMessageType.MiddleGuideNoWorries,
+                    messageMatch: toNoWorriesGuideRegexMatch,
+                };
+            }
+            // Link You
+            var toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, RegExpTextStringObject);
+            if (toLinkYouGuideRegexMatch.length > 0) {
+                return {
+                    messageText: middleGuideLinkYou,
+                    messageType: SendMessageType.MiddleGuideLinkYou,
+                    messageMatch: toLinkYouGuideRegexMatch,
+                };
+            }
+            // Meditation
+            var toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, RegExpTextStringObject);
+            if (toMeditateGuideRegexMatch.length > 0) {
+                return {
+                    messageText: middleGuideMeditationAdvice,
+                    messageType: SendMessageType.MiddleGuideMeditationAdvice,
+                    messageMatch: toMeditateGuideRegexMatch,
+                };
+            }
+            // // That's fantastic
+            // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
+            // I will have to careful check that it DOES NOT contain certain things.
+            // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, RegExpTextStringObject);
+            // if (toFantasticRegexMatch.length > 0) {
+            //   return {
+            //     messageText: finalFantastic,
+            //     messageType: SendMessageType.FinalFantastic,
+            //   }
+            // }
+            var toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, RegExpTextStringObject);
+            if (toHardTimeRegexMatch.length > 0) {
+                return {
+                    messageText: finalHardTime,
+                    messageType: SendMessageType.FinalHardTime,
+                    messageMatch: toHardTimeRegexMatch,
+                };
+            }
+        }
+        if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
+            // Join Subreddit
+            var toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, RegExpTextStringObject);
+            if (toJoinSubredditRegexMatch.length > 0) {
+                return {
+                    messageText: finalJoinSubreddit,
+                    messageType: SendMessageType.FinalJoinSubreddit,
+                    messageMatch: toJoinSubredditRegexMatch,
+                };
+            }
+        }
+        return {
+            messageText: undefined,
+            messageType: undefined,
+            messageMatch: undefined,
+        };
+    };
 
     var isArray = Array.isArray;
     function isStringOrNumber(o) {
@@ -2456,286 +2644,6 @@
         return null;
     };
 
-    var createVNode$1 = createVNode;
-    var RegexFilterLogic;
-    (function (RegexFilterLogic) {
-        RegexFilterLogic["AND"] = "AND";
-        RegexFilterLogic["OR"] = "OR";
-    })(RegexFilterLogic || (RegexFilterLogic = {}));
-    // const matchMultiple = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
-    //   let matchObject = {} as RegexFiltersMatch;
-    // TODO
-    // }
-    var matchTextBoth = function (textObject, regex) {
-        var _a, _b;
-        var matchObject = {};
-        var matchText = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
-        if (matchText) {
-            matchObject.titleTextMatch = {
-                value: matchText[0],
-                regex: String(regex),
-            };
-        }
-        var matchMessage = (_b = textObject.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
-        if (matchMessage) {
-            matchObject.messageTextMatch = {
-                value: matchMessage[0],
-                regex: String(regex),
-            };
-        }
-        return { matchObject: matchObject };
-    };
-    var matchOne = function (keyString, textObject, regex) {
-        var _a;
-        var matchObject = {};
-        var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
-        if (match) {
-            matchObject[keyString + "Match"] = {
-                value: match[0],
-                regex: String(regex)
-            };
-        }
-        return { matchObject: matchObject };
-    };
-    var calculateMatch = function (regexFilters, matchObject, regexKeys) {
-        var _a, _b, _c;
-        // if AND logic, then all matches need to exist.
-        if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
-            if (Object.keys(matchObject).length === regexKeys.length) {
-                return { matchArray: [matchObject], matchFound: true };
-            }
-        }
-        // if OR logic, then only one match needs to exist
-        // if both logic, then only one match needs to exist
-        if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
-            || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
-            if (Object.keys(matchObject).length > 0) {
-                return { matchArray: [matchObject], matchFound: true };
-            }
-        }
-        // default to AND
-        if (Object.keys(matchObject).length === regexKeys.length) {
-            return { matchArray: [matchObject], matchFound: true };
-        }
-        return { matchArray: [], matchFound: false };
-    };
-    var matchRegex = function (regexArray, textObject) {
-        var matchArray = regexArray.reduce(function (acc, regexFilters) {
-            if (!acc.matchFound) {
-                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
-                var matchObject = regexKeys.reduce(function (acc, keyString) {
-                    var _a;
-                    var regex = regexFilters[keyString];
-                    if (acc.allFound) {
-                        if (keyString === 'titleText') {
-                            // This checks both titleText and messageText, with only titleText specified. It is an OR condition.
-                            if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
-                                var matchObject_1 = matchTextBoth(textObject, regex).matchObject;
-                                if (Object.keys(matchObject_1).length > 0) {
-                                    return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
-                                }
-                            }
-                        }
-                        if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
-                            // if (Array.isArray(textObject[keyString])) {
-                            //   const { matchObject } = matchMultiple(keyString, textObject, regex);
-                            // }
-                            var matchObject_2 = matchOne(keyString, textObject, regex).matchObject;
-                            if (Object.keys(matchObject_2).length > 0) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_2), allFound: true };
-                            }
-                        }
-                    }
-                    return __assign(__assign({}, acc), { allFound: false });
-                }, { matchObject: {}, allFound: true }).matchObject;
-                var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
-                if (matchFound) {
-                    return { matchArray: matchArray_1, matchFound: matchFound };
-                }
-            }
-            return acc;
-            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
-        }, { matchArray: [], matchFound: false }).matchArray;
-        return matchArray;
-    };
-    // const titleText = 'hello'
-    // const text = 'text thing'
-    // const result = matchRegex([{
-    //   titleText: /hello/,
-    //   options: { both: true }
-    // },
-    // ], {
-    //   titleText: 'hello',
-    //   messageText: 'hello text thing'
-    // });
-    // result
-    var RelevantType;
-    (function (RelevantType) {
-        RelevantType["Title"] = "Title";
-        RelevantType["Message"] = "Message";
-        RelevantType["Flair"] = "Flair";
-        RelevantType["Reply"] = "Reply";
-    })(RelevantType || (RelevantType = {}));
-    var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
-        newItem
-    ], arr.slice(index)); };
-    // TODO Checking for relevant type is not relevant. It is not needed.
-    // Will simplify the hell out of this, fo sure.
-    var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
-        if (relevantText) {
-            if (messageMatch.length > 0) {
-                var _a = messageMatch.reduce(function (acc, regexFilterResult) {
-                    // TODO CONFIRM THAT THERE IS ONLY ONE
-                    if (!acc.foundMatch) {
-                        console.log('regexFilterResult (shoudl be one item, for now)', regexFilterResult);
-                        // titleText etc. there should only be one, for now.
-                        // Object.keys(regexFilterResult).forEach(() => {
-                        // })
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.titleTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.titleTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.flairTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.flairTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                            splitArray[0] = firstText;
-                            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                            var lastText = lastPartOfSentence[0].trimRight();
-                            splitArray[1] = lastText.slice(0, 40);
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.messageTextMatch.value, 0, { "style": { color: 'red' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult.replyTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.replyTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                    }
-                    return acc;
-                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }), titleTextArray = _a.titleTextArray, foundMatch = _a.foundMatch;
-                if (!foundMatch) {
-                    return isReact ? [createVNode$1(1, "span", null, relevantText.slice(0, 200), 0)] : [relevantText];
-                }
-                return titleTextArray;
-            }
-        }
-        return isReact ? [createVNode$1(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || relevantText, 0)] : [relevantText];
-    };
-
-    var toInboxFilter = function (messagePayload, moreThanOneMessage) {
-        var compiledUser = messagePayload.compiledUser;
-        var lastSentMessage = compiledUser.lastSentMessage;
-        var lastReceivedMessage = compiledUser.lastReceivedMessage;
-        var regexTextObject = { replyText: messagePayload.message };
-        // EDGE
-        // Are you a bot?
-        var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, regexTextObject);
-        if (compiledUser.userType === UserType.UserHostile
-            || toNotRespondRegexMatch.length > 0) {
-            return {
-                messageText: undefined,
-                messageType: undefined,
-                messageMatch: undefined,
-            };
-        }
-        if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
-            ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
-            ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
-            // No Worries
-            var toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, regexTextObject);
-            if (toNoWorriesGuideRegexMatch.length > 0) {
-                return {
-                    messageText: middleGuideNoWorries,
-                    messageType: SendMessageType.MiddleGuideNoWorries,
-                    messageMatch: toNoWorriesGuideRegexMatch,
-                };
-            }
-            // Link You
-            var toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, regexTextObject);
-            if (toLinkYouGuideRegexMatch.length > 0) {
-                return {
-                    messageText: middleGuideLinkYou,
-                    messageType: SendMessageType.MiddleGuideLinkYou,
-                    messageMatch: toLinkYouGuideRegexMatch,
-                };
-            }
-            // Meditation
-            var toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, regexTextObject);
-            if (toMeditateGuideRegexMatch.length > 0) {
-                return {
-                    messageText: middleGuideMeditationAdvice,
-                    messageType: SendMessageType.MiddleGuideMeditationAdvice,
-                    messageMatch: toMeditateGuideRegexMatch,
-                };
-            }
-            // // That's fantastic
-            // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
-            // I will have to careful check that it DOES NOT contain certain things.
-            // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, regexTextObject);
-            // if (toFantasticRegexMatch.length > 0) {
-            //   return {
-            //     messageText: finalFantastic,
-            //     messageType: SendMessageType.FinalFantastic,
-            //   }
-            // }
-            var toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, regexTextObject);
-            if (toHardTimeRegexMatch.length > 0) {
-                return {
-                    messageText: finalHardTime,
-                    messageType: SendMessageType.FinalHardTime,
-                    messageMatch: toHardTimeRegexMatch,
-                };
-            }
-        }
-        if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
-            // Join Subreddit
-            var toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, regexTextObject);
-            if (toJoinSubredditRegexMatch.length > 0) {
-                return {
-                    messageText: finalJoinSubreddit,
-                    messageType: SendMessageType.FinalJoinSubreddit,
-                    messageMatch: toJoinSubredditRegexMatch,
-                };
-            }
-        }
-        return {
-            messageText: undefined,
-            messageType: undefined,
-            messageMatch: undefined,
-        };
-    };
-
     var HTTPPOSToptions = function (data) { return ({
         method: 'POST',
         mode: 'cors',
@@ -2863,6 +2771,52 @@
     };
     var INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
+    var createVNode$1 = createVNode;
+    var RelevantType;
+    (function (RelevantType) {
+        RelevantType["Title"] = "Title";
+        RelevantType["Message"] = "Message";
+        RelevantType["Flair"] = "Flair";
+        RelevantType["Reply"] = "Reply";
+    })(RelevantType || (RelevantType = {}));
+    var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
+        newItem
+    ], arr.slice(index)); };
+    var generateNodeSplitArray = function (splitArray, regexFilterResult, singleRelevantKey, isReact) {
+        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+            splitArray[0] = firstText;
+            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+            var lastText = lastPartOfSentence[0].trimRight();
+            splitArray[1] = lastText.slice(0, 40);
+        }
+        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
+        var newArray = isReact
+            ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult[singleRelevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[singleRelevantKey].value + "</span>");
+        return { newArray: newArray };
+    };
+    // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
+    var highlightSyntax = function (relevantText, messageMatch, isReact) {
+        if (relevantText && messageMatch.length > 0) {
+            var _a = messageMatch.reduce(function (acc, regexFilterResult) {
+                if (!acc.foundMatch) {
+                    var singleRelevantKey = Object.keys(regexFilterResult)[0];
+                    var splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+                    if (splitArray.length === 1)
+                        return acc;
+                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact).newArray;
+                    return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
+                }
+                return acc;
+            }, { relevantText: relevantText, expressionArray: [], foundMatch: false }), expressionArray = _a.expressionArray, foundMatch = _a.foundMatch;
+            if (foundMatch)
+                return expressionArray;
+        }
+        return isReact ? [createVNode$1(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || '', 0)] : [relevantText || ''];
+    };
+
     var openReplyLink = function (containerDiv) { return __awaiter(void 0, void 0, void 0, function () {
         var entry, replyLink, replyALink;
         return __generator(this, function (_a) {
@@ -2901,7 +2855,7 @@
                     if (replyBox && messageMatch) {
                         __spreadArrays(replyBox.children).forEach(function (ele) {
                             var replyText = ele.textContent;
-                            var highlightArray = highlightSyntax(replyText, RelevantType.Reply, messageMatch, false);
+                            var highlightArray = highlightSyntax(replyText, messageMatch, false);
                             console.log('highlightArray', highlightArray);
                             ele.innerHTML = highlightArray.join(' ');
                         });

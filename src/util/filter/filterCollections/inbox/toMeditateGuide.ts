@@ -1,6 +1,6 @@
-import { RegexFilters } from '../../regexUtil';
+import { InitialRegExpCollection } from '../../regex/regexUtil';
 
-export const toMeditateGuideRegexArray: RegexFilters[] = [
+export const toMeditateGuideRegexArray: InitialRegExpCollection[] = [
   // EXPRESS INTERESTED
   { replyText: /would love to (mediate|meditate)/i },
   { replyText: /tips on meditating\?/i },

@@ -1,6 +1,6 @@
-import { RegexFilters } from '../../regexUtil';
+import { InitialRegExpCollection } from '../../regex/regexUtil';
 
-export const toNotRespondRegexArray: RegexFilters[] = [
+export const toNotRespondRegexArray: InitialRegExpCollection[] = [
   // MONEY
   { replyText: /(paid|free)/i },
 

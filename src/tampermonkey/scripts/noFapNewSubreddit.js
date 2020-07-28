@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'schmeatslanger';
-    var R_NOFAP_TIMESTAMP = '3 minutes ago';
+    var R_NOFAP_USERNAME = 'sunlitstranger';
+    var R_NOFAP_TIMESTAMP = '3 hours ago';
     var R_PORN_FREE_USERNAME = '1milktime1';
-    var R_PORN_FREE_TIMESTAMP = '5 hours ago';
+    var R_PORN_FREE_TIMESTAMP = '8 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'cluterfoot5';
-    var R_PORN_ADDICTION_TIMESTAMP = '15 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '20 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2583,119 +2583,6 @@
     };
 
     var createVNode$2 = createVNode;
-    var RegexFilterLogic;
-    (function (RegexFilterLogic) {
-        RegexFilterLogic["AND"] = "AND";
-        RegexFilterLogic["OR"] = "OR";
-    })(RegexFilterLogic || (RegexFilterLogic = {}));
-    var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
-    // const matchMultiple = (keyString: string, textObject: RegexTextObject, regex: RegExp): { matchObject: RegexFiltersMatch } => {
-    //   let matchObject = {} as RegexFiltersMatch;
-    // TODO
-    // }
-    var matchTextBoth = function (textObject, regex) {
-        var _a, _b;
-        var matchObject = {};
-        var matchText = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
-        if (matchText) {
-            matchObject.titleTextMatch = {
-                value: matchText[0],
-                regex: String(regex),
-            };
-        }
-        var matchMessage = (_b = textObject.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
-        if (matchMessage) {
-            matchObject.messageTextMatch = {
-                value: matchMessage[0],
-                regex: String(regex),
-            };
-        }
-        return { matchObject: matchObject };
-    };
-    var matchOne = function (keyString, textObject, regex) {
-        var _a;
-        var matchObject = {};
-        var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
-        if (match) {
-            matchObject[keyString + "Match"] = {
-                value: match[0],
-                regex: String(regex)
-            };
-        }
-        return { matchObject: matchObject };
-    };
-    var calculateMatch = function (regexFilters, matchObject, regexKeys) {
-        var _a, _b, _c;
-        // if AND logic, then all matches need to exist.
-        if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegexFilterLogic.AND) {
-            if (Object.keys(matchObject).length === regexKeys.length) {
-                return { matchArray: [matchObject], matchFound: true };
-            }
-        }
-        // if OR logic, then only one match needs to exist
-        // if both logic, then only one match needs to exist
-        if (((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.logic) === RegexFilterLogic.OR
-            || ((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.both)) {
-            if (Object.keys(matchObject).length > 0) {
-                return { matchArray: [matchObject], matchFound: true };
-            }
-        }
-        // default to AND
-        if (Object.keys(matchObject).length === regexKeys.length) {
-            return { matchArray: [matchObject], matchFound: true };
-        }
-        return { matchArray: [], matchFound: false };
-    };
-    var matchRegex = function (regexArray, textObject) {
-        var matchArray = regexArray.reduce(function (acc, regexFilters) {
-            if (!acc.matchFound) {
-                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
-                var matchObject = regexKeys.reduce(function (acc, keyString) {
-                    var _a;
-                    var regex = regexFilters[keyString];
-                    if (acc.allFound) {
-                        if (keyString === 'titleText') {
-                            // This checks both titleText and messageText, with only titleText specified. It is an OR condition.
-                            if ((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) {
-                                var matchObject_1 = matchTextBoth(textObject, regex).matchObject;
-                                if (Object.keys(matchObject_1).length > 0) {
-                                    return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
-                                }
-                            }
-                        }
-                        if (keyString === 'titleText' || keyString === 'flairText' || keyString === 'messageText' || keyString === 'replyText') {
-                            // if (Array.isArray(textObject[keyString])) {
-                            //   const { matchObject } = matchMultiple(keyString, textObject, regex);
-                            // }
-                            var matchObject_2 = matchOne(keyString, textObject, regex).matchObject;
-                            if (Object.keys(matchObject_2).length > 0) {
-                                return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_2), allFound: true };
-                            }
-                        }
-                    }
-                    return __assign(__assign({}, acc), { allFound: false });
-                }, { matchObject: {}, allFound: true }).matchObject;
-                var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
-                if (matchFound) {
-                    return { matchArray: matchArray_1, matchFound: matchFound };
-                }
-            }
-            return acc;
-            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
-        }, { matchArray: [], matchFound: false }).matchArray;
-        return matchArray;
-    };
-    // const titleText = 'hello'
-    // const text = 'text thing'
-    // const result = matchRegex([{
-    //   titleText: /hello/,
-    //   options: { both: true }
-    // },
-    // ], {
-    //   titleText: 'hello',
-    //   messageText: 'hello text thing'
-    // });
-    // result
     var RelevantType;
     (function (RelevantType) {
         RelevantType["Title"] = "Title";
@@ -2706,80 +2593,40 @@
     var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
-    // TODO Checking for relevant type is not relevant. It is not needed.
-    // Will simplify the hell out of this, fo sure.
-    var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
-        if (relevantText) {
-            if (messageMatch.length > 0) {
-                var _a = messageMatch.reduce(function (acc, regexFilterResult) {
-                    // TODO CONFIRM THAT THERE IS ONLY ONE
-                    if (!acc.foundMatch) {
-                        console.log('regexFilterResult (shoudl be one item, for now)', regexFilterResult);
-                        // titleText etc. there should only be one, for now.
-                        // Object.keys(regexFilterResult).forEach(() => {
-                        // })
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.titleTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.titleTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.flairTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.flairTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                            splitArray[0] = firstText;
-                            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                            var lastText = lastPartOfSentence[0].trimRight();
-                            splitArray[1] = lastText.slice(0, 40);
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.messageTextMatch.value, 0, { "style": { color: 'red' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.replyTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.replyTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                    }
-                    return acc;
-                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }), titleTextArray = _a.titleTextArray, foundMatch = _a.foundMatch;
-                if (!foundMatch) {
-                    return isReact ? [createVNode$2(1, "span", null, relevantText.slice(0, 200), 0)] : [relevantText];
-                }
-                return titleTextArray;
-            }
+    var generateNodeSplitArray = function (splitArray, regexFilterResult, singleRelevantKey, isReact) {
+        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+            splitArray[0] = firstText;
+            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+            var lastText = lastPartOfSentence[0].trimRight();
+            splitArray[1] = lastText.slice(0, 40);
         }
-        return isReact ? [createVNode$2(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || relevantText, 0)] : [relevantText];
+        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+        var newArray = isReact
+            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[singleRelevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[singleRelevantKey].value + "</span>");
+        return { newArray: newArray };
     };
-    var both = { options: { both: true } };
+    // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
+    var highlightSyntax = function (relevantText, messageMatch, isReact) {
+        if (relevantText && messageMatch.length > 0) {
+            var _a = messageMatch.reduce(function (acc, regexFilterResult) {
+                if (!acc.foundMatch) {
+                    var singleRelevantKey = Object.keys(regexFilterResult)[0];
+                    var splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+                    if (splitArray.length === 1)
+                        return acc;
+                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact).newArray;
+                    return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
+                }
+                return acc;
+            }, { relevantText: relevantText, expressionArray: [], foundMatch: false }), expressionArray = _a.expressionArray, foundMatch = _a.foundMatch;
+            if (foundMatch)
+                return expressionArray;
+        }
+        return isReact ? [createVNode$2(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || '', 0)] : [relevantText || ''];
+    };
 
     var increaseDelayTimer = function () {
         var delayTimer = window.localStorage.getItem('delayTimer');
@@ -2874,7 +2721,7 @@
             var _this = this;
             var _a;
             var _b = this.props, dbUser = _b.dbUser, titleText = _b.titleText, messageText = _b.messageText, flairText = _b.flairText, aLinkHref = _b.aLinkHref, prelimUrl = _b.prelimUrl, index = _b.index, sendMessageType = _b.sendMessageType, prelimContainer = _b.prelimContainer, messageMatch = _b.messageMatch;
-            return (createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Title:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Message:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(messageText, RelevantType.Message, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Flair:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } })], 4, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: (_a = this.state) === null || _a === void 0 ? void 0 : _a.borderClass }, "onclick": function () {
+            return (createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Title:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), highlightSyntax(titleText, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Message:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), highlightSyntax(messageText, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Flair:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), highlightSyntax(flairText, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } })], 4, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: (_a = this.state) === null || _a === void 0 ? void 0 : _a.borderClass }, "onclick": function () {
                         _this.setState({ borderClass: '1px solid red' });
                         openNewLink(prelimUrl, SendMessageType.NA);
                     } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4));
@@ -3008,6 +2855,14 @@
             render(createComponentVNode$2(2, UserPanel, { "dbUser": dbUser, "hoursAgoText": hoursAgoText, "usernameConfig": usernameConfig }), domContainer);
         }
     };
+
+    var RegExpFilterLogic;
+    (function (RegExpFilterLogic) {
+        RegExpFilterLogic["AND"] = "AND";
+        RegExpFilterLogic["OR"] = "OR";
+    })(RegExpFilterLogic || (RegExpFilterLogic = {}));
+    var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
+    var both = { options: { both: true } };
 
     var toRemoveInitialDay = function (titleText, flairText, messageText) {
         return (new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(titleText)
@@ -3253,6 +3108,7 @@
         __assign(__assign({}, both), { titleText: /Ended my \d+ day streak/i }),
         __assign(__assign({}, both), { titleText: /I lost ?(the)? battle today/i }),
         __assign(__assign({}, both), { titleText: /Gave in last night/i }),
+        __assign(__assign({}, both), { titleText: /caved into a relapse already/i }),
         { messageText: /was going strong till today/i },
         { messageText: /Yesterday I relapsed again/i },
         __assign(__assign({}, both), { titleText: /relapsed (after|on day|again)/i }),
@@ -3346,6 +3202,7 @@
         { titleText: /getting started/i },
         // START JOURNEY
         { titleText: /start to my Journey/i },
+        { titleText: /Just began my journey/i },
         { titleText: /journey to porn free/i },
         { titleText: /start of (a new|the) journey/i },
         { messageText: /Today (starts|i start) my journey/i },
@@ -3390,6 +3247,8 @@
         __assign(__assign({}, both), { titleText: /doing (nofap|no fap|no-fap) again/i }),
         __assign(__assign({}, both), { titleText: /(Let's|let’s|lets) start ?(nofap|no fap|no-fap|this)? again/i }),
         __assign(__assign({}, both), { titleText: /Back at it again/i }),
+        __assign(__assign({}, both), { titleText: /(It’s|It's|its) my second attempt/i }),
+        __assign(__assign({}, both), { titleText: /once again (going for|attempt)/i }),
         __assign(__assign({}, both), { titleText: /back on my ?(nofap|no fap|no-fap)? journey/i }),
         __assign(__assign({}, both), { titleText: /coming back to (nofap|no fap|no-fap)/i }),
         // TRY AGAIN
@@ -3575,6 +3434,7 @@
         __assign(__assign({}, both), { messageText: /I (don’t|don't|dont) know what to do and I need help/i }),
         __assign(__assign({}, both), { messageText: /I (don’t|don't|dont) want this anymore/i }),
         __assign(__assign({}, both), { messageText: /not sure if I can reason my way through it any longer/i }),
+        __assign(__assign({}, both), { messageText: /never (been|felt) so depressed/i }),
         // ABOUT TO RELAPSE
         { titleText: /(I’m|I'm|im|I am) about to relapse/i, },
         { titleText: /(I’m|I'm|im|I am) ?(really)? close to relapsing/i, },
@@ -3644,6 +3504,7 @@
 
     var toPornBlockersAdviceRegexArray = [
         { titleText: /block porn site/i },
+        { titleText: /^Porn blocker(s)?$/i },
         { titleText: /what website blocker/i },
         { titleText: /Website-blocking software/i },
         __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
@@ -3652,6 +3513,7 @@
         __assign(__assign({}, both), { titleText: /what programs do you use to block porn/i }),
         __assign(__assign({}, both), { titleText: /any good (plugins|websites|apps|programs) .* blocks/i }),
         __assign(__assign({}, both), { titleText: /looking for more ways to block porn/i }),
+        __assign(__assign({}, both), { titleText: /is there an app .* that blocks/i }),
     ];
 
     var toMasturbateWithoutPornAdviceRegexArray = [
@@ -3660,6 +3522,7 @@
         __assign(__assign({}, both), { titleText: /Can I masturbate without porn/i }),
         // IS IT OKAY
         { titleText: /masturbation without porn/i },
+        __assign(__assign({}, both), { titleText: /Is it still ?(a)? relapse if you masturbate/i }),
         __assign(__assign({}, both), { titleText: /a healthy way to (fap|masturbate)/i }),
         __assign(__assign({}, both), { titleText: /Is it ok to masturbate without watching porn/i }),
         __assign(__assign({}, both), { titleText: /is it better to fap without porn/i }),
@@ -3684,6 +3547,103 @@
         __assign(__assign({}, both), { titleText: /When does the withdrawal period depression start to fade\?/i }),
         __assign(__assign({}, both), { titleText: /How long before the effects of porn disappear\?/i }),
     ];
+
+    var matchMultiple = function (keyString, textObject, regex) {
+        var matchObject = {};
+        // TODO, I think this would be an additional reduce.
+        return matchObject;
+    };
+    var matchTextBoth = function (textObject, regex) {
+        var _a, _b;
+        var matchObject = {};
+        var matchText = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+        if (matchText) {
+            matchObject.titleTextMatch = {
+                value: matchText[0],
+                regex: String(regex),
+            };
+        }
+        var matchMessage = (_b = textObject.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
+        if (matchMessage) {
+            matchObject.messageTextMatch = {
+                value: matchMessage[0],
+                regex: String(regex),
+            };
+        }
+        return matchObject;
+    };
+    var matchOne = function (keyString, textObject, regex) {
+        var _a;
+        var matchObject = {};
+        var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
+        if (match) {
+            matchObject[keyString + "Match"] = {
+                value: match[0],
+                regex: String(regex)
+            };
+        }
+        return matchObject;
+    };
+    var calculateMatch = function (regexFilters, matchObject, regexKeys) {
+        var _a, _b, _c;
+        // if OR logic, then only one match needs to exist
+        // if both logic, then only one match needs to exist
+        if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegExpFilterLogic.OR || ((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.both)) {
+            if (Object.keys(matchObject).length > 0) {
+                return { matchArray: [matchObject], matchFound: true };
+            }
+        }
+        // if AND logic, then all matches need to exist.
+        if (((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.logic) === RegExpFilterLogic.AND) {
+            if (Object.keys(matchObject).length === regexKeys.length) {
+                return { matchArray: [matchObject], matchFound: true };
+            }
+        }
+        // default to AND
+        if (Object.keys(matchObject).length === regexKeys.length) {
+            return { matchArray: [matchObject], matchFound: true };
+        }
+        return { matchArray: [], matchFound: false };
+    };
+    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, textObject) {
+        var matchObject = regexKeys.reduce(function (acc, keyString) {
+            var _a;
+            var regex = regexFilters[keyString];
+            if (acc.allFound) {
+                var matchObject_1 = {};
+                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) && keyString === 'titleText') {
+                    matchObject_1 = matchTextBoth(textObject, regex);
+                }
+                else {
+                    if (Array.isArray(textObject[keyString])) {
+                        matchObject_1 = matchMultiple();
+                    }
+                    else {
+                        matchObject_1 = matchOne(keyString, textObject, regex);
+                    }
+                }
+                if (Object.keys(matchObject_1).length > 0) {
+                    return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
+                }
+            }
+            return __assign(__assign({}, acc), { allFound: false });
+        }, { matchObject: {}, allFound: true }).matchObject;
+        return { matchObject: matchObject };
+    };
+    var matchRegex = function (regexArray, textObject) {
+        var matchArray = regexArray.reduce(function (acc, regexFilters) {
+            if (!acc.matchFound) {
+                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
+                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, textObject).matchObject;
+                var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
+                if (matchFound)
+                    return { matchArray: matchArray_1, matchFound: matchFound };
+            }
+            return acc;
+            // FUTURE remove matchFound if you would like it to search through every single possibility, although this may take a long time.
+        }, { matchArray: [], matchFound: false }).matchArray;
+        return matchArray;
+    };
 
     var toBiggestBenefitPostAddictionAdviceRegexArray = [
         // TITLE BENEFITS
@@ -3730,9 +3690,9 @@
         var aDayAgo = Date.now() - DAY;
         return date.getTime() > aDayAgo;
     };
-    var calculateRegexArray = function (freshUserRegexArray, compiledUser, regexTextObject, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
+    var calculateRegexArray = function (freshUserRegexArray, compiledUser, RegExpTextStringObject, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
         if (!acc.matchFound) {
-            var matchArray = matchRegex(regexItem.regexArray, regexTextObject);
+            var matchArray = matchRegex(regexItem.regexArray, RegExpTextStringObject);
             if (regexItem.condition && matchArray.length > 0) {
                 return {
                     matchObject: {
@@ -3750,10 +3710,10 @@
 
     var toSubFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
         var _a, _b, _c;
-        var regexTextObject = { titleText: titleText, flairText: flairText, messageText: messageText };
+        var RegExpTextStringObject = { titleText: titleText, flairText: flairText, messageText: messageText };
         // TO REMOVE
         var toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText);
-        var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, regexTextObject);
+        var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, RegExpTextStringObject);
         if (flairText !== 'New to NoFap') {
             if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
                 console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText + (toRemoveInitialMatch.length > 0 ? " - " + extractRegexMatch(toRemoveInitialMatch) : ''));
@@ -3773,7 +3733,7 @@
             // FOLLOW MESSAGES
             // TODO: Extend this to struggle.
             if ((_b = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('start')) {
-                var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, regexTextObject);
+                var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, RegExpTextStringObject);
                 if (toRelapseAdviceMatch.length > 0) {
                     return {
                         shouldDeleteElementImmediately: false,
@@ -3816,13 +3776,13 @@
                 { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [{ flairText: /Victory/ }, { flairText: /Success Story/ }], regexUrlGenerator: generalAdvice, condition: true, delete: true },
                 { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: [{ flairText: /Relapse Report/ }], regexUrlGenerator: relapseAdvice, condition: true, delete: false },
             ];
-            var matchObject = calculateRegexArray(freshUserRegexArray, compiledUser, regexTextObject, usernameConfig).matchObject;
+            var matchObject = calculateRegexArray(freshUserRegexArray, compiledUser, RegExpTextStringObject, usernameConfig).matchObject;
             if (matchObject) {
                 return matchObject;
             }
         }
         // Final Delete
-        var toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, regexTextObject);
+        var toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, RegExpTextStringObject);
         if (toRemoveFinalMatch.length > 0) {
             return {
                 shouldDeleteElementImmediately: true,

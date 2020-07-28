@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toDidIJustRelapseAdviceRegexArray: RegexFilters[] = [
+export const toDidIJustRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   // DID I JUST RELAPSE?
   { ...both, titleText: /did I just relapse\?/i },
 

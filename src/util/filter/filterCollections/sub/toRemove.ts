@@ -1,4 +1,4 @@
-import { RegexFilters, both } from '../../regexUtil'
+import { InitialRegExpCollection, both } from '../../regex/regexUtil'
 
 export const toRemoveInitialDay = (titleText: string, flairText: string, messageText: string): boolean =>
   (
@@ -23,7 +23,7 @@ export const toRemoveInitialDay = (titleText: string, flairText: string, message
 
 // TODO Fix this up
 
-export const toRemoveInitialRegexArray: RegexFilters[] = [
+export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /\".*\"/i },
   { titleText: /\“.*\“/i },
 
@@ -288,7 +288,7 @@ export const toRemoveInitialRegexArray: RegexFilters[] = [
 
 ];
 
-export const toRemoveFinalRegexArray: RegexFilters[] = [
+export const toRemoveFinalRegexArray: InitialRegExpCollection[] = [
   { titleText: /^(day|week) \d+ (complete|done|free|strong)/i },
   { titleText: /\d+ (week|day).* (complete|done|free|strong)/i },
   { titleText: /(1st|first) (week|month) (complete|done|free|strong)/i },

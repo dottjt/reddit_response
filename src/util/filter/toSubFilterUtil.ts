@@ -1,18 +1,19 @@
 import { SendMessageType } from '../../types/serverTypes';
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
-import { matchRegex, RegexFilters, RegexFiltersMatch } from './regexUtil';
+import { InitialRegExpCollection, MatchRegExpResponse } from './regex/regexUtil';
 import { ConfigType } from '../config';
+import { matchRegex } from './regex/matchRegex';
 
 export type RegexArrayComplex = {
   sendMessageType: SendMessageType;
-  regexArray: RegexFilters[];
+  regexArray: InitialRegExpCollection[];
   regexUrlGenerator: any;
   condition: boolean;
   delete: boolean;
 };
 
-export type RegexTextObject = {
+export type RegExpTextStringObject = {
   titleText: string;
   flairText: string;
   messageText: string;
@@ -22,7 +23,7 @@ export type SubFilterMatch = {
   shouldDeleteElementImmediately: boolean;
   sendMessageType: SendMessageType | undefined;
   prelimUrl: string | undefined;
-  messageMatch: RegexFiltersMatch[] | undefined;
+  messageMatch: MatchRegExpResponse[] | undefined;
 };
 
 export const deleteImmediately = {
@@ -39,10 +40,10 @@ export const lessThanOneDayAgo = (date: Date): boolean => {
   return date.getTime() > aDayAgo;
 }
 
-export const calculateRegexArray = (freshUserRegexArray: RegexArrayComplex[], compiledUser: CompiledFullUserObject, regexTextObject: RegexTextObject, usernameConfig: ConfigType) => (
+export const calculateRegexArray = (freshUserRegexArray: RegexArrayComplex[], compiledUser: CompiledFullUserObject, RegExpTextStringObject: RegExpTextStringObject, usernameConfig: ConfigType) => (
   freshUserRegexArray.reduce((acc, regexItem) => {
     if (!acc.matchFound) {
-      const matchArray = matchRegex(regexItem.regexArray, regexTextObject)
+      const matchArray = matchRegex(regexItem.regexArray, RegExpTextStringObject)
 
       if (regexItem.condition && matchArray.length > 0) {
         return {

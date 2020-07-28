@@ -1,8 +1,8 @@
-import { RegexFilters } from '../../regexUtil';
+import { InitialRegExpCollection } from '../../regex/regexUtil';
 
 // TODO SORT AND FIGURE OUT, IT IS SUPER BLOATED
 
-export const toNoWorriesGuideRegexArray: RegexFilters[] = [
+export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /(What's|What’s|please share|share|to see|send|sending me|send (ne|me|us)|leave me|give|gimme|give me|provide me|interested in|link|me know|show me|show|link me|have|appreciate|look at|provide|like|let me see|link|drop|post|to explore|dm me) ?(please)? (a|the|that|ur|your|you|for the|to ur|to the|to your|with the) (url|website|web site|guide|site|link|address)/i },
   { replyText: /took up/i },
 
@@ -126,6 +126,7 @@ export const toNoWorriesGuideRegexArray: RegexFilters[] = [
   { replyText: /Would love to see/i },
   { replyText: /take a look at your (web site|website)/i },
   { replyText: /like to see (it|that)/i },
+  { replyText: /love to go through your website/i },
 
   // NEUTRAL
   { replyText: /(yah|ya|yeah) why not/i },

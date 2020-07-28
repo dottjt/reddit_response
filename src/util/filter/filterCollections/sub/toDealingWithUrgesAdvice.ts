@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toDealingWithUrgesAdviceRegexArray: RegexFilters[] = [
+export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   // URGES
   { titleText: /^getting urges$/i },
   { titleText: /Urges at night/i },

@@ -2467,22 +2467,6 @@
     };
 
     var createVNode$2 = createVNode;
-    var RegexFilterLogic;
-    (function (RegexFilterLogic) {
-        RegexFilterLogic["AND"] = "AND";
-        RegexFilterLogic["OR"] = "OR";
-    })(RegexFilterLogic || (RegexFilterLogic = {}));
-    // const titleText = 'hello'
-    // const text = 'text thing'
-    // const result = matchRegex([{
-    //   titleText: /hello/,
-    //   options: { both: true }
-    // },
-    // ], {
-    //   titleText: 'hello',
-    //   messageText: 'hello text thing'
-    // });
-    // result
     var RelevantType;
     (function (RelevantType) {
         RelevantType["Title"] = "Title";
@@ -2493,78 +2477,39 @@
     var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
-    // TODO Checking for relevant type is not relevant. It is not needed.
-    // Will simplify the hell out of this, fo sure.
-    var highlightSyntax = function (relevantText, relevantType, messageMatch, isReact) {
-        if (relevantText) {
-            if (messageMatch.length > 0) {
-                var _a = messageMatch.reduce(function (acc, regexFilterResult) {
-                    // TODO CONFIRM THAT THERE IS ONLY ONE
-                    if (!acc.foundMatch) {
-                        console.log('regexFilterResult (shoudl be one item, for now)', regexFilterResult);
-                        // titleText etc. there should only be one, for now.
-                        // Object.keys(regexFilterResult).forEach(() => {
-                        // })
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.titleTextMatch) && relevantType === RelevantType.Title) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.titleTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.titleTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.titleTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.flairTextMatch) && relevantType === RelevantType.Flair) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.flairTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.flairTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.flairTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) && relevantType === RelevantType.Message) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.messageTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                            splitArray[0] = firstText;
-                            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                            var lastText = lastPartOfSentence[0].trimRight();
-                            splitArray[1] = lastText.slice(0, 40);
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.messageTextMatch.value, 0, { "style": { color: 'red' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red;\">" + regexFilterResult.messageTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                        if ((regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.replyTextMatch) && relevantType === RelevantType.Reply) {
-                            var splitArray = acc.relevantText.split(regexFilterResult.replyTextMatch.value);
-                            if (splitArray.length === 1) {
-                                return acc;
-                            }
-                            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-                            var newArray = isReact
-                                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult.replyTextMatch.value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult.replyTextMatch.value + "</span>");
-                            return __assign(__assign({}, acc), { titleTextArray: newArray, foundMatch: true });
-                        }
-                    }
-                    return acc;
-                }, { relevantText: relevantText, titleTextArray: [], foundMatch: false }), titleTextArray = _a.titleTextArray, foundMatch = _a.foundMatch;
-                if (!foundMatch) {
-                    return isReact ? [createVNode$2(1, "span", null, relevantText.slice(0, 200), 0)] : [relevantText];
-                }
-                return titleTextArray;
-            }
+    var generateNodeSplitArray = function (splitArray, regexFilterResult, singleRelevantKey, isReact) {
+        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+            var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+            var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+            splitArray[0] = firstText;
+            var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+            var lastText = lastPartOfSentence[0].trimRight();
+            splitArray[1] = lastText.slice(0, 40);
         }
-        return isReact ? [createVNode$2(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || relevantText, 0)] : [relevantText];
+        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+        var newArray = isReact
+            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[singleRelevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[singleRelevantKey].value + "</span>");
+        return { newArray: newArray };
+    };
+    // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
+    var highlightSyntax = function (relevantText, messageMatch, isReact) {
+        if (relevantText && messageMatch.length > 0) {
+            var _a = messageMatch.reduce(function (acc, regexFilterResult) {
+                if (!acc.foundMatch) {
+                    var singleRelevantKey = Object.keys(regexFilterResult)[0];
+                    var splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+                    if (splitArray.length === 1)
+                        return acc;
+                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact).newArray;
+                    return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
+                }
+                return acc;
+            }, { relevantText: relevantText, expressionArray: [], foundMatch: false }), expressionArray = _a.expressionArray, foundMatch = _a.foundMatch;
+            if (foundMatch)
+                return expressionArray;
+        }
+        return isReact ? [createVNode$2(1, "span", null, (relevantText === null || relevantText === void 0 ? void 0 : relevantText.slice(0, 200)) || '', 0)] : [relevantText || ''];
     };
 
     var increaseDelayTimer = function () {
@@ -2660,7 +2605,7 @@
             var _this = this;
             var _a;
             var _b = this.props, dbUser = _b.dbUser, titleText = _b.titleText, messageText = _b.messageText, flairText = _b.flairText, aLinkHref = _b.aLinkHref, prelimUrl = _b.prelimUrl, index = _b.index, sendMessageType = _b.sendMessageType, prelimContainer = _b.prelimContainer, messageMatch = _b.messageMatch;
-            return (createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Title:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(titleText, RelevantType.Title, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Message:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(messageText, RelevantType.Message, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Flair:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), " ", highlightSyntax(flairText, RelevantType.Flair, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } })], 4, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: (_a = this.state) === null || _a === void 0 ? void 0 : _a.borderClass }, "onclick": function () {
+            return (createVNode$4(1, "div", null, [createVNode$4(1, "a", null, [createVNode$4(1, "p", null, [dbUser.username, createTextVNode$2(" - "), sendMessageType], 0, { "style": { 'margin-bottom': '0.5rem', 'margin-right': '0.5rem', color: 'purple' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Title:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), highlightSyntax(titleText, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Message:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), highlightSyntax(messageText, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } }), createVNode$4(1, "p", null, [createVNode$4(1, "b", null, "Flair:", 16, { "style": { 'font-weight': 900, 'margin-right': '0.3rem' } }), highlightSyntax(flairText, messageMatch, true).map(function (element) { return element; })], 0, { "style": { 'margin-bottom': '0.5rem', 'line-height': '1.4rem' } })], 4, { "style": { display: 'block', background: 'white', color: 'black', padding: '1rem', 'margin-top': '0.6rem', 'margin-bottom': '0.6rem', cursor: 'pointer', border: (_a = this.state) === null || _a === void 0 ? void 0 : _a.borderClass }, "onclick": function () {
                         _this.setState({ borderClass: '1px solid red' });
                         openNewLink(prelimUrl, SendMessageType.NA);
                     } }), createVNode$4(1, "a", null, "Show Post", 16, { "data-click-id": "body", "href": "" + aLinkHref })], 4));

@@ -1,6 +1,6 @@
-import { RegexFilters } from '../../regexUtil';
+import { InitialRegExpCollection } from '../../regex/regexUtil';
 
-export const toJoinSubredditRegexArray: RegexFilters[] = [
+export const toJoinSubredditRegexArray: InitialRegExpCollection[] = [
   // THANK YOU
   { replyText: /^ty$/i },
   { replyText: /(thank you|thanks|thankyou|thank u)/i }, // don't have ty, it's too broad.

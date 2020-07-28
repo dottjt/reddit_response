@@ -2,7 +2,8 @@ import { SendMessageType, UserForumType } from '../../types/serverTypes';
 import { PopulateReceivedMessagePayload } from '../../types/tamperMonkeyTypes';
 import { sendNewMessage } from '../httpResponses';
 import { ConfigType } from '../config';
-import { RegexFiltersMatch, highlightSyntax, RelevantType } from '../filter/regexUtil';
+import { MatchRegExpResponse } from '../filter/regex/regexUtil';
+import { highlightSyntax } from '../filter/regex/highlightSyntax';
 
 export const openReplyLink = async (containerDiv) => {
   const entry = containerDiv.children[4];
@@ -63,7 +64,7 @@ export const populateMessageAndSend = async (
   containerDiv: Element,
   toUsername: string,
   messageType: SendMessageType,
-  messageMatch: RegexFiltersMatch[] | undefined,
+  messageMatch: MatchRegExpResponse[] | undefined,
   sendImmediate: boolean
 ) => {
   openReplyLink(containerDiv);
@@ -74,7 +75,7 @@ export const populateMessageAndSend = async (
     [...replyBox.children as any].forEach(ele => {
       const replyText = ele.textContent;
 
-      const highlightArray = highlightSyntax(replyText, RelevantType.Reply, messageMatch, false);
+      const highlightArray = highlightSyntax(replyText, messageMatch, false);
 
       console.log('highlightArray', highlightArray);
       ele.innerHTML = highlightArray.join(' ');

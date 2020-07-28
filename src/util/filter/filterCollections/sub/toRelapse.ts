@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toRelapseAdviceRegexArray: RegexFilters[] = [
+export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /failed first attempt/i },
   { ...both, titleText: /Failed my \d+ day streak/i },
   { ...both, titleText: /relapse report/i },
@@ -31,6 +31,7 @@ export const toRelapseAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /Ended my \d+ day streak/i },
   { ...both, titleText: /I lost ?(the)? battle today/i },
   { ...both, titleText: /Gave in last night/i },
+  { ...both, titleText: /caved into a relapse already/i },
 
   { messageText: /was going strong till today/i },
   { messageText: /Yesterday I relapsed again/i },

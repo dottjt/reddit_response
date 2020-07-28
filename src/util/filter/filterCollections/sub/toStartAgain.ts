@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toStartAgainAdviceRegexArray: RegexFilters[] = [
+export const toStartAgainAdviceRegexArray: InitialRegExpCollection[] = [
 // TODO, not sure about making this a `both` - but we'll see.
 
   // AGAIN
@@ -19,6 +19,8 @@ export const toStartAgainAdviceRegexArray: RegexFilters[] = [
   { ...both, titleText: /doing (nofap|no fap|no-fap) again/i, },
   { ...both, titleText: /(Let's|let’s|lets) start ?(nofap|no fap|no-fap|this)? again/i, },
   { ...both, titleText: /Back at it again/i, },
+  { ...both, titleText: /(It’s|It's|its) my second attempt/i, },
+  { ...both, titleText: /once again (going for|attempt)/i, },
 
   // RETURNING
   { ...both, titleText: /back on my ?(nofap|no fap|no-fap)? journey/i, },

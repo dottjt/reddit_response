@@ -8,7 +8,7 @@ import { PopulateReceivedMessagePayload, PopulateReceivedMessagePayloadEXTREME, 
 import { populateMessageAndSend } from './sendMessageUtils';
 import ReplyUserPanel from '../../components/ReplyUserPanel';
 import { SendMessageType, UserForumType } from '../../types/serverTypes';
-import { RegexFiltersMatch } from '../filter/regexUtil';
+import { MatchRegExpResponse } from '../filter/regex/regexUtil';
 
 // messageInboxScriptPre.tsx
 
@@ -118,7 +118,7 @@ export const messageInboxAutomatedMessageSend = async (
   item: PopulateReceivedMessagePayloadEXTREME,
   messageText: string,
   messageType: SendMessageType,
-  messageMatch: RegexFiltersMatch[]
+  messageMatch: MatchRegExpResponse[]
 ): Promise<void> => {
   const replyDelay = localStorage.getItem('replyDelay');
   const replyDelayNumber = Number(replyDelay);

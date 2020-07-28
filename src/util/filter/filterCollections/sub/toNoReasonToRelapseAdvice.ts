@@ -1,5 +1,5 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toNoReasonToRelapseAdviceRegexArray: RegexFilters[] = [
+export const toNoReasonToRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Should I relapse/i },
 ];

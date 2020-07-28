@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toAccountabilityPartnerRegexArray: RegexFilters[] = [
+export const toAccountabilityPartnerRegexArray: InitialRegExpCollection[] = [
   { titleText: /^accountability(\.)?$/i },
 
   { ...both, titleText: /seeking a (Parter|partner)/i },

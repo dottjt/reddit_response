@@ -1,6 +1,6 @@
-import { RegexFilters, both } from '../../regexUtil';
+import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toBiggestBenefitPostAddictionAdviceRegexArray: RegexFilters[] = [
+export const toBiggestBenefitPostAddictionAdviceRegexArray: InitialRegExpCollection[] = [
   // TITLE BENEFITS
   { titleText: /^beneftis(\?|.)?$/i },
   { titleText: /^(NoFap|no fap|no-fap) benefits(\?|.)?$/i },
