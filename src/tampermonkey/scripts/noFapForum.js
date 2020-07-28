@@ -2477,7 +2477,7 @@
     var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
-    var generateNodeSplitArray = function (splitArray, regexFilterResult, singleRelevantKey, isReact) {
+    var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
         if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
             var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
             var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
@@ -2488,8 +2488,8 @@
         }
         var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
         var newArray = isReact
-            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[singleRelevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[singleRelevantKey].value + "</span>");
+            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
         return { newArray: newArray };
     };
     // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
@@ -2497,11 +2497,11 @@
         if (relevantText && messageMatch.length > 0) {
             var _a = messageMatch.reduce(function (acc, regexFilterResult) {
                 if (!acc.foundMatch) {
-                    var singleRelevantKey = Object.keys(regexFilterResult)[0];
-                    var splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+                    var relevantKey = Object.keys(regexFilterResult)[0];
+                    var splitArray = acc.relevantText.split(regexFilterResult[relevantKey].value);
                     if (splitArray.length === 1)
                         return acc;
-                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact).newArray;
+                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, relevantKey, isReact).newArray;
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
                 }
                 return acc;

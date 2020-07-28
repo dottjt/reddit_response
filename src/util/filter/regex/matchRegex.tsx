@@ -11,106 +11,106 @@ type ReduceRegexMatch = {
 }
 
 const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse => {
-  let matchObject = {} as MatchRegExpResponse;
+  let matchResponse = {} as MatchRegExpResponse;
   // TODO, I think this would be an additional reduce.
 
-  return matchObject;
+  return matchResponse;
 }
 
 const matchTextBoth = (stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse  => {
-  let matchObject = {} as MatchRegExpResponse;
+  let matchResponse = {} as MatchRegExpResponse;
   const matchText = stringObjectToMatch.titleText?.match(regex);
   if (matchText) {
-    matchObject.titleTextMatch = {
+    matchResponse.titleTextMatch = {
       value: matchText[0],
       regex: String(regex),
     }
   }
   const matchMessage = stringObjectToMatch.messageText?.match(regex);
   if (matchMessage) {
-    matchObject.messageTextMatch = {
+    matchResponse.messageTextMatch = {
       value: matchMessage[0],
       regex: String(regex),
     }
   }
-  return matchObject;
+  return matchResponse;
 }
 
 const matchOne = (keyString: string, stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse => {
-  let matchObject = {} as MatchRegExpResponse;
+  let matchResponse = {} as MatchRegExpResponse;
 
   const match = stringObjectToMatch[keyString]?.match(regex);
   if (match) {
-    matchObject[`${keyString}Match`] = {
+    matchResponse[`${keyString}Match`] = {
       value: match[0],
       regex: String(regex)
     }
   }
-  return matchObject;
+  return matchResponse;
 }
 
-const calculateMatch = (regexFilters: InitialRegExpCollection, matchObject: MatchRegExpResponse, regexKeys: string[]) => {
+const calculateMatch = (regexCollection: InitialRegExpCollection, matchResponse: MatchRegExpResponse, regexKeys: string[]) => {
   // if OR logic, then only one match needs to exist
   // if both logic, then only one match needs to exist
-  if (regexFilters?.options?.logic === RegExpFilterLogic.OR || regexFilters?.options?.both) {
-    if (Object.keys(matchObject).length > 0) {
-      return { matchArray: [ matchObject ], matchFound: true };
+  if (regexCollection?.options?.logic === RegExpFilterLogic.OR || regexCollection?.options?.both) {
+    if (Object.keys(matchResponse).length > 0) {
+      return { matchArray: [ matchResponse ], matchFound: true };
     }
   }
 
   // if AND logic, then all matches need to exist.
-  if (regexFilters?.options?.logic === RegExpFilterLogic.AND) {
-    if (Object.keys(matchObject).length === regexKeys.length) {
-      return { matchArray: [ matchObject ], matchFound: true };
+  if (regexCollection?.options?.logic === RegExpFilterLogic.AND) {
+    if (Object.keys(matchResponse).length === regexKeys.length) {
+      return { matchArray: [ matchResponse ], matchFound: true };
     }
   }
 
   // default to AND
-  if (Object.keys(matchObject).length === regexKeys.length) {
-    return { matchArray: [ matchObject ], matchFound: true };
+  if (Object.keys(matchResponse).length === regexKeys.length) {
+    return { matchArray: [ matchResponse ], matchFound: true };
   }
 
   return { matchArray: [], matchFound: false };
 }
 
-export const matchRegexReduceMatchedObject = (regexKeys: string[], regexFilters: InitialRegExpCollection, stringObjectToMatch: StringObjectToMatch) => {
-  const { matchObject } = regexKeys.reduce((acc, keyString) => {
-    const regex = regexFilters[keyString];
+export const matchRegexReduceMatchedObject = (regexKeys: string[], regexCollection: InitialRegExpCollection, stringObjectToMatch: StringObjectToMatch) => {
+  const { matchResponse } = regexKeys.reduce((acc, keyString) => {
+    const regex = regexCollection[keyString];
 
     if (acc.allFound) {
-      let matchObject: MatchRegExpResponse = {} as MatchRegExpResponse;
+      let matchResponse: MatchRegExpResponse = {} as MatchRegExpResponse;
 
-      if (regexFilters?.options?.both && keyString === 'titleText') {
-        matchObject = matchTextBoth(stringObjectToMatch, regex);
+      if (regexCollection?.options?.both && keyString === 'titleText') {
+        matchResponse = matchTextBoth(stringObjectToMatch, regex);
       } else {
         if (Array.isArray(stringObjectToMatch[keyString])) {
-          matchObject = matchMultiple(keyString, stringObjectToMatch, regex);
+          matchResponse = matchMultiple(keyString, stringObjectToMatch, regex);
         } else {
-          matchObject = matchOne(keyString, stringObjectToMatch, regex);
+          matchResponse = matchOne(keyString, stringObjectToMatch, regex);
         }
       }
 
-      if (Object.keys(matchObject).length > 0) {
-        return { matchObject: { ...acc.matchObject, ...matchObject }, allFound: true };
+      if (Object.keys(matchResponse).length > 0) {
+        return { matchResponse: { ...acc.matchResponse, ...matchResponse }, allFound: true };
       }
     }
 
     return { ...acc, allFound: false };
 
-  }, { matchObject: {}, allFound: true } as { matchObject: MatchRegExpResponse, allFound: boolean });
+  }, { matchResponse: {}, allFound: true } as { matchResponse: MatchRegExpResponse, allFound: boolean });
 
-  return { matchObject };
+  return { matchResponse };
 }
 
 export const matchRegex = (regexArray: InitialRegExpCollection[], stringObjectToMatch: StringObjectToMatch): MatchRegExpResponse[] => {
-  const { matchArray } = regexArray.reduce((acc: ReduceRegexMatch, regexFilters: InitialRegExpCollection) => {
+  const { matchArray } = regexArray.reduce((acc: ReduceRegexMatch, regexCollection: InitialRegExpCollection) => {
 
     if (!acc.matchFound) {
-      const regexKeys = Object.keys(regexFilters).filter(item => item !== 'options');
+      const regexKeys = Object.keys(regexCollection).filter(item => item !== 'options');
 
-      const { matchObject } = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringObjectToMatch);
+      const { matchResponse } = matchRegexReduceMatchedObject(regexKeys, regexCollection, stringObjectToMatch);
 
-      const { matchArray, matchFound } = calculateMatch(regexFilters, matchObject, regexKeys);
+      const { matchArray, matchFound } = calculateMatch(regexCollection, matchResponse, regexKeys);
 
       if (matchFound) return { matchArray, matchFound };
     }

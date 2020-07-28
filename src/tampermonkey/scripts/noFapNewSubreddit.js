@@ -2492,7 +2492,7 @@
     var R_NOFAP_USERNAME = 'MHeat283';
     var R_NOFAP_TIMESTAMP = '1 hours ago';
     var R_PORN_FREE_USERNAME = 'Individual-Novel-294';
-    var R_PORN_FREE_TIMESTAMP = '16 minutes ago';
+    var R_PORN_FREE_TIMESTAMP = '1 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'Virginkillerrr';
     var R_PORN_ADDICTION_TIMESTAMP = '1 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
@@ -2593,7 +2593,7 @@
     var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
-    var generateNodeSplitArray = function (splitArray, regexFilterResult, singleRelevantKey, isReact) {
+    var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
         if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
             var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
             var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
@@ -2604,8 +2604,8 @@
         }
         var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
         var newArray = isReact
-            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[singleRelevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[singleRelevantKey].value + "</span>");
+            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
         return { newArray: newArray };
     };
     // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
@@ -2613,11 +2613,11 @@
         if (relevantText && messageMatch.length > 0) {
             var _a = messageMatch.reduce(function (acc, regexFilterResult) {
                 if (!acc.foundMatch) {
-                    var singleRelevantKey = Object.keys(regexFilterResult)[0];
-                    var splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+                    var relevantKey = Object.keys(regexFilterResult)[0];
+                    var splitArray = acc.relevantText.split(regexFilterResult[relevantKey].value);
                     if (splitArray.length === 1)
                         return acc;
-                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact).newArray;
+                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, relevantKey, isReact).newArray;
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
                 }
                 return acc;
@@ -3551,93 +3551,93 @@
     ];
 
     var matchMultiple = function (keyString, stringObjectToMatch, regex) {
-        var matchObject = {};
+        var matchResponse = {};
         // TODO, I think this would be an additional reduce.
-        return matchObject;
+        return matchResponse;
     };
     var matchTextBoth = function (stringObjectToMatch, regex) {
         var _a, _b;
-        var matchObject = {};
+        var matchResponse = {};
         var matchText = (_a = stringObjectToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (matchText) {
-            matchObject.titleTextMatch = {
+            matchResponse.titleTextMatch = {
                 value: matchText[0],
                 regex: String(regex),
             };
         }
         var matchMessage = (_b = stringObjectToMatch.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
         if (matchMessage) {
-            matchObject.messageTextMatch = {
+            matchResponse.messageTextMatch = {
                 value: matchMessage[0],
                 regex: String(regex),
             };
         }
-        return matchObject;
+        return matchResponse;
     };
     var matchOne = function (keyString, stringObjectToMatch, regex) {
         var _a;
-        var matchObject = {};
+        var matchResponse = {};
         var match = (_a = stringObjectToMatch[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (match) {
-            matchObject[keyString + "Match"] = {
+            matchResponse[keyString + "Match"] = {
                 value: match[0],
                 regex: String(regex)
             };
         }
-        return matchObject;
+        return matchResponse;
     };
-    var calculateMatch = function (regexFilters, matchObject, regexKeys) {
+    var calculateMatch = function (regexCollection, matchResponse, regexKeys) {
         var _a, _b, _c;
         // if OR logic, then only one match needs to exist
         // if both logic, then only one match needs to exist
-        if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.logic) === RegExpFilterLogic.OR || ((_b = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _b === void 0 ? void 0 : _b.both)) {
-            if (Object.keys(matchObject).length > 0) {
-                return { matchArray: [matchObject], matchFound: true };
+        if (((_a = regexCollection === null || regexCollection === void 0 ? void 0 : regexCollection.options) === null || _a === void 0 ? void 0 : _a.logic) === RegExpFilterLogic.OR || ((_b = regexCollection === null || regexCollection === void 0 ? void 0 : regexCollection.options) === null || _b === void 0 ? void 0 : _b.both)) {
+            if (Object.keys(matchResponse).length > 0) {
+                return { matchArray: [matchResponse], matchFound: true };
             }
         }
         // if AND logic, then all matches need to exist.
-        if (((_c = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _c === void 0 ? void 0 : _c.logic) === RegExpFilterLogic.AND) {
-            if (Object.keys(matchObject).length === regexKeys.length) {
-                return { matchArray: [matchObject], matchFound: true };
+        if (((_c = regexCollection === null || regexCollection === void 0 ? void 0 : regexCollection.options) === null || _c === void 0 ? void 0 : _c.logic) === RegExpFilterLogic.AND) {
+            if (Object.keys(matchResponse).length === regexKeys.length) {
+                return { matchArray: [matchResponse], matchFound: true };
             }
         }
         // default to AND
-        if (Object.keys(matchObject).length === regexKeys.length) {
-            return { matchArray: [matchObject], matchFound: true };
+        if (Object.keys(matchResponse).length === regexKeys.length) {
+            return { matchArray: [matchResponse], matchFound: true };
         }
         return { matchArray: [], matchFound: false };
     };
-    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, stringObjectToMatch) {
-        var matchObject = regexKeys.reduce(function (acc, keyString) {
+    var matchRegexReduceMatchedObject = function (regexKeys, regexCollection, stringObjectToMatch) {
+        var matchResponse = regexKeys.reduce(function (acc, keyString) {
             var _a;
-            var regex = regexFilters[keyString];
+            var regex = regexCollection[keyString];
             if (acc.allFound) {
-                var matchObject_1 = {};
-                if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) && keyString === 'titleText') {
-                    matchObject_1 = matchTextBoth(stringObjectToMatch, regex);
+                var matchResponse_1 = {};
+                if (((_a = regexCollection === null || regexCollection === void 0 ? void 0 : regexCollection.options) === null || _a === void 0 ? void 0 : _a.both) && keyString === 'titleText') {
+                    matchResponse_1 = matchTextBoth(stringObjectToMatch, regex);
                 }
                 else {
                     if (Array.isArray(stringObjectToMatch[keyString])) {
-                        matchObject_1 = matchMultiple();
+                        matchResponse_1 = matchMultiple();
                     }
                     else {
-                        matchObject_1 = matchOne(keyString, stringObjectToMatch, regex);
+                        matchResponse_1 = matchOne(keyString, stringObjectToMatch, regex);
                     }
                 }
-                if (Object.keys(matchObject_1).length > 0) {
-                    return { matchObject: __assign(__assign({}, acc.matchObject), matchObject_1), allFound: true };
+                if (Object.keys(matchResponse_1).length > 0) {
+                    return { matchResponse: __assign(__assign({}, acc.matchResponse), matchResponse_1), allFound: true };
                 }
             }
             return __assign(__assign({}, acc), { allFound: false });
-        }, { matchObject: {}, allFound: true }).matchObject;
-        return { matchObject: matchObject };
+        }, { matchResponse: {}, allFound: true }).matchResponse;
+        return { matchResponse: matchResponse };
     };
     var matchRegex = function (regexArray, stringObjectToMatch) {
-        var matchArray = regexArray.reduce(function (acc, regexFilters) {
+        var matchArray = regexArray.reduce(function (acc, regexCollection) {
             if (!acc.matchFound) {
-                var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
-                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringObjectToMatch).matchObject;
-                var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
+                var regexKeys = Object.keys(regexCollection).filter(function (item) { return item !== 'options'; });
+                var matchResponse = matchRegexReduceMatchedObject(regexKeys, regexCollection, stringObjectToMatch).matchResponse;
+                var _a = calculateMatch(regexCollection, matchResponse, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
                 if (matchFound)
                     return { matchArray: matchArray_1, matchFound: matchFound };
             }

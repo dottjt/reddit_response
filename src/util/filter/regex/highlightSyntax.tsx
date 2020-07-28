@@ -14,7 +14,7 @@ const highlightArrayInsert = (arr, index, newItem) => [
   ...arr.slice(index)
 ];
 
-const generateNodeSplitArray = (splitArray: string[], regexFilterResult: MatchRegExpResponse, singleRelevantKey: string, isReact: boolean) => {
+const generateNodeSplitArray = (splitArray: string[], regexFilterResult: MatchRegExpResponse, relevantKey: string, isReact: boolean) => {
   if (regexFilterResult?.messageTextMatch) {
     const firstPartOfSentence = splitArray[0].split('.').filter(p => p)
     const firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
@@ -27,8 +27,8 @@ const generateNodeSplitArray = (splitArray: string[], regexFilterResult: MatchRe
 
   const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
   const newArray = isReact
-    ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult[singleRelevantKey].value}</span>)
-    : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult[singleRelevantKey].value}</span>`);
+    ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult[relevantKey].value}</span>)
+    : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult[relevantKey].value}</span>`);
 
   return { newArray };
 }
@@ -45,12 +45,12 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
     const { expressionArray, foundMatch } = messageMatch.reduce((acc: HighlightSyntaxReduceProps, regexFilterResult: MatchRegExpResponse) => {
 
       if (!acc.foundMatch) {
-        const singleRelevantKey = Object.keys(regexFilterResult)[0];
+        const relevantKey = Object.keys(regexFilterResult)[0];
 
-        const splitArray = acc.relevantText.split(regexFilterResult[singleRelevantKey].value);
+        const splitArray = acc.relevantText.split(regexFilterResult[relevantKey].value);
         if (splitArray.length === 1) return acc;
 
-        const { newArray } = generateNodeSplitArray(splitArray, regexFilterResult, singleRelevantKey, isReact);
+        const { newArray } = generateNodeSplitArray(splitArray, regexFilterResult, relevantKey, isReact);
         return { ...acc, expressionArray: newArray, foundMatch: true };
       }
 

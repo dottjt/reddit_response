@@ -32,7 +32,7 @@ export const R_NOFAP_TIMESTAMP = '1 hours ago';
 export const R_NOFAP_START_DATE = 'Tue Jul 28 2020 15:51:44 GMT+1000 (Australian Eastern Standard Time)'; // todo, all this shit.
 
 export const R_PORN_FREE_USERNAME = 'Individual-Novel-294';
-export const R_PORN_FREE_TIMESTAMP = '16 minutes ago';
+export const R_PORN_FREE_TIMESTAMP = '1 hours ago';
 export const R_PORN_FREE_START_DATE = 'Tue Jul 28 2020 15:43:33 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_PORN_ADDICTION_USERNAME = 'Virginkillerrr';
