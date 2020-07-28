@@ -3692,7 +3692,7 @@
         var aDayAgo = Date.now() - DAY;
         return date.getTime() > aDayAgo;
     };
-    var calculateRegexArray = function (freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
+    var calculateSubRegexArray = function (freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
         if (!acc.matchFound) {
             var matchArray = matchRegex(regexItem.regexArray, stringObjectToMatch);
             if (regexItem.condition && matchArray.length > 0) {
@@ -3778,7 +3778,7 @@
                 { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [{ flairText: /Victory/ }, { flairText: /Success Story/ }], regexUrlGenerator: generalAdvice, condition: true, delete: true },
                 { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: [{ flairText: /Relapse Report/ }], regexUrlGenerator: relapseAdvice, condition: true, delete: false },
             ];
-            var matchObject = calculateRegexArray(freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig).matchObject;
+            var matchObject = calculateSubRegexArray(freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig).matchObject;
             if (matchObject) {
                 return matchObject;
             }
