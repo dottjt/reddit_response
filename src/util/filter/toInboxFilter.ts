@@ -27,11 +27,11 @@ export const toInboxFilter = (
   const compiledUser: CompiledFullUserObject = messagePayload.compiledUser;
   const lastSentMessage: Message | undefined = compiledUser.lastSentMessage;
   const lastReceivedMessage: Message | undefined = compiledUser.lastReceivedMessage;
-  const RegExpTextStringObject = { replyText: messagePayload.message };
+  const stringsToMatch = { replyText: messagePayload.message };
 
   // EDGE
   // Are you a bot?
-  const toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, RegExpTextStringObject);
+  const toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, stringsToMatch);
   if (
     compiledUser.userType === UserType.UserHostile
     || toNotRespondRegexMatch.length > 0
@@ -49,7 +49,7 @@ export const toInboxFilter = (
     (lastReceivedMessage?.type.includes('start') || lastReceivedMessage?.type.includes('follow'))
     ) {
       // No Worries
-      const toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, RegExpTextStringObject);
+      const toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, stringsToMatch);
       if (toNoWorriesGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideNoWorries, // lastSentMessage.forum
@@ -59,7 +59,7 @@ export const toInboxFilter = (
       }
 
       // Link You
-      const toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, RegExpTextStringObject);
+      const toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, stringsToMatch);
       if (toLinkYouGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideLinkYou,
@@ -69,7 +69,7 @@ export const toInboxFilter = (
       }
 
       // Meditation
-      const toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, RegExpTextStringObject);
+      const toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, stringsToMatch);
       if (toMeditateGuideRegexMatch.length > 0) {
         return {
           messageText: middleGuideMeditationAdvice,
@@ -81,7 +81,7 @@ export const toInboxFilter = (
       // // That's fantastic
       // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
       // I will have to careful check that it DOES NOT contain certain things.
-      // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, RegExpTextStringObject);
+      // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, stringsToMatch);
       // if (toFantasticRegexMatch.length > 0) {
       //   return {
       //     messageText: finalFantastic,
@@ -89,7 +89,7 @@ export const toInboxFilter = (
       //   }
       // }
 
-      const toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, RegExpTextStringObject);
+      const toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, stringsToMatch);
       if (toHardTimeRegexMatch.length > 0) {
         return {
           messageText: finalHardTime,
@@ -105,7 +105,7 @@ export const toInboxFilter = (
     lastSentMessage?.type.includes('middle')
     ) {
       // Join Subreddit
-      const toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, RegExpTextStringObject);
+      const toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, stringsToMatch);
       if (toJoinSubredditRegexMatch.length > 0) {
         return {
           messageText: finalJoinSubreddit,

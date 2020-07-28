@@ -1,5 +1,5 @@
 
-export type RegExpTextStringObject = {
+export type StringsToMatch = {
   titleText?: string;
   flairText?: string;
   messageText?: string;
@@ -18,11 +18,11 @@ type InitialRegExpCollectionOptions = {
 }
 
 export type InitialRegExpCollection = {
-  titleText?: RegExp;
-  flairText?: RegExp;
-  messageText?: RegExp;
+  titleText?: RegExp | RegExp[];
+  flairText?: RegExp | RegExp[];
+  messageText?: RegExp | RegExp[];
 
-  replyText?: RegExp;
+  replyText?: RegExp | RegExp[];
 
   options?: InitialRegExpCollectionOptions;
 }

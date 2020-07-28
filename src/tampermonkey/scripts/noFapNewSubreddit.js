@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'sunlitstranger';
-    var R_NOFAP_TIMESTAMP = '3 hours ago';
+    var R_NOFAP_USERNAME = 'MHeat283';
+    var R_NOFAP_TIMESTAMP = '1 hours ago';
     var R_PORN_FREE_USERNAME = 'Individual-Novel-294';
     var R_PORN_FREE_TIMESTAMP = '16 minutes ago';
-    var R_PORN_ADDICTION_USERNAME = 'cluterfoot5';
-    var R_PORN_ADDICTION_TIMESTAMP = '20 hours ago';
+    var R_PORN_ADDICTION_USERNAME = 'Virginkillerrr';
+    var R_PORN_ADDICTION_TIMESTAMP = '1 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3242,6 +3242,7 @@
         __assign(__assign({}, both), { titleText: /day (1|one) again/i }),
         __assign(__assign({}, both), { titleText: /starting, again/i }),
         __assign(__assign({}, both), { titleText: /^Starting again../i }),
+        __assign(__assign({}, both), { titleText: /Any advices for my second attempt/i }),
         __assign(__assign({}, both), { titleText: /starting (nofap|no fap|no-fap) again/i }),
         __assign(__assign({}, both), { titleText: /^starting ?(nofap|no fap|no-fap|this|it)? again(\.)?$/i }),
         __assign(__assign({}, both), { titleText: /doing (nofap|no fap|no-fap) again/i }),
@@ -3549,22 +3550,22 @@
         __assign(__assign({}, both), { titleText: /How long before the effects of porn disappear\?/i }),
     ];
 
-    var matchMultiple = function (keyString, textObject, regex) {
+    var matchMultiple = function (keyString, stringsToMatch, regex) {
         var matchObject = {};
         // TODO, I think this would be an additional reduce.
         return matchObject;
     };
-    var matchTextBoth = function (textObject, regex) {
+    var matchTextBoth = function (stringsToMatch, regex) {
         var _a, _b;
         var matchObject = {};
-        var matchText = (_a = textObject.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+        var matchText = (_a = stringsToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (matchText) {
             matchObject.titleTextMatch = {
                 value: matchText[0],
                 regex: String(regex),
             };
         }
-        var matchMessage = (_b = textObject.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
+        var matchMessage = (_b = stringsToMatch.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
         if (matchMessage) {
             matchObject.messageTextMatch = {
                 value: matchMessage[0],
@@ -3573,10 +3574,10 @@
         }
         return matchObject;
     };
-    var matchOne = function (keyString, textObject, regex) {
+    var matchOne = function (keyString, stringsToMatch, regex) {
         var _a;
         var matchObject = {};
-        var match = (_a = textObject[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
+        var match = (_a = stringsToMatch[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (match) {
             matchObject[keyString + "Match"] = {
                 value: match[0],
@@ -3606,21 +3607,21 @@
         }
         return { matchArray: [], matchFound: false };
     };
-    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, textObject) {
+    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, stringsToMatch) {
         var matchObject = regexKeys.reduce(function (acc, keyString) {
             var _a;
             var regex = regexFilters[keyString];
             if (acc.allFound) {
                 var matchObject_1 = {};
                 if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) && keyString === 'titleText') {
-                    matchObject_1 = matchTextBoth(textObject, regex);
+                    matchObject_1 = matchTextBoth(stringsToMatch, regex);
                 }
                 else {
-                    if (Array.isArray(textObject[keyString])) {
+                    if (Array.isArray(stringsToMatch[keyString])) {
                         matchObject_1 = matchMultiple();
                     }
                     else {
-                        matchObject_1 = matchOne(keyString, textObject, regex);
+                        matchObject_1 = matchOne(keyString, stringsToMatch, regex);
                     }
                 }
                 if (Object.keys(matchObject_1).length > 0) {
@@ -3631,11 +3632,11 @@
         }, { matchObject: {}, allFound: true }).matchObject;
         return { matchObject: matchObject };
     };
-    var matchRegex = function (regexArray, textObject) {
+    var matchRegex = function (regexArray, stringsToMatch) {
         var matchArray = regexArray.reduce(function (acc, regexFilters) {
             if (!acc.matchFound) {
                 var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
-                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, textObject).matchObject;
+                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringsToMatch).matchObject;
                 var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
                 if (matchFound)
                     return { matchArray: matchArray_1, matchFound: matchFound };
@@ -3691,9 +3692,9 @@
         var aDayAgo = Date.now() - DAY;
         return date.getTime() > aDayAgo;
     };
-    var calculateRegexArray = function (freshUserRegexArray, compiledUser, RegExpTextStringObject, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
+    var calculateRegexArray = function (freshUserRegexArray, compiledUser, stringsToMatch, usernameConfig) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
         if (!acc.matchFound) {
-            var matchArray = matchRegex(regexItem.regexArray, RegExpTextStringObject);
+            var matchArray = matchRegex(regexItem.regexArray, stringsToMatch);
             if (regexItem.condition && matchArray.length > 0) {
                 return {
                     matchObject: {
@@ -3711,10 +3712,10 @@
 
     var toSubFilter = function (compiledUser, usernameConfig, flairText, titleText, messageText) {
         var _a, _b, _c;
-        var RegExpTextStringObject = { titleText: titleText, flairText: flairText, messageText: messageText };
+        var stringsToMatch = { titleText: titleText, flairText: flairText, messageText: messageText };
         // TO REMOVE
         var toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText);
-        var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, RegExpTextStringObject);
+        var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringsToMatch);
         if (flairText !== 'New to NoFap') {
             if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
                 console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText + (toRemoveInitialMatch.length > 0 ? " - " + extractRegexMatch(toRemoveInitialMatch) : ''));
@@ -3734,7 +3735,7 @@
             // FOLLOW MESSAGES
             // TODO: Extend this to struggle.
             if ((_b = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('start')) {
-                var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, RegExpTextStringObject);
+                var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, stringsToMatch);
                 if (toRelapseAdviceMatch.length > 0) {
                     return {
                         shouldDeleteElementImmediately: false,
@@ -3777,13 +3778,13 @@
                 { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [{ flairText: /Victory/ }, { flairText: /Success Story/ }], regexUrlGenerator: generalAdvice, condition: true, delete: true },
                 { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: [{ flairText: /Relapse Report/ }], regexUrlGenerator: relapseAdvice, condition: true, delete: false },
             ];
-            var matchObject = calculateRegexArray(freshUserRegexArray, compiledUser, RegExpTextStringObject, usernameConfig).matchObject;
+            var matchObject = calculateRegexArray(freshUserRegexArray, compiledUser, stringsToMatch, usernameConfig).matchObject;
             if (matchObject) {
                 return matchObject;
             }
         }
         // Final Delete
-        var toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, RegExpTextStringObject);
+        var toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, stringsToMatch);
         if (toRemoveFinalMatch.length > 0) {
             return {
                 shouldDeleteElementImmediately: true,

@@ -16,8 +16,8 @@ Although this application saves me a tremendous amount of time, the biggest save
 ## Improvements
 
 - Maybe save the link to the post in matches. Sounds smart :)
-- possibly capture all possibilities and select the best one. I will refine the matches first.
 - Create all other new messages.
+- possibly capture all possibilities and select the best one. I will refine the matches first.
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Message for providing meditation advice.
 - For inbox messages, console.log unmatched thhings, esepecially the toNotRespond ones.
