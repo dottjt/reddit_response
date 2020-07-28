@@ -484,6 +484,28 @@
         return matchArray;
     };
 
+    var calculateInboxRegexArray = function (freshUserRegexArray, stringObjectToMatch) { return (freshUserRegexArray.reduce(function (acc, regexItem) {
+        if (!acc.matchFound) {
+            var matchArray = matchRegex(regexItem.regexArray, stringObjectToMatch);
+            if (matchArray.length > 0) {
+                return {
+                    matchObject: {
+                        messageType: regexItem.messageType,
+                        messageText: regexItem.messageText,
+                        messageMatch: matchArray
+                    },
+                    matchFound: true
+                };
+            }
+        }
+        return acc;
+    }, { matchObject: undefined, matchFound: false })); };
+    var undefinedMessage = {
+        messageText: undefined,
+        messageType: undefined,
+        messageMatch: undefined,
+    };
+
     var toInboxFilter = function (messagePayload, moreThanOneMessage) {
         var compiledUser = messagePayload.compiledUser;
         var lastSentMessage = compiledUser.lastSentMessage;
@@ -494,59 +516,23 @@
         var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, stringObjectToMatch);
         if (compiledUser.userType === UserType.UserHostile
             || toNotRespondRegexMatch.length > 0) {
-            return {
-                messageText: undefined,
-                messageType: undefined,
-                messageMatch: undefined,
-            };
+            return undefinedMessage;
         }
         if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
             ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
             ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
-            // No Worries
-            var toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, stringObjectToMatch);
-            if (toNoWorriesGuideRegexMatch.length > 0) {
-                return {
-                    messageText: middleGuideNoWorries,
-                    messageType: SendMessageType.MiddleGuideNoWorries,
-                    messageMatch: toNoWorriesGuideRegexMatch,
-                };
-            }
-            // Link You
-            var toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, stringObjectToMatch);
-            if (toLinkYouGuideRegexMatch.length > 0) {
-                return {
-                    messageText: middleGuideLinkYou,
-                    messageType: SendMessageType.MiddleGuideLinkYou,
-                    messageMatch: toLinkYouGuideRegexMatch,
-                };
-            }
-            // Meditation
-            var toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, stringObjectToMatch);
-            if (toMeditateGuideRegexMatch.length > 0) {
-                return {
-                    messageText: middleGuideMeditationAdvice,
-                    messageType: SendMessageType.MiddleGuideMeditationAdvice,
-                    messageMatch: toMeditateGuideRegexMatch,
-                };
-            }
-            // // That's fantastic
-            // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
-            // I will have to careful check that it DOES NOT contain certain things.
-            // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, stringObjectToMatch);
-            // if (toFantasticRegexMatch.length > 0) {
-            //   return {
-            //     messageText: finalFantastic,
-            //     messageType: SendMessageType.FinalFantastic,
-            //   }
-            // }
-            var toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, stringObjectToMatch);
-            if (toHardTimeRegexMatch.length > 0) {
-                return {
-                    messageText: finalHardTime,
-                    messageType: SendMessageType.FinalHardTime,
-                    messageMatch: toHardTimeRegexMatch,
-                };
+            var middleRegexMatchArray = [
+                { regexArray: toNoWorriesGuideRegexArray, messageText: middleGuideNoWorries, messageType: SendMessageType.MiddleGuideNoWorries },
+                { regexArray: toLinkYouGuideRegexArray, messageText: middleGuideLinkYou, messageType: SendMessageType.MiddleGuideLinkYou },
+                { regexArray: toMeditateGuideRegexArray, messageText: middleGuideMeditationAdvice, messageType: SendMessageType.MiddleGuideMeditationAdvice },
+                // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
+                // I will have to careful check that it DOES NOT contain certain things.
+                // { regexArray: toFantasticRegexArray, messageText: finalFantastic, messageType: SendMessageType.FinalFantastic },
+                { regexArray: toHardTimeRegexArray, messageText: finalHardTime, messageType: SendMessageType.FinalHardTime },
+            ];
+            var matchObject = calculateInboxRegexArray(middleRegexMatchArray, stringObjectToMatch).matchObject;
+            if (matchObject) {
+                return matchObject;
             }
         }
         if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
@@ -560,11 +546,7 @@
                 };
             }
         }
-        return {
-            messageText: undefined,
-            messageType: undefined,
-            messageMatch: undefined,
-        };
+        return undefinedMessage;
     };
 
     var isArray = Array.isArray;

@@ -5,7 +5,7 @@ import { InitialRegExpCollection, StringObjectToMatch, MatchRegExpResponse } fro
 import { ConfigType } from '../config';
 import { matchRegex } from './regex/matchRegex';
 
-export type RegexArrayComplex = {
+export type RegexArraySub = {
   sendMessageType: SendMessageType;
   regexArray: InitialRegExpCollection[];
   regexUrlGenerator: any;
@@ -13,7 +13,7 @@ export type RegexArrayComplex = {
   delete: boolean;
 };
 
-export type SubFilterMatch = {
+export type SubMatchResponse = {
   shouldDeleteElementImmediately: boolean;
   sendMessageType: SendMessageType | undefined;
   prelimUrl: string | undefined;
@@ -34,7 +34,7 @@ export const lessThanOneDayAgo = (date: Date): boolean => {
   return date.getTime() > aDayAgo;
 }
 
-export const calculateRegexArray = (freshUserRegexArray: RegexArrayComplex[], compiledUser: CompiledFullUserObject, stringObjectToMatch: StringObjectToMatch, usernameConfig: ConfigType) => (
+export const calculateSubRegexArray = (freshUserRegexArray: RegexArraySub[], compiledUser: CompiledFullUserObject, stringObjectToMatch: StringObjectToMatch, usernameConfig: ConfigType) => (
   freshUserRegexArray.reduce((acc, regexItem) => {
     if (!acc.matchFound) {
       const matchArray = matchRegex(regexItem.regexArray, stringObjectToMatch)
@@ -52,5 +52,5 @@ export const calculateRegexArray = (freshUserRegexArray: RegexArrayComplex[], co
       }
     }
     return acc;
-  }, { matchObject: undefined, matchFound: false } as { matchObject?: SubFilterMatch, matchFound: boolean })
+  }, { matchObject: undefined, matchFound: false } as { matchObject?: SubMatchResponse, matchFound: boolean })
 );

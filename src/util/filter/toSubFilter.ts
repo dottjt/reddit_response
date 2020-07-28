@@ -54,9 +54,14 @@ import { toIsWatchingPornRelapseAdviceRegexArray } from './filterCollections/sub
 import { toNoReasonToRelapseAdviceRegexArray } from './filterCollections/sub/toNoReasonToRelapseAdvice';
 import { toAgeAdviceRegexArray } from './filterCollections/sub/toAgeAdvice';
 import { toFlatlineAdviceRegexArray } from './filterCollections/sub/toFlatlineAdvice';
-import { deleteImmediately, lessThanOneDayAgo, RegexArrayComplex, SubFilterMatch, calculateRegexArray } from './toSubFilterUtil';
+import { deleteImmediately, lessThanOneDayAgo, RegexArraySub, SubMatchResponse, calculateSubRegexArray } from './toSubFilterUtil';
 
-export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): SubFilterMatch => {
+export const toSubFilter = (
+  compiledUser: CompiledFullUserObject,
+  usernameConfig: ConfigType,
+  flairText: string,
+  titleText: string,
+  messageText: string): SubMatchResponse => {
 
   const stringObjectToMatch: StringObjectToMatch = { titleText, flairText, messageText };
 
@@ -106,7 +111,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
 
   // FRESH USER
   if (compiledUser.userType === UserType.FreshUser) {
-    const freshUserRegexArray: RegexArrayComplex[] = [
+    const freshUserRegexArray: RegexArraySub[] = [
       // SPECIFIC
       { sendMessageType: SendMessageType.StartAdviceWetdreamAdvice, regexArray: toWetdreamAdviceRegexArray, regexUrlGenerator: wetdreamAdvice, condition: true, delete: false },
       { sendMessageType: SendMessageType.StartAccountabilityPartner, regexArray: toAccountabilityPartnerRegexArray, regexUrlGenerator: accountabilityPartner, condition: true, delete: false },
@@ -136,7 +141,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
       // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time.
     ];
 
-    const { matchObject } = calculateRegexArray(freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig);
+    const { matchObject } = calculateSubRegexArray(freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig);
 
     if (matchObject) {
       return matchObject;
