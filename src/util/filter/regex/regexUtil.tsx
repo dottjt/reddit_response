@@ -1,5 +1,5 @@
 
-export type StringsToMatch = {
+export type StringObjectToMatch = {
   titleText?: string;
   flairText?: string;
   messageText?: string;

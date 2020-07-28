@@ -1,7 +1,7 @@
 import { SendMessageType } from '../../types/serverTypes';
 import { CompiledFullUserObject } from '../../types/tamperMonkeyTypes';
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
-import { InitialRegExpCollection, StringsToMatch, MatchRegExpResponse } from './regex/regexUtil';
+import { InitialRegExpCollection, StringObjectToMatch, MatchRegExpResponse } from './regex/regexUtil';
 import { ConfigType } from '../config';
 import { matchRegex } from './regex/matchRegex';
 
@@ -34,10 +34,10 @@ export const lessThanOneDayAgo = (date: Date): boolean => {
   return date.getTime() > aDayAgo;
 }
 
-export const calculateRegexArray = (freshUserRegexArray: RegexArrayComplex[], compiledUser: CompiledFullUserObject, stringsToMatch: StringsToMatch, usernameConfig: ConfigType) => (
+export const calculateRegexArray = (freshUserRegexArray: RegexArrayComplex[], compiledUser: CompiledFullUserObject, stringObjectToMatch: StringObjectToMatch, usernameConfig: ConfigType) => (
   freshUserRegexArray.reduce((acc, regexItem) => {
     if (!acc.matchFound) {
-      const matchArray = matchRegex(regexItem.regexArray, stringsToMatch)
+      const matchArray = matchRegex(regexItem.regexArray, stringObjectToMatch)
 
       if (regexItem.condition && matchArray.length > 0) {
         return {

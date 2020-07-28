@@ -1,5 +1,5 @@
 import {
-  StringsToMatch,
+  StringObjectToMatch,
   MatchRegExpResponse,
   InitialRegExpCollection,
   RegExpFilterLogic,
@@ -10,23 +10,23 @@ type ReduceRegexMatch = {
   matchFound: boolean;
 }
 
-const matchMultiple = (keyString: string, stringsToMatch: StringsToMatch, regex: RegExp): MatchRegExpResponse => {
+const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse => {
   let matchObject = {} as MatchRegExpResponse;
   // TODO, I think this would be an additional reduce.
 
   return matchObject;
 }
 
-const matchTextBoth = (stringsToMatch: StringsToMatch, regex: RegExp): MatchRegExpResponse  => {
+const matchTextBoth = (stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse  => {
   let matchObject = {} as MatchRegExpResponse;
-  const matchText = stringsToMatch.titleText?.match(regex);
+  const matchText = stringObjectToMatch.titleText?.match(regex);
   if (matchText) {
     matchObject.titleTextMatch = {
       value: matchText[0],
       regex: String(regex),
     }
   }
-  const matchMessage = stringsToMatch.messageText?.match(regex);
+  const matchMessage = stringObjectToMatch.messageText?.match(regex);
   if (matchMessage) {
     matchObject.messageTextMatch = {
       value: matchMessage[0],
@@ -36,10 +36,10 @@ const matchTextBoth = (stringsToMatch: StringsToMatch, regex: RegExp): MatchRegE
   return matchObject;
 }
 
-const matchOne = (keyString: string, stringsToMatch: StringsToMatch, regex: RegExp): MatchRegExpResponse => {
+const matchOne = (keyString: string, stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse => {
   let matchObject = {} as MatchRegExpResponse;
 
-  const match = stringsToMatch[keyString]?.match(regex);
+  const match = stringObjectToMatch[keyString]?.match(regex);
   if (match) {
     matchObject[`${keyString}Match`] = {
       value: match[0],
@@ -73,7 +73,7 @@ const calculateMatch = (regexFilters: InitialRegExpCollection, matchObject: Matc
   return { matchArray: [], matchFound: false };
 }
 
-export const matchRegexReduceMatchedObject = (regexKeys: string[], regexFilters: InitialRegExpCollection, stringsToMatch: StringsToMatch) => {
+export const matchRegexReduceMatchedObject = (regexKeys: string[], regexFilters: InitialRegExpCollection, stringObjectToMatch: StringObjectToMatch) => {
   const { matchObject } = regexKeys.reduce((acc, keyString) => {
     const regex = regexFilters[keyString];
 
@@ -81,12 +81,12 @@ export const matchRegexReduceMatchedObject = (regexKeys: string[], regexFilters:
       let matchObject: MatchRegExpResponse = {} as MatchRegExpResponse;
 
       if (regexFilters?.options?.both && keyString === 'titleText') {
-        matchObject = matchTextBoth(stringsToMatch, regex);
+        matchObject = matchTextBoth(stringObjectToMatch, regex);
       } else {
-        if (Array.isArray(stringsToMatch[keyString])) {
-          matchObject = matchMultiple(keyString, stringsToMatch, regex);
+        if (Array.isArray(stringObjectToMatch[keyString])) {
+          matchObject = matchMultiple(keyString, stringObjectToMatch, regex);
         } else {
-          matchObject = matchOne(keyString, stringsToMatch, regex);
+          matchObject = matchOne(keyString, stringObjectToMatch, regex);
         }
       }
 
@@ -102,13 +102,13 @@ export const matchRegexReduceMatchedObject = (regexKeys: string[], regexFilters:
   return { matchObject };
 }
 
-export const matchRegex = (regexArray: InitialRegExpCollection[], stringsToMatch: StringsToMatch): MatchRegExpResponse[] => {
+export const matchRegex = (regexArray: InitialRegExpCollection[], stringObjectToMatch: StringObjectToMatch): MatchRegExpResponse[] => {
   const { matchArray } = regexArray.reduce((acc: ReduceRegexMatch, regexFilters: InitialRegExpCollection) => {
 
     if (!acc.matchFound) {
       const regexKeys = Object.keys(regexFilters).filter(item => item !== 'options');
 
-      const { matchObject } = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringsToMatch);
+      const { matchObject } = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringObjectToMatch);
 
       const { matchArray, matchFound } = calculateMatch(regexFilters, matchObject, regexKeys);
 

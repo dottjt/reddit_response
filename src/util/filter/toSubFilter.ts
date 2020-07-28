@@ -45,7 +45,7 @@ import { toWhenDoesItGetEasierAdviceRegexArray } from './filterCollections/sub/t
 import { generatePrelimUrl } from '../utils/sendMessageUtils';
 import { isLessThan24Hours } from '../utils/commonUtils';
 
-import { extractRegexMatch } from './regex/regexUtil';
+import { extractRegexMatch, StringObjectToMatch } from './regex/regexUtil';
 import { matchRegex } from './regex/matchRegex';
 
 import { toBiggestBenefitPostAddictionAdviceRegexArray } from './filterCollections/sub/toBiggestBenefitPostAddictionAdvice';
@@ -58,11 +58,11 @@ import { deleteImmediately, lessThanOneDayAgo, RegexArrayComplex, SubFilterMatch
 
 export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig: ConfigType, flairText: string, titleText: string, messageText: string): SubFilterMatch => {
 
-  const stringsToMatch = { titleText, flairText, messageText };
+  const stringObjectToMatch: StringObjectToMatch = { titleText, flairText, messageText };
 
   // TO REMOVE
   const toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText)
-  const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringsToMatch);
+  const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringObjectToMatch);
 
   if (flairText !== 'New to NoFap') {
     if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
@@ -87,7 +87,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
 
     // TODO: Extend this to struggle.
     if (compiledUser?.lastSentMessage?.type.includes('start')) {
-      const toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, stringsToMatch);
+      const toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, stringObjectToMatch);
       if (toRelapseAdviceMatch.length > 0) {
         return {
           shouldDeleteElementImmediately: false,
@@ -136,7 +136,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
       // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time.
     ];
 
-    const { matchObject } = calculateRegexArray(freshUserRegexArray, compiledUser, stringsToMatch, usernameConfig);
+    const { matchObject } = calculateRegexArray(freshUserRegexArray, compiledUser, stringObjectToMatch, usernameConfig);
 
     if (matchObject) {
       return matchObject;
@@ -144,7 +144,7 @@ export const toSubFilter = (compiledUser: CompiledFullUserObject, usernameConfig
   }
 
   // Final Delete
-  const toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, stringsToMatch);
+  const toRemoveFinalMatch = matchRegex(toRemoveFinalRegexArray, stringObjectToMatch);
   if (toRemoveFinalMatch.length > 0) {
     return {
       shouldDeleteElementImmediately: true,

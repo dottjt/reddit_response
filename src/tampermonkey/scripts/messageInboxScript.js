@@ -387,22 +387,22 @@
         RegExpFilterLogic["OR"] = "OR";
     })(RegExpFilterLogic || (RegExpFilterLogic = {}));
 
-    var matchMultiple = function (keyString, stringsToMatch, regex) {
+    var matchMultiple = function (keyString, stringObjectToMatch, regex) {
         var matchObject = {};
         // TODO, I think this would be an additional reduce.
         return matchObject;
     };
-    var matchTextBoth = function (stringsToMatch, regex) {
+    var matchTextBoth = function (stringObjectToMatch, regex) {
         var _a, _b;
         var matchObject = {};
-        var matchText = (_a = stringsToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
+        var matchText = (_a = stringObjectToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (matchText) {
             matchObject.titleTextMatch = {
                 value: matchText[0],
                 regex: String(regex),
             };
         }
-        var matchMessage = (_b = stringsToMatch.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
+        var matchMessage = (_b = stringObjectToMatch.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
         if (matchMessage) {
             matchObject.messageTextMatch = {
                 value: matchMessage[0],
@@ -411,10 +411,10 @@
         }
         return matchObject;
     };
-    var matchOne = function (keyString, stringsToMatch, regex) {
+    var matchOne = function (keyString, stringObjectToMatch, regex) {
         var _a;
         var matchObject = {};
-        var match = (_a = stringsToMatch[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
+        var match = (_a = stringObjectToMatch[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (match) {
             matchObject[keyString + "Match"] = {
                 value: match[0],
@@ -444,21 +444,21 @@
         }
         return { matchArray: [], matchFound: false };
     };
-    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, stringsToMatch) {
+    var matchRegexReduceMatchedObject = function (regexKeys, regexFilters, stringObjectToMatch) {
         var matchObject = regexKeys.reduce(function (acc, keyString) {
             var _a;
             var regex = regexFilters[keyString];
             if (acc.allFound) {
                 var matchObject_1 = {};
                 if (((_a = regexFilters === null || regexFilters === void 0 ? void 0 : regexFilters.options) === null || _a === void 0 ? void 0 : _a.both) && keyString === 'titleText') {
-                    matchObject_1 = matchTextBoth(stringsToMatch, regex);
+                    matchObject_1 = matchTextBoth(stringObjectToMatch, regex);
                 }
                 else {
-                    if (Array.isArray(stringsToMatch[keyString])) {
+                    if (Array.isArray(stringObjectToMatch[keyString])) {
                         matchObject_1 = matchMultiple();
                     }
                     else {
-                        matchObject_1 = matchOne(keyString, stringsToMatch, regex);
+                        matchObject_1 = matchOne(keyString, stringObjectToMatch, regex);
                     }
                 }
                 if (Object.keys(matchObject_1).length > 0) {
@@ -469,11 +469,11 @@
         }, { matchObject: {}, allFound: true }).matchObject;
         return { matchObject: matchObject };
     };
-    var matchRegex = function (regexArray, stringsToMatch) {
+    var matchRegex = function (regexArray, stringObjectToMatch) {
         var matchArray = regexArray.reduce(function (acc, regexFilters) {
             if (!acc.matchFound) {
                 var regexKeys = Object.keys(regexFilters).filter(function (item) { return item !== 'options'; });
-                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringsToMatch).matchObject;
+                var matchObject = matchRegexReduceMatchedObject(regexKeys, regexFilters, stringObjectToMatch).matchObject;
                 var _a = calculateMatch(regexFilters, matchObject, regexKeys), matchArray_1 = _a.matchArray, matchFound = _a.matchFound;
                 if (matchFound)
                     return { matchArray: matchArray_1, matchFound: matchFound };
@@ -488,10 +488,10 @@
         var compiledUser = messagePayload.compiledUser;
         var lastSentMessage = compiledUser.lastSentMessage;
         var lastReceivedMessage = compiledUser.lastReceivedMessage;
-        var stringsToMatch = { replyText: messagePayload.message };
+        var stringObjectToMatch = { replyText: messagePayload.message };
         // EDGE
         // Are you a bot?
-        var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, stringsToMatch);
+        var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, stringObjectToMatch);
         if (compiledUser.userType === UserType.UserHostile
             || toNotRespondRegexMatch.length > 0) {
             return {
@@ -504,7 +504,7 @@
             ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('start')) || (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('follow'))) &&
             ((lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('start')) || (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('follow')))) {
             // No Worries
-            var toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, stringsToMatch);
+            var toNoWorriesGuideRegexMatch = matchRegex(toNoWorriesGuideRegexArray, stringObjectToMatch);
             if (toNoWorriesGuideRegexMatch.length > 0) {
                 return {
                     messageText: middleGuideNoWorries,
@@ -513,7 +513,7 @@
                 };
             }
             // Link You
-            var toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, stringsToMatch);
+            var toLinkYouGuideRegexMatch = matchRegex(toLinkYouGuideRegexArray, stringObjectToMatch);
             if (toLinkYouGuideRegexMatch.length > 0) {
                 return {
                     messageText: middleGuideLinkYou,
@@ -522,7 +522,7 @@
                 };
             }
             // Meditation
-            var toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, stringsToMatch);
+            var toMeditateGuideRegexMatch = matchRegex(toMeditateGuideRegexArray, stringObjectToMatch);
             if (toMeditateGuideRegexMatch.length > 0) {
                 return {
                     messageText: middleGuideMeditationAdvice,
@@ -533,14 +533,14 @@
             // // That's fantastic
             // so if all else fails and they don't want the link, BUT they say they meditate then I can throw them a That's fantastic link.
             // I will have to careful check that it DOES NOT contain certain things.
-            // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, stringsToMatch);
+            // const toFantasticRegexMatch = matchRegex(toFantasticRegexArray, stringObjectToMatch);
             // if (toFantasticRegexMatch.length > 0) {
             //   return {
             //     messageText: finalFantastic,
             //     messageType: SendMessageType.FinalFantastic,
             //   }
             // }
-            var toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, stringsToMatch);
+            var toHardTimeRegexMatch = matchRegex(toHardTimeRegexArray, stringObjectToMatch);
             if (toHardTimeRegexMatch.length > 0) {
                 return {
                     messageText: finalHardTime,
@@ -551,7 +551,7 @@
         }
         if (!moreThanOneMessage && (lastReceivedMessage === null || lastReceivedMessage === void 0 ? void 0 : lastReceivedMessage.type.includes('middle')) && (lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('middle'))) {
             // Join Subreddit
-            var toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, stringsToMatch);
+            var toJoinSubredditRegexMatch = matchRegex(toJoinSubredditRegexArray, stringObjectToMatch);
             if (toJoinSubredditRegexMatch.length > 0) {
                 return {
                     messageText: finalJoinSubreddit,
