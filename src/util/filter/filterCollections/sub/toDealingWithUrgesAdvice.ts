@@ -43,6 +43,8 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /temptation to peak is too damn high/i },
   { ...both, titleText: /(couple of|past few) days .* constant urges/i },
   { ...both, titleText: /(it’s|it's|its|it is) hard to resist/i },
+  { ...both, titleText: /today was ?(really)? hard on (for me|me) to control the urges/i },
+
 
 
   { ...both, titleText: /urges are ?(getting|becoming)? bigger and bigger/i },

@@ -1,7 +1,10 @@
 import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
-export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
+// remove from
+// I was about to relapse again
+// (almost) lost my longest streak
 
+export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   // STRUGGLE
   { titleText: /Feel like ?(I’m|I'm|im|I am)? slipping/i, },
   { titleText: /(I’m|I'm|im|I am) really struggling/i, },
@@ -26,6 +29,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /how do i get past day 1\?/i, },
   { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
+  { ...both, titleText: /i dont know how to just stop it/i },
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
   { ...both, messageText: /having a really hard time controlling my urges\?/i, },

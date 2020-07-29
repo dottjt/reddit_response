@@ -1,5 +1,5 @@
 import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
 export const toAgeAdviceRegexArray: InitialRegExpCollection[] = [
-  { titleText: /hellohellohellohellohellohello/i },
+  { titleText: /How long can take a reboot/i },
 ];

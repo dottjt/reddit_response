@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'BATMANIsalfred';
-    var R_NOFAP_TIMESTAMP = '2 hours ago';
-    var R_PORN_FREE_USERNAME = 'forlorn_patience';
-    var R_PORN_FREE_TIMESTAMP = '8 minutes ago';
-    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '1 hours ago';
+    var R_NOFAP_USERNAME = 'AllBitchesDie';
+    var R_NOFAP_TIMESTAMP = '3 hours ago';
+    var R_PORN_FREE_USERNAME = '65Arnold';
+    var R_PORN_FREE_TIMESTAMP = '2 hours ago';
+    var R_PORN_ADDICTION_USERNAME = '65Arnold';
+    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2873,52 +2873,7 @@
     var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
     var both = { options: { both: true } };
 
-    var toRemoveInitialDay = function (titleText, flairText, messageText) {
-        return (new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(titleText)
-            || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
-            || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
-            || new RegExp(/profile/i).test(titleText)
-            || new RegExp(/^day \d+ clean/i).test(titleText)
-            || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)) &&
-            (new RegExp(/^finally$/i).test(messageText)
-                || new RegExp(/^day \d+ clean/i).test(titleText)
-                || new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(messageText)
-                || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
-                || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
-                || new RegExp(/had no urges/i).test(messageText)
-                || new RegExp(/sparta/i).test(messageText)
-                || new RegExp(/\./i).test(messageText)
-                || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText));
-    };
-    // TODO Fix this up
-    var toRemoveInitialRegexArray = [
-        { titleText: /\".*\"/i },
-        { titleText: /\“.*\“/i },
-        // DAY MILESTONES
-        { titleText: /180 day/i },
-        // COUNTER
-        { titleText: /profile/i },
-        { titleText: /(days|day) flair/i },
-        { titleText: /name tag/i },
-        { titleText: /How do you add ?(the)? days/i },
-        { titleText: /tell me how to add days/i },
-        { titleText: /(Don't|Don't|dont) mind me/i },
-        { titleText: /journal entry/i },
-        { titleText: /journal check in/i },
-        { titleText: /diary/i },
-        { titleText: /libido/i },
-        { titleText: /(weekly|daily) journal/i },
-        { titleText: /(tracker|counting|counter)/i },
-        { titleText: /checking my day count/i },
-        { titleText: /accountability post/i },
-        { titleText: /next to (ur|your) (name|tag)/i },
-        { titleText: /Where is the tag that/i },
-        { titleText: /tag that shows your streak/i },
-        { titleText: /someone put a counter/i },
-        __assign(__assign({}, both), { titleText: /I need methods to keep count/i }),
-        __assign(__assign({}, both), { titleText: /How to get the number of days/i }),
-        { messageText: /get a tag with your streak/i },
-        __assign(__assign({}, both), { titleText: /How does the day counter work/i }),
+    var toRemoveMotivationVictoryLectureRegexArray = [
         // LECTURE
         { titleText: /my benefits/i },
         { titleText: /read this if you/i },
@@ -2939,6 +2894,7 @@
         __assign(__assign({}, both), { titleText: /methods that you might like to/i }),
         __assign(__assign({}, both), { titleText: /Tip that might help you/i }),
         // VICTORY
+        { titleText: /SUPERPOWERS ARE REAL/i },
         { titleText: /overcame my worst urge/i },
         { titleText: /I am proud of myself/i },
         { titleText: /Instead of (masturbating|PMO) i/i },
@@ -2972,6 +2928,7 @@
         { titleText: /\d+ (days|weeks|months|years) free$/i },
         { titleText: /On my way to triumph/i },
         { titleText: /finally hit .* (weeks|days) again/i },
+        __assign(__assign({}, both), { titleText: /pretty easy so far/i }),
         // MOTIVATION
         { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },
         { titleText: /(Don't|Don't|dont) give up$/i },
@@ -2988,8 +2945,63 @@
         { titleText: /^keep going/i },
         { titleText: /Our Greatest Fear Is/i },
         { titleText: /Awesome benefits/i },
+        __assign(__assign({}, both), { titleText: /a poem/i }),
         __assign(__assign({}, both), { titleText: /(I'm|I’m|I am|im|i m) so proud of (you|us)/i }),
         __assign(__assign({}, both), { titleText: /greatest (NoFap|no fap|no-fap) inspiration/i }),
+    ];
+
+    var toRemoveCounter = [
+        // COUNTER
+        { titleText: /profile/i },
+        { titleText: /(days|day) flair/i },
+        { titleText: /name tag/i },
+        { titleText: /How do you add ?(the)? days/i },
+        { titleText: /tell me how to add days/i },
+        { titleText: /(Don't|Don't|dont) mind me/i },
+        { titleText: /journal entry/i },
+        { titleText: /journal check in/i },
+        { titleText: /diary/i },
+        { titleText: /libido/i },
+        { titleText: /(weekly|daily) journal/i },
+        { titleText: /(tracker|counting|counter)/i },
+        { titleText: /checking my day count/i },
+        { titleText: /accountability post/i },
+        { titleText: /next to (ur|your) (name|tag)/i },
+        { titleText: /Where is the tag that/i },
+        { titleText: /tag that shows your streak/i },
+        { titleText: /someone put a counter/i },
+    ];
+
+    // TODO This needs to be more specific not to include day 1 or day 0
+    var toRemoveInitialDay = function (titleText, flairText, messageText) {
+        return (new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(titleText)
+            || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
+            || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
+            || new RegExp(/profile/i).test(titleText)
+            || new RegExp(/^day \d+ clean/i).test(titleText)
+            || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText)) &&
+            (new RegExp(/^finally$/i).test(messageText)
+                || new RegExp(/^day \d+ clean/i).test(titleText)
+                || new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(messageText)
+                || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
+                || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
+                || new RegExp(/had no urges/i).test(messageText)
+                || new RegExp(/sparta/i).test(messageText)
+                || new RegExp(/\./i).test(messageText)
+                || new RegExp(/^d\+th (day|week)\.?$/i).test(titleText));
+    };
+    // TODO Fix this up
+    var toRemoveInitialRegexArray = __spreadArrays([
+        { titleText: /\".*\"/i },
+        { titleText: /\“.*\“/i },
+        // DAY MILESTONES
+        { titleText: /180 day/i }
+    ], toRemoveCounter, [
+        __assign(__assign({}, both), { titleText: /I need methods to keep count/i }),
+        __assign(__assign({}, both), { titleText: /How to get the number of days/i }),
+        { messageText: /get a tag with your streak/i },
+        __assign(__assign({}, both), { titleText: /How does the day counter work/i })
+    ], toRemoveMotivationVictoryLectureRegexArray, [
         // RATIONALISATIONS
         { titleText: /(down side|downside)/i },
         { titleText: /relapsed intentionally/i },
@@ -3029,6 +3041,7 @@
         { titleText: /sexting/i },
         { titleText: /(virgin|virginity)/i },
         { titleText: /women attraction/i },
+        { titleText: /chastity cage/i },
         { titleText: /got laid (1st|first) time/i },
         // POINTLESS QUESTIONS
         { titleText: /counts as relapse/i },
@@ -3061,7 +3074,7 @@
         { titleText: /libido/i },
         { titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
         { titleText: /no urges yet/i },
-        { titleText: /(hard mode|hardmode)/i },
+        // { titleText: /(hard mode|hardmode)/i }, // this needs to be more specific
         { titleText: /cold shower/i },
         { titleText: /book recommendation/i },
         __assign(__assign({}, both), { titleText: /does having sex break (NoFap|no fap|no-fap)/i }),
@@ -3077,7 +3090,10 @@
         { titleText: /just rejected a ?(hot)? girl/i },
         { titleText: /remember these \d+/i },
         { titleText: /really helpful app/i },
-    ];
+        { titleText: /too nervous to get hard/i },
+        { titleText: /App for Quitting Porn/i },
+        __assign(__assign({}, both), { titleText: /Completed 90 days/i }),
+    ]);
     var toRemoveFinalRegexArray = [
         { titleText: /^(day|week) \d+ (complete|done|free|strong)/i },
         { titleText: /\d+ (week|day).* (complete|done|free|strong)/i },
@@ -3124,6 +3140,7 @@
         __assign(__assign({}, both), { titleText: /I lost ?(the)? battle today/i }),
         __assign(__assign({}, both), { titleText: /Gave in last night/i }),
         __assign(__assign({}, both), { titleText: /caved into a relapse already/i }),
+        __assign(__assign({}, both), { titleText: /Relaspsed because i had/i }),
         { messageText: /was going strong till today/i },
         { messageText: /Yesterday I relapsed again/i },
         __assign(__assign({}, both), { titleText: /relapsed (after|on day|again)/i }),
@@ -3149,6 +3166,7 @@
         { titleText: /(I’m|I'm|im|I am) done with this ?(.*) feeling/i },
         { titleText: /stopping for good/i },
         { titleText: /Going on a \d+ day trial/i },
+        { titleText: /Going to try \d+ day/i },
         { titleText: /(it’s|it's|its|it is) time to (quit|change)/i },
         { titleText: /this ends now/i },
         { titleText: /(Let's|let’s|lets) (start|do this)/i },
@@ -3202,6 +3220,7 @@
         { titleText: /why (I’m|I'm|im|I am) starting/i },
         { titleText: /^(starting|started)(\.|\!)?$/i },
         { titleText: /starting my journey/i },
+        { titleText: /finally starting tonight/i },
         { titleText: /(starting|started|starts) (now|today)/i },
         { titleText: /(starting|started) .* (streak|first|run)/i },
         { titleText: /(starting|started) days of (nofap|no fap|no-fap)/i },
@@ -3300,6 +3319,7 @@
         { titleText: /what other steps/i },
         { titleText: /any help or advice/i },
         { titleText: /does anyone have tips/i },
+        __assign(__assign({}, both), { titleText: /Can you give me a advice to make it easier/i }),
         __assign(__assign({}, both), { titleText: /any ideas or advice on (quitting|quiting)/i }),
         __assign(__assign({}, both), { titleText: /any tips on how to maintain a ?(long)? streak/i }),
         __assign(__assign({}, both), { titleText: /please give your suggestions and tips/i }),
@@ -3337,6 +3357,8 @@
         { messageText: /How do I stop\?/i },
         { messageText: /anyone plzzzz/i },
         { messageText: /I (don’t|don't|dont) know how to convince (my self|myself) to give ?(it)? up/i },
+        { messageText: /if you can please give a better advice/i },
+        __assign(__assign({}, both), { titleText: /Looking how to start/i }),
         __assign(__assign({}, both), { titleText: /^how to quit(\?)?$/i }),
         __assign(__assign({}, both), { titleText: /best way to stop masturbating\?/i }),
         __assign(__assign({}, both), { titleText: /how can I (stop|survive this journey)/i }),
@@ -3345,6 +3367,7 @@
         __assign(__assign({}, both), { titleText: /how to get past .* (week|days|day)/i }),
         __assign(__assign({}, both), { titleText: /someone tell me how to (stop|quit)/i }),
         __assign(__assign({}, both), { titleText: /How do I regain (self control|self-control)/i }),
+        __assign(__assign({}, both), { titleText: /What are some things I should do to keep my mind/i }),
         // STRUGGLE
         { titleText: /no (masterbation|masturbation) is hard for me/i },
         { titleText: /shit is getting rough/i },
@@ -3415,6 +3438,7 @@
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) every \d+/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) bad\?/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) = relapse/i }),
+        __assign(__assign({}, both), { titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) is considered as a relapse/i }),
         __assign(__assign({}, both), { titleText: /Anybody have tips to avoid (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         // TITLE + MESSAGE
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /any solutions\?/ },
@@ -3426,6 +3450,9 @@
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /how do I avoid/ },
     ];
 
+    // remove from
+    // I was about to relapse again
+    // (almost) lost my longest streak
     var toStruggleAdviceRegexArray = [
         // STRUGGLE
         { titleText: /Feel like ?(I’m|I'm|im|I am)? slipping/i, },
@@ -3450,6 +3477,7 @@
         { titleText: /I just have to stop/i, },
         { titleText: /how do i get past day 1\?/i, },
         { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
+        __assign(__assign({}, both), { titleText: /i dont know how to just stop it/i }),
         __assign(__assign({}, both), { titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i }),
         __assign(__assign({}, both), { titleText: /not able to start .* journey again/i }),
         __assign(__assign({}, both), { messageText: /having a really hard time controlling my urges\?/i }),
@@ -3524,6 +3552,7 @@
         __assign(__assign({}, both), { titleText: /temptation to peak is too damn high/i }),
         __assign(__assign({}, both), { titleText: /(couple of|past few) days .* constant urges/i }),
         __assign(__assign({}, both), { titleText: /(it’s|it's|its|it is) hard to resist/i }),
+        __assign(__assign({}, both), { titleText: /today was ?(really)? hard on (for me|me) to control the urges/i }),
         __assign(__assign({}, both), { titleText: /urges are ?(getting|becoming)? bigger and bigger/i }),
     ];
 
@@ -3560,11 +3589,13 @@
         __assign(__assign({}, both), { titleText: /Is it ok to (fap|masturbate) without porn/i }),
         __assign(__assign({}, both), { titleText: /Is masturbation ok\?/i }),
         __assign(__assign({}, both), { titleText: /good moderation for masturbation/i }),
+        __assign(__assign({}, both), { titleText: /Is fapping without porn okay/i }),
         __assign(__assign({}, both), { titleText: /opinions towards fapping without porn/i }),
     ];
 
     var toDidIJustRelapseAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /did I just relapse\?/i }),
+        __assign(__assign({}, both), { titleText: /Is this a relapse\?/i }),
         __assign(__assign({}, both), { titleText: /count as ?(a)? relapse\?/i }),
         __assign(__assign({}, both), { titleText: /do I have to (restart|reset) my streak/i }),
     ];
@@ -3697,7 +3728,7 @@
     ];
 
     var toAgeAdviceRegexArray = [
-        { titleText: /hellohellohellohellohellohello/i },
+        { titleText: /How long can take a reboot/i },
     ];
 
     var toFlatlineAdviceRegexArray = [
@@ -3741,7 +3772,7 @@
         // TO REMOVE
         var toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText);
         var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringObjectToMatch);
-        if (flairText !== 'New to NoFap') {
+        if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
             if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
                 console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText + (toRemoveInitialMatch.length > 0 ? " - " + extractRegexMatch(toRemoveInitialMatch) : ''));
                 return deleteImmediately;

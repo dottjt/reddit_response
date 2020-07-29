@@ -27,7 +27,7 @@ import {
   toRemoveInitialDay,
   toRemoveInitialRegexArray,
   toRemoveFinalRegexArray
-} from './filterCollections/sub/toRemove';
+} from './filterCollections/sub/toRemove/toRemove';
 import { toRelapseAdviceRegexArray } from './filterCollections/sub/toRelapse';
 import { toStartAdviceRegexArray } from './filterCollections/sub/toStart';
 import { toStartAgainAdviceRegexArray } from './filterCollections/sub/toStartAgain';
@@ -69,7 +69,8 @@ export const toSubFilter = (
   const toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText)
   const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringObjectToMatch);
 
-  if (flairText !== 'New to NoFap') {
+
+  if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
     if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
       console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}${toRemoveInitialMatch.length > 0 ? ` - ${extractRegexMatch(toRemoveInitialMatch)}` : ''}`);
       return deleteImmediately;
@@ -181,6 +182,8 @@ export const toSubFilter = (
 // should I reset?
 // Is this flatline? - title,  How do you get through it? - messageText
 // Does peeking count as a relapse (both) - did I just relapse.
+
+// Do I have a fapping addiction -
 
 // Ways to help me stay motivated through flatline -messageText
 // Should I just finish and restart my counter? messageText  - no reason to relapse.

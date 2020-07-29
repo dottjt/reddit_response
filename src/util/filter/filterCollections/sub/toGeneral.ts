@@ -28,6 +28,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /any help or advice/i },
   { titleText: /does anyone have tips/i },
 
+  { ...both, titleText: /Can you give me a advice to make it easier/i },
   { ...both, titleText: /any ideas or advice on (quitting|quiting)/i },
   { ...both, titleText: /any tips on how to maintain a ?(long)? streak/i },
   { ...both, titleText: /please give your suggestions and tips/i },
@@ -69,8 +70,10 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { messageText: /How do I stop\?/i },
   { messageText: /anyone plzzzz/i },
   { messageText: /I (don’t|don't|dont) know how to convince (my self|myself) to give ?(it)? up/i },
+  { messageText: /if you can please give a better advice/i },
 
   // HOW TO
+  { ...both, titleText: /Looking how to start/i },
   { ...both, titleText: /^how to quit(\?)?$/i },
   { ...both, titleText: /best way to stop masturbating\?/i },
   { ...both, titleText: /how can I (stop|survive this journey)/i },
@@ -79,6 +82,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /how to get past .* (week|days|day)/i },
   { ...both, titleText: /someone tell me how to (stop|quit)/i },
   { ...both, titleText: /How do I regain (self control|self-control)/i },
+  { ...both, titleText: /What are some things I should do to keep my mind/i },
 
   // STRUGGLE
   { titleText: /no (masterbation|masturbation) is hard for me/i },

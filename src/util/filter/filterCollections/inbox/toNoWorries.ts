@@ -33,6 +33,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /share ?(me)? the/i },
   { replyText: /give (ur|your) (site|link|web|guide|content|page) a visit/i },
   { replyText: /hit me (up|with)/i },
+  { replyText: /hit me what (you’ve|you've) got/i },
   { replyText: /please pass on (the|that) website info/i },
   { replyText: /send me (your|this) (page|website)/i },
   { replyText: /(sent|send|pass) me (your|the) (site|link|web|guide|content|page)/i },
@@ -72,9 +73,11 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   // INTERESTED
   { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
   { replyText: /I'm interested in the website/i },
+  { replyText: /interested in having a look at your website/i },
   { replyText: /interested in the information/i },
   { replyText: /would be interesting to read/i },
   { replyText: /deffo interested/i },
+  { replyText: /I Definitely am interested/i },
 
   { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be|very)? (interested|intrested)/i },
   { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
@@ -95,6 +98,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
 
   { replyText: /wanna visit (ur|your) site/i },
   { replyText: /tell me more/i },
+  { replyText: /Tell me about this website/i },
   { replyText: /like to look around at your site/i },
   { replyText: /interested in seeing your website/i },
   { replyText: /actually really interested in your website/i },
@@ -143,6 +147,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
 
   // CHECK
   { replyText: /check on your website/i },
+  { replyText: /what is this website called/i },
 
   // LINK ME
   { replyText: /link ?(me)? to ur (site|link|web|guide|content|page)/i },
