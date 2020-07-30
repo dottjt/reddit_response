@@ -19,6 +19,8 @@ Although this application saves me a tremendous amount of time, the biggest save
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Message for providing meditation advice.
 - For inbox messages, console.log unmatched things, esepecially the toNotRespond ones.
+- At the top with prelim url, maybe I can order them based on type start/relapse etc.
+- to follow messages
 
 ### LOW PRIORITY
 

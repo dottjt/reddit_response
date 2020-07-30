@@ -16,8 +16,13 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) every \d+/i },
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) bad\?/i },
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) = relapse/i },
+  { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count as a relapse/i },
   { ...both, titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) is considered as a relapse/i },
   { ...both, titleText: /Anybody have tips to avoid (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /had a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) is it a relapse/i },
+  { ...both, titleText: /Is having ?(a)? (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /What if i have (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) interfere with (NoFap|no fap|no-fap) benefits/i },
 
   // TITLE + MESSAGE
   { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /any solutions\?/ },

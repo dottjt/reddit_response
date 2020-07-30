@@ -253,8 +253,11 @@
         { replyText: /Suggest me your website/i },
         { replyText: /send link pls/i },
         { replyText: /feel free on sending me a link to your site/i },
+        { replyText: /would be amazing if I could see that guide/i },
+        { replyText: /that link would be useful/i },
         // PASSIVE ASK
         { replyText: /May I know (your|the) website/i },
+        { replyText: /glad to know your website/i },
         { replyText: /could I get a link/i },
         { replyText: /could send the website/i },
         { replyText: /you could share/i },
@@ -262,6 +265,7 @@
         { replyText: /could you please direct me to it/i },
         { replyText: /Feel free to link (that|your|the) website/i },
         { replyText: /feel free to share it/i },
+        { replyText: /feel free to send me (the|a) link/i },
         { replyText: /would like to discover page/i },
         { replyText: /that website could be great/i },
         { replyText: /left the link of the website/i },
@@ -269,11 +273,14 @@
         { replyText: /be thankful for that link/i },
         { replyText: /(can|could) you ?(please)? link/i },
         { replyText: /comfortable with sharing it/i },
+        { replyText: /sure (I’ll|ill|I'll) take a look/i },
         { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
+        { replyText: /(wouldn’t|wouldn't) mind checking out your website/i },
         // SHARE
         { replyText: /can share me ur site/i },
         { replyText: /feel free to share your website/i },
         { replyText: /could you share your mediation website/i },
+        { replyText: /Feel free to share the link of your website/i },
         { replyText: /Link it pls/i },
         // INTERESTED
         { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
@@ -283,10 +290,12 @@
         { replyText: /would be interesting to read/i },
         { replyText: /deffo interested/i },
         { replyText: /I Definitely am interested/i },
+        { replyText: /Website would be interesting/i },
         { replyText: /(definetly|definitely|totally|I am|I'm|I’m|im|I'd|id) ?(be|very)? (interested|intrested)/i },
         { replyText: /(interested|intrested|interesting) (about|to know about|with|in|in viewing|in seeing) (ur|your|the) (site|link|web|guide|content|page)/i },
         { replyText: /website sounds .* interesting/i },
         { replyText: /i would be (intrested|interested)/i },
+        { replyText: /I'm very much (intrested|interested)/i },
         { replyText: /the website (sound|sounds) interesting/i },
         { replyText: /like to here about your/i },
         { replyText: /shoot me the link/i },
@@ -346,9 +355,10 @@
         { replyText: /what is this website called/i },
         // LINK ME
         { replyText: /link ?(me)? to ur (site|link|web|guide|content|page)/i },
-        { replyText: /I'll take the link/i },
+        { replyText: /(I’ll|ill|I'll) take the link/i },
         // UNSORTED
         { replyText: /Sure, I am looking for source material/i },
+        { replyText: /Any help or resources you have/i },
         { replyText: /source material which explains the process/i },
         { replyText: /sounds great/i },
         { replyText: /would love to hear your story/i },
@@ -2777,27 +2787,32 @@
     ], arr.slice(index)); };
     var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
         var _a;
-        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-            if (Boolean(splitArray[0])) {
-                var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                if (firstPartOfSentence) {
-                    var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                    splitArray[0] = firstText;
+        try {
+            if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                if (Boolean(splitArray[0])) {
+                    var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+                    if (firstPartOfSentence.length > 0) {
+                        var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+                        splitArray[0] = firstText;
+                    }
+                }
+                if (Boolean(splitArray[1])) {
+                    var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+                    if (lastPartOfSentence.length > 0) {
+                        var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
+                        splitArray[1] = lastText.slice(0, 40);
+                    }
                 }
             }
-            if (Boolean(splitArray[1])) {
-                var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                if (lastPartOfSentence) {
-                    var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
-                    splitArray[1] = lastText.slice(0, 40);
-                }
-            }
+            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
+            var newArray = isReact
+                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
+            return { newArray: newArray };
         }
-        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
-        var newArray = isReact
-            ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
-        return { newArray: newArray };
+        catch (error) {
+            throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
+        }
     };
     // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
     var highlightSyntax = function (relevantText, messageMatch, isReact) {

@@ -28,6 +28,13 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /any help or advice/i },
   { titleText: /does anyone have tips/i },
 
+  { ...both, titleText: /I (don’t|don't|dont) know how I should stop/i },
+  { ...both, titleText: /I need help or advice or anything/i },
+  { ...both, titleText: /I (don’t|don't|dont) know how to start/i },
+
+
+  { ...both, titleText: /What am I doing wrong\?/i },
+  { ...both, titleText: /can you tell me some tips or some ways you can fight the urges/i },
   { ...both, titleText: /Can you give me a advice to make it easier/i },
   { ...both, titleText: /any ideas or advice on (quitting|quiting)/i },
   { ...both, titleText: /any tips on how to maintain a ?(long)? streak/i },
@@ -37,6 +44,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /need (NoFap|no fap|no-fap) tips/i },
   { ...both, titleText: /any tips to stop (fapping|mast)/i },
   { ...both, titleText: /any tips to (stop|quit)\?/i },
+  { ...both, titleText: /any tips on how to (stop|quit)\?/i },
   { ...both, titleText: /Tips for (quitting|quiting) (porn|masturbation)/i },
 
   { ...both, titleText: /need some general advice/i },

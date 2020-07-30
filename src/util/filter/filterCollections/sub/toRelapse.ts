@@ -4,7 +4,7 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /failed first attempt/i },
   { ...both, titleText: /Failed my \d+ day streak/i },
   { ...both, titleText: /relapse report/i },
-  { ...both, titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i },
+  { ...both, titleText: /(I|I've|just) ?(have)? (relapsed|failed)/i }, // too broad, I failed is way, way too broad
   { ...both, titleText: /(failed|lost) (at|on) day/i },
   { ...both, titleText: /relapsed hard/i },
   { ...both, titleText: /^failed again$/i },
@@ -13,6 +13,9 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /^relapse\.?$/i },
   { ...both, titleText: /^relapsed (last night|today)/i },
   { ...both, titleText: /^failed\.?$/i },
+  { ...both, titleText: /Just PMO’d (for|after)/i },
+
+
   { ...both, titleText: /relapsing after a/i },
   { ...both, titleText: /relapsed once again/i },
   { ...both, titleText: /relapsed \d+ times today/i },

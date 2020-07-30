@@ -7,6 +7,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   // NEW
   { titleText: /^newbie/i },
   { titleText: /my first post/i }, // potentially inaccurate
+  { titleText: /^First day$/i }, // potentially inaccurate
   { titleText: /here for (nofap|no fap|no-fap)/i },
 
   // DECISION
@@ -24,12 +25,18 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /Going on a \d+ day trial/i },
   { titleText: /Going to try \d+ day/i },
 
-
   { titleText: /(it’s|it's|its|it is) time to (quit|change)/i },
   { titleText: /this ends now/i },
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
 
+
+  { ...both, titleText: /This is the day where i begin my journey/i },
+  { ...both, titleText: /(I’m|I'm|im) starting this journey because/i },
+  { ...both, titleText: /(I’m|I'm|im) joining in for the challenge/i },
+  { ...both, titleText: /day (one|1) (.*)? here we go/i },
+  { ...both, titleText: /(I’m|I'm|im) new to Reddit/i },
+  { ...both, titleText: /(I’m|I'm|im) new and need some help/i },
   { ...both, titleText: /I will be attempting (NoFap|no fap|no-fap) for the first time/i },
   { ...both, titleText: /Today I decided to try ?(the)? (nofap|no fap|no-fap) challenge/i },
   { ...both, titleText: /try to do this (NoFap|no fap|no-fap)/i },
@@ -55,7 +62,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /today I start/i },
   { ...both, titleText: /(NoFap|no fap|no-fap) from today/i },
   { ...both, titleText: /(gonna|going to) start today/i },
-  { ...both, titleText: /(quitting|quiting|starting) ?(.*) (now|today)/i },
+  { ...both, titleText: /(quitting|quiting|starting) ?(NoFap|no fap|no-fap)? (now|today)/i },
   { ...both, titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i },
   { ...both, titleText: /gonna start to stop watching porn from now/i },
   { ...both, titleText: /journey (start|begins)/i },
@@ -85,9 +92,12 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /how do I start\?/i },
 
   // STARTING
+
+
   { titleText: /why (I’m|I'm|im|I am) starting/i },
   { titleText: /^(starting|started)(\.|\!)?$/i },
   { titleText: /starting my journey/i },
+  { titleText: /Starting this properly now/i },
   { titleText: /finally starting tonight/i },
   { titleText: /(starting|started|starts) (now|today)/i },
   { titleText: /(starting|started) .* (streak|first|run)/i },

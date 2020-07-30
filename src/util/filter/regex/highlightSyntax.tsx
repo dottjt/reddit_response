@@ -15,29 +15,33 @@ const highlightArrayInsert = (arr, index, newItem) => [
 ];
 
 const generateNodeSplitArray = (splitArray: string[], regexFilterResult: MatchRegExpResponse, relevantKey: string, isReact: boolean) => {
-  if (regexFilterResult?.messageTextMatch) {
-    if (Boolean(splitArray[0])) {
-      const firstPartOfSentence = splitArray[0].split('.').filter(p => p)
-      if (firstPartOfSentence) {
-        const firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-        splitArray[0] = firstText;
+  try {
+    if (regexFilterResult?.messageTextMatch) {
+      if (Boolean(splitArray[0])) {
+        const firstPartOfSentence: string[] = splitArray[0].split('.').filter(p => p)
+        if (firstPartOfSentence.length > 0) {
+          const firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+          splitArray[0] = firstText;
+        }
+      }
+      if (Boolean(splitArray[1])) {
+        const lastPartOfSentence: string[] = splitArray[1].split('.').filter(p => p);
+        if (lastPartOfSentence.length > 0) {
+          const lastText = lastPartOfSentence[0]?.trimRight();
+          splitArray[1] = lastText.slice(0, 40);
+        }
       }
     }
-    if (Boolean(splitArray[1])) {
-      const lastPartOfSentence = splitArray[1].split('.').filter(p => p);
-      if (lastPartOfSentence) {
-        const lastText = lastPartOfSentence[0]?.trimRight();
-        splitArray[1] = lastText.slice(0, 40);
-      }
-    }
+
+    const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
+    const newArray = isReact
+      ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult[relevantKey].value}</span>)
+      : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult[relevantKey].value}</span>`);
+
+    return { newArray };
+  } catch (error) {
+    throw new Error(`generateNodeSplitArray - ${error} - ${splitArray}`);
   }
-
-  const splitArraySpan = splitArray.map(string => isReact ? <span>{string}</span> : string);
-  const newArray = isReact
-    ? highlightArrayInsert(splitArraySpan, 1, <span style={{ color: 'red', 'line-height': '1.4rem' }}>{regexFilterResult[relevantKey].value}</span>)
-    : highlightArrayInsert(splitArraySpan, 1, `<span style="color: red; line-height: 1.4rem;">${regexFilterResult[relevantKey].value}</span>`);
-
-  return { newArray };
 }
 
 type HighlightSyntaxReduceProps = {

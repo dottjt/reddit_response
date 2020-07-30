@@ -69,7 +69,6 @@ export const toSubFilter = (
   const toRemoveInitialDayResult = toRemoveInitialDay(titleText, flairText, messageText)
   const toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringObjectToMatch);
 
-
   if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
     if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
       console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}${toRemoveInitialMatch.length > 0 ? ` - ${extractRegexMatch(toRemoveInitialMatch)}` : ''}`);

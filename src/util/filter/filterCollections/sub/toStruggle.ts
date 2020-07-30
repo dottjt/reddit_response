@@ -29,7 +29,13 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /how do i get past day 1\?/i, },
   { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
-  { ...both, titleText: /i dont know how to just stop it/i },
+
+  { ...both, titleText: /It literally feels impossible to quit/i },
+  { ...both, titleText: /^struggling (now|today|tonight)$/i },
+  { ...both, titleText: /back to my addiction .* I cannot stop/i },
+  { ...both, titleText: /urges hitting hard/i },
+  { ...both, titleText: /I honestly do not know what to do/i },
+  { ...both, titleText: /i (don’t|don't|dont) know how to just stop it/i },
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
   { ...both, messageText: /having a really hard time controlling my urges\?/i, },

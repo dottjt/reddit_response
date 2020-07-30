@@ -7,6 +7,7 @@ export const toRemoveCounter: InitialRegExpCollection[] = [
   { titleText: /name tag/i },
   { titleText: /How do you add ?(the)? days/i },
   { titleText: /tell me how to add days/i },
+  { titleText: /How do I get the number of days/i },
 
   { titleText: /(Don't|Don't|dont) mind me/i },
   { titleText: /journal entry/i }, // look into this.

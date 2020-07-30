@@ -2479,27 +2479,32 @@
     ], arr.slice(index)); };
     var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
         var _a;
-        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-            if (Boolean(splitArray[0])) {
-                var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                if (firstPartOfSentence) {
-                    var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                    splitArray[0] = firstText;
+        try {
+            if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                if (Boolean(splitArray[0])) {
+                    var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+                    if (firstPartOfSentence.length > 0) {
+                        var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+                        splitArray[0] = firstText;
+                    }
+                }
+                if (Boolean(splitArray[1])) {
+                    var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+                    if (lastPartOfSentence.length > 0) {
+                        var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
+                        splitArray[1] = lastText.slice(0, 40);
+                    }
                 }
             }
-            if (Boolean(splitArray[1])) {
-                var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                if (lastPartOfSentence) {
-                    var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
-                    splitArray[1] = lastText.slice(0, 40);
-                }
-            }
+            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+            var newArray = isReact
+                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
+            return { newArray: newArray };
         }
-        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-        var newArray = isReact
-            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
-        return { newArray: newArray };
+        catch (error) {
+            throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
+        }
     };
     // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
     var highlightSyntax = function (relevantText, messageMatch, isReact) {

@@ -6,7 +6,7 @@ import { toRemoveCounter } from './toRemoveCounter';
 export const toRemoveInitialDay = (titleText: string, flairText: string, messageText: string): boolean =>
   (
     new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(titleText)
-    || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
+    || new RegExp(/^(day|days|week) \d+ (passed|completed|done)$/i).test(titleText)
     || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
     || new RegExp(/profile/i).test(titleText)
     || new RegExp(/^day \d+ clean/i).test(titleText)

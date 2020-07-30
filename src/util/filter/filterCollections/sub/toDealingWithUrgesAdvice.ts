@@ -21,6 +21,8 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /my urges at night/i },
   { ...both, titleText: /Does anyone get urges at night when/i },
   { ...both, titleText: /suggestions to stop the urges/i },
+  { ...both, titleText: /any tips on things to do when you have urges/i },
+  { ...both, titleText: /Any tips for controlling urges/i },
 
   // HOW TO
   { ...both, titleText: /How do I (fight|resist) the urge/i },
@@ -29,7 +31,6 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /how to beat .* urges/i },
   { ...both, titleText: /How do you guys keep fantasizing in check/i },
   { ...both, titleText: /How do you stop the unsurmountable urges/i },
-
 
   // URGES STRUGGLE
   { ...both, titleText: /urges from hell/i },

@@ -2489,11 +2489,11 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'AllBitchesDie';
-    var R_NOFAP_TIMESTAMP = '3 hours ago';
-    var R_PORN_FREE_USERNAME = '65Arnold';
-    var R_PORN_FREE_TIMESTAMP = '2 hours ago';
-    var R_PORN_ADDICTION_USERNAME = '65Arnold';
+    var R_NOFAP_USERNAME = 'GunnaWunna123';
+    var R_NOFAP_TIMESTAMP = '2 hours ago';
+    var R_PORN_FREE_USERNAME = 'TryingToGetBetter42';
+    var R_PORN_FREE_TIMESTAMP = '3 hours ago';
+    var R_PORN_ADDICTION_USERNAME = 'breadhead47';
     var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
@@ -2595,27 +2595,32 @@
     ], arr.slice(index)); };
     var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
         var _a;
-        if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-            if (Boolean(splitArray[0])) {
-                var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                if (firstPartOfSentence) {
-                    var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                    splitArray[0] = firstText;
+        try {
+            if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
+                if (Boolean(splitArray[0])) {
+                    var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
+                    if (firstPartOfSentence.length > 0) {
+                        var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+                        splitArray[0] = firstText;
+                    }
+                }
+                if (Boolean(splitArray[1])) {
+                    var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
+                    if (lastPartOfSentence.length > 0) {
+                        var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
+                        splitArray[1] = lastText.slice(0, 40);
+                    }
                 }
             }
-            if (Boolean(splitArray[1])) {
-                var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                if (lastPartOfSentence) {
-                    var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
-                    splitArray[1] = lastText.slice(0, 40);
-                }
-            }
+            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
+            var newArray = isReact
+                ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
+            return { newArray: newArray };
         }
-        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-        var newArray = isReact
-            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
-        return { newArray: newArray };
+        catch (error) {
+            throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
+        }
     };
     // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
     var highlightSyntax = function (relevantText, messageMatch, isReact) {
@@ -2957,6 +2962,7 @@
         { titleText: /name tag/i },
         { titleText: /How do you add ?(the)? days/i },
         { titleText: /tell me how to add days/i },
+        { titleText: /How do I get the number of days/i },
         { titleText: /(Don't|Don't|dont) mind me/i },
         { titleText: /journal entry/i },
         { titleText: /journal check in/i },
@@ -2975,7 +2981,7 @@
     // TODO This needs to be more specific not to include day 1 or day 0
     var toRemoveInitialDay = function (titleText, flairText, messageText) {
         return (new RegExp(/^(day|days|week) \d+(\.|\!*)?$/i).test(titleText)
-            || new RegExp(/^(day|days|week) \d+ (passed|completed|done)/i).test(titleText)
+            || new RegExp(/^(day|days|week) \d+ (passed|completed|done)$/i).test(titleText)
             || new RegExp(/^\d+ (day|days|week) (baby|bby)/i).test(titleText)
             || new RegExp(/profile/i).test(titleText)
             || new RegExp(/^day \d+ clean/i).test(titleText)
@@ -3120,6 +3126,7 @@
         __assign(__assign({}, both), { titleText: /^relapse\.?$/i }),
         __assign(__assign({}, both), { titleText: /^relapsed (last night|today)/i }),
         __assign(__assign({}, both), { titleText: /^failed\.?$/i }),
+        __assign(__assign({}, both), { titleText: /Just PMO’d (for|after)/i }),
         __assign(__assign({}, both), { titleText: /relapsing after a/i }),
         __assign(__assign({}, both), { titleText: /relapsed once again/i }),
         __assign(__assign({}, both), { titleText: /relapsed \d+ times today/i }),
@@ -3152,6 +3159,7 @@
         // NEW
         { titleText: /^newbie/i },
         { titleText: /my first post/i },
+        { titleText: /^First day$/i },
         { titleText: /here for (nofap|no fap|no-fap)/i },
         // DECISION
         { titleText: /will finally commit to (nofap|no fap|no-fap)/i },
@@ -3171,6 +3179,12 @@
         { titleText: /this ends now/i },
         { titleText: /(Let's|let’s|lets) (start|do this)/i },
         { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+        __assign(__assign({}, both), { titleText: /This is the day where i begin my journey/i }),
+        __assign(__assign({}, both), { titleText: /(I’m|I'm|im) starting this journey because/i }),
+        __assign(__assign({}, both), { titleText: /(I’m|I'm|im) joining in for the challenge/i }),
+        __assign(__assign({}, both), { titleText: /day (one|1) (.*)? here we go/i }),
+        __assign(__assign({}, both), { titleText: /(I’m|I'm|im) new to Reddit/i }),
+        __assign(__assign({}, both), { titleText: /(I’m|I'm|im) new and need some help/i }),
         __assign(__assign({}, both), { titleText: /I will be attempting (NoFap|no fap|no-fap) for the first time/i }),
         __assign(__assign({}, both), { titleText: /Today I decided to try ?(the)? (nofap|no fap|no-fap) challenge/i }),
         __assign(__assign({}, both), { titleText: /try to do this (NoFap|no fap|no-fap)/i }),
@@ -3192,7 +3206,7 @@
         __assign(__assign({}, both), { titleText: /today I start/i }),
         __assign(__assign({}, both), { titleText: /(NoFap|no fap|no-fap) from today/i }),
         __assign(__assign({}, both), { titleText: /(gonna|going to) start today/i }),
-        __assign(__assign({}, both), { titleText: /(quitting|quiting|starting) ?(.*) (now|today)/i }),
+        __assign(__assign({}, both), { titleText: /(quitting|quiting|starting) ?(NoFap|no fap|no-fap)? (now|today)/i }),
         __assign(__assign({}, both), { titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /gonna start to stop watching porn from now/i }),
         __assign(__assign({}, both), { titleText: /journey (start|begins)/i }),
@@ -3220,6 +3234,7 @@
         { titleText: /why (I’m|I'm|im|I am) starting/i },
         { titleText: /^(starting|started)(\.|\!)?$/i },
         { titleText: /starting my journey/i },
+        { titleText: /Starting this properly now/i },
         { titleText: /finally starting tonight/i },
         { titleText: /(starting|started|starts) (now|today)/i },
         { titleText: /(starting|started) .* (streak|first|run)/i },
@@ -3272,6 +3287,7 @@
     var toStartAgainAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /(begin|(Let's|let’s|lets) do this) again/i }),
         __assign(__assign({}, both), { titleText: /gonna try again/i }),
+        __assign(__assign({}, both), { titleText: /^Beginning Again$/i }),
         __assign(__assign({}, both), { titleText: /trying ?(nofap|no fap|no-fap|this|it)? again/i }),
         __assign(__assign({}, both), { titleText: /Trying to start ?(nofap|no fap|no-fap|this)? again/i }),
         __assign(__assign({}, both), { titleText: /decided to try ?(nofap|no fap|no-fap|this)? again/i }),
@@ -3319,6 +3335,11 @@
         { titleText: /what other steps/i },
         { titleText: /any help or advice/i },
         { titleText: /does anyone have tips/i },
+        __assign(__assign({}, both), { titleText: /I (don’t|don't|dont) know how I should stop/i }),
+        __assign(__assign({}, both), { titleText: /I need help or advice or anything/i }),
+        __assign(__assign({}, both), { titleText: /I (don’t|don't|dont) know how to start/i }),
+        __assign(__assign({}, both), { titleText: /What am I doing wrong\?/i }),
+        __assign(__assign({}, both), { titleText: /can you tell me some tips or some ways you can fight the urges/i }),
         __assign(__assign({}, both), { titleText: /Can you give me a advice to make it easier/i }),
         __assign(__assign({}, both), { titleText: /any ideas or advice on (quitting|quiting)/i }),
         __assign(__assign({}, both), { titleText: /any tips on how to maintain a ?(long)? streak/i }),
@@ -3328,6 +3349,7 @@
         __assign(__assign({}, both), { titleText: /need (NoFap|no fap|no-fap) tips/i }),
         __assign(__assign({}, both), { titleText: /any tips to stop (fapping|mast)/i }),
         __assign(__assign({}, both), { titleText: /any tips to (stop|quit)\?/i }),
+        __assign(__assign({}, both), { titleText: /any tips on how to (stop|quit)\?/i }),
         __assign(__assign({}, both), { titleText: /Tips for (quitting|quiting) (porn|masturbation)/i }),
         __assign(__assign({}, both), { titleText: /need some general advice/i }),
         __assign(__assign({}, both), { titleText: /I really want to stop fapping and watching porn/i }),
@@ -3438,8 +3460,13 @@
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) every \d+/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) bad\?/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) = relapse/i }),
+        __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count as a relapse/i }),
         __assign(__assign({}, both), { titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) is considered as a relapse/i }),
         __assign(__assign({}, both), { titleText: /Anybody have tips to avoid (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
+        __assign(__assign({}, both), { titleText: /had a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) is it a relapse/i }),
+        __assign(__assign({}, both), { titleText: /Is having ?(a)? (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
+        __assign(__assign({}, both), { titleText: /What if i have (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
+        __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) interfere with (NoFap|no fap|no-fap) benefits/i }),
         // TITLE + MESSAGE
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /any solutions\?/ },
         { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /ways to avoid it\?/ },
@@ -3477,7 +3504,12 @@
         { titleText: /I just have to stop/i, },
         { titleText: /how do i get past day 1\?/i, },
         { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
-        __assign(__assign({}, both), { titleText: /i dont know how to just stop it/i }),
+        __assign(__assign({}, both), { titleText: /It literally feels impossible to quit/i }),
+        __assign(__assign({}, both), { titleText: /^struggling (now|today|tonight)$/i }),
+        __assign(__assign({}, both), { titleText: /back to my addiction .* I cannot stop/i }),
+        __assign(__assign({}, both), { titleText: /urges hitting hard/i }),
+        __assign(__assign({}, both), { titleText: /I honestly do not know what to do/i }),
+        __assign(__assign({}, both), { titleText: /i (don’t|don't|dont) know how to just stop it/i }),
         __assign(__assign({}, both), { titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i }),
         __assign(__assign({}, both), { titleText: /not able to start .* journey again/i }),
         __assign(__assign({}, both), { messageText: /having a really hard time controlling my urges\?/i }),
@@ -3536,6 +3568,8 @@
         __assign(__assign({}, both), { titleText: /my urges at night/i }),
         __assign(__assign({}, both), { titleText: /Does anyone get urges at night when/i }),
         __assign(__assign({}, both), { titleText: /suggestions to stop the urges/i }),
+        __assign(__assign({}, both), { titleText: /any tips on things to do when you have urges/i }),
+        __assign(__assign({}, both), { titleText: /Any tips for controlling urges/i }),
         __assign(__assign({}, both), { titleText: /How do I (fight|resist) the urge/i }),
         __assign(__assign({}, both), { titleText: /How do I overcome ?(.*) urges/i }),
         __assign(__assign({}, both), { titleText: /How to (control|handle|deal with) ?(these|the)? urges/i }),
@@ -3601,7 +3635,8 @@
     ];
 
     var toWhenDoesItGetEasierAdviceRegexArray = [
-        __assign(__assign({}, both), { titleText: /does it get easier\?/i }),
+        __assign(__assign({}, both), { titleText: /does it get (better|easier)\?/i }),
+        __assign(__assign({}, both), { titleText: /do they ever go away\?/i }),
         __assign(__assign({}, both), { titleText: /When does the withdrawal period depression start to fade\?/i }),
         __assign(__assign({}, both), { titleText: /How long before the effects of porn disappear\?/i }),
     ];
