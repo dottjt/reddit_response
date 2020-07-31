@@ -18,6 +18,7 @@ import markUserChattedRoute from './routes/markUserChattedRoute';
 import setMarkerRoute from './routes/setMarkerRoute';
 import recordTextMatchRoute from './routes/recordTextMatchRoute';
 import setLastInboxMessageUsernameRoute from './routes/setLastInboxMessageUsernameRoute';
+import manuallySetUserLinkSentRoute from './routes/manuallySetUserLinkSentRoute';
 import setupCron from './util/cron';
 
 const main = () => {
@@ -34,6 +35,7 @@ const main = () => {
   router.post('/markUserChatted', markUserChattedRoute);
   router.post('/setMarker', setMarkerRoute);
   router.post('/setLastInboxMessageUsername', setLastInboxMessageUsernameRoute);
+  router.post('/manuallySetUserLinkSent', manuallySetUserLinkSentRoute);
   router.post('/recordTextMatch', recordTextMatchRoute);
 
   setupCron()

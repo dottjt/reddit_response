@@ -21,6 +21,8 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { ...both, titleText: /the key to (everything|(NoFap|no fap|no-fap))/i },
   { ...both, titleText: /methods that you might like to/i },
   { ...both, titleText: /Tip that might help you/i },
+  { ...both, titleText: /an awesome tip/i },
+  { ...both, titleText: /if you find yourself/i },
 
   // VICTORY
   { titleText: /SUPERPOWERS ARE REAL/i },

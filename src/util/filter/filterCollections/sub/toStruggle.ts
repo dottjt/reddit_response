@@ -30,6 +30,8 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
 
+  { ...both, titleText: /feel close to Giving (Up|in)/i },
+  { ...both, titleText: /guys (I’m|I'm|im|I am) struggling/i },
   { ...both, titleText: /It literally feels impossible to quit/i },
   { ...both, titleText: /^struggling (now|today|tonight)$/i },
   { ...both, titleText: /back to my addiction .* I cannot stop/i },

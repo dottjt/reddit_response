@@ -24,6 +24,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
   { replyText: /I’ll check the link if you have it/i },
   { replyText: /keen to check out your website/i },
+  { replyText: /I (wouldn’t|wouldn't) (mine|mind) checking it out/i },
+
 
   // SEND
   { replyText: /send (me|over) the link/i },
@@ -47,6 +49,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /feel free on sending me a link to your site/i },
   { replyText: /would be amazing if I could see that guide/i },
   { replyText: /that link would be useful/i },
+  { replyText: /please send on any advise you have/i },
 
   // PASSIVE ASK
   { replyText: /May I know (your|the) website/i },
@@ -66,6 +69,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /be thankful for that link/i },
   { replyText: /(can|could) you ?(please)? link/i },
   { replyText: /comfortable with sharing it/i },
+  { replyText: /Fire away with your website/i },
   { replyText: /sure (I’ll|ill|I'll) take a look/i },
   { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
   { replyText: /(wouldn’t|wouldn't) mind checking out your website/i },
@@ -76,10 +80,14 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /could you share your mediation website/i },
   { replyText: /Feel free to share the link of your website/i },
   { replyText: /Link it pls/i },
+  { replyText: /pass on the link/i },
 
   // INTERESTED
   { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
-  { replyText: /I'm interested in the website/i },
+  { replyText: /(I'm|I’m|I am|iam|im) interested in the website/i },
+  { replyText: /(I'd|id|I’d) be interested in checking it/i },
+
+  { replyText: /interested to follow your website/i },
   { replyText: /interested in having a look at your website/i },
   { replyText: /interested in the information/i },
   { replyText: /would be interesting to read/i },
@@ -111,7 +119,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /like to look around at your site/i },
   { replyText: /interested in seeing your website/i },
   { replyText: /actually really interested in your website/i },
-  { replyText: /I’d like to try any resources you’re willing to share/i },
+  { replyText: /(I'd|id|I’d) like to try any resources you’re willing to share/i },
   { replyText: /I appreciate any info/i },
   { replyText: /(I'd|id|I’d) like to see that/i },
 

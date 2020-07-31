@@ -76,3 +76,8 @@ export type RecordTextMatchPayload = {
   messageText: string;
   // messageMatch;
 }
+
+export type SetUserLinkPayload = {
+  username: string;
+  
+}

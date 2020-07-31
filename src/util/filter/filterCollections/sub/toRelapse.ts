@@ -14,7 +14,8 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /^relapsed (last night|today)/i },
   { ...both, titleText: /^failed\.?$/i },
   { ...both, titleText: /Just PMO’d (for|after)/i },
-
+  { ...both, titleText: /I released my load yesterday/i },
+  { ...both, titleText: /Full blown relapse/i },
 
   { ...both, titleText: /relapsing after a/i },
   { ...both, titleText: /relapsed once again/i },

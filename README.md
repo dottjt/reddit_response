@@ -21,7 +21,7 @@ Although this application saves me a tremendous amount of time, the biggest save
 - For inbox messages, console.log unmatched things, esepecially the toNotRespond ones.
 - At the top with prelim url, maybe I can order them based on type start/relapse etc.
 - to follow messages
-
+- ability to change whether website or discord has already been sent to a user. - manuallySetUserLinkSent
 ### LOW PRIORITY
 
 - Create all other new messages.

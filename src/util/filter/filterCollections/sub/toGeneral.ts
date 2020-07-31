@@ -21,16 +21,21 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /^tips\?$/i },
   { titleText: /.* any tips\?$/i },
   { titleText: /^need tips$/i },
+  { titleText: /^Looking for advice$/i },
   { titleText: /^Need advice$/i },
   { titleText: /could use some advice/i },
   { titleText: /Beginner, need some advice/i },
+  { titleText: /How do you do it?/i },
   { titleText: /what other steps/i },
   { titleText: /any help or advice/i },
   { titleText: /does anyone have tips/i },
 
+
+  { ...both, titleText: /I can’t control my self/i },
   { ...both, titleText: /I (don’t|don't|dont) know how I should stop/i },
   { ...both, titleText: /I need help or advice or anything/i },
   { ...both, titleText: /I (don’t|don't|dont) know how to start/i },
+  { ...both, titleText: /(I’m|im|I'm|I am) so addicted I don’t even want to quit/i },
 
 
   { ...both, titleText: /What am I doing wrong\?/i },
@@ -74,7 +79,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   // UNABLE TO STOP
   { titleText: /I keep failing/i },
   { titleText: /I ?(still)? (don’t|don't|dont) know what to do/i },
-  { titleText: /still can't do it/i },
+  { titleText: /still (cant|can't|can’t) do it/i },
   { messageText: /How do I stop\?/i },
   { messageText: /anyone plzzzz/i },
   { messageText: /I (don’t|don't|dont) know how to convince (my self|myself) to give ?(it)? up/i },
@@ -91,6 +96,11 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /someone tell me how to (stop|quit)/i },
   { ...both, titleText: /How do I regain (self control|self-control)/i },
   { ...both, titleText: /What are some things I should do to keep my mind/i },
+  { ...both, titleText: /Can (somebody|some body|someone|some one) who made it tell me/i },
+  { ...both, titleText: /guys, I need help/i },
+  { ...both, titleText: /Been trying to quit for years/i },
+  { ...both, titleText: /How do I beat this addiction\?/i },
+  { ...both, titleText: /How do I stop\!\?/i },
 
   // STRUGGLE
   { titleText: /no (masterbation|masturbation) is hard for me/i },

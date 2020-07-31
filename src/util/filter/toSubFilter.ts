@@ -71,7 +71,7 @@ export const toSubFilter = (
 
   if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
     if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-      console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}${toRemoveInitialMatch.length > 0 ? ` - ${extractRegexMatch(toRemoveInitialMatch)}` : ''}`);
+      console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}${toRemoveInitialMatch.length > 0 ? ` - ${extractRegexMatch(toRemoveInitialMatch)}` : ''} messageText: ${messageText.slice(0, 30)}`);
       return deleteImmediately;
     }
   }
@@ -135,7 +135,7 @@ export const toSubFilter = (
       { sendMessageType: SendMessageType.StartAdviceAge, regexArray: toAgeAdviceRegexArray, regexUrlGenerator: ageAdvice, condition: true, delete: false },
 
       // FLAIRS
-      { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [ { flairText: /Slip-Up Prevention/ } ], regexUrlGenerator: struggleAdvice, condition: true, delete: false },
+      // { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [ { flairText: /Slip-Up Prevention/ } ], regexUrlGenerator: struggleAdvice, condition: true, delete: false }, // it's just not reliable
       { sendMessageType: SendMessageType.StartAdviceStruggle, regexArray: [ { flairText: /Victory/ }, { flairText: /Success Story/ } ], regexUrlGenerator: generalAdvice, condition: true, delete: true },
       { sendMessageType: SendMessageType.StartAdviceRelapse, regexArray: [ { flairText: /Relapse Report/ } ], regexUrlGenerator: relapseAdvice, condition: true, delete: false },
       // { flairText: /New To NoFap/i }, // please don't do this again, it's simply not useful and is not actually new people half the time.

@@ -6,6 +6,8 @@ export const toFantasticRegexArray: InitialRegExpCollection[] = [
   { replyText: /I meditate daily/i },
   { replyText: /by meditating 10 minutes daily/i },
   { replyText: /I meditate and workout every day/i },
+  { replyText: /I have been meditating for about a year/i },
+
   { replyText: /Yeah I do ?(transcendental)? meditation/i },
   { replyText: /^Yes(,)? I do \d+ minutes ?(of)? meditation(\.)? ?(each day|everyday|every day|daily)?$/i },
 
