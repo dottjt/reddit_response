@@ -30,7 +30,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
 
-
+  { ...both, titleText: /Have decided to start/i },
+  { ...both, titleText: /How to begin\?/i },
   { ...both, titleText: /This is the day where i begin my journey/i },
   { ...both, titleText: /(I’m|I'm|im) starting this journey because/i },
   { ...both, titleText: /(I’m|I'm|im) joining in for the challenge/i },

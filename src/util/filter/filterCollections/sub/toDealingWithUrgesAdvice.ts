@@ -14,6 +14,7 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { messageText: /someone tell me when (these|this) (urge|urges) will/i },
 
   // ADVICE / HELP
+  { ...both, titleText: /(cant|can't|can’t) control my urges for more than one day/i },
   { ...both, titleText: /advice on (fighting|resisting) urges/i },
   { ...both, titleText: /help (w|with) persistent urge/i },
   { ...both, titleText: /help make me stop letting my urges/i },

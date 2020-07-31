@@ -36,7 +36,8 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /I need help or advice or anything/i },
   { ...both, titleText: /I (don’t|don't|dont) know how to start/i },
   { ...both, titleText: /(I’m|im|I'm|I am) so addicted I don’t even want to quit/i },
-
+  { ...both, titleText: /How did you manage to stop\?/i },
+  { ...both, titleText: /Tips to help in times of struggle\?/i },
 
   { ...both, titleText: /What am I doing wrong\?/i },
   { ...both, titleText: /can you tell me some tips or some ways you can fight the urges/i },
