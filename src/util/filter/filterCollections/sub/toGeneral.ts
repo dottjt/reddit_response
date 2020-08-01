@@ -38,6 +38,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(I’m|im|I'm|I am) so addicted I don’t even want to quit/i },
   { ...both, titleText: /How did you manage to stop\?/i },
   { ...both, titleText: /Tips to help in times of struggle\?/i },
+  { ...both, titleText: /I have no way out right now/i },
 
   { ...both, titleText: /What am I doing wrong\?/i },
   { ...both, titleText: /can you tell me some tips or some ways you can fight the urges/i },
@@ -50,15 +51,24 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /need (NoFap|no fap|no-fap) tips/i },
   { ...both, titleText: /any tips to stop (fapping|mast)/i },
   { ...both, titleText: /any tips to (stop|quit)\?/i },
+  { ...both, titleText: /any tips on how to (stop|quit|get back)/i },
   { ...both, titleText: /any tips on how to (stop|quit)\?/i },
   { ...both, titleText: /Tips for (quitting|quiting) (porn|masturbation)/i },
+  { ...both, titleText: /need any advice or help/i },
+  { ...both, titleText: /(I’m|im|I'm|I am) desperate for help/i },
+  { ...both, titleText: /I honestly (cant|can't|can’t) do it/i },
 
+  { ...both, titleText: /Anything would be massively appreciated/i },
+  { ...both, titleText: /I need some advice/i },
   { ...both, titleText: /need some general advice/i },
   { ...both, titleText: /I really want to stop fapping and watching porn/i },
   { ...both, titleText: /scared that i will relapse(,)? some tips/i },
   { ...both, titleText: /Need Advice to fight porn addiction/i },
   { ...both, titleText: /(I’m|im|I'm|I am) an addict please help me with some advice/i },
   { ...both, titleText: /if anyone has (advice|tips) for a (beginner|novice)/i },
+  { ...both, titleText: /(I’m|im|I'm|I am) \d+ and addicted to/i },
+  { ...both, titleText: /(I’ve|ive|I've|I have) tried so many things(,)? but/i },
+  { ...both, titleText: /What are your methods for dealing with failure/i },
 
   { messageText: /Can anyone help me/i },
   { messageText: /What do (you|u) do when (you|u) really want to do it/i },
@@ -102,6 +112,16 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Been trying to quit for years/i },
   { ...both, titleText: /How do I beat this addiction\?/i },
   { ...both, titleText: /How do I stop\!\?/i },
+  { ...both, titleText: /How to maintain a long streak\!\?/i },
+  { ...both, titleText: /How do I conquer this habit/i },
+  { ...both, titleText: /How do I stop binging/i },
+  { ...both, titleText: /How do I let go of this habit/i },
+  { ...both, titleText: /Any tips for a ?(new)? beginner/i },
+  { ...both, titleText: /Is it even possible to free yourself from/i },
+  { ...both, titleText: /if anyone has successfully gotten out/i },
+  { ...both, titleText: /i want to stop ?(it)? but i dont know how/i },
+  { ...both, titleText: /ask for some useful advice/i },
+  { ...both, titleText: /ask for some advice to stop fapping/i },
 
   // STRUGGLE
   { titleText: /no (masterbation|masturbation) is hard for me/i },
@@ -116,6 +136,8 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /Trying Nofap .* years/i },
   { titleText: /(cant|can't|can’t) make it more than/i },
   { titleText: /I feel like relapsing/i },
+  { titleText: /I (cant|can't|can’t) do it/i },
+
 
   { ...both, titleText: /Anyone else get crazy depressed/i },
   { ...both, titleText: /I ?(really)? (don’t|don't|dont) know what to do/i },

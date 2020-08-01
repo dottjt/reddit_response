@@ -11,7 +11,6 @@ export const toFantasticRegexArray: InitialRegExpCollection[] = [
   { replyText: /Yeah I do ?(transcendental)? meditation/i },
   { replyText: /^Yes(,)? I do \d+ minutes ?(of)? meditation(\.)? ?(each day|everyday|every day|daily)?$/i },
 
-
   // DO A LOT
   { replyText: /(done|do) a lot for my mental health/i },
 

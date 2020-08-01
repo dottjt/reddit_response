@@ -23,6 +23,11 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Is having ?(a)? (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /What if i have (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) interfere with (NoFap|no fap|no-fap) benefits/i },
+  { ...both, titleText: /does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) end my/i },
+  { ...both, titleText: /Experienced a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /what to do after a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) break my streak/i },
+  { ...both, titleText: /I (had a|had|got) (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) (after|in the)/i },
 
   // TITLE + MESSAGE
   { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /any solutions\?/ },
@@ -32,5 +37,5 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Should I worry about it/ },
   { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Any advice/ },
   { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /how do I avoid/ },
-
+  { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /Does it break my/ },
 ];

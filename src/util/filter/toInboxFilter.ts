@@ -12,7 +12,7 @@ import { toNoWorriesGuideRegexArray } from './filterCollections/inbox/toNoWorrie
 import { toLinkYouGuideRegexArray } from './filterCollections/inbox/toLinkYou';
 import { toJoinSubredditRegexArray } from './filterCollections/inbox/toJoinSubreddit';
 
-import { StringObjectToMatch } from './regex/regexUtil';
+import { StringObjectToMatch, extractRegexMatch } from './regex/regexUtil';
 import { matchRegex } from './regex/matchRegex';
 import { undefinedMessage, RegexArrayInbox, InboxMatchResponse, calculateInboxRegexArray } from './toInboxFilterUtil';
 
@@ -32,6 +32,7 @@ export const toInboxFilter = (
     compiledUser.userType === UserType.UserHostile
     || toNotRespondRegexMatch.length > 0
   ) {
+    console.log(`Not Match - Username: ${compiledUser.username}${toNotRespondRegexMatch.length > 0 ? ` - Match: ${extractRegexMatch(toNotRespondRegexMatch)}` : ''}`)
     return undefinedMessage;
   }
 

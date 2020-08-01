@@ -73,6 +73,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /sure (I’ll|ill|I'll) take a look/i },
   { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
   { replyText: /(wouldn’t|wouldn't) mind checking out your website/i },
+  { replyText: /if you could link it/i },
+  { replyText: /take all the help I can get/i },
 
   // SHARE
   { replyText: /can share me ur site/i },

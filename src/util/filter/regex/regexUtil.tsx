@@ -18,11 +18,11 @@ type InitialRegExpCollectionOptions = {
 }
 
 export type InitialRegExpCollection = {
-  titleText?: RegExp; // | RegExp[];
-  flairText?: RegExp; // | RegExp[];
-  messageText?: RegExp; // | RegExp[];
+  titleText?: RegExp | RegExp[];
+  flairText?: RegExp | RegExp[];
+  messageText?: RegExp | RegExp[];
 
-  replyText?: RegExp; // | RegExp[];
+  replyText?: RegExp | RegExp[];
 
   options?: InitialRegExpCollectionOptions;
 }
@@ -33,10 +33,10 @@ export type MatchValueAndRegex = {
 };
 
 export type MatchRegExpResponse = {
-  titleTextMatch?: MatchValueAndRegex,
-  flairTextMatch?: MatchValueAndRegex,
-  messageTextMatch?: MatchValueAndRegex,
-  replyTextMatch?: MatchValueAndRegex,
+  titleTextMatch?: MatchValueAndRegex[],
+  flairTextMatch?: MatchValueAndRegex[],
+  messageTextMatch?: MatchValueAndRegex[],
+  replyTextMatch?: MatchValueAndRegex[],
 }
 
 export const extractRegexMatch = (matchArray: MatchRegExpResponse[]) => (

@@ -15,13 +15,16 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- put the reade container AFTER the first post, not before
 - Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Message for providing meditation advice.
 - For inbox messages, console.log unmatched things, esepecially the toNotRespond ones.
 - At the top with prelim url, maybe I can order them based on type start/relapse etc.
+- allow to support arrays in the regex Util
 - to follow messages
 - ability to change whether website or discord has already been sent to a user. - manuallySetUserLinkSent
+- if it is a useralready responded, only show Follow messages, along with only unique messages.
+- Figure out what percentage matches etc.
+
 ### LOW PRIORITY
 
 - Create all other new messages.
@@ -42,6 +45,7 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 
 ## DONE
 
+- put the reade container AFTER the first post, not before
 - message border turns red when clicking on prelimLink
 - I figured out how to simplify the sub filter
 - Handle flairs at the very end. So that they can have more specific searches.

@@ -21,17 +21,17 @@ const matchTextBoth = (stringObjectToMatch: StringObjectToMatch, regex: RegExp):
   let matchResponse = {} as MatchRegExpResponse;
   const matchText = stringObjectToMatch.titleText?.match(regex);
   if (matchText) {
-    matchResponse.titleTextMatch = {
+    matchResponse.titleTextMatch = [{
       value: matchText[0],
       regex: String(regex),
-    }
+    }];
   }
   const matchMessage = stringObjectToMatch.messageText?.match(regex);
   if (matchMessage) {
-    matchResponse.messageTextMatch = {
+    matchResponse.messageTextMatch = [{
       value: matchMessage[0],
       regex: String(regex),
-    }
+    }];
   }
   return matchResponse;
 }
@@ -41,10 +41,10 @@ const matchOne = (keyString: string, stringObjectToMatch: StringObjectToMatch, r
 
   const match = stringObjectToMatch[keyString]?.match(regex);
   if (match) {
-    matchResponse[`${keyString}Match`] = {
+    matchResponse[`${keyString}Match`] = [{
       value: match[0],
       regex: String(regex)
-    }
+    }];
   }
   return matchResponse;
 }

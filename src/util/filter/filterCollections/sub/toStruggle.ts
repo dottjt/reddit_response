@@ -14,6 +14,9 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /I really (can’t|can't|cant) stop/i, },
   { titleText: /why is this so hard/i, },
   { titleText: /I (can’t|can't|cant) get past the .* mark/i, },
+  { titleText: /(can’t|can't|cant) stop relapsing/i, },
+  { titleText: /^Almost Failed$/i, },
+
   { titleText: /I (can’t|can't|cant) get past day .*/i, },
   { titleText: /(can’t|can't|cant) get a streak going/i, },
   { titleText: /Struggling to (break|kick) this addiction/i, },
@@ -29,7 +32,10 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /how do i get past day 1\?/i, },
   { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
-
+  { ...both, titleText: /I have no motivation no energy nothing/i },
+  { ...both, titleText: /I want to kill myself badly/i },
+  { ...both, titleText: /Now I feel so shit/i },
+  { ...both, titleText: /I keep losing/i },
   { ...both, titleText: /feel close to Giving (Up|in)/i },
   { ...both, titleText: /guys (I’m|I'm|im|I am) struggling/i },
   { ...both, titleText: /It literally feels impossible to quit/i },

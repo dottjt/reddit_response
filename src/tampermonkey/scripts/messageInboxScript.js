@@ -279,6 +279,8 @@
         { replyText: /sure (I’ll|ill|I'll) take a look/i },
         { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
         { replyText: /(wouldn’t|wouldn't) mind checking out your website/i },
+        { replyText: /if you could link it/i },
+        { replyText: /take all the help I can get/i },
         // SHARE
         { replyText: /can share me ur site/i },
         { replyText: /feel free to share your website/i },
@@ -413,6 +415,7 @@
         RegExpFilterLogic["AND"] = "AND";
         RegExpFilterLogic["OR"] = "OR";
     })(RegExpFilterLogic || (RegExpFilterLogic = {}));
+    var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
 
     var matchMultiple = function (keyString, stringObjectToMatch, regex) {
         var matchResponse = {};
@@ -424,17 +427,17 @@
         var matchResponse = {};
         var matchText = (_a = stringObjectToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (matchText) {
-            matchResponse.titleTextMatch = {
-                value: matchText[0],
-                regex: String(regex),
-            };
+            matchResponse.titleTextMatch = [{
+                    value: matchText[0],
+                    regex: String(regex),
+                }];
         }
         var matchMessage = (_b = stringObjectToMatch.messageText) === null || _b === void 0 ? void 0 : _b.match(regex);
         if (matchMessage) {
-            matchResponse.messageTextMatch = {
-                value: matchMessage[0],
-                regex: String(regex),
-            };
+            matchResponse.messageTextMatch = [{
+                    value: matchMessage[0],
+                    regex: String(regex),
+                }];
         }
         return matchResponse;
     };
@@ -443,10 +446,10 @@
         var matchResponse = {};
         var match = (_a = stringObjectToMatch[keyString]) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (match) {
-            matchResponse[keyString + "Match"] = {
-                value: match[0],
-                regex: String(regex)
-            };
+            matchResponse[keyString + "Match"] = [{
+                    value: match[0],
+                    regex: String(regex)
+                }];
         }
         return matchResponse;
     };
@@ -543,6 +546,7 @@
         var toNotRespondRegexMatch = matchRegex(toNotRespondRegexArray, stringObjectToMatch);
         if (compiledUser.userType === UserType.UserHostile
             || toNotRespondRegexMatch.length > 0) {
+            console.log("Not Match - Username: " + compiledUser.username + (toNotRespondRegexMatch.length > 0 ? " - Match: " + extractRegexMatch(toNotRespondRegexMatch) : ''));
             return undefinedMessage;
         }
         if ((lastSentMessage === null || lastSentMessage === void 0 ? void 0 : lastSentMessage.type.includes('advice')) &&
@@ -2806,19 +2810,46 @@
                     var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
                     if (lastPartOfSentence.length > 0) {
                         var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
+                        // TODO we'll have to do all these trim things at the end
                         splitArray[1] = lastText.slice(0, 40);
                     }
                 }
             }
-            var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
-            var newArray = isReact
-                ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult[relevantKey].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-                : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey].value + "</span>");
+            // Step Three - To JSX
+            var newArray = stepThreeToJSX(splitArray, regexFilterResult, relevantKey, isReact);
             return { newArray: newArray };
         }
         catch (error) {
             throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
         }
+    };
+    // const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAndRegex[]) => {
+    //   const splitArray = matchesArray.reduce((acc, valueAndRegex) => {
+    //     const newSplitArray = acc.splitArray.map(text => {
+    //       const splitText = text.split(valueAndRegex.value);
+    //       // I need to check
+    //       if (splitText.length === 1) return [ text ]
+    //       //
+    //       return splitText;
+    //     });
+    //     // Do I then need to put in the split?
+    //     return {
+    //       splitArray: newSplitArray.flat(),
+    //     }
+    //     access.
+    //     // const relevantText.split(valueAndRegex.value);
+    //     // valueAndRegex
+    //     // regexFilterResult[relevantKey][0].value
+    //   }, { splitArray: [ relevantText ] });
+    //   return splitArray;
+    // }
+    var stepThreeToJSX = function (splitArray, regexFilterResult, relevantKey, isReact) {
+        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$1(1, "span", null, string, 0) : string; });
+        var newArray = isReact
+            // TODO: THis shouldn't be [0] when we get multiple values.
+            ? highlightArrayInsert(splitArraySpan, 1, createVNode$1(1, "span", null, regexFilterResult[relevantKey][0].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
+            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey][0].value + "</span>");
+        return newArray;
     };
     // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
     var highlightSyntax = function (relevantText, messageMatch, isReact) {
@@ -2826,10 +2857,20 @@
             var _a = messageMatch.reduce(function (acc, regexFilterResult) {
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
-                    var splitArray = acc.relevantText.split(regexFilterResult[relevantKey].value);
+                    // console.log('relevantKey', relevantKey);
+                    // So  regexFilterResult[relevantKey] is an array
+                    // console.log (regexFilterResult);
+                    // this is currently [0] until I figure out how to iterate through it to work.
+                    // 1st step: Find all the matches. But, don't put it in Javascript yet. Just put it in an object { text: string, toHighlight: boolean }
+                    // 2nd step: Trim it. The last and first things of the array.
+                    // 3rd step: replace it with JS. Turn it
+                    var splitArray = acc.relevantText.split(regexFilterResult[relevantKey][0].value);
+                    // const splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
                     if (splitArray.length === 1)
                         return acc;
+                    // console.log('splitArray', splitArray)
                     var newArray = generateNodeSplitArray(splitArray, regexFilterResult, relevantKey, isReact).newArray;
+                    // console.log('newArray', newArray)
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
                 }
                 return acc;

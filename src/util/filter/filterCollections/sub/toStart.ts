@@ -12,6 +12,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // DECISION
   { titleText: /will finally commit to (nofap|no fap|no-fap)/i },
+  { titleText: /a new beginning/i },
+  { titleText: /^new beginning$/i },
   { titleText: /changing for the better/i },
   { titleText: /decided (I’m|I'm|im|I am) quitting this/i },
   { titleText: /committing to a new lifestyle/i },
@@ -30,6 +32,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
 
+  { ...both, titleText: /Let the challenge begin/i },
   { ...both, titleText: /Have decided to start/i },
   { ...both, titleText: /How to begin\?/i },
   { ...both, titleText: /This is the day where i begin my journey/i },
@@ -44,8 +47,11 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(masturbated|watched porn|fapped) for the last time today/i },
   { ...both, titleText: /start of something amazing/i },
   { ...both, titleText: /going to (stop|quit) (.*)? today/i, },
-  { ...both, titleText: /I have started my journey/i },
   { ...both, titleText: /(I’m|I'm|im|I am) gonna try this ?(nofap|no fap|no-fap)? Challenge/i },
+  { ...both, titleText: /(I’m|I'm|im|I am) starting my (nofap|no fap|no-fap) journey from today/i },
+  { ...both, titleText: /I have started my journey/i },
+  { ...both, titleText: /(Here's|here’s) to a new beginning/i },
+  { ...both, titleText: /Might as well start now/i },
 
   // ADVICE
   { titleText: /any tips on getting started/i },
@@ -79,6 +85,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /So finally (Let's|let’s|lets) begin/i },
 
   // START
+  { titleText: /day (1|one) (bby|baby)/i },
   { titleText: /about to start/i },
   { titleText: /How to start\?/i },
   { titleText: /a new start/i },
@@ -91,6 +98,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   { ...both, titleText: /Start of \d+ days/i },
   { ...both, titleText: /how do I start\?/i },
+  { ...both, titleText: /Day 1(\:|\.)? Here we go/i },
 
   // STARTING
 
@@ -119,6 +127,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /started (nofap|no fap|no-fap) today/i },
   { titleText: /(just) (begun|started)/i },
   { titleText: /getting started/i },
+  { titleText: /\d+ year(s)? old starting (nofap|no fap|no-fap)/i },
 
   // START JOURNEY
   { titleText: /start to my Journey/i },
@@ -139,6 +148,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /day (one|1) Started/i },
   { ...both, titleText: /day (one|1) (Let's|let’s|lets) go/i },
   { ...both, titleText: /(Let's|let’s|lets) go (nofap|no fap|no-fap) day (one|1)/i },
+  { ...both, titleText: /(Let's|let’s|lets) get this started/i },
+
   { ...both, titleText: /^day 1(\.|\!)?$/i },
   { ...both, titleText: /^day 1 start/i },
 

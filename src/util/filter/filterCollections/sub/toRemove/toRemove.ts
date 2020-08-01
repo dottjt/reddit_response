@@ -83,6 +83,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /inflammation/i },
   { ...both, titleText: /increase my size/i },
   { ...both, titleText: /sperm count/i },
+  { ...both, titleText: /^counter$/i },
 
   { titleText: /(boner|morning wood)/i },
 
