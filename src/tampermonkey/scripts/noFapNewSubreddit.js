@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'haywire22';
-    var R_NOFAP_TIMESTAMP = 'just now';
+    var R_NOFAP_USERNAME = 'JustThisOneChance';
+    var R_NOFAP_TIMESTAMP = '2 hours ago';
     var R_PORN_FREE_USERNAME = 'wannabe995';
-    var R_PORN_FREE_TIMESTAMP = '3 hours ago';
+    var R_PORN_FREE_TIMESTAMP = '4 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'deathrowjack';
-    var R_PORN_ADDICTION_TIMESTAMP = '6 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '8 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2984,6 +2984,7 @@
         { titleText: /(weekly|daily) journal/i },
         { titleText: /(tracker|counting|counter)/i },
         { titleText: /accountability post/i },
+        __assign(__assign({}, both), { titleText: /I want a flair/i }),
         __assign(__assign({}, both), { titleText: /checking my day count/i }),
         __assign(__assign({}, both), { titleText: /How Do I Put The Numbers Of Days/i }),
         __assign(__assign({}, both), { titleText: /How to reset the timer/i }),
@@ -3312,6 +3313,7 @@
         { titleText: /getting started/i },
         { titleText: /\d+ year(s)? old starting (nofap|no fap|no-fap)/i },
         __assign(__assign({}, both), { titleText: /how do I begin/i }),
+        __assign(__assign({}, both), { titleText: /Streak starts here/i }),
         // START JOURNEY
         { titleText: /start to my Journey/i },
         { titleText: /Just began my journey/i },
@@ -3783,7 +3785,16 @@
 
     var matchMultiple = function (keyString, stringObjectToMatch, regex) {
         var matchResponse = {};
-        // TODO, I think this would be an additional reduce.
+        var matchArray = regex.map(function (regexSingle) {
+            var match = stringObjectToMatch[keyString].match(regexSingle);
+            return {
+                value: match ? match[0] : undefined,
+                regex: String(regex)
+            };
+        }).filter(function (item) { return item.value; });
+        if (matchArray.every((function (item) { return item.value; })) && matchArray.length === regex.length) {
+            matchResponse[keyString + "Match"] = matchArray;
+        }
         return matchResponse;
     };
     var matchTextBoth = function (stringObjectToMatch, regex) {
@@ -3848,8 +3859,8 @@
                     matchResponse_1 = matchTextBoth(stringObjectToMatch, regex);
                 }
                 else {
-                    if (Array.isArray(stringObjectToMatch[keyString])) {
-                        matchResponse_1 = matchMultiple();
+                    if (Array.isArray(regex)) {
+                        matchResponse_1 = matchMultiple(keyString, stringObjectToMatch, regex);
                     }
                     else {
                         matchResponse_1 = matchOne(keyString, stringObjectToMatch, regex);

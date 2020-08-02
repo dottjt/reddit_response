@@ -10,9 +10,21 @@ type ReduceRegexMatch = {
   matchFound: boolean;
 }
 
-const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse => {
+const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMatch, regex: RegExp[]): MatchRegExpResponse => {
   let matchResponse = {} as MatchRegExpResponse;
-  // TODO, I think this would be an additional reduce.
+
+  const matchArray = regex.map((regexSingle: RegExp) => {
+    const match = stringObjectToMatch[keyString].match(regexSingle);
+
+    return {
+      value: match ? match[0] : undefined,
+      regex: String(regex)
+    }
+  }).filter(item => item.value);
+
+  if (matchArray.every((item => item.value)) && matchArray.length === regex.length) {
+    matchResponse[`${keyString}Match`] = matchArray;
+  };
 
   return matchResponse;
 }
@@ -83,7 +95,7 @@ export const matchRegexReduceMatchedObject = (regexKeys: string[], regexCollecti
       if (regexCollection?.options?.both && keyString === 'titleText') {
         matchResponse = matchTextBoth(stringObjectToMatch, regex);
       } else {
-        if (Array.isArray(stringObjectToMatch[keyString])) {
+        if (Array.isArray(regex)) {
           matchResponse = matchMultiple(keyString, stringObjectToMatch, regex);
         } else {
           matchResponse = matchOne(keyString, stringObjectToMatch, regex);
@@ -126,13 +138,18 @@ export const matchRegex = (regexArray: InitialRegExpCollection[], stringObjectTo
 // const titleText = 'hello'
 // const text = 'text thing'
 
-// const result = matchRegex([{
-//   titleText: /hello/,
-//   options: { both: true }
+// const regexArray = [
+// {
+//   titleText: [/hel/, /lo/],
+//   // options: { both: true }
 // },
-// ], {
+// ];
+
+// const stringObjectToMatch = {
 //   titleText: 'hello',
 //   messageText: 'hello text thing'
-// });
+// };
+
+// const result = matchRegex(regexArray, stringObjectToMatch);
 
 // result

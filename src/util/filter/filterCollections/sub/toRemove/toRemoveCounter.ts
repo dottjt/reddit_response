@@ -14,6 +14,7 @@ export const toRemoveCounter: InitialRegExpCollection[] = [
   { titleText: /(tracker|counting|counter)/i },
   { titleText: /accountability post/i },
 
+  { ...both, titleText: /I want a flair/i },
   { ...both, titleText: /checking my day count/i },
   { ...both, titleText: /How Do I Put The Numbers Of Days/i },
   { ...both, titleText: /How to reset the timer/i },

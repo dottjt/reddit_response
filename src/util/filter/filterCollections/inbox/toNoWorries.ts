@@ -9,12 +9,15 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   // YES
   { replyText: /^sure$/i },
   { replyText: /^yes$/i },
+  { replyText: /^(Yaa|ya)$/i },
   { replyText: /(Yaa|ya) sure/i },
   { replyText: /yes(,)? please/i },
   { replyText: /^(im|I'm|i m) in(\.)?$/i },
   { replyText: /(yes|yeah) (for sure|I am)/i },
   { replyText: /shoot me a link/i },
   { replyText: /shoot the link over/i },
+  { replyText: /open to looking at your website/i },
+
 
   // { replyText: /^yes I am interested/i }, // too broad
 

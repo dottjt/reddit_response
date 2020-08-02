@@ -221,12 +221,14 @@
         // YES
         { replyText: /^sure$/i },
         { replyText: /^yes$/i },
+        { replyText: /^(Yaa|ya)$/i },
         { replyText: /(Yaa|ya) sure/i },
         { replyText: /yes(,)? please/i },
         { replyText: /^(im|I'm|i m) in(\.)?$/i },
         { replyText: /(yes|yeah) (for sure|I am)/i },
         { replyText: /shoot me a link/i },
         { replyText: /shoot the link over/i },
+        { replyText: /open to looking at your website/i },
         // { replyText: /^yes I am interested/i }, // too broad
         // CHECK
         { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
@@ -429,7 +431,16 @@
 
     var matchMultiple = function (keyString, stringObjectToMatch, regex) {
         var matchResponse = {};
-        // TODO, I think this would be an additional reduce.
+        var matchArray = regex.map(function (regexSingle) {
+            var match = stringObjectToMatch[keyString].match(regexSingle);
+            return {
+                value: match ? match[0] : undefined,
+                regex: String(regex)
+            };
+        }).filter(function (item) { return item.value; });
+        if (matchArray.every((function (item) { return item.value; })) && matchArray.length === regex.length) {
+            matchResponse[keyString + "Match"] = matchArray;
+        }
         return matchResponse;
     };
     var matchTextBoth = function (stringObjectToMatch, regex) {
@@ -494,8 +505,8 @@
                     matchResponse_1 = matchTextBoth(stringObjectToMatch, regex);
                 }
                 else {
-                    if (Array.isArray(stringObjectToMatch[keyString])) {
-                        matchResponse_1 = matchMultiple();
+                    if (Array.isArray(regex)) {
+                        matchResponse_1 = matchMultiple(keyString, stringObjectToMatch, regex);
                     }
                     else {
                         matchResponse_1 = matchOne(keyString, stringObjectToMatch, regex);
