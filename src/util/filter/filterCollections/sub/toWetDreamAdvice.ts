@@ -4,7 +4,7 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i },
 
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i },
-  { ...both, titleText: /had a wet dream/i },
+  { ...both, titleText: /had a wet dream/i }, // - prefi with never
   { ...both, titleText: /how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /wet dreamed this morning/i },
@@ -28,6 +28,7 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /what to do after a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) break my streak/i },
   { ...both, titleText: /I (had a|had|got) (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) (after|in the)/i },
+  { ...both, titleText: /way(s)? to reduce (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
 
   // TITLE + MESSAGE
   { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i, messageText: /any solutions\?/ },

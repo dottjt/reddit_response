@@ -98,7 +98,6 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   { ...both, titleText: /Start of \d+ days/i },
   { ...both, titleText: /how do I start\?/i },
-  { ...both, titleText: /Day 1(\:|\.)? Here we go/i },
 
   // STARTING
 
@@ -152,11 +151,14 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /day (one|1) (Let's|let’s|lets) go/i },
   { ...both, titleText: /(Let's|let’s|lets) go (nofap|no fap|no-fap) day (one|1)/i },
   { ...both, titleText: /(Let's|let’s|lets) get this started/i },
+  { ...both, titleText: /(nofap|no fap|no-fap) day (1|one)/i },
+  { ...both, titleText: /day (1|one) (nofap|no fap|no-fap) /i },
 
   { ...both, titleText: /^day 1(\.|\!)?$/i },
   { ...both, titleText: /^day 1 start/i },
   { ...both, titleText: /^day 1 of (nofap|no fap|no-fap) journey/i },
   { ...both, titleText: /^1 day of (nofap|no fap|no-fap) journey/i },
+  { ...both, titleText: /Day 1(\:|\.)? Here we go/i },
 
   { ...both, titleText: /officially day (1|one)/i },
   { ...both, titleText: /today is day (1|one)/i },
@@ -165,6 +167,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /^day (one|1)$/i }, // could be relapse
 
   // FIRST
+
+  { ...both, titleText: /(it is|it's|it’s) my first day in this Journey/i },
   { titleText: /first post/i },
   { titleText: /first time doing this/i },
   { titleText: /first time .* looking for advice/i },

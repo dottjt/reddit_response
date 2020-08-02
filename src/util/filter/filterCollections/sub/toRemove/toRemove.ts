@@ -56,7 +56,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /a study/i },
   { titleText: /future (son|daughter)/i },
 
-  // SEXUAL / MEDICAL CONDITIONS 
+  // SEXUAL / MEDICAL CONDITIONS
   { ...both, titleText: /(balls|pelvic|genital|testic)/i }, // ejaculation // too broad, maybe?
   { ...both, titleText: /hair line/i }, // erection // too broad // cancer
   { ...both, titleText: /(prostatitis)/i }, // erection // too broad // cancer
@@ -88,7 +88,6 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /inflammation/i },
   { ...both, titleText: /increase my size/i },
   { ...both, titleText: /sperm count/i },
-  { ...both, titleText: /^counter$/i },
 
   { titleText: /(boner|morning wood)/i },
 
@@ -146,7 +145,8 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /negatives of masturbating/i },
   { ...both, titleText: /am I addicted to (porn|pron)/i },
   { ...both, titleText: /What does PMO stand for/i },
-
+  { ...both, titleText: /^staying strong(\.)?$/i },
+  
   // UNSORTED
   { titleText: /benefits till now/i },
   { titleText: /does not fap/i },

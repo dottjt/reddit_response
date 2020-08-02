@@ -257,6 +257,9 @@
         { replyText: /send ?(that)? my way/i },
         { replyText: /send website link/i },
         { replyText: /send your guide/i },
+        { replyText: /Send me bro\./i },
+        { replyText: /share with me the website/i },
+        { replyText: /Send dat link/i },
         { replyText: /provide me with some link/i },
         { replyText: /Suggest me your website/i },
         { replyText: /send link pls/i },
@@ -281,6 +284,7 @@
         { replyText: /can have a read into your website/i },
         { replyText: /be thankful for that link/i },
         { replyText: /would appreciate if you could help me/i },
+        { replyText: /would like to look your website/i },
         { replyText: /^Ya I interested/i },
         { replyText: /^Yeah I'm interested/i },
         { replyText: /(can|could) you ?(please)? link/i },
@@ -402,7 +406,7 @@
         { replyText: /what is it called/i },
         { replyText: /Sure (what’s|what is|what's) it called/i },
         // HOW
-        { replyText: /How can I access the (name|site|link|website|web site|webite|guide|content|page|it)/i },
+        { replyText: /How can I access (your|ur|the) (name|site|link|website|web site|webite|guide|content|page|it)/i },
         // LINKS
         { replyText: /(link|links) to any resources/i },
     ];

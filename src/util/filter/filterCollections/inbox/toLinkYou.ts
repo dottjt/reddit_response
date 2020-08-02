@@ -24,7 +24,7 @@ export const toLinkYouGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /Sure (what’s|what is|what's) it called/i },
 
   // HOW
-  { replyText: /How can I access the (name|site|link|website|web site|webite|guide|content|page|it)/i },
+  { replyText: /How can I access (your|ur|the) (name|site|link|website|web site|webite|guide|content|page|it)/i },
 
   // LINKS
   { replyText: /(link|links) to any resources/i },
