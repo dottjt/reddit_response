@@ -2474,92 +2474,60 @@
         RelevantType["Flair"] = "Flair";
         RelevantType["Reply"] = "Reply";
     })(RelevantType || (RelevantType = {}));
-    var highlightArrayInsert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
+    var insert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
-    var generateNodeSplitArray = function (splitArray, regexFilterResult, relevantKey, isReact) {
-        var _a;
-        try {
-            if (regexFilterResult === null || regexFilterResult === void 0 ? void 0 : regexFilterResult.messageTextMatch) {
-                if (Boolean(splitArray[0])) {
-                    var firstPartOfSentence = splitArray[0].split('.').filter(function (p) { return p; });
-                    if (firstPartOfSentence.length > 0) {
-                        var firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
-                        splitArray[0] = firstText;
-                    }
-                }
-                if (Boolean(splitArray[1])) {
-                    var lastPartOfSentence = splitArray[1].split('.').filter(function (p) { return p; });
-                    if (lastPartOfSentence.length > 0) {
-                        var lastText = (_a = lastPartOfSentence[0]) === null || _a === void 0 ? void 0 : _a.trimRight();
-                        // TODO we'll have to do all these trim things at the end
-                        splitArray[1] = lastText.slice(0, 40);
-                    }
-                }
+    var flatten = function (arr) { return arr.reduce(function (flat, next) { return flat.concat(next); }, []); };
+    var stepOneFindAllMatches = function (relevantText, matchesArray) {
+        var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
+            var newSplitArray = acc.splitArray.map(function (textObj) {
+                var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
+                if (splitTextArray.length === 1)
+                    return splitTextArray;
+                var finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });
+                return finalSplitArray;
+            });
+            return { splitArray: flatten(newSplitArray) };
+        }, { splitArray: [{ text: relevantText, isMatch: false }] }).splitArray;
+        return splitArray;
+    };
+    var stepTwoTrimArray = function (splitArray) {
+        //     if (Boolean(splitArray[0])) {
+        //       const firstPartOfSentence: string[] = splitArray[0].split('.').filter(p => p)
+        //       if (firstPartOfSentence.length > 0) {
+        //         const firstText = firstPartOfSentence[firstPartOfSentence.length - 1];
+        //         splitArray[0] = firstText;
+        //       }
+        //     } // it would be good to split it to the nearest .
+        // I imagine it would have to be come kind of complex reduce, where you track sentences backwards, collecting sentence length.
+        // NOTE: Means there has been no match
+        if (splitArray.length === 1) {
+            splitArray[0].text = splitArray[0].text.slice(0, 200);
+            return splitArray;
+        }
+        splitArray[0].text = splitArray[0].text.slice(-80);
+        splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
+        return splitArray;
+    };
+    var stepThreeToJSX = function (splitArrayTrim, isReact) {
+        return splitArrayTrim.map(function (textMatch) {
+            var color = textMatch.isMatch ? 'red' : 'black';
+            if (isReact) {
+                return createVNode$2(1, "span", null, textMatch.text, 0, { "style": { color: color, 'line-height': '1.4rem' } });
             }
-            // Step Three - To JSX
-            var newArray = stepThreeToJSX(splitArray, regexFilterResult, relevantKey, isReact);
-            return { newArray: newArray };
-        }
-        catch (error) {
-            throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
-        }
+            else {
+                return "<span style=\"color: " + color + "; line-height: 1.4rem;\">" + textMatch.text + "</span>";
+            }
+        });
     };
-    // const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAndRegex[]): StepOneTextMatch[] => {
-    //   const { splitArray } = matchesArray.reduce((acc, valueAndRegex) => {
-    //     const newSplitArray = acc.splitArray.map(textObj => {
-    //       const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => ({ text: mapText, isMatch: false }));
-    //       if (splitTextArray.length === 1) return splitTextArray;
-    //       const finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });
-    //       return finalSplitArray;
-    //      });
-    //     return { splitArray: flatten(newSplitArray) };
-    //   }, { splitArray: [ { text: relevantText, isMatch: false } ] });
-    //   return splitArray;
-    // }
-    // const stepTwoTrimArray = (splitArray: StepOneTextMatch[]): StepOneTextMatch[] => {
-    //   return splitArray
-    // };
-    // const stepThreeToJSXToBe = (splitArrayTrim: StepOneTextMatch[], isReact: boolean) => {
-    //   return splitArrayTrim.map((textMatch) => {
-    //     const color: string = textMatch.isMatch ? 'red' : 'black';
-    //     if (isReact) {
-    //       return <span style={{ color: 'red', 'line-height': '1.4rem' }}>{textMatch.text}</span>;
-    //     } else {
-    //       return `<span style="color: red; line-height: 1.4rem;">${textMatch.text}</span>`;
-    //     }
-    //   });
-    // }
-    var stepThreeToJSX = function (splitArray, regexFilterResult, relevantKey, isReact) {
-        var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
-        var newArray = isReact
-            // TODO: THis shouldn't be [0] when we get multiple values.
-            ? highlightArrayInsert(splitArraySpan, 1, createVNode$2(1, "span", null, regexFilterResult[relevantKey][0].value, 0, { "style": { color: 'red', 'line-height': '1.4rem' } }))
-            : highlightArrayInsert(splitArraySpan, 1, "<span style=\"color: red; line-height: 1.4rem;\">" + regexFilterResult[relevantKey][0].value + "</span>");
-        return newArray;
-    };
-    // TODO Checking for relevant type is not relevant. It is not needed BECAUSE titleText splits into titleText or messageText on BOTH.
     var highlightSyntax = function (relevantText, messageMatch, isReact) {
         if (relevantText && messageMatch.length > 0) {
             var _a = messageMatch.reduce(function (acc, regexFilterResult) {
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
-                    // console.log('relevantKey', relevantKey);
-                    // So  regexFilterResult[relevantKey] is an array
-                    // console.log (regexFilterResult);
-                    // this is currently [0] until I figure out how to iterate through it to work.
-                    // 1st step: Find all the matches. But, don't put it in Javascript yet. Just put it in an object { text: string, toHighlight: boolean }
-                    // 2nd step: Trim it. The last and first things of the array.
-                    // 3rd step: replace it with JS. Turn it
-                    var splitArray = acc.relevantText.split(regexFilterResult[relevantKey][0].value);
-                    // const splitArray: StepOneTextMatch[] = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
-                    // const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray);
-                    // const newArray = stepThreeToJSX(splitArrayTrim);
-                    if (splitArray.length === 1)
-                        return acc;
-                    // console.log('splitArray', splitArray)
-                    var newArray = generateNodeSplitArray(splitArray, regexFilterResult, relevantKey, isReact).newArray;
-                    // console.log('newArray', newArray)
+                    var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    var splitArrayTrim = stepTwoTrimArray(splitArray);
+                    var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
                 }
                 return acc;

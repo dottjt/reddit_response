@@ -129,6 +129,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /getting started/i },
   { titleText: /\d+ year(s)? old starting (nofap|no fap|no-fap)/i },
 
+  { ...both, titleText: /how do I begin/i },
+
   // START JOURNEY
   { titleText: /start to my Journey/i },
   { titleText: /Just began my journey/i },

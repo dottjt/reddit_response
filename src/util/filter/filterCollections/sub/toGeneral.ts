@@ -7,6 +7,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   // MOTIVATION
   { titleText: /please I need motivation/i },
   { titleText: /I have a serious addiction to masturbation/i },
+  { titleText: /I really need help/i },
 
   { ...both, titleText: /need some ?(more|serious)? (inspiration|motivation)/i },
 
