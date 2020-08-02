@@ -4,6 +4,7 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   // URGES
   { titleText: /^getting (urges|the urge|cravings)$/i },
   { titleText: /(urges|the urge|cravings) at night/i },
+  { titleText: /(urges|the urge|cravings) are strong/i },
 
   { ...both, titleText: /I have an urge right now/i },
   { ...both, titleText: /feeling the urge to release/i },

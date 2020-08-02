@@ -12,9 +12,10 @@ export const toRemoveCounter: InitialRegExpCollection[] = [
   { titleText: /libido/i },
   { titleText: /(weekly|daily) journal/i },
   { titleText: /(tracker|counting|counter)/i },
-  { titleText: /checking my day count/i },
   { titleText: /accountability post/i },
 
+  { ...both, titleText: /checking my day count/i },
+  { ...both, titleText: /How Do I Put The Numbers Of Days/i },
   { ...both, titleText: /How to reset the timer/i },
   { ...both, titleText: /How do you add ?(the)? days/i },
   { ...both, titleText: /tell me how to add days/i },
@@ -25,4 +26,5 @@ export const toRemoveCounter: InitialRegExpCollection[] = [
   { ...both, titleText: /someone put a counter/i },
   { ...both, titleText: /How to add day streak/i },
   { ...both, titleText: /How to add how many days/i },
+  { ...both, titleText: /Where can I see my (NoFap|no fap|no-fap) counter/i },
 ];

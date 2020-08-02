@@ -25,6 +25,7 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { ...both, titleText: /if you find yourself/i },
 
   // VICTORY
+  { titleText: /feeling amazing/i },
   { titleText: /SUPERPOWERS ARE REAL/i },
   { titleText: /^going strong$/i },
   { titleText: /overcame my worst urge/i },

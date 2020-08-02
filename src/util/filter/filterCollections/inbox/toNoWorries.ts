@@ -24,8 +24,11 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
   { replyText: /I’ll check the link if you have it/i },
   { replyText: /keen to check out your website/i },
+  { replyText: /feel free to give me the link/i },
+  { replyText: /Feel free to link the website/i },
+  { replyText: /feel free to send me the link/i },
+  { replyText: /would be glad to check your website/i },
   { replyText: /I (wouldn’t|wouldn't) (mine|mind) checking it out/i },
-
 
   // SEND
   { replyText: /send (me|over) the link/i },
@@ -67,6 +70,11 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /left the link of the website/i },
   { replyText: /can have a read into your website/i },
   { replyText: /be thankful for that link/i },
+  { replyText: /would appreciate if you could help me/i },
+
+  { replyText: /^Ya I interested/i },
+  { replyText: /^Yeah I'm interested/i },
+
   { replyText: /(can|could) you ?(please)? link/i },
   { replyText: /comfortable with sharing it/i },
   { replyText: /Fire away with your website/i },
@@ -77,7 +85,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /take all the help I can get/i },
 
   // SHARE
-  { replyText: /can share me ur site/i },
+  { replyText: /can share me (your|ur) site/i },
   { replyText: /feel free to share your website/i },
   { replyText: /could you share your mediation website/i },
   { replyText: /Feel free to share the link of your website/i },

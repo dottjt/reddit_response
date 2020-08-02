@@ -185,6 +185,7 @@
         { replyText: /tips on meditating\?/i },
         { replyText: /you have any meditation tips\?/i },
         { replyText: /How would you go about doing meditation\?/i },
+        { replyText: /if you can suggest some ways to meditate/i },
         // NOT SURE HOW TO BEGIN
         { replyText: /I (don’t|dont|don't) know how to (do meditation|meditation|meditate). (could|can) you please suggest something/i },
         { replyText: /(don't|dont|don’t) know (how|where) to start/i },
@@ -233,6 +234,10 @@
         { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
         { replyText: /I’ll check the link if you have it/i },
         { replyText: /keen to check out your website/i },
+        { replyText: /feel free to give me the link/i },
+        { replyText: /Feel free to link the website/i },
+        { replyText: /feel free to send me the link/i },
+        { replyText: /would be glad to check your website/i },
         { replyText: /I (wouldn’t|wouldn't) (mine|mind) checking it out/i },
         // SEND
         { replyText: /send (me|over) the link/i },
@@ -273,6 +278,9 @@
         { replyText: /left the link of the website/i },
         { replyText: /can have a read into your website/i },
         { replyText: /be thankful for that link/i },
+        { replyText: /would appreciate if you could help me/i },
+        { replyText: /^Ya I interested/i },
+        { replyText: /^Yeah I'm interested/i },
         { replyText: /(can|could) you ?(please)? link/i },
         { replyText: /comfortable with sharing it/i },
         { replyText: /Fire away with your website/i },
@@ -282,7 +290,7 @@
         { replyText: /if you could link it/i },
         { replyText: /take all the help I can get/i },
         // SHARE
-        { replyText: /can share me ur site/i },
+        { replyText: /can share me (your|ur) site/i },
         { replyText: /feel free to share your website/i },
         { replyText: /could you share your mediation website/i },
         { replyText: /Feel free to share the link of your website/i },
@@ -388,7 +396,9 @@
         { replyText: /What (site|link|website|web site|webite|guide|content|page) (is it|would that be)/i },
         { replyText: /what is this (name|site|link|website|web site|webite|guide|content|page|it)\?/i },
         { replyText: /yeah what is it/i },
+        { replyText: /would you mind sharing that/i },
         { replyText: /what is it called/i },
+        { replyText: /Sure (what’s|what is|what's) it called/i },
         // HOW
         { replyText: /How can I access the (name|site|link|website|web site|webite|guide|content|page|it)/i },
         // LINKS

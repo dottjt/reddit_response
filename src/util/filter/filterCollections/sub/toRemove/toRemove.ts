@@ -36,6 +36,9 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   // COUNTER
   ...toRemoveCounter,
 
+  // CAN'T POST IMAGES
+  { ...both, titleText: /CAN'T WE POST PICTURES ANYMORE/i },
+
   { ...both, titleText: /I need methods to keep count/i },
   { ...both, titleText: /How to get the number of days/i },
 
@@ -101,6 +104,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /Why quit porn\?/i },
 
   // IRRELEVANT TOPICS
+  { titleText: /song/i },
   { titleText: /Playlist/i },
   { titleText: /beast mode/i },
   { titleText: /Erotica/i },

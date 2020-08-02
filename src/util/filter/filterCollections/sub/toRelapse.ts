@@ -2,7 +2,9 @@ import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
 export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /I relapsed/i },
+  { titleText: /^Major relapse/i },
 
+  { ...both, titleText: /Day (zero|0) Again/i },
   { ...both, titleText: /failed first attempt/i },
   { ...both, titleText: /Failed my \d+ day streak/i },
   { ...both, titleText: /relapse report/i },
@@ -10,6 +12,8 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(failed|lost) (at|on) day/i },
   { ...both, titleText: /relapsed hard/i },
   { ...both, titleText: /^relapsed\./i },
+  { ...both, titleText: /Relapsed Yet Again/i },
+  { ...both, titleText: /^I Failed$/i },
   { ...both, titleText: /^failed again$/i },
   { ...both, titleText: /(broke my|broke a|broke the|lost my|lost a|lost an) ?(.*) (streak)/i },
   { ...both, titleText: /^relapsed\.?$/i },

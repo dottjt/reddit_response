@@ -29,7 +29,7 @@ export type InitialRegExpCollection = {
 
 export type MatchValueAndRegex = {
   value: string;
-  regex: string;
+  regex: string; // this is intentionally cast to a string, I'm not 100% sure why. I think it's so I can console log it.
 };
 
 export type MatchRegExpResponse = {
