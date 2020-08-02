@@ -107,6 +107,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /song/i },
   { titleText: /Playlist/i },
   { titleText: /beast mode/i },
+  { titleText: /physical pain/i },
   { titleText: /Erotica/i },
   { titleText: /gift/i },
   { titleText: /hunger/i },

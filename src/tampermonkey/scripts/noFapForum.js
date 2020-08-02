@@ -2505,25 +2505,30 @@
             throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
         }
     };
-    // const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAndRegex[]) => {
-    //   const splitArray = matchesArray.reduce((acc, valueAndRegex) => {
-    //     const newSplitArray = acc.splitArray.map(text => {
-    //       const splitText = text.split(valueAndRegex.value);
-    //       // I need to check
-    //       if (splitText.length === 1) return [ text ]
-    //       //
-    //       return splitText;
-    //     });
-    //     // Do I then need to put in the split?
-    //     return {
-    //       splitArray: newSplitArray.flat(),
-    //     }
-    //     access.
-    //     // const relevantText.split(valueAndRegex.value);
-    //     // valueAndRegex
-    //     // regexFilterResult[relevantKey][0].value
-    //   }, { splitArray: [ relevantText ] });
+    // const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAndRegex[]): StepOneTextMatch[] => {
+    //   const { splitArray } = matchesArray.reduce((acc, valueAndRegex) => {
+    //     const newSplitArray = acc.splitArray.map(textObj => {
+    //       const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => ({ text: mapText, isMatch: false }));
+    //       if (splitTextArray.length === 1) return splitTextArray;
+    //       const finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });
+    //       return finalSplitArray;
+    //      });
+    //     return { splitArray: flatten(newSplitArray) };
+    //   }, { splitArray: [ { text: relevantText, isMatch: false } ] });
     //   return splitArray;
+    // }
+    // const stepTwoTrimArray = (splitArray: StepOneTextMatch[]): StepOneTextMatch[] => {
+    //   return splitArray
+    // };
+    // const stepThreeToJSXToBe = (splitArrayTrim: StepOneTextMatch[], isReact: boolean) => {
+    //   return splitArrayTrim.map((textMatch) => {
+    //     const color: string = textMatch.isMatch ? 'red' : 'black';
+    //     if (isReact) {
+    //       return <span style={{ color: 'red', 'line-height': '1.4rem' }}>{textMatch.text}</span>;
+    //     } else {
+    //       return `<span style="color: red; line-height: 1.4rem;">${textMatch.text}</span>`;
+    //     }
+    //   });
     // }
     var stepThreeToJSX = function (splitArray, regexFilterResult, relevantKey, isReact) {
         var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
@@ -2547,7 +2552,9 @@
                     // 2nd step: Trim it. The last and first things of the array.
                     // 3rd step: replace it with JS. Turn it
                     var splitArray = acc.relevantText.split(regexFilterResult[relevantKey][0].value);
-                    // const splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    // const splitArray: StepOneTextMatch[] = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    // const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray);
+                    // const newArray = stepThreeToJSX(splitArrayTrim);
                     if (splitArray.length === 1)
                         return acc;
                     // console.log('splitArray', splitArray)

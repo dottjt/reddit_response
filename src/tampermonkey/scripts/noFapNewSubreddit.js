@@ -2490,11 +2490,11 @@
         forumType: ForumType.rNofapForum,
     };
     var R_NOFAP_USERNAME = 'kaito978';
-    var R_NOFAP_TIMESTAMP = '1 hours ago';
-    var R_PORN_FREE_USERNAME = 'darling_di';
-    var R_PORN_FREE_TIMESTAMP = '38 minutes ago';
+    var R_NOFAP_TIMESTAMP = '3 hours ago';
+    var R_PORN_FREE_USERNAME = 'wannabe995';
+    var R_PORN_FREE_TIMESTAMP = '1 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'deathrowjack';
-    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '4 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2621,25 +2621,30 @@
             throw new Error("generateNodeSplitArray - " + error + " - " + splitArray);
         }
     };
-    // const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAndRegex[]) => {
-    //   const splitArray = matchesArray.reduce((acc, valueAndRegex) => {
-    //     const newSplitArray = acc.splitArray.map(text => {
-    //       const splitText = text.split(valueAndRegex.value);
-    //       // I need to check
-    //       if (splitText.length === 1) return [ text ]
-    //       //
-    //       return splitText;
-    //     });
-    //     // Do I then need to put in the split?
-    //     return {
-    //       splitArray: newSplitArray.flat(),
-    //     }
-    //     access.
-    //     // const relevantText.split(valueAndRegex.value);
-    //     // valueAndRegex
-    //     // regexFilterResult[relevantKey][0].value
-    //   }, { splitArray: [ relevantText ] });
+    // const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAndRegex[]): StepOneTextMatch[] => {
+    //   const { splitArray } = matchesArray.reduce((acc, valueAndRegex) => {
+    //     const newSplitArray = acc.splitArray.map(textObj => {
+    //       const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => ({ text: mapText, isMatch: false }));
+    //       if (splitTextArray.length === 1) return splitTextArray;
+    //       const finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });
+    //       return finalSplitArray;
+    //      });
+    //     return { splitArray: flatten(newSplitArray) };
+    //   }, { splitArray: [ { text: relevantText, isMatch: false } ] });
     //   return splitArray;
+    // }
+    // const stepTwoTrimArray = (splitArray: StepOneTextMatch[]): StepOneTextMatch[] => {
+    //   return splitArray
+    // };
+    // const stepThreeToJSXToBe = (splitArrayTrim: StepOneTextMatch[], isReact: boolean) => {
+    //   return splitArrayTrim.map((textMatch) => {
+    //     const color: string = textMatch.isMatch ? 'red' : 'black';
+    //     if (isReact) {
+    //       return <span style={{ color: 'red', 'line-height': '1.4rem' }}>{textMatch.text}</span>;
+    //     } else {
+    //       return `<span style="color: red; line-height: 1.4rem;">${textMatch.text}</span>`;
+    //     }
+    //   });
     // }
     var stepThreeToJSX = function (splitArray, regexFilterResult, relevantKey, isReact) {
         var splitArraySpan = splitArray.map(function (string) { return isReact ? createVNode$2(1, "span", null, string, 0) : string; });
@@ -2663,7 +2668,9 @@
                     // 2nd step: Trim it. The last and first things of the array.
                     // 3rd step: replace it with JS. Turn it
                     var splitArray = acc.relevantText.split(regexFilterResult[relevantKey][0].value);
-                    // const splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    // const splitArray: StepOneTextMatch[] = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    // const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray);
+                    // const newArray = stepThreeToJSX(splitArrayTrim);
                     if (splitArray.length === 1)
                         return acc;
                     // console.log('splitArray', splitArray)
@@ -3108,6 +3115,7 @@
         { titleText: /song/i },
         { titleText: /Playlist/i },
         { titleText: /beast mode/i },
+        { titleText: /physical pain/i },
         { titleText: /Erotica/i },
         { titleText: /gift/i },
         { titleText: /hunger/i },
@@ -3217,6 +3225,7 @@
         __assign(__assign({}, both), { titleText: /Gave in last night/i }),
         __assign(__assign({}, both), { titleText: /caved into a relapse already/i }),
         __assign(__assign({}, both), { titleText: /Relaspsed because i had/i }),
+        __assign(__assign({}, both), { titleText: /Slipped up again today/i }),
         { messageText: /was going strong till today/i },
         { messageText: /Yesterday I relapsed again/i },
         __assign(__assign({}, both), { titleText: /relapsed (after|on day|again)/i }),
@@ -3421,6 +3430,7 @@
         { titleText: /what other steps/i },
         { titleText: /any help or advice/i },
         { titleText: /does anyone have tips/i },
+        __assign(__assign({}, both), { titleText: /(cant|can't|can’t) manage to stop/i }),
         __assign(__assign({}, both), { titleText: /What are your best strategies/i }),
         __assign(__assign({}, both), { titleText: /Please send me some tips how to not get horny/i }),
         __assign(__assign({}, both), { titleText: /What finally gave you success/i }),
@@ -3775,6 +3785,8 @@
         __assign(__assign({}, both), { titleText: /Is masturbation ok\?/i }),
         __assign(__assign({}, both), { titleText: /good moderation for masturbation/i }),
         __assign(__assign({}, both), { titleText: /Is fapping without porn okay/i }),
+        __assign(__assign({}, both), { titleText: /Is it as bad if I masturbate/i }),
+        __assign(__assign({}, both), { titleText: /masturbate without watching porn\?/i }),
         __assign(__assign({}, both), { titleText: /opinions towards fapping without porn/i }),
     ];
 
@@ -3908,6 +3920,8 @@
     var toPartnerAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /My husband is starting his nofap journey/i }),
         __assign(__assign({}, both), { titleText: /How can I be supportive to him/i }),
+        __assign(__assign({}, both), { titleText: /How would I support/i }),
+        __assign(__assign({}, both), { titleText: /My boyfriend has been struggling/i }),
     ];
 
     var toIsWatchingPornRelapseAdviceRegexArray = [

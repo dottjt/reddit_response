@@ -54,8 +54,7 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Gave in last night/i },
   { ...both, titleText: /caved into a relapse already/i },
   { ...both, titleText: /Relaspsed because i had/i },
-
-
+  { ...both, titleText: /Slipped up again today/i },
 
   { messageText: /was going strong till today/i },
   { messageText: /Yesterday I relapsed again/i },
