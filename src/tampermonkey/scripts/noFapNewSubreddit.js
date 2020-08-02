@@ -2597,6 +2597,7 @@
     var stepOneFindAllMatches = function (relevantText, matchesArray) {
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
+                // TODO I don't think this logic is right. 
                 var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
@@ -2642,6 +2643,7 @@
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    console.log('splitArray', splitArray);
                     var splitArrayTrim = stepTwoTrimArray(splitArray);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
@@ -3266,7 +3268,7 @@
         __assign(__assign({}, both), { titleText: /(quitting|quiting|starting) ?(NoFap|no fap|no-fap)? (now|today)/i }),
         __assign(__assign({}, both), { titleText: /(gonna|going) ?(to)? start (nofap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /gonna start to stop watching porn from now/i }),
-        __assign(__assign({}, both), { titleText: /journey (start|begins)/i }),
+        { messageText: [/journey (start|begins)/i, /more than excited/] },
         __assign(__assign({}, both), { titleText: /it begins here/i }),
         __assign(__assign({}, both), { titleText: /(here|now) it begins/i }),
         __assign(__assign({}, both), { titleText: /the cycle stops here/i }),
@@ -3787,6 +3789,7 @@
         var matchResponse = {};
         var matchArray = regex.map(function (regexSingle) {
             var match = stringObjectToMatch[keyString].match(regexSingle);
+            // TODO I don't think this is correct
             return {
                 value: match ? match[0] : undefined,
                 regex: String(regex)
@@ -3799,6 +3802,7 @@
     };
     var matchTextBoth = function (stringObjectToMatch, regex) {
         var _a, _b;
+        // TODO this should actually be part of matchOne.
         var matchResponse = {};
         var matchText = (_a = stringObjectToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (matchText) {

@@ -26,6 +26,7 @@ const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAnd
   const { splitArray } = matchesArray.reduce((acc, valueAndRegex) => {
     const newSplitArray = acc.splitArray.map(textObj => {
 
+      // TODO I don't think this logic is right. 
       const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => ({ text: mapText, isMatch: false }));
       if (splitTextArray.length === 1) return splitTextArray;
 
@@ -87,7 +88,9 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
         const relevantKey = Object.keys(regexFilterResult)[0];
 
         const splitArray: StepOneTextMatch[] = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+        console.log('splitArray', splitArray)
         const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray);
+
         const newArray = stepThreeToJSX(splitArrayTrim, isReact);
 
         return { ...acc, expressionArray: newArray, foundMatch: true };

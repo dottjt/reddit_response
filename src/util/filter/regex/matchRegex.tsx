@@ -16,6 +16,7 @@ const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMat
   const matchArray = regex.map((regexSingle: RegExp) => {
     const match = stringObjectToMatch[keyString].match(regexSingle);
 
+    // TODO I don't think this is correct
     return {
       value: match ? match[0] : undefined,
       regex: String(regex)
@@ -30,6 +31,7 @@ const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMat
 }
 
 const matchTextBoth = (stringObjectToMatch: StringObjectToMatch, regex: RegExp): MatchRegExpResponse  => {
+  // TODO this should actually be part of matchOne.
   let matchResponse = {} as MatchRegExpResponse;
   const matchText = stringObjectToMatch.titleText?.match(regex);
   if (matchText) {

@@ -2481,6 +2481,7 @@
     var stepOneFindAllMatches = function (relevantText, matchesArray) {
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
+                // TODO I don't think this logic is right. 
                 var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
@@ -2526,6 +2527,7 @@
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    console.log('splitArray', splitArray);
                     var splitArrayTrim = stepTwoTrimArray(splitArray);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });

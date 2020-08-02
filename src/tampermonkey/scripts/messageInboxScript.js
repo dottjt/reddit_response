@@ -433,6 +433,7 @@
         var matchResponse = {};
         var matchArray = regex.map(function (regexSingle) {
             var match = stringObjectToMatch[keyString].match(regexSingle);
+            // TODO I don't think this is correct
             return {
                 value: match ? match[0] : undefined,
                 regex: String(regex)
@@ -445,6 +446,7 @@
     };
     var matchTextBoth = function (stringObjectToMatch, regex) {
         var _a, _b;
+        // TODO this should actually be part of matchOne.
         var matchResponse = {};
         var matchText = (_a = stringObjectToMatch.titleText) === null || _a === void 0 ? void 0 : _a.match(regex);
         if (matchText) {
@@ -2820,6 +2822,7 @@
     var stepOneFindAllMatches = function (relevantText, matchesArray) {
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
+                // TODO I don't think this logic is right. 
                 var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
@@ -2865,6 +2868,7 @@
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
+                    console.log('splitArray', splitArray);
                     var splitArrayTrim = stepTwoTrimArray(splitArray);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
