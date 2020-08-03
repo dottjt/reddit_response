@@ -56,6 +56,7 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /having trouble fighting (urges|the urge|cravings)/i },
   { ...both, titleText: /need some advice to fight (urges|the urge|cravings)/i },
   { ...both, titleText: /still struggling with (urges|the urge|cravings)/i },
+  { ...both, titleText: /the (urges|the urge|cravings) are really bad/i },
 
   { ...both, titleText: /temptation to peak is too damn high/i },
   { ...both, titleText: /best way to fight (urges|the urge|cravings)/i },

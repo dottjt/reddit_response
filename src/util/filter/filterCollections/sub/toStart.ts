@@ -101,7 +101,6 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // STARTING
 
-
   { titleText: /why (I’m|I'm|im|I am) starting/i },
   { titleText: /^(starting|started)(\.|\!)?$/i },
   { titleText: /starting my journey/i },
@@ -130,7 +129,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   { ...both, titleText: /how do I begin/i },
   { ...both, titleText: /Streak starts here/i },
-
+  { ...both, titleText: /(decided|deciding) to start/i },
+  
   // START JOURNEY
   { titleText: /start to my Journey/i },
   { titleText: /Just began my journey/i },

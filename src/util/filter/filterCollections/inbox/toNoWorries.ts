@@ -7,6 +7,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /took up/i },
 
   // YES
+
+  { replyText: /^Sure\!/i },
   { replyText: /^sure$/i },
   { replyText: /^yes$/i },
   { replyText: /^(Yaa|ya)$/i },
@@ -52,6 +54,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /Send me bro\./i },
   { replyText: /share with me the website/i },
   { replyText: /Send dat link/i },
+  { replyText: /give me link/i },
 
   { replyText: /provide me with some link/i },
   { replyText: /Suggest me your website/i },
@@ -99,11 +102,14 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /Feel free to share the link of your website/i },
   { replyText: /Link it pls/i },
   { replyText: /pass on the link/i },
+  { replyText: /shoot your website/i },
 
   // INTERESTED
-  { replyText: /(I'm|I’m|I am|iam|im|I'd be) ?(certainly|really|super)? (interested|intrested|interessted|interesting)/i },
+  { replyText: /(I'm|I’m|I am|iam|im|I'd be|I'd|I’d) ?(certainly|certainly be|really|super)? (interested|intrested|interessted|interesting)/i },
   { replyText: /(I'm|I’m|I am|iam|im) interested in the website/i },
   { replyText: /(I'd|id|I’d) be interested in checking it/i },
+  { replyText: /I am interested in your site/i },
+  { replyText: /I highly interested/i },
 
   { replyText: /interested to follow your website/i },
   { replyText: /interested in having a look at your website/i },

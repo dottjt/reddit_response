@@ -14,6 +14,7 @@ export const toRemoveCounter: InitialRegExpCollection[] = [
   { titleText: /(tracker|counting|counter)/i },
   { titleText: /accountability post/i },
 
+
   { ...both, titleText: /^counter$/i },
   { ...both, titleText: /I want a flair/i },
   { ...both, titleText: /checking my day count/i },

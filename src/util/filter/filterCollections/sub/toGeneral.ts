@@ -81,6 +81,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(I’m|im|I'm|I am) \d+ and addicted to/i },
   { ...both, titleText: /(I’ve|ive|I've|I have) tried so many things(,)? but/i },
   { ...both, titleText: /What are your methods for dealing with failure/i },
+  { ...both, titleText: /Any tips to get me past the first week/i },
   { ...both, titleText: /I (want to|wanna) stop this immediately/i },
 
   { messageText: /Can anyone help me/i },
@@ -97,8 +98,6 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { messageText: /share their conclusions about how they overcame/i },
   { messageText: /any improvements are welcome/i },
   { messageText: /wondering if there are other techniques and suggestions/i },
-
-
 
   { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i },
 

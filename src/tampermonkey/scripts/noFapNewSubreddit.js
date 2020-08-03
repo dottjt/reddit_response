@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'thesinglesocietyking';
+    var R_NOFAP_USERNAME = 'WindUpToyGames';
     var R_NOFAP_TIMESTAMP = 'just now';
     var R_PORN_FREE_USERNAME = 'wannabe995';
-    var R_PORN_FREE_TIMESTAMP = '15 hours ago';
+    var R_PORN_FREE_TIMESTAMP = '20 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'deathrowjack';
-    var R_PORN_ADDICTION_TIMESTAMP = '18 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '22 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3317,6 +3317,7 @@
         { titleText: /\d+ year(s)? old starting (nofap|no fap|no-fap)/i },
         __assign(__assign({}, both), { titleText: /how do I begin/i }),
         __assign(__assign({}, both), { titleText: /Streak starts here/i }),
+        __assign(__assign({}, both), { titleText: /(decided|deciding) to start/i }),
         // START JOURNEY
         { titleText: /start to my Journey/i },
         { titleText: /Just began my journey/i },
@@ -3458,6 +3459,7 @@
         __assign(__assign({}, both), { titleText: /(I’m|im|I'm|I am) \d+ and addicted to/i }),
         __assign(__assign({}, both), { titleText: /(I’ve|ive|I've|I have) tried so many things(,)? but/i }),
         __assign(__assign({}, both), { titleText: /What are your methods for dealing with failure/i }),
+        __assign(__assign({}, both), { titleText: /Any tips to get me past the first week/i }),
         __assign(__assign({}, both), { titleText: /I (want to|wanna) stop this immediately/i }),
         { messageText: /Can anyone help me/i },
         { messageText: /What do (you|u) do when (you|u) really want to do it/i },
@@ -3733,6 +3735,7 @@
         __assign(__assign({}, both), { titleText: /having trouble fighting (urges|the urge|cravings)/i }),
         __assign(__assign({}, both), { titleText: /need some advice to fight (urges|the urge|cravings)/i }),
         __assign(__assign({}, both), { titleText: /still struggling with (urges|the urge|cravings)/i }),
+        __assign(__assign({}, both), { titleText: /the (urges|the urge|cravings) are really bad/i }),
         __assign(__assign({}, both), { titleText: /temptation to peak is too damn high/i }),
         __assign(__assign({}, both), { titleText: /best way to fight (urges|the urge|cravings)/i }),
         __assign(__assign({}, both), { titleText: /(couple of|past few) days .* constant (urges|the urge|cravings)/i }),
