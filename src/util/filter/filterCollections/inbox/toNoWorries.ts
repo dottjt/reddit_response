@@ -20,7 +20,6 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /shoot the link over/i },
   { replyText: /open to looking at your website/i },
 
-
   // { replyText: /^yes I am interested/i }, // too broad
 
   // CHECK
@@ -103,10 +102,14 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /Link it pls/i },
   { replyText: /pass on the link/i },
   { replyText: /shoot your website/i },
+  { replyText: /be down to read that/i },
+
+
 
   // INTERESTED
   { replyText: /(I'm|I’m|I am|iam|im|I'd be|I'd|I’d) ?(certainly|certainly be|really|super)? (interested|intrested|interessted|interesting)/i },
   { replyText: /(I'm|I’m|I am|iam|im) interested in the website/i },
+  { replyText: /(I'm|I’m|I am|iam|im) absolutely interested/i },
   { replyText: /(I'd|id|I’d) be interested in checking it/i },
   { replyText: /I am interested in your site/i },
   { replyText: /I highly interested/i },

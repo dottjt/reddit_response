@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'WindUpToyGames';
-    var R_NOFAP_TIMESTAMP = 'just now';
-    var R_PORN_FREE_USERNAME = 'wannabe995';
-    var R_PORN_FREE_TIMESTAMP = '20 hours ago';
-    var R_PORN_ADDICTION_USERNAME = 'deathrowjack';
-    var R_PORN_ADDICTION_TIMESTAMP = '22 hours ago';
+    var R_NOFAP_USERNAME = 'deceptiongenesis';
+    var R_NOFAP_TIMESTAMP = '1 minute ago';
+    var R_PORN_FREE_USERNAME = 'Jedistoneman';
+    var R_PORN_FREE_TIMESTAMP = '5 hours ago';
+    var R_PORN_ADDICTION_USERNAME = 'silentprincess92';
+    var R_PORN_ADDICTION_TIMESTAMP = '9 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2583,13 +2583,6 @@
     };
 
     var createVNode$2 = createVNode;
-    var RelevantType;
-    (function (RelevantType) {
-        RelevantType["Title"] = "Title";
-        RelevantType["Message"] = "Message";
-        RelevantType["Flair"] = "Flair";
-        RelevantType["Reply"] = "Reply";
-    })(RelevantType || (RelevantType = {}));
     var insert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
@@ -2597,7 +2590,7 @@
     var stepOneFindAllMatches = function (relevantText, matchesArray) {
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
-                // TODO I don't think this logic is right. 
+                // TODO I don't think this logic is right.
                 var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
@@ -2608,7 +2601,7 @@
         }, { splitArray: [{ text: relevantText, isMatch: false }] }).splitArray;
         return splitArray;
     };
-    var stepTwoTrimArray = function (splitArray) {
+    var stepTwoTrimArray = function (splitArray, relevantKey) {
         //     if (Boolean(splitArray[0])) {
         //       const firstPartOfSentence: string[] = splitArray[0].split('.').filter(p => p)
         //       if (firstPartOfSentence.length > 0) {
@@ -2617,13 +2610,15 @@
         //       }
         //     } // it would be good to split it to the nearest .
         // I imagine it would have to be come kind of complex reduce, where you track sentences backwards, collecting sentence length.
-        // NOTE: Means there has been no match
-        if (splitArray.length === 1) {
-            splitArray[0].text = splitArray[0].text.slice(0, 200);
-            return splitArray;
+        if (relevantKey !== 'replyTextMatch') {
+            // NOTE: Means there has been no match
+            if (splitArray.length === 1) {
+                splitArray[0].text = splitArray[0].text.slice(0, 200);
+                return splitArray;
+            }
+            splitArray[0].text = splitArray[0].text.slice(-80);
+            splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
         }
-        splitArray[0].text = splitArray[0].text.slice(-80);
-        splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
         return splitArray;
     };
     var stepThreeToJSX = function (splitArrayTrim, isReact) {
@@ -2644,7 +2639,7 @@
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
                     console.log('splitArray', splitArray);
-                    var splitArrayTrim = stepTwoTrimArray(splitArray);
+                    var splitArrayTrim = stepTwoTrimArray(splitArray, relevantKey);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
                 }
@@ -3084,6 +3079,8 @@
         { titleText: /why do you fap\?/i },
         { titleText: /Why quit porn\?/i },
         // IRRELEVANT TOPICS
+        { titleText: /muslim/i },
+        { titleText: /christian/i },
         { titleText: /song/i },
         { titleText: /Playlist/i },
         { titleText: /beast mode/i },
@@ -3178,6 +3175,7 @@
         __assign(__assign({}, both), { titleText: /I relapsed a few (hours|minutes)/i }),
         __assign(__assign({}, both), { titleText: /I jerked off today/i }),
         __assign(__assign({}, both), { titleText: /i did a relapse/i }),
+        __assign(__assign({}, both), { titleText: /i lost after \d+ days/i }),
         __assign(__assign({}, both), { titleText: /relapsing after a/i }),
         __assign(__assign({}, both), { titleText: /relapsed once again/i }),
         __assign(__assign({}, both), { titleText: /relapsed \d+ times today/i }),
@@ -3211,6 +3209,7 @@
     var toStartAdviceRegexArray = [
         // NEW
         { titleText: /^newbie/i },
+        { titleText: /first try/i },
         { titleText: /my first post/i },
         { titleText: /^First day$/i },
         { titleText: /here for (nofap|no fap|no-fap)/i },
@@ -3428,6 +3427,7 @@
         __assign(__assign({}, both), { titleText: /Tips to help in times of struggle\?/i }),
         __assign(__assign({}, both), { titleText: /appreciate anything you guys have to say/i }),
         __assign(__assign({}, both), { titleText: /I have no way out right now/i }),
+        __assign(__assign({}, both), { titleText: /give me tips on how to stop it/i }),
         __assign(__assign({}, both), { titleText: /What am I doing wrong\?/i }),
         __assign(__assign({}, both), { titleText: /can you tell me some tips or some ways you can fight the urges/i }),
         __assign(__assign({}, both), { titleText: /Can you give me a advice to make it easier/i }),
@@ -3461,6 +3461,7 @@
         __assign(__assign({}, both), { titleText: /What are your methods for dealing with failure/i }),
         __assign(__assign({}, both), { titleText: /Any tips to get me past the first week/i }),
         __assign(__assign({}, both), { titleText: /I (want to|wanna) stop this immediately/i }),
+        __assign(__assign({}, both), { titleText: /I appreciate anyone who can give some tips/i }),
         { messageText: /Can anyone help me/i },
         { messageText: /What do (you|u) do when (you|u) really want to do it/i },
         { messageText: /what can I do to change/i },
@@ -3573,6 +3574,7 @@
         __assign(__assign({}, both), { titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /wet dreamed this morning/i }),
         __assign(__assign({}, both), { titleText: /wet dream on day/i }),
+        __assign(__assign({}, both), { titleText: /are (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a sign of progress/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
         __assign(__assign({}, both), { titleText: /Lose benefits after a wet dream?/i }),
@@ -3675,6 +3677,7 @@
         __assign(__assign({}, both), { messageText: /I always end up binging/i }),
         __assign(__assign({}, both), { messageText: /I keep ?(on)? struggling with PMO/i }),
         __assign(__assign({}, both), { messageText: /I really need you guys to help me out here please/i }),
+        __assign(__assign({}, both), { messageText: /feel loss and defeated/i }),
         __assign(__assign({}, both), { titleText: /I am relapsing again and again/i }),
         __assign(__assign({}, both), { titleText: /I cannot win this battle/i }),
     ];
@@ -3690,6 +3693,7 @@
 
     var toDealingWithUrgesAdviceRegexArray = [
         // URGES
+        { titleText: /heavy urges/i },
         { titleText: /^getting (urges|the urge|cravings)$/i },
         { titleText: /(urges|the urge|cravings) at night/i },
         { titleText: /(urges|the urge|cravings) are strong/i },
@@ -3772,6 +3776,7 @@
         __assign(__assign({}, both), { titleText: /Can I masturbate without porn/i }),
         // IS IT OKAY
         { titleText: /masturbation without porn/i },
+        __assign(__assign({}, both), { titleText: /is it OK to masturbate/i }),
         __assign(__assign({}, both), { titleText: /Is it still ?(a)? relapse if you masturbate/i }),
         __assign(__assign({}, both), { titleText: /a healthy way to (fap|masturbate)/i }),
         __assign(__assign({}, both), { titleText: /Is it ok to masturbate without watching porn/i }),
@@ -3940,11 +3945,12 @@
     ];
 
     var toIsWatchingPornRelapseAdviceRegexArray = [
-        { titleText: /hellohellohellohellohellohello/i },
+        __assign(__assign({}, both), { titleText: /is it bad to watch porn/i }),
     ];
 
     var toNoReasonToRelapseAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /Should I relapse/i }),
+        __assign(__assign({}, both), { titleText: /Should I PMO/i }),
         __assign(__assign({}, both), { titleText: /might (fail|break) my streak today/i }),
     ];
 

@@ -2,6 +2,7 @@ import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 
 export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   // URGES
+  { titleText: /heavy urges/i },
   { titleText: /^getting (urges|the urge|cravings)$/i },
   { titleText: /(urges|the urge|cravings) at night/i },
   { titleText: /(urges|the urge|cravings) are strong/i },

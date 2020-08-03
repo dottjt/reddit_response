@@ -6,7 +6,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // NEW
   { titleText: /^newbie/i },
-  { titleText: /my first post/i }, // potentially inaccurate
+  { titleText: /first try/i }, 
+  { titleText: /my first post/i },
   { titleText: /^First day$/i }, // potentially inaccurate
   { titleText: /here for (nofap|no fap|no-fap)/i },
 
@@ -130,7 +131,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /how do I begin/i },
   { ...both, titleText: /Streak starts here/i },
   { ...both, titleText: /(decided|deciding) to start/i },
-  
+
   // START JOURNEY
   { titleText: /start to my Journey/i },
   { titleText: /Just began my journey/i },

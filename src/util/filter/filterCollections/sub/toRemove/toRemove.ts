@@ -105,6 +105,8 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /Why quit porn\?/i },
 
   // IRRELEVANT TOPICS
+  { titleText: /muslim/i },
+  { titleText: /christian/i },
   { titleText: /song/i },
   { titleText: /Playlist/i },
   { titleText: /beast mode/i },
@@ -146,7 +148,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /am I addicted to (porn|pron)/i },
   { ...both, titleText: /What does PMO stand for/i },
   { ...both, titleText: /^staying strong(\.)?$/i },
-  
+
   // UNSORTED
   { titleText: /benefits till now/i },
   { titleText: /does not fap/i },

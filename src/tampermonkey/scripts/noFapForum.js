@@ -2467,13 +2467,6 @@
     };
 
     var createVNode$2 = createVNode;
-    var RelevantType;
-    (function (RelevantType) {
-        RelevantType["Title"] = "Title";
-        RelevantType["Message"] = "Message";
-        RelevantType["Flair"] = "Flair";
-        RelevantType["Reply"] = "Reply";
-    })(RelevantType || (RelevantType = {}));
     var insert = function (arr, index, newItem) { return __spreadArrays(arr.slice(0, index), [
         newItem
     ], arr.slice(index)); };
@@ -2481,7 +2474,7 @@
     var stepOneFindAllMatches = function (relevantText, matchesArray) {
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
-                // TODO I don't think this logic is right. 
+                // TODO I don't think this logic is right.
                 var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
@@ -2492,7 +2485,7 @@
         }, { splitArray: [{ text: relevantText, isMatch: false }] }).splitArray;
         return splitArray;
     };
-    var stepTwoTrimArray = function (splitArray) {
+    var stepTwoTrimArray = function (splitArray, relevantKey) {
         //     if (Boolean(splitArray[0])) {
         //       const firstPartOfSentence: string[] = splitArray[0].split('.').filter(p => p)
         //       if (firstPartOfSentence.length > 0) {
@@ -2501,13 +2494,15 @@
         //       }
         //     } // it would be good to split it to the nearest .
         // I imagine it would have to be come kind of complex reduce, where you track sentences backwards, collecting sentence length.
-        // NOTE: Means there has been no match
-        if (splitArray.length === 1) {
-            splitArray[0].text = splitArray[0].text.slice(0, 200);
-            return splitArray;
+        if (relevantKey !== 'replyTextMatch') {
+            // NOTE: Means there has been no match
+            if (splitArray.length === 1) {
+                splitArray[0].text = splitArray[0].text.slice(0, 200);
+                return splitArray;
+            }
+            splitArray[0].text = splitArray[0].text.slice(-80);
+            splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
         }
-        splitArray[0].text = splitArray[0].text.slice(-80);
-        splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
         return splitArray;
     };
     var stepThreeToJSX = function (splitArrayTrim, isReact) {
@@ -2528,7 +2523,7 @@
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
                     console.log('splitArray', splitArray);
-                    var splitArrayTrim = stepTwoTrimArray(splitArray);
+                    var splitArrayTrim = stepTwoTrimArray(splitArray, relevantKey);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });
                 }

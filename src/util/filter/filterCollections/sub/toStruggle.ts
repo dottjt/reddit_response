@@ -78,6 +78,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, messageText: /I always end up binging/i, },
   { ...both, messageText: /I keep ?(on)? struggling with PMO/i, },
   { ...both, messageText: /I really need you guys to help me out here please/i, },
+  { ...both, messageText: /feel loss and defeated/i, },
 
   { ...both, titleText: /I am relapsing again and again/i, },
   { ...both, titleText: /I cannot win this battle/i, },

@@ -2,13 +2,6 @@ import { createElement } from 'inferno-create-element';
 import { MatchRegExpResponse, MatchValueAndRegex } from './regexUtil';
 import { access } from 'fs';
 
-export enum RelevantType {
-  Title='Title',
-  Message='Message',
-  Flair='Flair',
-  Reply='Reply',
-}
-
 type StepOneTextMatch = {
   text: string;
   isMatch: boolean;
@@ -26,7 +19,7 @@ const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAnd
   const { splitArray } = matchesArray.reduce((acc, valueAndRegex) => {
     const newSplitArray = acc.splitArray.map(textObj => {
 
-      // TODO I don't think this logic is right. 
+      // TODO I don't think this logic is right.
       const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => ({ text: mapText, isMatch: false }));
       if (splitTextArray.length === 1) return splitTextArray;
 
@@ -40,7 +33,7 @@ const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAnd
   return splitArray;
 }
 
-const stepTwoTrimArray = (splitArray: StepOneTextMatch[]): StepOneTextMatch[] => {
+const stepTwoTrimArray = (splitArray: StepOneTextMatch[], relevantKey: string): StepOneTextMatch[] => {
   //     if (Boolean(splitArray[0])) {
   //       const firstPartOfSentence: string[] = splitArray[0].split('.').filter(p => p)
   //       if (firstPartOfSentence.length > 0) {
@@ -50,14 +43,16 @@ const stepTwoTrimArray = (splitArray: StepOneTextMatch[]): StepOneTextMatch[] =>
   //     } // it would be good to split it to the nearest .
   // I imagine it would have to be come kind of complex reduce, where you track sentences backwards, collecting sentence length.
 
-  // NOTE: Means there has been no match
-  if (splitArray.length === 1) {
-    splitArray[0].text = splitArray[0].text.slice(0, 200);
-    return splitArray;
-  }
+  if (relevantKey !== 'replyTextMatch') {
+    // NOTE: Means there has been no match
+    if (splitArray.length === 1) {
+      splitArray[0].text = splitArray[0].text.slice(0, 200);
+      return splitArray;
+    }
 
-  splitArray[0].text = splitArray[0].text.slice(-80);
-  splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
+    splitArray[0].text = splitArray[0].text.slice(-80);
+    splitArray[splitArray.length - 1].text = splitArray[splitArray.length - 1].text.slice(0, 80);
+  }
 
   return splitArray;
 };
@@ -89,7 +84,7 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
 
         const splitArray: StepOneTextMatch[] = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
         console.log('splitArray', splitArray)
-        const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray);
+        const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray, relevantKey);
 
         const newArray = stepThreeToJSX(splitArrayTrim, isReact);
 
