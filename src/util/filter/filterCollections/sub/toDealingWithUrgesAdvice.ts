@@ -8,6 +8,9 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(urges|the urge|cravings) are strong/i },
   { titleText: /^strong urges$/i },
 
+
+  { ...both, titleText: /advice on how to beat the urge/i },
+  { ...both, titleText: /the urges are super strong/i },
   { ...both, titleText: /I have an urge right now/i },
   { ...both, titleText: /feeling the urge to release/i },
   { ...both, titleText: /having a really strong urge right now/i },
@@ -16,6 +19,10 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(I’m|im|I m|i'm) having (urges|the urge|cravings)/i },
   { ...both, titleText: /I (don’t|dont|don't) know if I can hold it/i },
   { ...both, titleText: /usually deal with (urges|the urge|cravings)/i },
+  { ...both, titleText: /How long does it take for the urges/i },
+  { ...both, titleText: /do the urges ever stop coming/i },
+
+
 
   { messageText: /someone tell me when (these|this) (urge|urges) will/i },
 

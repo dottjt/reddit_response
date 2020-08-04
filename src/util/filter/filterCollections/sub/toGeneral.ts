@@ -159,7 +159,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /I feel like relapsing/i },
   { titleText: /I (cant|can't|can’t) do it/i },
 
-
+  { ...both, titleText: /Why do I feel guilty/i },
   { ...both, titleText: /Anyone else get crazy depressed/i },
   { ...both, titleText: /I ?(really)? (don’t|don't|dont) know what to do/i },
 
@@ -175,10 +175,21 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /need ?(some)? help with stopping/i },
   { titleText: /(cant|can't|can’t) control help me please/i },
   { titleText: /help me out from relapsing/i },
+  { ...both, titleText: /How do you stop masturbating/i },
+  { ...both, titleText: /any tips to avoid fapping/i },
+  { ...both, titleText: /I (cant|can't|can’t) keep doing this/i },
 
+  { ...both, titleText: /Can someone give me a few tips/i },
+  { ...both, titleText: /i tried everything to stop/i },
+  { ...both, titleText: /I JUST WANT TO STOP/i },
+  { ...both, titleText: /Would love if you help me/i },
+  { ...both, titleText: /having a hard time/i },
   { ...both, titleText: /(cant|can't|can’t) get over \d+ days/i },
   { ...both, titleText: /(cant|can't|can’t) seem to get past \d+ days/i },
 
+  { ...both, titleText: /how to get more motivation/i },
+  { ...both, titleText: /Please give me advice on how to/i },
+  { ...both, titleText: /How to stop having a dirty mind/i },
   { ...both, titleText: /any tips on quitting/i },
   { ...both, titleText: /Any help would be much appreciated/i },
   { ...both, titleText: /can take my mind off it/i },

@@ -33,6 +33,9 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
 
+  { ...both, titleText: /My first (nofap|no fap|no-fap) journey/i },
+  { ...both, titleText: /(it’s|it's|its|it is) time to stop/i },
+  { ...both, titleText: /Just started officially/i },
   { ...both, titleText: /Let the challenge begin/i },
   { ...both, titleText: /Have decided to start/i },
   { ...both, titleText: /How to begin\?/i },
@@ -178,10 +181,12 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /^first time here$/i },
   { titleText: /(first|1st) (day)/i },
 
+
   { ...both, titleText: /(it is|it's|it’s) my first day in this Journey/i },
   { ...both, titleText: /first time (nofap|no fap|no-fap)/i },
   { ...both, titleText: /first time .* looking for advice/i },
   { ...both, titleText: /first timer/i },
+  { ...both, titleText: /Today I start my journey/i },
   { ...both, titleText: /here for the first time /i },
 
   { messageText: /this is gonna be my first day to nofap/i },

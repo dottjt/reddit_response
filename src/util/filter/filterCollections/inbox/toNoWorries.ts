@@ -81,12 +81,20 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /be thankful for that link/i },
   { replyText: /would appreciate if you could help me/i },
   { replyText: /would like to look your website/i },
+  { replyText: /could use anything that would help me/i },
+  { replyText: /love to check out your resources/i },
+  { replyText: /intrested in seeing ur work/i },
+  { replyText: /love to look at your website/i },
+  { replyText: /hear more about the website/i },
 
   { replyText: /^Ya I interested/i },
+  { replyText: /would be very interested/i },
+
   { replyText: /^Yeah I'm interested/i },
 
   { replyText: /(can|could) you ?(please)? link/i },
   { replyText: /comfortable with sharing it/i },
+  { replyText: /what the link/i },
   { replyText: /Fire away with your website/i },
   { replyText: /sure (I’ll|ill|I'll) take a look/i },
   { replyText: /if you sent ?(me)? the (site|link|web|guide|content|page)/i },
@@ -95,6 +103,9 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /take all the help I can get/i },
   { replyText: /check out your NoFap website/i },
   { replyText: /share with me the link/i },
+  { replyText: /get a link to website/i },
+  { replyText: /Can I see this website/i },
+
 
   // SHARE
   { replyText: /can share me (your|ur) site/i },
@@ -183,6 +194,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /take a look at your (web site|website)/i },
   { replyText: /like to see (it|that)/i },
   { replyText: /love to go through your website/i },
+  { replyText: /i could go over your website/i },
 
   // NEUTRAL
   { replyText: /(yah|ya|yeah) why not/i },

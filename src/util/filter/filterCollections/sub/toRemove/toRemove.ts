@@ -139,7 +139,10 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   // OTHER TOPICS
   { titleText: /is (it|nofap|no fap) worth it/i },
   { titleText: /libido/i },
-  { titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
+
+  { ...both, titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
+  { ...both, titleText: /Is having sex/i },
+
   { titleText: /no urges yet/i },
   // { titleText: /(hard mode|hardmode)/i }, // this needs to be more specific
   { titleText: /cold shower/i },
@@ -152,6 +155,9 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /What does PMO stand for/i },
   { ...both, titleText: /^staying strong(\.)?$/i },
   { ...both, titleText: /human traff/i },
+  { ...both, titleText: /what is edging/i },
+  { ...both, titleText: /what is PMO/i },
+  { ...both, titleText: /Recommended books/i },
 
   // UNSORTED
   { titleText: /benefits till now/i },
@@ -164,6 +170,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /too nervous to get hard/i },
   { titleText: /App for Quitting Porn/i },
   { titleText: /message to myself/i },
+
 
   { ...both, titleText: /Completed 90 days/i },
 

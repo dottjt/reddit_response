@@ -24,6 +24,9 @@ export const toMasturbateWithoutPornAdviceRegexArray: InitialRegExpCollection[] 
   { ...both, titleText: /Is masturbation ok\?/i },
   { ...both, titleText: /good moderation for masturbation/i },
   { ...both, titleText: /Is fapping without porn okay/i },
+  { ...both, titleText: /thoughts on fapping without porn/i },
+  { ...both, titleText: /What about fapping without porn/i },
+
   { ...both, titleText: /Is it as bad if I masturbate/i },
   { ...both, titleText: /masturbate without watching porn\?/i },
   { ...both, titleText: /is fapping without porn better\?/i },

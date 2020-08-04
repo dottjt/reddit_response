@@ -4,13 +4,14 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i },
 
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i },
-  { ...both, titleText: /had a wet dream/i }, // - prefi with never
+  { ...both, titleText: /had a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }, // - prefi with never
   { ...both, titleText: /how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /wet dreamed this morning/i },
   { ...both, titleText: /wet dream on day/i },
   { ...both, titleText: /are (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a sign of progress/i },
   { ...both, titleText: /How do I stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
+  { ...both, titleText: /Feeling low after a wet dream/i },
 
   { ...both, titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i },
   { ...both, titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i },

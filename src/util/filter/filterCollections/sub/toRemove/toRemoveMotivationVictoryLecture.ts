@@ -44,6 +44,7 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /streak for the first time/i },
   { titleText: /double digit/i },
   { titleText: /so proud of myself/i },
+  { titleText: /Today marks my longest streak/i },
   { titleText: /still going strong/i },
   { titleText: /not bragging/i },
   { titleText: /just completed a/i },
@@ -60,6 +61,7 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i },
   { titleText: /\d+ (days|weeks|months|years) free$/i },
 
+  { ...both, titleText: /Instead of jerking off/i },
   { ...both, titleText: /just made it to \d+ days without/i },
   { ...both, titleText: /finally hit .* (weeks|days) again/i },
   { ...both, titleText: /On my way to triumph/i },
