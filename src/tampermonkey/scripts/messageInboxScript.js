@@ -200,7 +200,7 @@
     var toHardTimeRegexArray = [
         // DON'T DO ANYTHING / MUCH
         { replyText: /I (don’t|dont|don't) ?(really)? do (anything|much|a whole lot|a lot) for my mental health/i },
-        { replyText: /do (anything about|nothing for) my mental health/i },
+        { replyText: /(do|done) (anything about|nothing for) my mental health/i },
         { replyText: /I (haven't|haven’t|have not) done much/i },
         { replyText: /never really done (much|a lot) for my mental health/i },
         { replyText: /I (don’t|don't|dont) take any measures to (improve|help) my mental health/i },
@@ -297,12 +297,15 @@
         { replyText: /(wouldn’t|wouldn't) mind checking out your website/i },
         { replyText: /if you could link it/i },
         { replyText: /take all the help I can get/i },
+        { replyText: /check out your NoFap website/i },
+        { replyText: /share with me the link/i },
         // SHARE
         { replyText: /can share me (your|ur) site/i },
         { replyText: /feel free to share your website/i },
         { replyText: /could you share your mediation website/i },
         { replyText: /Feel free to share the link of your website/i },
         { replyText: /Link it pls/i },
+        { replyText: /Sure(,)? link it/i },
         { replyText: /pass on the link/i },
         { replyText: /shoot your website/i },
         { replyText: /be down to read that/i },
@@ -404,6 +407,7 @@
         // WHERE TO FIND
         { replyText: /where can i find (this|the) (site|link|website|web site|webite|guide|content|page)/i },
         { replyText: /(Im|I'm) considering reading/i },
+        { replyText: /How can i see your (site|link|website|web site|webite|guide|content|page)/i },
         // WHAT
         { replyText: /What (site|link|website|web site|webite|guide|content|page) have you/i },
         { replyText: /What (site|link|website|web site|webite|guide|content|page) (is it|would that be)/i },

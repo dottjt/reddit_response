@@ -59,10 +59,12 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /reached day \d+ for the (first time|firsttime)/i },
   { titleText: /(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i },
   { titleText: /\d+ (days|weeks|months|years) free$/i },
-  { titleText: /On my way to triumph/i },
-  { titleText: /finally hit .* (weeks|days) again/i },
 
+  { ...both, titleText: /just made it to \d+ days without/i },
+  { ...both, titleText: /finally hit .* (weeks|days) again/i },
+  { ...both, titleText: /On my way to triumph/i },
   { ...both, titleText: /pretty easy so far/i },
+  { ...both, titleText: /new record/i },
 
   // MOTIVATION
   { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },

@@ -74,6 +74,9 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /hocd/i },
   { ...both, titleText: /scientific/i },
   { ...both, titleText: /prostate cancer/i },
+  { ...both, titleText: /hair loss/i },
+
+
 
   { ...both, titleText: /vasectomy/i },
   { ...both, titleText: /super sensitive/i },
@@ -148,6 +151,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /am I addicted to (porn|pron)/i },
   { ...both, titleText: /What does PMO stand for/i },
   { ...both, titleText: /^staying strong(\.)?$/i },
+  { ...both, titleText: /human traff/i },
 
   // UNSORTED
   { titleText: /benefits till now/i },
@@ -159,6 +163,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /really helpful app/i },
   { titleText: /too nervous to get hard/i },
   { titleText: /App for Quitting Porn/i },
+  { titleText: /message to myself/i },
 
   { ...both, titleText: /Completed 90 days/i },
 

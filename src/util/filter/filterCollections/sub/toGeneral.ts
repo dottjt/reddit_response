@@ -18,6 +18,8 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   // ADVICE
 
   { titleText: /I need ?(.*) help/i },
+  { titleText: /^I need advice$/i },
+  { titleText: /tips on how to do it/i },
   { titleText: /Looking for Tips/i },
   { titleText: /^tips\?$/i },
   { titleText: /.* any tips\?$/i },
@@ -31,6 +33,9 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /any help or advice/i },
   { titleText: /does anyone have tips/i },
 
+  { ...both, titleText: /some (advice|tips) to stay strong/i },
+  { ...both, titleText: /would love to know how you/i },
+  { ...both, titleText: /if you could give me some tips/i },
   { ...both, titleText: /(cant|can't|can’t) manage to stop/i },
   { ...both, titleText: /What are your best strategies/i },
   { ...both, titleText: /Please send me some tips how to not get horny/i },
@@ -171,6 +176,13 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(cant|can't|can’t) control help me please/i },
   { titleText: /help me out from relapsing/i },
 
+  { ...both, titleText: /(cant|can't|can’t) get over \d+ days/i },
+  { ...both, titleText: /(cant|can't|can’t) seem to get past \d+ days/i },
+
+  { ...both, titleText: /any tips on quitting/i },
+  { ...both, titleText: /Any help would be much appreciated/i },
+  { ...both, titleText: /can take my mind off it/i },
+  { ...both, titleText: /have ways to combat this/i },
   { ...both, titleText: /help me with this addiction/i },
 
   { messageText: /So please guys, I need your help/i },
@@ -210,3 +222,5 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   // || new RegExp(/urges keep coming/i).test(titleText)
   // || new RegExp(/needing advice/i).test(titleText)
 ];
+
+

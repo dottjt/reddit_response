@@ -14,6 +14,7 @@ export const toBiggestBenefitPostAddictionAdviceRegexArray: InitialRegExpCollect
   { ...both, titleText: /What are the benefits\?/i },
   { ...both, titleText: /Why should one stop fapping/i },
   { ...both, titleText: /reasons to stop/i },
+  { ...both, titleText: /Are there any benefits from (NoFap|no fap|no-fap)/i },
 
   // SHARE BENEFITS
   { ...both, titleText: /share some ?(overall)? benefits you (have|guys) experienced/i },

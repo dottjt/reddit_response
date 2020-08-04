@@ -6,7 +6,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // NEW
   { titleText: /^newbie/i },
-  { titleText: /first try/i }, 
+  { titleText: /first try/i },
   { titleText: /my first post/i },
   { titleText: /^First day$/i }, // potentially inaccurate
   { titleText: /here for (nofap|no fap|no-fap)/i },
@@ -67,6 +67,10 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // STARTS NOW
   { titleText: /we start today/i },
+  { titleText: /starting (NoFap|no fap|no-fap)/i },
+  { titleText: /(I’m|I'm|im|I am) a new member/i },
+
+  { ...both, titleText: /today is my first day/i },
   { ...both, titleText: /today I start/i },
   { ...both, titleText: /(NoFap|no fap|no-fap) from today/i },
   { ...both, titleText: /(gonna|going to) start today/i },
@@ -156,7 +160,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /day (1|one) (nofap|no fap|no-fap) /i },
 
   { ...both, titleText: /^day 1(\.|\!)?$/i },
-  { ...both, titleText: /^day 1 start/i },
+  { ...both, titleText: /^day 1/i },
   { ...both, titleText: /^day 1 of (nofap|no fap|no-fap) journey/i },
   { ...both, titleText: /^1 day of (nofap|no fap|no-fap) journey/i },
   { ...both, titleText: /Day 1(\:|\.)? Here we go/i },
@@ -169,14 +173,16 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   // FIRST
 
-  { ...both, titleText: /(it is|it's|it’s) my first day in this Journey/i },
   { titleText: /first post/i },
   { titleText: /first time doing this/i },
-  { titleText: /first time .* looking for advice/i },
-  { titleText: /first time (nofap|no fap|no-fap)/i },
-  { titleText: /(first|1st) (day)/i },
-  { titleText: /first timer/i },
   { titleText: /^first time here$/i },
+  { titleText: /(first|1st) (day)/i },
+
+  { ...both, titleText: /(it is|it's|it’s) my first day in this Journey/i },
+  { ...both, titleText: /first time (nofap|no fap|no-fap)/i },
+  { ...both, titleText: /first time .* looking for advice/i },
+  { ...both, titleText: /first timer/i },
+  { ...both, titleText: /here for the first time /i },
 
   { messageText: /this is gonna be my first day to nofap/i },
 ];

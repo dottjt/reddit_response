@@ -17,6 +17,9 @@ export const toStartAgainAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /^Starting again../i, },
   { ...both, titleText: /giving (nofap|no fap|no-fap|this) another go/i, },
 
+
+
+  { ...both, titleText: /This is my .* time trying/i, },
   { ...both, titleText: /Any advices for my second attempt/i, },
   { ...both, titleText: /gonna start over today/i, },
   { ...both, titleText: /starting (nofap|no fap|no-fap) again/i, },

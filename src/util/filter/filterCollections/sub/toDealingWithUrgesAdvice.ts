@@ -15,6 +15,7 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(urges|the urge|cravings)(\.)? Help me/i },
   { ...both, titleText: /(I’m|im|I m|i'm) having (urges|the urge|cravings)/i },
   { ...both, titleText: /I (don’t|dont|don't) know if I can hold it/i },
+  { ...both, titleText: /usually deal with (urges|the urge|cravings)/i },
 
   { messageText: /someone tell me when (these|this) (urge|urges) will/i },
 
