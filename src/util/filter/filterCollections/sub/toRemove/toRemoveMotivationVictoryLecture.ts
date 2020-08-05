@@ -24,6 +24,9 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { ...both, titleText: /Tip that might help you/i },
   { ...both, titleText: /an awesome tip/i },
   { ...both, titleText: /if you find yourself/i },
+  { ...both, titleText: /ask me anything/i },
+  { ...both, titleText: /d+ tips that helped me/i },
+  { ...both, titleText: /helped me reach \d+ days/i },
 
   // VICTORY
   { titleText: /^going strong$/i },
@@ -61,6 +64,7 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /\d+ (days|weeks|months|years) free$/i },
   { titleText: /longest streak yet/i },
 
+  { ...both, titleText: /absolutely amazing/i },
   { ...both, titleText: /never felt happier/i },
   { ...both, titleText: /feeling amazing/i },
   { ...both, titleText: /SUPERPOWERS ARE REAL/i },

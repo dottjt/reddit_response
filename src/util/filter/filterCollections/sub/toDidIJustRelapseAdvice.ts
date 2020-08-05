@@ -10,6 +10,7 @@ export const toDidIJustRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /was it a relapse\?/i },
 
   // COUNT AS RELAPSE
+  { ...both, titleText: /Does that count as a/i },
   { ...both, titleText: /count as ?(a)? relapse\?/i },
   { ...both, titleText: /do I have to (restart|reset) my streak/i },
   { ...both, titleText: /does that mean I failed\?/i },

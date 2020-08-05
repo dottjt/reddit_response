@@ -52,13 +52,18 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /how to beat .* (urges|the urge|cravings)/i },
   { ...both, titleText: /How do you guys keep fantasizing in check/i },
   { ...both, titleText: /How do you stop the unsurmountable (urges|the urge|cravings)/i },
+  { ...both, titleText: /how did you overcome the urge/i },
   { ...both, titleText: /how do i survive the urge of/i },
   { ...both, titleText: /How to kill a strong urge/i },
   { ...both, titleText: /urges all the time/i },
   { ...both, titleText: /use to beat the urges/i },
+  { ...both, titleText: /How to stop thinking about/i },
   { ...both, titleText: /How do I stop these urges/i },
   { ...both, titleText: /having urges while/i },
+  { ...both, titleText: /How to stop that urge/i },
   { ...both, titleText: /advices about resisting those urges/i },
+  { ...both, titleText: /trying to resist my urges/i },
+  { ...both, titleText: /Very strong urge to relapse/i },
 
   // URGES STRUGGLE
   { ...both, titleText: /urges from hell/i },

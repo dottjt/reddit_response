@@ -158,7 +158,9 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /human traff/i },
   { ...both, titleText: /what is edging/i },
   { ...both, titleText: /what is PMO/i },
+  { ...both, titleText: /strange dreams/i },
   { ...both, titleText: /Recommended books/i },
+  { ...both, titleText: /(ejaculate|cum) too quick/i },
   { ...both, titleText: /day \d+ (bby|baby)/i },
 
   // UNSORTED

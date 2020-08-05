@@ -34,6 +34,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /this ends now/i },
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+  { titleText: /a new life begin/i },
 
   { ...both, titleText: /My first (nofap|no fap|no-fap) journey/i },
   { ...both, titleText: /(it’s|it's|its|it is) time to stop/i },
@@ -59,6 +60,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /I have started my journey/i },
   { ...both, titleText: /(Here's|here’s) to a new beginning/i },
   { ...both, titleText: /Might as well start now/i },
+  { ...both, titleText: /starting day (1|one) today/i },
 
   // ADVICE
   { titleText: /any tips on getting started/i },
@@ -124,7 +126,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /starting .* challenge/i },
   { titleText: /(I’m|I'm|im|I am) starting/i },
   { titleText: /starting .* journey/i },
-  { titleText: /just starting out/i },
+  { titleText: /just starting/i },
   { titleText: /today I stop forever/i },
   // { titleText: /starting (NoFap|no fap|no-fap)/i }, // too broad in my opinion
 
@@ -182,16 +184,19 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   { titleText: /first post/i },
   { titleText: /first time doing this/i },
-  { titleText: /^first time here$/i },
+  { titleText: /^first time/i },
+
   { titleText: /(first|1st) (day)/i },
 
   { ...both, titleText: /(it is|it's|it’s) my first day in this Journey/i },
-  { ...both, titleText: /first time (nofap|no fap|no-fap)/i },
+  { ...both, titleText: /first time ?(on)? (nofap|no fap|no-fap)/i },
   { ...both, titleText: /first time .* looking for advice/i },
   { ...both, titleText: /First day without/i },
   { ...both, titleText: /first timer/i },
   { ...both, titleText: /Today I start my journey/i },
-  { ...both, titleText: /here for the first time /i },
+  { ...both, titleText: /here for the first time/i },
+  { ...both, titleText: /Starting this day/i },
+  { ...both, titleText: /not sure I can beat this/i },
 
   { messageText: /this is gonna be my first day to nofap/i },
 ];

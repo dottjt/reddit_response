@@ -22,6 +22,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /open to looking at your website/i },
   { replyText: /^Definitely yes$/i },
   { replyText: /can you send me/i },
+  { replyText: /Any resources I can use/i },
 
   // { replyText: /^yes I am interested/i }, // too broad
 
@@ -116,14 +117,14 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /feel free to share your website/i },
   { replyText: /could you share your mediation website/i },
   { replyText: /Feel free to share the link of your website/i },
+  { replyText: /glad if (you|u) share/i },
   { replyText: /Link it pls/i },
   { replyText: /Sure(,)? link it/i },
 
   { replyText: /pass on the link/i },
   { replyText: /shoot your website/i },
   { replyText: /be down to read that/i },
-
-
+  { replyText: /if u could send me/i },
 
   // INTERESTED
   { replyText: /(I'm|I’m|I am|iam|im|I'd be|I'd|I’d) ?(certainly|certainly be|really|super)? (interested|intrested|interessted|interesting)/i },
@@ -132,6 +133,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /(I'd|id|I’d) be interested in checking it/i },
   { replyText: /I am interested in your site/i },
   { replyText: /I highly interested/i },
+  { replyText: /Am so interested/i },
 
   { replyText: /interested to follow your website/i },
   { replyText: /interested in having a look at your website/i },

@@ -97,3 +97,5 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
 
   return isReact ? [ <span>{relevantText?.slice(0, 200) || ''}</span> ] : [ relevantText || '' ];
 };
+
+// [ { titleTextMatch: [ { value: 'cake', regex: '/cake/' }, { value: 'delicious', regex: '/delicious/' },  ]}]

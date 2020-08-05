@@ -61,7 +61,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /struggling right now/i, },
   { ...both, titleText: /I (can’t|can't|cant) even pass 2 days /i, },
 
-  // ABOUT TO RELAPSE 
+  // ABOUT TO RELAPSE
   { titleText: /(I’m|I'm|im|I am) about to relapse/i, },
   { titleText: /(I’m|I'm|im|I am) ?(really)? close to relapsing/i, },
   { titleText: /encourage me not to/i, },
@@ -79,8 +79,8 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { messageText: /Please motivate me to do better/i, },
   { messageText: /I have a very severe porn addiction/i, },
 
-
-
+  { ...both, titleText: /struggling so hard/i, },
+  { ...both, titleText: /The struggle is real/i, },
   { ...both, titleText: /Struggling with addiction/i, },
   { ...both, titleText: /help guys what i should do/i, },
   { ...both, titleText: /Please help me out of this/i, },

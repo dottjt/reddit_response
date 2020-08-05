@@ -19,7 +19,7 @@ const matchMultiple = (keyString: string, stringObjectToMatch: StringObjectToMat
     // TODO I don't think this is correct
     return {
       value: match ? match[0] : undefined,
-      regex: String(regex)
+      regex: String(regexSingle)
     }
   }).filter(item => item.value);
 
@@ -136,22 +136,24 @@ export const matchRegex = (regexArray: InitialRegExpCollection[], stringObjectTo
   return matchArray;
 };
 
-
 // const titleText = 'hello'
 // const text = 'text thing'
 
 // const regexArray = [
 // {
-//   titleText: [/hel/, /lo/],
+//   titleText: [/cake/, /delicious/],
 //   // options: { both: true }
 // },
 // ];
 
 // const stringObjectToMatch = {
-//   titleText: 'hello',
+//   titleText: 'I like to eat cake and is it delicious someewhat',
 //   messageText: 'hello text thing'
 // };
 
 // const result = matchRegex(regexArray, stringObjectToMatch);
 
 // result
+// console.log(result[0].titleTextMatch)
+
+// [ { titleTextMatch: [ { value: 'cake', regex: '/cake/' }, { value: 'delicious', regex: '/delicious/' },  ]}]
