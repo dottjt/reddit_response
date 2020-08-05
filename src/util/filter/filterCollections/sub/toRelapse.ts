@@ -36,6 +36,7 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /i lost after \d+ days/i },
   { ...both, titleText: /Relapsed on \d+(th)? day/i },
   { ...both, titleText: /Relapsed on day \d+/i },
+  { ...both, titleText: /Back to day \d+/i },
 
   { ...both, titleText: /then I relapsed/i },
   { ...both, titleText: /relapsing after a/i },
@@ -61,6 +62,7 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Relaspsed because i had/i },
   { ...both, titleText: /Slipped up again today/i },
   { ...both, titleText: /Goodbye \d+ day streak/i },
+  { ...both, titleText: /Relapse on \d+th Day/i },
 
   { messageText: /was going strong till today/i },
   { messageText: /Yesterday I relapsed again/i },

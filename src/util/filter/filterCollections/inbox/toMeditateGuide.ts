@@ -14,6 +14,7 @@ export const toMeditateGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /How (to|do) ?(u|you)? (mediate|meditate)/i },
   { replyText: /Do you have any tips for (meditation|meditating)\?/i },
 
+  { replyText: /love to learn how to meditate\?/i },
   { replyText: /How does one (mediate|meditate)\?/i },
   { replyText: /could ?(you)? give me some (tipps|tips|advice) for begin/i },
   { replyText: /I (want to|wanna) start meditation(,)? but I (don't|dont|don’t) know how/i },

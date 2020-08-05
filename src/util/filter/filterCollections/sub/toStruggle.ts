@@ -46,7 +46,9 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /i (don’t|don't|dont) know how to just stop it/i },
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
+  { ...both, titleText: /failed many times/i, },
 
+  { ...both, titleText: /So tired of relapsing/i, },
   { ...both, titleText: /having a really hard time controlling my urges\?/i, },
   { ...both, titleText: /How can I get out of this hole\?/i, },
   { ...both, titleText: /reasons so that I (don’t|don't|dont) (.*)? relapse/i, },

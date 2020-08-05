@@ -4,7 +4,7 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /^(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)$/i },
 
   { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) advice/i },
-  { ...both, titleText: /had a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }, // - prefi with never
+  { ...both, titleText: /had a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }, // - PREFIX: with never
   { ...both, titleText: /how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /wet dreamed this morning/i },

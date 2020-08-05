@@ -105,6 +105,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /share with me the link/i },
   { replyText: /get a link to website/i },
   { replyText: /Can I see this website/i },
+  { replyText: /so interested in this website/i },
 
 
   // SHARE

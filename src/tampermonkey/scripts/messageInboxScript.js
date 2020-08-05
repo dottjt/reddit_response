@@ -191,6 +191,7 @@
         { replyText: /(don't|dont|don’t) know (how|where) to start/i },
         { replyText: /How (to|do) ?(u|you)? (mediate|meditate)/i },
         { replyText: /Do you have any tips for (meditation|meditating)\?/i },
+        { replyText: /love to learn how to meditate\?/i },
         { replyText: /How does one (mediate|meditate)\?/i },
         { replyText: /could ?(you)? give me some (tipps|tips|advice) for begin/i },
         { replyText: /I (want to|wanna) start meditation(,)? but I (don't|dont|don’t) know how/i },
@@ -308,6 +309,7 @@
         { replyText: /share with me the link/i },
         { replyText: /get a link to website/i },
         { replyText: /Can I see this website/i },
+        { replyText: /so interested in this website/i },
         // SHARE
         { replyText: /can share me (your|ur) site/i },
         { replyText: /feel free to share your website/i },
@@ -418,6 +420,7 @@
         { replyText: /where can i find (this|the) (site|link|website|web site|webite|guide|content|page)/i },
         { replyText: /(Im|I'm) considering reading/i },
         { replyText: /How can i see your (site|link|website|web site|webite|guide|content|page)/i },
+        { replyText: /which is the URL/i },
         // WHAT
         { replyText: /What (site|link|website|web site|webite|guide|content|page) have you/i },
         { replyText: /What (site|link|website|web site|webite|guide|content|page) (is it|would that be)/i },

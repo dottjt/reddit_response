@@ -158,6 +158,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /what is edging/i },
   { ...both, titleText: /what is PMO/i },
   { ...both, titleText: /Recommended books/i },
+  { ...both, titleText: /day \d+ (bby|baby)/i },
 
   // UNSORTED
   { titleText: /benefits till now/i },
