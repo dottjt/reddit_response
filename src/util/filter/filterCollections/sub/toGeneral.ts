@@ -92,7 +92,13 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Any tips to get me past the first week/i },
   { ...both, titleText: /I (want to|wanna) stop this immediately/i },
   { ...both, titleText: /I appreciate anyone who can give some tips/i },
+  { ...both, titleText: /share how (you|u) dealt with this problem/i },
 
+  { ...both, titleText: /give me some tips/i },
+  { ...both, titleText: /(don’t|don't|dont) know how to stop/i },
+  { ...both, titleText: /still (cant|can't|can’t) quit masturbation/i },
+  { ...both, titleText: /How do I keep going\?/i },
+  { ...both, titleText: /Tips on resisting/i },
   { ...both, titleText: /Can anyone help me/i },
   { ...both, titleText: /What do (you|u) do when (you|u) really want to do it/i },
   { ...both, titleText: /what can I do to change/i },

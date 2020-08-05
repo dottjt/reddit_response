@@ -142,6 +142,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
 
   { ...both, titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
   { ...both, titleText: /Is having sex/i },
+  { ...both, titleText: /WHY are you doing no fap/i },
 
   { titleText: /no urges yet/i },
   // { titleText: /(hard mode|hardmode)/i }, // this needs to be more specific

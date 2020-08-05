@@ -2522,7 +2522,6 @@
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
-                    console.log('splitArray', splitArray);
                     var splitArrayTrim = stepTwoTrimArray(splitArray, relevantKey);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });

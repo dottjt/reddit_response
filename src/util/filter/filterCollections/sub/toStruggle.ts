@@ -61,7 +61,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /struggling right now/i, },
   { ...both, titleText: /I (can’t|can't|cant) even pass 2 days /i, },
 
-  // ABOUT TO RELAPSE
+  // ABOUT TO RELAPSE 
   { titleText: /(I’m|I'm|im|I am) about to relapse/i, },
   { titleText: /(I’m|I'm|im|I am) ?(really)? close to relapsing/i, },
   { titleText: /encourage me not to/i, },

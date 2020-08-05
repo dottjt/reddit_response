@@ -48,6 +48,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(I’m|I'm|im) new to Reddit/i },
   { ...both, titleText: /(I’m|I'm|im) new and need some help/i },
   { ...both, titleText: /I will be attempting (NoFap|no fap|no-fap) for the first time/i },
+  { ...both, titleText: /help me start/i },
   { ...both, titleText: /Today I decided to try ?(the)? (nofap|no fap|no-fap) challenge/i },
   { ...both, titleText: /try to do this (NoFap|no fap|no-fap)/i },
   { ...both, titleText: /(masturbated|watched porn|fapped) for the last time today/i },
@@ -62,6 +63,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   // ADVICE
   { titleText: /any tips on getting started/i },
 
+  { ...both, titleText: /any tips for starting/i },
   { ...both, titleText: /Advice on How to Start/i },
 
   // JOINED / NEW

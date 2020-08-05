@@ -83,10 +83,8 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
         const relevantKey = Object.keys(regexFilterResult)[0];
 
         const splitArray: StepOneTextMatch[] = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
-        console.log('splitArray', splitArray)
         const splitArrayTrim: StepOneTextMatch[] = stepTwoTrimArray(splitArray, relevantKey);
-
-        const newArray = stepThreeToJSX(splitArrayTrim, isReact);
+        const newArray: any = stepThreeToJSX(splitArrayTrim, isReact);
 
         return { ...acc, expressionArray: newArray, foundMatch: true };
       }

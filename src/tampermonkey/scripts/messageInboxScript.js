@@ -229,8 +229,11 @@
         { replyText: /^(im|I'm|i m) in(\.)?$/i },
         { replyText: /(yes|yeah) (for sure|I am)/i },
         { replyText: /shoot me a link/i },
+        { replyText: /whats also your website/i },
         { replyText: /shoot the link over/i },
         { replyText: /open to looking at your website/i },
+        { replyText: /^Definitely yes$/i },
+        { replyText: /can you send me/i },
         // { replyText: /^yes I am interested/i }, // too broad
         // CHECK
         { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
@@ -2891,7 +2894,6 @@
                 if (!acc.foundMatch) {
                     var relevantKey = Object.keys(regexFilterResult)[0];
                     var splitArray = stepOneFindAllMatches(relevantText, regexFilterResult[relevantKey]);
-                    console.log('splitArray', splitArray);
                     var splitArrayTrim = stepTwoTrimArray(splitArray, relevantKey);
                     var newArray = stepThreeToJSX(splitArrayTrim, isReact);
                     return __assign(__assign({}, acc), { expressionArray: newArray, foundMatch: true });

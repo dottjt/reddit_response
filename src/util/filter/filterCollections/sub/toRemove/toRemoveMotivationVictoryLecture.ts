@@ -6,6 +6,7 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /read this if you/i },
   { titleText: /a piece of advice/i },
 
+  { ...both, titleText: /(here’s|here's|here is) what helped me/i },
   { ...both, titleText: /once a wise man/i },
   { ...both, titleText: /(NoFap|no fap|no-fap) taught me/i },
   { ...both, titleText: /\d+ (NoFap|no fap|no-fap) benefits/i },
@@ -25,9 +26,8 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { ...both, titleText: /if you find yourself/i },
 
   // VICTORY
-  { titleText: /feeling amazing/i },
-  { titleText: /SUPERPOWERS ARE REAL/i },
   { titleText: /^going strong$/i },
+
   { titleText: /overcame my worst urge/i },
   { titleText: /I am proud of myself/i },
   { titleText: /Instead of (masturbating|PMO) i/i },
@@ -51,7 +51,6 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /accomplishments on (NoFap|no fap|no-fap)/i },
   { titleText: /achieved my goal/i },
   { titleText: /finally reached \d+ days/i },
-  { titleText: /longest streak yet/i },
   { titleText: /(previous record|milestone)/i },
   { titleText: /small success/i },
   { titleText: /a month of not fapping/i },
@@ -60,7 +59,11 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { titleText: /reached day \d+ for the (first time|firsttime)/i },
   { titleText: /(1st|first) (successful|sucessful|succesful|sucesful) (week|month)/i },
   { titleText: /\d+ (days|weeks|months|years) free$/i },
+  { titleText: /longest streak yet/i },
 
+  { ...both, titleText: /never felt happier/i },
+  { ...both, titleText: /feeling amazing/i },
+  { ...both, titleText: /SUPERPOWERS ARE REAL/i },
   { ...both, titleText: /Instead of jerking off/i },
   { ...both, titleText: /just made it to \d+ days without/i },
   { ...both, titleText: /finally hit .* (weeks|days) again/i },
