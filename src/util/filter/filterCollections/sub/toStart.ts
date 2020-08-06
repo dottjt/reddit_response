@@ -15,6 +15,8 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
 
   { titleText: /will finally commit to (nofap|no fap|no-fap)/i },
   { titleText: /I just started trying/i },
+  { titleText: /Beginning of a new Chapter/i },
+  { titleText: /I just joined today/i },
   { titleText: /a new beginning/i },
   { titleText: /^new beginning$/i },
   { titleText: /changing for the better/i },
@@ -34,10 +36,12 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /this ends now/i },
   { titleText: /(Let's|let’s|lets) (start|do this)/i },
   { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+  { titleText: /joined (nofap|no fap|no-fap) yesterday/i },
   { titleText: /a new life begin/i },
 
   { ...both, titleText: /My first (nofap|no fap|no-fap) journey/i },
   { ...both, titleText: /(it’s|it's|its|it is) time to stop/i },
+  { ...both, titleText: /advice for starting/i },
   { ...both, titleText: /Just started officially/i },
   { ...both, titleText: /Let the challenge begin/i },
   { ...both, titleText: /Have decided to start/i },

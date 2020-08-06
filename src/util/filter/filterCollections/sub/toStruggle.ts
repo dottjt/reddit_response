@@ -13,9 +13,12 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /this is getting harder/i, },
   { titleText: /I really (can’t|can't|cant) stop/i, },
   { titleText: /why is this so hard/i, },
+  { titleText: /am struggling every/i, },
   { titleText: /I (can’t|can't|cant) get past the .* mark/i, },
   { titleText: /(can’t|can't|cant) stop relapsing/i, },
   { titleText: /^Almost Failed$/i, },
+  { titleText: /(starting|started) to feel depressed and hopeless/i, },
+  { titleText: /losing my motivation to/i, },
 
   { titleText: /I (can’t|can't|cant) get past day .*/i, },
   { titleText: /(can’t|can't|cant) get a streak going/i, },

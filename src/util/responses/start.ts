@@ -1,45 +1,45 @@
 export const startAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. It's great to see you've started!
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const startAgainAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. It's great to see you're starting again!
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const generalAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const relapseAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. I'm sorry to hear you relapsed.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const struggleAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. I'm sorry to hear you're struggling.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -55,36 +55,36 @@ What's your mental health routine look like? Do you meditate daily? I've also cr
 export const wetdreamAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const ageAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const pornBlockersAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const isWatchingPornRelapseAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -93,9 +93,9 @@ export const noReasonToRelapseAdvice = (forum?: string): string => (
 
 There is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -134,11 +134,11 @@ Just having the mental clarity that I have now is alone worth it for me. It's li
 );
 
 export const dealingWithUrgesAdvice = (forum?: string): string => (
-`Hey, I saw your post${forum ? ` on ${forum}` : ''}. Sorry to hear you're struggling with urges. If they're a big issue for you then it might mean that you don't quite have the fundamentals down.
+`Hey, I saw your post${forum ? ` on ${forum}` : ''}. If you're struggling with urges then it might help to revise the fundamentals.
 
-Ultimately recovery should be relatively struggle free, and the only way you're going to achieve that is by having mental balance. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Once you have that control it becomes trivial.
+Ultimately recovery is about mental balance. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Which is a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -146,18 +146,18 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 export const didIJustRelapseAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. Although not necessarily a relapse, indicates that you don't quite have control over your mind.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
 export const whenDoesItGetEasierAdvice = (forum?: string): string => (
 `Hey, I saw your post${forum ? ` on ${forum}` : ''}. Ultimately it gets easier once you learn to develop control over your mind, which comes from daily mental health practice.
 
-The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+Do you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 `
 );
 
@@ -166,9 +166,9 @@ Do you do much for your mental health? Like meditate, and stuff? Personally I do
 // export const abstainingHelpAdvice = (forum?: string): string => (
 // `Hey, I saw your post${forum ? ` on ${forum}` : ''}. In your case, it sounds like abstaining would help with that tremendously.
 
-// The main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.
+// Ultimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.
 
-// Do you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
+// Do have a your mental routine  Have you triedion?and stuff? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.
 // `
 // );
 

@@ -2262,25 +2262,25 @@
         return null;
     };
 
-    var startAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you've started!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var startAgainAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you're starting again!\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var generalAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var relapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var struggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var startAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you've started!\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var startAgainAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". It's great to see you're starting again!\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var generalAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var relapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you relapsed.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var struggleAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". I'm sorry to hear you're struggling.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var flatlineAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThe main thing with flatline is to focus on the process. Emotions and feelings come and go, but the process always remains the same. This means focusing on your mental health, because all those things you're feeling like low energy and low motivation are merely symptoms, not the cause of the problem.\n\nWhat's your mental health routine look like? Do you meditate daily? I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var wetdreamAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var ageAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var wetdreamAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". While wet dreams don't count as relapse, they're best avoided and can be completely mitigated by developing control over your mind.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var ageAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If it helps I started getting into porn when I was 10, only recently recovered at 25. Now 27.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var pornBlockersAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Porn blockers don't work because they only address the symptom, not the cause which is having a lack of control over your mind.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var isWatchingPornRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Watching porn is not okay, because that's the thing you're primarily addicted to. Not the masturbation.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var noReasonToRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nThere is literally never any reason to masturbate or watch porn, ever. The only reason why you would have a desire to do it is because you've lost balance over your mind.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var accountabilityPartner = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nHappy to be your accountability partner! My name is Julius. I also run an accountability program on Discord (https://discord.com/invite/YETRkSj) and on Reddit (https://www.reddit.com/r/NeverFapDeluxe/) if you're interested in receiving help from others as well.\n"); };
     var partnerAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
     var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var biggestBenefitPostAddictionAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Sorry to hear you're struggling with urges. If they're a big issue for you then it might mean that you don't quite have the fundamentals down.\n\nUltimately recovery should be relatively struggle free, and the only way you're going to achieve that is by having mental balance. Fundamentally speaking, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Once you have that control it becomes trivial.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If you're struggling with urges then it might help to revise the fundamentals.\n\nUltimately recovery is about mental balance. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Which is a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     // If you have to ask, then generally yes. Although
-    var didIJustRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Although not necessarily a relapse, indicates that you don't quite have control over your mind.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var whenDoesItGetEasierAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Ultimately it gets easier once you learn to develop control over your mind, which comes from daily mental health practice.\n\nThe main thing with recovery is to focus on your mental health. Fundamentally, it's about developing the awareness to change your behaviours so you can learn to develop control over your mind. Of course, that's a lot easier said than done, which is why it requires A LOT of practice.\n\nDo you do much for your mental health? Like meditate, and stuff? Personally I do 10 minutes of meditation each day and that's enough for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var didIJustRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Although not necessarily a relapse, indicates that you don't quite have control over your mind.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var whenDoesItGetEasierAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Ultimately it gets easier once you learn to develop control over your mind, which comes from daily mental health practice.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
 
     var UserType;
     (function (UserType) {
@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'A-Big-Quasar';
+    var R_NOFAP_USERNAME = 'orhasit';
     var R_NOFAP_TIMESTAMP = '1 hours ago';
-    var R_PORN_FREE_USERNAME = '65Arnold';
-    var R_PORN_FREE_TIMESTAMP = '3 hours ago';
-    var R_PORN_ADDICTION_USERNAME = 'ChiTownDee';
-    var R_PORN_ADDICTION_TIMESTAMP = '16 hours ago';
+    var R_PORN_FREE_USERNAME = 'ifonlyitwasme';
+    var R_PORN_FREE_TIMESTAMP = '13 hours ago';
+    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
+    var R_PORN_ADDICTION_TIMESTAMP = '13 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2591,7 +2591,10 @@
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
                 // TODO I don't think this logic is right.
-                var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
+                var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) {
+                    var isTrue = acc.splitArray.find(function (item) { return item.isMatch === true && item.text === mapText; });
+                    return ({ text: mapText, isMatch: isTrue ? true : false });
+                });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
                 var finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });
@@ -2883,7 +2886,21 @@
         RegExpFilterLogic["AND"] = "AND";
         RegExpFilterLogic["OR"] = "OR";
     })(RegExpFilterLogic || (RegExpFilterLogic = {}));
-    var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
+    var extractRegexMatch = function (matchArray) {
+        var items = matchArray.map(function (item) {
+            var keys = Object.keys(item);
+            var mappedKeysToString = keys.map(function (key) {
+                var matchItems = item[key];
+                var val = matchItems.map(function (matchItemIndividual) { return key + ": " + matchItemIndividual.value; });
+                var join = val.join('');
+                return join;
+            });
+            var finalString = mappedKeysToString.join(' - ');
+            return finalString;
+        });
+        var actualFinalString = items[0];
+        return actualFinalString;
+    };
     var both = { options: { both: true } };
 
     var toRemoveMotivationVictoryLectureRegexArray = [
@@ -3138,6 +3155,7 @@
         __assign(__assign({}, both), { titleText: /what is edging/i }),
         __assign(__assign({}, both), { titleText: /what is PMO/i }),
         __assign(__assign({}, both), { titleText: /strange dreams/i }),
+        __assign(__assign({}, both), { titleText: /NOT GETTING URGES/i }),
         __assign(__assign({}, both), { titleText: /Recommended books/i }),
         __assign(__assign({}, both), { titleText: /(ejaculate|cum) too quick/i }),
         __assign(__assign({}, both), { titleText: /day \d+ (bby|baby)/i }),
@@ -3170,6 +3188,10 @@
     var toRelapseAdviceRegexArray = [
         { titleText: /I relapsed/i },
         { titleText: /^Major relapse/i },
+        __assign(__assign({}, both), { titleText: /lost at \d+ days/i }),
+        __assign(__assign({}, both), { titleText: /Relapse... again/i }),
+        __assign(__assign({}, both), { titleText: /welp relapsed/i }),
+        __assign(__assign({}, both), { titleText: /again 0 days/i }),
         __assign(__assign({}, both), { titleText: /Day (zero|0) Again/i }),
         __assign(__assign({}, both), { titleText: /failed first attempt/i }),
         __assign(__assign({}, both), { titleText: /Failed my \d+ day streak/i }),
@@ -3248,6 +3270,8 @@
         // DECISION
         { titleText: /will finally commit to (nofap|no fap|no-fap)/i },
         { titleText: /I just started trying/i },
+        { titleText: /Beginning of a new Chapter/i },
+        { titleText: /I just joined today/i },
         { titleText: /a new beginning/i },
         { titleText: /^new beginning$/i },
         { titleText: /changing for the better/i },
@@ -3266,9 +3290,11 @@
         { titleText: /this ends now/i },
         { titleText: /(Let's|let’s|lets) (start|do this)/i },
         { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
+        { titleText: /joined (nofap|no fap|no-fap) yesterday/i },
         { titleText: /a new life begin/i },
         __assign(__assign({}, both), { titleText: /My first (nofap|no fap|no-fap) journey/i }),
         __assign(__assign({}, both), { titleText: /(it’s|it's|its|it is) time to stop/i }),
+        __assign(__assign({}, both), { titleText: /advice for starting/i }),
         __assign(__assign({}, both), { titleText: /Just started officially/i }),
         __assign(__assign({}, both), { titleText: /Let the challenge begin/i }),
         __assign(__assign({}, both), { titleText: /Have decided to start/i }),
@@ -3479,6 +3505,7 @@
         __assign(__assign({}, both), { titleText: /if anyone can offer tips/i }),
         __assign(__assign({}, both), { titleText: /I (cant|can't|can’t) go longer than a day/i }),
         __assign(__assign({}, both), { titleText: /I (cant|can't|can’t) control my self/i }),
+        __assign(__assign({}, both), { titleText: /(cant|can't|can’t) stop watching porn/i }),
         __assign(__assign({}, both), { titleText: /I (don’t|don't|dont) know how I should stop/i }),
         __assign(__assign({}, both), { titleText: /I need help or advice or anything/i }),
         __assign(__assign({}, both), { titleText: /I (don’t|don't|dont) know how to start/i }),
@@ -3488,6 +3515,8 @@
         __assign(__assign({}, both), { titleText: /appreciate anything you guys have to say/i }),
         __assign(__assign({}, both), { titleText: /I have no way out right now/i }),
         __assign(__assign({}, both), { titleText: /Got any tips for/i }),
+        __assign(__assign({}, both), { titleText: /could share some tips/i }),
+        __assign(__assign({}, both), { titleText: /advice on how to keep/i }),
         __assign(__assign({}, both), { titleText: /if someone guided me/i }),
         __assign(__assign({}, both), { titleText: /Can you guys give me tips/i }),
         __assign(__assign({}, both), { titleText: /give me tips on how to stop it/i }),
@@ -3672,6 +3701,7 @@
         { titleText: /trying to make this attempt count/i },
         { titleText: /need help before (It’s|its|It's|it is) too late/i },
         { titleText: /I (don’t|don't|dont) (wanna|want to) masturbate anymore/i },
+        __assign(__assign({}, both), { titleText: /How did you stop Edging/i }),
         __assign(__assign({}, both), { titleText: /trying hard to stop/i }),
         __assign(__assign({}, both), { titleText: /How can you ?(guys)? just stop/i }),
     ];
@@ -3687,6 +3717,7 @@
         __assign(__assign({}, both), { titleText: /are (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a sign of progress/i }),
         __assign(__assign({}, both), { titleText: /How do I stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Feeling low after a wet dream/i }),
+        __assign(__assign({}, both), { titleText: /I('|’)m having wet dreams/i }),
         __assign(__assign({}, both), { titleText: /did you get (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
@@ -3733,9 +3764,12 @@
         { titleText: /this is getting harder/i, },
         { titleText: /I really (can’t|can't|cant) stop/i, },
         { titleText: /why is this so hard/i, },
+        { titleText: /am struggling every/i, },
         { titleText: /I (can’t|can't|cant) get past the .* mark/i, },
         { titleText: /(can’t|can't|cant) stop relapsing/i, },
         { titleText: /^Almost Failed$/i, },
+        { titleText: /(starting|started) to feel depressed and hopeless/i, },
+        { titleText: /losing my motivation to/i, },
         { titleText: /I (can’t|can't|cant) get past day .*/i, },
         { titleText: /(can’t|can't|cant) get a streak going/i, },
         { titleText: /Struggling to (break|kick) this addiction/i, },
@@ -3836,10 +3870,16 @@
         __assign(__assign({}, both), { titleText: /How long does it take for the urges/i }),
         __assign(__assign({}, both), { titleText: /do the urges ever stop coming/i }),
         __assign(__assign({}, both), { titleText: /feel the urge to do it/i }),
+        __assign(__assign({}, both), { titleText: /advice for preventing urges/i }),
+        __assign(__assign({}, both), { titleText: /the urges come back/i }),
         { messageText: /someone tell me when (these|this) (urge|urges) will/i },
         // ARRAY - TODO test to see if this actually works
         { messageText: [/strong (urge|urges)/i, /(don’t|dont|don't) know how to deal with it/i] },
+        { messageText: [/been getting urges/i, /motivate me/i] },
         __assign(__assign({}, both), { titleText: /(cant|can't|can’t) control my (urges|the urge|cravings) for more than one day/i }),
+        __assign(__assign({}, both), { titleText: /constant urges/i }),
+        __assign(__assign({}, both), { titleText: /getting urges help/i }),
+        __assign(__assign({}, both), { titleText: /having strong urges/i }),
         __assign(__assign({}, both), { titleText: /advice on (fighting|resisting) (urges|the urge|cravings)/i }),
         __assign(__assign({}, both), { titleText: /help (w|with) persistent urge/i }),
         __assign(__assign({}, both), { titleText: /help make me stop letting my urges/i }),
@@ -3896,6 +3936,8 @@
         { titleText: /Website-blocking software/i },
         __assign(__assign({}, both), { titleText: /Porn blocker for (android|iPhone)/i }),
         __assign(__assign({}, both), { titleText: /how to block porn/i }),
+        __assign(__assign({}, both), { titleText: /way to ban porn/i }),
+        __assign(__assign({}, both), { titleText: /ban porn sites/i }),
         __assign(__assign({}, both), { titleText: /internet filters/i }),
         __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
         __assign(__assign({}, both), { titleText: /How do I block NSFW/i }),
@@ -3909,6 +3951,7 @@
         __assign(__assign({}, both), { titleText: /Any ?(good)? porn blockers for/i }),
         __assign(__assign({}, both), { titleText: /Blockers for adult content/i }),
         __assign(__assign({}, both), { titleText: /looking for a way to block/i }),
+        __assign(__assign({}, both), { titleText: /know any browser extensions/i }),
         __assign(__assign({}, both), { titleText: /can i block a website/i }),
         __assign(__assign({}, both), { titleText: /some way of blocking/i }),
         __assign(__assign({}, both), { titleText: /help applying filters/i }),
@@ -3920,33 +3963,34 @@
     ];
 
     var toMasturbateWithoutPornAdviceRegexArray = [
-        __assign(__assign({}, both), { titleText: /Can (I|you) still masturbate (while (on|doing)|during) (NoFap|no fap|no-fap)/i }),
+        __assign(__assign({}, both), { titleText: /Can (I|you) still mast(u|e)rbate (while (on|doing)|during) (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /Is masturbating without porn ?(a)? relapse/i }),
-        __assign(__assign({}, both), { titleText: /Can I masturbate without porn/i }),
+        __assign(__assign({}, both), { titleText: /Can I mast(u|e)rbate without porn/i }),
         // IS IT OKAY
         { titleText: /masturbation without porn/i },
-        __assign(__assign({}, both), { titleText: /is it OK to masturbate/i }),
-        __assign(__assign({}, both), { titleText: /Is it still ?(a)? relapse if you masturbate/i }),
-        __assign(__assign({}, both), { titleText: /a healthy way to (fap|masturbate)/i }),
-        __assign(__assign({}, both), { titleText: /Is it ok to masturbate without watching porn/i }),
+        __assign(__assign({}, both), { titleText: /is it OK to mast(u|e)rbate/i }),
+        __assign(__assign({}, both), { titleText: /Is it still ?(a)? relapse if you mast(u|e)rbate/i }),
+        __assign(__assign({}, both), { titleText: /a healthy way to (fap|mast(u|e)rbate)/i }),
+        __assign(__assign({}, both), { titleText: /Is it ok to mast(u|e)rbate without watching porn/i }),
         __assign(__assign({}, both), { titleText: /is it better to fap without porn/i }),
-        __assign(__assign({}, both), { titleText: /Do you ?(guys)? still masturbate?/i }),
+        __assign(__assign({}, both), { titleText: /Do you ?(guys)? still mast(u|e)rbate?/i }),
         __assign(__assign({}, both), { titleText: /Is it ok to only fap once a/i }),
         __assign(__assign({}, both), { titleText: /is masturbating to thoughts as bad as/i }),
         __assign(__assign({}, both), { titleText: /confused on weather masturbating to your own thoughts is as bad/i }),
-        __assign(__assign({}, both), { titleText: /Is it ok to (fap|masturbate) without porn/i }),
+        __assign(__assign({}, both), { titleText: /Is it ok to (fap|mast(u|e)rbate) without porn/i }),
         __assign(__assign({}, both), { titleText: /Is masturbation ok\?/i }),
         __assign(__assign({}, both), { titleText: /good moderation for masturbation/i }),
         __assign(__assign({}, both), { titleText: /Is fapping without porn okay/i }),
         __assign(__assign({}, both), { titleText: /thoughts on fapping without porn/i }),
         __assign(__assign({}, both), { titleText: /What about fapping without porn/i }),
-        __assign(__assign({}, both), { titleText: /Is it as bad if I masturbate/i }),
-        __assign(__assign({}, both), { titleText: /masturbate without watching porn\?/i }),
+        __assign(__assign({}, both), { titleText: /Is it as bad if I mast(u|e)rbate/i }),
+        __assign(__assign({}, both), { titleText: /mast(u|e)rbate without watching porn\?/i }),
         __assign(__assign({}, both), { titleText: /is fapping without porn better\?/i }),
         __assign(__assign({}, both), { titleText: /Should I (give up|stop) (masturbating|masturbation)/i }),
         __assign(__assign({}, both), { titleText: /can I touch my pp during nofap/i }),
         __assign(__assign({}, both), { titleText: /Is masturbation without watching porn/i }),
-        __assign(__assign({}, both), { titleText: /Is it bad to masturbate/ }),
+        __assign(__assign({}, both), { titleText: /Is it bad to mast(u|e)rbate/ }),
+        __assign(__assign({}, both), { titleText: /Bad to mast(u|e)rbate in general/ }),
         __assign(__assign({}, both), { titleText: /fapping to ?(the)? girlfriend/ }),
         __assign(__assign({}, both), { titleText: /opinions towards fapping without porn/i }),
     ];
@@ -4097,6 +4141,8 @@
         __assign(__assign({}, both), { titleText: /reasons to stop/i }),
         __assign(__assign({}, both), { titleText: /Are there any benefits from (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /benefits of semen retention/i }),
+        __assign(__assign({}, both), { titleText: /the effort is really worth/i }),
+        __assign(__assign({}, both), { titleText: /is it really worth the effort/i }),
         __assign(__assign({}, both), { titleText: /share some ?(overall)? benefits you (have|guys) experienced/i }),
         __assign(__assign({}, both), { titleText: /Can you ?(guys)? share some benefits/i }),
     ];
@@ -4173,7 +4219,13 @@
         var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringObjectToMatch);
         if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
             if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-                console.log("Deleted: " + compiledUser.username + " - " + flairText + " - " + titleText + (toRemoveInitialMatch.length > 0 ? " - " + extractRegexMatch(toRemoveInitialMatch) : '') + " messageText: " + messageText.slice(0, 30));
+                console.log('toRemoveInitialMatch', toRemoveInitialMatch);
+                if (!toRemoveInitialDayResult) {
+                    console.log("Deleted: Regex: " + extractRegexMatch(toRemoveInitialMatch) + " - Title: " + titleText.slice(0, 30) + " - Message: " + messageText.slice(0, 30) + " - Flair: " + flairText + " - Username: " + compiledUser.username);
+                }
+                else {
+                    console.log('toRemoveInitialDay - whatever value it matched');
+                }
                 return deleteImmediately;
             }
         }

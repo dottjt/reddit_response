@@ -267,6 +267,7 @@
         { replyText: /share with me the website/i },
         { replyText: /Send dat link/i },
         { replyText: /give me link/i },
+        { replyText: /would like to see this website/i },
         { replyText: /provide me with some link/i },
         { replyText: /Suggest me your website/i },
         { replyText: /send link pls/i },
@@ -465,7 +466,21 @@
         RegExpFilterLogic["AND"] = "AND";
         RegExpFilterLogic["OR"] = "OR";
     })(RegExpFilterLogic || (RegExpFilterLogic = {}));
-    var extractRegexMatch = function (matchArray) { return (Object.keys(matchArray[0]).map(function (key) { return key + ": " + matchArray[0][key].value; }).join(', ')); };
+    var extractRegexMatch = function (matchArray) {
+        var items = matchArray.map(function (item) {
+            var keys = Object.keys(item);
+            var mappedKeysToString = keys.map(function (key) {
+                var matchItems = item[key];
+                var val = matchItems.map(function (matchItemIndividual) { return key + ": " + matchItemIndividual.value; });
+                var join = val.join('');
+                return join;
+            });
+            var finalString = mappedKeysToString.join(' - ');
+            return finalString;
+        });
+        var actualFinalString = items[0];
+        return actualFinalString;
+    };
 
     var matchMultiple = function (keyString, stringObjectToMatch, regex) {
         var matchResponse = {};
@@ -2854,7 +2869,10 @@
         var splitArray = matchesArray.reduce(function (acc, valueAndRegex) {
             var newSplitArray = acc.splitArray.map(function (textObj) {
                 // TODO I don't think this logic is right.
-                var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) { return ({ text: mapText, isMatch: false }); });
+                var splitTextArray = textObj.text.split(valueAndRegex.value).map(function (mapText) {
+                    var isTrue = acc.splitArray.find(function (item) { return item.isMatch === true && item.text === mapText; });
+                    return ({ text: mapText, isMatch: isTrue ? true : false });
+                });
                 if (splitTextArray.length === 1)
                     return splitTextArray;
                 var finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });

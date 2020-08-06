@@ -71,7 +71,13 @@ export const toSubFilter = (
 
   if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
     if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-      console.log(`Deleted: ${compiledUser.username} - ${flairText} - ${titleText}${toRemoveInitialMatch.length > 0 ? ` - ${extractRegexMatch(toRemoveInitialMatch)}` : ''} messageText: ${messageText.slice(0, 30)}`);
+      console.log('toRemoveInitialMatch', toRemoveInitialMatch);
+      if (!toRemoveInitialDayResult) {
+        console.log(`Deleted: Regex: ${extractRegexMatch(toRemoveInitialMatch)} - Title: ${titleText.slice(0, 30)} - Message: ${messageText.slice(0, 30)} - Flair: ${flairText} - Username: ${compiledUser.username}`);
+      } else {
+        console.log('toRemoveInitialDay - whatever value it matched');
+      }
+
       return deleteImmediately;
     }
   }

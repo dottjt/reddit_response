@@ -39,8 +39,46 @@ export type MatchRegExpResponse = {
   replyTextMatch?: MatchValueAndRegex[],
 }
 
-export const extractRegexMatch = (matchArray: MatchRegExpResponse[]) => (
-  Object.keys(matchArray[0]).map(key => `${key}: ${matchArray[0][key].value}`).join(', ')
-);
+export const extractRegexMatch = (matchArray: MatchRegExpResponse[]) => {
+  const items = matchArray.map(item => {
+    const keys = Object.keys(item);
+    const mappedKeysToString = keys.map(key => {
+      const matchItems = item[key];
+      const val = matchItems.map(matchItemIndividual => `${key}: ${matchItemIndividual.value}`);
+
+      const join = val.join('');
+      return join;
+    })
+
+    const finalString = mappedKeysToString.join(' - ');
+
+    return finalString;
+  });
+
+  const actualFinalString = items[0];
+  actualFinalString
+  return actualFinalString;
+}
 
 export const both = { options: { both: true } };
+
+// const match = [
+//   {
+//     "titleTextMatch": [
+//       {
+//         "value": "hocd",
+//         "regex": "/hocd/i"
+//       }
+//     ],
+//     "messageTextMatch": [
+//       {
+//         "value": "hocd",
+//         "regex": "/hocd/i"
+//       }
+//     ]
+//   }
+// ];
+
+// const result = extractRegexMatch(match);
+
+// result

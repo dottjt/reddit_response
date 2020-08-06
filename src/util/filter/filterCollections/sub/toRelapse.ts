@@ -4,6 +4,10 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /I relapsed/i },
   { titleText: /^Major relapse/i },
 
+  { ...both, titleText: /lost at \d+ days/i },
+  { ...both, titleText: /Relapse... again/i },
+  { ...both, titleText: /welp relapsed/i },
+  { ...both, titleText: /again 0 days/i },
   { ...both, titleText: /Day (zero|0) Again/i },
   { ...both, titleText: /failed first attempt/i },
   { ...both, titleText: /Failed my \d+ day streak/i },

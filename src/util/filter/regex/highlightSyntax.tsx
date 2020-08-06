@@ -20,7 +20,10 @@ const stepOneFindAllMatches = (relevantText: string, matchesArray: MatchValueAnd
     const newSplitArray = acc.splitArray.map(textObj => {
 
       // TODO I don't think this logic is right.
-      const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => ({ text: mapText, isMatch: false }));
+      const splitTextArray = textObj.text.split(valueAndRegex.value).map(mapText => {
+        const isTrue = acc.splitArray.find(item => item.isMatch === true && item.text === mapText);
+        return ({ text: mapText, isMatch: isTrue ? true : false });
+      });
       if (splitTextArray.length === 1) return splitTextArray;
 
       const finalSplitArray = insert(splitTextArray, 1, { text: valueAndRegex.value, isMatch: true });
@@ -98,4 +101,7 @@ export const highlightSyntax = (relevantText: string | undefined, messageMatch: 
   return isReact ? [ <span>{relevantText?.slice(0, 200) || ''}</span> ] : [ relevantText || '' ];
 };
 
-// [ { titleTextMatch: [ { value: 'cake', regex: '/cake/' }, { value: 'delicious', regex: '/delicious/' },  ]}]
+
+// const result = highlightSyntax('I like to eat cake and is it delicious somewhat', [ { titleTextMatch: [ { value: 'cake', regex: '/cake/' }, { value: 'delicious', regex: '/delicious/' },  ]}], true)
+// result
+// // [ { titleTextMatch: [ { value: 'cake', regex: '/cake/' }, { value: 'delicious', regex: '/delicious/' },  ]}]

@@ -58,6 +58,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /share with me the website/i },
   { replyText: /Send dat link/i },
   { replyText: /give me link/i },
+  { replyText: /would like to see this website/i },
 
   { replyText: /provide me with some link/i },
   { replyText: /Suggest me your website/i },

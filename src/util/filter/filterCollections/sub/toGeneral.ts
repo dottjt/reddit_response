@@ -47,6 +47,8 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /if anyone can offer tips/i },
   { ...both, titleText: /I (cant|can't|can’t) go longer than a day/i },
   { ...both, titleText: /I (cant|can't|can’t) control my self/i },
+  { ...both, titleText: /(cant|can't|can’t) stop watching porn/i },
+
   { ...both, titleText: /I (don’t|don't|dont) know how I should stop/i },
   { ...both, titleText: /I need help or advice or anything/i },
   { ...both, titleText: /I (don’t|don't|dont) know how to start/i },
@@ -56,7 +58,9 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /appreciate anything you guys have to say/i },
   { ...both, titleText: /I have no way out right now/i },
   { ...both, titleText: /Got any tips for/i },
+  { ...both, titleText: /could share some tips/i },
 
+  { ...both, titleText: /advice on how to keep/i },
   { ...both, titleText: /if someone guided me/i },
   { ...both, titleText: /Can you guys give me tips/i },
   { ...both, titleText: /give me tips on how to stop it/i },
@@ -262,6 +266,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
 
   { titleText: /I (don’t|don't|dont) (wanna|want to) masturbate anymore/i },
 
+  { ...both, titleText: /How did you stop Edging/i },
   { ...both, titleText: /trying hard to stop/i },
   { ...both, titleText: /How can you ?(guys)? just stop/i },
 

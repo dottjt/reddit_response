@@ -9,6 +9,8 @@ export const toPornBlockersAdviceRegexArray: InitialRegExpCollection[] = [
 
   { ...both, titleText: /Porn blocker for (android|iPhone)/i },
   { ...both, titleText: /how to block porn/i },
+  { ...both, titleText: /way to ban porn/i },
+  { ...both, titleText: /ban porn sites/i },
   { ...both, titleText: /internet filters/i },
   { ...both, titleText: /can I block porn on reddit/i },
   { ...both, titleText: /How do I block NSFW/i },
@@ -22,6 +24,7 @@ export const toPornBlockersAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Any ?(good)? porn blockers for/i },
   { ...both, titleText: /Blockers for adult content/i },
   { ...both, titleText: /looking for a way to block/i },
+  { ...both, titleText: /know any browser extensions/i },
   { ...both, titleText: /can i block a website/i },
   { ...both, titleText: /some way of blocking/i },
   { ...both, titleText: /help applying filters/i },
