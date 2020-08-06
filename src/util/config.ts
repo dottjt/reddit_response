@@ -28,7 +28,7 @@ export const fakeConfigType: ConfigType = {
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
 export const R_NOFAP_USERNAME = 'orhasit';
-export const R_NOFAP_TIMESTAMP = '1 hours ago';
+export const R_NOFAP_TIMESTAMP = '2 hours ago';
 export const R_NOFAP_START_DATE = 'Fri Aug 07 2020 07:05:56 GMT+1000 (Australian Eastern Standard Time)'; // todo, all this shit.
 
 export const R_PORN_FREE_USERNAME = 'ifonlyitwasme';
@@ -36,7 +36,7 @@ export const R_PORN_FREE_TIMESTAMP = '13 hours ago';
 export const R_PORN_FREE_START_DATE = 'Thu Aug 06 2020 18:57:18 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-export const R_PORN_ADDICTION_TIMESTAMP = '13 hours ago';
+export const R_PORN_ADDICTION_TIMESTAMP = '14 hours ago';
 export const R_PORN_ADDICTION_START_DATE = 'Thu Aug 06 2020 18:57:04 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_NOFAP_CHRISTIANS_USERNAME = '';

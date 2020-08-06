@@ -2490,11 +2490,11 @@
         forumType: ForumType.rNofapForum,
     };
     var R_NOFAP_USERNAME = 'orhasit';
-    var R_NOFAP_TIMESTAMP = '1 hours ago';
+    var R_NOFAP_TIMESTAMP = '2 hours ago';
     var R_PORN_FREE_USERNAME = 'ifonlyitwasme';
     var R_PORN_FREE_TIMESTAMP = '13 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '13 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '14 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
