@@ -129,6 +129,7 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Help needed/i },
   { ...both, titleText: /experienced can you help/i },
   { ...both, titleText: /i try to resist but i fail/i },
+  { ...both, titleText: /how to prevent myself/i },
   { ...both, titleText: /I need some support/i },
   { ...both, titleText: /Pl(z|s)* help/i },
 
@@ -192,11 +193,14 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
 
   // HELP
   { titleText: /^Need help/i },
+  { titleText: /^help(\.)?$/i },
   { titleText: /^Please help/i },
   { titleText: /^please help me(\.|\?)?$/i },
   { titleText: /^help me please(\.|\?)?$/i },
   { titleText: /^help me$/i },
 
+  { ...both, titleText: /really needing some help/i },
+  { ...both, titleText: /How can I abstain from/i },
   { ...both, titleText: /need help and advice/i },
   { ...both, titleText: /I really, really need help/i },
   { ...both, titleText: /How do i recover my (mind|body)/i },

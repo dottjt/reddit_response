@@ -64,9 +64,11 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /advices about resisting those urges/i },
   { ...both, titleText: /trying to resist my urges/i },
   { ...both, titleText: /Very strong urge to relapse/i },
+  { ...both, titleText: /Couldn(’|')?t control the urge/i },
 
   // URGES STRUGGLE
   { ...both, titleText: /urges from hell/i },
+  { ...both, titleText: /getting the urges really bad/i },
   { ...both, titleText: /very strong urges/i },
   { ...both, titleText: /the urges are unreal/i },
   { ...both, titleText: /just got the biggest urge ever/i },

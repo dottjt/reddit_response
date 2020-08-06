@@ -8,6 +8,7 @@ export const toFlatlineAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /How long do flatlines last/i, },
   { ...both, titleText: /Flatline depression\?/i, },
   { ...both, titleText: /(what's|What’s) the flatline/i, },
+  { ...both, titleText: /\d+ days and flatlining/i, },
 
 
   { ...both, titleText: /how does one know when (they're|they’re) going through ?(the)? flatline/i, },

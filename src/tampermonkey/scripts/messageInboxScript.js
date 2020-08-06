@@ -314,6 +314,9 @@
         { replyText: /get a link to website/i },
         { replyText: /Can I see this website/i },
         { replyText: /so interested in this website/i },
+        { replyText: /interested in the site/i },
+        { replyText: /send me the link/i },
+        { replyText: /Shoot me your website/i },
         // SHARE
         { replyText: /can share me (your|ur) site/i },
         { replyText: /feel free to share your website/i },

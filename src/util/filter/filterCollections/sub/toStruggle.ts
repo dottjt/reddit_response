@@ -79,6 +79,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { messageText: /Please motivate me to do better/i, },
   { messageText: /I have a very severe porn addiction/i, },
 
+  { ...both, titleText: /I am losing my mind/i, },
   { ...both, titleText: /struggling so hard/i, },
   { ...both, titleText: /The struggle is real/i, },
   { ...both, titleText: /Struggling with addiction/i, },

@@ -32,6 +32,10 @@ export const toMasturbateWithoutPornAdviceRegexArray: InitialRegExpCollection[] 
   { ...both, titleText: /is fapping without porn better\?/i },
   { ...both, titleText: /Should I (give up|stop) (masturbating|masturbation)/i },
   { ...both, titleText: /can I touch my pp during nofap/i },
+  { ...both, titleText: /Is masturbation without watching porn/i },
+  { ...both, titleText: /Is it bad to masturbate/ },
+  { ...both, titleText: /fapping to ?(the)? girlfriend/ },
+
 
   // OPINIONS
   { ...both, titleText: /opinions towards fapping without porn/i },
