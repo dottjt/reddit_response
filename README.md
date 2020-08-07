@@ -15,39 +15,24 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- automatically send final/done messages IF no website/subreddit has been sent, and they say thank you etc.
-- Improve deleted error messages so that they make sense. (fix the extract function)
-- relapse before start?
-- Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
-- Message for providing meditation advice.
-- For inbox messages, console.log unmatched things, esepecially the toNotRespond ones.
-- At the top with prelim url, maybe I can order them based on type start/relapse etc.
-- allow to support arrays in the regex Util
-- to follow messages
-- ability to change whether website or discord has already been sent to a user. - manuallySetUserLinkSent
-- if it is a useralready responded, only show Follow messages, along with only unique messages.
-- Figure out what percentage matches etc.
+- This application is largely considered mature, and I will not be pursuing new features.
 
 ### LOW PRIORITY
 
-- Create all other new messages.
-- possibly capture all possibilities and select the best one. I will refine the matches first. (might make the system too slow/a bit slower than before.)
-- Maybe save the link to the post in matches. Sounds smart :) (not yet, still need to figure out how to make it stronger)
-- Look into addressing congratulation messages (this could be great, but unsure)
-- fix message being sent multiple times because of the eventListener being sent multiple times. (this would be a good one, but also don't see the benefit)
+- ability to change whether website or discord has already been sent to a user. - manuallySetUserLinkSent
+- Bring next page button to the top of the page. Copy it and install it at the top. (It will drop to the bottom of the page now, really not a huge deal)
 - Whether a message was sent automatically by the bot or not. (does not really help me achieve anything)
-- Also, save the date for user chatted (I basically never use this, so no.)
-- Track original post as part of the message. (I have no particular use for this information)
+- At the top with prelim url, maybe I can order them based on type start/relapse etc.
+- if it is a useralready responded, only show Follow messages, along with only unique messages.
 - saving all the matches in a database.
-- https://stackoverflow.com/questions/55457646/open-multiple-urls-in-same-new-tab-javascript (eh)
-- I had a bit of a radical idea. Instead of me having to open all the links, what if instead I send the list to node.js and then it opens it there? PROS: Would be more efficient. Would save me time. (The system is not mature enough for this, quite yet). It's also not a huge problem for me.
-- nofap.com message sending. (this would be nice, but I don't believe it should be a priority)
-open -a Google\ Chrome --args --disable-web-security --user-data-dir
-
-https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&message=Hey%2C%20I%20saw%20your%20post.%20I%27m%20sorry%20to%20hear%20you%27re%20struggling.%0A%0AThe%20main%20thing%20with%20recovery%20is%20to%20focus%20on%20your%20mental%20health.%20Fundamentally%2C%20it%27s%20about%20developing%20the%20awareness%20to%20change%20your%20behaviours%20so%20you%20can%20learn%20to%20develop%20control%20over%20your%20mind.%20Of%20course%2C%20that%27s%20a%20lot%20easier%20said%20than%20done%2C%20which%20is%20why%20it%20requires%20A%20LOT%20of%20practice.%0A%0ADo%20you%20do%20much%20for%20your%20mental%20health%3F%20Like%20meditate%2C%20and%20stuff%3F%20Personally%20I%20do%2010%20minutes%20of%20meditation%20each%20day%20and%20that%27s%20enough%20for%20me.%20I%27ve%20also%20created%20a%20website%20which%20explains%20the%20whole%20process%20of%20overcoming%20porn%20addiction%2C%20if%20you%27re%20interested.%0A&type=start:advice:struggle&timer=10000
 
 ## DONE
 
+- Improve deleted error messages so that they make sense. (fix the extract function)
+- automate to follow messages
+- relapse before start?
+- For inbox messages, console.log unmatched things, esepecially the toNotRespond ones.
+- allow to support arrays in the regex Util
 - put the reade container AFTER the first post, not before
 - message border turns red when clicking on prelimLink
 - I figured out how to simplify the sub filter
@@ -117,10 +102,36 @@ https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&mess
 - Turn types into strings. (not a huge deal atm)
 - Auto close message tabs
 
+
+### KEWL Ideas
+
+- nofap.com message sending. (this would be nice, but I don't believe it should be a priority)
+open -a Google\ Chrome --args --disable-web-security --user-data-dir
+
+https://forum.nofap.com/index.php?conversations/add&title=Hey&to=Krishna108&message=Hey%2C%20I%20saw%20your%20post.%20I%27m%20sorry%20to%20hear%20you%27re%20struggling.%0A%0AThe%20main%20thing%20with%20recovery%20is%20to%20focus%20on%20your%20mental%20health.%20Fundamentally%2C%20it%27s%20about%20developing%20the%20awareness%20to%20change%20your%20behaviours%20so%20you%20can%20learn%20to%20develop%20control%20over%20your%20mind.%20Of%20course%2C%20that%27s%20a%20lot%20easier%20said%20than%20done%2C%20which%20is%20why%20it%20requires%20A%20LOT%20of%20practice.%0A%0ADo%20you%20do%20much%20for%20your%20mental%20health%3F%20Like%20meditate%2C%20and%20stuff%3F%20Personally%20I%20do%2010%20minutes%20of%20meditation%20each%20day%20and%20that%27s%20enough%20for%20me.%20I%27ve%20also%20created%20a%20website%20which%20explains%20the%20whole%20process%20of%20overcoming%20porn%20addiction%2C%20if%20you%27re%20interested.%0A&type=start:advice:struggle&timer=10000
+- I had a bit of a radical idea. Instead of me having to open all the links, what if instead I send the list to node.js and then it opens it there? PROS: Would be more efficient. Would save me time. (The system is not mature enough for this, quite yet). It's also not a huge problem for me.
+- https://stackoverflow.com/questions/55457646/open-multiple-urls-in-same-new-tab-javascript
+- Also, save the date for user chatted (I never use this, so it's a waste of time.)
+- Create all other new messages.
+- possibly capture all possibilities and select the best one. I will refine the matches first. (might make the system too slow/a bit slower than before since it has to go through absoluteely every single possibility.)
+- Figure out what percentage matches etc.
+- Message for providing meditation advice.
+- Look into addressing congratulation messages (this could be great, but unsure)
+- Track original post as part of the message. (I have no particular use for this information)
+- automatically send final/done messages IF no website/subreddit has been sent, and they say thank you etc. (I don't think there's a safe way to do this)
+
+## LOW
+- Maybe save the link to the post in matches. Sounds smart :) (not yet, still need to figure out how to make it stronger)
+- fix message being sent multiple times because of the eventListener being sent multiple times. (this would be a good one, but also not easy/possible I think)
+
+
+
 ### Required Plugins and Dependencies
 - Tampermonkey plugin installed
 - Insert all the Banners into TamperMonkey
 - Ensure the server is running.
+
+
 
 ## OUTLINE
 

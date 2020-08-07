@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'orhasit';
+    var R_NOFAP_USERNAME = 'AzarFadio';
     var R_NOFAP_TIMESTAMP = '2 hours ago';
-    var R_PORN_FREE_USERNAME = 'ifonlyitwasme';
-    var R_PORN_FREE_TIMESTAMP = '13 hours ago';
-    var R_PORN_ADDICTION_USERNAME = 'djangomaniac';
-    var R_PORN_ADDICTION_TIMESTAMP = '14 hours ago';
+    var R_PORN_FREE_USERNAME = 'RenegadeEmperor';
+    var R_PORN_FREE_TIMESTAMP = '10 minutes ago';
+    var R_PORN_ADDICTION_USERNAME = 'irpnck';
+    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3191,6 +3191,7 @@
         __assign(__assign({}, both), { titleText: /lost at \d+ days/i }),
         __assign(__assign({}, both), { titleText: /Relapse... again/i }),
         __assign(__assign({}, both), { titleText: /welp relapsed/i }),
+        __assign(__assign({}, both), { titleText: /relapse \:\(/i }),
         __assign(__assign({}, both), { titleText: /again 0 days/i }),
         __assign(__assign({}, both), { titleText: /Day (zero|0) Again/i }),
         __assign(__assign({}, both), { titleText: /failed first attempt/i }),
@@ -3269,6 +3270,7 @@
         { titleText: /here for (nofap|no fap|no-fap)/i },
         // DECISION
         { titleText: /will finally commit to (nofap|no fap|no-fap)/i },
+        { titleText: /I start now/i },
         { titleText: /I just started trying/i },
         { titleText: /Beginning of a new Chapter/i },
         { titleText: /I just joined today/i },
@@ -3287,11 +3289,14 @@
         { titleText: /Going on a \d+ day trial/i },
         { titleText: /Going to try \d+ day/i },
         { titleText: /(it’s|it's|its|it is) time to (quit|change)/i },
+        { titleText: /Just starting out on day/i },
         { titleText: /this ends now/i },
         { titleText: /(Let's|let’s|lets) (start|do this)/i },
         { titleText: /(start|beginning) (of a|of my|my) (nofap|no fap|no-fap|journey)/i },
         { titleText: /joined (nofap|no fap|no-fap) yesterday/i },
         { titleText: /a new life begin/i },
+        __assign(__assign({}, both), { titleText: /Starting out today/i }),
+        __assign(__assign({}, both), { titleText: /day (1|one) begins now/i }),
         __assign(__assign({}, both), { titleText: /My first (nofap|no fap|no-fap) journey/i }),
         __assign(__assign({}, both), { titleText: /(it’s|it's|its|it is) time to stop/i }),
         __assign(__assign({}, both), { titleText: /advice for starting/i }),
@@ -3479,8 +3484,10 @@
         // ADVICE
         { titleText: /I need ?(.*) help/i },
         { titleText: /^I need advice$/i },
+        { titleText: /give me tips on how/i },
         { titleText: /asking for advice and motivation/i },
         { titleText: /tips on how to do it/i },
+        { titleText: /I feel helpless/i },
         { titleText: /Looking for Tips/i },
         { titleText: /^tips\?$/i },
         { titleText: /.* any tips\?$/i },
@@ -3493,6 +3500,7 @@
         { titleText: /what other steps/i },
         { titleText: /any help or advice/i },
         { titleText: /does anyone have tips/i },
+        __assign(__assign({}, both), { titleText: /(all|Any) tips (are|will be) welcome/i }),
         __assign(__assign({}, both), { titleText: /some (advice|tips) to stay strong/i }),
         __assign(__assign({}, both), { titleText: /would love to know how you/i }),
         __assign(__assign({}, both), { titleText: /if you could give me some tips/i }),
@@ -3934,9 +3942,10 @@
         { titleText: /^Porn blocker(s)?$/i },
         { titleText: /what website blocker/i },
         { titleText: /Website-blocking software/i },
-        __assign(__assign({}, both), { titleText: /Porn blocker for (android|iPhone)/i }),
+        __assign(__assign({}, both), { titleText: /Porn blocker for (android|iPhone|pc|mac)/i }),
         __assign(__assign({}, both), { titleText: /how to block porn/i }),
         __assign(__assign({}, both), { titleText: /way to ban porn/i }),
+        __assign(__assign({}, both), { titleText: /(perfect|best) porn blocker/i }),
         __assign(__assign({}, both), { titleText: /ban porn sites/i }),
         __assign(__assign({}, both), { titleText: /internet filters/i }),
         __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
@@ -4153,6 +4162,9 @@
         __assign(__assign({}, both), { titleText: /How would I support/i }),
         __assign(__assign({}, both), { titleText: /My boyfriend has been struggling/i }),
         __assign(__assign({}, both), { titleText: /Trying to help him/i }),
+        __assign(__assign({}, both), { titleText: /Partner with a porn addiction/i }),
+        __assign(__assign({}, both), { titleText: /help me support my partner/i }),
+        { titleText: [/Partner/i, /porn addiction/i] },
     ];
 
     var toIsWatchingPornRelapseAdviceRegexArray = [
@@ -4179,6 +4191,7 @@
         __assign(__assign({}, both), { titleText: /Flatline depression\?/i }),
         __assign(__assign({}, both), { titleText: /(what's|What’s) the flatline/i }),
         __assign(__assign({}, both), { titleText: /\d+ days and flatlining/i }),
+        __assign(__assign({}, both), { titleText: /having flatlines/i }),
         __assign(__assign({}, both), { titleText: /how does one know when (they're|they’re) going through ?(the)? flatline/i }),
     ];
 
@@ -4240,8 +4253,8 @@
         // USER NOT RESPONDED
         if (compiledUser.userType === UserType.UserNotRespondedBack) {
             // FOLLOW MESSAGES
-            // TODO: Extend this to struggle.
             if ((_b = compiledUser === null || compiledUser === void 0 ? void 0 : compiledUser.lastSentMessage) === null || _b === void 0 ? void 0 : _b.type.includes('start')) {
+                // TO RELAPSE FOLLOW
                 var toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, stringObjectToMatch);
                 if (toRelapseAdviceMatch.length > 0) {
                     return {
@@ -4249,6 +4262,16 @@
                         sendMessageType: SendMessageType.FollowRelapseAdvice,
                         prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice, usernameConfig),
                         messageMatch: toRelapseAdviceMatch
+                    };
+                }
+                // TO STRUGGLE FOLLOW
+                var toStruggleAdviceMatch = matchRegex(toStruggleAdviceRegexArray, stringObjectToMatch);
+                if (toStruggleAdviceMatch.length > 0) {
+                    return {
+                        shouldDeleteElementImmediately: false,
+                        sendMessageType: SendMessageType.FollowStruggleAdvice,
+                        prelimUrl: generatePrelimUrl(compiledUser.username, followStruggleAdvice(usernameConfig.forumType), SendMessageType.FollowStruggleAdvice, usernameConfig),
+                        messageMatch: toStruggleAdviceMatch
                     };
                 }
             }

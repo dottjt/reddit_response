@@ -22,6 +22,7 @@ export const toLinkYouGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /yeah what is it/i },
 
   { replyText: /would you mind sharing that/i },
+  { replyText: /which is your website/i },
   { replyText: /what is it called/i },
   { replyText: /Sure (what’s|what is|what's) it called/i },
 

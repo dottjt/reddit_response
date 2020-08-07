@@ -246,6 +246,7 @@
         { replyText: /Feel free to link the website/i },
         { replyText: /feel free to send me the link/i },
         { replyText: /would be glad to check your website/i },
+        { replyText: /send me website/i },
         { replyText: /I (wouldn’t|wouldn't) (mine|mind) checking it out/i },
         // SEND
         { replyText: /send (me|over) the link/i },
@@ -268,6 +269,7 @@
         { replyText: /Send dat link/i },
         { replyText: /give me link/i },
         { replyText: /would like to see this website/i },
+        { replyText: /interested in viewing the website/i },
         { replyText: /provide me with some link/i },
         { replyText: /Suggest me your website/i },
         { replyText: /send link pls/i },
@@ -438,6 +440,7 @@
         { replyText: /what is this (name|site|link|website|web site|webite|guide|content|page|it)\?/i },
         { replyText: /yeah what is it/i },
         { replyText: /would you mind sharing that/i },
+        { replyText: /which is your website/i },
         { replyText: /what is it called/i },
         { replyText: /Sure (what’s|what is|what's) it called/i },
         // HOW

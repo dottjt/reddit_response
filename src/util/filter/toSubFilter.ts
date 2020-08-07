@@ -22,7 +22,7 @@ import {
 } from '../responses/start';
 import { ConfigType } from '../config';
 
-import { followRelapseAdvice } from '../responses/follow';
+import { followRelapseAdvice, followStruggleAdvice } from '../responses/follow';
 import {
   toRemoveInitialDay,
   toRemoveInitialRegexArray,
@@ -94,10 +94,11 @@ export const toSubFilter = (
 
   // USER NOT RESPONDED
   if (compiledUser.userType === UserType.UserNotRespondedBack) {
-    // FOLLOW MESSAGES
 
-    // TODO: Extend this to struggle.
+    // FOLLOW MESSAGES
     if (compiledUser?.lastSentMessage?.type.includes('start')) {
+
+      // TO RELAPSE FOLLOW
       const toRelapseAdviceMatch = matchRegex(toRelapseAdviceRegexArray, stringObjectToMatch);
       if (toRelapseAdviceMatch.length > 0) {
         return {
@@ -105,6 +106,17 @@ export const toSubFilter = (
           sendMessageType: SendMessageType.FollowRelapseAdvice,
           prelimUrl: generatePrelimUrl(compiledUser.username, followRelapseAdvice(usernameConfig.forumType), SendMessageType.FollowRelapseAdvice, usernameConfig),
           messageMatch: toRelapseAdviceMatch
+        }
+      }
+
+      // TO STRUGGLE FOLLOW
+      const toStruggleAdviceMatch = matchRegex(toStruggleAdviceRegexArray, stringObjectToMatch);
+      if (toStruggleAdviceMatch.length > 0) {
+        return {
+          shouldDeleteElementImmediately: false,
+          sendMessageType: SendMessageType.FollowStruggleAdvice,
+          prelimUrl: generatePrelimUrl(compiledUser.username, followStruggleAdvice(usernameConfig.forumType), SendMessageType.FollowStruggleAdvice, usernameConfig),
+          messageMatch: toStruggleAdviceMatch
         }
       }
     }
@@ -118,6 +130,7 @@ export const toSubFilter = (
   // FRESH USER
   if (compiledUser.userType === UserType.FreshUser) {
     const freshUserRegexArray: RegexArraySub[] = [
+
       // SPECIFIC
       { sendMessageType: SendMessageType.StartAdviceWetdreamAdvice, regexArray: toWetdreamAdviceRegexArray, regexUrlGenerator: wetdreamAdvice, condition: true, delete: false },
       { sendMessageType: SendMessageType.StartAccountabilityPartner, regexArray: toAccountabilityPartnerRegexArray, regexUrlGenerator: accountabilityPartner, condition: true, delete: false },
