@@ -23,6 +23,9 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /^Definitely yes$/i },
   { replyText: /can you send me/i },
   { replyText: /Any resources I can use/i },
+  { replyText: /Please share details/i },
+  { replyText: /know more about the website/i },
+  { replyText: /know more about this site/i },
 
   // { replyText: /^yes I am interested/i }, // too broad
 
@@ -71,6 +74,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /please send on any advise you have/i },
 
   // PASSIVE ASK
+
+  { replyText: /can link me to this website/i },
   { replyText: /May I know (your|the) website/i },
   { replyText: /glad to know your website/i },
   { replyText: /could I get a link/i },

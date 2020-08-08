@@ -134,7 +134,7 @@ Just having the mental clarity that I have now is alone worth it for me. It's li
 );
 
 export const dealingWithUrgesAdvice = (forum?: string): string => (
-`Hey, I saw your post${forum ? ` on ${forum}` : ''}. If you're struggling with urges then it might help to revise the fundamentals.
+`Hey, I saw your post${forum ? ` on ${forum}` : ''}. If you're struggling with urges then it might help to revise the fundamentals, because with sufficient mental balance you shouldn't be having any urges at all. Period.
 
 Ultimately recovery is about mental balance. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Which is a lot easier said than done which is why it requires consistent practice.
 

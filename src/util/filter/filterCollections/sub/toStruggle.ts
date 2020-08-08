@@ -18,7 +18,6 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(can’t|can't|cant) stop relapsing/i, },
   { titleText: /^Almost Failed$/i, },
   { titleText: /(starting|started) to feel depressed and hopeless/i, },
-  { titleText: /losing my motivation to/i, },
 
   { titleText: /I (can’t|can't|cant) get past day .*/i, },
   { titleText: /(can’t|can't|cant) get a streak going/i, },
@@ -35,6 +34,10 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /how do i get past day 1\?/i, },
   { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
 
+  { ...both, titleText: /feeling very (depressed|aggressive)/i, },
+  { ...both, titleText: /verge of slipping up/i, },
+  { ...both, titleText: /tips on how to get over it/i, },
+  { ...both, titleText: /losing my motivation to/i, },
   { ...both, titleText: /I have no motivation no energy nothing/i },
   { ...both, titleText: /I want to kill myself badly/i },
   { ...both, titleText: /Now I feel so shit/i },
@@ -50,7 +53,8 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i, },
   { ...both, titleText: /not able to start .* journey again/i, },
   { ...both, titleText: /failed many times/i, },
-
+  { ...both, titleText: /feeling extremely lonely/i, },
+  { ...both, titleText: /stuck in the loop of relapse/i },
   { ...both, titleText: /So tired of relapsing/i, },
   { ...both, titleText: /having a really hard time controlling my urges\?/i, },
   { ...both, titleText: /How can I get out of this hole\?/i, },

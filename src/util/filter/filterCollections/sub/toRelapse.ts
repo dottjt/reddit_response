@@ -3,10 +3,12 @@ import { InitialRegExpCollection, both } from '../../regex/regexUtil';
 export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /I relapsed/i },
   { titleText: /^Major relapse/i },
+  { titleText: /^\d+ days relapse/i },
 
   { ...both, titleText: /lost at \d+ days/i },
   { ...both, titleText: /Relapse... again/i },
   { ...both, titleText: /welp relapsed/i },
+  { ...both, titleText: /Worst relapse ever/i },
   { ...both, titleText: /relapse \:\(/i },
   { ...both, titleText: /again 0 days/i },
   { ...both, titleText: /Day (zero|0) Again/i },

@@ -8,7 +8,6 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /(urges|the urge|cravings) are strong/i },
   { titleText: /^strong urges$/i },
 
-
   { ...both, titleText: /advice on how to beat the urge/i },
   { ...both, titleText: /the urges are super strong/i },
   { ...both, titleText: /I have an urge right now/i },
@@ -21,16 +20,22 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /usually deal with (urges|the urge|cravings)/i },
   { ...both, titleText: /How long does it take for the urges/i },
   { ...both, titleText: /do the urges ever stop coming/i },
+  { ...both, titleText: /tired and have urges/i },
   { ...both, titleText: /feel the urge to do it/i },
   { ...both, titleText: /advice for preventing urges/i },
+  { ...both, titleText: /Some days ?(just)? seem harder/i },
+  { ...both, titleText: /Still having trouble with urges/i },
+  { ...both, titleText: /insane urges/i },
   { ...both, titleText: /the urges come back/i },
+  { ...both, titleText: /I HAVE A SERIOUS URGE/i },
+  { ...both, titleText: /How do YOU cope with (.*)? urges/i },
+
 
   { messageText: /someone tell me when (these|this) (urge|urges) will/i },
 
   // ARRAY - TODO test to see if this actually works
   { messageText: [ /strong (urge|urges)/i, /(don’t|dont|don't) know how to deal with it/i ] },
   { messageText: [ /been getting urges/i, /motivate me/i ] },
-
 
   // ADVICE / HELP
   { ...both, titleText: /(cant|can't|can’t) control my (urges|the urge|cravings) for more than one day/i },

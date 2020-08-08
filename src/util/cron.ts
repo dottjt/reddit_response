@@ -3,6 +3,7 @@ import path from 'path';
 import fse from 'fs-extra';
 
 const getNextHoursAgoValueToSearch = (timestamp: string): string | undefined => {
+  // TODO when over 8 hours, remove the hour altogether - because sometimes reddit will still have a random 10 hour in there when it's up to like 6 hours
   if (timestamp !== '') {
     if (timestamp.includes('now') || timestamp.includes('minute')) {
       return '1 hour ago';

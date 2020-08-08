@@ -6,9 +6,12 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   // NEW
   { titleText: /^newbie/i },
   { titleText: /first try/i },
+  { titleText: /wish me luck/i },
   { titleText: /my first post/i },
   { titleText: /^First day$/i }, // potentially inaccurate
   { titleText: /here for (nofap|no fap|no-fap)/i },
+  { titleText: /today I quit masturbation/i },
+  { titleText: /quit from fapping today/i },
 
   // DECISION
 
@@ -68,6 +71,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /(Here's|here’s) to a new beginning/i },
   { ...both, titleText: /Might as well start now/i },
   { ...both, titleText: /starting day (1|one) today/i },
+  { ...both, titleText: /going to start my new journey/i },
 
   // ADVICE
   { titleText: /any tips on getting started/i },
@@ -106,6 +110,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /So finally (Let's|let’s|lets) begin/i },
 
   // START
+  { titleText: /^day one/i },
   { titleText: /day (1|one) (bby|baby)/i },
   { titleText: /about to start/i },
   { titleText: /How to start\?/i },

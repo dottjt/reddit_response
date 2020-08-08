@@ -18,6 +18,9 @@ export const createPrelimContainer = (filteredATags): void => {
   const prelimContainer = document.createElement('div');
   prelimContainer.id = 'reade-automate-container';
   const secondElementContainer = filteredATags[1];
+  // this doesn't really work
+  // the only way to get this to work is to put everything into an array THEN render. I can do that, I think
+  // const secondLastElementContainer = filteredATags[filteredATags.length - 2];
 
   // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
   secondElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode.insertBefore(prelimContainer, secondElementContainer.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode);

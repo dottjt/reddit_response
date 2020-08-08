@@ -15,7 +15,7 @@ Although this application saves me a tremendous amount of time, the biggest save
 
 ## Improvements
 
-- This application is largely considered mature, and I will not be pursuing new features.
+- This application is mature, and I will not be pursuing new any features.
 
 ### LOW PRIORITY
 

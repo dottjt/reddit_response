@@ -2277,7 +2277,7 @@
     var partnerAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nIf it helps, I've written a guide to overcoming porn addiction which may help them? It may also help you understand the dynamics of porn addiction as well.\n\nI started watching porn when I was 10, recovered by 25, now 27. So it's definitely something that can be addressed successfully if you focus on your mental health and remain consistent with the process. Now I honestly don't think about porn or masturbation at all.\n"); };
     var masturbateWithoutPornAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nWhile there's nothing inherently wrong with masturbation itself, what I will say is that it makes the process of recovery so much more difficult than it needs to be.\n\nIn most cases it's a trigger to watch porn and orgasm itself also makes it really hard to maintain clarity during recovery. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var biggestBenefitPostAddictionAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ".\n\nPossibly the biggest benefit for me is simply not having to think about porn/masturbation at all. The amount of time saved daily that I can spend on other things is tremendous. Not to mention the cost my addiction had on my mental health, as well as on my ability to concentrate and actually get stuff done.\n\nJust having the mental clarity that I have now is alone worth it for me. It's like I can be fully consistent with my ambitiosn and endeavours without crashing at all. If you'd like to learn more, I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
-    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If you're struggling with urges then it might help to revise the fundamentals.\n\nUltimately recovery is about mental balance. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Which is a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
+    var dealingWithUrgesAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". If you're struggling with urges then it might help to revise the fundamentals, because with sufficient mental balance you shouldn't be having any urges at all. Period.\n\nUltimately recovery is about mental balance. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Which is a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     // If you have to ask, then generally yes. Although
     var didIJustRelapseAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Although not necessarily a relapse, indicates that you don't quite have control over your mind.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
     var whenDoesItGetEasierAdvice = function (forum) { return ("Hey, I saw your post" + (forum ? " on " + forum : '') + ". Ultimately it gets easier once you learn to develop control over your mind, which comes from daily mental health practice.\n\nUltimately recovery is about focusing on your mental health. Fundamentally it's about developing the awareness to change your behaviours so you can have control over your mind. Of course, that's a lot easier said than done which is why it requires consistent practice.\n\nDo you have a mental health routine? Have you tried meditation? Personally I do 10 minutes of meditation before bed each day and that does the trick for me. I've also created a website which explains the whole process of overcoming porn addiction, if you're interested.\n"); };
@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'AzarFadio';
-    var R_NOFAP_TIMESTAMP = '2 hours ago';
-    var R_PORN_FREE_USERNAME = 'RenegadeEmperor';
-    var R_PORN_FREE_TIMESTAMP = '10 minutes ago';
+    var R_NOFAP_USERNAME = 'LostOrochi';
+    var R_NOFAP_TIMESTAMP = '1 hours ago';
+    var R_PORN_FREE_USERNAME = 'IlooklikeMorty';
+    var R_PORN_FREE_TIMESTAMP = '5 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'irpnck';
-    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '31 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2766,6 +2766,9 @@
         var prelimContainer = document.createElement('div');
         prelimContainer.id = 'reade-automate-container';
         var secondElementContainer = filteredATags[1];
+        // this doesn't really work
+        // the only way to get this to work is to put everything into an array THEN render. I can do that, I think
+        // const secondLastElementContainer = filteredATags[filteredATags.length - 2];
         // NOTE: This first one is one more i.e. the parent of the element it's inserting it before.
         (_h = (_g = (_f = (_e = (_d = (_c = (_b = (_a = secondElementContainer.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode) === null || _b === void 0 ? void 0 : _b.parentNode) === null || _c === void 0 ? void 0 : _c.parentNode) === null || _d === void 0 ? void 0 : _d.parentNode) === null || _e === void 0 ? void 0 : _e.parentNode) === null || _f === void 0 ? void 0 : _f.parentNode) === null || _g === void 0 ? void 0 : _g.parentNode) === null || _h === void 0 ? void 0 : _h.parentNode.insertBefore(prelimContainer, (_q = (_p = (_o = (_m = (_l = (_k = (_j = secondElementContainer.parentNode) === null || _j === void 0 ? void 0 : _j.parentNode) === null || _k === void 0 ? void 0 : _k.parentNode) === null || _l === void 0 ? void 0 : _l.parentNode) === null || _m === void 0 ? void 0 : _m.parentNode) === null || _o === void 0 ? void 0 : _o.parentNode) === null || _p === void 0 ? void 0 : _p.parentNode) === null || _q === void 0 ? void 0 : _q.parentNode);
     };
@@ -3008,6 +3011,8 @@
         { titleText: /(tracker|counting|counter)/i },
         { titleText: /accountability post/i },
         __assign(__assign({}, both), { titleText: /^counter$/i }),
+        __assign(__assign({}, both), { titleText: /How do u get a number/i }),
+        __assign(__assign({}, both), { titleText: /numbers by ur name/i }),
         __assign(__assign({}, both), { titleText: /just to see the days/i }),
         __assign(__assign({}, both), { titleText: /add that day count/i }),
         __assign(__assign({}, both), { titleText: /I want a flair/i }),
@@ -3083,6 +3088,7 @@
         __assign(__assign({}, both), { titleText: /prostate cancer/i }),
         __assign(__assign({}, both), { titleText: /hair loss/i }),
         __assign(__assign({}, both), { titleText: /Penis size/i }),
+        __assign(__assign({}, both), { titleText: /increase ?(in)? testosterone/i }),
         __assign(__assign({}, both), { titleText: /vasectomy/i }),
         __assign(__assign({}, both), { titleText: /super sensitive/i }),
         __assign(__assign({}, both), { titleText: /testosterone/i }),
@@ -3188,9 +3194,11 @@
     var toRelapseAdviceRegexArray = [
         { titleText: /I relapsed/i },
         { titleText: /^Major relapse/i },
+        { titleText: /^\d+ days relapse/i },
         __assign(__assign({}, both), { titleText: /lost at \d+ days/i }),
         __assign(__assign({}, both), { titleText: /Relapse... again/i }),
         __assign(__assign({}, both), { titleText: /welp relapsed/i }),
+        __assign(__assign({}, both), { titleText: /Worst relapse ever/i }),
         __assign(__assign({}, both), { titleText: /relapse \:\(/i }),
         __assign(__assign({}, both), { titleText: /again 0 days/i }),
         __assign(__assign({}, both), { titleText: /Day (zero|0) Again/i }),
@@ -3265,9 +3273,12 @@
         // NEW
         { titleText: /^newbie/i },
         { titleText: /first try/i },
+        { titleText: /wish me luck/i },
         { titleText: /my first post/i },
         { titleText: /^First day$/i },
         { titleText: /here for (nofap|no fap|no-fap)/i },
+        { titleText: /today I quit masturbation/i },
+        { titleText: /quit from fapping today/i },
         // DECISION
         { titleText: /will finally commit to (nofap|no fap|no-fap)/i },
         { titleText: /I start now/i },
@@ -3323,6 +3334,7 @@
         __assign(__assign({}, both), { titleText: /(Here's|here’s) to a new beginning/i }),
         __assign(__assign({}, both), { titleText: /Might as well start now/i }),
         __assign(__assign({}, both), { titleText: /starting day (1|one) today/i }),
+        __assign(__assign({}, both), { titleText: /going to start my new journey/i }),
         // ADVICE
         { titleText: /any tips on getting started/i },
         __assign(__assign({}, both), { titleText: /any tips for starting/i }),
@@ -3354,6 +3366,7 @@
         { titleText: /the beginning/i },
         { titleText: /So finally (Let's|let’s|lets) begin/i },
         // START
+        { titleText: /^day one/i },
         { titleText: /day (1|one) (bby|baby)/i },
         { titleText: /about to start/i },
         { titleText: /How to start\?/i },
@@ -3452,6 +3465,7 @@
         __assign(__assign({}, both), { titleText: /This is my .* time trying/i }),
         __assign(__assign({}, both), { titleText: /Any advices for my second attempt/i }),
         __assign(__assign({}, both), { titleText: /going to try again/i }),
+        __assign(__assign({}, both), { titleText: /give this another shot/i }),
         __assign(__assign({}, both), { titleText: /gonna start over today/i }),
         __assign(__assign({}, both), { titleText: /starting (nofap|no fap|no-fap) again/i }),
         __assign(__assign({}, both), { titleText: /^starting ?(nofap|no fap|no-fap|this|it)? again(\.)?$/i }),
@@ -3502,14 +3516,24 @@
         { titleText: /does anyone have tips/i },
         __assign(__assign({}, both), { titleText: /(all|Any) tips (are|will be) welcome/i }),
         __assign(__assign({}, both), { titleText: /some (advice|tips) to stay strong/i }),
+        __assign(__assign({}, both), { titleText: /need some help/i }),
+        __assign(__assign({}, both), { titleText: /I want to stop any advice/i }),
         __assign(__assign({}, both), { titleText: /would love to know how you/i }),
         __assign(__assign({}, both), { titleText: /if you could give me some tips/i }),
+        __assign(__assign({}, both), { titleText: /How did you ?(guys)? break this bad habit/i }),
         __assign(__assign({}, both), { titleText: /(cant|can't|can’t) manage to stop/i }),
         __assign(__assign({}, both), { titleText: /What are your best strategies/i }),
         __assign(__assign({}, both), { titleText: /Please send me some tips how to not get horny/i }),
         __assign(__assign({}, both), { titleText: /What finally gave you success/i }),
         __assign(__assign({}, both), { titleText: /how does one quit porn/i }),
+        __assign(__assign({}, both), { titleText: /porn addiction is killing me/i }),
         __assign(__assign({}, both), { titleText: /how do guys quit porn/i }),
+        __assign(__assign({}, both), { titleText: /need tips and tricks/i }),
+        __assign(__assign({}, both), { titleText: /link of your (web)?site/i }),
+        __assign(__assign({}, both), { titleText: /pl(z|s) link me/i }),
+        __assign(__assign({}, both), { titleText: /Does anyone have some (tips|advice)/i }),
+        __assign(__assign({}, both), { titleText: /stop me from watching porn/i }),
+        __assign(__assign({}, both), { titleText: /no matter what I do/i }),
         __assign(__assign({}, both), { titleText: /if anyone can offer tips/i }),
         __assign(__assign({}, both), { titleText: /I (cant|can't|can’t) go longer than a day/i }),
         __assign(__assign({}, both), { titleText: /I (cant|can't|can’t) control my self/i }),
@@ -3597,7 +3621,10 @@
         __assign(__assign({}, both), { titleText: /i try to resist but i fail/i }),
         __assign(__assign({}, both), { titleText: /how to prevent myself/i }),
         __assign(__assign({}, both), { titleText: /I need some support/i }),
+        __assign(__assign({}, both), { titleText: /getting tough now/i }),
         __assign(__assign({}, both), { titleText: /Pl(z|s)* help/i }),
+        __assign(__assign({}, both), { titleText: /how the fuck can I stop/i }),
+        __assign(__assign({}, both), { titleText: /Advice for getting over the/i }),
         { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i },
         // UNABLE TO STOP
         { titleText: /I keep failing/i },
@@ -3607,6 +3634,14 @@
         { messageText: /anyone plzzzz/i },
         { messageText: /I (don’t|don't|dont) know how to convince (my self|myself) to give ?(it)? up/i },
         { messageText: /if you can please give a better advice/i },
+        { messageText: [/need suggestions/i, /feel stuck/i] },
+        __assign(__assign({}, both), { titleText: /How Do I Quit Porn/i }),
+        __assign(__assign({}, both), { titleText: /I cannot do this/i }),
+        __assign(__assign({}, both), { titleText: /I keep trying over and over/i }),
+        __assign(__assign({}, both), { titleText: /trying for so long/i }),
+        __assign(__assign({}, both), { titleText: /have advice to not relapse/i }),
+        __assign(__assign({}, both), { titleText: /Your (support|comments|messages)/i }),
+        __assign(__assign({}, both), { titleText: /Any help would be appreciated/i }),
         __assign(__assign({}, both), { titleText: /Looking how to start/i }),
         __assign(__assign({}, both), { titleText: /^how to quit(\?)?$/i }),
         __assign(__assign({}, both), { titleText: /best way to stop masturbating\?/i }),
@@ -3777,7 +3812,6 @@
         { titleText: /(can’t|can't|cant) stop relapsing/i, },
         { titleText: /^Almost Failed$/i, },
         { titleText: /(starting|started) to feel depressed and hopeless/i, },
-        { titleText: /losing my motivation to/i, },
         { titleText: /I (can’t|can't|cant) get past day .*/i, },
         { titleText: /(can’t|can't|cant) get a streak going/i, },
         { titleText: /Struggling to (break|kick) this addiction/i, },
@@ -3792,6 +3826,10 @@
         { titleText: /I just have to stop/i, },
         { titleText: /how do i get past day 1\?/i, },
         { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
+        __assign(__assign({}, both), { titleText: /feeling very (depressed|aggressive)/i }),
+        __assign(__assign({}, both), { titleText: /verge of slipping up/i }),
+        __assign(__assign({}, both), { titleText: /tips on how to get over it/i }),
+        __assign(__assign({}, both), { titleText: /losing my motivation to/i }),
         __assign(__assign({}, both), { titleText: /I have no motivation no energy nothing/i }),
         __assign(__assign({}, both), { titleText: /I want to kill myself badly/i }),
         __assign(__assign({}, both), { titleText: /Now I feel so shit/i }),
@@ -3807,6 +3845,8 @@
         __assign(__assign({}, both), { titleText: /I (can’t|can't|cant) (stop|quit) (masturbating|porn)/i }),
         __assign(__assign({}, both), { titleText: /not able to start .* journey again/i }),
         __assign(__assign({}, both), { titleText: /failed many times/i }),
+        __assign(__assign({}, both), { titleText: /feeling extremely lonely/i }),
+        __assign(__assign({}, both), { titleText: /stuck in the loop of relapse/i }),
         __assign(__assign({}, both), { titleText: /So tired of relapsing/i }),
         __assign(__assign({}, both), { titleText: /having a really hard time controlling my urges\?/i }),
         __assign(__assign({}, both), { titleText: /How can I get out of this hole\?/i }),
@@ -3877,9 +3917,15 @@
         __assign(__assign({}, both), { titleText: /usually deal with (urges|the urge|cravings)/i }),
         __assign(__assign({}, both), { titleText: /How long does it take for the urges/i }),
         __assign(__assign({}, both), { titleText: /do the urges ever stop coming/i }),
+        __assign(__assign({}, both), { titleText: /tired and have urges/i }),
         __assign(__assign({}, both), { titleText: /feel the urge to do it/i }),
         __assign(__assign({}, both), { titleText: /advice for preventing urges/i }),
+        __assign(__assign({}, both), { titleText: /Some days ?(just)? seem harder/i }),
+        __assign(__assign({}, both), { titleText: /Still having trouble with urges/i }),
+        __assign(__assign({}, both), { titleText: /insane urges/i }),
         __assign(__assign({}, both), { titleText: /the urges come back/i }),
+        __assign(__assign({}, both), { titleText: /I HAVE A SERIOUS URGE/i }),
+        __assign(__assign({}, both), { titleText: /How do YOU cope with (.*)? urges/i }),
         { messageText: /someone tell me when (these|this) (urge|urges) will/i },
         // ARRAY - TODO test to see if this actually works
         { messageText: [/strong (urge|urges)/i, /(don’t|dont|don't) know how to deal with it/i] },
@@ -3948,6 +3994,9 @@
         __assign(__assign({}, both), { titleText: /(perfect|best) porn blocker/i }),
         __assign(__assign({}, both), { titleText: /ban porn sites/i }),
         __assign(__assign({}, both), { titleText: /internet filters/i }),
+        __assign(__assign({}, both), { titleText: /Advice on Porn Block/i }),
+        __assign(__assign({}, both), { titleText: /please advice any porn block/i }),
+        __assign(__assign({}, both), { titleText: /finding a porn blocker/i }),
         __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
         __assign(__assign({}, both), { titleText: /How do I block NSFW/i }),
         __assign(__assign({}, both), { titleText: /need a porn (.*)? blocker/i }),
@@ -4011,10 +4060,13 @@
         __assign(__assign({}, both), { titleText: /Is this ?(a)? relapse\?/i }),
         __assign(__assign({}, both), { titleText: /Have I relapsed\?/i }),
         __assign(__assign({}, both), { titleText: /was it a relapse\?/i }),
-        __assign(__assign({}, both), { titleText: /Does that count as a/i }),
+        __assign(__assign({}, both), { titleText: /Does (this|that) count as a/i }),
         __assign(__assign({}, both), { titleText: /count as ?(a)? relapse\?/i }),
         __assign(__assign({}, both), { titleText: /do I have to (restart|reset) my streak/i }),
         __assign(__assign({}, both), { titleText: /does that mean I failed\?/i }),
+        __assign(__assign({}, both), { titleText: /Did i break the rules/i }),
+        __assign(__assign({}, both), { titleText: /Do i need to start again/i }),
+        __assign(__assign({}, both), { titleText: /Does precum count/i }),
     ];
 
     var toWhenDoesItGetEasierAdviceRegexArray = [
@@ -4024,6 +4076,7 @@
         __assign(__assign({}, both), { titleText: /When does the withdrawal period depression start to fade\?/i }),
         __assign(__assign({}, both), { titleText: /How long before the effects of porn disappear\?/i }),
         __assign(__assign({}, both), { titleText: /How does it (get|become) easier to\?/i }),
+        __assign(__assign({}, both), { titleText: /Does it ?(ever)? (get|become) easier\?/i }),
     ];
 
     var matchMultiple = function (keyString, stringObjectToMatch, regex) {
@@ -4148,6 +4201,7 @@
         __assign(__assign({}, both), { titleText: /(which|What) benefits did you gain/i }),
         __assign(__assign({}, both), { titleText: /benefits that you have gained/i }),
         __assign(__assign({}, both), { titleText: /reasons to stop/i }),
+        __assign(__assign({}, both), { titleText: /what is the effects on health/i }),
         __assign(__assign({}, both), { titleText: /Are there any benefits from (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /benefits of semen retention/i }),
         __assign(__assign({}, both), { titleText: /the effort is really worth/i }),
@@ -4170,6 +4224,7 @@
     var toIsWatchingPornRelapseAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /is it bad to watch porn/i }),
         __assign(__assign({}, both), { titleText: /okay to still watch porn/i }),
+        __assign(__assign({}, both), { titleText: /Is it okay(,)? to watch pornography/i }),
     ];
 
     var toNoReasonToRelapseAdviceRegexArray = [
@@ -4192,7 +4247,10 @@
         __assign(__assign({}, both), { titleText: /(what's|What’s) the flatline/i }),
         __assign(__assign({}, both), { titleText: /\d+ days and flatlining/i }),
         __assign(__assign({}, both), { titleText: /having flatlines/i }),
+        __assign(__assign({}, both), { titleText: /Currently Flatlining/i }),
+        __assign(__assign({}, both), { titleText: /How do you get over flatlines/i }),
         __assign(__assign({}, both), { titleText: /how does one know when (they're|they’re) going through ?(the)? flatline/i }),
+        { messageText: [/flatline/i, /solutions/i], },
     ];
 
     var deleteImmediately = {
@@ -4232,9 +4290,10 @@
         var toRemoveInitialMatch = matchRegex(toRemoveInitialRegexArray, stringObjectToMatch);
         if (flairText !== 'New to NoFap' && flairText !== 'Relapse Report') {
             if (toRemoveInitialDayResult || toRemoveInitialMatch.length > 0) {
-                console.log('toRemoveInitialMatch', toRemoveInitialMatch);
                 if (!toRemoveInitialDayResult) {
                     console.log("Deleted: Regex: " + extractRegexMatch(toRemoveInitialMatch) + " - Title: " + titleText.slice(0, 30) + " - Message: " + messageText.slice(0, 30) + " - Flair: " + flairText + " - Username: " + compiledUser.username);
+                    // TODO Do I need to highlight syntax this?
+                    console.log("Title: " + titleText + " - Regex: " + extractRegexMatch(toRemoveInitialMatch));
                 }
                 else {
                     console.log('toRemoveInitialDay - whatever value it matched');
