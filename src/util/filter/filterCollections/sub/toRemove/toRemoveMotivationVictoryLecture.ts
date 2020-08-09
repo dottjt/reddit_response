@@ -74,6 +74,7 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { ...both, titleText: /On my way to triumph/i },
   { ...both, titleText: /pretty easy so far/i },
   { ...both, titleText: /new record/i },
+  { ...both, titleText: /feeling great/i },
 
   // MOTIVATION
   { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },

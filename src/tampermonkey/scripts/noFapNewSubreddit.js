@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'vaderDash';
+    var R_NOFAP_USERNAME = 'ye_average_male';
     var R_NOFAP_TIMESTAMP = '1 hours ago';
     var R_PORN_FREE_USERNAME = 'nickdaley1999';
-    var R_PORN_FREE_TIMESTAMP = '11 minutes ago';
+    var R_PORN_FREE_TIMESTAMP = '15 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'joeljpg';
-    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '16 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -2976,6 +2976,7 @@
         __assign(__assign({}, both), { titleText: /On my way to triumph/i }),
         __assign(__assign({}, both), { titleText: /pretty easy so far/i }),
         __assign(__assign({}, both), { titleText: /new record/i }),
+        __assign(__assign({}, both), { titleText: /feeling great/i }),
         // MOTIVATION
         { titleText: /(we will all make it|we will make it|you will make it|you can do it)/i },
         { titleText: /(Don't|Don't|dont) give up$/i },
@@ -3210,6 +3211,7 @@
         __assign(__assign({}, both), { titleText: /relapse report/i }),
         __assign(__assign({}, both), { titleText: /(I've|just) ?(have)? (relapsed|failed)/i }),
         __assign(__assign({}, both), { titleText: /(failed|lost) (at|on) day/i }),
+        __assign(__assign({}, both), { titleText: /I failed today/i }),
         __assign(__assign({}, both), { titleText: /relapsed hard/i }),
         __assign(__assign({}, both), { titleText: /^relapsed\./i }),
         __assign(__assign({}, both), { titleText: /Relapsed Yet Again/i }),
@@ -3510,6 +3512,8 @@
         // ADVICE
         { titleText: /I need ?(.*) help/i },
         { titleText: /^I need advice$/i },
+        { titleText: /this has to stop/i },
+        { titleText: /Feeling like quitting (this|the) streak/i },
         { titleText: /give me tips on how/i },
         { titleText: /asking for advice and motivation/i },
         { titleText: /tips on how to do it/i },
@@ -3938,6 +3942,7 @@
         { titleText: /(urges|the urge|cravings) at night/i },
         { titleText: /(urges|the urge|cravings) are strong/i },
         { titleText: /^strong urges$/i },
+        __assign(__assign({}, both), { titleText: /urges are coming/i }),
         __assign(__assign({}, both), { titleText: /advice on how to beat the urge/i }),
         __assign(__assign({}, both), { titleText: /the urges are super strong/i }),
         __assign(__assign({}, both), { titleText: /I have an urge right now/i }),
@@ -4232,7 +4237,7 @@
         { titleText: /^beneftis(\?|.)?$/i },
         { titleText: /^(NoFap|no fap|no-fap) benefits(\?|.)?$/i },
         __assign(__assign({}, both), { titleText: /I want to know the benefits of (NoFap|no fap|no-fap)/i }),
-        __assign(__assign({}, both), { titleText: /what are the benefits to quitting/i }),
+        __assign(__assign({}, both), { titleText: /what are the benefits (of|to) quitting/i }),
         __assign(__assign({}, both), { titleText: /Can anyone explain the benefits/i }),
         __assign(__assign({}, both), { titleText: /Benefits from quitting\?/i }),
         __assign(__assign({}, both), { titleText: /pros and cons/i }),
@@ -4242,6 +4247,7 @@
         __assign(__assign({}, both), { titleText: /benefits that you have gained/i }),
         __assign(__assign({}, both), { titleText: /reasons to stop/i }),
         __assign(__assign({}, both), { titleText: /what is the effects on health/i }),
+        __assign(__assign({}, both), { titleText: /what are the benefits (of|to) (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /Are there any benefits from (NoFap|no fap|no-fap)/i }),
         __assign(__assign({}, both), { titleText: /benefits of semen retention/i }),
         __assign(__assign({}, both), { titleText: /the effort is really worth/i }),
@@ -4264,6 +4270,7 @@
     var toIsWatchingPornRelapseAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /is it bad to watch porn/i }),
         __assign(__assign({}, both), { titleText: /okay to still watch porn/i }),
+        __assign(__assign({}, both), { titleText: /Is it ok to watch porn/i }),
         __assign(__assign({}, both), { titleText: /Is it okay(,)? to watch pornography/i }),
     ];
 
@@ -4333,7 +4340,7 @@
                 if (!toRemoveInitialDayResult) {
                     console.log("Deleted: Regex: " + extractRegexMatch(toRemoveInitialMatch) + " - Title: " + titleText.slice(0, 30) + " - Message: " + messageText.slice(0, 30) + " - Flair: " + flairText + " - Username: " + compiledUser.username);
                     // TODO Do I need to highlight syntax this?
-                    console.log("Title: " + titleText + " - Regex: " + extractRegexMatch(toRemoveInitialMatch));
+                    // console.log(`Regex: ${extractRegexMatch(toRemoveInitialMatch)} - Title: ${titleText}`);
                 }
                 else {
                     console.log('toRemoveInitialDay - whatever value it matched');

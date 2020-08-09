@@ -7,7 +7,7 @@ export const toBiggestBenefitPostAddictionAdviceRegexArray: InitialRegExpCollect
 
   // WANT TO KNOW BENEFITS
   { ...both, titleText: /I want to know the benefits of (NoFap|no fap|no-fap)/i },
-  { ...both, titleText: /what are the benefits to quitting/i },
+  { ...both, titleText: /what are the benefits (of|to) quitting/i },
   { ...both, titleText: /Can anyone explain the benefits/i },
   { ...both, titleText: /Benefits from quitting\?/i },
   { ...both, titleText: /pros and cons/i },
@@ -17,6 +17,7 @@ export const toBiggestBenefitPostAddictionAdviceRegexArray: InitialRegExpCollect
   { ...both, titleText: /benefits that you have gained/i },
   { ...both, titleText: /reasons to stop/i },
   { ...both, titleText: /what is the effects on health/i },
+  { ...both, titleText: /what are the benefits (of|to) (NoFap|no fap|no-fap)/i },
 
   { ...both, titleText: /Are there any benefits from (NoFap|no fap|no-fap)/i },
   { ...both, titleText: /benefits of semen retention/i },

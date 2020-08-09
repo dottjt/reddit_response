@@ -251,6 +251,10 @@
         { replyText: /feel free to send me the link/i },
         { replyText: /would be glad to check your website/i },
         { replyText: /send me website/i },
+        { replyText: /see the link of your website/i },
+        { replyText: /always interested in anything that can/i },
+        { replyText: /like to know more/i },
+        { replyText: /cool to see that website/i },
         { replyText: /I (wouldn’t|wouldn't) (mine|mind) checking it out/i },
         // SEND
         { replyText: /send (me|over) the link/i },

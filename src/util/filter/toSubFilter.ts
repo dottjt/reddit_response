@@ -74,7 +74,7 @@ export const toSubFilter = (
       if (!toRemoveInitialDayResult) {
         console.log(`Deleted: Regex: ${extractRegexMatch(toRemoveInitialMatch)} - Title: ${titleText.slice(0, 30)} - Message: ${messageText.slice(0, 30)} - Flair: ${flairText} - Username: ${compiledUser.username}`);
         // TODO Do I need to highlight syntax this?
-        console.log(`Title: ${titleText} - Regex: ${extractRegexMatch(toRemoveInitialMatch)}`);
+        // console.log(`Regex: ${extractRegexMatch(toRemoveInitialMatch)} - Title: ${titleText}`);
       } else {
         console.log('toRemoveInitialDay - whatever value it matched');
       }

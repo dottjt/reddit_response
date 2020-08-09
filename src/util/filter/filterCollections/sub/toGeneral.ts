@@ -20,6 +20,8 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
 
   { titleText: /I need ?(.*) help/i },
   { titleText: /^I need advice$/i },
+  { titleText: /this has to stop/i },
+  { titleText: /Feeling like quitting (this|the) streak/i },
   { titleText: /give me tips on how/i },
   { titleText: /asking for advice and motivation/i },
   { titleText: /tips on how to do it/i },
