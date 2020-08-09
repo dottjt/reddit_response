@@ -26,10 +26,15 @@ export const toDealingWithUrgesAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Some days ?(just)? seem harder/i },
   { ...both, titleText: /Still having trouble with urges/i },
   { ...both, titleText: /insane urges/i },
+  { ...both, titleText: /so hard to ignore the urges/i },
   { ...both, titleText: /the urges come back/i },
   { ...both, titleText: /I HAVE A SERIOUS URGE/i },
+  { ...both, titleText: /Trying to control my urge/i },
+  { ...both, titleText: /getting urges now/i },
+  { ...both, titleText: /Getting urge right now/i },
+  { ...both, titleText: /Advice for beating urges/i },
+  { ...both, titleText: /Just ended my best streak/i },
   { ...both, titleText: /How do YOU cope with (.*)? urges/i },
-
 
   { messageText: /someone tell me when (these|this) (urge|urges) will/i },
 

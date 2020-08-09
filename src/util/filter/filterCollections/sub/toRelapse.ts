@@ -42,8 +42,12 @@ export const toRelapseAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /i did a relapse/i },
   { ...both, titleText: /i lost after \d+ days/i },
   { ...both, titleText: /Relapsed on \d+(th)? day/i },
+  { ...both, titleText: /I fucking relapsed/i },
   { ...both, titleText: /Relapsed on day \d+/i },
+  { ...both, titleText: /and relapsed today/i },
   { ...both, titleText: /Back to day \d+/i },
+  { ...both, titleText: /binged \d+ times in/i },
+  { ...both, titleText: /I relapsed guys/i },
 
   { ...both, titleText: /then I relapsed/i },
   { ...both, titleText: /relapsing after a/i },

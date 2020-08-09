@@ -32,7 +32,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /Still Struggling/i, },
   { titleText: /I just have to stop/i, },
   { titleText: /how do i get past day 1\?/i, },
-  { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
+  { titleText: /I ?(just)? (give up|(can’t|can't|cant) stop)/i },
 
   { ...both, titleText: /feeling very (depressed|aggressive)/i, },
   { ...both, titleText: /verge of slipping up/i, },
@@ -66,6 +66,7 @@ export const toStruggleAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /might relapse tonight/i, },
   { ...both, titleText: /please I need help/i, },
   { ...both, titleText: /struggling right now/i, },
+  { ...both, titleText: /been struggling with streak/i, },
   { ...both, titleText: /I (can’t|can't|cant) even pass 2 days /i, },
 
   // ABOUT TO RELAPSE

@@ -10,9 +10,11 @@ export const toWetdreamAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /wet dreamed this morning/i },
   { ...both, titleText: /wet dream on day/i },
   { ...both, titleText: /are (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a sign of progress/i },
+  { ...both, titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) considered as relapse/i },
   { ...both, titleText: /How do I stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /Feeling low after a wet dream/i },
   { ...both, titleText: /I('|’)m having wet dreams/i },
+  { ...both, titleText: /Does wet dream relapse/i },
 
   { ...both, titleText: /did you get (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i },
   { ...both, titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i },

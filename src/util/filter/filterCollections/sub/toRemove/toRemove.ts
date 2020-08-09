@@ -75,6 +75,8 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /scientific/i },
   { ...both, titleText: /prostate cancer/i },
   { ...both, titleText: /hair loss/i },
+  { ...both, titleText: /deeper voice/i },
+  { ...both, titleText: /(improved|better) vision/i },
   { ...both, titleText: /Penis size/i },
   { ...both, titleText: /increase ?(in)? testosterone/i },
 
@@ -162,6 +164,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /strange dreams/i },
   { ...both, titleText: /NOT GETTING URGES/i },
   { ...both, titleText: /Recommended books/i },
+  { ...both, titleText: /Can (you|i) still have sex/i },
   { ...both, titleText: /(ejaculate|cum) too quick/i },
   { ...both, titleText: /day \d+ (bby|baby)/i },
 

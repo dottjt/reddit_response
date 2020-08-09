@@ -155,8 +155,28 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Pl(z|s)* help/i },
   { ...both, titleText: /how the fuck can I stop/i },
   { ...both, titleText: /Advice for getting over the/i },
+  { ...both, titleText: /How do I take back control/i },
+  { ...both, titleText: /Help keep relapsing/i },
+  { ...both, titleText: /I feel kind of lost/i },
+  { ...both, titleText: /what tips do you have to someone struggling/i },
+  { ...both, titleText: /Is there a light at the end of the tunnel/i },
+  { ...both, titleText: /If anyone can give me advice/i },
+  { ...both, titleText: /Motivation needed!/i },
+  { ...both, titleText: /can someone guide me/i },
+  { ...both, titleText: /how does one overcome/i },
+  { ...both, titleText: /any tips on how to/i },
+  { ...both, titleText: /Any replies would be/i },
+  { ...both, titleText: /can't seem to go past/i },
+  { ...both, titleText: /What should I do to try/i },
+  { ...both, titleText: /I need motivation/i },
+  { ...both, titleText: /I need support/i },
+  { ...both, titleText: /In need of advice/i },
+  { ...both, titleText: /\d+M and need help/i },
 
   { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i },
+
+  // How do you guys do to try and not peek - TODO
+
 
   // UNABLE TO STOP
   { titleText: /I keep failing/i },

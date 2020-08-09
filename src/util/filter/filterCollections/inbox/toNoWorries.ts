@@ -75,6 +75,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
 
   // PASSIVE ASK
 
+  { replyText: /shared with me your website/i },
+  { replyText: /sure link/i },
   { replyText: /can link me to this website/i },
   { replyText: /May I know (your|the) website/i },
   { replyText: /glad to know your website/i },
@@ -106,6 +108,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
 
   { replyText: /(can|could) you ?(please)? link/i },
   { replyText: /comfortable with sharing it/i },
+  { replyText: /I would like to read/i },
+  { replyText: /love to get help from the website/i },
   { replyText: /what the link/i },
   { replyText: /Fire away with your website/i },
   { replyText: /sure (I’ll|ill|I'll) take a look/i },
@@ -202,7 +206,9 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /(id|I'd|I’d) love/i },
   { replyText: /love to (see|know) (the|your) (web site|website)/i },
   { replyText: /I would love to learn more about it/i },
+  { replyText: /please share/i },
   { replyText: /would love to visit/i },
+  { replyText: /love to (check out|checkout) the website/i },
   { replyText: /love to see the (web site|website)/i },
   { replyText: /would love that (web site|website)/i },
   { replyText: /website sounds like a huge help/i },

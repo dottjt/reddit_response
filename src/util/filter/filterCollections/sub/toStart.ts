@@ -72,6 +72,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Might as well start now/i },
   { ...both, titleText: /starting day (1|one) today/i },
   { ...both, titleText: /going to start my new journey/i },
+  { ...both, titleText: /yesterday i started my journey/i },
 
   // ADVICE
   { titleText: /any tips on getting started/i },
@@ -162,12 +163,13 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /Just began my journey/i },
   { titleText: /journey to porn free/i },
   { titleText: /start of (a new|the) journey/i },
+  { titleText: /I decided it's time to quit porn/i },
 
   { messageText: /Today (starts|i start) my journey/i },
   { messageText: /(I’m|I'm|im|i am) starting today/i },
 
   // DAY ZERO
-  { ...both, titleText: /day (0|zero)/i },
+  { titleText: /day (0|zero)/i },
 
   // DAY ONE
   { ...both, titleText: /day (one|1) of /i },

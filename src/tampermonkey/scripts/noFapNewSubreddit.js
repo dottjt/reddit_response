@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'LostOrochi';
+    var R_NOFAP_USERNAME = 'vaderDash';
     var R_NOFAP_TIMESTAMP = '1 hours ago';
-    var R_PORN_FREE_USERNAME = 'IlooklikeMorty';
-    var R_PORN_FREE_TIMESTAMP = '5 hours ago';
-    var R_PORN_ADDICTION_USERNAME = 'irpnck';
-    var R_PORN_ADDICTION_TIMESTAMP = '31 hours ago';
+    var R_PORN_FREE_USERNAME = 'nickdaley1999';
+    var R_PORN_FREE_TIMESTAMP = '11 minutes ago';
+    var R_PORN_ADDICTION_USERNAME = 'joeljpg';
+    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3087,6 +3087,8 @@
         __assign(__assign({}, both), { titleText: /scientific/i }),
         __assign(__assign({}, both), { titleText: /prostate cancer/i }),
         __assign(__assign({}, both), { titleText: /hair loss/i }),
+        __assign(__assign({}, both), { titleText: /deeper voice/i }),
+        __assign(__assign({}, both), { titleText: /(improved|better) vision/i }),
         __assign(__assign({}, both), { titleText: /Penis size/i }),
         __assign(__assign({}, both), { titleText: /increase ?(in)? testosterone/i }),
         __assign(__assign({}, both), { titleText: /vasectomy/i }),
@@ -3163,6 +3165,7 @@
         __assign(__assign({}, both), { titleText: /strange dreams/i }),
         __assign(__assign({}, both), { titleText: /NOT GETTING URGES/i }),
         __assign(__assign({}, both), { titleText: /Recommended books/i }),
+        __assign(__assign({}, both), { titleText: /Can (you|i) still have sex/i }),
         __assign(__assign({}, both), { titleText: /(ejaculate|cum) too quick/i }),
         __assign(__assign({}, both), { titleText: /day \d+ (bby|baby)/i }),
         // UNSORTED
@@ -3232,8 +3235,12 @@
         __assign(__assign({}, both), { titleText: /i did a relapse/i }),
         __assign(__assign({}, both), { titleText: /i lost after \d+ days/i }),
         __assign(__assign({}, both), { titleText: /Relapsed on \d+(th)? day/i }),
+        __assign(__assign({}, both), { titleText: /I fucking relapsed/i }),
         __assign(__assign({}, both), { titleText: /Relapsed on day \d+/i }),
+        __assign(__assign({}, both), { titleText: /and relapsed today/i }),
         __assign(__assign({}, both), { titleText: /Back to day \d+/i }),
+        __assign(__assign({}, both), { titleText: /binged \d+ times in/i }),
+        __assign(__assign({}, both), { titleText: /I relapsed guys/i }),
         __assign(__assign({}, both), { titleText: /then I relapsed/i }),
         __assign(__assign({}, both), { titleText: /relapsing after a/i }),
         __assign(__assign({}, both), { titleText: /relapsed once again/i }),
@@ -3335,6 +3342,7 @@
         __assign(__assign({}, both), { titleText: /Might as well start now/i }),
         __assign(__assign({}, both), { titleText: /starting day (1|one) today/i }),
         __assign(__assign({}, both), { titleText: /going to start my new journey/i }),
+        __assign(__assign({}, both), { titleText: /yesterday i started my journey/i }),
         // ADVICE
         { titleText: /any tips on getting started/i },
         __assign(__assign({}, both), { titleText: /any tips for starting/i }),
@@ -3409,9 +3417,11 @@
         { titleText: /Just began my journey/i },
         { titleText: /journey to porn free/i },
         { titleText: /start of (a new|the) journey/i },
+        { titleText: /I decided it's time to quit porn/i },
         { messageText: /Today (starts|i start) my journey/i },
         { messageText: /(I’m|I'm|im|i am) starting today/i },
-        __assign(__assign({}, both), { titleText: /day (0|zero)/i }),
+        // DAY ZERO
+        { titleText: /day (0|zero)/i },
         __assign(__assign({}, both), { titleText: /day (one|1) of /i }),
         __assign(__assign({}, both), { titleText: /day (one|1) without fapping/i }),
         __assign(__assign({}, both), { titleText: /this is day (one|1)/i }),
@@ -3462,8 +3472,10 @@
         __assign(__assign({}, both), { titleText: /starting, again/i }),
         __assign(__assign({}, both), { titleText: /^Starting again../i }),
         __assign(__assign({}, both), { titleText: /giving (nofap|no fap|no-fap|this) another go/i }),
+        __assign(__assign({}, both), { titleText: /Finally back on/i }),
         __assign(__assign({}, both), { titleText: /This is my .* time trying/i }),
         __assign(__assign({}, both), { titleText: /Any advices for my second attempt/i }),
+        __assign(__assign({}, both), { titleText: /I going to restart/i }),
         __assign(__assign({}, both), { titleText: /going to try again/i }),
         __assign(__assign({}, both), { titleText: /give this another shot/i }),
         __assign(__assign({}, both), { titleText: /gonna start over today/i }),
@@ -3625,7 +3637,25 @@
         __assign(__assign({}, both), { titleText: /Pl(z|s)* help/i }),
         __assign(__assign({}, both), { titleText: /how the fuck can I stop/i }),
         __assign(__assign({}, both), { titleText: /Advice for getting over the/i }),
+        __assign(__assign({}, both), { titleText: /How do I take back control/i }),
+        __assign(__assign({}, both), { titleText: /Help keep relapsing/i }),
+        __assign(__assign({}, both), { titleText: /I feel kind of lost/i }),
+        __assign(__assign({}, both), { titleText: /what tips do you have to someone struggling/i }),
+        __assign(__assign({}, both), { titleText: /Is there a light at the end of the tunnel/i }),
+        __assign(__assign({}, both), { titleText: /If anyone can give me advice/i }),
+        __assign(__assign({}, both), { titleText: /Motivation needed!/i }),
+        __assign(__assign({}, both), { titleText: /can someone guide me/i }),
+        __assign(__assign({}, both), { titleText: /how does one overcome/i }),
+        __assign(__assign({}, both), { titleText: /any tips on how to/i }),
+        __assign(__assign({}, both), { titleText: /Any replies would be/i }),
+        __assign(__assign({}, both), { titleText: /can't seem to go past/i }),
+        __assign(__assign({}, both), { titleText: /What should I do to try/i }),
+        __assign(__assign({}, both), { titleText: /I need motivation/i }),
+        __assign(__assign({}, both), { titleText: /I need support/i }),
+        __assign(__assign({}, both), { titleText: /In need of advice/i }),
+        __assign(__assign({}, both), { titleText: /\d+M and need help/i }),
         { titleText: /^(no fap|nofap|no-fap)(\.)?$/i, messageText: /(Any)? (help|advice|tips)\?/i },
+        // How do you guys do to try and not peek - TODO
         // UNABLE TO STOP
         { titleText: /I keep failing/i },
         { titleText: /I ?(still)? (don’t|don't|dont) know what to do/i },
@@ -3758,9 +3788,11 @@
         __assign(__assign({}, both), { titleText: /wet dreamed this morning/i }),
         __assign(__assign({}, both), { titleText: /wet dream on day/i }),
         __assign(__assign({}, both), { titleText: /are (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a sign of progress/i }),
+        __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) considered as relapse/i }),
         __assign(__assign({}, both), { titleText: /How do I stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Feeling low after a wet dream/i }),
         __assign(__assign({}, both), { titleText: /I('|’)m having wet dreams/i }),
+        __assign(__assign({}, both), { titleText: /Does wet dream relapse/i }),
         __assign(__assign({}, both), { titleText: /did you get (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
@@ -3825,7 +3857,7 @@
         { titleText: /Still Struggling/i, },
         { titleText: /I just have to stop/i, },
         { titleText: /how do i get past day 1\?/i, },
-        { titleText: /I ?(just)? (give up|need support|(can’t|can't|cant) stop)/i },
+        { titleText: /I ?(just)? (give up|(can’t|can't|cant) stop)/i },
         __assign(__assign({}, both), { titleText: /feeling very (depressed|aggressive)/i }),
         __assign(__assign({}, both), { titleText: /verge of slipping up/i }),
         __assign(__assign({}, both), { titleText: /tips on how to get over it/i }),
@@ -3858,6 +3890,7 @@
         __assign(__assign({}, both), { titleText: /might relapse tonight/i }),
         __assign(__assign({}, both), { titleText: /please I need help/i }),
         __assign(__assign({}, both), { titleText: /struggling right now/i }),
+        __assign(__assign({}, both), { titleText: /been struggling with streak/i }),
         __assign(__assign({}, both), { titleText: /I (can’t|can't|cant) even pass 2 days /i }),
         // ABOUT TO RELAPSE
         { titleText: /(I’m|I'm|im|I am) about to relapse/i, },
@@ -3923,8 +3956,14 @@
         __assign(__assign({}, both), { titleText: /Some days ?(just)? seem harder/i }),
         __assign(__assign({}, both), { titleText: /Still having trouble with urges/i }),
         __assign(__assign({}, both), { titleText: /insane urges/i }),
+        __assign(__assign({}, both), { titleText: /so hard to ignore the urges/i }),
         __assign(__assign({}, both), { titleText: /the urges come back/i }),
         __assign(__assign({}, both), { titleText: /I HAVE A SERIOUS URGE/i }),
+        __assign(__assign({}, both), { titleText: /Trying to control my urge/i }),
+        __assign(__assign({}, both), { titleText: /getting urges now/i }),
+        __assign(__assign({}, both), { titleText: /Getting urge right now/i }),
+        __assign(__assign({}, both), { titleText: /Advice for beating urges/i }),
+        __assign(__assign({}, both), { titleText: /Just ended my best streak/i }),
         __assign(__assign({}, both), { titleText: /How do YOU cope with (.*)? urges/i }),
         { messageText: /someone tell me when (these|this) (urge|urges) will/i },
         // ARRAY - TODO test to see if this actually works
@@ -3996,6 +4035,7 @@
         __assign(__assign({}, both), { titleText: /internet filters/i }),
         __assign(__assign({}, both), { titleText: /Advice on Porn Block/i }),
         __assign(__assign({}, both), { titleText: /please advice any porn block/i }),
+        __assign(__assign({}, both), { titleText: /Mac site blockers/i }),
         __assign(__assign({}, both), { titleText: /finding a porn blocker/i }),
         __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
         __assign(__assign({}, both), { titleText: /How do I block NSFW/i }),
