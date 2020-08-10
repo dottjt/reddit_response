@@ -26,6 +26,7 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /Please share details/i },
   { replyText: /know more about the website/i },
   { replyText: /know more about this site/i },
+  { replyText: /like to view your website/i },
 
   // { replyText: /^yes I am interested/i }, // too broad
 

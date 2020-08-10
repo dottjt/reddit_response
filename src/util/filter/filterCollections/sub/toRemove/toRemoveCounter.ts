@@ -20,6 +20,7 @@ export const toRemoveCounter: InitialRegExpCollection[] = [
   { ...both, titleText: /numbers by ur name/i },
   { ...both, titleText: /just to see the days/i },
   { ...both, titleText: /add that day count/i },
+  { ...both, titleText: /to see my streak/i },
   { ...both, titleText: /I want a flair/i },
   { ...both, titleText: /checking my day count/i },
   { ...both, titleText: /How Do I Put The Numbers Of Days/i },

@@ -239,6 +239,7 @@
         { replyText: /Please share details/i },
         { replyText: /know more about the website/i },
         { replyText: /know more about this site/i },
+        { replyText: /like to view your website/i },
         // { replyText: /^yes I am interested/i }, // too broad
         // CHECK
         { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },

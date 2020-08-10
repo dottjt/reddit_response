@@ -144,6 +144,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
   { titleText: /(shemale|she male)/i },
 
   { ...both, titleText: /sex (during|on) (nofap|no fap|no-fap)/i },
+  { ...both, titleText: /having sex breaks the/i },
   { ...both, titleText: /Is having sex/i },
   { ...both, titleText: /WHY are you doing no fap/i },
 

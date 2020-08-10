@@ -43,6 +43,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /joined (nofap|no fap|no-fap) yesterday/i },
   { titleText: /a new life begin/i },
 
+  { ...both, titleText: /I just started (nofap|no fap|no-fap)/i },
   { ...both, titleText: /Starting out today/i },
   { ...both, titleText: /day (1|one) begins now/i },
   { ...both, titleText: /My first (nofap|no fap|no-fap) journey/i },
