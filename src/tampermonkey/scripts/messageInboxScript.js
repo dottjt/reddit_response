@@ -242,7 +242,8 @@
         { replyText: /like to view your website/i },
         // { replyText: /^yes I am interested/i }, // too broad
         // CHECK
-        { replyText: /(check|read| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
+        { replyText: /(check| get |visit|hear about|curious about|know about|look into|share) ?(of)? ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
+        { replyText: /(love|happy|want) to read ?(that|the|about|ur|your|this)? (any|it|site|link|web|guide|content|page)/i },
         { replyText: /(name of|check|checkout|check out|take a look at) (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
         { replyText: /interested in checking out (ur|your|the|that|to the) (article|site|link|web|guide|content|page)/i },
         { replyText: /I’ll check the link if you have it/i },

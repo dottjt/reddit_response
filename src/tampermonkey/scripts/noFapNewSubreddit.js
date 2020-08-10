@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'hanyuqn';
-    var R_NOFAP_TIMESTAMP = '3 hours ago';
+    var R_NOFAP_USERNAME = 'Saman93';
+    var R_NOFAP_TIMESTAMP = '1 hours ago';
     var R_PORN_FREE_USERNAME = 'ChewsOnRocks';
-    var R_PORN_FREE_TIMESTAMP = '2 hours ago';
+    var R_PORN_FREE_TIMESTAMP = '3 hours ago';
     var R_PORN_ADDICTION_USERNAME = 'Datthinker';
-    var R_PORN_ADDICTION_TIMESTAMP = '3 hours ago';
+    var R_PORN_ADDICTION_TIMESTAMP = '5 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3478,6 +3478,7 @@
         __assign(__assign({}, both), { titleText: /starting, again/i }),
         __assign(__assign({}, both), { titleText: /^Starting again../i }),
         __assign(__assign({}, both), { titleText: /giving (nofap|no fap|no-fap|this) another go/i }),
+        __assign(__assign({}, both), { titleText: /(Let's|let’s|lets) try this again/i }),
         __assign(__assign({}, both), { titleText: /gonna reboot again/i }),
         __assign(__assign({}, both), { titleText: /Starting up again/i }),
         __assign(__assign({}, both), { titleText: /Finally back on/i }),
@@ -3574,6 +3575,9 @@
         __assign(__assign({}, both), { titleText: /I have no way out right now/i }),
         __assign(__assign({}, both), { titleText: /Got any tips for/i }),
         __assign(__assign({}, both), { titleText: /could share some tips/i }),
+        __assign(__assign({}, both), { titleText: /What should I do\?/i }),
+        __assign(__assign({}, both), { titleText: /Tips on how to stop/i }),
+        __assign(__assign({}, both), { titleText: /Any Tips or Tricks/i }),
         __assign(__assign({}, both), { titleText: /advice on how to keep/i }),
         __assign(__assign({}, both), { titleText: /if someone guided me/i }),
         __assign(__assign({}, both), { titleText: /Can you guys give me tips/i }),
@@ -3800,19 +3804,20 @@
         __assign(__assign({}, both), { titleText: /how to stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /how to deal with (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /wet dreamed this morning/i }),
-        __assign(__assign({}, both), { titleText: /wet dream on day/i }),
+        __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) on day/i }),
         __assign(__assign({}, both), { titleText: /are (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a sign of progress/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) considered as relapse/i }),
         __assign(__assign({}, both), { titleText: /How do I stop (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
-        __assign(__assign({}, both), { titleText: /Feeling low after a wet dream/i }),
-        __assign(__assign({}, both), { titleText: /I('|’)m having wet dreams/i }),
-        __assign(__assign({}, both), { titleText: /Does wet dream relapse/i }),
+        __assign(__assign({}, both), { titleText: /Feeling low after a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
+        __assign(__assign({}, both), { titleText: /I('|’)m having (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
+        __assign(__assign({}, both), { titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) relapse/i }),
+        __assign(__assign({}, both), { titleText: /Is it ok to have (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /did you get (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
-        __assign(__assign({}, both), { titleText: /Lose benefits after a wet dream?/i }),
+        __assign(__assign({}, both), { titleText: /Lose benefits after a (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)\?/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) after a/i }),
-        __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) (wont|won't) stop/i }),
+        __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) (wont|won't|won’t) stop/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) every \d+/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) bad\?/i }),
         __assign(__assign({}, both), { titleText: /(wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) = relapse/i }),
@@ -4084,6 +4089,7 @@
         // IS IT OKAY
         { titleText: /masturbation without porn/i },
         __assign(__assign({}, both), { titleText: /is it OK to mast(u|e)rbate/i }),
+        __assign(__assign({}, both), { titleText: /is it OK to fap/i }),
         __assign(__assign({}, both), { titleText: /Is it still ?(a)? relapse if you mast(u|e)rbate/i }),
         __assign(__assign({}, both), { titleText: /a healthy way to (fap|mast(u|e)rbate)/i }),
         __assign(__assign({}, both), { titleText: /Is it ok to mast(u|e)rbate without watching porn/i }),
@@ -4255,6 +4261,7 @@
         __assign(__assign({}, both), { titleText: /pros and cons/i }),
         __assign(__assign({}, both), { titleText: /What are the benefits\?/i }),
         __assign(__assign({}, both), { titleText: /Why should one stop fapping/i }),
+        __assign(__assign({}, both), { titleText: /(you have|you've|you’ve) noticed since stopping/i }),
         __assign(__assign({}, both), { titleText: /(which|What) benefits did you gain/i }),
         __assign(__assign({}, both), { titleText: /benefits that you have gained/i }),
         __assign(__assign({}, both), { titleText: /reasons to stop/i }),

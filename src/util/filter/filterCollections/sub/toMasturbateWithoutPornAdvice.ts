@@ -12,6 +12,7 @@ export const toMasturbateWithoutPornAdviceRegexArray: InitialRegExpCollection[] 
   { titleText: /masturbation without porn/i },
 
   { ...both, titleText: /is it OK to mast(u|e)rbate/i },
+  { ...both, titleText: /is it OK to fap/i },
   { ...both, titleText: /Is it still ?(a)? relapse if you mast(u|e)rbate/i },
   { ...both, titleText: /a healthy way to (fap|mast(u|e)rbate)/i },
   { ...both, titleText: /Is it ok to mast(u|e)rbate without watching porn/i },

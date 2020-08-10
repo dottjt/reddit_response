@@ -82,6 +82,9 @@ export const toGeneralAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /Got any tips for/i },
   { ...both, titleText: /could share some tips/i },
 
+  { ...both, titleText: /What should I do\?/i },
+  { ...both, titleText: /Tips on how to stop/i },
+  { ...both, titleText: /Any Tips or Tricks/i },
   { ...both, titleText: /advice on how to keep/i },
   { ...both, titleText: /if someone guided me/i },
   { ...both, titleText: /Can you guys give me tips/i },
