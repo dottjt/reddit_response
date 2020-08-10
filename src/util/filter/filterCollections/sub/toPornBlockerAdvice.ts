@@ -18,6 +18,7 @@ export const toPornBlockersAdviceRegexArray: InitialRegExpCollection[] = [
   { ...both, titleText: /please advice any porn block/i },
   { ...both, titleText: /Mac site blockers/i },
   { ...both, titleText: /block adult content/i },
+  { ...both, titleText: /Good Blocker\?/i },
 
   { ...both, titleText: /finding a porn blocker/i },
   { ...both, titleText: /can I block porn on reddit/i },

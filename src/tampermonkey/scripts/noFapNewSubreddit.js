@@ -2489,12 +2489,12 @@
         usernameTimestamp: 'NA',
         forumType: ForumType.rNofapForum,
     };
-    var R_NOFAP_USERNAME = 'Saman93';
-    var R_NOFAP_TIMESTAMP = '1 hours ago';
-    var R_PORN_FREE_USERNAME = 'ChewsOnRocks';
-    var R_PORN_FREE_TIMESTAMP = '3 hours ago';
-    var R_PORN_ADDICTION_USERNAME = 'Datthinker';
-    var R_PORN_ADDICTION_TIMESTAMP = '5 hours ago';
+    var R_NOFAP_USERNAME = 'DARCKER2626';
+    var R_NOFAP_TIMESTAMP = '2 hours ago';
+    var R_PORN_FREE_USERNAME = 'mjsprezza';
+    var R_PORN_FREE_TIMESTAMP = '2 hours ago';
+    var R_PORN_ADDICTION_USERNAME = 'imdeadinside3000';
+    var R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
     var R_NOFAP_CHRISTIANS_USERNAME = '';
     var R_NOFAP_CHRISTIANS_TIMESTAMP = '';
     var R_NOFAP_TEENS_USERNAME = '';
@@ -3012,6 +3012,7 @@
         { titleText: /(tracker|counting|counter)/i },
         { titleText: /accountability post/i },
         __assign(__assign({}, both), { titleText: /^counter$/i }),
+        __assign(__assign({}, both), { titleText: /How do I start a counter/i }),
         __assign(__assign({}, both), { titleText: /How do u get a number/i }),
         __assign(__assign({}, both), { titleText: /numbers by ur name/i }),
         __assign(__assign({}, both), { titleText: /just to see the days/i }),
@@ -3066,6 +3067,7 @@
     ], toRemoveMotivationVictoryLectureRegexArray, [
         // RATIONALISATIONS
         { titleText: /(down side|downside)/i },
+        // { titleText: /finally made it to/i },
         { titleText: /relapsed intentionally/i },
         { titleText: /any evidence that/i },
         { titleText: /harmful effect/i },
@@ -3388,6 +3390,7 @@
         { titleText: /trying to begin/i },
         { titleText: /(I’m|I'm|im|I am) ready to start/i },
         { titleText: /I start my journey from now/i },
+        { titleText: /joined reddit today/i },
         { titleText: /where to start/i },
         { titleText: /(wanna|want|trying) to start/i },
         __assign(__assign({}, both), { titleText: /Start of \d+ days/i }),
@@ -3426,8 +3429,6 @@
         { titleText: /I decided it's time to quit porn/i },
         { messageText: /Today (starts|i start) my journey/i },
         { messageText: /(I’m|I'm|im|i am) starting today/i },
-        // DAY ZERO
-        { titleText: /day (0|zero)/i },
         __assign(__assign({}, both), { titleText: /day (one|1) of /i }),
         __assign(__assign({}, both), { titleText: /day (one|1) without fapping/i }),
         __assign(__assign({}, both), { titleText: /this is day (one|1)/i }),
@@ -3812,6 +3813,7 @@
         __assign(__assign({}, both), { titleText: /I('|’)m having (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Does (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) relapse/i }),
         __assign(__assign({}, both), { titleText: /Is it ok to have (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
+        __assign(__assign({}, both), { titleText: /Is (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) a relapse/i }),
         __assign(__assign({}, both), { titleText: /did you get (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall)/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) count/i }),
         __assign(__assign({}, both), { titleText: /Do (wet dreams|wetdreams|wetdream|wet dream|nightfall|night fall) breaks ?(NoFap|no fap|no-fap)? streak/i }),
@@ -4058,6 +4060,7 @@
         __assign(__assign({}, both), { titleText: /please advice any porn block/i }),
         __assign(__assign({}, both), { titleText: /Mac site blockers/i }),
         __assign(__assign({}, both), { titleText: /block adult content/i }),
+        __assign(__assign({}, both), { titleText: /Good Blocker\?/i }),
         __assign(__assign({}, both), { titleText: /finding a porn blocker/i }),
         __assign(__assign({}, both), { titleText: /can I block porn on reddit/i }),
         __assign(__assign({}, both), { titleText: /How do I block NSFW/i }),
@@ -4118,7 +4121,7 @@
 
     var toDidIJustRelapseAdviceRegexArray = [
         __assign(__assign({}, both), { titleText: /^relapse\?/i }),
-        __assign(__assign({}, both), { titleText: /did I just relapse\?/i }),
+        __assign(__assign({}, both), { titleText: /did I ?(just)? relapse\?/i }),
         __assign(__assign({}, both), { titleText: /did I lose\?/i }),
         __assign(__assign({}, both), { titleText: /Is this ?(a)? relapse\?/i }),
         __assign(__assign({}, both), { titleText: /Have I relapsed\?/i }),

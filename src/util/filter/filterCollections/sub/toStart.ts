@@ -120,6 +120,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { titleText: /trying to begin/i },
   { titleText: /(I’m|I'm|im|I am) ready to start/i },
   { titleText: /I start my journey from now/i },
+  { titleText: /joined reddit today/i },
   { titleText: /where to start/i },
   { titleText: /(wanna|want|trying) to start/i },
 
@@ -170,7 +171,7 @@ export const toStartAdviceRegexArray: InitialRegExpCollection[] = [
   { messageText: /(I’m|I'm|im|i am) starting today/i },
 
   // DAY ZERO
-  { titleText: /day (0|zero)/i },
+  // { titleText: /day (0|zero)/i }, // just as easily relapse, as it is to start
 
   // DAY ONE
   { ...both, titleText: /day (one|1) of /i },

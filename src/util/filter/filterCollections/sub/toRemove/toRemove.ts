@@ -50,6 +50,7 @@ export const toRemoveInitialRegexArray: InitialRegExpCollection[] = [
 
   // RATIONALISATIONS
   { titleText: /(down side|downside)/i },
+  // { titleText: /finally made it to/i },
   { titleText: /relapsed intentionally/i },
   { titleText: /any evidence that/i },
   { titleText: /harmful effect/i },

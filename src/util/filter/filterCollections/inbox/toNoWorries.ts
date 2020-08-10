@@ -39,6 +39,10 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /keen to check out your website/i },
   { replyText: /feel free to give me the link/i },
   { replyText: /Feel free to link the website/i },
+  { replyText: /shoot us the link/i },
+  { replyText: /drop me the web address/i },
+  { replyText: /send me a link/i },
+
   { replyText: /feel free to send me the link/i },
   { replyText: /would be glad to check your website/i },
   { replyText: /send me website/i },
