@@ -14,6 +14,7 @@ export const toLinkYouGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /(Im|I'm) considering reading/i },
   { replyText: /How can i see your (site|link|website|web site|webite|guide|content|page)/i },
   { replyText: /which is the URL/i },
+  { replyText: /where is the guide/i },
 
   // WHAT
   { replyText: /What (site|link|website|web site|webite|guide|content|page) have you/i },

@@ -42,6 +42,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /shoot us the link/i },
   { replyText: /drop me the web address/i },
   { replyText: /send me a link/i },
+  { replyText: /Sure why not/i },
+  { replyText: /feel free the share/i },
 
   { replyText: /feel free to send me the link/i },
   { replyText: /would be glad to check your website/i },
@@ -158,6 +160,8 @@ export const toNoWorriesGuideRegexArray: InitialRegExpCollection[] = [
   { replyText: /I am interested in your site/i },
   { replyText: /I highly interested/i },
   { replyText: /Am so interested/i },
+  { replyText: /interested in your website/i },
+  { replyText: /love a link to that website/i },
 
   { replyText: /interested to follow your website/i },
   { replyText: /interested in having a look at your website/i },

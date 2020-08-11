@@ -27,6 +27,8 @@ export const toRemoveMotivationVictoryLectureRegexArray: InitialRegExpCollection
   { ...both, titleText: /ask me anything/i },
   { ...both, titleText: /d+ tips that helped me/i },
   { ...both, titleText: /helped me reach \d+ days/i },
+  { ...both, titleText: /wrote this poem/i },
+  { ...both, titleText: /wrote this poem/i },
 
   // VICTORY
   { titleText: /^going strong$/i },

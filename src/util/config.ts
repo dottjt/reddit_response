@@ -27,17 +27,17 @@ export const fakeConfigType: ConfigType = {
 
 export const INBOX_LAST_MESSAGE_USER = 'AccordingJob1';
 
-export const R_NOFAP_USERNAME = 'DARCKER2626';
+export const R_NOFAP_USERNAME = 'OllieOul';
 export const R_NOFAP_TIMESTAMP = '2 hours ago';
-export const R_NOFAP_START_DATE = 'Tue Aug 11 2020 08:31:20 GMT+1000 (Australian Eastern Standard Time)'; // todo, all this shit.
+export const R_NOFAP_START_DATE = 'Wed Aug 12 2020 06:06:39 GMT+1000 (Australian Eastern Standard Time)'; // todo, all this shit.
 
-export const R_PORN_FREE_USERNAME = 'mjsprezza';
-export const R_PORN_FREE_TIMESTAMP = '2 hours ago';
-export const R_PORN_FREE_START_DATE = 'Tue Aug 11 2020 08:09:33 GMT+1000 (Australian Eastern Standard Time)';
+export const R_PORN_FREE_USERNAME = 'puff_mcgruff';
+export const R_PORN_FREE_TIMESTAMP = '1 hour ago';
+export const R_PORN_FREE_START_DATE = 'Wed Aug 12 2020 06:56:48 GMT+1000 (Australian Eastern Standard Time)';
 
-export const R_PORN_ADDICTION_USERNAME = 'imdeadinside3000';
+export const R_PORN_ADDICTION_USERNAME = 'Deanfare129';
 export const R_PORN_ADDICTION_TIMESTAMP = '2 hours ago';
-export const R_PORN_ADDICTION_START_DATE = 'Tue Aug 11 2020 08:06:43 GMT+1000 (Australian Eastern Standard Time)';
+export const R_PORN_ADDICTION_START_DATE = 'Wed Aug 12 2020 06:58:21 GMT+1000 (Australian Eastern Standard Time)';
 
 export const R_NOFAP_CHRISTIANS_USERNAME = '';
 export const R_NOFAP_CHRISTIANS_TIMESTAMP = '';

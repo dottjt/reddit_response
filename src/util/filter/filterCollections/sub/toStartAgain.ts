@@ -19,6 +19,7 @@ export const toStartAgainAdviceRegexArray: InitialRegExpCollection[] = [
 
   { ...both, titleText: /(Let's|let’s|lets) try this again/i, },
   { ...both, titleText: /gonna reboot again/i, },
+  { ...both, titleText: /give it another go/i, },
   { ...both, titleText: /Starting up again/i, },
   { ...both, titleText: /Finally back on/i, },
   { ...both, titleText: /This is my .* time trying/i, },
